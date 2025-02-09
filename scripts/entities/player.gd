@@ -1,0 +1,155 @@
+extends CharacterBody3D
+class_name Player
+
+const SPEED := 7.5
+const ACCEL := 0.3
+const SLOW_ACCEL := ACCEL * 3.0
+const MAX_SPEED := 10.0
+
+var jumping_time := 30.0
+const JUMPING_VELOCITY := 0.2
+const MAX_JUMPING_TIME := 30.0
+const MAX_COYOTE := 10.0
+var in_jump := false
+var coyote_time := MAX_COYOTE
+
+var player_goal_horz := 0.0
+var camera_goal_horz := 0.0
+var camera_goal_vert := 0.0
+
+var can_align := true
+var is_carrying := false
+
+@export var jump_height: float = 2
+@export var jump_peak_time: float = 0.3
+@export var jump_fall_time: float = 0.25
+
+@onready var jump_velocity: float = (2.0 * jump_height) / jump_peak_time
+@onready var jump_gravity: float = (-2.0 * jump_height) / (jump_peak_time ** 2)
+@onready var fall_gravity: float = (-2.0 * jump_height) / (jump_fall_time ** 2)
+
+
+var xform: Transform3D
+
+func _ready() -> void:
+	Global.game_begun = true
+	$Health.immune = false
+	
+
+
+func _physics_process(delta: float) -> void:
+	# Get the input direction and handle the movement/deceleration.
+	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	#Gets transformed input direction
+	var direction = ($Camera_Controller.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	#Animations:
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		$AnimationPlayer.play("jump")
+	elif input_dir != Vector2.ZERO and is_on_floor():
+		$AnimationPlayer.play("run")
+	elif input_dir == Vector2.ZERO and is_on_floor():
+		$AnimationPlayer.play("idle")
+		
+	#Attack:
+	if Input.is_action_just_pressed("attack"):
+		$Armature/Hitbox/AnimationPlayer.play("swing")
+	
+	#Rotating camera:
+	if Input.is_action_just_pressed("cam_left"):
+		camera_goal_horz += deg_to_rad(45)
+	elif Input.is_action_just_pressed("cam_right"):
+		camera_goal_horz -= deg_to_rad(45)
+	$Camera_Controller.rotation.y = lerp($Camera_Controller.rotation.y, camera_goal_horz, 0.05)
+	
+	if Input.is_action_just_pressed("cam_down"):
+		camera_goal_vert = clamp(camera_goal_vert - 0.2, 0, 1)
+	elif Input.is_action_just_pressed("cam_up"):
+		camera_goal_vert = clamp(camera_goal_vert + 0.2, 0, 1)
+	$Camera_Controller/Camera_Path/PathFollow3D.progress_ratio = lerp($Camera_Controller/Camera_Path/PathFollow3D.progress_ratio, camera_goal_vert, 0.05)
+
+
+	# Handle jump.
+	if Input.is_action_pressed("jump"):
+		jump()
+	elif Input.is_action_just_released("jump"):
+		jumping_time = 0
+		
+	# Add the gravity.
+	if is_on_floor():
+		jumping_time = MAX_JUMPING_TIME
+		coyote_time = MAX_COYOTE
+		in_jump = false
+		align_with_floor($RayCast3D.get_collision_normal())
+	else:
+		velocity.y += get_gravity_dir() * delta
+		coyote_time = max(0, coyote_time - 1)
+		align_with_floor(Vector3.UP)
+		
+	if Input.is_anything_pressed():
+		can_align = true
+	elif is_on_floor():
+		can_align = false
+
+
+	#Rotate character:
+	if input_dir:
+		player_goal_horz = $Camera_Controller.rotation.y - input_dir.angle() + (PI / 2)
+		player_goal_horz = fmod(player_goal_horz + PI, 2 * PI)
+		$Armature.rotation.y = lerp_angle($Armature.rotation.y, player_goal_horz, 0.5)
+
+	#Move character:
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+
+	#Slow down after letting go of controls
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
+	#Match camera controller position to self
+	$Camera_Controller.position = lerp($Camera_Controller.position, position, 0.1)
+	
+	if Input.is_action_just_pressed("print_fps"):
+		print("FPS: " + str(Engine.get_frames_per_second()))
+		print('player health: ' + str($Health.health))
+		print('player pos: ' + str(global_position))
+		for room in Global.world_map:
+			print(room)
+			print(Global.world_map[room])
+		print("Enemies' positions:")
+		for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
+			print(chum.global_position)
+		print("Neutrals' positions:")
+		for chum in get_tree().get_nodes_in_group("Chums_Neutral"):
+			print(chum.global_position)
+		print("player_carring: " + str(is_carrying))
+
+func jump():
+	if (is_on_floor() or coyote_time > 0) and not in_jump:
+		velocity.y = jump_velocity
+		in_jump = true
+
+	if jumping_time:
+		velocity.y += JUMPING_VELOCITY
+		jumping_time = max(0, jumping_time - 1)
+	
+func get_gravity_dir():
+	return fall_gravity if velocity.y < 0.0 else jump_gravity
+
+func align_with_floor(normal):
+	if can_align:
+		xform = global_transform
+		xform.basis.y = normal
+		xform.basis.x = -xform.basis.z.cross(normal)
+		xform.basis = xform.basis.orthonormalized()
+			
+		global_transform = global_transform.interpolate_with(xform, 0.3)
+		rotation.y = 0
+
+
+func _on_health_health_depleted() -> void:
+	Global.reset()
+	get_tree().reload_current_scene()

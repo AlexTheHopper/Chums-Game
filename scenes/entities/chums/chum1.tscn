@@ -1,0 +1,102 @@
+[gd_scene load_steps=18 format=3 uid="uid://dr778q0wfb61e"]
+
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1.gd" id="1_oac54"]
+[ext_resource type="Script" path="res://scripts/entities/state_machine.gd" id="2_xkq4p"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1_sleep.gd" id="3_u8ppc"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1_wake.gd" id="4_10k6t"]
+[ext_resource type="Script" path="res://scripts/entities/health.gd" id="5_0vnba"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1_attack.gd" id="5_3wtul"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1_knock.gd" id="5_txoj5"]
+[ext_resource type="Script" path="res://scripts/entities/hurtbox.gd" id="6_p7nbp"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1_carry.gd" id="6_ylt1e"]
+[ext_resource type="Script" path="res://scripts/entities/hitbox.gd" id="7_p1xu3"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1_idle.gd" id="8_p7p8y"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_etg5v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7oaib"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kbxqd"]
+radius = 0.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7on55"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1b1v"]
+transparency = 1
+albedo_color = Color(0.545098, 0.156863, 0.176471, 0.301961)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bnxas"]
+material = SubResource("StandardMaterial3D_m1b1v")
+
+[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("hitbox", "hurtbox") groups=["Chums_Neutral"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_oac54")
+hitbox = NodePath("Hitbox")
+hurtbox = NodePath("Hurtbox")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_etg5v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_7oaib")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("5_0vnba")
+max_health = 1.0
+
+[node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_xkq4p")
+initial_state = NodePath("Sleep")
+
+[node name="Sleep" type="Node" parent="State_Machine" node_paths=PackedStringArray("chum")]
+script = ExtResource("3_u8ppc")
+chum = NodePath("../..")
+
+[node name="Wake" type="Node" parent="State_Machine" node_paths=PackedStringArray("chum")]
+script = ExtResource("4_10k6t")
+chum = NodePath("../..")
+
+[node name="WakeTimer" type="Timer" parent="State_Machine/Wake"]
+autostart = true
+
+[node name="Attack" type="Node" parent="State_Machine" node_paths=PackedStringArray("chum")]
+script = ExtResource("5_3wtul")
+chum = NodePath("../..")
+
+[node name="Knock" type="Node" parent="State_Machine" node_paths=PackedStringArray("chum")]
+script = ExtResource("5_txoj5")
+chum = NodePath("../..")
+
+[node name="Carry" type="Node" parent="State_Machine" node_paths=PackedStringArray("chum")]
+script = ExtResource("6_ylt1e")
+chum = NodePath("../..")
+
+[node name="Idle" type="Node" parent="State_Machine" node_paths=PackedStringArray("chum")]
+script = ExtResource("8_p7p8y")
+chum = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="State_Machine/Idle"]
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("6_p7nbp")
+health = NodePath("../Health")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape3D_kbxqd")
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+script = ExtResource("7_p1xu3")
+damage = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_7on55")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hitbox"]
+mesh = SubResource("BoxMesh_bnxas")
+
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
+[connection signal="timeout" from="State_Machine/Wake/WakeTimer" to="State_Machine/Wake" method="_on_wake_timer_timeout"]
+[connection signal="timeout" from="State_Machine/Idle/Timer" to="State_Machine/Idle" method="_on_timer_timeout"]

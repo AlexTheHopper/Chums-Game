@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://csf5wbm1gb1u7"]
+
+[ext_resource type="PackedScene" uid="uid://cye4mq80jv22n" path="res://scenes/world/lobby_world_1.tscn" id="1_2tuuw"]
+[ext_resource type="PackedScene" uid="uid://dmgabiox56kck" path="res://scenes/entities/player.tscn" id="2_iwypl"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("2_iwypl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 1)
+
+[node name="Chums" type="Node3D" parent="."]
+
+[node name="Rooms" type="Node3D" parent="."]
+
+[node name="Lobby_World1" parent="Rooms" instance=ExtResource("1_2tuuw")]

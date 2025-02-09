@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcyjv52keuase"]
+
+[ext_resource type="ArrayMesh" uid="uid://b035egc6vcosi" path="res://assets/world/world_1_other/door.vox" id="1_fn6d3"]
+[ext_resource type="Script" path="res://scripts/world/door_world_1.gd" id="1_smsyp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qradg"]
+size = Vector3(6, 4, 0.5)
+
+[sub_resource type="Animation" id="Animation_5p4kw"]
+resource_name = "lower"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 4, -0.5), Vector3(0, 2, -0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_ygmca"]
+resource_name = "raise"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -2, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2, -0.5), Vector3(0, 4, -0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a7q25"]
+_data = {
+"lower": SubResource("Animation_5p4kw"),
+"raise": SubResource("Animation_ygmca")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("animation_player")]
+collision_mask = 0
+script = ExtResource("1_smsyp")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Door" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_fn6d3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -0.5)
+shape = SubResource("BoxShape3D_qradg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a7q25")
+}
