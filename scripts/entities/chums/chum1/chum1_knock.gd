@@ -6,8 +6,7 @@ class_name Chum1_Knock
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func Enter():
-	if chum.is_in_group("Chums_Enemy"):	
-		chum.make_neutral()
+	chum.make_neutral()
 
 func Physics_Update(delta: float):
 	chum.velocity  = lerp(chum.velocity, Vector3(), 0.1)

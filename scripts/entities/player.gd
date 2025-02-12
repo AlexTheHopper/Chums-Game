@@ -116,16 +116,15 @@ func _physics_process(delta: float) -> void:
 		print("FPS: " + str(Engine.get_frames_per_second()))
 		print('player health: ' + str($Health.health))
 		print('player pos: ' + str(global_position))
-		for room in Global.world_map:
-			print(room)
-			print(Global.world_map[room])
-		print("Enemies' positions:")
-		for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
-			print(chum.global_position)
-		print("Neutrals' positions:")
-		for chum in get_tree().get_nodes_in_group("Chums_Neutral"):
-			print(chum.global_position)
-		print("player_carring: " + str(is_carrying))
+		#for room in Global.world_map:
+			#print(room)
+			#print(Global.world_map[room])
+		#print("Enemies' positions:")
+		#for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
+			#print(chum.global_position)
+		#print("Neutrals' positions:")
+		#for chum in get_tree().get_nodes_in_group("Chums_Neutral"):
+			#print(chum.global_position)
 
 func jump():
 	if (is_on_floor() or coyote_time > 0) and not in_jump:

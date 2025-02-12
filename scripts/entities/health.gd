@@ -8,8 +8,13 @@ signal health_depleted
 @export var max_health: float : set = set_max_health, get = get_max_health
 @export var immune: bool = true : set = set_immune, get = get_immune
 var immune_timer: Timer = null
+var health_initialised := false
 
-@onready var health := max_health : set = set_health, get = get_health
+@onready var health : float : set = set_health, get = get_health
+
+func _ready() -> void:
+	if not health_initialised:
+		set_health(max_health)
 
 func set_max_health(value: float):
 	var clamped_value = 1.0 if value <= 0.0 else value
@@ -23,7 +28,6 @@ func set_max_health(value: float):
 		
 func get_max_health() -> float:
 	return max_health
-
 
 func set_immune(value: bool):
 	immune = value
@@ -59,6 +63,7 @@ func set_health(value: float):
 		
 		if health == 0:
 			health_depleted.emit()
+	health_initialised = true
 	
 func get_health() -> float:
 	return health

@@ -1,9 +1,11 @@
 extends Area3D
 class_name Hurtbox
 
-signal recieved_damage(damage: float)
+signal recieved_damage(damage: float, change_agro: bool)
 
 @export var health: Health
+
+@export var changes_agro_on_damaged: bool = true
 
 func _ready() -> void:
 	connect("area_entered", _on_area_entered)
@@ -31,9 +33,15 @@ func set_as_enemy():
 	set_collision_layer_value(12, true)
 	set_collision_mask_value(9, true)
 	
+	set_collision_mask_value(10, false)
+	set_collision_mask_value(11, false)
+	
 func set_as_friendly():
 	set_collision_layer_value(11, true)
 	set_collision_mask_value(10, true)
+	
+	set_collision_layer_value(12, false)
+	set_collision_layer_value(9, false)
 	
 func set_as_neutral():
 	set_collision_layer_value(11, false)
@@ -46,4 +54,9 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 	if hitbox != null:
 		if hitbox.active:
 			health.health -= hitbox.damage
-			recieved_damage.emit(hitbox.damage)
+			
+			#Check to change agression
+			var change_agro = false
+			if changes_agro_on_damaged and hitbox.draws_agro_on_attack:
+				change_agro = true
+			recieved_damage.emit(hitbox.damage, change_agro)

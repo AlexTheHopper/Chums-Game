@@ -20,7 +20,8 @@ func Physics_Update(delta: float):
 	chum.move_and_slide()
 		
 func Enter():
-	chum.make_friendly()
+	if not chum.is_in_group("Chums_Friend"):
+		chum.make_friendly()
 	
 func Exit():
 	chum.set_new_target()

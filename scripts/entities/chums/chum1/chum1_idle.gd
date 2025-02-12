@@ -6,6 +6,7 @@ class_name Chum1_Idle
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var idle_direction: Vector3
 @onready var idle_time := 0.0
+var wander_offset = randf_range(0, 2 * PI)
 	
 func Update(delta: float):
 	if Input.is_action_just_pressed("interract") and chum.is_in_group("Chums_Friend"):
@@ -15,9 +16,9 @@ func Update(delta: float):
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():
-		chum.velocity = 1 * Vector3(cos(idle_time), 0, sin(idle_time))
+		chum.velocity = 1 * Vector3(cos(idle_time + wander_offset), 0, sin(idle_time + wander_offset))
 		
-	if not chum.is_on_floor():
+	else:
 		chum.velocity.y += chum.get_gravity_dir() * delta
 	
 	chum.move_and_slide()

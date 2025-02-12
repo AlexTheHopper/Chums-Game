@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dr778q0wfb61e"]
+[gd_scene load_steps=22 format=3 uid="uid://dr778q0wfb61e"]
 
 [ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1.gd" id="1_oac54"]
 [ext_resource type="Script" path="res://scripts/entities/state_machine.gd" id="2_xkq4p"]
+[ext_resource type="PackedScene" uid="uid://c1saa1y5s8j4y" path="res://scenes/entities/health_bar.tscn" id="3_t865y"]
 [ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1_sleep.gd" id="3_u8ppc"]
 [ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1_wake.gd" id="4_10k6t"]
 [ext_resource type="Script" path="res://scripts/entities/health.gd" id="5_0vnba"]
@@ -28,6 +29,67 @@ albedo_color = Color(0.545098, 0.156863, 0.176471, 0.301961)
 [sub_resource type="BoxMesh" id="BoxMesh_bnxas"]
 material = SubResource("StandardMaterial3D_m1b1v")
 
+[sub_resource type="Animation" id="Animation_2nayw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_dwpii"]
+resource_name = "attack_1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d411a"]
+_data = {
+"RESET": SubResource("Animation_2nayw"),
+"attack_1": SubResource("Animation_dwpii")
+}
+
 [node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("hitbox", "hurtbox") groups=["Chums_Neutral"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 8
@@ -44,7 +106,11 @@ shape = SubResource("CapsuleShape3D_7oaib")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("5_0vnba")
-max_health = 1.0
+max_health = 3.0
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health_node") instance=ExtResource("3_t865y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+health_node = NodePath("../Health")
 
 [node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_xkq4p")
@@ -65,6 +131,10 @@ autostart = true
 script = ExtResource("5_3wtul")
 chum = NodePath("../..")
 
+[node name="AttackTimer" type="Timer" parent="State_Machine/Attack"]
+one_shot = true
+autostart = true
+
 [node name="Knock" type="Node" parent="State_Machine" node_paths=PackedStringArray("chum")]
 script = ExtResource("5_txoj5")
 chum = NodePath("../..")
@@ -77,8 +147,6 @@ chum = NodePath("../..")
 script = ExtResource("8_p7p8y")
 chum = NodePath("../..")
 
-[node name="Timer" type="Timer" parent="State_Machine/Idle"]
-
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health")]
 script = ExtResource("6_p7nbp")
 health = NodePath("../Health")
@@ -87,7 +155,7 @@ health = NodePath("../Health")
 shape = SubResource("CapsuleShape3D_kbxqd")
 
 [node name="Hitbox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("7_p1xu3")
 damage = 0.0
 
@@ -97,6 +165,10 @@ shape = SubResource("BoxShape3D_7on55")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Hitbox"]
 mesh = SubResource("BoxMesh_bnxas")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d411a")
+}
+
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="timeout" from="State_Machine/Wake/WakeTimer" to="State_Machine/Wake" method="_on_wake_timer_timeout"]
-[connection signal="timeout" from="State_Machine/Idle/Timer" to="State_Machine/Idle" method="_on_timer_timeout"]

@@ -10,6 +10,7 @@ class_name Chum
 @onready var fall_gravity: float = (-2.0 * jump_height) / (jump_fall_time ** 2)
 
 @onready var state_machine := $State_Machine
+@onready var anim_player := $AnimationPlayer
 @onready var red_overlay := preload("res://materials/outline_red.tres")
 @onready var blue_overlay := preload("res://materials/outline_blue.tres")
 @export var hitbox: Hitbox
@@ -21,8 +22,10 @@ class_name Chum
 
 signal health_depleted
 
+
 func _ready() -> void:
 	rotation.y = randf() * 2 * PI
+	hurtbox.recieved_damage.connect(_on_recieved_damage)
 
 func get_gravity_dir():
 	return fall_gravity if velocity.y < 0.0 else jump_gravity
@@ -40,6 +43,10 @@ func find_enemy():
 	set_new_target()
 	if state_machine.current_state.state_name != "Carry":
 		state_machine.on_child_transition(state_machine.current_state, 'Attack')
+
+func _on_recieved_damage(damage, change_agro):
+	if change_agro:
+		set_new_target()
 
 func _on_health_health_depleted() -> void:
 	state_machine.on_child_transition(state_machine.current_state, 'Knock')
@@ -77,26 +84,41 @@ func attempt_carry():
 	if not get_tree().get_first_node_in_group("Player").is_carrying:
 		get_tree().get_first_node_in_group("Player").is_carrying = true
 		state_machine.on_child_transition(state_machine.current_state, 'Carry')
-	
-	
+
+func do_attack(attack_name):
+	anim_player.play(attack_name)
+
 func set_new_target():
 	var body: Node
+
+	#Disconnect from previoud chum:
+	if target:
+		var old_target_health = target.get_node("Health")
+		if old_target_health.health_depleted.is_connected(_on_target_death):
+			old_target_health.health_depleted.disconnect(_on_target_death)
+
 	#Set initial target for chum
 	if is_in_group("Chums_Friend"):
 		body = Functions.get_closest_chum_in_group(self, "Chums_Enemy")
 		
 	else:
-		body = Functions.get_closest_chum_in_group(self, "Chums_Friend")
+		#Target closest friendly chum / player.
+		var closest_chum_friend = Functions.get_closest_chum_in_group(self, "Chums_Friend")
+		var player = get_tree().get_first_node_in_group("Player")
 		
-		#If no friend chums, set to player:
-		if not body:
-			body = get_tree().get_first_node_in_group("Player")
+		if not closest_chum_friend:
+			body = player
+		elif Functions.distance_between(self, closest_chum_friend) < Functions.distance_between(self, player):
+			body = closest_chum_friend
+		else:
+			body = player
+
 	self.target = body
 	
 	#Connect to target to know when it dies:
 	if self.target:
-		var health_node = self.target.get_node("Health")
-		health_node.health_depleted.connect(_on_target_death)
+		var new_target_health = self.target.get_node("Health")
+		new_target_health.health_depleted.connect(_on_target_death)
 		
 
 func _on_target_death():

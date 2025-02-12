@@ -2,6 +2,7 @@ extends room
 
 @onready var grid_map: GridMap = $GridMap
 @onready var spawn_point: PathFollow3D = $SpawnPath/SpawnPoint
+@onready var room_value := Global.room_location.length()
 
 func _ready() -> void:	
 	
@@ -11,7 +12,8 @@ func _ready() -> void:
 		enemies_to_spawn = 3
 	else:
 		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
-		randomize_spawn_loc()
+	
+	randomize_spawn_loc()
 	super()
 	set_player_loc_on_entry()
 	fill_tunnels()
@@ -78,11 +80,21 @@ func _on_spawn_timer_timeout() -> void:
 	enemies_to_spawn -= 1
 	randomize_spawn_loc()
 	
-	var chum_to_spawn = ChumsManager.get_random_world1_chum(Global.room_location)
-	var chum_instance = chum_to_spawn.instantiate()
-	chum_instance.global_position = spawn_point.global_position
+	#var chum_to_spawn = ChumsManager.get_random_world1_chum(Global.room_location)
 	
-	get_parent().get_parent().get_node("Chums").add_child(chum_instance)
+	var chum_info = ChumsManager.get_random_world1_chum(room_value)
+	var chum_to_spawn = chum_info["object"]
+	var chum_value = chum_info["value"]
+	
+	if chum_to_spawn:
+		var chum_instance = chum_to_spawn.instantiate()
+		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
+		chum_instance.global_position = spawn_point.global_position
+		
+	room_value -= chum_value
+	
+	
+	
 	
 	if enemies_to_spawn > 0:
 		spawn_timer.start()

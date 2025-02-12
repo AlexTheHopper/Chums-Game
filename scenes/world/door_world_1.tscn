@@ -1,10 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcyjv52keuase"]
+[gd_scene load_steps=6 format=3 uid="uid://bcyjv52keuase"]
 
 [ext_resource type="ArrayMesh" uid="uid://b035egc6vcosi" path="res://assets/world/world_1_other/door.vox" id="1_fn6d3"]
 [ext_resource type="Script" path="res://scripts/world/door_world_1.gd" id="1_smsyp"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qradg"]
-size = Vector3(6, 4, 0.5)
 
 [sub_resource type="Animation" id="Animation_5p4kw"]
 resource_name = "lower"
@@ -24,14 +21,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("CollisionPolygon3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 4, -0.5), Vector3(0, 2, -0.5)]
+"values": [Vector3(0, 0, -0.5), Vector3(0, -2, -0.5)]
 }
 
 [sub_resource type="Animation" id="Animation_ygmca"]
@@ -52,14 +49,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("CollisionPolygon3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 2, -0.5), Vector3(0, 4, -0.5)]
+"values": [Vector3(0, -2, -0.5), Vector3(0, 0, -0.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a7q25"]
@@ -76,9 +73,10 @@ animation_player = NodePath("AnimationPlayer")
 [node name="Door" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_fn6d3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -0.5)
-shape = SubResource("BoxShape3D_qradg")
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+depth = 0.5
+polygon = PackedVector2Array(2, 0, 3, 0, 3, 4, 1, 5.8, -1, 5.8, -3, 4, -3, 0, -2, 0, -2, 2, 2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

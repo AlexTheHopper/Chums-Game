@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1saa1y5s8j4y"]
+
+[ext_resource type="Script" path="res://scripts/entities/health_bar.gd" id="1_22ocg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpfap"]
+resource_local_to_scene = true
+albedo_color = Color(0.12549, 0.431373, 0.160784, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yhmx4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gpfap")
+size = Vector3(1, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwuqx"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.0196078, 0.0196078, 0.0196078, 0.666667)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h7ggc"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_hwuqx")
+size = Vector3(1.01, 0.21, 0.21)
+
+[node name="HealthBar" type="Node3D" node_paths=PackedStringArray("current_health_bar", "max_health_bar")]
+script = ExtResource("1_22ocg")
+current_health_bar = NodePath("Health")
+max_health_bar = NodePath("Frame")
+
+[node name="Health" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yhmx4")
+
+[node name="Frame" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_h7ggc")

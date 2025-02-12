@@ -4,6 +4,8 @@ class_name Hitbox
 @export var damage: float = 1 : set = set_damage, get = get_damage
 @export var active: bool = false
 
+@export var draws_agro_on_attack: bool = true
+
 func _ready() -> void:
 	#Set correct layer/mask collisions:
 	set_collision_layer_value(1, false)
@@ -27,8 +29,12 @@ func get_parent_group(node):
 func set_as_enemy():
 	set_collision_layer_value(10, true)
 	
+	set_collision_layer_value(9, false)
+	
 func set_as_friendly():
 	set_collision_layer_value(9, true)
+	
+	set_collision_layer_value(10, false)
 	
 func set_as_neutral():
 	set_collision_layer_value(9, false)

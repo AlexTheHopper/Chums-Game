@@ -2,8 +2,9 @@ extends Node
 class_name room
 
 @onready var player = get_tree().get_first_node_in_group("Player")
-@onready var spawn_timer: Timer = $SpawnPath/SpawnTimer
 @onready var enemies_to_spawn: int
+
+@export var spawn_timer: Timer
 
 func _ready() -> void:
 	for group in ["Chums_Enemy", "Chums_Neutral"]:
@@ -66,10 +67,8 @@ func set_player_loc_on_entry():
 								factor * (prev_room.y - current_room.y) + 1)
 		
 		#Set the player camera rotation so it doesnt spin around when entering room
-		print('from: ' + str(player.get_node("Camera_Controller").rotation.y))
 		var cam_rotation = fmod(player.get_node("Camera_Controller").rotation.y, 2 * PI)
 		player.get_node("Camera_Controller").global_position = player.global_position
 		player.get_node("Camera_Controller").rotation.y = cam_rotation
 		#Set camera goal to nearest multiple of PI / 4
 		player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
-		print("to: " + str(player.camera_goal_horz))
