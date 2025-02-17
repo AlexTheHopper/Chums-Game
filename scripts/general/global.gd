@@ -6,6 +6,7 @@ var room_size = 40.0
 var world_map = {}
 var room_location = Vector2(0, 0)
 var room_history = [Vector2(0, 0)]
+var in_battle := false
 
 
 func _ready():

@@ -1,0 +1,170 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgd4xkckyqdcg"]
+
+[ext_resource type="Script" path="res://scripts/entities/quality_popup.gd" id="1_purmp"]
+[ext_resource type="ArrayMesh" uid="uid://cwucgjj58ueyc" path="res://assets/entities/world_1_quality_popup.vox" id="2_i4lqp"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ysojj"]
+viewport_path = NodePath("Display/SubViewport")
+
+[sub_resource type="Animation" id="Animation_s1ook"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_6tr2h"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uv026"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_01f7b"]
+_data = {
+"RESET": SubResource("Animation_s1ook"),
+"fade_in": SubResource("Animation_6tr2h"),
+"fade_out": SubResource("Animation_uv026")
+}
+
+[node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("disp_name", "disp_move_speed_title", "disp_move_speed_value", "disp_damage_title", "disp_damage_value", "disp_attack_speed_title", "disp_attack_speed_value")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("1_purmp")
+disp_name = NodePath("Display/SubViewport/Control/Name")
+disp_move_speed_title = NodePath("Display/SubViewport/Control/MoveSpeedTitle")
+disp_move_speed_value = NodePath("Display/SubViewport/Control/MoveSpeedValue")
+disp_damage_title = NodePath("Display/SubViewport/Control/DamageTitle")
+disp_damage_value = NodePath("Display/SubViewport/Control/DamageValue")
+disp_attack_speed_title = NodePath("Display/SubViewport/Control/AttackSpeedTitle")
+disp_attack_speed_value = NodePath("Display/SubViewport/Control/AttackSpeedValue")
+
+[node name="Display" type="Sprite3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -0.01)
+texture = SubResource("ViewportTexture_ysojj")
+
+[node name="SubViewport" type="SubViewport" parent="Display"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="Display/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name" type="Label" parent="Display/SubViewport/Control"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 64
+text = "CHUM_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoveSpeedTitle" type="Label" parent="Display/SubViewport/Control"]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 256.0
+offset_bottom = 195.0
+theme_override_font_sizes/font_size = 32
+text = "Move Speed:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoveSpeedValue" type="Label" parent="Display/SubViewport/Control"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 150.0
+offset_right = 512.0
+offset_bottom = 195.0
+theme_override_font_sizes/font_size = 32
+text = "SPEED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageTitle" type="Label" parent="Display/SubViewport/Control"]
+layout_mode = 0
+offset_top = 250.0
+offset_right = 256.0
+offset_bottom = 295.0
+theme_override_font_sizes/font_size = 32
+text = "Damage:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageValue" type="Label" parent="Display/SubViewport/Control"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 250.0
+offset_right = 512.0
+offset_bottom = 295.0
+theme_override_font_sizes/font_size = 32
+text = "DAMAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedTitle" type="Label" parent="Display/SubViewport/Control"]
+layout_mode = 0
+offset_top = 350.0
+offset_right = 256.0
+offset_bottom = 395.0
+theme_override_font_sizes/font_size = 32
+text = "Attack Speed:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedValue" type="Label" parent="Display/SubViewport/Control"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 350.0
+offset_right = 506.0
+offset_bottom = 395.0
+theme_override_font_sizes/font_size = 32
+text = "ATTK_SPEED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_01f7b")
+}
+
+[node name="World1QualityPopup" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_i4lqp")
+skeleton = NodePath("../Display/SubViewport/Control")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

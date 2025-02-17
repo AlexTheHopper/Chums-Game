@@ -69,6 +69,7 @@ func close_doors():
 		
 func check_enemy_count():
 	if len(get_tree().get_nodes_in_group("Chums_Enemy")) == 0:
+		Global.in_battle = false
 		open_doors()
 	
 func open_doors():

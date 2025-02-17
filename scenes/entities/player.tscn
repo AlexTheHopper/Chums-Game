@@ -1101,10 +1101,12 @@ _data = {
 "waveArm_001": SubResource("Animation_elwkx")
 }
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hitbox", "hurtbox") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 2
 script = ExtResource("1_8mcap")
+hitbox = NodePath("Armature/Hitbox")
+hurtbox = NodePath("Armature/Hurtbox")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_foxub")
@@ -1219,7 +1221,7 @@ skin = SubResource("Skin_msy50")
 [node name="Hitbox" type="Area3D" parent="Armature"]
 transform = Transform3D(0.0707109, 0, -0.0707105, 0, 0.1, 0, 0.0707105, 0, 0.0707109, 0, 0.441452, 0)
 script = ExtResource("4_f0wg7")
-active = true
+damage = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

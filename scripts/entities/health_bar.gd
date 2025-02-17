@@ -3,7 +3,9 @@ extends Node3D
 @export var health_node: Node
 @export var current_health_bar: MeshInstance3D
 @export var max_health_bar: MeshInstance3D
-#@onready var material = $Health.mesh.material.duplicate()
+
+@export var notch_scene: PackedScene
+const NOTCH_INC: int = 5
 
 func _ready() -> void:	
 	#Connect to parent Health node to detect changed in health
@@ -13,6 +15,25 @@ func _ready() -> void:
 	#Set initial values:
 	_on_health_changed(0)
 	_on_max_health_changed(0)
+	
+	set_notches()
+
+func set_notches():
+	#Add notches
+	var max_health = health_node.max_health
+	if max_health > NOTCH_INC:
+		var notch_count = floor(health_node.max_health / NOTCH_INC) + 1
+		
+		var bar_length = $Health.mesh.size.x
+		var start_x = -0.5 * bar_length
+				
+		for n in notch_count:
+			var notch = notch_scene.instantiate()
+			$Frame.add_child(notch)
+			
+			#Position notch correctly
+			var extra_x: float = bar_length - ((n * NOTCH_INC) / health_node.max_health) * bar_length
+			notch.position = Vector3(start_x + extra_x, 0, 0)
 	
 func _on_health_changed(difference):
 	var health_ratio = max(health_node.health / health_node.max_health, 0.0)
@@ -25,4 +46,8 @@ func _on_health_changed(difference):
 	current_health_bar.mesh.material.albedo_color = health_color
 	
 func _on_max_health_changed(difference):
-	pass
+	
+	#Reset notches:
+	for notch in $Frame.get_children():
+		notch.queue_free()
+	set_notches()

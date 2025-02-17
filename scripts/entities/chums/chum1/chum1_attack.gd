@@ -10,7 +10,7 @@ func Physics_Update(delta: float):
 	
 	#Chase target
 	if is_instance_valid(chum.target) and chum.is_on_floor():
-		if Functions.distance_between(chum, chum.target) < chum.attack_1["distance"]:
+		if Functions.distance_between(chum, chum.target) < chum.attack["distance"]:
 			attempt_attack()
 		else:
 			chum.velocity = lerp(chum.velocity, chum.move_speed * Functions.vector_to_normalized(chum, chum.target), 0.05)
@@ -24,13 +24,8 @@ func attempt_attack():
 		if not attack_timer.is_stopped():
 			return
 		else:
-			chum.do_attack("attack_1")
+			chum.do_attack("attack")
 			attack_timer.start()
 		
-		
 func Enter():
-	attack_timer.wait_time = chum.attack_1["speed"]
-	chum.hitbox.active = true
-	
-func Exit():
-	chum.hitbox.active = false
+	attack_timer.wait_time = chum.attack["speed"]

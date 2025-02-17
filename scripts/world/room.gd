@@ -35,7 +35,10 @@ func save_room():
 																	"group": group,
 																	"position": chum.global_position,
 																	"state": chum.get_node("State_Machine").current_state.state_name,
-																	"health": chum.get_node("Health").get_health()})
+																	"health": chum.get_node("Health").get_health(),
+																	"attack": chum.attack,
+																	"move_speed": chum.move_speed,
+																	"quality": chum.quality,})
 																
 																
 func load_room():
@@ -44,10 +47,16 @@ func load_room():
 		var chum_instance = chum_to_add.instantiate()
 		
 		chum_instance.global_position = chum["position"]
+		chum_instance.attack = chum["attack"]
+		chum_instance.stats_set = true
+		chum_instance.move_speed = chum["move_speed"]
+		chum_instance.quality = chum["quality"]
 		chum_instance.get_node("Health").set_health(chum["health"])
 		chum_instance.get_node("State_Machine").initial_state_override = chum["state"]
 		
 		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
+		
+		
 		
 	
 func place_friend_chums():

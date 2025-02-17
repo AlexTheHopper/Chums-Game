@@ -1,8 +1,8 @@
 extends Area3D
 class_name Hitbox
 
-@export var damage: float = 1 : set = set_damage, get = get_damage
-@export var active: bool = false
+@onready var attack_info: Dictionary
+@export var damage: float = 0.0 : set = set_damage, get = get_damage
 
 @export var draws_agro_on_attack: bool = true
 

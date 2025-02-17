@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 		$Lever/AnimationPlayer.play("toggle")
 		
 		Global.world_map[Global.room_location]["activated"] = true
+		Global.in_battle = true
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

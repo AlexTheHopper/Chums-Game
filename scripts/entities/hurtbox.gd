@@ -52,11 +52,11 @@ func set_as_neutral():
 
 func _on_area_entered(hitbox: Hitbox) -> void:
 	if hitbox != null:
-		if hitbox.active:
-			health.health -= hitbox.damage
+		health.health -= hitbox.damage
 			
-			#Check to change agression
-			var change_agro = false
-			if changes_agro_on_damaged and hitbox.draws_agro_on_attack:
-				change_agro = true
-			recieved_damage.emit(hitbox.damage, change_agro)
+		#Check to change agression
+		var change_agro = false
+		if changes_agro_on_damaged and hitbox.draws_agro_on_attack:
+			change_agro = true
+
+		recieved_damage.emit(hitbox.damage, change_agro)

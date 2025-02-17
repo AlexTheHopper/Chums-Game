@@ -54,14 +54,15 @@ func set_health(value: float):
 	if value < health and immune:
 		return
 		
-	var clamped_value = clampf(value, 0, max_health)
+	var clamped_value = clampf(value, 0.0, max_health)
 	
-	if not clamped_value == health:
+	if clamped_value != health:
 		var difference = clamped_value - health
 		health = value
 		health_changed.emit(difference)
 		
-		if health == 0:
+		if health <= 0.0:
+			health = 0.0
 			health_depleted.emit()
 	health_initialised = true
 	

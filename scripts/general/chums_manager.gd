@@ -1,10 +1,14 @@
 extends Node
 
 var world1_chums : Dictionary
+var chum_id_to_name : Dictionary
+var close_chums := []
 
 func _ready() -> void:
 	#Fill world1 chums:
 	world1_chums[0] = load("res://scenes/entities/chums/chum1.tscn")
+	
+	chum_id_to_name = {"chum1": "Chum One"}
 	
 
 func get_random_world1_chum(room_value: float):

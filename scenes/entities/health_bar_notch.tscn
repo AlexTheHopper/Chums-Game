@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cka0qlipgy7q8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8jsc"]
+transparency = 1
+albedo_color = Color(0.0196078, 0.0196078, 0.0196078, 0.666667)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yv3du"]
+material = SubResource("StandardMaterial3D_b8jsc")
+size = Vector3(0.01, 0.21, 0.21)
+
+[node name="HealthBarNotch" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_yv3du")

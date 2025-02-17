@@ -28,12 +28,19 @@ var is_carrying := false
 @onready var jump_gravity: float = (-2.0 * jump_height) / (jump_peak_time ** 2)
 @onready var fall_gravity: float = (-2.0 * jump_height) / (jump_fall_time ** 2)
 
+@export var hitbox: Hitbox
+@export var hurtbox: Hurtbox
 
 var xform: Transform3D
 
 func _ready() -> void:
 	Global.game_begun = true
 	$Health.immune = false
+	
+	hitbox.attack_info = {"speed": [1.3, 1.4, 1.5, 1.6, 1.7, 1.8].pick_random(),
+							"damage": [0.8, 1.0, 1.2].pick_random(),
+							"distance": 1.5,
+							"single_target": true}
 	
 
 

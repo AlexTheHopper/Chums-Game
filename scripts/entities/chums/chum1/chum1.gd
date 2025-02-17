@@ -2,8 +2,9 @@ extends Chum
 class_name Chum_1
 @onready var chum_name := "chum1"
 
-@onready var attack_1: Dictionary = {"speed": randf_range(1, 2),
-									"damage": randf_range(0.8, 1.2),
-									"distance": 1.5}
+@onready var default_attack: Dictionary = {"speed": 1.5,
+										"damage": 1,
+										"distance": 1.5,
+										"single_target": true}
 
-var move_speed = randf_range(1.8, 2.5)
+var default_move_speed = 1.5

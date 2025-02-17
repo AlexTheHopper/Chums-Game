@@ -16,7 +16,16 @@ class_name Chum
 @export var hitbox: Hitbox
 @export var hurtbox: Hurtbox
 
+var stats_set = false
+@onready var attack: Dictionary
+@onready var move_speed: float
+@onready var quality := {"damage": 0, "speed": 0, "move_speed": 0}
+@export var interraction_area : Area3D
+@export var interraction_area_shape : CollisionShape3D
+@onready var has_quality_popup := false
+
 @onready var target: Node
+@onready var player_is_near := false
 
 @onready var initial_state_override = null
 
@@ -26,17 +35,38 @@ signal health_depleted
 func _ready() -> void:
 	rotation.y = randf() * 2 * PI
 	hurtbox.recieved_damage.connect(_on_recieved_damage)
+	
+	if not stats_set:
+		attack = self.default_attack
+		move_speed = self.default_move_speed
+		set_new_stats()
+	#Otherwise, attack and move_speed are set by room.gd
+	hitbox.attack_info = attack
+	hitbox.damage = attack["damage"]
+	
 
 func get_gravity_dir():
 	return fall_gravity if velocity.y < 0.0 else jump_gravity
+	
+func set_new_stats():
+	var multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
+	self.attack["speed"] *= multiplier
+	quality["speed"] = 10 * (multiplier - 1)
+	
+	multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
+	self.attack["damage"] *= multiplier
+	quality["damage"] = 10 * (multiplier - 1)
+	
+	multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
+	self.move_speed *= multiplier
+	quality["move_speed"] = 10 * (multiplier - 1)
+	
 	
 #Runs when enemy chums wake up from room activator
 func wake_up():
 	make_enemy()
 	state_machine.on_child_transition(state_machine.current_state, 'Wake')
 	$Health.immune = false
-	hitbox.damage = 1
-	hitbox.active = true
 
 #Runs when friend chums fight from room activator
 func find_enemy():
@@ -50,7 +80,6 @@ func _on_recieved_damage(damage, change_agro):
 
 func _on_health_health_depleted() -> void:
 	state_machine.on_child_transition(state_machine.current_state, 'Knock')
-	hitbox.active = false
 	health_depleted.emit()
 	
 func make_enemy():
