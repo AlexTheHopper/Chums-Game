@@ -12,8 +12,10 @@ func Physics_Update(delta: float):
 	if is_instance_valid(chum.target) and chum.is_on_floor():
 		if Functions.distance_between(chum, chum.target) < chum.attack["distance"]:
 			attempt_attack()
-		else:
+			chum.velocity = Vector3(0, 0, 0)
+		elif chum.anim_player.get_current_animation() != "Attack":
 			chum.velocity = lerp(chum.velocity, chum.move_speed * Functions.vector_to_normalized(chum, chum.target), 0.05)
+			chum.anim_player.play("Walk")
 		chum.look_at(chum.target.global_position)
 		
 	if not chum.is_on_floor():
@@ -21,11 +23,11 @@ func Physics_Update(delta: float):
 	chum.move_and_slide()
 	
 func attempt_attack():
-		if not attack_timer.is_stopped():
+		if attack_timer.time_left > 0:
 			return
-		else:
-			chum.do_attack("attack")
-			attack_timer.start()
+		chum.do_attack("attack")
+		attack_timer.start()
 		
 func Enter():
 	attack_timer.wait_time = chum.attack["speed"]
+	chum.anim_player.play("Walk")

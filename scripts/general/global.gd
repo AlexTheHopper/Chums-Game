@@ -19,6 +19,7 @@ func create_world(size):
 			world_map[Vector2(x,y)] = {"entered": false,
 										"activated": false,
 										"to_spawn": -1,
+										"bell_angle": randf_range(0, 2 * PI),
 										"chums": [],
 										"has_x_pos": true if x < MAP_SIZE else false,
 										"has_x_neg": true if x > -MAP_SIZE else false,

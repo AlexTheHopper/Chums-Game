@@ -21,8 +21,10 @@ func finish_spawning():
 		$LetterIndicator.appear()
 
 func _ready() -> void:
+	rotation.y = Global.world_map[Global.room_location]["bell_angle"]
 	if Global.world_map[Global.room_location]["activated"]:
-		queue_free()
+		$Body/BellPivot.queue_free()
+		activated = true
 	elif Global.world_map[Global.room_location]["to_spawn"] == 0:
 		finish_spawning()
 
@@ -32,7 +34,7 @@ func _process(delta: float) -> void:
 		activated = true
 		activate_chums()
 		$LetterIndicator.disappear()
-		$Lever/AnimationPlayer.play("toggle")
+		$AnimationPlayer.play("ring")
 		
 		Global.world_map[Global.room_location]["activated"] = true
 		Global.in_battle = true
@@ -53,7 +55,7 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "toggle":
-		$Lever/AnimationPlayer.play("shrink_and_queue_free")
-	elif anim_name == "shrink_and_queue_free":
-		queue_free()
+	if anim_name == "ring":
+		$AnimationPlayer.play("remove_bell")
+	elif anim_name == "remove_bell":
+		$Body/BellPivot.queue_free()

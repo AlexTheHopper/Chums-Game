@@ -132,6 +132,14 @@ func _physics_process(delta: float) -> void:
 		#print("Neutrals' positions:")
 		#for chum in get_tree().get_nodes_in_group("Chums_Neutral"):
 			#print(chum.global_position)
+		print("friends:")
+		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
+			print(chum.attack)
+			print(chum.quality)
+		print("enemies:")
+		for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
+			print(chum.attack)
+			print(chum.quality)
 
 func jump():
 	if (is_on_floor() or coyote_time > 0) and not in_jump:

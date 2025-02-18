@@ -8,6 +8,7 @@ class_name Chum1_Sleep
 
 func Enter():
 	chum.interraction_area_shape.set_deferred("disabled", false)
+	chum.anim_player.play("Sleep")
 
 func Physics_Update(delta: float):
 	chum.velocity = lerp(chum.velocity, Vector3.ZERO, 0.05)

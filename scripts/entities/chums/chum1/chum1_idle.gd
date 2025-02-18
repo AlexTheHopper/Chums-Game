@@ -12,6 +12,8 @@ func Enter():
 	idle_time = 0.0
 	chum.interraction_area_shape.set_deferred("disabled", false)
 	
+	chum.anim_player.play("Idle")
+	
 func Exit():
 	chum.interraction_area_shape.set_deferred("disabled", true)
 	
@@ -24,7 +26,7 @@ func Update(delta: float):
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():
-		chum.velocity = 1 * Vector3(cos(idle_time + wander_offset), 0, sin(idle_time + wander_offset))
+		chum.velocity = Vector3(0, 0, 0)
 	else:
 		chum.velocity.y += chum.get_gravity_dir() * delta
 	

@@ -15,6 +15,7 @@ func Enter():
 	chum.set_collision_mask_value(4, false)
 	
 	chum.interraction_area_shape.set_deferred("disabled", false)
+	chum.anim_player.play("Knock")
 	
 
 func Physics_Update(delta: float):

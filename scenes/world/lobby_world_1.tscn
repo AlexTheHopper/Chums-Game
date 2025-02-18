@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cye4mq80jv22n"]
+[gd_scene load_steps=4 format=3 uid="uid://cye4mq80jv22n"]
 
 [ext_resource type="Script" path="res://scripts/world/lobby_world_1.gd" id="1_mj63l"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="2_ej3mg"]
 [ext_resource type="MeshLibrary" uid="uid://cmubco3vrk2d1" path="res://assets/world/world_1_mesh_lib_v5.tres" id="2_qn56r"]
-[ext_resource type="ArrayMesh" uid="uid://dmva58ruxs0nb" path="res://testing/chum1.vox" id="4_5u6vl"]
 
 [node name="Room" type="Node3D"]
 script = ExtResource("1_mj63l")
@@ -35,7 +34,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 25)
 
 [node name="z_neg" parent="RoomChangers" instance=ExtResource("2_ej3mg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -23)
-
-[node name="Chum1" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 6, 0, 2)
-mesh = ExtResource("4_5u6vl")

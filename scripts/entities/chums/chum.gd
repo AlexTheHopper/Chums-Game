@@ -10,7 +10,8 @@ class_name Chum
 @onready var fall_gravity: float = (-2.0 * jump_height) / (jump_fall_time ** 2)
 
 @onready var state_machine := $State_Machine
-@onready var anim_player := $AnimationPlayer
+@export var anim_player : AnimationPlayer
+@export var body_mesh : MeshInstance3D
 @onready var red_overlay := preload("res://materials/outline_red.tres")
 @onready var blue_overlay := preload("res://materials/outline_blue.tres")
 @export var hitbox: Hitbox
@@ -51,7 +52,7 @@ func get_gravity_dir():
 func set_new_stats():
 	var multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
 	self.attack["speed"] *= multiplier
-	quality["speed"] = 10 * (multiplier - 1)
+	quality["speed"] = 10 * (1 - multiplier)
 	
 	multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
 	self.attack["damage"] *= multiplier
@@ -86,7 +87,7 @@ func make_enemy():
 	remove_from_group("Chums_Friend")
 	remove_from_group("Chums_Neutral")
 	add_to_group("Chums_Enemy")
-	$MeshInstance3D.set_material_overlay(red_overlay)
+	body_mesh.set_material_overlay(red_overlay)
 	hitbox.set_as_enemy()
 	hurtbox.set_as_enemy()
 	
@@ -94,7 +95,7 @@ func make_friendly():
 	remove_from_group("Chums_Enemy")
 	remove_from_group("Chums_Neutral")
 	add_to_group("Chums_Friend")
-	$MeshInstance3D.set_material_overlay(blue_overlay)
+	body_mesh.set_material_overlay(blue_overlay)
 	hitbox.set_as_friendly()
 	hurtbox.set_as_friendly()
 	
@@ -105,7 +106,7 @@ func make_neutral():
 	remove_from_group("Chums_Enemy")
 	remove_from_group("Chums_Friend")
 	add_to_group("Chums_Neutral")
-	$MeshInstance3D.set_material_overlay(null)
+	body_mesh.set_material_overlay(null)
 	hitbox.set_as_neutral()
 	hurtbox.set_as_neutral()
 	
@@ -115,7 +116,7 @@ func attempt_carry():
 		state_machine.on_child_transition(state_machine.current_state, 'Carry')
 
 func do_attack(attack_name):
-	anim_player.play(attack_name)
+	anim_player.play("Attack")
 
 func set_new_target():
 	var body: Node

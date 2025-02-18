@@ -4,6 +4,9 @@ class_name Chum1_Wake
 
 @export var chum: CharacterBody3D
 
+func Enter():
+	chum.anim_player.play("Wake")
+
 func Physics_Update(delta: float):
 	if chum.target:
 		chum.look_at(chum.target.global_position)

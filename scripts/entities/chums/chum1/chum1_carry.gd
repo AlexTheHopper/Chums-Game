@@ -25,6 +25,7 @@ func Physics_Update(delta: float):
 func Enter():
 	if not chum.is_in_group("Chums_Friend"):
 		chum.make_friendly()
+	chum.anim_player.play("Idle")
 	
 func Exit():
 	chum.set_new_target()

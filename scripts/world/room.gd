@@ -55,9 +55,6 @@ func load_room():
 		chum_instance.get_node("State_Machine").initial_state_override = chum["state"]
 		
 		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
-		
-		
-		
 	
 func place_friend_chums():
 	#TODO
