@@ -4,6 +4,8 @@ class_name room
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var enemies_to_spawn: int
 
+var bracelet_tscn: PackedScene = preload("res://scenes/entities/currency_bracelet.tscn")
+
 @export var spawn_timer: Timer
 
 func _ready() -> void:
@@ -54,7 +56,13 @@ func load_room():
 		chum_instance.get_node("Health").set_health(chum["health"])
 		chum_instance.get_node("State_Machine").initial_state_override = chum["state"]
 		
+		chum_instance.spawn_currency.connect(spawn_currency)
 		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
+		
+func spawn_currency(type, location):
+	var bracelet_instance = bracelet_tscn.instantiate()
+	$Currencies.add_child(bracelet_instance)
+	bracelet_instance.global_position = location
 	
 func place_friend_chums():
 	#TODO

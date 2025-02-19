@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbnyl1uscuoe"]
+
+[ext_resource type="Script" path="res://scripts/entities/currency_bracelet.gd" id="1_h14wi"]
+[ext_resource type="ArrayMesh" uid="uid://lpe101wtdxp1" path="res://assets/entities/bracelet_4.vox" id="1_vwmlv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s8aec"]
+height = 0.7
+radius = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dyr8n"]
+
+[node name="Bracelet" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_h14wi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("CylinderShape3D_s8aec")
+
+[node name="Bracelet4" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_vwmlv")
+
+[node name="CollectionZone" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectionZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("BoxShape3D_dyr8n")
+
+[connection signal="body_entered" from="CollectionZone" to="." method="_on_collection_zone_body_entered"]

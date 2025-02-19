@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdfad011ncqxd"]
+
+[ext_resource type="Script" path="res://scripts/entities/chums/bracelet.gd" id="1_3omi8"]
+[ext_resource type="ArrayMesh" uid="uid://lpe101wtdxp1" path="res://assets/entities/bracelet_4.vox" id="2_xyqye"]
+
+[node name="Bracelet" type="Node3D"]
+script = ExtResource("1_3omi8")
+
+[node name="BraceletMesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_xyqye")

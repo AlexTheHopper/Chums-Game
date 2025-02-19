@@ -1,49 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://ce86dk61xylkx"]
 
 [ext_resource type="Script" path="res://scripts/entities/room_activator.gd" id="1_w805r"]
-[ext_resource type="ArrayMesh" uid="uid://bns81p6x2pkgq" path="res://assets/world/world_1_other/bell_frame.vox" id="2_anb2o"]
+[ext_resource type="ArrayMesh" uid="uid://ds84tmrige4ss" path="res://assets/world/world_1_other/bell_frame.vox" id="2_anb2o"]
 [ext_resource type="ArrayMesh" uid="uid://8bbxaxucl7y3" path="res://assets/world/world_1_other/bell.vox" id="3_0vrnq"]
 [ext_resource type="PackedScene" uid="uid://tvahojkyvwhu" path="res://scenes/entities/letter_indicator.tscn" id="3_ff62b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m26rw"]
 radius = 2.0
-
-[sub_resource type="Animation" id="Animation_f3ld2"]
-resource_name = "ring"
-length = 3.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/BellPivot:rotation:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.0333333, 0.389574, 0.78097, -0.133333, -0.131357, 0.133333, -0.416981, -0.70256, -0.2, 0.368356, 0.166667, 0.326041, 0.606437, -0.166667, -0.24331, 0.166667, -0.210712, -0.528027, -0.2, 0.278453, 0.166667, 0.252006, 0.431904, -0.2, -0.184281, 0.2, -0.263621, -0.353494, -0.2, 0.299625, 0.2, 0.225574, 0.257371, -0.166667, -0.147271, 0.2, -0.179007, -0.178961, -0.2, 0.14625, 0.2, 0.109224, 0.0828384, -0.166667, -0.0732351, 0.2, -0.0573671, -0.00442809, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.166667, 0.466667, 0.766667, 1.06667, 1.36667, 1.66667, 1.96667, 2.26667, 2.56667, 2.86667)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/BellPivot:rotation:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.166667, 0.466667, 0.766667, 1.06667, 1.36667, 1.66667, 1.96667, 2.26667, 2.56667, 2.86667)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/BellPivot:rotation:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.166667, 0.466667, 0.766667, 1.06667, 1.36667, 1.66667, 1.96667, 2.26667, 2.56667, 2.86667)
-}
 
 [sub_resource type="Animation" id="Animation_v0blm"]
 length = 0.001
@@ -108,6 +71,43 @@ tracks/0/keys = {
 "values": [Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
 }
 
+[sub_resource type="Animation" id="Animation_f3ld2"]
+resource_name = "ring"
+length = 3.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/BellPivot:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0333333, 0.389574, 0.78097, -0.133333, -0.131357, 0.133333, -0.416981, -0.70256, -0.2, 0.368356, 0.166667, 0.326041, 0.606437, -0.166667, -0.24331, 0.166667, -0.210712, -0.528027, -0.2, 0.278453, 0.166667, 0.252006, 0.431904, -0.2, -0.184281, 0.2, -0.263621, -0.353494, -0.2, 0.299625, 0.2, 0.225574, 0.257371, -0.166667, -0.147271, 0.2, -0.179007, -0.178961, -0.2, 0.14625, 0.2, 0.109224, 0.0828384, -0.166667, -0.0732351, 0.2, -0.0573671, -0.00442809, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.166667, 0.466667, 0.766667, 1.06667, 1.36667, 1.66667, 1.96667, 2.26667, 2.56667, 2.86667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/BellPivot:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.166667, 0.466667, 0.766667, 1.06667, 1.36667, 1.66667, 1.96667, 2.26667, 2.56667, 2.86667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/BellPivot:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0, -0.00442809, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.166667, 0.466667, 0.766667, 1.06667, 1.36667, 1.66667, 1.96667, 2.26667, 2.56667, 2.86667)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hdihc"]
 _data = {
 "RESET": SubResource("Animation_v0blm"),
@@ -120,10 +120,6 @@ script = ExtResource("1_w805r")
 
 [node name="Body" type="Node3D" parent="."]
 
-[node name="BellFrame" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("2_anb2o")
-skeleton = NodePath("../..")
-
 [node name="BellPivot" type="Node3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, 0)
 
@@ -131,6 +127,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.7, 0)
 mesh = ExtResource("3_0vrnq")
 skeleton = NodePath("../../..")
+
+[node name="BellFrame" type="MeshInstance3D" parent="Body"]
+mesh = ExtResource("2_anb2o")
+skeleton = NodePath("../..")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 4

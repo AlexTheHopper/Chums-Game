@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://csf5wbm1gb1u7"]
+[gd_scene load_steps=4 format=3 uid="uid://csf5wbm1gb1u7"]
 
 [ext_resource type="PackedScene" uid="uid://cye4mq80jv22n" path="res://scenes/world/lobby_world_1.tscn" id="1_2tuuw"]
 [ext_resource type="PackedScene" uid="uid://dmgabiox56kck" path="res://scenes/entities/player.tscn" id="2_iwypl"]
+[ext_resource type="PackedScene" uid="uid://cwtw3l04fav7g" path="res://scenes/general/hud.tscn" id="3_6b6ud"]
 
 [node name="Game" type="Node3D"]
 
@@ -13,3 +14,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 1)
 [node name="Rooms" type="Node3D" parent="."]
 
 [node name="Lobby_World1" parent="Rooms" instance=ExtResource("1_2tuuw")]
+
+[node name="HUD" parent="." instance=ExtResource("3_6b6ud")]

@@ -21,10 +21,11 @@ func set_max_health(value: float):
 	if not clamped_value == max_health:
 		var difference = clamped_value - max_health
 		max_health = value
-		max_health_changed.emit(difference)
 		
 		if health > max_health:
 			health = max_health
+			
+		max_health_changed.emit(difference)
 		
 func get_max_health() -> float:
 	return max_health
@@ -59,11 +60,12 @@ func set_health(value: float):
 	if clamped_value != health:
 		var difference = clamped_value - health
 		health = value
-		health_changed.emit(difference)
 		
 		if health <= 0.0:
 			health = 0.0
 			health_depleted.emit()
+			
+		health_changed.emit(difference)
 	health_initialised = true
 	
 func get_health() -> float:

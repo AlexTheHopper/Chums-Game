@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwtw3l04fav7g"]
+
+[ext_resource type="Script" path="res://scripts/general/hud.gd" id="1_n1psb"]
+[ext_resource type="Texture2D" uid="uid://yd7ub0ff2a2n" path="res://assets/entities/heart_img.png" id="2_45kxr"]
+[ext_resource type="Texture2D" uid="uid://dw300bagpqqjy" path="res://assets/entities/bracelet_img.png" id="3_8wiyd"]
+[ext_resource type="PackedScene" uid="uid://c5a87dxp0vxm4" path="res://scenes/entities/health_bar_player.tscn" id="3_d6pnr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rkwe"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_n1psb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthPanel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022
+anchor_top = 0.039
+anchor_right = 0.195
+anchor_bottom = 0.116
+offset_left = -0.344002
+offset_top = -0.272001
+offset_right = 0.359985
+offset_bottom = -0.167999
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rkwe")
+
+[node name="TextureRect" type="TextureRect" parent="Control/HealthPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 1.0
+texture = ExtResource("2_45kxr")
+expand_mode = 1
+
+[node name="PlayerHealthBar" parent="Control/HealthPanel" instance=ExtResource("3_d6pnr")]
+layout_mode = 1
+anchor_left = 0.275
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.8
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="BraceletsPanel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022
+anchor_top = 0.161
+anchor_right = 0.13
+anchor_bottom = 0.231
+offset_left = -0.344002
+offset_top = -4.32801
+offset_right = 0.23999
+offset_bottom = 0.311996
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rkwe")
+
+[node name="TextureRect" type="TextureRect" parent="Control/BraceletsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.4
+anchor_bottom = 1.0
+texture = ExtResource("3_8wiyd")
+expand_mode = 1
+
+[node name="Value" type="Label" parent="Control/BraceletsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.8
+anchor_bottom = 1.0
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1

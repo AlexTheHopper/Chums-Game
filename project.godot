@@ -20,6 +20,11 @@ Global="*res://scripts/general/global.gd"
 TransitionScreen="*res://scenes/general/transition_screen.tscn"
 ChumsManager="*res://scripts/general/chums_manager.gd"
 Functions="*res://scripts/general/functions.gd"
+PlayerStats="*res://scripts/general/player_stats.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [editor]
 

@@ -8,7 +8,7 @@ func _ready() -> void:
 	#Fill world1 chums:
 	world1_chums[0] = load("res://scenes/entities/chums/chum1.tscn")
 	
-	chum_id_to_name = {"chum1": "Chum One"}
+	chum_id_to_name = {"chum1": "Flamenco"}
 	
 
 func get_random_world1_chum(room_value: float):

@@ -89,6 +89,7 @@ func _on_spawn_timer_timeout() -> void:
 	
 	if chum_to_spawn:
 		var chum_instance = chum_to_spawn.instantiate()
+		chum_instance.spawn_currency.connect(spawn_currency)
 		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
 		chum_instance.global_position = spawn_point.global_position
 		

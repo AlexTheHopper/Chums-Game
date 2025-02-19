@@ -14,6 +14,8 @@ class_name Chum
 @export var body_mesh : MeshInstance3D
 @onready var red_overlay := preload("res://materials/outline_red.tres")
 @onready var blue_overlay := preload("res://materials/outline_blue.tres")
+var current_group := "Chums_Neutral"
+@onready var bracelet := $Body/Armature/Skeleton3D/BoneAttachment3D/Bracelet
 @export var hitbox: Hitbox
 @export var hurtbox: Hurtbox
 
@@ -31,6 +33,7 @@ var stats_set = false
 @onready var initial_state_override = null
 
 signal health_depleted
+signal spawn_currency(type, location)
 
 
 func _ready() -> void:
@@ -80,6 +83,10 @@ func _on_recieved_damage(damage, change_agro):
 		set_new_target()
 
 func _on_health_health_depleted() -> void:
+	if current_group == "Chums_Enemy":
+		for n in self.bracelet_count:
+			spawn_currency.emit("bracelet", global_position)
+			
 	state_machine.on_child_transition(state_machine.current_state, 'Knock')
 	health_depleted.emit()
 	
@@ -87,17 +94,25 @@ func make_enemy():
 	remove_from_group("Chums_Friend")
 	remove_from_group("Chums_Neutral")
 	add_to_group("Chums_Enemy")
+	current_group = "Chums_Enemy"
 	body_mesh.set_material_overlay(red_overlay)
 	hitbox.set_as_enemy()
 	hurtbox.set_as_enemy()
+	
+	if bracelet:
+		bracelet.make_invisible()
 	
 func make_friendly():
 	remove_from_group("Chums_Enemy")
 	remove_from_group("Chums_Neutral")
 	add_to_group("Chums_Friend")
+	current_group = "Chums_Friend"
 	body_mesh.set_material_overlay(blue_overlay)
 	hitbox.set_as_friendly()
 	hurtbox.set_as_friendly()
+	
+	if bracelet:
+		bracelet.make_visible()
 	
 	#Reset health to full:
 	$Health.set_health($Health.get_max_health())
@@ -106,14 +121,23 @@ func make_neutral():
 	remove_from_group("Chums_Enemy")
 	remove_from_group("Chums_Friend")
 	add_to_group("Chums_Neutral")
+	current_group = "Chums_Neutral"
 	body_mesh.set_material_overlay(null)
 	hitbox.set_as_neutral()
 	hurtbox.set_as_neutral()
 	
+	if bracelet:
+		bracelet.make_invisible()
+	
 func attempt_carry():
+	#Player must not already be carrying a chum
 	if not get_tree().get_first_node_in_group("Player").is_carrying:
-		get_tree().get_first_node_in_group("Player").is_carrying = true
-		state_machine.on_child_transition(state_machine.current_state, 'Carry')
+		#If the chum is not friendly, need to pay in bracelets
+		if current_group == "Chums_Friend" or PlayerStats.bracelets >= self.bracelet_cost:
+			if current_group != "Chums_Friend":
+				PlayerStats.bracelets_added(-self.bracelet_cost)
+			get_tree().get_first_node_in_group("Player").is_carrying = true
+			state_machine.on_child_transition(state_machine.current_state, 'Carry')
 
 func do_attack(attack_name):
 	anim_player.play("Attack")
@@ -150,7 +174,6 @@ func set_new_target():
 		var new_target_health = self.target.get_node("Health")
 		new_target_health.health_depleted.connect(_on_target_death)
 		
-
 func _on_target_death():
 	set_new_target()
 	if not self.target and state_machine.current_state.state_name != "Carry":
