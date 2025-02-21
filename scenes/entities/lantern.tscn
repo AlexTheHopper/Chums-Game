@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://2eost3t4boox"]
+
+[ext_resource type="ArrayMesh" uid="uid://bvs2oihw66ske" path="res://assets/entities/lantern.vox" id="1_db1tv"]
+
+[node name="Lantern" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410609, -0.362849, -0.0309175)
+light_size = 2.0
+light_specular = 0.0
+
+[node name="Lantern" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.55, 0)
+mesh = ExtResource("1_db1tv")

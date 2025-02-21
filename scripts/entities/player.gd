@@ -19,6 +19,7 @@ var camera_goal_vert := 0.0
 
 var can_align := true
 var is_carrying := false
+var is_attacking := false
 
 @export var jump_height: float = 2
 @export var jump_peak_time: float = 0.3
@@ -31,6 +32,7 @@ var is_carrying := false
 @export var hitbox: Hitbox
 @export var hurtbox: Hurtbox
 @onready var health_node := $Health
+@onready var anim_player := $AnimationPlayer
 
 var xform: Transform3D
 
@@ -46,7 +48,6 @@ func _ready() -> void:
 							"single_target": true}
 	
 
-
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -54,16 +55,20 @@ func _physics_process(delta: float) -> void:
 	var direction = ($Camera_Controller.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	#Animations:
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		$AnimationPlayer.play("jump")
-	elif input_dir != Vector2.ZERO and is_on_floor():
-		$AnimationPlayer.play("run")
-	elif input_dir == Vector2.ZERO and is_on_floor():
-		$AnimationPlayer.play("idle")
-		
 	#Attack:
-	if Input.is_action_just_pressed("attack"):
-		$Armature/Hitbox/AnimationPlayer.play("swing")
+	if Input.is_action_just_pressed("attack") and not is_attacking and not is_carrying:
+		anim_player.play("Swing")
+		is_attacking = true
+		anim_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
+	elif not is_attacking:
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			anim_player.play("Jump_Carry" if is_carrying else "Jump_noCarry")
+		elif input_dir != Vector2.ZERO and is_on_floor():
+			anim_player.play("Run_Carry" if is_carrying else "Run_noCarry")
+		elif input_dir == Vector2.ZERO and is_on_floor():
+			anim_player.play("Idle_Carry" if is_carrying else "Idle_noCarry")
+		
+	
 	
 	#Rotating camera:
 	if Input.is_action_just_pressed("cam_left"):
@@ -104,7 +109,7 @@ func _physics_process(delta: float) -> void:
 
 	#Rotate character:
 	if input_dir:
-		player_goal_horz = $Camera_Controller.rotation.y - input_dir.angle() + (PI / 2)
+		player_goal_horz = $Camera_Controller.rotation.y - input_dir.angle() - (PI / 2)
 		player_goal_horz = fmod(player_goal_horz + PI, 2 * PI)
 		$Armature.rotation.y = lerp_angle($Armature.rotation.y, player_goal_horz, 0.5)
 
@@ -150,6 +155,9 @@ func _physics_process(delta: float) -> void:
 			print(chum.attack)
 			print(chum.quality)
 			print(chum.health_node.health)
+
+func _on_attack_finished(_anim_name):
+	is_attacking = false
 
 func jump():
 	if (is_on_floor() or coyote_time > 0) and not in_jump:

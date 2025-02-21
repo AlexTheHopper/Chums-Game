@@ -2,24 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxkp71yodd30s"
-path="res://.godot/imported/chum1_chum_1_diffuse2.png-7e4778c70472f0e2e339b4767a486096.ctex"
+uid="uid://qoftnyn10nd"
+path="res://.godot/imported/player_player.png-d561dcb11ad3cebdd46199bb24b349be.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "d1149c6bb387dceb9c1f35e4e811cece"
+"md5": "f53581061840ccbb31c6aa095874ca6b"
 }
 
 [deps]
 
-source_file="res://Blender_Assets/BlenderData/Chum_Exports/chum1_chum_1_diffuse2.png"
-dest_files=["res://.godot/imported/chum1_chum_1_diffuse2.png-7e4778c70472f0e2e339b4767a486096.ctex"]
+source_file="res://Blender_Assets/BlenderData/Other_Exports/player_player.png"
+dest_files=["res://.godot/imported/player_player.png-d561dcb11ad3cebdd46199bb24b349be.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
