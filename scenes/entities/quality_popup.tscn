@@ -1,39 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgd4xkckyqdcg"]
+[gd_scene load_steps=5 format=3 uid="uid://bgd4xkckyqdcg"]
 
 [ext_resource type="Script" path="res://scripts/entities/quality_popup.gd" id="1_purmp"]
 [ext_resource type="ArrayMesh" uid="uid://cwucgjj58ueyc" path="res://assets/entities/world_1_quality_popup.vox" id="2_i4lqp"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ysojj"]
-viewport_path = NodePath("Display/SubViewport")
+viewport_path = NodePath("Container/Display/SubViewport")
 
-[node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("disp_name", "disp_cost", "disp_move_speed_title", "disp_move_speed_value", "disp_damage_title", "disp_damage_value", "disp_attack_speed_title", "disp_attack_speed_value")]
+[sub_resource type="ViewportTexture" id="ViewportTexture_oocfh"]
+viewport_path = NodePath("Container/Description/SubViewport")
+
+[node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("disp_name", "disp_cost", "disp_move_speed_title", "disp_move_speed_value", "disp_damage_title", "disp_damage_value", "disp_attack_speed_title", "disp_attack_speed_value", "disp_name_back", "desc_back")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("1_purmp")
-disp_name = NodePath("Display/SubViewport/Control/Name")
-disp_cost = NodePath("Display/SubViewport/Control/Cost")
-disp_move_speed_title = NodePath("Display/SubViewport/Control/MoveSpeedTitle")
-disp_move_speed_value = NodePath("Display/SubViewport/Control/MoveSpeedValue")
-disp_damage_title = NodePath("Display/SubViewport/Control/DamageTitle")
-disp_damage_value = NodePath("Display/SubViewport/Control/DamageValue")
-disp_attack_speed_title = NodePath("Display/SubViewport/Control/AttackSpeedTitle")
-disp_attack_speed_value = NodePath("Display/SubViewport/Control/AttackSpeedValue")
+disp_name = NodePath("Container/Display/SubViewport/Control/Name")
+disp_cost = NodePath("Container/Display/SubViewport/Control/Cost")
+disp_move_speed_title = NodePath("Container/Display/SubViewport/Control/MoveSpeedTitle")
+disp_move_speed_value = NodePath("Container/Display/SubViewport/Control/MoveSpeedValue")
+disp_damage_title = NodePath("Container/Display/SubViewport/Control/DamageTitle")
+disp_damage_value = NodePath("Container/Display/SubViewport/Control/DamageValue")
+disp_attack_speed_title = NodePath("Container/Display/SubViewport/Control/AttackSpeedTitle")
+disp_attack_speed_value = NodePath("Container/Display/SubViewport/Control/AttackSpeedValue")
+disp_name_back = NodePath("Container/Description/SubViewport/Control/Name")
+desc_back = NodePath("Container/Description/SubViewport/Control/Description")
 
-[node name="Display" type="Sprite3D" parent="."]
+[node name="Container" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Display" type="Sprite3D" parent="Container"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, -0.01)
 texture = SubResource("ViewportTexture_ysojj")
 
-[node name="SubViewport" type="SubViewport" parent="Display"]
+[node name="SubViewport" type="SubViewport" parent="Container/Display"]
 transparent_bg = true
-handle_input_locally = false
 render_target_update_mode = 4
 
-[node name="Control" type="Control" parent="Display/SubViewport"]
+[node name="Control" type="Control" parent="Container/Display/SubViewport"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Name" type="Label" parent="Display/SubViewport/Control"]
+[node name="Name" type="Label" parent="Container/Display/SubViewport/Control"]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 100.0
@@ -42,7 +49,7 @@ text = "CHUM_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cost" type="Label" parent="Display/SubViewport/Control"]
+[node name="Cost" type="Label" parent="Container/Display/SubViewport/Control"]
 layout_mode = 0
 offset_top = 80.0
 offset_right = 512.0
@@ -52,7 +59,7 @@ text = "Bracelets Needed: X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MoveSpeedTitle" type="Label" parent="Display/SubViewport/Control"]
+[node name="MoveSpeedTitle" type="Label" parent="Container/Display/SubViewport/Control"]
 layout_mode = 0
 offset_top = 150.0
 offset_right = 256.0
@@ -62,7 +69,7 @@ text = "Move Speed:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MoveSpeedValue" type="Label" parent="Display/SubViewport/Control"]
+[node name="MoveSpeedValue" type="Label" parent="Container/Display/SubViewport/Control"]
 layout_mode = 0
 offset_left = 256.0
 offset_top = 150.0
@@ -73,7 +80,7 @@ text = "SPEED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DamageTitle" type="Label" parent="Display/SubViewport/Control"]
+[node name="DamageTitle" type="Label" parent="Container/Display/SubViewport/Control"]
 layout_mode = 0
 offset_top = 250.0
 offset_right = 256.0
@@ -83,7 +90,7 @@ text = "Damage:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DamageValue" type="Label" parent="Display/SubViewport/Control"]
+[node name="DamageValue" type="Label" parent="Container/Display/SubViewport/Control"]
 layout_mode = 0
 offset_left = 256.0
 offset_top = 250.0
@@ -94,7 +101,7 @@ text = "DAMAGE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AttackSpeedTitle" type="Label" parent="Display/SubViewport/Control"]
+[node name="AttackSpeedTitle" type="Label" parent="Container/Display/SubViewport/Control"]
 layout_mode = 0
 offset_top = 350.0
 offset_right = 256.0
@@ -104,7 +111,7 @@ text = "Attack Speed:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AttackSpeedValue" type="Label" parent="Display/SubViewport/Control"]
+[node name="AttackSpeedValue" type="Label" parent="Container/Display/SubViewport/Control"]
 layout_mode = 0
 offset_left = 250.0
 offset_top = 350.0
@@ -115,6 +122,41 @@ text = "ATTK_SPEED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="World1QualityPopup" type="MeshInstance3D" parent="."]
+[node name="Description" type="Sprite3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.11)
+texture = SubResource("ViewportTexture_oocfh")
+
+[node name="SubViewport" type="SubViewport" parent="Container/Description"]
+transparent_bg = true
+handle_input_locally = false
+
+[node name="Control" type="Control" parent="Container/Description/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name" type="Label" parent="Container/Description/SubViewport/Control"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 64
+text = "CHUM_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Container/Description/SubViewport/Control"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 100.0
+offset_right = 496.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 24
+text = "CHUM_DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="World1QualityPopup" type="MeshInstance3D" parent="Container"]
 mesh = ExtResource("2_i4lqp")
 skeleton = NodePath("../Display/SubViewport/Control")

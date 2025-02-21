@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 		is_attacking = true
 		anim_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
 	elif not is_attacking:
-		if Input.is_action_just_pressed("jump") and is_on_floor():
+		if Input.is_action_pressed("jump") and is_on_floor():
 			anim_player.play("Jump_Carry" if is_carrying else "Jump_noCarry")
 		elif input_dir != Vector2.ZERO and is_on_floor():
 			anim_player.play("Run_Carry" if is_carrying else "Run_noCarry")

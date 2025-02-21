@@ -6,4 +6,4 @@
 render_priority = 0
 shader = ExtResource("1_t5dks")
 shader_parameter/outline_color = null
-shader_parameter/outline_width = 1.0
+shader_parameter/outline_width = 2.0

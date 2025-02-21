@@ -69,7 +69,7 @@ bind/8/pose = Transform3D(-1, 8.74228e-08, -1.69407e-21, -5.58961e-14, -2.98023e
 
 [sub_resource type="Animation" id="Animation_jag83"]
 resource_name = "Attack"
-length = 1.25
+length = 1.2
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -769,7 +769,7 @@ mesh = SubResource("ArrayMesh_ducfo")
 skin = SubResource("Skin_usabi")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 2.30941e-16, -2.70267e-16, -2.70267e-16, 0.987763, -0.155962, 2.30942e-16, 0.155962, 0.987763, 0, 1.65, 0.5)
+transform = Transform3D(1, 2.30941e-16, -2.70267e-16, -2.70267e-16, 0.987763, -0.155963, 2.30942e-16, 0.155963, 0.987763, 0, 1.65, 0.5)
 bone_name = "Head"
 bone_idx = 1
 

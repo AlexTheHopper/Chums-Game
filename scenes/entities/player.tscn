@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://dmgabiox56kck"]
+[gd_scene load_steps=24 format=4 uid="uid://dmgabiox56kck"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_8mcap"]
 [ext_resource type="Script" path="res://scripts/entities/health.gd" id="2_foxub"]
 [ext_resource type="Texture2D" uid="uid://qoftnyn10nd" path="res://Blender_Assets/BlenderData/Other_Exports/player_player.png" id="3_8dc6w"]
 [ext_resource type="Script" path="res://scripts/entities/hitbox.gd" id="4_f0wg7"]
 [ext_resource type="Script" path="res://scripts/entities/hurtbox.gd" id="5_6214k"]
+[ext_resource type="Material" uid="uid://tqe7rbh07xh7" path="res://materials/xray_material_player.tres" id="5_sb1xe"]
 [ext_resource type="PackedScene" uid="uid://2eost3t4boox" path="res://scenes/entities/lantern.tscn" id="7_rhmd7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_as0st"]
@@ -25,6 +26,7 @@ height = 1.275
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00hcs"]
 resource_name = "palette"
+transparency = 4
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -318,6 +320,45 @@ tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = PackedFloat32Array(0, 1, 1, 0, -4.37114e-08, 0, 0.0333333, 1, 1, 0, -4.37114e-08, 0, 0.0666667, 1, 0.999966, -3.59712e-10, -4.37099e-08, -0.00822924, 0.1, 1, -0.999592, 1.24814e-09, 4.36936e-08, 0.0285541, 0.133333, 1, -0.998096, 2.69589e-09, 4.36282e-08, 0.0616749, 0.166667, 1, -0.994463, 4.59359e-09, 4.34693e-08, 0.105089, 0.2, 1, -0.987616, 6.85782e-09, 4.31701e-08, 0.156889, 0.233333, 1, -0.977607, 9.19864e-09, 4.27325e-08, 0.21044, 0.266667, 1, -0.964891, 1.14808e-08, 4.21767e-08, 0.26265, 0.3, 1, -0.950532, 1.35779e-08, 4.15491e-08, 0.310627, 0.333333, 1, -0.9361, 1.53747e-08, 4.09183e-08, 0.351733, 0.366667, 1, -0.925248, 1.65824e-08, 4.04439e-08, 0.379362, 0.4, 1, -0.919198, -3.7073e-09, 4.01794e-08, 0.393795, 0.416667, 1, -0.917024, -1.74335e-08, 4.00844e-08, 0.398832)
 
+[sub_resource type="Animation" id="Animation_favnk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Hitbox:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Hitbox:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Hitbox/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_fjhog"]
 resource_name = "Run_Carry"
 length = 0.53
@@ -536,45 +577,6 @@ tracks/10/keys = {
 "values": [true, false, true]
 }
 
-[sub_resource type="Animation" id="Animation_favnk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Hitbox:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.1, 0.1, 0.1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Hitbox:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Armature/Hitbox/CollisionShape3D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1l68m"]
 _data = {
 "Idle_Carry": SubResource("Animation_faxao"),
@@ -677,12 +679,14 @@ bones/5/position = Vector3(-0.2, 0, 0)
 bones/5/rotation = Quaternion(1, 0, -4.37114e-08, 0)
 bones/5/scale = Vector3(1, 1, 1)
 
-[node name="Untitled" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+[node name="PlayerMesh" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+material_override = SubResource("StandardMaterial3D_00hcs")
+material_overlay = ExtResource("5_sb1xe")
 mesh = SubResource("ArrayMesh_fbi0d")
 skin = SubResource("Skin_8wrh7")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(5.96046e-08, 0.467462, 0.884013, 1.63913e-07, -0.884013, 0.467462, 1, 1.63913e-07, 5.96046e-08, 0.4, 1.2, 0)
+transform = Transform3D(-1.19209e-07, 0.467461, 0.884014, 0, -0.884014, 0.467461, 1, 0, -1.19209e-07, 0.4, 1.2, 0)
 bone_name = "Arm.L"
 bone_idx = 2
 

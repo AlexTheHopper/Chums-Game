@@ -9,7 +9,7 @@ func _ready() -> void:
 	$RoomActivator.activate_lever.connect(close_doors)
 	
 	if Global.world_map[Global.room_location]["to_spawn"] < 0:
-		enemies_to_spawn = 3
+		enemies_to_spawn = 2
 	else:
 		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
 	
