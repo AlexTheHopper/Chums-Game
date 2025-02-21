@@ -6,7 +6,7 @@ var close_chums := []
 
 func _ready() -> void:
 	#Fill world1 chums:
-	world1_chums[0] = load("res://scenes/entities/chums/chum1.tscn")
+	world1_chums[0] = preload("res://scenes/entities/chums/chum1.tscn")
 	
 	chum_id_to_name = {"chum1": "Flamenco"}
 	

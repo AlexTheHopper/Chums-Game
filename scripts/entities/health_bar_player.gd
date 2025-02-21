@@ -23,7 +23,7 @@ func set_health(value):
 	var health_ratio = health / max_health
 	var new_x = health_ratio * length_zero
 	health_bar.set_deferred("size", Vector2(new_x, health_bar.size.y))
-	health_bar.color = Color((1.0 - health_ratio) * 0.5, health_ratio * 0.5, 0.0)
+	health_bar.color = Color((1.0 - health_ratio) * 0.8, health_ratio * 0.5, 0.0)
 
 func set_ticks():
 	for tick in $Ticks.get_children():

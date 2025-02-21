@@ -16,7 +16,9 @@ func Physics_Update(delta: float):
 		elif chum.anim_player.get_current_animation() != "Attack":
 			chum.velocity = lerp(chum.velocity, chum.move_speed * Functions.vector_to_normalized(chum, chum.target), 0.05)
 			chum.anim_player.play("Walk")
+		
 		chum.look_at(chum.target.global_position)
+		#chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
 		
 	if not chum.is_on_floor():
 		chum.velocity.y += chum.get_gravity_dir() * delta
