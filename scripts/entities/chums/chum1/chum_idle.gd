@@ -2,7 +2,7 @@ extends State
 class_name Chum1_Idle
 @onready var state_name := "Idle"
 
-@export var chum: CharacterBody3D
+@onready var chum: CharacterBody3D
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var idle_direction: Vector3
 @onready var idle_time := 0.0

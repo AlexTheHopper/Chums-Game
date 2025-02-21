@@ -3,11 +3,14 @@ class_name Hurtbox
 
 signal recieved_damage(damage: float, change_agro: bool)
 
-@export var health: Health
+@export var entity: CharacterBody3D
+var health_node: Node
 
 @export var changes_agro_on_damaged: bool = true
 
 func _ready() -> void:
+	await entity.ready
+	health_node = entity.health_node
 	connect("area_entered", _on_area_entered)
 	#Set correct layer/mask collisions:
 	set_collision_layer_value(1, false)
@@ -52,7 +55,7 @@ func set_as_neutral():
 
 func _on_area_entered(hitbox: Hitbox) -> void:
 	if hitbox != null:
-		health.health -= hitbox.damage
+		health_node.health -= hitbox.damage
 			
 		#Check to change agression
 		var change_agro = false

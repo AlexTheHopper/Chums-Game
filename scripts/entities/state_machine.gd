@@ -2,20 +2,22 @@ extends Node
 class_name State_Machine
 
 @export var initial_state: State
-#Needs to stay not onready to be overriden
-var initial_state_override = null
+
+@onready var chum: CharacterBody3D = get_parent().get_parent()
 
 var current_state: State
 var states: Dictionary = {}
 
 func _ready() -> void:
-	for child in get_children():
+	for child in get_children() + chum.get_node("ChumSpecificStates").get_children():
 		if child is State:
+			child.chum = chum
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transition)
 			
-	if initial_state_override:
-		initial_state = get_node(initial_state_override)
+		if chum.initial_state_override:
+			if chum.initial_state_override.to_lower() == child.name.to_lower():
+				initial_state = child
 		
 	if initial_state:
 		initial_state.Enter()

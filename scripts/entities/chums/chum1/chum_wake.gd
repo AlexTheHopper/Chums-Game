@@ -2,7 +2,7 @@ extends State
 class_name Chum1_Wake
 @onready var state_name := "Wake"
 
-@export var chum: CharacterBody3D
+@onready var chum: CharacterBody3D
 
 func Enter():
 	chum.anim_player.play("Wake")
@@ -17,4 +17,4 @@ func Physics_Update(delta: float):
 	chum.move_and_slide()
 
 func _on_wake_timer_timeout() -> void:
-	Transitioned.emit(self, "Attack")
+	Transitioned.emit(self, "Active")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://diu3gcoi63283"]
+
+[ext_resource type="PackedScene" uid="uid://c1saa1y5s8j4y" path="res://scenes/entities/health_bar.tscn" id="1_lawoc"]
+[ext_resource type="Script" path="res://scripts/entities/chums/general_chum_behaviour.gd" id="1_oye00"]
+[ext_resource type="Script" path="res://scripts/entities/health.gd" id="2_th5qi"]
+[ext_resource type="Script" path="res://scripts/entities/state_machine.gd" id="3_etbd5"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_sleep.gd" id="4_1f2rd"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_wake.gd" id="5_3v78s"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_knock.gd" id="7_ri37u"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_carry.gd" id="8_yg2b4"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_idle.gd" id="9_hnnfc"]
+
+[node name="GeneralChumBehaviour" type="Node3D" node_paths=PackedStringArray("health_bar", "health_node", "state_machine")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_oye00")
+health_bar = NodePath("HealthBar")
+health_node = NodePath("Health")
+state_machine = NodePath("State_Machine")
+
+[node name="Zs" type="Node3D" parent="."]
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health_node") instance=ExtResource("1_lawoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+health_node = NodePath("../Health")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_th5qi")
+
+[node name="State_Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_etbd5")
+initial_state = NodePath("Sleep")
+
+[node name="Sleep" type="Node" parent="State_Machine" node_paths=PackedStringArray("zs")]
+script = ExtResource("4_1f2rd")
+zs = NodePath("../../Zs")
+
+[node name="Wake" type="Node" parent="State_Machine"]
+script = ExtResource("5_3v78s")
+
+[node name="WakeTimer" type="Timer" parent="State_Machine/Wake"]
+wait_time = 1.5
+autostart = true
+
+[node name="Knock" type="Node" parent="State_Machine"]
+script = ExtResource("7_ri37u")
+
+[node name="Carry" type="Node" parent="State_Machine"]
+script = ExtResource("8_yg2b4")
+
+[node name="Idle" type="Node" parent="State_Machine"]
+script = ExtResource("9_hnnfc")
+
+[connection signal="timeout" from="State_Machine/Wake/WakeTimer" to="State_Machine/Wake" method="_on_wake_timer_timeout"]

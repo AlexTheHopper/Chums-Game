@@ -30,12 +30,15 @@ var is_carrying := false
 
 @export var hitbox: Hitbox
 @export var hurtbox: Hurtbox
+@onready var health_node := $Health
 
 var xform: Transform3D
 
 func _ready() -> void:
 	Global.game_begun = true
 	$Health.immune = false
+	$Health.set_max_health(12.0)
+	$Health.set_health(12.0)
 	
 	hitbox.attack_info = {"speed": [1.3, 1.4, 1.5, 1.6, 1.7, 1.8].pick_random(),
 							"damage": [0.8, 1.0, 1.2].pick_random(),
@@ -136,10 +139,17 @@ func _physics_process(delta: float) -> void:
 		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
 			print(chum.attack)
 			print(chum.quality)
+			print(chum.health_node.health)
 		print("enemies:")
 		for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
 			print(chum.attack)
 			print(chum.quality)
+			print(chum.health_node.health)
+		print("neutral:")
+		for chum in get_tree().get_nodes_in_group("Chums_Neutral"):
+			print(chum.attack)
+			print(chum.quality)
+			print(chum.health_node.health)
 
 func jump():
 	if (is_on_floor() or coyote_time > 0) and not in_jump:

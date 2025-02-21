@@ -1110,7 +1110,6 @@ hurtbox = NodePath("Armature/Hurtbox")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_foxub")
-max_health = 12.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15483, 0)
@@ -1138,7 +1137,7 @@ size = 30.0
 target_position = Vector3(0, -2, 0)
 
 [node name="Armature" type="Node3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.220726, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.2, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
@@ -1237,11 +1236,11 @@ libraries = {
 "": SubResource("AnimationLibrary_lgn1e")
 }
 
-[node name="Hurtbox" type="Area3D" parent="Armature" node_paths=PackedStringArray("health")]
+[node name="Hurtbox" type="Area3D" parent="Armature" node_paths=PackedStringArray("entity")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.441452, 0)
 visible = false
 script = ExtResource("5_6214k")
-health = NodePath("../../Health")
+entity = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15483, 0)

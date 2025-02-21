@@ -1,13 +1,12 @@
 extends State
-class_name Chum1_Attack
-@onready var state_name := "Attack"
+class_name Chum1_Active
+@onready var state_name := "Active"
 
-@export var chum: CharacterBody3D
+@onready var chum: CharacterBody3D
 @onready var attack_timer = $AttackTimer
 
 
 func Physics_Update(delta: float):
-	
 	#Chase target
 	if is_instance_valid(chum.target) and chum.is_on_floor():
 		if Functions.distance_between(chum, chum.target) < chum.attack["distance"]:

@@ -9,7 +9,8 @@ class_name Chum
 @onready var jump_gravity: float = (-2.0 * jump_height) / (jump_peak_time ** 2)
 @onready var fall_gravity: float = (-2.0 * jump_height) / (jump_fall_time ** 2)
 
-@onready var state_machine := $State_Machine
+@onready var state_machine = $GeneralChumBehaviour.state_machine
+@onready var health_node = $GeneralChumBehaviour.health_node
 @export var anim_player : AnimationPlayer
 @export var body_mesh : MeshInstance3D
 @onready var red_overlay := preload("res://materials/outline_red.tres")
@@ -22,7 +23,7 @@ var current_group := "Chums_Neutral"
 var stats_set = false
 @onready var attack: Dictionary
 @onready var move_speed: float
-@onready var quality := {"damage": 0, "speed": 0, "move_speed": 0}
+var quality := {"damage": 0, "speed": 0, "move_speed": 0}
 @export var interraction_area : Area3D
 @export var interraction_area_shape : CollisionShape3D
 @onready var has_quality_popup := false
@@ -30,23 +31,30 @@ var stats_set = false
 @onready var target: Node
 @onready var player_is_near := false
 
-@onready var initial_state_override = null
+var initial_state_override = null
 
 signal health_depleted
 signal spawn_currency(type, location)
 
 
 func _ready() -> void:
-	rotation.y = randf() * 2 * PI
+	health_node.health_depleted.connect(_on_health_health_depleted)
 	hurtbox.recieved_damage.connect(_on_recieved_damage)
+	
+	rotation.y = randf() * 2 * PI
 	
 	if not stats_set:
 		attack = self.default_attack
 		move_speed = self.default_move_speed
 		set_new_stats()
+	
 	#Otherwise, attack and move_speed are set by room.gd
 	hitbox.attack_info = attack
 	hitbox.damage = attack["damage"]
+	health_node.immune = false
+	health_node.set_max_health_override(self.max_health)
+	health_node.set_health_override(self.start_health)
+	health_node.immune = true
 	
 
 func get_gravity_dir():
@@ -70,13 +78,13 @@ func set_new_stats():
 func wake_up():
 	make_enemy()
 	state_machine.on_child_transition(state_machine.current_state, 'Wake')
-	$Health.immune = false
+	health_node.immune = false
 
 #Runs when friend chums fight from room activator
 func find_enemy():
 	set_new_target()
 	if state_machine.current_state.state_name != "Carry":
-		state_machine.on_child_transition(state_machine.current_state, 'Attack')
+		state_machine.on_child_transition(state_machine.current_state, 'Active')
 
 func _on_recieved_damage(damage, change_agro):
 	if change_agro:
@@ -115,7 +123,7 @@ func make_friendly():
 		bracelet.make_visible()
 	
 	#Reset health to full:
-	$Health.set_health($Health.get_max_health())
+	health_node.set_health(health_node.get_max_health())
 	
 func make_neutral():
 	remove_from_group("Chums_Enemy")
@@ -147,7 +155,7 @@ func set_new_target():
 
 	#Disconnect from previoud chum:
 	if target:
-		var old_target_health = target.get_node("Health")
+		var old_target_health = target.health_node
 		if old_target_health.health_depleted.is_connected(_on_target_death):
 			old_target_health.health_depleted.disconnect(_on_target_death)
 
@@ -171,7 +179,7 @@ func set_new_target():
 	
 	#Connect to target to know when it dies:
 	if self.target:
-		var new_target_health = self.target.get_node("Health")
+		var new_target_health = self.target.health_node
 		new_target_health.health_depleted.connect(_on_target_death)
 		
 func _on_target_death():

@@ -36,8 +36,9 @@ func save_room():
 			Global.world_map[Global.room_location]["chums"].append({"type": chum.chum_name,
 																	"group": group,
 																	"position": chum.global_position,
-																	"state": chum.get_node("State_Machine").current_state.state_name,
-																	"health": chum.get_node("Health").get_health(),
+																	"state": chum.state_machine.current_state.state_name,
+																	"health": chum.health_node.get_health(),
+																	"max_health": chum.health_node.get_max_health(),
 																	"attack": chum.attack,
 																	"move_speed": chum.move_speed,
 																	"quality": chum.quality,})
@@ -48,16 +49,20 @@ func load_room():
 		var chum_to_add = ChumsManager.get_specific_chum(chum["type"])
 		var chum_instance = chum_to_add.instantiate()
 		
-		chum_instance.global_position = chum["position"]
 		chum_instance.attack = chum["attack"]
-		chum_instance.stats_set = true
 		chum_instance.move_speed = chum["move_speed"]
 		chum_instance.quality = chum["quality"]
-		chum_instance.get_node("Health").set_health(chum["health"])
-		chum_instance.get_node("State_Machine").initial_state_override = chum["state"]
+		chum_instance.stats_set = true
 		
-		chum_instance.spawn_currency.connect(spawn_currency)
+		chum_instance.start_health = chum["health"]
+		chum_instance.max_health = chum["max_health"]
+		chum_instance.initial_state_override = chum["state"]
+		
 		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
+		
+		chum_instance.global_position = chum["position"]
+		chum_instance.spawn_currency.connect(spawn_currency)
+		
 		
 func spawn_currency(type, location):
 	var bracelet_instance = bracelet_tscn.instantiate()

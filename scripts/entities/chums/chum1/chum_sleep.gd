@@ -2,7 +2,7 @@ extends State
 class_name Chum1_Sleep
 @onready var state_name := "Sleep"
 
-@export var chum: CharacterBody3D
+@onready var chum: CharacterBody3D
 @export var zs: Node3D
 @onready var z_indicator = load("res://scenes/entities/sleeping_indicator_z.tscn")
 

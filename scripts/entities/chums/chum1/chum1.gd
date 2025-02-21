@@ -8,6 +8,8 @@ class_name Chum_1
 										"single_target": true}
 
 var default_move_speed = 1.5
+var max_health := 5.0
+var start_health := 5.0
 
 var bracelet_count := 1
 var bracelet_cost := 3

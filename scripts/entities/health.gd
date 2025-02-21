@@ -5,16 +5,13 @@ signal max_health_changed(attack: float)
 signal health_changed(attack: float)
 signal health_depleted
 
-@export var max_health: float : set = set_max_health, get = get_max_health
+
 @export var immune: bool = true : set = set_immune, get = get_immune
 var immune_timer: Timer = null
 var health_initialised := false
 
-@onready var health : float : set = set_health, get = get_health
-
-func _ready() -> void:
-	if not health_initialised:
-		set_health(max_health)
+var max_health: float : set = set_max_health, get = get_max_health
+var health : float : set = set_health, get = get_health
 
 func set_max_health(value: float):
 	var clamped_value = 1.0 if value <= 0.0 else value
@@ -24,8 +21,13 @@ func set_max_health(value: float):
 		
 		if health > max_health:
 			health = max_health
+		else:
+			health += difference
 			
 		max_health_changed.emit(difference)
+		
+func set_max_health_override(value: float):
+	max_health = value
 		
 func get_max_health() -> float:
 	return max_health
@@ -50,7 +52,6 @@ func set_temporary_immune(time: float):
 	immune = true
 	immune_timer.start()
 	
-	
 func set_health(value: float):
 	if value < health and immune:
 		return
@@ -66,7 +67,11 @@ func set_health(value: float):
 			health_depleted.emit()
 			
 		health_changed.emit(difference)
+
 	health_initialised = true
+	
+func set_health_override(value: float):
+	health = value
 	
 func get_health() -> float:
 	return health

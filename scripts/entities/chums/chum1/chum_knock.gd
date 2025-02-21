@@ -2,7 +2,7 @@ extends State
 class_name Chum1_Knock
 @onready var state_name := "Knock"
 
-@export var chum: CharacterBody3D
+@onready var chum: CharacterBody3D
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func Enter():
