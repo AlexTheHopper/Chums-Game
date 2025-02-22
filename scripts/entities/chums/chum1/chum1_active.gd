@@ -9,7 +9,7 @@ class_name Chum1_Active
 func Physics_Update(delta: float):
 	#Chase target
 	if is_instance_valid(chum.target) and chum.is_on_floor():
-		if Functions.distance_between(chum, chum.target) < chum.attack["distance"]:
+		if Functions.distance_squared(chum, chum.target) < pow(chum.attack["distance"], 2):
 			attempt_attack()
 			chum.velocity = Vector3(0, 0, 0)
 		elif chum.anim_player.get_current_animation() != "Attack":

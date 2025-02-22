@@ -4,6 +4,8 @@ var activated = false
 var player_proximity = false
 var spawning_finished = false
 
+@onready var player := get_tree().get_first_node_in_group("Player")
+
 signal activate_lever
 
 func activate_chums():
@@ -30,7 +32,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interract") and player_proximity and not activated and spawning_finished:
+	if Input.is_action_just_pressed("interract") and player_proximity and not player.is_carrying and not activated and spawning_finished:
 		activated = true
 		activate_chums()
 		$LetterIndicator.disappear()

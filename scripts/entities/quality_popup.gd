@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 	#Keep facing the camera, rotates on input "rotate"
 	if Input.is_action_just_pressed("rotate"):
 		rotations += 1.0
-	$Container.rotation.y = lerp($Container.rotation.y, rotations * PI - PI, 0.05)
+	$Container.rotation.y = lerp($Container.rotation.y, rotations * PI - PI, 0.075)
 	look_at(camera.global_position)
 
 

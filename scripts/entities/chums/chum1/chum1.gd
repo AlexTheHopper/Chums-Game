@@ -13,5 +13,9 @@ var default_move_speed = 1.5
 var max_health := 5.0
 var start_health := 5.0
 
+var maintains_agro := false
+var changes_agro_on_damaged := true
+var draws_agro_on_attack := true
+
 var bracelet_count := 3
 var bracelet_cost := 3

@@ -4,7 +4,7 @@ class_name Hitbox
 @onready var attack_info: Dictionary
 @export var damage: float = 0.0 : set = set_damage, get = get_damage
 
-@export var draws_agro_on_attack: bool = true
+@onready var draws_agro_on_attack = owner.draws_agro_on_attack
 
 func _ready() -> void:
 	#Set correct layer/mask collisions:

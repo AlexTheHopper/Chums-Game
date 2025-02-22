@@ -6,7 +6,7 @@ signal recieved_damage(damage: float, change_agro: bool)
 @export var entity: CharacterBody3D
 var health_node: Node
 
-@export var changes_agro_on_damaged: bool = true
+@onready var changes_agro_on_damaged = owner.changes_agro_on_damaged
 
 func _ready() -> void:
 	await entity.ready
@@ -16,20 +16,12 @@ func _ready() -> void:
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
 	
-	var parent_group = get_parent_group(self)
+	var parent_group = owner.get_groups()[0]
+	print(parent_group)
 	if parent_group in ["Chums_Enemy"]:
 		set_as_enemy()
 	elif parent_group in ["Chums_Friend", "Player"]:
 		set_as_friendly()
-	
-#Goes up tree until a node is in a group, returns that group name as str
-func get_parent_group(node):
-	if len(node.get_groups()) > 0:
-		return node.get_groups()[0]
-	elif node.get_parent():
-		return get_parent_group(node.get_parent())
-	else:
-		return false
 		
 		
 func set_as_enemy():
@@ -59,7 +51,11 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 			
 		#Check to change agression
 		var change_agro = false
-		if changes_agro_on_damaged and hitbox.draws_agro_on_attack:
+		var maintains_agro = false
+		if "target" in owner:
+			maintains_agro = owner.target.maintains_agro
+
+		if changes_agro_on_damaged and hitbox.draws_agro_on_attack and not maintains_agro:
 			change_agro = true
 
 		recieved_damage.emit(hitbox.damage, change_agro)

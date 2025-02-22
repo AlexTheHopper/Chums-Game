@@ -29,6 +29,7 @@ var quality := {"damage": 0, "speed": 0, "move_speed": 0}
 @onready var has_quality_popup := false
 
 @onready var target: Node
+var targeted_by := []
 @onready var player_is_near := false
 
 var initial_state_override = null
@@ -56,7 +57,6 @@ func _ready() -> void:
 	health_node.set_health_override(self.start_health)
 	health_node.immune = true
 	
-
 func get_gravity_dir():
 	return fall_gravity if velocity.y < 0.0 else jump_gravity
 	
@@ -72,7 +72,6 @@ func set_new_stats():
 	multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
 	self.move_speed *= multiplier
 	quality["move_speed"] = 10 * (multiplier - 1)
-	
 	
 #Runs when enemy chums wake up from room activator
 func wake_up():
@@ -94,6 +93,10 @@ func _on_health_health_depleted() -> void:
 	if current_group == "Chums_Enemy":
 		for n in self.bracelet_count:
 			spawn_currency.emit("bracelet", global_position)
+			
+	if target:
+		target.targeted_by.erase(self)
+	
 			
 	state_machine.on_child_transition(state_machine.current_state, 'Knock')
 	health_depleted.emit()
@@ -155,6 +158,7 @@ func set_new_target():
 
 	#Disconnect from previoud chum:
 	if target:
+		target.targeted_by.erase(self)
 		var old_target_health = target.health_node
 		if old_target_health.health_depleted.is_connected(_on_target_death):
 			old_target_health.health_depleted.disconnect(_on_target_death)
@@ -170,12 +174,14 @@ func set_new_target():
 		
 		if not closest_chum_friend:
 			body = player
-		elif Functions.distance_between(self, closest_chum_friend) < Functions.distance_between(self, player):
+		elif Functions.distance_squared(self, closest_chum_friend) < Functions.distance_squared(self, player):
 			body = closest_chum_friend
 		else:
 			body = player
 
 	self.target = body
+	if self.target:
+		self.target.targeted_by.append(self)
 	
 	#Connect to target to know when it dies:
 	if self.target:
