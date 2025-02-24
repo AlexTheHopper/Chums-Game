@@ -15,7 +15,7 @@ height = 1.275
 [sub_resource type="Curve3D" id="Curve3D_yc3t0"]
 bake_interval = 50.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 11, 6.5, 0, 0, 0, 0, 0, 0, 0, 9, 5.9, 0, 0, 0, 0, 0, 0, 0, 7.5, 5.3, 0, 0, 0, 0, 0, 0, 0, 6.5, 4.7, 0, 0, 0, 0, 0, 0, 0, 6, 4.2),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 11, 6.5, 0, 0, 0, 0, 0, 0, 0, 8, 5.9, 0, 0, 0, 0, 0, 0, 0, 5.5, 5.3, 0, 0, 0, 0, 0, 0, 0, 4, 4.7, 0, 0, 0, 0, 0, 0, 0, 3, 4.2),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
@@ -610,13 +610,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28403, 0)
 curve = SubResource("Curve3D_yc3t0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Camera_Controller/Camera_Path"]
-transform = Transform3D(0.999996, 0, 0, 0, 0.287342, 0.957807, 0, -0.957808, 0.287342, 0, 11, 6.5)
+transform = Transform3D(0.999996, 0, 0, 0, 0.196111, 0.980555, 0, -0.980555, 0.196111, 0, 11, 6.5)
 
 [node name="Camera_Target" type="Node3D" parent="Camera_Controller/Camera_Path/PathFollow3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999632, 0.0273123, 0, -0.0273124, 0.999634, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Path/PathFollow3D/Camera_Target"]
-transform = Transform3D(1, 0, 0, 0, 0.98481, -0.173649, 0, 0.173649, 0.984809, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.819169, -0.573587, 0, 0.573588, 0.819167, 0, 0, 0)
 current = true
 size = 30.0
 

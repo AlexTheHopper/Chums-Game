@@ -22,7 +22,7 @@ func create_world(size):
 										"bell_angle": randf_range(0, 2 * PI),
 										"chums": [],
 										"light_position": Vector3(),
-										"decorations": {},
+										"decorations": [],
 										"has_x_pos": true if x < MAP_SIZE else false,
 										"has_x_neg": true if x > -MAP_SIZE else false,
 										"has_z_pos": true if y < MAP_SIZE else false,

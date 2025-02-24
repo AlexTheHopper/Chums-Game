@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1.gd" id="1_oac54"]
 [ext_resource type="Texture2D" uid="uid://cxkp71yodd30s" path="res://Blender_Assets/BlenderData/Chum_Exports/chum1_chum_1_diffuse2.png" id="2_r5iir"]
-[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline.tres" id="2_u4gfd"]
+[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="2_u4gfd"]
 [ext_resource type="PackedScene" uid="uid://cdfad011ncqxd" path="res://scenes/entities/chums/bracelet_4.tscn" id="3_jadnq"]
 [ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1_active.gd" id="5_3wtul"]
 [ext_resource type="Script" path="res://scripts/entities/hurtbox.gd" id="6_p7nbp"]

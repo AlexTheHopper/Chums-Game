@@ -70,12 +70,13 @@ func load_room():
 	#Decorations:
 	for deco in room_info["decorations"]:
 		var deco_inst = DecorationManager.decorations[deco["name"]].instantiate()
-		deco_inst.global_position = deco["position"]
 		$Decorations.add_child(deco_inst)
+		deco_inst.global_position = deco["position"]
+		deco_inst.rotation.y = deco["rotation"]
 	#Light:
 	var street_light = DecorationManager.decorations["streetlamp"].instantiate()
-	street_light.global_position = room_info["light_position"]
 	$Decorations.add_child(street_light)
+	street_light.global_position = room_info["light_position"]
 		
 func spawn_currency(type, location):
 	var bracelet_instance = bracelet_tscn.instantiate()
@@ -94,12 +95,13 @@ func set_player_loc_on_entry():
 		var current_room = Global.room_history[-1]
 		var prev_room = Global.room_history[-2]
 		#Factor is how far from the centre of the room the player spawns.
-		var factor = (Global.room_size / 2) - 5
+		var factor = (Global.room_size / 2) - 6.5
 
 		#Put player next to the door they just came out of
-		player.global_position = Vector3(factor * (prev_room.x - current_room.x) + 1,
+		var player_pos = Vector3(factor * (prev_room.x - current_room.x) + 1,
 								 player.global_position.y, 
 								factor * (prev_room.y - current_room.y) + 1)
+		player.global_position = player_pos
 		
 		#Set the player camera rotation so it doesnt spin around when entering room
 		var cam_rotation = fmod(player.get_node("Camera_Controller").rotation.y, 2 * PI)
@@ -107,3 +109,9 @@ func set_player_loc_on_entry():
 		player.get_node("Camera_Controller").rotation.y = cam_rotation
 		#Set camera goal to nearest multiple of PI / 4
 		player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
+		
+		#Place friendly chums in front of the player:
+		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
+			chum.global_position = lerp(player_pos, Vector3(1, 0, 1), 0.5) + Vector3(randf_range(-3, 3), 0, randf_range(-3, 3))
+			chum.rotation.y = randf_range(0, 2*PI)
+			chum.set_state("Idle")

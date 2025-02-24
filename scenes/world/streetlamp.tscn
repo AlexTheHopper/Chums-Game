@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://cdsetgtd0thee"]
 
 [ext_resource type="Script" path="res://scripts/world/streetlamp.gd" id="1_hgtxx"]
-[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline.tres" id="2_rg22f"]
+[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="2_rg22f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yo5e2"]
 next_pass = ExtResource("2_rg22f")

@@ -23,6 +23,11 @@ func Update(delta: float):
 		if ChumsManager.close_chums[0] == chum and idle_time > 1.0:
 			chum.attempt_carry()
 	idle_time += delta
+	
+	#Follow player if far enough away, and room beaten:
+	if Global.world_map[Global.room_location]["activated"]:
+		if Functions.distance_squared(chum, player) > pow(chum.follow_distance, 2):
+			Transitioned.emit(self, "Follow")
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():

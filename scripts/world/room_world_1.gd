@@ -7,7 +7,7 @@ const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
 
 func _ready() -> void:	
 	
-	$RoomActivator.activate_lever.connect(close_doors)
+	$RoomActivator.activate_bell.connect(close_doors)
 	
 	if Global.world_map[Global.room_location]["to_spawn"] < 0:
 		enemies_to_spawn = 3
@@ -119,5 +119,22 @@ func decorate():
 	$Decorations.add_child(light_obj)
 	light_obj.global_position = spawn_pos
 	Global.world_map[Global.room_location]["light_position"] = spawn_pos
+	
+	#Other objects:
+	var per_to_edge = max(abs(Global.room_location[0]), abs(Global.room_location[1])) / Global.MAP_SIZE
+	var deco_n = Functions.map_range(per_to_edge, Vector2(0, 1), Vector2(10, 100))
+	var angles = [0, PI/2, PI, 3*PI/2]
+	for n in deco_n:
+		var chosen_deco = DecorationManager.get_random_decoration_world1()
+		var deco_inst = chosen_deco[0].instantiate()
+		$Decorations.add_child(deco_inst)
+		
+		var pos = Vector3(randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15),
+						0, randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15))
+		deco_inst.global_position = pos
+		var angle = angles.pick_random()
+		deco_inst.rotation.y = angle
+		
+		Global.world_map[Global.room_location]["decorations"].append({"name": chosen_deco[1], "position": pos, "rotation": angle})
 	
 	

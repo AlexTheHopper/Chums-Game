@@ -84,9 +84,9 @@ func _physics_process(delta: float) -> void:
 	$Camera_Controller.rotation.y = lerp($Camera_Controller.rotation.y, camera_goal_horz, 0.05)
 	
 	if Input.is_action_just_pressed("cam_down"):
-		camera_goal_vert = clamp(camera_goal_vert - 1, 0, 1)
+		camera_goal_vert = clamp(camera_goal_vert - 0.5, 0, 1)
 	elif Input.is_action_just_pressed("cam_up"):
-		camera_goal_vert = clamp(camera_goal_vert + 1, 0, 1)
+		camera_goal_vert = clamp(camera_goal_vert + 0.5, 0, 1)
 	$Camera_Controller/Camera_Path/PathFollow3D.progress_ratio = lerp($Camera_Controller/Camera_Path/PathFollow3D.progress_ratio, camera_goal_vert, 0.03)
 
 

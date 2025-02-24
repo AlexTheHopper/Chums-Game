@@ -15,7 +15,7 @@ class_name Chum
 @export var body_mesh : MeshInstance3D
 @onready var red_overlay := preload("res://materials/outline_red.tres")
 @onready var blue_overlay := preload("res://materials/outline_blue.tres")
-@onready var black_overlay := preload("res://materials/outline.tres")
+@onready var black_overlay := preload("res://materials/outline_black.tres")
 var current_group := "Chums_Neutral"
 @onready var bracelet := $Body/Armature/Skeleton3D/BoneAttachment3D/Bracelet
 @export var hitbox: Hitbox
@@ -77,14 +77,17 @@ func set_new_stats():
 #Runs when enemy chums wake up from room activator
 func wake_up():
 	make_enemy()
-	state_machine.on_child_transition(state_machine.current_state, 'Wake')
+	set_state("Wake")
 	health_node.immune = false
+	
+func set_state(state):
+	state_machine.on_child_transition(state_machine.current_state, state)
 
 #Runs when friend chums fight from room activator
 func find_enemy():
 	set_new_target()
 	if state_machine.current_state.state_name != "Carry":
-		state_machine.on_child_transition(state_machine.current_state, 'Active')
+		set_state("Active")
 
 func _on_recieved_damage(damage, change_agro):
 	if change_agro:
@@ -99,7 +102,7 @@ func _on_health_health_depleted() -> void:
 		target.targeted_by.erase(self)
 	
 			
-	state_machine.on_child_transition(state_machine.current_state, 'Knock')
+	set_state("Knock")
 	health_depleted.emit()
 	
 func make_enemy():
@@ -149,7 +152,7 @@ func attempt_carry():
 			if current_group != "Chums_Friend":
 				PlayerStats.bracelets_added(-self.bracelet_cost)
 			get_tree().get_first_node_in_group("Player").is_carrying = true
-			state_machine.on_child_transition(state_machine.current_state, 'Carry')
+			set_state("Carry")
 
 func do_attack(attack_name):
 	anim_player.play("Attack")
@@ -192,5 +195,5 @@ func set_new_target():
 func _on_target_death():
 	set_new_target()
 	if not self.target and state_machine.current_state.state_name != "Carry":
-		state_machine.on_child_transition(state_machine.current_state, 'Idle')
+		set_state("Idle")
 		

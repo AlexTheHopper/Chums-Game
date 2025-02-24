@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://diu3gcoi63283"]
+[gd_scene load_steps=11 format=3 uid="uid://diu3gcoi63283"]
 
 [ext_resource type="PackedScene" uid="uid://c1saa1y5s8j4y" path="res://scenes/entities/health_bar.tscn" id="1_lawoc"]
 [ext_resource type="Script" path="res://scripts/entities/chums/general_chum_behaviour.gd" id="1_oye00"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_knock.gd" id="7_ri37u"]
 [ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_carry.gd" id="8_yg2b4"]
 [ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_idle.gd" id="9_hnnfc"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_follow.gd" id="10_57lte"]
 
 [node name="GeneralChumBehaviour" type="Node3D" node_paths=PackedStringArray("health_bar", "health_node", "state_machine")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -49,5 +50,8 @@ script = ExtResource("8_yg2b4")
 
 [node name="Idle" type="Node" parent="State_Machine"]
 script = ExtResource("9_hnnfc")
+
+[node name="Follow" type="Node" parent="State_Machine"]
+script = ExtResource("10_57lte")
 
 [connection signal="timeout" from="State_Machine/Wake/WakeTimer" to="State_Machine/Wake" method="_on_wake_timer_timeout"]
