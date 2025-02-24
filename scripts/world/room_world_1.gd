@@ -10,7 +10,7 @@ func _ready() -> void:
 	$RoomActivator.activate_lever.connect(close_doors)
 	
 	if Global.world_map[Global.room_location]["to_spawn"] < 0:
-		enemies_to_spawn = 2
+		enemies_to_spawn = 3
 	else:
 		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
 	
@@ -110,14 +110,14 @@ func decorate():
 	super()
 	
 	#Streetlamp generally points to lobby.
-	var to_lobby = -Global.room_location.normalized() * 10
+	var to_lobby = -Global.room_location.normalized() * 8
 	var spawn_pos = Vector3(1, 0, 1)
-	spawn_pos.x += to_lobby.x + randf_range(-1, 1)
-	spawn_pos.z += to_lobby.y + randf_range(-1, 1)
+	spawn_pos.x += to_lobby.x + randf_range(-2, 2)
+	spawn_pos.z += to_lobby.y + randf_range(-2, 2)
 	
 	var light_obj = STREETLAMP.instantiate()
-	light_obj.global_position = spawn_pos
 	$Decorations.add_child(light_obj)
+	light_obj.global_position = spawn_pos
 	Global.world_map[Global.room_location]["light_position"] = spawn_pos
 	
 	

@@ -87,7 +87,6 @@ func place_friend_chums():
 	print('Still have to place friend chums.')
 	
 func decorate():
-	print('general deco')
 	pass
 
 func set_player_loc_on_entry():

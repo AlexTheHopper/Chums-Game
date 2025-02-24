@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://ce86dk61xylkx"]
+[gd_scene load_steps=12 format=3 uid="uid://ce86dk61xylkx"]
 
 [ext_resource type="Script" path="res://scripts/entities/room_activator.gd" id="1_w805r"]
 [ext_resource type="ArrayMesh" uid="uid://ds84tmrige4ss" path="res://assets/world/world_1_other/bell_frame.vox" id="2_anb2o"]
 [ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline.tres" id="2_mand4"]
 [ext_resource type="ArrayMesh" uid="uid://8bbxaxucl7y3" path="res://assets/world/world_1_other/bell.vox" id="3_0vrnq"]
 [ext_resource type="PackedScene" uid="uid://tvahojkyvwhu" path="res://scenes/entities/letter_indicator.tscn" id="3_ff62b"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a8cbn"]
+height = 4.0
+radius = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_m26rw"]
 radius = 2.0
@@ -119,7 +123,7 @@ _data = {
 [node name="RoomActivator" type="Node3D"]
 script = ExtResource("1_w805r")
 
-[node name="Body" type="Node3D" parent="."]
+[node name="Body" type="StaticBody3D" parent="."]
 
 [node name="BellPivot" type="Node3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, 0)
@@ -134,6 +138,14 @@ skeleton = NodePath("../../..")
 material_overlay = ExtResource("2_mand4")
 mesh = ExtResource("2_anb2o")
 skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 2, 0)
+shape = SubResource("CylinderShape3D_a8cbn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2, 0)
+shape = SubResource("CylinderShape3D_a8cbn")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 4

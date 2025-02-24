@@ -9,7 +9,7 @@ func Enter():
 
 func Physics_Update(delta: float):
 	if chum.target:
-		chum.look_at(chum.target.global_position)
+		chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
 		
 	if not chum.is_on_floor():
 		chum.velocity.y += chum.get_gravity_dir() * delta

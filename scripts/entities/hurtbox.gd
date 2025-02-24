@@ -17,7 +17,6 @@ func _ready() -> void:
 	set_collision_mask_value(1, false)
 	
 	var parent_group = owner.get_groups()[0]
-	print(parent_group)
 	if parent_group in ["Chums_Enemy"]:
 		set_as_enemy()
 	elif parent_group in ["Chums_Friend", "Player"]:

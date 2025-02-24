@@ -15,6 +15,7 @@ class_name Chum
 @export var body_mesh : MeshInstance3D
 @onready var red_overlay := preload("res://materials/outline_red.tres")
 @onready var blue_overlay := preload("res://materials/outline_blue.tres")
+@onready var black_overlay := preload("res://materials/outline.tres")
 var current_group := "Chums_Neutral"
 @onready var bracelet := $Body/Armature/Skeleton3D/BoneAttachment3D/Bracelet
 @export var hitbox: Hitbox
@@ -133,7 +134,7 @@ func make_neutral():
 	remove_from_group("Chums_Friend")
 	add_to_group("Chums_Neutral")
 	current_group = "Chums_Neutral"
-	body_mesh.set_material_overlay(null)
+	body_mesh.set_material_overlay(black_overlay)
 	hitbox.set_as_neutral()
 	hurtbox.set_as_neutral()
 	
