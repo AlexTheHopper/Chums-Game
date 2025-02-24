@@ -1,7 +1,7 @@
 extends Node
 
 var game_begun = false
-const MAP_SIZE = 1
+const MAP_SIZE = 5
 var room_size = 40.0
 var world_map = {}
 var room_location = Vector2(0, 0)
@@ -21,6 +21,8 @@ func create_world(size):
 										"to_spawn": -1,
 										"bell_angle": randf_range(0, 2 * PI),
 										"chums": [],
+										"light_position": Vector3(),
+										"decorations": {},
 										"has_x_pos": true if x < MAP_SIZE else false,
 										"has_x_neg": true if x > -MAP_SIZE else false,
 										"has_z_pos": true if y < MAP_SIZE else false,
@@ -47,7 +49,6 @@ func transition_to_level(new_room_location: Vector2):
 		get_parent().get_node("Game/Rooms").add_child(roomInstance)
 	
 	
-
 func reset():
 	room_location = Vector2(0, 0)
 	room_history = [Vector2(0, 0)]

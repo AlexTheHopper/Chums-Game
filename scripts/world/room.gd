@@ -17,6 +17,8 @@ func _ready() -> void:
 	#Fill new room:
 	if Global.world_map[Global.room_location]["entered"]:
 		load_room()
+	else:
+		self.decorate()
 		
 	if enemies_to_spawn > 0:
 		if spawn_timer:
@@ -45,7 +47,9 @@ func save_room():
 																
 																
 func load_room():
-	for chum in Global.world_map[Global.room_location]["chums"]:
+	var room_info = Global.world_map[Global.room_location]
+	#Chums:
+	for chum in room_info["chums"]:
 		var chum_to_add = ChumsManager.get_specific_chum(chum["type"])
 		var chum_instance = chum_to_add.instantiate()
 		
@@ -62,7 +66,16 @@ func load_room():
 		
 		chum_instance.global_position = chum["position"]
 		chum_instance.spawn_currency.connect(spawn_currency)
-		
+	
+	#Decorations:
+	for deco in room_info["decorations"]:
+		var deco_inst = DecorationManager.decorations[deco["name"]].instantiate()
+		deco_inst.global_position = deco["position"]
+		$Decorations.add_child(deco_inst)
+	#Light:
+	var street_light = DecorationManager.decorations["streetlamp"].instantiate()
+	street_light.global_position = room_info["light_position"]
+	$Decorations.add_child(street_light)
 		
 func spawn_currency(type, location):
 	var bracelet_instance = bracelet_tscn.instantiate()
@@ -72,6 +85,10 @@ func spawn_currency(type, location):
 func place_friend_chums():
 	#TODO
 	print('Still have to place friend chums.')
+	
+func decorate():
+	print('general deco')
+	pass
 
 func set_player_loc_on_entry():
 	if len(Global.room_history) >= 2:

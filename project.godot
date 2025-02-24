@@ -21,6 +21,7 @@ TransitionScreen="*res://scenes/general/transition_screen.tscn"
 ChumsManager="*res://scripts/general/chums_manager.gd"
 Functions="*res://scripts/general/functions.gd"
 PlayerStats="*res://scripts/general/player_stats.gd"
+DecorationManager="*res://scripts/general/decoration_manager.gd"
 
 [display]
 

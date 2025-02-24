@@ -3,6 +3,7 @@ extends room
 @onready var grid_map: GridMap = $GridMap
 @onready var spawn_point: PathFollow3D = $SpawnPath/SpawnPoint
 @onready var room_value := Global.room_location.length()
+const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
 
 func _ready() -> void:	
 	
@@ -18,9 +19,6 @@ func _ready() -> void:
 	set_player_loc_on_entry()
 	fill_tunnels()
 
-		
-	
-		
 func fill_tunnels():
 	#Fix walls etc.
 	var door_dist := 9
@@ -107,3 +105,19 @@ func randomize_spawn_loc():
 	#Randomize location:
 	spawn_point.progress_ratio = randf()
 	spawn_point.h_offset = randf_range(-2, 2)
+
+func decorate():
+	super()
+	
+	#Streetlamp generally points to lobby.
+	var to_lobby = -Global.room_location.normalized() * 10
+	var spawn_pos = Vector3(1, 0, 1)
+	spawn_pos.x += to_lobby.x + randf_range(-1, 1)
+	spawn_pos.z += to_lobby.y + randf_range(-1, 1)
+	
+	var light_obj = STREETLAMP.instantiate()
+	light_obj.global_position = spawn_pos
+	$Decorations.add_child(light_obj)
+	Global.world_map[Global.room_location]["light_position"] = spawn_pos
+	
+	

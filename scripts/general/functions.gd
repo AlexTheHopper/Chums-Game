@@ -33,3 +33,12 @@ func get_closest_chum_in_group(chum, group):
 		return closest
 	else:
 		return null
+		
+func map_range(value: float, range1: Vector2, range2: Vector2) -> float:
+	if value <= range1[0]:
+		return range2[0]
+	elif value >= range1[1]:
+		return range2[1]
+	
+	var percentage = (value - range1[0]) / (range1[1] - range1[0])
+	return range2[0] + percentage * (range2[1] - range2[0])

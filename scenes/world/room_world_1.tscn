@@ -17,12 +17,6 @@ point_count = 5
 script = ExtResource("1_c3888")
 spawn_timer = NodePath("SpawnPath/SpawnTimer")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
-omni_range = 40.0
-omni_attenuation = 0.1
-omni_shadow_mode = 0
-
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("2_2imc0")
 cell_center_y = false
@@ -73,5 +67,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
 one_shot = true
 
 [node name="Currencies" type="Node3D" parent="."]
+
+[node name="Decorations" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
+omni_range = 40.0
+omni_attenuation = 0.75
+omni_shadow_mode = 0
 
 [connection signal="timeout" from="SpawnPath/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
