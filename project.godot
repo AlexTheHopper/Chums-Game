@@ -120,6 +120,8 @@ rotate={
 3d_physics/layer_10="HitboxEnemy"
 3d_physics/layer_11="HurtboxFriendly"
 3d_physics/layer_12="HurtboxEnemy"
+avoidance/layer_1="Friendly"
+avoidance/layer_2="Enemy"
 
 [rendering]
 

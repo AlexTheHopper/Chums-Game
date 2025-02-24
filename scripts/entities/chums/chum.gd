@@ -10,6 +10,7 @@ class_name Chum
 @onready var fall_gravity: float = (-2.0 * jump_height) / (jump_fall_time ** 2)
 
 @onready var state_machine = $GeneralChumBehaviour.state_machine
+@onready var nav_agent = $NavigationAgent3D
 @onready var health_node = $GeneralChumBehaviour.health_node
 @export var anim_player : AnimationPlayer
 @export var body_mesh : MeshInstance3D
@@ -42,7 +43,6 @@ signal spawn_currency(type, location)
 func _ready() -> void:
 	health_node.health_depleted.connect(_on_health_health_depleted)
 	hurtbox.recieved_damage.connect(_on_recieved_damage)
-	
 	rotation.y = randf() * 2 * PI
 	
 	if not stats_set:
@@ -116,6 +116,12 @@ func make_enemy():
 	
 	if bracelet:
 		bracelet.make_invisible()
+		
+	if $NavigationAgent3D:
+		$NavigationAgent3D.set_avoidance_layer_value(1, false)
+		$NavigationAgent3D.set_avoidance_layer_value(1, false)
+		$NavigationAgent3D.set_avoidance_mask_value(2, true)
+		$NavigationAgent3D.set_avoidance_mask_value(2, true)
 	
 func make_friendly():
 	remove_from_group("Chums_Enemy")
@@ -128,6 +134,12 @@ func make_friendly():
 	
 	if bracelet:
 		bracelet.make_visible()
+		
+	if $NavigationAgent3D:
+		$NavigationAgent3D.set_avoidance_layer_value(1, true)
+		$NavigationAgent3D.set_avoidance_layer_value(1, true)
+		$NavigationAgent3D.set_avoidance_mask_value(2, false)
+		$NavigationAgent3D.set_avoidance_mask_value(2, false)
 	
 	#Reset health to full:
 	health_node.set_health(health_node.get_max_health())
@@ -143,6 +155,12 @@ func make_neutral():
 	
 	if bracelet:
 		bracelet.make_invisible()
+		
+	if $NavigationAgent3D:
+		$NavigationAgent3D.set_avoidance_layer_value(1, false)
+		$NavigationAgent3D.set_avoidance_layer_value(1, false)
+		$NavigationAgent3D.set_avoidance_mask_value(2, false)
+		$NavigationAgent3D.set_avoidance_mask_value(2, false)
 	
 func attempt_carry():
 	#Player must not already be carrying a chum
