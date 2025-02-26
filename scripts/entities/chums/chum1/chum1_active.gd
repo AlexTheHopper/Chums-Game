@@ -7,22 +7,26 @@ class_name Chum1_Active
 @onready var nav_timer = $NavTimer
 var nav_vel := Vector3(0, 0, 0)
 var attacking := false
+var has_touched_floor = false
 
 func Enter():
 	attack_timer.wait_time = chum.attack["speed"]
 	chum.anim_player.play("Walk")
 	nav_timer.start()
+	attacking = false
+	has_touched_floor = false
 
 func Physics_Update(delta: float):
 	#Chase target
-	if not attacking and Functions.distance_squared(chum, chum.target) > pow(chum.default_attack["distance"], 2):
+	if not attacking and Functions.distance_squared(chum, chum.target) > pow(chum.default_attack["distance"], 2) and chum.is_on_floor():
 		chum.anim_player.play("Walk")
-		#chum.look_at(chum.target.global_position)
-	chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
-		
-	
-	if chum.is_on_floor():
 		chum.velocity = nav_vel
+		
+	if chum.is_on_floor():
+		chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
+		if not has_touched_floor:
+			has_touched_floor = true
+			chum.set_new_target()
 	else:
 		chum.velocity.y += chum.get_gravity_dir() * delta
 	
@@ -41,8 +45,7 @@ func attempt_attack():
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Attack":
-		attacking = false
-		
+		attacking = false		
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	nav_vel = safe_velocity

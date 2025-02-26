@@ -21,8 +21,8 @@ _data = {
 point_count = 5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s100y"]
-radius = 0.33
-height = 1.275
+radius = 0.3
+height = 1.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00hcs"]
 resource_name = "palette"
@@ -599,7 +599,7 @@ hurtbox = NodePath("Hurtbox")
 script = ExtResource("2_foxub")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, -0.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 shape = SubResource("CapsuleShape3D_as0st")
 
 [node name="Camera_Controller" type="Node3D" parent="."]
@@ -618,18 +618,17 @@ transform = Transform3D(1, 0, 0, 0, 0.999632, 0.0273123, 0, -0.0273124, 0.999634
 [node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Path/PathFollow3D/Camera_Target"]
 transform = Transform3D(1, 0, 0, 0, 0.819169, -0.573587, 0, 0.573588, 0.819167, 0, 0, 0)
 current = true
-size = 30.0
+size = 15.0
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, -2, 0)
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("entity")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 script = ExtResource("5_6214k")
 entity = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, -0.18)
 shape = SubResource("CapsuleShape3D_s100y")
 
 [node name="Armature" type="Node3D" parent="."]
@@ -707,5 +706,8 @@ disabled = true
 libraries = {
 "": SubResource("AnimationLibrary_1l68m")
 }
+
+[node name="Particles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

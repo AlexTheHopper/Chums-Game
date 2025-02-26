@@ -17,10 +17,13 @@ class_name Chum
 @onready var red_overlay := preload("res://materials/outline_red.tres")
 @onready var blue_overlay := preload("res://materials/outline_blue.tres")
 @onready var black_overlay := preload("res://materials/outline_black.tres")
+@export var sleep_zone : Node3D
+@export var sleep_particles : PackedScene
 var current_group := "Chums_Neutral"
 @onready var bracelet := $Body/Armature/Skeleton3D/BoneAttachment3D/Bracelet
 @export var hitbox: Hitbox
 @export var hurtbox: Hurtbox
+@onready var particle_zone := $Particles
 
 var stats_set = false
 @onready var attack: Dictionary
@@ -74,6 +77,13 @@ func set_new_stats():
 	self.move_speed *= multiplier
 	quality["move_speed"] = 10 * (multiplier - 1)
 	
+func create_sleep_particles():
+	sleep_zone.add_child(sleep_particles.instantiate())
+		
+func remove_sleep_particles():
+	for child in sleep_zone.get_children():
+		child.queue_free()
+	
 #Runs when enemy chums wake up from room activator
 func wake_up():
 	make_enemy()
@@ -89,7 +99,7 @@ func find_enemy():
 	if state_machine.current_state.state_name != "Carry":
 		set_state("Active")
 
-func _on_recieved_damage(damage, change_agro):
+func _on_recieved_damage(damage, change_agro, attacker):
 	if change_agro:
 		set_new_target()
 
@@ -119,8 +129,8 @@ func make_enemy():
 		
 	if $NavigationAgent3D:
 		$NavigationAgent3D.set_avoidance_layer_value(1, false)
-		$NavigationAgent3D.set_avoidance_layer_value(1, false)
-		$NavigationAgent3D.set_avoidance_mask_value(2, true)
+		$NavigationAgent3D.set_avoidance_layer_value(2, true)
+		$NavigationAgent3D.set_avoidance_mask_value(1, false)
 		$NavigationAgent3D.set_avoidance_mask_value(2, true)
 	
 func make_friendly():
@@ -137,8 +147,8 @@ func make_friendly():
 		
 	if $NavigationAgent3D:
 		$NavigationAgent3D.set_avoidance_layer_value(1, true)
-		$NavigationAgent3D.set_avoidance_layer_value(1, true)
-		$NavigationAgent3D.set_avoidance_mask_value(2, false)
+		$NavigationAgent3D.set_avoidance_layer_value(2, false)
+		$NavigationAgent3D.set_avoidance_mask_value(1, true)
 		$NavigationAgent3D.set_avoidance_mask_value(2, false)
 	
 	#Reset health to full:
@@ -158,8 +168,8 @@ func make_neutral():
 		
 	if $NavigationAgent3D:
 		$NavigationAgent3D.set_avoidance_layer_value(1, false)
-		$NavigationAgent3D.set_avoidance_layer_value(1, false)
-		$NavigationAgent3D.set_avoidance_mask_value(2, false)
+		$NavigationAgent3D.set_avoidance_layer_value(2, false)
+		$NavigationAgent3D.set_avoidance_mask_value(1, false)
 		$NavigationAgent3D.set_avoidance_mask_value(2, false)
 	
 func attempt_carry():

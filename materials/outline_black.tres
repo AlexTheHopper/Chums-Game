@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://materials/outline_shader.gdshader" id="1_t5dks"]
 
 [resource]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("1_t5dks")
 shader_parameter/outline_color = null
 shader_parameter/outline_width = 2.0

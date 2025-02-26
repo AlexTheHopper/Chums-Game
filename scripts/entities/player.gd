@@ -31,12 +31,13 @@ var is_attacking := false
 
 @export var hitbox: Hitbox
 @export var hurtbox: Hurtbox
+@onready var particle_zone := $Particles
 @onready var health_node := $Health
 @onready var anim_player := $AnimationPlayer
 
-@onready var changes_agro_on_damaged = true
-@onready var draws_agro_on_attack = true
-@onready var maintains_agro = false
+var changes_agro_on_damaged = true
+var draws_agro_on_attack = true
+var maintains_agro = false
 var targeted_by := []
 
 

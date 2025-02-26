@@ -64,14 +64,13 @@ transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 19, 0, 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="SpawnPath" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 curve = SubResource("Curve3D_jgcr4")
 
 [node name="SpawnPoint" type="PathFollow3D" parent="SpawnPath"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
 
 [node name="SpawnTimer" type="Timer" parent="SpawnPath"]
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
 
 [node name="Currencies" type="Node3D" parent="."]

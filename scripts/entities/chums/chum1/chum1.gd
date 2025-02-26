@@ -11,8 +11,9 @@ var desc := "This one-legged pink chum spends its whole day jumping around on it
 
 var default_move_speed = 1.5
 var follow_distance = 10.0
-var max_health := 5.0
-var start_health := 5.0
+
+var max_health := 10.0
+var start_health := 10.0
 
 var maintains_agro := false
 var changes_agro_on_damaged := true

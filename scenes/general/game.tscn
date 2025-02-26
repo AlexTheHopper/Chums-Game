@@ -7,7 +7,7 @@
 [node name="Game" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_iwypl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.5, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
 
 [node name="Chums" type="Node3D" parent="."]
 

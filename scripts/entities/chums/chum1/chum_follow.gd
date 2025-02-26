@@ -16,7 +16,7 @@ func Physics_Update(delta: float):
 	chum.move_and_slide()
 	
 	#Go to idle if close enough:
-	if Functions.distance_squared(chum, chum.target) < pow(chum.follow_distance / 2, 2):
+	if Functions.distance_squared(chum, chum.target) < pow(chum.follow_distance - 1, 2):
 		Transitioned.emit(self, "Idle")
 	
 func Enter():

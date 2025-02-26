@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://imwk51idx34"]
+
+[ext_resource type="Script" path="res://particles/single_particle.gd" id="1_jrykx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5xjj"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_tdavr"]
+material = SubResource("StandardMaterial3D_j5xjj")
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Gradient" id="Gradient_l4wy2"]
+offsets = PackedFloat32Array(0, 0.56535, 0.990881)
+colors = PackedColorArray(0.378282, 0, 0.00102956, 1, 0.498039, 0, 0, 1, 0.498039, 0, 0, 0)
+
+[node name="Particles" type="Node3D"]
+script = ExtResource("1_jrykx")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+mesh = SubResource("BoxMesh_tdavr")
+emission_shape = 1
+emission_sphere_radius = 0.3
+particle_flag_rotate_y = true
+direction = Vector3(0, 1, 0)
+spread = 7.66
+gravity = Vector3(0, -20, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 8.0
+radial_accel_max = 3.0
+color = Color(0.162066, 0.162066, 0.162066, 1)
+color_ramp = SubResource("Gradient_l4wy2")

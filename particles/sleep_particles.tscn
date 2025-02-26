@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://2yafynwddodb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0qij"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="TextMesh" id="TextMesh_cl7bj"]
+material = SubResource("StandardMaterial3D_h0qij")
+text = "Z"
+depth = 0.01
+
+[sub_resource type="Curve" id="Curve_d0yde"]
+_data = [Vector2(0.00280112, 1), 0.0, 0.0, 0, 0, Vector2(0.753501, 0.943293), 0.0, 0.0, 0, 0, Vector2(0.97479, 0.298255), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_iwkoc"]
+offsets = PackedFloat32Array(0.0516717, 0.765957, 1)
+colors = PackedColorArray(0.190762, 0.190762, 0.190762, 1, 0.336608, 0.336608, 0.336608, 1, 1, 1, 1, 0)
+
+[node name="sleep_particles" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 25
+lifetime = 5.0
+mesh = SubResource("TextMesh_cl7bj")
+emission_shape = 1
+emission_sphere_radius = 0.3
+particle_flag_rotate_y = true
+direction = Vector3(0, 1, 0)
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+angular_velocity_min = 5.0
+angular_velocity_max = 20.0
+angle_max = 180.0
+scale_amount_curve = SubResource("Curve_d0yde")
+color_ramp = SubResource("Gradient_iwkoc")

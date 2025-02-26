@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=4 uid="uid://dr778q0wfb61e"]
+[gd_scene load_steps=26 format=4 uid="uid://dr778q0wfb61e"]
 
 [ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum1.gd" id="1_oac54"]
+[ext_resource type="PackedScene" uid="uid://2yafynwddodb" path="res://particles/sleep_particles.tscn" id="2_574ph"]
 [ext_resource type="Texture2D" uid="uid://cxkp71yodd30s" path="res://Blender_Assets/BlenderData/Chum_Exports/chum1_chum_1_diffuse2.png" id="2_r5iir"]
 [ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="2_u4gfd"]
 [ext_resource type="PackedScene" uid="uid://cdfad011ncqxd" path="res://scenes/entities/chums/bracelet_4.tscn" id="3_jadnq"]
@@ -437,6 +438,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../GeneralChumBehaviour:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pi2fi"]
 resource_name = "Sleep"
@@ -684,12 +697,15 @@ height = 1.5
 [sub_resource type="SphereShape3D" id="SphereShape3D_gb8xt"]
 radius = 2.0
 
-[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "hitbox", "hurtbox", "interraction_area", "interraction_area_shape") groups=["Chums_Neutral"]]
+[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interraction_area", "interraction_area_shape") groups=["Chums_Neutral"]]
 collision_layer = 8
 collision_mask = 11
+platform_on_leave = 2
 script = ExtResource("1_oac54")
 anim_player = NodePath("Body/AnimationPlayer")
 body_mesh = NodePath("Body/Armature/Skeleton3D/chum_1_detach")
+sleep_zone = NodePath("Body/Armature/Skeleton3D/BoneAttachment3D/Sleep_Zone")
+sleep_particles = ExtResource("2_574ph")
 hitbox = NodePath("Hitbox")
 hurtbox = NodePath("Hurtbox")
 interraction_area = NodePath("InterractionArea")
@@ -778,6 +794,9 @@ bone_idx = 1
 [node name="Bracelet" parent="Body/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("3_jadnq")]
 transform = Transform3D(1, -8.19083e-09, -3.69465e-08, -3.69465e-08, -0.422618, -0.906308, -8.19083e-09, 0.906308, -0.422618, 0, 0.35, -0.2)
 
+[node name="Sleep_Zone" type="Node3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 6.72838e-08, -1.57795e-07, 1.22159e-07, -0.925111, 0.379698, -1.2043e-07, -0.379698, -0.925111, -4.76274e-08, 0.876814, -0.0636268)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
 libraries = {
 "": SubResource("AnimationLibrary_qxln5")
@@ -814,6 +833,7 @@ shape = SubResource("SphereShape3D_gb8xt")
 disabled = true
 
 [node name="GeneralChumBehaviour" parent="." instance=ExtResource("7_42xiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="ChumSpecificStates" type="Node" parent="."]
 
@@ -825,7 +845,7 @@ one_shot = true
 autostart = true
 
 [node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active"]
-wait_time = 0.5
+wait_time = 0.25
 autostart = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -833,7 +853,11 @@ path_desired_distance = 2.0
 target_desired_distance = 1.3
 avoidance_enabled = true
 neighbor_distance = 2.0
+max_neighbors = 5
 max_speed = 5.0
+
+[node name="Particles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [connection signal="animation_finished" from="Body/AnimationPlayer" to="ChumSpecificStates/Active" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="InterractionArea" to="InterractionArea" method="_on_interraction_area_body_entered"]

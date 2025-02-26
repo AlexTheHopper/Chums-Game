@@ -3,26 +3,27 @@ class_name Chum1_Sleep
 @onready var state_name := "Sleep"
 
 @onready var chum: CharacterBody3D
-@export var zs: Node3D
-@onready var z_indicator = load("res://scenes/entities/sleeping_indicator_z.tscn")
+@onready var sleep_particles = preload("res://particles/sleep_particles.tscn")
 
 func Enter():
 	chum.interraction_area_shape.set_deferred("disabled", false)
 	chum.anim_player.play("Sleep")
+	call_deferred("create_sleep_particles")
+	
+	#We dont want the player to be able to push around the chums while theyre sleeping
+	chum.set_collision_mask_value(2, false)
+
+func create_sleep_particles():
+	chum.create_sleep_particles()
+
 
 func Physics_Update(delta: float):
 	chum.velocity = lerp(chum.velocity, Vector3.ZERO, 0.05)
-	if randf() < 0.05:
-		spawn_z()
 		
 	if not chum.is_on_floor():
 		chum.velocity.y += chum.get_gravity_dir() * delta
 	
 	chum.move_and_slide()
-
-func spawn_z():
-	var z_instance = z_indicator.instantiate()
-	zs.add_child(z_instance)
 
 func Exit():
 	chum.set_new_target()
@@ -32,3 +33,6 @@ func Exit():
 		Transitioned.emit(self, "Idle")
 		
 	chum.interraction_area_shape.set_deferred("disabled", true)
+	chum.set_collision_mask_value(2, true)
+	
+	chum.remove_sleep_particles()

@@ -12,16 +12,12 @@
 [ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_follow.gd" id="10_57lte"]
 
 [node name="GeneralChumBehaviour" type="Node3D" node_paths=PackedStringArray("health_bar", "health_node", "state_machine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_oye00")
 health_bar = NodePath("HealthBar")
 health_node = NodePath("Health")
 state_machine = NodePath("State_Machine")
 
-[node name="Zs" type="Node3D" parent="."]
-
 [node name="HealthBar" parent="." node_paths=PackedStringArray("health_node") instance=ExtResource("1_lawoc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 health_node = NodePath("../Health")
 
 [node name="Health" type="Node" parent="."]
@@ -31,9 +27,8 @@ script = ExtResource("2_th5qi")
 script = ExtResource("3_etbd5")
 initial_state = NodePath("Sleep")
 
-[node name="Sleep" type="Node" parent="State_Machine" node_paths=PackedStringArray("zs")]
+[node name="Sleep" type="Node" parent="State_Machine"]
 script = ExtResource("4_1f2rd")
-zs = NodePath("../../Zs")
 
 [node name="Wake" type="Node" parent="State_Machine"]
 script = ExtResource("5_3v78s")
