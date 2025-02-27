@@ -687,6 +687,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7oaib"]
+radius = 0.4
 height = 1.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kbxqd"]
@@ -850,7 +851,6 @@ autostart = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 2.0
-target_desired_distance = 1.3
 avoidance_enabled = true
 neighbor_distance = 2.0
 max_neighbors = 5

@@ -35,5 +35,3 @@ func _on_interraction_area_body_exited(body: Node3D) -> void:
 				close_chum.interraction_area._on_interraction_area_body_entered(get_tree().get_first_node_in_group("Player"))
 
 		chum.player_is_near = false
-		
-		

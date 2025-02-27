@@ -158,6 +158,16 @@ libraries = {
 "": SubResource("AnimationLibrary_hdihc")
 }
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.2, 0)
+radius = 0.3
+avoidance_layers = 3
+
+[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 0.2, 0)
+radius = 0.3
+avoidance_layers = 3
+
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

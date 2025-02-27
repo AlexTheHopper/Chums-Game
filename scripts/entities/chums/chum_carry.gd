@@ -11,6 +11,7 @@ var throw_vert := 7.5
 
 func Physics_Update(delta: float):
 	chum.global_position = lerp(chum.global_position, player.global_position + Vector3(0, 1.5, 0), 0.8)
+	chum.rotation.y = lerp_angle(chum.rotation.y, player.player_goal_horz + PI, 0.5)
 	throw_vel_i = (Vector3(0, throw_hor, 0) + Vector3(0, 0, throw_vert).rotated(Vector3.UP, player.get_node("Armature").rotation.y))
 	if Input.is_action_just_pressed("interract"):
 		chum.velocity = throw_vel_i

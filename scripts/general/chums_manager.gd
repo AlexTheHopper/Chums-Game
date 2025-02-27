@@ -7,8 +7,10 @@ var close_chums := []
 func _ready() -> void:
 	#Fill world1 chums:
 	world1_chums[0] = preload("res://scenes/entities/chums/chum1.tscn")
+	world1_chums[0.1] = preload("res://scenes/entities/chums/chum2.tscn")
 	
-	chum_id_to_name = {"chum1": "Flamenco"}
+	chum_id_to_name = {"chum1": "Flamenco",
+						"chum2": "Stump"}
 	
 
 func get_random_world1_chum(room_value: float):

@@ -14,3 +14,9 @@ shape = SubResource("CylinderShape3D_wb2wi")
 
 [node name="Tree1" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_tfswe")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00190592, 0.290563, 0)
+radius = 0.5
+height = 2.0
+avoidance_layers = 3

@@ -41,3 +41,8 @@ mesh = SubResource("ArrayMesh_wmp1j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 2.5, 0.05)
 shape = SubResource("CylinderShape3D_2yc2x")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237806, 0)
+radius = 0.3
+avoidance_layers = 3

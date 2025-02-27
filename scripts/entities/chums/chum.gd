@@ -9,6 +9,8 @@ class_name Chum
 @onready var jump_gravity: float = (-2.0 * jump_height) / (jump_peak_time ** 2)
 @onready var fall_gravity: float = (-2.0 * jump_height) / (jump_fall_time ** 2)
 
+var follow_distance = 10.0
+
 @onready var state_machine = $GeneralChumBehaviour.state_machine
 @onready var nav_agent = $NavigationAgent3D
 @onready var health_node = $GeneralChumBehaviour.health_node
@@ -56,6 +58,8 @@ func _ready() -> void:
 	#Otherwise, attack and move_speed are set by room.gd
 	hitbox.attack_info = attack
 	hitbox.damage = attack["damage"]
+	$NavigationAgent3D.target_desired_distance = attack["distance"]
+	$NavigationAgent3D.path_desired_distance = attack["distance"]
 	health_node.immune = false
 	health_node.set_max_health_override(self.max_health)
 	health_node.set_health_override(self.start_health)

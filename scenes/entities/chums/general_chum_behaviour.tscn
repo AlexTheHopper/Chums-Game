@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://scripts/entities/chums/general_chum_behaviour.gd" id="1_oye00"]
 [ext_resource type="Script" path="res://scripts/entities/health.gd" id="2_th5qi"]
 [ext_resource type="Script" path="res://scripts/entities/state_machine.gd" id="3_etbd5"]
-[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_sleep.gd" id="4_1f2rd"]
-[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_wake.gd" id="5_3v78s"]
-[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_knock.gd" id="7_ri37u"]
-[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_carry.gd" id="8_yg2b4"]
-[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_idle.gd" id="9_hnnfc"]
-[ext_resource type="Script" path="res://scripts/entities/chums/chum1/chum_follow.gd" id="10_57lte"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum_sleep.gd" id="4_1f2rd"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum_wake.gd" id="5_3v78s"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum_knock.gd" id="7_ri37u"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum_carry.gd" id="8_yg2b4"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum_idle.gd" id="9_hnnfc"]
+[ext_resource type="Script" path="res://scripts/entities/chums/chum_follow.gd" id="10_57lte"]
 
 [node name="GeneralChumBehaviour" type="Node3D" node_paths=PackedStringArray("health_bar", "health_node", "state_machine")]
 script = ExtResource("1_oye00")

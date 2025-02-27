@@ -29,7 +29,7 @@ _surfaces = [{
 [node name="Lantern" type="Node3D"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410609, -0.362849, -0.0309175)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410609, 0.269849, -0.0309175)
 light_specular = 0.0
 light_cull_mask = 4294967293
 omni_range = 10.0
