@@ -35,7 +35,7 @@ func set_notches():
 			var extra_x: float = bar_length - ((n * NOTCH_INC) / health_node.max_health) * bar_length
 			notch.position = Vector3(start_x + extra_x, 0, 0)
 	
-func _on_health_changed(difference):
+func _on_health_changed(_difference):
 	var health_ratio = max(health_node.health / health_node.max_health, 0.0)
 	current_health_bar.scale.x = health_ratio
 	current_health_bar.position.x = (1.0 - health_ratio) * 0.5 
@@ -45,8 +45,7 @@ func _on_health_changed(difference):
 		health_color = Color(0.0, 0.0, 0.0)
 	current_health_bar.mesh.material.albedo_color = health_color
 	
-func _on_max_health_changed(difference):
-	
+func _on_max_health_changed(_difference):
 	#Reset notches:
 	for notch in $Frame.get_children():
 		notch.queue_free()

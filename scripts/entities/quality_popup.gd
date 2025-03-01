@@ -33,8 +33,10 @@ func _ready() -> void:
 	desc_back.text = chum.desc
 	
 	scale = Vector3(0.1, 0.1, 0.1)
+	chum.has_quality_popup = true
+	ChumsManager.quality_popup_active = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	#Keep facing the camera, rotates on input "rotate"
 	if Input.is_action_just_pressed("rotate"):
@@ -47,6 +49,18 @@ func _process(delta: float) -> void:
 		var distance = global_position.distance_to(camera.global_position)
 		var scale_factor = distance / 12
 		scale = lerp(scale, base_scale * scale_factor, 0.05)
+		
+		#If player cycles through quality popups:
+		if Input.is_action_just_pressed("cycle") and len(ChumsManager.close_chums) > 1:
+			remove()
+			#Cycle through close chums:
+			var closest_chum = ChumsManager.close_chums[0]
+			ChumsManager.close_chums.erase(closest_chum)
+			ChumsManager.close_chums.append(closest_chum)
+			
+			#Reinstantiate quality popup for close chum(s)
+			for close_chum in ChumsManager.close_chums:
+				close_chum.interraction_area._on_interraction_area_body_entered(get_tree().get_first_node_in_group("Player"))
 	
 	else:
 		scale = lerp(scale, Vector3(0.05, 0.05, 0.05), 0.1)
@@ -54,5 +68,9 @@ func _process(delta: float) -> void:
 		if scale.x < 0.1:
 			queue_free()
 			
+	
+			
 func remove():
+	ChumsManager.quality_popup_active = false
+	chum.has_quality_popup = false
 	fading_out = true

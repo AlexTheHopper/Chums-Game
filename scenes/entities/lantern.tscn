@@ -28,15 +28,15 @@ _surfaces = [{
 
 [node name="Lantern" type="Node3D"]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410609, 0.269849, -0.0309175)
-light_specular = 0.0
-light_cull_mask = 4294967293
-omni_range = 10.0
-
 [node name="Lantern" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.55, 0)
 layers = 2
 material_override = SubResource("StandardMaterial3D_7gkti")
 material_overlay = ExtResource("1_1k0kw")
 mesh = SubResource("ArrayMesh_odvvt")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410609, 0.269849, -0.0309175)
+light_specular = 0.0
+light_cull_mask = 4294967293
+omni_range = 10.0

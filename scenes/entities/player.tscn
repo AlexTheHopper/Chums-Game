@@ -10,7 +10,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_as0st"]
 radius = 0.33
-height = 1.275
+height = 1.3
 
 [sub_resource type="Curve3D" id="Curve3D_yc3t0"]
 bake_interval = 50.0

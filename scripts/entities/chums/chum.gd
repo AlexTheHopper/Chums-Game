@@ -103,7 +103,7 @@ func find_enemy():
 	if state_machine.current_state.state_name != "Carry":
 		set_state("Active")
 
-func _on_recieved_damage(damage, change_agro, attacker):
+func _on_recieved_damage(_damage, change_agro, _attacker):
 	if change_agro:
 		set_new_target()
 
@@ -186,7 +186,7 @@ func attempt_carry():
 			get_tree().get_first_node_in_group("Player").is_carrying = true
 			set_state("Carry")
 
-func do_attack(attack_name):
+func do_attack(_attack_name):
 	anim_player.play("Attack")
 
 func set_new_target():

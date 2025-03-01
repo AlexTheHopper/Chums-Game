@@ -3,6 +3,7 @@ extends Node
 var world1_chums : Dictionary
 var chum_id_to_name : Dictionary
 var close_chums := []
+var quality_popup_active = false
 
 func _ready() -> void:
 	#Fill world1 chums:

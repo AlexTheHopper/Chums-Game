@@ -60,5 +60,5 @@ func reset():
 	room_history = [Vector2(0, 0)]
 	game_begun = false
 	world_map = {}
-	create_world(MAP_SIZE)
+	_ready()
 	#get_tree().reload_current_scene()

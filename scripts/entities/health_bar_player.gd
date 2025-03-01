@@ -2,9 +2,10 @@ extends Control
 
 @onready var health_bar := $Health
 
-@onready var tick_zero := $TickZero
+@onready var tick_zero := $Ticks/TickZero
 
 @onready var length_zero: float
+@onready var posx_zero = health_bar.position.x
 @onready var health := 0.0
 @onready var max_health := 1.0
 
@@ -33,6 +34,6 @@ func set_ticks():
 	
 	for n in range(1, floor(max_health / 5) + 1):
 		var tick = tick_zero.duplicate()
-		
-		tick.position = Vector2(n * tick_spacing_ratio * health_bar.size.x, 0)
-		add_child(tick)
+		var xpos = round((n * tick_spacing_ratio * health_bar.size.x) + posx_zero)
+		tick.global_position = Vector2(xpos, 0)
+		$Ticks.add_child(tick)

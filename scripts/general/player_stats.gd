@@ -18,11 +18,11 @@ func _ready() -> void:
 	health_node.max_health_changed.connect(_on_player_max_health_changed)
 	player_max_health = health_node.max_health
 	
-func _on_player_health_changed(difference):
+func _on_player_health_changed(_difference):
 	player_health = health_node.health
 	hud_health_change.emit()
 	
-func _on_player_max_health_changed(differnce):
+func _on_player_max_health_changed(_differnce):
 	player_max_health = health_node.max_health
 	hud_max_health_change.emit()
 	

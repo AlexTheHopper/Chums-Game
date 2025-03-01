@@ -12,7 +12,7 @@ func _ready() -> void:
 	
 	if Global.world_map[Global.room_location]["to_spawn"] < 0:
 		#Maximum to spawn:
-		enemies_to_spawn = 3
+		enemies_to_spawn = 100
 	else:
 		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
 	

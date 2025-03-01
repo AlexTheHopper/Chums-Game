@@ -4,17 +4,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thqyf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 
 [node name="PlayerHealthBar" type="Control"]
 layout_mode = 3
-anchor_right = 0.109
+anchor_right = 0.115
 anchor_bottom = 0.046
-offset_right = -0.568008
+offset_right = -7.48001
 offset_bottom = 0.191998
 grow_horizontal = 2
 grow_vertical = 2
@@ -22,33 +22,40 @@ script = ExtResource("1_udgud")
 
 [node name="Health" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.133
+anchor_right = 0.832
+anchor_bottom = 0.867
+offset_top = 0.0100002
+offset_right = 25.0
+offset_bottom = -0.0100002
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.392157, 0, 1)
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 1.064
 anchor_bottom = 1.0
+offset_right = 1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_thqyf")
 
-[node name="TickZero" type="ColorRect" parent="."]
+[node name="Ticks" type="Control" parent="."]
+z_index = 1
+layout_mode = 1
+anchor_right = 1.064
+anchor_bottom = 1.0
+offset_right = -7.99998
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TickZero" type="ColorRect" parent="Ticks"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.016
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
-
-[node name="Ticks" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2

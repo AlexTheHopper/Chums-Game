@@ -23,7 +23,6 @@ func _ready() -> void:
 	if enemies_to_spawn > 0:
 		if spawn_timer:
 			spawn_timer.start()
-	place_friend_chums()
 
 func save_room():
 	#Remove previous data from room:
@@ -78,14 +77,10 @@ func load_room():
 	$Decorations.add_child(street_light)
 	street_light.global_position = room_info["light_position"]
 		
-func spawn_currency(type, location):
+func spawn_currency(_type, location):
 	var bracelet_instance = bracelet_tscn.instantiate()
 	$Currencies.add_child(bracelet_instance)
 	bracelet_instance.global_position = location
-	
-func place_friend_chums():
-	#TODO
-	print('Still have to place friend chums.')
 	
 func decorate():
 	pass

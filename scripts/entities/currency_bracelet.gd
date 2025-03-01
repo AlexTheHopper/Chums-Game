@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if impulse_time <= 0.0:
 		apply_impulse(Functions.vector_to_normalized(self, player))
 		$CollectionZone/CollisionShape3D.disabled = false

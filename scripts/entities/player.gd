@@ -20,6 +20,7 @@ var camera_goal_vert := 0.0
 var can_align := true
 var is_carrying := false
 var is_attacking := false
+var attacking_mult := 1.0
 
 @export var jump_height: float = 2
 @export var jump_peak_time: float = 0.3
@@ -46,8 +47,8 @@ var xform: Transform3D
 func _ready() -> void:
 	Global.game_begun = true
 	$Health.immune = false
-	$Health.set_max_health(12.0)
-	$Health.set_health(12.0)
+	$Health.set_max_health(10.0)
+	$Health.set_health(10.0)
 	
 	hitbox.attack_info = {"speed": [1.3, 1.4, 1.5, 1.6, 1.7, 1.8].pick_random(),
 							"damage": [0.8, 1.0, 1.2].pick_random(),
@@ -66,6 +67,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and not is_attacking and not is_carrying:
 		anim_player.play("Swing")
 		is_attacking = true
+		attacking_mult = 0.1
 		anim_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
 	elif not is_attacking:
 		if Input.is_action_pressed("jump") and is_on_floor():
@@ -74,6 +76,8 @@ func _physics_process(delta: float) -> void:
 			anim_player.play("Run_Carry" if is_carrying else "Run_noCarry")
 		elif input_dir == Vector2.ZERO and is_on_floor():
 			anim_player.play("Idle_Carry" if is_carrying else "Idle_noCarry")
+			
+		attacking_mult = lerp(attacking_mult, 1.0, 0.05)
 		
 	
 	
@@ -102,11 +106,11 @@ func _physics_process(delta: float) -> void:
 		jumping_time = MAX_JUMPING_TIME
 		coyote_time = MAX_COYOTE
 		in_jump = false
-		align_with_floor($RayCast3D.get_collision_normal())
+		#align_with_floor($RayCast3D.get_collision_normal())
 	else:
 		velocity.y += get_gravity_dir() * delta
 		coyote_time = max(0, coyote_time - 1)
-		align_with_floor(Vector3.UP)
+		#align_with_floor(Vector3.UP)
 		
 	if Input.is_anything_pressed():
 		can_align = true
@@ -118,12 +122,12 @@ func _physics_process(delta: float) -> void:
 	if input_dir:
 		player_goal_horz = $Camera_Controller.rotation.y - input_dir.angle() - (PI / 2)
 		player_goal_horz = fmod(player_goal_horz + PI, 2 * PI)
-		$Armature.rotation.y = lerp_angle($Armature.rotation.y, player_goal_horz, 0.5)
+		$Armature.rotation.y = lerp_angle($Armature.rotation.y, player_goal_horz, 0.35)
 
 	#Move character:
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * SPEED * attacking_mult
+		velocity.z = direction.z * SPEED * attacking_mult
 
 	#Slow down after letting go of controls
 	else:
@@ -167,7 +171,7 @@ func _on_attack_finished(_anim_name):
 	is_attacking = false
 
 func jump():
-	if (is_on_floor() or coyote_time > 0) and not in_jump:
+	if (is_on_floor() or coyote_time > 0) and not in_jump and not is_attacking:
 		velocity.y = jump_velocity
 		in_jump = true
 
@@ -188,7 +192,10 @@ func align_with_floor(normal):
 		global_transform = global_transform.interpolate_with(xform, 0.3)
 		rotation.y = 0
 
-
 func _on_health_health_depleted() -> void:
-	Global.reset()
+	call_deferred("kill_player")
+
+func kill_player():
 	get_tree().reload_current_scene()
+	Global.reset()
+	
