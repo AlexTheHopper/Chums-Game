@@ -26,7 +26,7 @@ func Physics_Update(_delta: float):
 	throw_vel_i = (Vector3(0, throw_hor, 0) + Vector3(0, 0, throw_vert).rotated(Vector3.UP, player.get_node("Armature").rotation.y))
 	if Input.is_action_just_pressed("interract"):
 		chum.velocity = throw_vel_i
-		player.is_carrying = false
+		player.call_deferred("set", "is_carrying", false)
 		if len(get_tree().get_nodes_in_group("Chums_Enemy")) > 0:
 			Transitioned.emit(self, "Active")
 		else:
@@ -43,9 +43,7 @@ func Physics_Update(_delta: float):
 		xform.basis = xform.basis.orthonormalized()
 			
 		target_sprite.global_transform = target_sprite.global_transform.interpolate_with(xform, 0.3)
-		target_sprite.rotation.y = 0
-			
-			
+
 	chum.move_and_slide()
 	
 func get_target_info(pos, vel):

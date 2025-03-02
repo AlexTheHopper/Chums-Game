@@ -17,13 +17,7 @@ func Enter():
 func Exit():
 	chum.interraction_area_shape.set_deferred("disabled", true)
 	
-func Update(delta: float):
-	if Input.is_action_just_pressed("interract") and chum.is_in_group("Chums_Friend") and len(ChumsManager.close_chums) > 0:
-		
-		if ChumsManager.close_chums[0] == chum and idle_time > 1.0:
-			chum.attempt_carry()
-	idle_time += delta
-	
+func Update(delta: float):	
 	#Follow player if far enough away, and room beaten:
 	if Global.world_map[Global.room_location]["activated"]:
 		if Functions.distance_squared(chum, player) > pow(chum.follow_distance, 2):
@@ -34,5 +28,11 @@ func Physics_Update(delta: float):
 		chum.velocity = Vector3(0, 0, 0)
 	else:
 		chum.velocity.y += chum.get_gravity_dir() * delta
+		
+	if Input.is_action_just_pressed("interract") and chum.is_in_group("Chums_Friend") and len(ChumsManager.close_chums) > 0:
+		
+		if ChumsManager.close_chums[0] == chum and idle_time > 1.0:
+			chum.attempt_carry()
+	idle_time += delta
 	
 	chum.move_and_slide()

@@ -1,5 +1,5 @@
 extends Chum
-class_name Chum_2
+class_name Chum2
 @onready var chum_name := "chum2"
 
 var desc := "CHUM 2 DESC."

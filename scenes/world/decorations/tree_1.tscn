@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dsr4pp61d2hjb"]
 
-[ext_resource type="ArrayMesh" uid="uid://lkn5fmt5yvh7" path="res://assets/world/world_1_other/tree1.vox" id="1_tfswe"]
+[ext_resource type="ArrayMesh" uid="uid://dr1f05xnutfj4" path="res://assets/world/world_1_other/tree1.vox" id="1_tfswe"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wb2wi"]
 height = 4.0
@@ -12,11 +12,11 @@ radius = 0.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CylinderShape3D_wb2wi")
 
-[node name="Tree1" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_tfswe")
-
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00190592, 0.290563, 0)
 radius = 0.5
 height = 2.0
 avoidance_layers = 3
+
+[node name="Tree1" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_tfswe")

@@ -54,7 +54,6 @@ func transition_to_level(new_room_location: Vector2):
 		current_room_node = new_room.instantiate()
 		rooms.add_child(current_room_node)
 	
-	
 func reset():
 	room_location = Vector2(0, 0)
 	room_history = [Vector2(0, 0)]

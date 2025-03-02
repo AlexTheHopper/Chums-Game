@@ -78,8 +78,6 @@ func _physics_process(delta: float) -> void:
 			anim_player.play("Idle_Carry" if is_carrying else "Idle_noCarry")
 			
 		attacking_mult = lerp(attacking_mult, 1.0, 0.05)
-		
-	
 	
 	#Rotating camera:
 	if Input.is_action_just_pressed("cam_left"):
@@ -138,6 +136,8 @@ func _physics_process(delta: float) -> void:
 	#Match camera controller position to self
 	$Camera_Controller.position = lerp($Camera_Controller.position, position, 0.1)
 	
+			
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("print_fps"):
 		print("FPS: " + str(Engine.get_frames_per_second()))
 		print('player health: ' + str($Health.health))
@@ -166,7 +166,7 @@ func _physics_process(delta: float) -> void:
 			print(chum.attack)
 			print(chum.quality)
 			print(chum.health_node.health)
-
+			
 func _on_attack_finished(_anim_name):
 	is_attacking = false
 
