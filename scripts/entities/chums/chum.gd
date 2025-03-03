@@ -11,28 +11,32 @@ class_name Chum
 
 var follow_distance = 10.0
 
+@export var anim_player : AnimationPlayer
+@export var body_mesh : MeshInstance3D
+@export var sleep_zone : Node3D
+@export var hitbox: Hitbox
+@export var hurtbox: Hurtbox
+@export var interraction_area : Area3D
+@export var sleep_particles : PackedScene = preload("res://particles/sleep_particles.tscn")
+
 @onready var state_machine = $GeneralChumBehaviour.state_machine
 @onready var nav_agent = $NavigationAgent3D
 @onready var health_node = $GeneralChumBehaviour.health_node
-@export var anim_player : AnimationPlayer
-@export var body_mesh : MeshInstance3D
+
 @onready var red_overlay := preload("res://materials/outline_red.tres")
 @onready var blue_overlay := preload("res://materials/outline_blue.tres")
 @onready var black_overlay := preload("res://materials/outline_black.tres")
-@export var sleep_zone : Node3D
-@export var sleep_particles : PackedScene
+
 var current_group := "Chums_Neutral"
-@onready var bracelet := $Body/Armature/Skeleton3D/BoneAttachment3D/Bracelet
-@export var hitbox: Hitbox
-@export var hurtbox: Hurtbox
+@onready var bracelet := $Body/Armature/Skeleton3D/BoneAttachmentBracelet/Bracelet
+
 @onready var particle_zone := $Particles
 
 var stats_set = false
 @onready var attack: Dictionary
 @onready var move_speed: float
 var quality := {"damage": 0, "speed": 0, "move_speed": 0}
-@export var interraction_area : Area3D
-@export var interraction_area_shape : CollisionShape3D
+
 @onready var has_quality_popup := false
 
 @onready var target: Node
@@ -46,9 +50,17 @@ signal spawn_currency(type, location)
 
 
 func _ready() -> void:
+	add_to_group("Chums_Neutral")
+	body_mesh.set_material_overlay(black_overlay)
 	health_node.health_depleted.connect(_on_health_health_depleted)
 	hurtbox.recieved_damage.connect(_on_recieved_damage)
 	rotation.y = randf() * 2 * PI
+	
+	set_collision_layer_value(1, false)
+	set_collision_layer_value(4, true)
+	
+	set_collision_mask_value(2, true)
+	set_collision_mask_value(4, true)
 	
 	if not stats_set:
 		attack = self.default_attack
@@ -58,8 +70,8 @@ func _ready() -> void:
 	#Otherwise, attack and move_speed are set by room.gd
 	hitbox.attack_info = attack
 	hitbox.damage = attack["damage"]
-	$NavigationAgent3D.target_desired_distance = attack["distance"]
-	$NavigationAgent3D.path_desired_distance = attack["distance"]
+	nav_agent.target_desired_distance = attack["distance"]
+	nav_agent.avoidance_enabled = true
 	health_node.immune = false
 	health_node.set_max_health_override(self.max_health)
 	health_node.set_health_override(self.start_health)
@@ -87,6 +99,12 @@ func create_sleep_particles():
 func remove_sleep_particles():
 	for child in sleep_zone.get_children():
 		child.queue_free()
+		
+func enable_interraction():
+	interraction_area.shape.disabled = false
+func disable_interraction():
+	interraction_area.shape.disabled = true
+	pass
 	
 #Runs when enemy chums wake up from room activator
 func wake_up():
@@ -131,11 +149,11 @@ func make_enemy():
 	if bracelet:
 		bracelet.make_invisible()
 		
-	if $NavigationAgent3D:
-		$NavigationAgent3D.set_avoidance_layer_value(1, false)
-		$NavigationAgent3D.set_avoidance_layer_value(2, true)
-		$NavigationAgent3D.set_avoidance_mask_value(1, false)
-		$NavigationAgent3D.set_avoidance_mask_value(2, true)
+	if nav_agent:
+		nav_agent.set_avoidance_layer_value(1, false)
+		nav_agent.set_avoidance_layer_value(2, true)
+		nav_agent.set_avoidance_mask_value(1, false)
+		nav_agent.set_avoidance_mask_value(2, true)
 	
 func make_friendly():
 	remove_from_group("Chums_Enemy")
@@ -149,11 +167,11 @@ func make_friendly():
 	if bracelet:
 		bracelet.make_visible()
 		
-	if $NavigationAgent3D:
-		$NavigationAgent3D.set_avoidance_layer_value(1, true)
-		$NavigationAgent3D.set_avoidance_layer_value(2, false)
-		$NavigationAgent3D.set_avoidance_mask_value(1, true)
-		$NavigationAgent3D.set_avoidance_mask_value(2, false)
+	if nav_agent:
+		nav_agent.set_avoidance_layer_value(1, true)
+		nav_agent.set_avoidance_layer_value(2, false)
+		nav_agent.set_avoidance_mask_value(1, true)
+		nav_agent.set_avoidance_mask_value(2, false)
 	
 	#Reset health to full:
 	health_node.set_health(health_node.get_max_health())
@@ -170,11 +188,11 @@ func make_neutral():
 	if bracelet:
 		bracelet.make_invisible()
 		
-	if $NavigationAgent3D:
-		$NavigationAgent3D.set_avoidance_layer_value(1, false)
-		$NavigationAgent3D.set_avoidance_layer_value(2, false)
-		$NavigationAgent3D.set_avoidance_mask_value(1, false)
-		$NavigationAgent3D.set_avoidance_mask_value(2, false)
+	if nav_agent:
+		nav_agent.set_avoidance_layer_value(1, false)
+		nav_agent.set_avoidance_layer_value(2, false)
+		nav_agent.set_avoidance_mask_value(1, false)
+		nav_agent.set_avoidance_mask_value(2, false)
 	
 func attempt_carry():
 	#Player must not already be carrying a chum

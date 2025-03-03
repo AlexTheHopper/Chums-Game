@@ -3,7 +3,7 @@ class_name Hurtbox
 
 signal recieved_damage(damage: float, change_agro: bool)
 
-@export var entity: CharacterBody3D
+@onready var entity := owner
 @onready var particles_friendly = preload("res://particles/damage_friendly.tscn")
 @onready var particles_enemy = preload("res://particles/damage_enemy.tscn")
 @onready var particles = particles_friendly

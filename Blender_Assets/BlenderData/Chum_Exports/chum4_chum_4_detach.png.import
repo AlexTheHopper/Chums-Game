@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifb2db4upwe1"
-path="res://.godot/imported/chum2_chum_2_detach.png-66c8197fde91f359d8483411542b4f2e.ctex"
+uid="uid://co3u2rd1kpvvu"
+path="res://.godot/imported/chum4_chum_4_detach.png-7d809f8d56027f749c82633ca9dee091.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "57b95926da7908a8c14739a04b733ed9"
+"md5": "aa0d07b9c92fde12c36095809fdefee8"
 }
 
 [deps]
 
-source_file="res://Blender_Assets/BlenderData/Chum_Exports/chum2_chum_2_detach.png"
-dest_files=["res://.godot/imported/chum2_chum_2_detach.png-66c8197fde91f359d8483411542b4f2e.ctex"]
+source_file="res://Blender_Assets/BlenderData/Chum_Exports/chum4_chum_4_detach.png"
+dest_files=["res://.godot/imported/chum4_chum_4_detach.png-7d809f8d56027f749c82633ca9dee091.ctex"]
 
 [params]
 

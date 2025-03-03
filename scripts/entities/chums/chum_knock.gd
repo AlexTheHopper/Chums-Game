@@ -14,7 +14,7 @@ func Enter():
 	chum.set_collision_mask_value(2, false)
 	chum.set_collision_mask_value(4, false)
 	
-	chum.interraction_area_shape.set_deferred("disabled", false)
+	chum.call_deferred("enable_interraction")
 	chum.anim_player.play("Knock")
 	
 
@@ -37,4 +37,4 @@ func Exit():
 	chum.set_collision_mask_value(2, true)
 	chum.set_collision_mask_value(4, true)
 	
-	chum.interraction_area_shape.set_deferred("disabled", true)
+	call_deferred("chum.disable_interraction")

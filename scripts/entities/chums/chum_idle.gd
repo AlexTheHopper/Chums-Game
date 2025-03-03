@@ -10,12 +10,12 @@ var wander_offset = randf_range(0, 2 * PI)
 
 func Enter():
 	idle_time = 0.0
-	chum.interraction_area_shape.set_deferred("disabled", false)
+	chum.call_deferred("enable_interraction")
 	
 	chum.anim_player.play("Idle")
 	
 func Exit():
-	chum.interraction_area_shape.set_deferred("disabled", true)
+	call_deferred("chum.disable_interraction")
 	
 func Update(delta: float):	
 	#Follow player if far enough away, and room beaten:

@@ -11,6 +11,15 @@ var has_touched_floor = false
 
 func Enter():
 	attack_timer.wait_time = chum.attack["speed"]
+	attack_timer.one_shot = true
+	attack_timer.autostart = true
+	
+	nav_timer.wait_time = 0.25
+	nav_timer.timeout.connect(_on_nav_timer_timeout)
+	chum.nav_agent.target_reached.connect(_on_navigation_agent_3d_target_reached)
+	chum.nav_agent.velocity_computed.connect(_on_navigation_agent_3d_velocity_computed)
+	
+	chum.anim_player.animation_finished.connect(_on_animation_player_animation_finished)
 	chum.anim_player.play("Walk")
 	nav_timer.start()
 	attacking = false
@@ -31,7 +40,6 @@ func Physics_Update(delta: float):
 		chum.velocity.y += chum.get_gravity_dir() * delta
 	
 	chum.move_and_slide()
-	#print(owner.get_node("NavigationAgent3D").distance_to_target())
 	
 func _on_navigation_agent_3d_target_reached() -> void:
 	attempt_attack()

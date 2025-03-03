@@ -1,5 +1,5 @@
 extends State
-class_name Chum1_Active
+class_name Chum3_Active
 @onready var state_name := "Active"
 
 @onready var chum: CharacterBody3D

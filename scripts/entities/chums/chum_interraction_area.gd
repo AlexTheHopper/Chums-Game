@@ -1,9 +1,10 @@
 extends Area3D
 
 @onready var quality_popup_scene := load("res://scenes/entities/quality_popup.tscn")
-@export var chum: CharacterBody3D
+@onready var chum = owner
+@onready var shape := $CollisionShape3D
 
-func _on_interraction_area_body_entered(body: Node3D) -> void:
+func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
 		#Add chum to close chums if not already in:
 		if chum not in ChumsManager.close_chums:
@@ -16,7 +17,7 @@ func _on_interraction_area_body_entered(body: Node3D) -> void:
 			chum.add_child(popup)
 			popup.global_position += Vector3(0, 2, 0)
 
-func _on_interraction_area_body_exited(body: Node3D) -> void:
+func _on_body_exited(body: Node3D) -> void:
 	if body is Player:		
 		#Remove quality popup if it exists
 		for popup in chum.get_children():
@@ -30,6 +31,6 @@ func _on_interraction_area_body_exited(body: Node3D) -> void:
 		#Update other close chums to open quality popup:
 		for close_chum in ChumsManager.close_chums:
 			if close_chum != chum:
-				close_chum.interraction_area._on_interraction_area_body_entered(get_tree().get_first_node_in_group("Player"))
+				close_chum.interraction_area._on_body_entered(get_tree().get_first_node_in_group("Player"))
 
 		chum.player_is_near = false
