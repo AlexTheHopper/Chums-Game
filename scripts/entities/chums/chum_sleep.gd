@@ -6,7 +6,7 @@ class_name Chum1_Sleep
 @onready var sleep_particles = preload("res://particles/sleep_particles.tscn")
 
 func Enter():
-	chum.call_deferred("enable_interraction")
+	chum.call_deferred("enable_interaction")
 	chum.anim_player.play("Sleep")
 	call_deferred("create_sleep_particles")
 	
@@ -32,7 +32,7 @@ func Exit():
 	if not chum.target:
 		Transitioned.emit(self, "Idle")
 		
-	chum.call_deferred("disable_interraction")
+	chum.call_deferred("disable_interaction")
 	chum.set_collision_mask_value(2, true)
 	
 	chum.remove_sleep_particles()

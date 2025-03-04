@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwdc4wu5e2q2y"]
 
-[ext_resource type="Script" path="res://scripts/world/room_changer.gd" id="1_k6irp"]
+[ext_resource type="Script" uid="uid://bfx44e1k2pxju" path="res://scripts/world/room_changer.gd" id="1_k6irp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aukul"]
 size = Vector3(6, 2, 6)

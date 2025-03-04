@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bcyjv52keuase"]
 
 [ext_resource type="ArrayMesh" uid="uid://b035egc6vcosi" path="res://assets/world/world_1_other/door.vox" id="1_fn6d3"]
-[ext_resource type="Script" path="res://scripts/world/door_world_1.gd" id="1_smsyp"]
+[ext_resource type="Script" uid="uid://p7lmstyqrdfm" path="res://scripts/world/door_world_1.gd" id="1_smsyp"]
 [ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="2_js06l"]
 
 [sub_resource type="Animation" id="Animation_5p4kw"]
@@ -62,8 +62,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a7q25"]
 _data = {
-"lower": SubResource("Animation_5p4kw"),
-"raise": SubResource("Animation_ygmca")
+&"lower": SubResource("Animation_5p4kw"),
+&"raise": SubResource("Animation_ygmca")
 }
 
 [node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("animation_player")]

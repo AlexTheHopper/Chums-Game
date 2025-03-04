@@ -60,7 +60,7 @@ func _process(_delta: float) -> void:
 			
 			#Reinstantiate quality popup for close chum(s)
 			for close_chum in ChumsManager.close_chums:
-				close_chum.interraction_area._on_body_entered(get_tree().get_first_node_in_group("Player"))
+				close_chum.interaction_area._on_body_entered(get_tree().get_first_node_in_group("Player"))
 	
 	else:
 		scale = lerp(scale, Vector3(0.05, 0.05, 0.05), 0.1)

@@ -16,7 +16,7 @@ var follow_distance = 10.0
 @export var sleep_zone : Node3D
 @export var hitbox: Hitbox
 @export var hurtbox: Hurtbox
-@export var interraction_area : Area3D
+@export var interaction_area : Area3D
 @export var sleep_particles : PackedScene = preload("res://particles/sleep_particles.tscn")
 
 @onready var state_machine = $GeneralChumBehaviour.state_machine
@@ -100,10 +100,10 @@ func remove_sleep_particles():
 	for child in sleep_zone.get_children():
 		child.queue_free()
 		
-func enable_interraction():
-	interraction_area.shape.disabled = false
-func disable_interraction():
-	interraction_area.shape.disabled = true
+func enable_interaction():
+	interaction_area.shape.disabled = false
+func disable_interaction():
+	interaction_area.shape.disabled = true
 	pass
 	
 #Runs when enemy chums wake up from room activator

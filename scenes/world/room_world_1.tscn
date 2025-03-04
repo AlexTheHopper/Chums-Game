@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cja6ofg20vexg"]
+[gd_scene load_steps=9 format=3 uid="uid://cja6ofg20vexg"]
 
-[ext_resource type="Script" path="res://scripts/world/room_world_1.gd" id="1_c3888"]
+[ext_resource type="Script" uid="uid://ci7owev45b6ka" path="res://scripts/world/room_world_1.gd" id="1_c3888"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="2_4abfg"]
 [ext_resource type="MeshLibrary" uid="uid://bhmeykblptwub" path="res://assets/world/world_1_mesh_lib_v7.tres" id="2_tax5q"]
 [ext_resource type="PackedScene" uid="uid://ce86dk61xylkx" path="res://scenes/entities/room_activator.tscn" id="4_2ndti"]
@@ -16,6 +16,11 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="Environment" id="Environment_1q6o2"]
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.173954, 0.323436, 0.271598, 1)
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("spawn_timer")]
 script = ExtResource("1_c3888")
@@ -82,5 +87,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
 omni_range = 40.0
 omni_attenuation = 0.75
 omni_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1q6o2")
 
 [connection signal="timeout" from="SpawnPath/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

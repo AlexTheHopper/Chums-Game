@@ -1,13 +1,13 @@
 [gd_scene load_steps=23 format=4 uid="uid://drxheem3aa6jh"]
 
 [ext_resource type="Texture2D" uid="uid://g35mj6n4ea3o" path="res://Blender_Assets/BlenderData/Chum_Exports/chum3_chum_3_detach.png" id="1_60mfq"]
-[ext_resource type="Script" path="res://scripts/entities/chums/chum3/chum3.gd" id="1_a8olv"]
-[ext_resource type="Script" path="res://scripts/entities/hurtbox.gd" id="2_frdah"]
-[ext_resource type="Script" path="res://scripts/entities/hitbox.gd" id="3_0ll25"]
+[ext_resource type="Script" uid="uid://bq7grcqrlpw45" path="res://scripts/entities/chums/chum3/chum3.gd" id="1_a8olv"]
+[ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="2_frdah"]
+[ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="3_0ll25"]
 [ext_resource type="PackedScene" uid="uid://cdfad011ncqxd" path="res://scenes/entities/chums/bracelet_4.tscn" id="3_pde15"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="4_v0ro4"]
-[ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interraction_area.tscn" id="9_67dvc"]
-[ext_resource type="Script" path="res://scripts/entities/chums/chum3/chum3_active.gd" id="9_abui3"]
+[ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="9_67dvc"]
+[ext_resource type="Script" uid="uid://d0ujotm4rcbap" path="res://scripts/entities/chums/chum3/chum3_active.gd" id="9_abui3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pylmb"]
 resource_name = "palette"
@@ -346,6 +346,21 @@ tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = PackedFloat32Array(0, 1, 1.12382e-08, 4.21469e-08, -0.707107, 0.707107)
 
+[sub_resource type="Animation" id="Animation_1yjux"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachmentBracelet/Hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_vnuay"]
 resource_name = "Sleep"
 length = 2.5
@@ -612,30 +627,15 @@ tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = PackedFloat32Array(0, 1, 1.12382e-08, 4.21469e-08, -0.707107, 0.707107, 0.2, 1, 1.09625e-08, 4.18958e-08, -0.707107, 0.707107, 0.233333, 1, -5.85667e-05, -0.000589717, -0.660414, 0.750902, 0.266667, 1, -0.000136254, -0.00137189, -0.593981, 0.804478, 0.3, 1, -0.000184012, -0.00185273, -0.550536, 0.83481, 0.333333, 1, -0.000144257, -0.00145246, -0.586842, 0.809701, 0.366667, 1, -6.9314e-05, -0.000697908, -0.651532, 0.75862, 0.4, 1, -2.01973e-05, -0.000203391, -0.691328, 0.722541, 0.433333, 1, 9.65773e-09, 4.37274e-08, -0.707107, 0.707107, 0.666667, 1, 1.12382e-08, 4.21469e-08, -0.707107, 0.707107)
 
-[sub_resource type="Animation" id="Animation_1yjux"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachmentBracelet/Hitbox/CollisionShape3D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i1svs"]
 _data = {
-"Attack": SubResource("Animation_tcfnw"),
-"Idle": SubResource("Animation_3ov8j"),
-"Knock": SubResource("Animation_u5ujg"),
-"RESET": SubResource("Animation_1yjux"),
-"Sleep": SubResource("Animation_vnuay"),
-"Wake": SubResource("Animation_u83m6"),
-"Walk": SubResource("Animation_oxrhx")
+&"Attack": SubResource("Animation_tcfnw"),
+&"Idle": SubResource("Animation_3ov8j"),
+&"Knock": SubResource("Animation_u5ujg"),
+&"RESET": SubResource("Animation_1yjux"),
+&"Sleep": SubResource("Animation_vnuay"),
+&"Wake": SubResource("Animation_u83m6"),
+&"Walk": SubResource("Animation_oxrhx")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_my4n3"]
@@ -646,14 +646,14 @@ height = 1.0
 radius = 0.35
 height = 1.2
 
-[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interraction_area")]
+[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area")]
 script = ExtResource("1_a8olv")
 anim_player = NodePath("Body/AnimationPlayer")
 body_mesh = NodePath("Body/Armature/Skeleton3D/BodyMesh")
 sleep_zone = NodePath("Body/Armature/Skeleton3D/BoneAttachmentSleepZone/SleepZone")
 hitbox = NodePath("Body/Armature/Skeleton3D/BoneAttachmentBracelet/Hitbox")
 hurtbox = NodePath("Hurtbox")
-interraction_area = NodePath("ChumInterractionArea")
+interaction_area = NodePath("ChumInterractionArea")
 
 [node name="Body" type="Node3D" parent="."]
 transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
@@ -730,7 +730,7 @@ mesh = SubResource("ArrayMesh_ew3wb")
 skin = SubResource("Skin_it3ej")
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(-0.941823, 3.55271e-14, 0.336111, 0.336111, 1.06581e-14, 0.941823, 2.13163e-14, 1, -2.52399e-14, -0.701666, 0.734906, 1.1724e-14)
+transform = Transform3D(-0.941823, -7.10543e-14, 0.33611, 0.33611, 4.08562e-14, 0.941823, -8.52651e-14, 1, -2.16872e-14, -0.701666, 0.734906, 9.59233e-15)
 bone_name = "Spear"
 bone_idx = 6
 
@@ -756,7 +756,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
 libraries = {
-"": SubResource("AnimationLibrary_i1svs")
+&"": SubResource("AnimationLibrary_i1svs")
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

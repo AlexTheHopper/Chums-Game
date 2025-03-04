@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwsswul3x20m3"]
 
-[ext_resource type="Script" path="res://scripts/entities/chums/chum_interraction_area.gd" id="1_jae2n"]
+[ext_resource type="Script" uid="uid://bdhxw8wg4bk1p" path="res://scripts/entities/chums/chum_interaction_area.gd" id="1_jae2n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xwwfy"]
 radius = 2.0

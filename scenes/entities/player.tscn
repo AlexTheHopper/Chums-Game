@@ -1,10 +1,10 @@
 [gd_scene load_steps=24 format=4 uid="uid://dmgabiox56kck"]
 
-[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_8mcap"]
-[ext_resource type="Script" path="res://scripts/entities/health.gd" id="2_foxub"]
+[ext_resource type="Script" uid="uid://d1mbalfu0wlex" path="res://scripts/entities/player.gd" id="1_8mcap"]
+[ext_resource type="Script" uid="uid://cf5efj3v5c38n" path="res://scripts/entities/health.gd" id="2_foxub"]
 [ext_resource type="Texture2D" uid="uid://qoftnyn10nd" path="res://Blender_Assets/BlenderData/Other_Exports/player_player.png" id="3_8dc6w"]
-[ext_resource type="Script" path="res://scripts/entities/hitbox.gd" id="4_f0wg7"]
-[ext_resource type="Script" path="res://scripts/entities/hurtbox.gd" id="5_6214k"]
+[ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_f0wg7"]
+[ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_6214k"]
 [ext_resource type="Material" uid="uid://tqe7rbh07xh7" path="res://materials/xray_material_player.tres" id="5_sb1xe"]
 [ext_resource type="PackedScene" uid="uid://2eost3t4boox" path="res://scenes/entities/lantern.tscn" id="7_rhmd7"]
 
@@ -579,14 +579,14 @@ tracks/10/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1l68m"]
 _data = {
-"Idle_Carry": SubResource("Animation_faxao"),
-"Idle_noCarry": SubResource("Animation_7ptev"),
-"Jump_Carry": SubResource("Animation_b5pgf"),
-"Jump_noCarry": SubResource("Animation_t8kl5"),
-"RESET": SubResource("Animation_favnk"),
-"Run_Carry": SubResource("Animation_fjhog"),
-"Run_noCarry": SubResource("Animation_e6xph"),
-"Swing": SubResource("Animation_8ualu")
+&"Idle_Carry": SubResource("Animation_faxao"),
+&"Idle_noCarry": SubResource("Animation_7ptev"),
+&"Jump_Carry": SubResource("Animation_b5pgf"),
+&"Jump_noCarry": SubResource("Animation_t8kl5"),
+&"RESET": SubResource("Animation_favnk"),
+&"Run_Carry": SubResource("Animation_fjhog"),
+&"Run_noCarry": SubResource("Animation_e6xph"),
+&"Swing": SubResource("Animation_8ualu")
 }
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hitbox", "hurtbox") groups=["Player"]]

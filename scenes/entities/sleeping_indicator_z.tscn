@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxlr42okabcim"]
 
-[ext_resource type="Script" path="res://scripts/entities/sleeping_indicator_z.gd" id="1_5xe74"]
+[ext_resource type="Script" uid="uid://cs61ultl2b7vi" path="res://scripts/entities/sleeping_indicator_z.gd" id="1_5xe74"]
 
 [sub_resource type="TextMesh" id="TextMesh_v5wed"]
 text = "Z"
@@ -41,8 +41,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vob06"]
 _data = {
-"RESET": SubResource("Animation_m8nck"),
-"fade_out": SubResource("Animation_3y1gu")
+&"RESET": SubResource("Animation_m8nck"),
+&"fade_out": SubResource("Animation_3y1gu")
 }
 
 [node name="CharacterBody3D" type="CharacterBody3D"]

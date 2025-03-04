@@ -31,6 +31,6 @@ func _on_body_exited(body: Node3D) -> void:
 		#Update other close chums to open quality popup:
 		for close_chum in ChumsManager.close_chums:
 			if close_chum != chum:
-				close_chum.interraction_area._on_body_entered(get_tree().get_first_node_in_group("Player"))
+				close_chum.interaction_area._on_body_entered(get_tree().get_first_node_in_group("Player"))
 
 		chum.player_is_near = false

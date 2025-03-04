@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1saa1y5s8j4y"]
 
-[ext_resource type="Script" path="res://scripts/entities/health_bar.gd" id="1_22ocg"]
+[ext_resource type="Script" uid="uid://mfqmun4mwhwu" path="res://scripts/entities/health_bar.gd" id="1_22ocg"]
 [ext_resource type="PackedScene" uid="uid://cka0qlipgy7q8" path="res://scenes/entities/health_bar_notch.tscn" id="2_1opjk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpfap"]

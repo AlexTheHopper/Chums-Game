@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ce86dk61xylkx"]
 
-[ext_resource type="Script" path="res://scripts/entities/room_activator.gd" id="1_w805r"]
+[ext_resource type="Script" uid="uid://b60jm7a13m5s" path="res://scripts/entities/room_activator.gd" id="1_w805r"]
 [ext_resource type="ArrayMesh" uid="uid://ds84tmrige4ss" path="res://assets/world/world_1_other/bell_frame.vox" id="2_anb2o"]
 [ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="2_mand4"]
 [ext_resource type="ArrayMesh" uid="uid://8bbxaxucl7y3" path="res://assets/world/world_1_other/bell.vox" id="3_0vrnq"]
@@ -114,9 +114,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hdihc"]
 _data = {
-"RESET": SubResource("Animation_v0blm"),
-"remove_bell": SubResource("Animation_wotmk"),
-"ring": SubResource("Animation_f3ld2")
+&"RESET": SubResource("Animation_v0blm"),
+&"remove_bell": SubResource("Animation_wotmk"),
+&"ring": SubResource("Animation_f3ld2")
 }
 
 [node name="RoomActivator" type="Node3D"]

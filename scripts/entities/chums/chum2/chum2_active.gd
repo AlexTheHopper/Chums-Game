@@ -69,3 +69,9 @@ func _on_nav_timer_timeout() -> void:
 		
 func Exit():
 	nav_timer.stop()
+	
+	nav_timer.timeout.disconnect(_on_nav_timer_timeout)
+	chum.nav_agent.target_reached.disconnect(_on_navigation_agent_3d_target_reached)
+	chum.nav_agent.velocity_computed.disconnect(_on_navigation_agent_3d_velocity_computed)
+	
+	chum.anim_player.animation_finished.disconnect(_on_animation_player_animation_finished)

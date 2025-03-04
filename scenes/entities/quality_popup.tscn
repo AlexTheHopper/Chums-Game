@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://bgd4xkckyqdcg"]
 
-[ext_resource type="Script" path="res://scripts/entities/quality_popup.gd" id="1_purmp"]
-[ext_resource type="Shader" path="res://materials/nodepthtest.gdshader" id="2_piaxk"]
+[ext_resource type="Script" uid="uid://b0rs5b6ow7au3" path="res://scripts/entities/quality_popup.gd" id="1_purmp"]
+[ext_resource type="Shader" uid="uid://db57gow0ouvok" path="res://materials/nodepthtest.gdshader" id="2_piaxk"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1lra1"]
 viewport_path = NodePath("Container/Display/SubViewport")

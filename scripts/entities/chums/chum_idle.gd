@@ -10,14 +10,11 @@ var wander_offset = randf_range(0, 2 * PI)
 
 func Enter():
 	idle_time = 0.0
-	chum.call_deferred("enable_interraction")
+	chum.call_deferred("enable_interaction")
 	
 	chum.anim_player.play("Idle")
 	
-func Exit():
-	call_deferred("chum.disable_interraction")
-	
-func Update(delta: float):	
+func Update(_delta: float):	
 	#Follow player if far enough away, and room beaten:
 	if Global.world_map[Global.room_location]["activated"]:
 		if Functions.distance_squared(chum, player) > pow(chum.follow_distance, 2):
@@ -36,3 +33,6 @@ func Physics_Update(delta: float):
 	idle_time += delta
 	
 	chum.move_and_slide()
+	
+func Exit():
+	chum.call_deferred("disable_interaction")
