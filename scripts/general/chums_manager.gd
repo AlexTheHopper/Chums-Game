@@ -1,7 +1,6 @@
 extends Node
 
 var world1_chums : Dictionary
-var chum_id_to_name : Dictionary
 var close_chums := []
 var quality_popup_active = false
 
@@ -10,13 +9,7 @@ func _ready() -> void:
 	world1_chums[0] = preload("res://scenes/entities/chums/chum1.tscn")
 	world1_chums[0.1] = preload("res://scenes/entities/chums/chum2.tscn")
 	world1_chums[0.2] = preload("res://scenes/entities/chums/chum3.tscn")
-	world1_chums[0.3] = preload("res://scenes/entities/chums/chum4.tscn")
-	
-	chum_id_to_name = {"chum1": "Flamenco",
-						"chum2": "Stump",
-						"chum3": "Pear",
-						"chum4": "Jabby",}
-	
+	world1_chums[0.3] = preload("res://scenes/entities/chums/chum4.tscn")	
 
 func get_random_world1_chum(room_value: float):
 	#A rooms value is its distance from the lobby. Room (0, 1) has a value of 1.
@@ -38,5 +31,5 @@ func get_random_world1_chum(room_value: float):
 	
 	return {"object": world1_chums[chosen_value], "value": chosen_value}
 	
-func get_specific_chum(chum_name):
-	return load("res://scenes/entities/chums/%s.tscn" % [chum_name])
+func get_specific_chum(chum_str):
+	return load("res://scenes/entities/chums/%s.tscn" % [chum_str])

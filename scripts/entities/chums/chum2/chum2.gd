@@ -1,6 +1,7 @@
 extends Chum
 class_name Chum2
-@onready var chum_name := "chum2"
+var chum_str := "chum2"
+var chum_name := "Stump"
 
 var desc := "CHUM 2 DESC."
 

@@ -18,6 +18,9 @@ _data = {
 point_count = 5
 
 [sub_resource type="Environment" id="Environment_1q6o2"]
+ambient_light_source = 3
+ambient_light_color = Color(0.73893, 0.821893, 0.656433, 1)
+ambient_light_sky_contribution = 0.9
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0.173954, 0.323436, 0.271598, 1)

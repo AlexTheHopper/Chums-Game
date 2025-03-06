@@ -5,22 +5,23 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gpfap"]
 resource_local_to_scene = true
+render_priority = -1
 albedo_color = Color(0.12549, 0.431373, 0.160784, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yhmx4"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_gpfap")
-size = Vector3(1, 0.2, 0.2)
+size = Vector3(1, 0.1, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwuqx"]
 resource_local_to_scene = true
 transparency = 1
-albedo_color = Color(0.0196078, 0.0196078, 0.0196078, 0.666667)
+albedo_color = Color(0.0196078, 0.0196078, 0.0196078, 0.462745)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h7ggc"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_hwuqx")
-size = Vector3(1.01, 0.21, 0.21)
+size = Vector3(1.01, 0.11, 0.11)
 
 [node name="HealthBar" type="Node3D" node_paths=PackedStringArray("current_health_bar", "max_health_bar")]
 script = ExtResource("1_22ocg")

@@ -6,10 +6,16 @@ extends Node
 @onready var player_health: float
 @onready var player_max_health: float
 @onready var bracelets := 0
+@onready var player_max_chums := 3
 
 signal hud_health_change
 signal hud_max_health_change
 signal hud_bracelets_change
+
+signal player_chums_changed
+
+signal insufficient_bracelets
+signal too_many_chums
 
 func _ready() -> void:
 	health_node.health_changed.connect(_on_player_health_changed)
@@ -29,3 +35,15 @@ func _on_player_max_health_changed(_differnce):
 func bracelets_added(value):
 	bracelets += value
 	hud_bracelets_change.emit()
+	
+func friend_chums_changed():
+	player_chums_changed.emit()
+	
+func emit_insufficient_bracelets():
+	insufficient_bracelets.emit()
+	
+func emit_too_many_chums():
+	too_many_chums.emit()
+	
+func is_chum_list_full():
+	return len(get_tree().get_nodes_in_group("Chums_Friend")) >= player_max_chums

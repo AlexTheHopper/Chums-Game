@@ -23,7 +23,7 @@ var rotations := 1.0
 func _ready() -> void:
 	#Set all values:
 	#Front
-	disp_name.text = ChumsManager.chum_id_to_name[chum.chum_name]
+	disp_name.text = chum.chum_name
 	disp_cost.text = "Bracelets Needed: %s" %chum.bracelet_cost
 	disp_move_speed_value.text = str(chum.quality["move_speed"])
 	disp_damage_value.text = str(chum.quality["damage"])

@@ -1,6 +1,8 @@
 extends Chum
 class_name Chum1
-@onready var chum_name := "chum1"
+var chum_str := "chum1"
+var chum_name := "Flamenco"
+
 
 var desc := "This one-legged pink chum spends its whole day jumping around on its singular foot. With no opposable thumbs nor opposable wings, the only means of travel is hopping, and the only means of attacking prey is pecking. God has forsaken this chum as rather useless, as such it shall spend its days hopping around in search of more things to throw its head into."
 

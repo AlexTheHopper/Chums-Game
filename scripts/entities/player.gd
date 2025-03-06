@@ -191,6 +191,10 @@ func align_with_floor(normal):
 			
 		global_transform = global_transform.interpolate_with(xform, 0.3)
 		rotation.y = 0
+		
+func _on_health_changed(difference):
+	if difference < 0.0:
+		$Hurtbox/AnimationPlayer.play("Hurt")
 
 func _on_health_health_depleted() -> void:
 	call_deferred("kill_player")

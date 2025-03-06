@@ -34,7 +34,7 @@ func save_room():
 	
 	for group in ["Chums_Enemy", "Chums_Neutral"]:
 		for chum in get_tree().get_nodes_in_group(group):
-			Global.world_map[Global.room_location]["chums"].append({"type": chum.chum_name,
+			Global.world_map[Global.room_location]["chums"].append({"type": chum.chum_str,
 																	"group": group,
 																	"position": chum.global_position,
 																	"state": chum.state_machine.current_state.state_name,

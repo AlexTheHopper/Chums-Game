@@ -27,7 +27,7 @@ func set_notches():
 		var bar_length = $Health.mesh.size.x
 		var start_x = -0.5 * bar_length
 				
-		for n in notch_count:
+		for n in range(1, notch_count-1):
 			var notch = notch_scene.instantiate()
 			$Frame.add_child(notch)
 			
@@ -42,7 +42,7 @@ func _on_health_changed(_difference):
 	#Adjust colour:
 	var health_color = Color(1.0 - health_ratio, health_ratio, 0.0)
 	if health_ratio <= 0.0:
-		health_color = Color(0.0, 0.0, 0.0)
+		health_color = Color(0.0, 0.0, 0.0, 1.0)
 	current_health_bar.mesh.material.albedo_color = health_color
 	
 func _on_max_health_changed(_difference):

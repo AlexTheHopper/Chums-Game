@@ -6,6 +6,8 @@ class_name Chum1_Knock
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func Enter():
+	if chum.current_group == "Chums_Friend":
+		PlayerStats.call_deferred("friend_chums_changed")
 	chum.make_neutral()
 	
 	#Allow player,chums to walk through

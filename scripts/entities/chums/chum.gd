@@ -52,6 +52,13 @@ signal spawn_currency(type, location)
 func _ready() -> void:
 	add_to_group("Chums_Neutral")
 	body_mesh.set_material_overlay(black_overlay)
+	
+	#Needed so that when hit, only the hit enemy flashes red:
+	body_mesh.mesh = body_mesh.mesh.duplicate()
+	var material = body_mesh.mesh.surface_get_material(0)
+	var material_u = material.duplicate()
+	body_mesh.mesh.surface_set_material(0, material_u)
+	
 	health_node.health_depleted.connect(_on_health_health_depleted)
 	hurtbox.recieved_damage.connect(_on_recieved_damage)
 	rotation.y = randf() * 2 * PI
@@ -59,7 +66,7 @@ func _ready() -> void:
 	set_collision_layer_value(1, false)
 	set_collision_layer_value(4, true)
 	
-	set_collision_mask_value(2, true)
+	#set_collision_mask_value(2, true) #Dont do this, so you cant push them in sleep.
 	set_collision_mask_value(4, true)
 	
 	if not stats_set:
@@ -124,6 +131,9 @@ func find_enemy():
 func _on_recieved_damage(_damage, change_agro, _attacker):
 	if change_agro:
 		set_new_target()
+		
+	$Hurtbox/AnimationPlayer.play("Hurt")
+	
 
 func _on_health_health_depleted() -> void:
 	if current_group == "Chums_Enemy":
@@ -195,14 +205,28 @@ func make_neutral():
 		nav_agent.set_avoidance_mask_value(2, false)
 	
 func attempt_carry():
+	var is_friend = current_group == "Chums_Friend"
+	
+	#Player must not be full of friends:
+	if PlayerStats.is_chum_list_full() and not is_friend:
+		PlayerStats.emit_too_many_chums()
+		return
 	#Player must not already be carrying a chum
-	if not get_tree().get_first_node_in_group("Player").is_carrying:
-		#If the chum is not friendly, need to pay in bracelets
-		if current_group == "Chums_Friend" or PlayerStats.bracelets >= self.bracelet_cost:
-			if current_group != "Chums_Friend":
-				PlayerStats.bracelets_added(-self.bracelet_cost)
-			get_tree().get_first_node_in_group("Player").is_carrying = true
-			set_state("Carry")
+	if get_tree().get_first_node_in_group("Player").is_carrying:
+		return
+	
+	#If chum is enemy and not enough bracelets:
+	if not is_friend and PlayerStats.bracelets < self.bracelet_cost:
+		PlayerStats.emit_insufficient_bracelets()
+		return
+		
+	#WORKS if chum is friend OR have enough bracelets.
+	if is_friend or PlayerStats.bracelets >= self.bracelet_cost:
+		if not is_friend:
+			PlayerStats.bracelets_added(-self.bracelet_cost)
+			PlayerStats.call_deferred("friend_chums_changed")
+		get_tree().get_first_node_in_group("Player").is_carrying = true
+		set_state("Carry")
 
 func do_attack(_attack_name):
 	anim_player.play("Attack")
