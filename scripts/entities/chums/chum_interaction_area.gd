@@ -1,7 +1,7 @@
 extends Area3D
 
 @onready var quality_popup_scene := load("res://scenes/entities/quality_popup.tscn")
-@onready var chum = owner
+@onready var chum := owner
 @onready var shape := $CollisionShape3D
 
 func _on_body_entered(body: Node3D) -> void:

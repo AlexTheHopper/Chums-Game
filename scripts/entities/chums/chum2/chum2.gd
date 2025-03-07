@@ -10,7 +10,7 @@ var desc := "CHUM 2 DESC."
 										"distance": 0.85,
 										"single_target": true}
 
-var default_move_speed = 0.75
+var default_move_speed := 0.75
 
 var max_health := 10.0
 var start_health := 10.0

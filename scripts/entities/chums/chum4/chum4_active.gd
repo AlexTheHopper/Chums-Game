@@ -3,11 +3,11 @@ class_name Chum4_Active
 @onready var state_name := "Active"
 
 @onready var chum: CharacterBody3D
-@onready var attack_timer = $AttackTimer
-@onready var nav_timer = $NavTimer
+@onready var attack_timer := $AttackTimer
+@onready var nav_timer := $NavTimer
 var nav_vel := Vector3(0, 0, 0)
 var attacking := false
-var has_touched_floor = false
+var has_touched_floor := false
 
 func Enter():
 	attack_timer.wait_time = chum.attack["speed"]

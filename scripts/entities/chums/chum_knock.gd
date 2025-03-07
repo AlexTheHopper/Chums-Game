@@ -3,7 +3,7 @@ class_name Chum1_Knock
 @onready var state_name := "Knock"
 
 @onready var chum: CharacterBody3D
-@onready var player = get_tree().get_first_node_in_group("Player")
+@onready var player := get_tree().get_first_node_in_group("Player")
 
 func Enter():
 	if chum.current_group == "Chums_Friend":

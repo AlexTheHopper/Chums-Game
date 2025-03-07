@@ -33,6 +33,7 @@ func create_world(size):
 										"to_spawn": -1,
 										"value": Vector2(x, y).length(),
 										"bell_angle": randf_range(0, 2 * PI),
+										"heart_count": 3,
 										"chums": [],
 										"light_position": Vector3(),
 										"decorations": [],

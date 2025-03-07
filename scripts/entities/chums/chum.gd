@@ -9,7 +9,7 @@ class_name Chum
 @onready var jump_gravity: float = (-2.0 * jump_height) / (jump_peak_time ** 2)
 @onready var fall_gravity: float = (-2.0 * jump_height) / (jump_fall_time ** 2)
 
-var follow_distance = 10.0
+var follow_distance := 10.0
 
 @export var anim_player : AnimationPlayer
 @export var body_mesh : MeshInstance3D
@@ -31,8 +31,14 @@ var current_group := "Chums_Neutral"
 @onready var bracelet := $Body/Armature/Skeleton3D/BoneAttachmentBracelet/Bracelet
 
 @onready var particle_zone := $Particles
+@onready var hurt_particles_enemy := load("res://particles/damage_enemy.tscn")
+@onready var hurt_particles_friend := load("res://particles/damage_friendly.tscn")
+@onready var hurt_particles := hurt_particles_enemy
+@onready var heal_particles_enemy := load("res://particles/heal_enemy.tscn")
+@onready var heal_particles_friend := load("res://particles/heal_friendly.tscn")
+@onready var heal_particles := heal_particles_enemy
 
-var stats_set = false
+var stats_set := false
 @onready var attack: Dictionary
 @onready var move_speed: float
 var quality := {"damage": 0, "speed": 0, "move_speed": 0}
@@ -62,6 +68,7 @@ func _ready() -> void:
 	
 	health_node.health_depleted.connect(_on_health_health_depleted)
 	hurtbox.recieved_damage.connect(_on_recieved_damage)
+	health_node.health_changed.connect(_on_health_changed)
 	rotation.y = randf() * 2 * PI
 	
 	set_collision_layer_value(1, false)
@@ -132,9 +139,14 @@ func find_enemy():
 func _on_recieved_damage(_damage, change_agro, _attacker):
 	if change_agro:
 		set_new_target()
+
+func _on_health_changed(difference):
+	if difference < 0.0:
+		$Hurtbox/AnimationPlayer.play("Hurt")
+		particle_zone.add_child(hurt_particles.instantiate())
 		
-	$Hurtbox/AnimationPlayer.play("Hurt")
-	
+	elif difference > 0.0 and state_machine.current_state.state_name != "Sleep":
+		particle_zone.add_child(heal_particles.instantiate())
 
 func _on_health_health_depleted() -> void:
 	if current_group == "Chums_Enemy":
@@ -148,6 +160,15 @@ func _on_health_health_depleted() -> void:
 	set_state("Knock")
 	health_depleted.emit()
 	
+func has_damage() -> bool:
+	return health_node.get_health() < health_node.get_max_health()
+	
+func damaged():
+	print('damaged')
+
+func healed():
+	print('healed')
+	
 func make_enemy():
 	remove_from_group("Chums_Friend")
 	remove_from_group("Chums_Neutral")
@@ -156,6 +177,8 @@ func make_enemy():
 	body_mesh.set_material_overlay(red_overlay)
 	hitbox.set_as_enemy()
 	hurtbox.set_as_enemy()
+	hurt_particles = hurt_particles_enemy
+	heal_particles = heal_particles_enemy
 	
 	if bracelet:
 		bracelet.make_invisible()
@@ -174,6 +197,8 @@ func make_friendly():
 	body_mesh.set_material_overlay(blue_overlay)
 	hitbox.set_as_friendly()
 	hurtbox.set_as_friendly()
+	hurt_particles = hurt_particles_friend
+	heal_particles = heal_particles_friend
 	
 	if bracelet:
 		bracelet.make_visible()
@@ -195,6 +220,8 @@ func make_neutral():
 	body_mesh.set_material_overlay(black_overlay)
 	hitbox.set_as_neutral()
 	hurtbox.set_as_neutral()
+	hurt_particles = hurt_particles_enemy
+	heal_particles = heal_particles_enemy
 	
 	if bracelet:
 		bracelet.make_invisible()

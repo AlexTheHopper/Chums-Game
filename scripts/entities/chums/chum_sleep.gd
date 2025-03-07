@@ -3,7 +3,7 @@ class_name Chum1_Sleep
 @onready var state_name := "Sleep"
 
 @onready var chum: CharacterBody3D
-@onready var sleep_particles = preload("res://particles/sleep_particles.tscn")
+@onready var sleep_particles := preload("res://particles/sleep_particles.tscn")
 
 func Enter():
 	chum.call_deferred("enable_interaction")

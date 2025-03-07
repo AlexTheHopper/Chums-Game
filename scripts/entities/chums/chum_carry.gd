@@ -3,8 +3,8 @@ class_name Chum1_Carry
 @onready var state_name := "Carry"
 
 @onready var chum: CharacterBody3D
-@onready var player = get_tree().get_first_node_in_group("Player")
-@onready var target_sprite = $ThrowTarget
+@onready var player := get_tree().get_first_node_in_group("Player")
+@onready var target_sprite := $ThrowTarget
 
 var throw_vel_i: Vector3
 var throw_hor := 10.0

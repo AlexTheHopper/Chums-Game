@@ -3,7 +3,7 @@ class_name Chum1_Follow
 @onready var state_name := "Follow"
 
 @onready var chum: CharacterBody3D
-@onready var player = get_tree().get_first_node_in_group("Player")
+@onready var player := get_tree().get_first_node_in_group("Player")
 
 func Physics_Update(delta: float):
 	chum.velocity = lerp(chum.velocity, chum.move_speed * Functions.vector_to_normalized(chum, chum.target), 0.05)

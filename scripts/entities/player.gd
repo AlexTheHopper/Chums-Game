@@ -37,6 +37,9 @@ var attacking_mult := 1.0
 @onready var health_node := $Health
 @onready var anim_player := $AnimationPlayer
 
+@onready var hurt_particles := load("res://particles/damage_friendly.tscn")
+@onready var heal_particles := load("res://particles/heal_friendly.tscn")
+
 var changes_agro_on_damaged = true
 var draws_agro_on_attack = true
 var maintains_agro = false
@@ -197,9 +200,16 @@ func align_with_floor(normal):
 func _on_health_changed(difference):
 	if difference < 0.0:
 		$Hurtbox/AnimationPlayer.play("Hurt")
+		particle_zone.add_child(hurt_particles.instantiate())
+		
+	elif difference > 0.0:
+		particle_zone.add_child(heal_particles.instantiate())
 
 func _on_health_health_depleted() -> void:
 	call_deferred("kill_player")
+	
+func has_damage() -> bool:
+	return health_node.get_health() < health_node.get_max_health()
 
 func kill_player():
 	get_tree().reload_current_scene()
