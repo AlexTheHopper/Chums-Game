@@ -20,6 +20,7 @@ var camera_goal_vert := 0.0
 var can_align := true
 var is_carrying := false
 var is_attacking := false
+var is_launched := false
 var attacking_mult := 1.0
 
 @export var jump_height: float = 2
@@ -104,6 +105,7 @@ func _physics_process(delta: float) -> void:
 		jumping_time = MAX_JUMPING_TIME
 		coyote_time = MAX_COYOTE
 		in_jump = false
+		is_launched = false
 		#align_with_floor($RayCast3D.get_collision_normal())
 	else:
 		velocity.y += get_gravity_dir() * delta
@@ -123,12 +125,12 @@ func _physics_process(delta: float) -> void:
 		$Armature.rotation.y = lerp_angle($Armature.rotation.y, player_goal_horz, 0.35)
 
 	#Move character:
-	if direction:
+	if direction and not is_launched:
 		velocity.x = direction.x * SPEED * attacking_mult
 		velocity.z = direction.z * SPEED * attacking_mult
 
 	#Slow down after letting go of controls
-	else:
+	elif not is_launched:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 

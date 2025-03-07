@@ -32,3 +32,7 @@ func get_random_decoration_world1():
 	else:
 		var rand_name = decorations_world1_rare.pick_random()
 		return [decorations[rand_name], rand_name]
+		
+func get_common_decoration_world1():
+	var rand_name = decorations_world1_common.pick_random()
+	return [decorations[rand_name], rand_name]

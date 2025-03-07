@@ -41,7 +41,8 @@ var quality := {"damage": 0, "speed": 0, "move_speed": 0}
 
 @onready var target: Node
 var targeted_by := []
-@onready var player_is_near := false
+var player_is_near := false
+var is_launched := false
 
 var initial_state_override = null
 

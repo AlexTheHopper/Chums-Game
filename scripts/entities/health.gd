@@ -60,7 +60,7 @@ func set_health(value: float):
 	
 	if clamped_value != health:
 		var difference = clamped_value - health
-		health = value
+		health = clamped_value
 		
 		if health <= 0.0:
 			health = 0.0

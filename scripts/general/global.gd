@@ -20,12 +20,14 @@ func _ready():
 	rooms = get_parent().get_node("Game/Rooms")
 	
 	room_info = {"lobby_world1": load("res://scenes/world/lobby_world_1.tscn"),
-				"normal_room_world1": load("res://scenes/world/room_world_1.tscn"),}
+				"normal_room_world1": load("res://scenes/world/room_world_1.tscn"),
+				"fountain_room_world1": load("res://scenes/world/fountain_room_world_1.tscn"),
+				}
 
 func create_world(size):
 	for x in range(-size, size + 1):
 		for y in range(-size, size + 1):
-			world_map[Vector2(x,y)] = {"type": "normal_room_world1",
+			world_map[Vector2(x,y)] = {"type": "normal_room_world1" if randf() < 0.5 else "fountain_room_world1",
 										"entered": false,
 										"activated": false,
 										"to_spawn": -1,

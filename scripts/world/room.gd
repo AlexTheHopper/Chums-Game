@@ -105,9 +105,3 @@ func set_player_loc_on_entry():
 		#Set camera goal to nearest multiple of PI / 4
 		player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
 		
-		#Place friendly chums in front of the player:
-		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
-			if chum.state_machine.current_state.name != "Carry":
-				chum.global_position = lerp(player_pos, Vector3(1, 0, 1), 0.5) + Vector3(randf_range(-3, 3), 0, randf_range(-3, 3))
-				chum.rotation.y = randf_range(0, 2*PI)
-				chum.set_state("Idle")
