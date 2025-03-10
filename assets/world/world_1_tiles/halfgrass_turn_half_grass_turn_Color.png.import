@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b4utrixj2uw5m"
+path="res://.godot/imported/halfgrass_turn_half_grass_turn_Color.png-0137cb106f96405f2070bf5da56acd0b.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "08d5a8c718084a248beed873e10d3e85"
+}
+
+[deps]
+
+source_file="res://assets/world/world_1_tiles/halfgrass_turn_half_grass_turn_Color.png"
+dest_files=["res://.godot/imported/halfgrass_turn_half_grass_turn_Color.png-0137cb106f96405f2070bf5da56acd0b.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -26,6 +26,7 @@ DecorationManager="*res://scripts/general/decoration_manager.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [editor]
 
@@ -131,3 +132,4 @@ avoidance/layer_2="Enemy"
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+occlusion_culling/use_occlusion_culling=true

@@ -128,9 +128,9 @@ func _physics_process(delta: float) -> void:
 		$Armature.rotation.y = lerp_angle($Armature.rotation.y, player_goal_horz, 0.35)
 
 	#Move character:
-	if direction and not is_launched:
-		velocity.x = direction.x * SPEED * attacking_mult
-		velocity.z = direction.z * SPEED * attacking_mult
+	if direction:
+		velocity.x = direction.x * SPEED * attacking_mult * (0.1 if is_launched else 1.0)
+		velocity.z = direction.z * SPEED * attacking_mult * (0.1 if is_launched else 1.0)
 
 	#Slow down after letting go of controls
 	elif not is_launched:
