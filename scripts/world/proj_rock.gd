@@ -1,0 +1,66 @@
+extends Area3D
+
+@export var origin: CharacterBody3D
+@export var target: CharacterBody3D
+
+@export var hit_particle: PackedScene
+var velocity := Vector3(0, 0, 0)
+var active := false
+var gravity_ := gravity
+@export var draws_agro_on_attack := false
+var hit_time := 2.0
+
+func _ready() -> void:
+	$AnimationPlayer.play("fade_in")
+	$Hitbox.damage = 1.0
+
+	if origin:
+		draws_agro_on_attack = origin.draws_agro_on_attack
+		$Hitbox.damage = origin.attack["damage"]
+		var parent_group = Functions.get_parent_group(origin)
+		if parent_group in ["Chums_Enemy"]:
+			$Hitbox.set_as_enemy()
+		elif parent_group in ["Chums_Friend", "Player"]:
+			$Hitbox.set_as_friendly()
+	target = get_tree().get_first_node_in_group("Player")
+	if target:
+		set_vel_to_pos(target.global_position)
+	
+func set_vel_to_pos(target_pos):
+	var dx = target_pos.x - global_position.x
+	var dy = target_pos.y - global_position.y
+	var dz = target_pos.z - global_position.z
+	velocity = Vector3(dx, dy + 0.5 * gravity_ * hit_time * hit_time, dz) / hit_time
+
+func _process(delta: float) -> void:
+	velocity += Vector3(0, -gravity_, 0) * delta
+	
+func _physics_process(delta: float) -> void:
+	position += velocity * delta
+
+func _on_body_entered(_body: Node3D) -> void:
+	if active:
+		call_deferred("disable_interaction")
+		$AnimationPlayer.play("fade_out")		
+		make_particles()
+		velocity = Vector3(0, 0, 0)
+		gravity_ = 0
+		active = false
+
+func disable_interaction():
+	$Hitbox/CollisionShape3D.disabled = true
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "fade_in":
+		active = true
+		
+	elif anim_name == "fade_out":
+		$ProjRock.visible = false
+
+func make_particles():
+	var particle_inst = hit_particle.instantiate()
+	add_child(particle_inst)
+	particle_inst.completed.connect(delete)
+	
+func delete():
+	queue_free()

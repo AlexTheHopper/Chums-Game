@@ -749,7 +749,7 @@ bones/2/parent = 0
 bones/2/rest = Transform3D(0, 1, 0, -1, 0, 7.54979e-08, 7.54979e-08, 0, 1, 0.5, 0.6, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0.5, 0.6, 0)
-bones/2/rotation = Quaternion(-3.67175e-08, -8.76412e-09, -0.972676, 0.232168)
+bones/2/rotation = Quaternion(-3.67175e-08, -8.76411e-09, -0.972676, 0.232168)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Leg.L"
 bones/3/parent = 0
@@ -799,7 +799,7 @@ mesh = SubResource("ArrayMesh_jh81s")
 skin = SubResource("Skin_it3ej")
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(-0.941823, -7.10543e-14, 0.33611, 0.33611, 4.08562e-14, 0.941823, -8.52651e-14, 1, -2.16872e-14, -0.701666, 0.734906, 9.59233e-15)
+transform = Transform3D(-0.941823, -7.81597e-14, 0.33611, 0.33611, 4.9738e-14, 0.941823, -9.23706e-14, 1, -2.43517e-14, -0.701666, 0.734906, 1.1191e-14)
 bone_name = "Spear"
 bone_idx = 6
 

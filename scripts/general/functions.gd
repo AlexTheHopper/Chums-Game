@@ -42,3 +42,12 @@ func map_range(value: float, range1: Vector2, range2: Vector2) -> float:
 	
 	var percentage = (value - range1[0]) / (range1[1] - range1[0])
 	return range2[0] + percentage * (range2[1] - range2[0])
+	
+#Goes up tree until a node is in a group, returns that group name as str
+func get_parent_group(node):
+	if len(node.get_groups()) > 0:
+		return node.get_groups()[0]
+	elif node.get_parent():
+		return get_parent_group(node.get_parent())
+	else:
+		return false

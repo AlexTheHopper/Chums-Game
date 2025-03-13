@@ -142,11 +142,18 @@ func _on_recieved_damage(_damage, change_agro, _attacker):
 
 func _on_health_changed(difference):
 	if difference < 0.0:
-		$Hurtbox/AnimationPlayer.play("Hurt")
-		particle_zone.add_child(hurt_particles.instantiate())
-		
+		damaged()
 	elif difference > 0.0 and state_machine.current_state.state_name != "Sleep":
-		particle_zone.add_child(heal_particles.instantiate())
+		healed()
+
+func damaged():
+	$Hurtbox/AnimationPlayer.play("Hurt")
+	particle_zone.add_child(hurt_particles.instantiate())
+	print('chum damaged')
+
+func healed():
+	particle_zone.add_child(heal_particles.instantiate())
+	print('chum healed')
 
 func _on_health_health_depleted() -> void:
 	if current_group == "Chums_Enemy":
@@ -162,12 +169,6 @@ func _on_health_health_depleted() -> void:
 	
 func has_damage() -> bool:
 	return health_node.get_health() < health_node.get_max_health()
-	
-func damaged():
-	print('damaged')
-
-func healed():
-	print('healed')
 	
 func make_enemy():
 	remove_from_group("Chums_Friend")
