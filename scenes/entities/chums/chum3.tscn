@@ -715,7 +715,7 @@ _data = {
 &"RESET": SubResource("Animation_jh81s")
 }
 
-[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area")]
+[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
 script = ExtResource("1_a8olv")
 anim_player = NodePath("Body/AnimationPlayer")
 body_mesh = NodePath("Body/Armature/Skeleton3D/BodyMesh")
@@ -723,6 +723,7 @@ sleep_zone = NodePath("Body/Armature/Skeleton3D/BoneAttachmentSleepZone/SleepZon
 hitbox = NodePath("Body/Armature/Skeleton3D/BoneAttachmentBracelet/Hitbox")
 hurtbox = NodePath("Hurtbox")
 interaction_area = NodePath("ChumInterractionArea")
+bracelet = NodePath("Body/Armature/Skeleton3D/BoneAttachmentBracelet/Bracelet")
 
 [node name="Body" type="Node3D" parent="."]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
@@ -799,7 +800,7 @@ mesh = SubResource("ArrayMesh_jh81s")
 skin = SubResource("Skin_it3ej")
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(-0.941823, -7.81597e-14, 0.33611, 0.33611, 4.9738e-14, 0.941823, -9.23706e-14, 1, -2.43517e-14, -0.701666, 0.734906, 1.1191e-14)
+transform = Transform3D(-0.941823, -7.10543e-14, 0.33611, 0.33611, 4.08562e-14, 0.941823, -8.52651e-14, 1, -2.16872e-14, -0.701666, 0.734906, 9.59233e-15)
 bone_name = "Spear"
 bone_idx = 6
 

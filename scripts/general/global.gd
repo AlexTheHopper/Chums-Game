@@ -24,10 +24,16 @@ func _ready():
 				"fountain_room_world1": load("res://scenes/world/fountain_room_world_1.tscn"),
 				}
 
+func get_room_type(_world_num: int):
+	if randf() < 0.1:
+		return "fountain_room_world1"
+	else:
+		return "normal_room_world1"
+
 func create_world(size):
 	for x in range(-size, size + 1):
 		for y in range(-size, size + 1):
-			world_map[Vector2(x,y)] = {"type": "normal_room_world1" if randf() < 0.5 else "fountain_room_world1",
+			world_map[Vector2(x,y)] = {"type": get_room_type(1),
 										"entered": false,
 										"activated": false,
 										"to_spawn": -1,

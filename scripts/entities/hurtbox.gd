@@ -40,6 +40,7 @@ func set_as_friendly():
 func set_as_neutral():
 	set_collision_layer_value(11, false)
 	set_collision_layer_value(12, false)
+
 	set_collision_mask_value(10, false)
 	set_collision_mask_value(9, false)
 	
@@ -54,10 +55,10 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 		var maintains_agro = false
 		if owner and "target" in owner:
 			maintains_agro = owner.target.maintains_agro
-
+		
 		if changes_agro_on_damaged and hitbox.draws_agro_on_attack and not maintains_agro:
 			change_agro = true
 
-		recieved_damage.emit(hitbox.damage, change_agro, hitbox.owner)
+		recieved_damage.emit(hitbox.damage, change_agro, hitbox.owner.get_agro_change_target())
 		
 		

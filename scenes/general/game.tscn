@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://csf5wbm1gb1u7"]
+[gd_scene load_steps=5 format=3 uid="uid://csf5wbm1gb1u7"]
 
 [ext_resource type="PackedScene" uid="uid://cye4mq80jv22n" path="res://scenes/world/lobby_world_1.tscn" id="1_2tuuw"]
 [ext_resource type="PackedScene" uid="uid://dmgabiox56kck" path="res://scenes/entities/player.tscn" id="2_iwypl"]
 [ext_resource type="PackedScene" uid="uid://cwtw3l04fav7g" path="res://scenes/general/hud.tscn" id="3_6b6ud"]
+[ext_resource type="PackedScene" uid="uid://dogp5icuw6k86" path="res://scenes/world/proj_rock.tscn" id="4_1tfsq"]
 
 [node name="Game" type="Node3D"]
 
@@ -16,3 +17,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
 [node name="Lobby_World1" parent="Rooms" instance=ExtResource("1_2tuuw")]
 
 [node name="HUD" parent="." instance=ExtResource("3_6b6ud")]
+
+[node name="ProjRock" parent="." instance=ExtResource("4_1tfsq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.38918)
+
+[node name="ProjRock2" parent="." instance=ExtResource("4_1tfsq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94495, 0, -9.38918)
+
+[node name="ProjRock3" parent="." instance=ExtResource("4_1tfsq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75771, 0, -9.38918)
+
+[node name="ProjRock4" parent="." instance=ExtResource("4_1tfsq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.67272, 0, -9.38918)

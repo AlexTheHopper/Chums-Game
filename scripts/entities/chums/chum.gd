@@ -17,6 +17,7 @@ var follow_distance := 10.0
 @export var hitbox: Hitbox
 @export var hurtbox: Hurtbox
 @export var interaction_area : Area3D
+@export var bracelet: Node3D
 @export var sleep_particles : PackedScene = preload("res://particles/sleep_particles.tscn")
 
 @onready var state_machine = $GeneralChumBehaviour.state_machine
@@ -28,7 +29,6 @@ var follow_distance := 10.0
 @onready var black_overlay := preload("res://materials/outline_black.tres")
 
 var current_group := "Chums_Neutral"
-@onready var bracelet := $Body/Armature/Skeleton3D/BoneAttachmentBracelet/Bracelet
 
 @onready var particle_zone := $Particles
 @onready var hurt_particles_enemy := load("res://particles/damage_enemy.tscn")
@@ -83,8 +83,9 @@ func _ready() -> void:
 		set_new_stats()
 	
 	#Otherwise, attack and move_speed are set by room.gd
-	hitbox.attack_info = attack
-	hitbox.damage = attack["damage"]
+	if hitbox:
+		hitbox.attack_info = attack
+		hitbox.damage = attack["damage"]
 	nav_agent.target_desired_distance = attack["distance"]
 	nav_agent.avoidance_enabled = true
 	health_node.immune = false
@@ -136,9 +137,9 @@ func find_enemy():
 	if state_machine.current_state.state_name != "Carry":
 		set_state("Active")
 
-func _on_recieved_damage(_damage, change_agro, _attacker):
+func _on_recieved_damage(_damage, change_agro, attacker):
 	if change_agro:
-		set_new_target()
+		set_target_to(attacker)
 
 func _on_health_changed(difference):
 	if difference < 0.0:
@@ -170,14 +171,18 @@ func _on_health_health_depleted() -> void:
 func has_damage() -> bool:
 	return health_node.get_health() < health_node.get_max_health()
 	
+func get_agro_change_target():
+	return self
+	
 func make_enemy():
 	remove_from_group("Chums_Friend")
 	remove_from_group("Chums_Neutral")
 	add_to_group("Chums_Enemy")
 	current_group = "Chums_Enemy"
 	body_mesh.set_material_overlay(red_overlay)
-	hitbox.set_as_enemy()
-	hurtbox.set_as_enemy()
+	if hitbox:
+		hitbox.set_as_enemy()
+		hurtbox.set_as_enemy()
 	hurt_particles = hurt_particles_enemy
 	heal_particles = heal_particles_enemy
 	
@@ -196,8 +201,9 @@ func make_friendly():
 	add_to_group("Chums_Friend")
 	current_group = "Chums_Friend"
 	body_mesh.set_material_overlay(blue_overlay)
-	hitbox.set_as_friendly()
-	hurtbox.set_as_friendly()
+	if hitbox:
+		hitbox.set_as_friendly()
+		hurtbox.set_as_friendly()
 	hurt_particles = hurt_particles_friend
 	heal_particles = heal_particles_friend
 	
@@ -219,8 +225,9 @@ func make_neutral():
 	add_to_group("Chums_Neutral")
 	current_group = "Chums_Neutral"
 	body_mesh.set_material_overlay(black_overlay)
-	hitbox.set_as_neutral()
-	hurtbox.set_as_neutral()
+	if hitbox:
+		hitbox.set_as_neutral()
+		hurtbox.set_as_neutral()
 	hurt_particles = hurt_particles_enemy
 	heal_particles = heal_particles_enemy
 	
@@ -263,7 +270,7 @@ func do_attack(_attack_name):
 func set_new_target():
 	var body: Node
 
-	#Disconnect from previoud chum:
+	#Disconnect from previous chum:
 	if target:
 		target.targeted_by.erase(self)
 		var old_target_health = target.health_node
@@ -286,13 +293,30 @@ func set_new_target():
 		else:
 			body = player
 
-	self.target = body
-	if self.target:
-		self.target.targeted_by.append(self)
+	target = body
+	if target:
+		target.targeted_by.append(self)
 	
 	#Connect to target to know when it dies:
-	if self.target:
-		var new_target_health = self.target.health_node
+	if target:
+		var new_target_health = target.health_node
+		new_target_health.health_depleted.connect(_on_target_death)
+		
+func set_target_to(new_target):
+	#Disconnect from previous chum:
+	if target:
+		target.targeted_by.erase(self)
+		var old_target_health = target.health_node
+		if old_target_health.health_depleted.is_connected(_on_target_death):
+			old_target_health.health_depleted.disconnect(_on_target_death)
+	
+	target = new_target
+	if target:
+		target.targeted_by.append(self)
+	
+	#Connect to target to know when it dies:
+	if target:
+		var new_target_health = target.health_node
 		new_target_health.health_depleted.connect(_on_target_death)
 		
 func _on_target_death():

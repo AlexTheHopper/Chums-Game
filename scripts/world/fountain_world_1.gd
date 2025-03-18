@@ -29,12 +29,14 @@ func _physics_process(delta: float) -> void:
 	$Hearts.rotation.y += delta / 2
 
 func _on_heal_zone_body_entered(body: Node3D) -> void:
-	
 	#Remove a visual heart and heal body if body has damage:
 	if len($Hearts.get_children()) > 0 and body.has_damage() and active:
 		$Hearts.get_children().pick_random().remove()
 		Global.world_map[Global.room_location]["heart_count"] -= 1
+		heart_num -= 1
 		body.health_node.health += HEART_HEAL
+		active = false
+		$Timer.start()
 
 
 func _on_fly_zone_body_entered(body: Node3D) -> void:

@@ -217,6 +217,9 @@ func _on_health_health_depleted() -> void:
 	
 func has_damage() -> bool:
 	return health_node.get_health() < health_node.get_max_health()
+	
+func get_agro_change_target():
+	return self
 
 func kill_player():
 	get_tree().reload_current_scene()

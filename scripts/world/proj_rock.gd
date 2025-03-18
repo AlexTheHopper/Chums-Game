@@ -4,36 +4,47 @@ extends Area3D
 @export var target: CharacterBody3D
 
 @export var hit_particle: PackedScene
+@export var draws_agro_on_attack := false
+
 var velocity := Vector3(0, 0, 0)
+var rotation_: Vector3
 var active := false
 var gravity_ := gravity
-@export var draws_agro_on_attack := false
-var hit_time := 2.0
+var position_: Vector3
+
+var hit_time := 1.0
 
 func _ready() -> void:
 	$AnimationPlayer.play("fade_in")
 	$Hitbox.damage = 1.0
+	
+	rotation_ = Vector3(0, randf_range(0.5, 1.0) * 10, 0)
+	
+	if position_:
+		global_position = position_
 
 	if origin:
 		draws_agro_on_attack = origin.draws_agro_on_attack
+		$Hitbox.draws_agro_on_attack = draws_agro_on_attack
 		$Hitbox.damage = origin.attack["damage"]
 		var parent_group = Functions.get_parent_group(origin)
 		if parent_group in ["Chums_Enemy"]:
 			$Hitbox.set_as_enemy()
 		elif parent_group in ["Chums_Friend", "Player"]:
 			$Hitbox.set_as_friendly()
-	target = get_tree().get_first_node_in_group("Player")
 	if target:
-		set_vel_to_pos(target.global_position)
+		set_vel_to_pos(global_position, target.global_position)
 	
-func set_vel_to_pos(target_pos):
-	var dx = target_pos.x - global_position.x
-	var dy = target_pos.y - global_position.y
-	var dz = target_pos.z - global_position.z
+func set_vel_to_pos(start_pos, target_pos):
+	#Velocity:
+	var dx = target_pos.x - start_pos.x
+	var dy = target_pos.y - start_pos.y
+	var dz = target_pos.z - start_pos.z
 	velocity = Vector3(dx, dy + 0.5 * gravity_ * hit_time * hit_time, dz) / hit_time
 
 func _process(delta: float) -> void:
 	velocity += Vector3(0, -gravity_, 0) * delta
+	$ProjRock.rotation += rotation_ * delta
 	
 func _physics_process(delta: float) -> void:
 	position += velocity * delta
@@ -64,3 +75,6 @@ func make_particles():
 	
 func delete():
 	queue_free()
+	
+func get_agro_change_target():
+	return origin
