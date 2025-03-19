@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://3vd5ac7bjrem"]
+[gd_scene load_steps=28 format=4 uid="uid://3vd5ac7bjrem"]
 
 [ext_resource type="ArrayMesh" uid="uid://bixnf8lylqita" path="res://assets/world/world_1_other/proj_rock.vox" id="1_1b743"]
 [ext_resource type="Script" uid="uid://ck400lm52by5g" path="res://scripts/entities/chums/chum5/chum5.gd" id="1_x2il5"]
@@ -167,6 +167,30 @@ tracks/12/keys = {
 "args": [],
 "method": &"throw_rock"
 }]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/RockZone/ProjRock:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.71, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/RockZone/ProjRock:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.71, 1.3, 1.45833),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_yyt4h"]
@@ -609,11 +633,39 @@ tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = PackedFloat32Array(0, 1, -0.316228, -0.316228, 0.632456, 0.632455, 0.5, 1, -0.316228, -0.316228, 0.632456, 0.632455, 0.533333, 1, -0.299098, -0.29955, 0.64025, 0.641007, 0.566667, 1, -0.265834, -0.267357, 0.653879, 0.655968, 0.6, 1, -0.226274, -0.229423, 0.667673, 0.671102, 0.633333, 1, -0.190959, -0.196232, 0.677969, 0.682192, 0.666667, 1, -0.170883, -0.178741, 0.683179, 0.687108, 0.7, 1, -0.16156, -0.185804, 0.707786, 0.662129, 0.733333, 1, -0.147342, -0.199938, 0.751017, 0.611791, 0.766667, 1, -0.133591, -0.21766, 0.79568, 0.549246, 0.8, 1, -0.126415, -0.236606, 0.828872, 0.490925, 0.833333, 1, -0.132473, -0.255668, 0.842279, 0.455687, 0.9, 1, -0.236107, -0.321155, 0.80748, 0.434842, 0.933333, 1, -0.283666, -0.32617, 0.764246, 0.478618, 0.966667, 1, -0.310118, -0.317982, 0.697772, 0.561986, 1, 1, -0.316228, -0.316228, 0.632456, 0.632455)
 
+[sub_resource type="Animation" id="Animation_vc5g2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/RockZone/ProjRock:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/RockZone/ProjRock:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lqnvo"]
 _data = {
 &"Attack": SubResource("Animation_hvmqx"),
 &"Idle": SubResource("Animation_yyt4h"),
 &"Knock": SubResource("Animation_lffom"),
+&"RESET": SubResource("Animation_vc5g2"),
 &"Sleep": SubResource("Animation_jwj7o"),
 &"Wake": SubResource("Animation_fqa28"),
 &"Walk": SubResource("Animation_2xwao")
@@ -706,50 +758,50 @@ bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.6, 0.4)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0.568957, 0.4)
-bones/0/rotation = Quaternion(-0.676136, 0, 0, 0.736777)
+bones/0/position = Vector3(0, 0.6, 0.4)
+bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Tail"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 0.6, -0.8, 0, 0.8, 0.6, 0, 1, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 1, 0)
-bones/1/rotation = Quaternion(0.21449, 0, 0, 0.976726)
+bones/1/rotation = Quaternion(0.447214, 0, 0, 0.894427)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "TailTip"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 0.8, -0.6, 0, 0.6, 0.8, 0, 0.5, 1.49012e-08)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 0.5, 1.49012e-08)
-bones/2/rotation = Quaternion(0.484616, 0, 0, 0.874727)
+bones/2/rotation = Quaternion(0.316228, 0, 0, 0.948683)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "LegBack.L"
 bones/3/parent = 0
 bones/3/rest = Transform3D(-2.38419e-07, 0.6, 0.8, -1, 4.76837e-08, -3.33786e-07, -2.38419e-07, -0.8, 0.6, 0.3, 0.7, -0.2)
 bones/3/enabled = true
 bones/3/position = Vector3(0.3, 0.7, -0.2)
-bones/3/rotation = Quaternion(-0.130863, 0.190908, -0.660142, 0.714592)
+bones/3/rotation = Quaternion(-0.316228, 0.316228, -0.632456, 0.632455)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "LegFront.L"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-2.38419e-07, 0.6, 0.8, -1, 4.76837e-08, -3.33786e-07, -2.38419e-07, -0.8, 0.6, 0.3, 0.1, -0.2)
 bones/4/enabled = true
-bones/4/position = Vector3(0.3, 0.1, -0.2)
-bones/4/rotation = Quaternion(-0.346012, 0.285726, -0.646808, 0.616665)
+bones/4/position = Vector3(0.3, 0.0999999, -0.2)
+bones/4/rotation = Quaternion(-0.316228, 0.316228, -0.632456, 0.632455)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "LegBack.R"
 bones/5/parent = 0
 bones/5/rest = Transform3D(-2.38419e-07, -0.6, -0.8, 1, 4.76837e-08, -3.33786e-07, 2.38419e-07, -0.8, 0.6, -0.3, 0.7, -0.2)
 bones/5/enabled = true
 bones/5/position = Vector3(-0.3, 0.7, -0.2)
-bones/5/rotation = Quaternion(-0.114033, -0.172694, 0.661688, 0.720655)
+bones/5/rotation = Quaternion(-0.316228, -0.316228, 0.632456, 0.632455)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "LegFront.R"
 bones/6/parent = 0
 bones/6/rest = Transform3D(-2.38419e-07, -0.6, -0.8, 1, 4.76837e-08, -3.33786e-07, 2.38419e-07, -0.8, 0.6, -0.3, 0.1, -0.2)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.3, 0.1, -0.2)
-bones/6/rotation = Quaternion(-0.346012, -0.285726, 0.646808, 0.616665)
+bones/6/position = Vector3(-0.3, 0.0999999, -0.2)
+bones/6/rotation = Quaternion(-0.316228, -0.316228, 0.632456, 0.632455)
 bones/6/scale = Vector3(1, 1, 1)
 
 [node name="BodyMesh" type="MeshInstance3D" parent="Body/Armature/Skeleton3D"]
@@ -757,7 +809,7 @@ mesh = SubResource("ArrayMesh_1b743")
 skin = SubResource("Skin_bhhp6")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 0.999167, 0.0408112, 0, -0.0408112, 0.999167, 0, 0.902264, -1.0307)
+transform = Transform3D(1, 0, 0, 0, 1, -1.57952e-06, 0, 1.57952e-06, 1, 0, 1, -0.9)
 bone_name = "TailTip"
 bone_idx = 2
 
@@ -777,7 +829,7 @@ metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 shape = SubResource("SphereShape3D_p1khf")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 0.495252, 0.868749, 0, -0.868749, 0.495252, 0, 0.654638, -0.596323)
+transform = Transform3D(1, 0, 0, 0, 0.800001, 0.599999, 0, -0.599999, 0.800001, 0, 0.6, -0.6)
 bone_name = "Tail"
 bone_idx = 1
 
@@ -785,7 +837,7 @@ bone_idx = 1
 transform = Transform3D(-1, 8.74228e-08, 7.10543e-15, 2.99004e-08, 0.34202, 0.939692, 8.21505e-08, 0.939692, -0.34202, 2.33514e-08, -0.00261319, -0.335846)
 
 [node name="BoneAttachment3D3" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 0.0856807, 0.996323, 0, -0.996323, 0.0856807, 0, 0.568957, 0.4)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.6, 0.4)
 bone_name = "Body"
 bone_idx = 0
 
@@ -822,8 +874,6 @@ script = ExtResource("5_bnd3d")
 [node name="AttackTimer" type="Timer" parent="ChumSpecificStates/Active"]
 
 [node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active"]
-
-[node name="ActiveRun" type="Node" parent="ChumSpecificStates"]
 
 [node name="Particles" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.350146, 0)

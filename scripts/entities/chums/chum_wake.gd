@@ -6,6 +6,7 @@ class_name Chum1_Wake
 
 func Enter():
 	chum.anim_player.play("Wake")
+	chum.anim_player.animation_finished.connect(woken)
 
 func Physics_Update(delta: float):
 	if chum.target:
@@ -15,6 +16,7 @@ func Physics_Update(delta: float):
 		chum.velocity.y += chum.get_gravity_dir() * delta
 	
 	chum.move_and_slide()
-
-func _on_wake_timer_timeout() -> void:
-	Transitioned.emit(self, "Active")
+	
+func woken(anim_name) -> void:
+	if anim_name == "Wake":
+		Transitioned.emit(self, "Active")

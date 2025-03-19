@@ -14,7 +14,7 @@ func Enter():
 	attack_timer.one_shot = true
 	attack_timer.autostart = true
 	
-	nav_timer.wait_time = 0.25
+	nav_timer.wait_time = randf_range(0.2, 0.4)
 	nav_timer.timeout.connect(_on_nav_timer_timeout)
 	chum.nav_agent.target_reached.connect(_on_navigation_agent_3d_target_reached)
 	chum.nav_agent.velocity_computed.connect(_on_navigation_agent_3d_velocity_computed)
@@ -35,6 +35,7 @@ func Physics_Update(delta: float):
 		chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
 		if not has_touched_floor:
 			has_touched_floor = true
+			chum.velocity = Vector3(0, 0, 0)
 			chum.set_new_target()
 	else:
 		chum.velocity.y += chum.get_gravity_dir() * delta
@@ -61,7 +62,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 
 
 func _on_nav_timer_timeout() -> void:
-	if chum.target:
+	if chum.target and has_touched_floor:
 		chum.nav_agent.target_position = chum.target.global_position
 		var next_location = chum.nav_agent.get_next_path_position()
 		var new_vel = (next_location - chum.global_position).normalized() * chum.move_speed

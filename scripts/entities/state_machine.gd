@@ -15,9 +15,9 @@ func _ready() -> void:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transition)
 			
-		if chum.initial_state_override:
-			if chum.initial_state_override.to_lower() == child.name.to_lower():
-				initial_state = child
+			if chum.initial_state_override:
+				if chum.initial_state_override.to_lower() == child.name.to_lower():
+					initial_state = child
 		
 	if initial_state:
 		initial_state.Enter()

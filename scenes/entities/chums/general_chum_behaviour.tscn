@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://diu3gcoi63283"]
+[gd_scene load_steps=14 format=4 uid="uid://diu3gcoi63283"]
 
 [ext_resource type="PackedScene" uid="uid://c1saa1y5s8j4y" path="res://scenes/entities/health_bar.tscn" id="1_lawoc"]
 [ext_resource type="Script" uid="uid://gwmvx18rear3" path="res://scripts/entities/chums/general_chum_behaviour.gd" id="1_oye00"]
@@ -9,20 +9,22 @@
 [ext_resource type="Script" uid="uid://ckr6mybdhnq54" path="res://scripts/entities/chums/chum_knock.gd" id="7_ri37u"]
 [ext_resource type="Script" uid="uid://bf0vq7mtcptmd" path="res://scripts/entities/chums/chum_carry.gd" id="8_yg2b4"]
 [ext_resource type="Script" uid="uid://bemukg56wpqya" path="res://scripts/entities/chums/chum_idle.gd" id="9_hnnfc"]
+[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="9_jk122"]
 [ext_resource type="Script" uid="uid://c2jyvpy2ven06" path="res://scripts/entities/chums/chum_follow.gd" id="10_57lte"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_koawh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jixn2"]
+next_pass = ExtResource("9_jk122")
 transparency = 1
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
-albedo_color = Color(1, 1, 1, 0.658824)
+albedo_color = Color(1, 1, 1, 0.686275)
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7kyv0"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_j0lof"]
 _surfaces = [{
 "aabb": AABB(-0.8, 0, -0.8, 1.6, 0.1, 1.6),
 "attribute_data": PackedByteArray("WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/ubm5/7m5uf+5ubn/ubm5/7m5uf+5ubn/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/WBMA/1gTAP9YEwD/"),
 "format": 34359738383,
-"material": SubResource("StandardMaterial3D_koawh"),
+"material": SubResource("StandardMaterial3D_jixn2"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 804,
@@ -63,7 +65,7 @@ script = ExtResource("8_yg2b4")
 
 [node name="ThrowTarget" type="MeshInstance3D" parent="State_Machine/Carry"]
 visible = false
-mesh = SubResource("ArrayMesh_7kyv0")
+mesh = SubResource("ArrayMesh_j0lof")
 skeleton = NodePath("../..")
 
 [node name="Idle" type="Node" parent="State_Machine"]

@@ -150,11 +150,9 @@ func _on_health_changed(difference):
 func damaged():
 	$Hurtbox/AnimationPlayer.play("Hurt")
 	particle_zone.add_child(hurt_particles.instantiate())
-	print('chum damaged')
 
 func healed():
 	particle_zone.add_child(heal_particles.instantiate())
-	print('chum healed')
 
 func _on_health_health_depleted() -> void:
 	if current_group == "Chums_Enemy":

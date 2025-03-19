@@ -13,8 +13,8 @@ var desc := "CHUM 5 DESC"
 
 var default_move_speed := 2.5
 
-var max_health := 10.0
-var start_health := 10.0
+var max_health := 5.0
+var start_health := 5.0
 
 var maintains_agro := false
 var changes_agro_on_damaged := true

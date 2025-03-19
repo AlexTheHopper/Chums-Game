@@ -16,6 +16,8 @@ var room_info : Dictionary
 func _ready():
 	if world_map == {}:
 		create_world(MAP_SIZE)
+		for x in range(10):
+			test_generation()
 	current_room_node = get_parent().get_node("Game/Rooms/Lobby_World1")
 	rooms = get_parent().get_node("Game/Rooms")
 	
@@ -23,6 +25,70 @@ func _ready():
 				"normal_room_world1": load("res://scenes/world/room_world_1.tscn"),
 				"fountain_room_world1": load("res://scenes/world/fountain_room_world_1.tscn"),
 				}
+				
+func test_generation():
+	var size := 5
+	var corridor_count := int(size * size)
+	var corridor_lengths := range(3, size)
+	var walks := [Vector2(1, 0), Vector2(-1, 0), Vector2(0, 1), Vector2(0, -1)]
+	var room_count := int(size * size / 2)
+	var bounds = [-1, (2 * size) + 1]
+	print(bounds)
+	
+	var test_do := 0
+	var test_try := 0
+	
+	#Set all to 1s:
+	var grid = []
+	for y in range(0, (2 * size) + 1):
+		var row = []
+		for x in range(0, (2 * size) + 1):
+			row.append(1)
+		grid.append(row)
+
+	#Start with coridoors:
+	var room_points = [Vector2(size, size), Vector2(size, size), Vector2(size, size)]
+	print('starting at: ' + str(room_points[0]))
+	#For each corridor:
+	for N in range(corridor_count):
+		var pos = room_points.pick_random()
+		var length = corridor_lengths.pick_random()
+		var dir = walks.pick_random()
+		#print('At point ' + str(pos) + ' and heading in dir ' + str(dir) + ' for length ' + str(length))
+		
+		#For each tile:
+		for n in range(length):
+			
+			if grid[pos.x][pos.y] == 1:
+				test_do += 1
+			test_try += 1
+			
+			grid[pos.x][pos.y] = 0
+			if int(pos.x + dir.x) in bounds or int(pos.y + dir.y) in bounds:
+				break
+			pos += Vector2(int(dir.x), int(dir.y))
+			
+		#Add end of corridor to list of spots:
+		if pos not in room_points:
+			room_points.append(pos)
+			#print('Appending ' + str(pos) + 'to room locs')
+			
+	#Rooms:
+	for N in range(room_count):
+		var pos = room_points.pick_random()
+		for x in [-1, 0, 1]:
+			for y in [-1, 0, 1]:
+				var x_remove := int(pos.x + x)
+				var y_remove := int(pos.y + y)
+				if not x_remove in bounds and not y_remove in bounds:
+					grid[x_remove][y_remove] = 0
+				
+	for x in grid:
+		print(x)
+
+		
+	
+	
 
 func get_room_type(_world_num: int):
 	if randf() < 0.1:

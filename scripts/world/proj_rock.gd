@@ -5,12 +5,19 @@ extends Area3D
 
 @export var hit_particle: PackedScene
 @export var draws_agro_on_attack := false
+@export var show_target: bool
 
+@onready var red_overlay := preload("res://materials/outline_red.tres")
+@onready var blue_overlay := preload("res://materials/outline_blue.tres")
+@onready var black_overlay := preload("res://materials/outline_black.tres")
+
+@onready var rock_target := $RockTarget
 var velocity := Vector3(0, 0, 0)
 var rotation_: Vector3
 var active := false
 var gravity_ := gravity
 var position_: Vector3
+var target_position: Vector3
 
 var hit_time := 1.0
 
@@ -30,11 +37,19 @@ func _ready() -> void:
 		var parent_group = Functions.get_parent_group(origin)
 		if parent_group in ["Chums_Enemy"]:
 			$Hitbox.set_as_enemy()
+			rock_target.set_material_overlay(red_overlay)
 		elif parent_group in ["Chums_Friend", "Player"]:
 			$Hitbox.set_as_friendly()
+			rock_target.set_material_overlay(blue_overlay)
+		else:
+			rock_target.set_material_overlay(black_overlay)
+
 	if target:
-		set_vel_to_pos(global_position, target.global_position)
-	
+		target_position = target.global_position
+		set_vel_to_pos(global_position, target_position)
+		rock_target.global_position = target_position
+
+
 func set_vel_to_pos(start_pos, target_pos):
 	#Velocity:
 	var dx = target_pos.x - start_pos.x
@@ -48,6 +63,7 @@ func _process(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	position += velocity * delta
+	rock_target.global_position = target_position
 
 func _on_body_entered(_body: Node3D) -> void:
 	if active:

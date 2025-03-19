@@ -14,7 +14,7 @@ func Enter():
 	attack_timer.one_shot = true
 	attack_timer.autostart = true
 	
-	nav_timer.wait_time = 0.25
+	nav_timer.wait_time = randf_range(0.2, 0.4)
 	nav_timer.timeout.connect(_on_nav_timer_timeout)
 	chum.nav_agent.target_reached.connect(_on_navigation_agent_3d_target_reached)
 	chum.nav_agent.velocity_computed.connect(_on_navigation_agent_3d_velocity_computed)
