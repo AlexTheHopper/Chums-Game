@@ -7,6 +7,7 @@ class_name room
 var bracelet_tscn: PackedScene = preload("res://scenes/entities/currency_bracelet.tscn")
 
 @export var spawn_timer: Timer
+@export var grid_map: GridMap
 
 func _ready() -> void:
 	for group in ["Chums_Enemy", "Chums_Neutral"]:
@@ -23,6 +24,51 @@ func _ready() -> void:
 	if enemies_to_spawn > 0:
 		if spawn_timer:
 			spawn_timer.start()
+			
+	fill_tunnels()
+			
+func fill_tunnels():
+	#Fix walls etc.
+	var door_dist := 9
+	if not Global.world_map[Global.room_location]["has_x_pos"]:
+		if get_node_or_null("Doors/x_pos"):
+			get_node("Doors/x_pos").queue_free()
+		for w in range(-3, 4):
+			#Solid Blocks
+			grid_map.set_cell_item(Vector3(door_dist, 0, w), 5, 22)
+			grid_map.set_cell_item(Vector3(door_dist + 1, 0, w), 4, 0)
+			#Ramps:
+			grid_map.set_cell_item(Vector3(door_dist - 1, 0, w), 12, 22)
+
+	if not Global.world_map[Global.room_location]["has_x_neg"]:
+		if get_node_or_null("Doors/x_neg"):
+			get_node("Doors/x_neg").queue_free()
+		for w in range(-3, 4):
+			#Solid Blocks
+			grid_map.set_cell_item(Vector3(-door_dist, 0, w), 5, 16)
+			grid_map.set_cell_item(Vector3(-(door_dist + 1), 0, w), 4, 0)
+			#Ramps:
+			grid_map.set_cell_item(Vector3(-(door_dist - 1), 0, w), 12, 16)
+
+	if not Global.world_map[Global.room_location]["has_z_pos"]:
+		if get_node_or_null("Doors/z_pos"):
+			get_node("Doors/z_pos").queue_free()
+		for w in range(-3, 4):
+			#Solid Blocks
+			grid_map.set_cell_item(Vector3(w, 0, door_dist), 5, 10)
+			grid_map.set_cell_item(Vector3(w, 0, door_dist + 1), 4, 0)
+			#Ramps:
+			grid_map.set_cell_item(Vector3(w, 0, door_dist - 1), 12, 0)
+
+	if not Global.world_map[Global.room_location]["has_z_neg"]:
+		if get_node_or_null("Doors/z_neg"):
+			get_node("Doors/z_neg").queue_free()
+		for w in range(-3, 4):
+			#Solid Blocks
+			grid_map.set_cell_item(Vector3(w, 0, -door_dist), 5, 0)
+			grid_map.set_cell_item(Vector3(w, 0, -(door_dist + 1)), 4, 10)
+			#Ramps:
+			grid_map.set_cell_item(Vector3(w, 0, -(door_dist - 1)), 12, 0)
 
 func save_room():
 	#Remove previous data from room:

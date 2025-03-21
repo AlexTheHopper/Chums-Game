@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d1mbalfu0wlex" path="res://scripts/entities/player.gd" id="1_8mcap"]
 [ext_resource type="Script" uid="uid://cf5efj3v5c38n" path="res://scripts/entities/health.gd" id="2_foxub"]
-[ext_resource type="Texture2D" uid="uid://qoftnyn10nd" path="res://Blender_Assets/BlenderData/Other_Exports/player_player.png" id="3_8dc6w"]
+[ext_resource type="Texture2D" uid="uid://qoftnyn10nd" path="res://Blender_Assets/Other_Exports/player_player.png" id="3_8dc6w"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_f0wg7"]
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_6214k"]
 [ext_resource type="Material" uid="uid://tqe7rbh07xh7" path="res://materials/xray_material_player.tres" id="5_sb1xe"]
@@ -750,7 +750,7 @@ mesh = SubResource("ArrayMesh_fbi0d")
 skin = SubResource("Skin_8wrh7")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-5.96046e-07, 0.648312, -0.761375, -1.2815e-06, 0.761375, 0.648312, 1, 1.3411e-06, 3.57628e-07, 0.4, 1.2, 0)
+transform = Transform3D(-4.76837e-07, 0.648312, -0.761375, -1.3113e-06, 0.761375, 0.648312, 1, 1.3113e-06, 4.17233e-07, 0.4, 1.2, 0)
 bone_name = "Arm.L"
 bone_idx = 2
 

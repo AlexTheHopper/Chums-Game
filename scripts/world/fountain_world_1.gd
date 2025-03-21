@@ -40,11 +40,10 @@ func _on_heal_zone_body_entered(body: Node3D) -> void:
 
 
 func _on_fly_zone_body_entered(body: Node3D) -> void:
-	var pos = body.global_position - Vector3(1.0, 0, 1.0)
-	var x = pos.x + (5.0 if pos.x > 0 else -5.0)
-	var y = 25.0
-	var z = pos.z + (5.0 if pos.z > 0 else -5.0)
-	body.velocity = Vector3(x, y, z)
+	var angle: float = Functions.angle_to_xz(self, body)
+	var vel_2d: Vector2 = Vector2(sin(angle), cos(angle)) * 7.5
+	
+	body.velocity = Vector3(vel_2d.x, 25.0, vel_2d.y)
 	body.is_launched = true
 
 

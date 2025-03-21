@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=4 uid="uid://bio3pi6ddipta"]
 
 [ext_resource type="Script" uid="uid://d25hlkl5ecsjq" path="res://scripts/entities/chums/chum4/chum4.gd" id="1_35t05"]
-[ext_resource type="Texture2D" uid="uid://b4c6l57q3gq30" path="res://Blender_Assets/BlenderData/Chum_Exports/chum4_2_chum_4_detach.png" id="2_63msc"]
+[ext_resource type="Texture2D" uid="uid://b4c6l57q3gq30" path="res://Blender_Assets/Chum_Exports/chum4_2_chum_4_detach.png" id="2_63msc"]
 [ext_resource type="PackedScene" uid="uid://cdfad011ncqxd" path="res://scenes/entities/chums/bracelet_4.tscn" id="3_3r8nn"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_pop2x"]
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_gabyu"]
@@ -983,7 +983,7 @@ interaction_area = NodePath("ChumInterractionArea")
 bracelet = NodePath("Body/Armature/Skeleton3D/BoneAttachmentBracelet/Bracelet")
 
 [node name="Body" type="Node3D" parent="."]
-transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Armature" type="Node3D" parent="Body"]
 
@@ -1085,7 +1085,7 @@ mesh = SubResource("ArrayMesh_jfkxr")
 skin = SubResource("Skin_63msc")
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(-1, -1.03029e-13, -8.74228e-08, -8.74228e-08, 1.51992e-06, 1, 3.19744e-14, 1, -1.46031e-06, 0, 1.9, -0.500001)
+transform = Transform3D(-1, -9.59233e-14, -8.74228e-08, -8.74228e-08, 1.54972e-06, 1, 3.55271e-14, 1, -1.49012e-06, 0, 1.9, -0.500001)
 bone_name = "Tail3"
 bone_idx = 4
 

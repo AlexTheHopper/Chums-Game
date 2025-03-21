@@ -199,15 +199,15 @@ func align_with_floor(normal):
 		
 func _on_health_changed(difference):
 	if difference < 0.0:
-		damaged()
+		damaged(-difference)
 	elif difference > 0.0:
-		healed()
+		healed(difference)
 
-func damaged():
+func damaged(amount):
 	$Hurtbox/AnimationPlayer.play("Hurt")
 	particle_zone.add_child(hurt_particles.instantiate())
 
-func healed():
+func healed(amount):
 	particle_zone.add_child(heal_particles.instantiate())
 
 func _on_health_health_depleted() -> void:

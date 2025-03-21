@@ -1,52 +1,11 @@
 extends room
 
-@onready var grid_map: GridMap = $NavigationRegion3D/GridMap
 const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
 
 func _ready() -> void:	
 	super()
 	set_player_loc_on_entry()
 	set_chums_loc_on_entry()
-	fill_tunnels()
-
-func fill_tunnels():
-	#Fix walls etc.
-	var door_dist := 9
-	if not Global.world_map[Global.room_location]["has_x_pos"]:
-		get_node("Doors/x_pos").queue_free()
-		for w in range(-3, 4):
-			#Solid Blocks
-			grid_map.set_cell_item(Vector3(door_dist, 0, w), 5, 22)
-			grid_map.set_cell_item(Vector3(door_dist + 1, 0, w), 4, 0)
-			#Ramps:
-			grid_map.set_cell_item(Vector3(door_dist - 1, 0, w), 15, 0)
-
-	if not Global.world_map[Global.room_location]["has_x_neg"]:
-		get_node("Doors/x_neg").queue_free()
-		for w in range(-3, 4):
-			#Solid Blocks
-			grid_map.set_cell_item(Vector3(-door_dist, 0, w), 5, 16)
-			grid_map.set_cell_item(Vector3(-(door_dist + 1), 0, w), 4, 0)
-			#Ramps:
-			grid_map.set_cell_item(Vector3(-(door_dist - 1), 0, w), 15, 10)
-
-	if not Global.world_map[Global.room_location]["has_z_pos"]:
-		get_node("Doors/z_pos").queue_free()
-		for w in range(-3, 4):
-			#Solid Blocks
-			grid_map.set_cell_item(Vector3(w, 0, door_dist), 5, 10)
-			grid_map.set_cell_item(Vector3(w, 0, door_dist + 1), 4, 0)
-			#Ramps:
-			grid_map.set_cell_item(Vector3(w, 0, door_dist - 1), 15, 22)
-
-	if not Global.world_map[Global.room_location]["has_z_neg"]:
-		get_node("Doors/z_neg").queue_free()
-		for w in range(-3, 4):
-			#Solid Blocks
-			grid_map.set_cell_item(Vector3(w, 0, -door_dist), 5, 0)
-			grid_map.set_cell_item(Vector3(w, 0, -(door_dist + 1)), 4, 0)
-			#Ramps:
-			grid_map.set_cell_item(Vector3(w, 0, -(door_dist - 1)), 15, 16)
 			
 func set_chums_loc_on_entry():
 	#Place friendly chums in front of the player:
@@ -76,11 +35,11 @@ func open_doors():
 func decorate():
 	super()
 	
-	#Streetlamp generally points to lobby.
-	var to_lobby = -Global.room_location.normalized() * 13
+	#Streetlamp generally points to fastest way to lobby.
+	var to_lobby = Global.world_map_guide[Global.room_location] * 13
 	var spawn_pos = Vector3(1, 0, 1)
-	spawn_pos.x += to_lobby.x + randf_range(-1, 1)
-	spawn_pos.z += to_lobby.y + randf_range(-1, 1)
+	spawn_pos.x += to_lobby.x + randf_range(-1.5, 1.5)
+	spawn_pos.z += to_lobby.y + randf_range(-1.5, 1.5)
 		
 	var light_obj = STREETLAMP.instantiate()
 	$Decorations.add_child(light_obj)
@@ -88,8 +47,9 @@ func decorate():
 	Global.world_map[Global.room_location]["light_position"] = spawn_pos
 	
 	#Other objects:
-	var per_to_edge = max(abs(Global.room_location[0]), abs(Global.room_location[1])) / Global.MAP_SIZE
-	var deco_n = Functions.map_range(per_to_edge, Vector2(0, 1), Vector2(5, 20))
+	#Other objects:
+	var from_lobby = Global.world_map[Global.room_location]["value"]
+	var deco_n = Functions.map_range(from_lobby, Vector2(0, Global.map_size), Vector2(5, 20))
 	var angles = [0, PI/2, PI, 3*PI/2]
 	var dummy = 0
 	for n in deco_n:

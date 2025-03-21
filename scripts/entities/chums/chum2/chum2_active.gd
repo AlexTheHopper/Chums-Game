@@ -16,6 +16,7 @@ func Enter():
 	
 	nav_timer.wait_time = randf_range(0.2, 0.4)
 	nav_timer.timeout.connect(_on_nav_timer_timeout)
+	_on_nav_timer_timeout() #Avoids delay before moving
 	chum.nav_agent.target_reached.connect(_on_navigation_agent_3d_target_reached)
 	chum.nav_agent.velocity_computed.connect(_on_navigation_agent_3d_velocity_computed)
 	

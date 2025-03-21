@@ -3,7 +3,7 @@ class_name Chum4
 var chum_str := "chum4"
 var chum_name := "Jabby"
 
-var desc := "CHUM 4 DESC."
+var desc := "No one is really sure where this chum comes from. It seems a little out of place a lot of the time and its very unclear which direction its looking, without eyes and all. With its tail it goes jabby-jab in quick succession."
 
 @onready var default_attack: Dictionary = {"speed": 2.5, #fastest quality still needs to be more than the attack animation length.
 										"damage": 1.0,

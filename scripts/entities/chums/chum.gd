@@ -143,15 +143,16 @@ func _on_recieved_damage(_damage, change_agro, attacker):
 
 func _on_health_changed(difference):
 	if difference < 0.0:
-		damaged()
+		damaged(-difference)
 	elif difference > 0.0 and state_machine.current_state.state_name != "Sleep":
-		healed()
+		healed(difference)
 
-func damaged():
+func damaged(amount):
 	$Hurtbox/AnimationPlayer.play("Hurt")
 	particle_zone.add_child(hurt_particles.instantiate())
+	print('damaged by ' + str(amount))
 
-func healed():
+func healed(amount):
 	particle_zone.add_child(heal_particles.instantiate())
 
 func _on_health_health_depleted() -> void:

@@ -370,6 +370,33 @@ tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = PackedFloat32Array(0, 1, -0.316228, -0.316228, 0.632456, 0.632455, 0.0333333, 1, -0.316228, -0.316228, 0.632456, 0.632455, 0.0666667, 1, -0.308399, -0.311862, 0.638919, 0.631993, 0.1, 1, -0.288616, -0.300755, 0.654771, 0.630493, 0.133333, 1, -0.255376, -0.281858, 0.67991, 0.626946, 0.166667, 1, -0.209991, -0.255605, 0.71135, 0.620122, 0.2, 1, -0.152504, -0.221645, 0.746656, 0.608376, 0.233333, 1, -0.0897404, -0.18371, 0.779731, 0.591792, 0.266667, 1, -0.0251326, -0.143762, 0.808033, 0.570775, 0.3, 1, 0.037793, -0.103993, 0.830099, 0.546528, 0.333333, 1, 0.0956267, -0.0666919, 0.845587, 0.520951, 0.366667, 1, 0.14173, -0.0364325, 0.854587, 0.498263, 0.4, 1, 0.176284, -0.0134406, 0.859333, 0.479885, 0.433333, 1, 0.200757, 0.00295354, 0.861578, 0.466232, 0.466667, 1, 0.217357, 0.01405, 0.862496, 0.456792, 0.5, 1, 0.228979, 0.0217286, 0.86278, 0.45023, 0.533333, 1, 0.235464, 0.0259823, 0.862813, 0.446583, 0.566667, 1, 0.239126, 0.0284863, 0.862885, 0.444339, 0.6, 1, 0.240638, 0.0297804, 0.863124, 0.442971, 0.633333, 1, 0.239265, 0.0298165, 0.863784, 0.442425, 0.666667, 1, 0.232858, 0.0279581, 0.865239, 0.443122, 0.7, 1, 0.216161, 0.0221946, 0.867982, 0.446531, 0.733333, 1, 0.193477, 0.0141793, 0.871035, 0.451291, 0.766667, 1, 0.165995, 0.00438018, 0.873881, 0.4569, 0.8, 1, 0.13497, -0.00671556, 0.876061, 0.462876, 0.866667, 1, 0.0683969, -0.0305074, 0.877225, 0.474203, 0.9, 1, 0.0371126, -0.041645, 0.876169, 0.478766, 0.933333, 1, 0.00928418, -0.0515202, 0.874384, 0.482403, 0.966667, 1, -0.0137256, -0.0596625, 0.872307, 0.48511, 1, 1, -0.030605, -0.0656234, 0.870437, 0.486926, 1.03333, 1, -0.0367936, -0.0678074, 0.869676, 0.487557, 1.04167, 1, -0.0383405, -0.068353, 0.86948, 0.487711)
 
+[sub_resource type="Animation" id="Animation_vc5g2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/RockZone/ProjRock:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/RockZone/ProjRock:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_jwj7o"]
 resource_name = "Sleep"
 length = 5.0
@@ -633,33 +660,6 @@ tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = PackedFloat32Array(0, 1, -0.316228, -0.316228, 0.632456, 0.632455, 0.5, 1, -0.316228, -0.316228, 0.632456, 0.632455, 0.533333, 1, -0.299098, -0.29955, 0.64025, 0.641007, 0.566667, 1, -0.265834, -0.267357, 0.653879, 0.655968, 0.6, 1, -0.226274, -0.229423, 0.667673, 0.671102, 0.633333, 1, -0.190959, -0.196232, 0.677969, 0.682192, 0.666667, 1, -0.170883, -0.178741, 0.683179, 0.687108, 0.7, 1, -0.16156, -0.185804, 0.707786, 0.662129, 0.733333, 1, -0.147342, -0.199938, 0.751017, 0.611791, 0.766667, 1, -0.133591, -0.21766, 0.79568, 0.549246, 0.8, 1, -0.126415, -0.236606, 0.828872, 0.490925, 0.833333, 1, -0.132473, -0.255668, 0.842279, 0.455687, 0.9, 1, -0.236107, -0.321155, 0.80748, 0.434842, 0.933333, 1, -0.283666, -0.32617, 0.764246, 0.478618, 0.966667, 1, -0.310118, -0.317982, 0.697772, 0.561986, 1, 1, -0.316228, -0.316228, 0.632456, 0.632455)
 
-[sub_resource type="Animation" id="Animation_vc5g2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/RockZone/ProjRock:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/RockZone/ProjRock:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lqnvo"]
 _data = {
 &"Attack": SubResource("Animation_hvmqx"),
@@ -749,7 +749,7 @@ interaction_area = NodePath("ChumInterractionArea")
 bracelet = NodePath("Body/Armature/Skeleton3D/BoneAttachment3D2/Bracelet")
 
 [node name="Body" type="Node3D" parent="."]
-transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Armature" type="Node3D" parent="Body"]
 
@@ -850,7 +850,7 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.1)
 shape = SubResource("SphereShape3D_qicr6")
 
 [node name="Hurtbox" type="Area3D" parent="."]
@@ -858,7 +858,7 @@ script = ExtResource("4_tcaif")
 metadata/_custom_type_script = "uid://boh0vifvx5x5c"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, -0.15)
 shape = SubResource("BoxShape3D_tbdan")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox"]

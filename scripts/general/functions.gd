@@ -18,7 +18,7 @@ func vector_to(body1, body2) -> Vector3:
 func angle_to_xz(body1, body2) -> float:
 	var dir = vector_to_normalized(body1, body2)
 	var dir_plane = Vector2(dir[2], dir[0])
-	return dir_plane.angle() + PI
+	return dir_plane.angle()
 	
 func get_closest_chum_in_group(chum, group):
 	var members = get_tree().get_nodes_in_group(group)
@@ -51,3 +51,42 @@ func get_parent_group(node):
 		return get_parent_group(node.get_parent())
 	else:
 		return false
+		
+func dict_to_grid_coord(vector: Vector2, size: int) -> Vector2:
+	return Vector2(int(vector.x + size), int(vector.y + size))
+
+func grid_to_dict_coord(vector: Vector2, size: int) -> Vector2:
+	return Vector2(int(vector.x - size), int(vector.y - size))
+		
+func astar2d(map: Array, goal: Vector2):
+	var directions := [Vector2(0, 1), Vector2(0, -1), Vector2(1, 0), Vector2(-1, 0)]
+
+	var size: int = map.size()
+	
+	var dir_map := {}
+	var visited := []
+	for x in range(size):
+		visited.append([])
+		for y in range(size):
+			visited[x].append(false)
+			
+	var queue = [goal]
+	visited[goal.x][goal.y] = true
+	dir_map[goal] = Vector2.ZERO
+	
+	while queue.size() > 0:
+		var current = queue.pop_front()
+		
+		for d in directions:
+			var neighbour = current + d
+			var n_x: int = neighbour.x
+			var n_y: int = neighbour.y
+			
+			if n_x not in [-1, size] and n_y not in [-1, size]:
+				if map[n_x][n_y] == 0 and not visited[n_x][n_y]:
+					visited[n_x][n_y] = true
+					queue.append(neighbour)
+					dir_map[neighbour] = -d
+	return dir_map
+			
+			
