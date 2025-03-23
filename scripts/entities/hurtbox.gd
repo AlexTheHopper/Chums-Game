@@ -1,7 +1,7 @@
 extends Area3D
 class_name Hurtbox
 
-signal recieved_damage(damage: float, change_agro: bool)
+signal recieved_damage(damage: int, change_agro: bool)
 
 @onready var entity := owner
 var health_node: Node
@@ -48,13 +48,15 @@ func set_as_neutral():
 func _on_area_entered(hitbox: Hitbox) -> void:
 	if hitbox != null:			
 		#Remove damage
-		health_node.health -= hitbox.damage
+		health_node.health -= hitbox.damage		
 		
 		#Check to change agression
 		var change_agro = false
 		var maintains_agro = false
 		if owner and "target" in owner:
-			maintains_agro = owner.target.maintains_agro
+			if owner.target:
+				if "maintains_agro" in owner.target:
+					maintains_agro = owner.target.maintains_agro
 		
 		if changes_agro_on_damaged and hitbox.draws_agro_on_attack and not maintains_agro:
 			change_agro = true

@@ -6,7 +6,7 @@ var hearts_set := false
 var active := false
 
 const HEART_DIST := 4.0
-const HEART_HEAL := 5.0
+const HEART_HEAL := 20
 
 func _ready() -> void:
 	if not hearts_set:

@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(_body: Node3D) -> void:
 	if active:
 		call_deferred("disable_interaction")
-		$AnimationPlayer.play("fade_out")		
+		$AnimationPlayer.play("fade_out")
 		make_particles()
 		velocity = Vector3(0, 0, 0)
 		gravity_ = 0
@@ -83,6 +83,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		
 	elif anim_name == "fade_out":
 		$ProjRock.visible = false
+		#$RockTarget.visible = false
 
 func make_particles():
 	var particle_inst = hit_particle.instantiate()

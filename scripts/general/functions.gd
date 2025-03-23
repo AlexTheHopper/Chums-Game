@@ -58,8 +58,8 @@ func dict_to_grid_coord(vector: Vector2, size: int) -> Vector2:
 func grid_to_dict_coord(vector: Vector2, size: int) -> Vector2:
 	return Vector2(int(vector.x - size), int(vector.y - size))
 		
-func astar2d(map: Array, goal: Vector2):
-	var directions := [Vector2(0, 1), Vector2(0, -1), Vector2(1, 0), Vector2(-1, 0)]
+func astar2d(map: Array, goal: Vector2i):
+	var directions := [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
 
 	var size: int = map.size()
 	
@@ -72,21 +72,19 @@ func astar2d(map: Array, goal: Vector2):
 			
 	var queue = [goal]
 	visited[goal.x][goal.y] = true
-	dir_map[goal] = Vector2.ZERO
+	dir_map[goal] = Vector2i(0, 0)
 	
 	while queue.size() > 0:
 		var current = queue.pop_front()
 		
 		for d in directions:
-			var neighbour = current + d
-			var n_x: int = neighbour.x
-			var n_y: int = neighbour.y
+			var n = current + d
 			
-			if n_x not in [-1, size] and n_y not in [-1, size]:
-				if map[n_x][n_y] == 0 and not visited[n_x][n_y]:
-					visited[n_x][n_y] = true
-					queue.append(neighbour)
-					dir_map[neighbour] = -d
+			if n.x not in [-1, size] and n.y not in [-1, size]:
+				if map[n.x][n.y] != 0 and not visited[n.x][n.y]:
+					visited[n.x][n.y] = true
+					queue.append(n)
+					dir_map[n] = -d
 	return dir_map
 			
 			

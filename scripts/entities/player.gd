@@ -52,11 +52,12 @@ var xform: Transform3D
 func _ready() -> void:
 	Global.game_begun = true
 	$Health.immune = false
-	$Health.set_max_health(10.0)
-	$Health.set_health(10.0)
+	$Health.set_max_health(100)
+	$Health.set_health(100)
+	hitbox.damage = 50
 	
 	hitbox.attack_info = {"speed": [1.3, 1.4, 1.5, 1.6, 1.7, 1.8].pick_random(),
-							"damage": [0.8, 1.0, 1.2].pick_random(),
+							"damage": 50,
 							"distance": 1.5,
 							"single_target": true}
 	
@@ -209,11 +210,10 @@ func damaged(amount):
 	particle_zone.add_child(hurt_particles.instantiate())
 	
 	var hurt_num_inst = hurt_particles_num.instantiate()
-	hurt_num_inst.get_child(0).mesh.text = str(int(amount * 10))
+	hurt_num_inst.get_child(0).mesh.text = str(amount)
 	particle_zone.add_child(hurt_num_inst)
-	print('Player damaged: ' + str(int(amount * 10)))
 
-func healed(amount):
+func healed(_amount):
 	particle_zone.add_child(heal_particles.instantiate())
 
 func _on_health_health_depleted() -> void:

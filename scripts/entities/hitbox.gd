@@ -2,7 +2,7 @@ extends Area3D
 class_name Hitbox
 
 @onready var attack_info: Dictionary
-@export var damage: float = 0.0 : set = set_damage, get = get_damage
+@export var damage: int = 0 : set = set_damage, get = get_damage
 
 @onready var draws_agro_on_attack = owner.draws_agro_on_attack
 
@@ -32,8 +32,8 @@ func set_as_neutral():
 	set_collision_layer_value(10, false)
 	
 
-func set_damage(value: float):
+func set_damage(value: int):
 	damage = value
 	
-func get_damage() -> float:
+func get_damage() -> int:
 	return damage

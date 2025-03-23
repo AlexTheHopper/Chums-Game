@@ -30,9 +30,9 @@ func set_ticks():
 	for tick in $Ticks.get_children():
 		tick.queue_free()
 	
-	var tick_spacing_ratio = (5.0 / max_health)
+	var tick_spacing_ratio = (50.0 / max_health)
 	
-	for n in range(1, floor(max_health / 5) + 1):
+	for n in range(1, floor(max_health / 50.0) + 1):
 		var tick = tick_zero.duplicate()
 		var xpos = round((n * tick_spacing_ratio * health_bar.size.x) + posx_zero)
 		tick.global_position = Vector2(xpos, 0)

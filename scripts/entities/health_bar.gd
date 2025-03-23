@@ -5,7 +5,7 @@ extends Node3D
 @export var max_health_bar: MeshInstance3D
 
 @export var notch_scene: PackedScene
-const NOTCH_INC: int = 5
+const NOTCH_INC: int = 50
 
 func _ready() -> void:	
 	#Connect to parent Health node to detect changed in health
@@ -21,24 +21,24 @@ func _ready() -> void:
 func set_notches():
 	#Add notches
 	var max_health = health_node.max_health
-	if max_health > NOTCH_INC:
-		var notch_count = floor(health_node.max_health / NOTCH_INC) + 1
-		
+	if max_health >= NOTCH_INC:
+		var notch_count = floor(1.0 * health_node.max_health / NOTCH_INC)
 		var bar_length = $Health.mesh.size.x
 		var start_x = -0.5 * bar_length
 				
-		for n in range(1, notch_count-1):
+		for n in range(notch_count):
 			var notch = notch_scene.instantiate()
 			$Frame.add_child(notch)
 			
 			#Position notch correctly
-			var extra_x: float = bar_length - ((n * NOTCH_INC) / health_node.max_health) * bar_length
+			var extra_x: float = ((1.0 * n * NOTCH_INC) / health_node.max_health) * bar_length
 			notch.position = Vector3(start_x + extra_x, 0, 0)
 	
 func _on_health_changed(_difference):
-	var health_ratio = max(health_node.health / health_node.max_health, 0.0)
+	var health_ratio = max(1.0 * health_node.health / health_node.max_health, 0.0)
+	
 	current_health_bar.scale.x = health_ratio
-	current_health_bar.position.x = (1.0 - health_ratio) * 0.5 
+	current_health_bar.position.x = (health_ratio - 1) * 0.5
 	#Adjust colour:
 	var health_color = Color(1.0 - health_ratio, health_ratio, 0.0)
 	if health_ratio <= 0.0:

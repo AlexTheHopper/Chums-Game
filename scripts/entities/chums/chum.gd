@@ -105,7 +105,7 @@ func set_new_stats():
 	quality["speed"] = 10 * (1 - multiplier)
 	
 	multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
-	self.attack["damage"] *= multiplier
+	self.attack["damage"] = int(self.attack["damage"] * multiplier)
 	quality["damage"] = 10 * (multiplier - 1)
 	
 	multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
@@ -155,11 +155,10 @@ func damaged(amount):
 	particle_zone.add_child(hurt_particles.instantiate())
 	
 	var hurt_num_inst = hurt_particles_num.instantiate()
-	hurt_num_inst.get_child(0).mesh.text = str(int(amount * 10))
+	hurt_num_inst.get_child(0).mesh.text = str(amount)
 	particle_zone.add_child(hurt_num_inst)
-	print('Chum damaged: ' + str(int(amount * 10)))
 
-func healed(amount):
+func healed(_amount):
 	particle_zone.add_child(heal_particles.instantiate())
 
 func _on_health_health_depleted() -> void:
@@ -295,7 +294,7 @@ func set_new_target():
 		var closest_chum_friend = Functions.get_closest_chum_in_group(self, "Chums_Friend")
 		var player = get_tree().get_first_node_in_group("Player")
 		
-		if not closest_chum_friend:
+		if not closest_chum_friend or self.always_targets_player:
 			body = player
 		elif Functions.distance_squared(self, closest_chum_friend) < Functions.distance_squared(self, player):
 			body = closest_chum_friend
@@ -306,8 +305,7 @@ func set_new_target():
 	if target:
 		target.targeted_by.append(self)
 	
-	#Connect to target to know when it dies:
-	if target:
+		#Connect to target to know when it dies:
 		var new_target_health = target.health_node
 		new_target_health.health_depleted.connect(_on_target_death)
 		
@@ -329,7 +327,15 @@ func set_target_to(new_target):
 		new_target_health.health_depleted.connect(_on_target_death)
 		
 func _on_target_death():
+	var old_target_name = target.chum_name
+	var new_target_name = 'None'
 	set_new_target()
+	if target:
+		if not target is Player:
+			new_target_name = target.chum_name
+		elif target is Player:
+			new_target_name = "Player"
+	print("Self: " + str(self.chum_name) + '. Old Target: ' + str(old_target_name) + '. New target: ' + str(new_target_name))
 	if not self.target and state_machine.current_state.state_name != "Carry":
 		set_state("Idle")
 		

@@ -29,14 +29,14 @@ func _ready() -> void:
 		else:
 			z_dir = -1
 
-	if not Global.world_map.has(Vector2(Global.room_location.x + x_dir, Global.room_location.y + z_dir)):
+	if not Global.world_map.has(Vector2i(Global.room_location.x + x_dir, Global.room_location.y + z_dir)): #No room in direction
 		queue_free()
 
 func _on_body_entered(body: Node3D) -> void:
 	if active and body is Player:
 		active = false
 		parent_room.save_room()
-		Global.transition_to_level(Global.room_location + Vector2(x_dir, z_dir))
+		Global.transition_to_level(Global.room_location + Vector2i(x_dir, z_dir))
 
 
 func _on_grace_timeout() -> void:

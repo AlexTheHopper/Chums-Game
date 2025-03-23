@@ -6,7 +6,7 @@ var quality_popup_active = false
 
 func _ready() -> void:
 	#Fill world1 chums:
-	world1_chums[0] = preload("res://scenes/entities/chums/chum1.tscn")
+	world1_chums[0.0] = preload("res://scenes/entities/chums/chum1.tscn")
 	world1_chums[0.1] = preload("res://scenes/entities/chums/chum2.tscn")
 	world1_chums[0.2] = preload("res://scenes/entities/chums/chum3.tscn")
 	world1_chums[0.3] = preload("res://scenes/entities/chums/chum4.tscn")
