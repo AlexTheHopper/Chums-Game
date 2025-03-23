@@ -39,6 +39,7 @@ var attacking_mult := 1.0
 
 @onready var hurt_particles := load("res://particles/damage_friendly.tscn")
 @onready var heal_particles := load("res://particles/heal_friendly.tscn")
+@onready var hurt_particles_num := load("res://particles/damage_num_friendly.tscn")
 
 var changes_agro_on_damaged = true
 var draws_agro_on_attack = true
@@ -206,6 +207,11 @@ func _on_health_changed(difference):
 func damaged(amount):
 	$Hurtbox/AnimationPlayer.play("Hurt")
 	particle_zone.add_child(hurt_particles.instantiate())
+	
+	var hurt_num_inst = hurt_particles_num.instantiate()
+	hurt_num_inst.get_child(0).mesh.text = str(int(amount * 10))
+	particle_zone.add_child(hurt_num_inst)
+	print('Player damaged: ' + str(int(amount * 10)))
 
 func healed(amount):
 	particle_zone.add_child(heal_particles.instantiate())

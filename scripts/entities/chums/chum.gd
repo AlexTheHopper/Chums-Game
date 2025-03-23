@@ -37,6 +37,9 @@ var current_group := "Chums_Neutral"
 @onready var heal_particles_enemy := load("res://particles/heal_enemy.tscn")
 @onready var heal_particles_friend := load("res://particles/heal_friendly.tscn")
 @onready var heal_particles := heal_particles_enemy
+@onready var hurt_particles_num_enemy := load("res://particles/damage_num_enemy.tscn")
+@onready var hurt_particles_num_friend := load("res://particles/damage_num_friendly.tscn")
+@onready var hurt_particles_num := hurt_particles_num_enemy
 
 var stats_set := false
 @onready var attack: Dictionary
@@ -150,7 +153,11 @@ func _on_health_changed(difference):
 func damaged(amount):
 	$Hurtbox/AnimationPlayer.play("Hurt")
 	particle_zone.add_child(hurt_particles.instantiate())
-	print('damaged by ' + str(amount))
+	
+	var hurt_num_inst = hurt_particles_num.instantiate()
+	hurt_num_inst.get_child(0).mesh.text = str(int(amount * 10))
+	particle_zone.add_child(hurt_num_inst)
+	print('Chum damaged: ' + str(int(amount * 10)))
 
 func healed(amount):
 	particle_zone.add_child(heal_particles.instantiate())
@@ -183,6 +190,7 @@ func make_enemy():
 		hitbox.set_as_enemy()
 		hurtbox.set_as_enemy()
 	hurt_particles = hurt_particles_enemy
+	hurt_particles_num = hurt_particles_num_enemy
 	heal_particles = heal_particles_enemy
 	
 	if bracelet:
@@ -204,6 +212,7 @@ func make_friendly():
 		hitbox.set_as_friendly()
 		hurtbox.set_as_friendly()
 	hurt_particles = hurt_particles_friend
+	hurt_particles_num = hurt_particles_num_friend
 	heal_particles = heal_particles_friend
 	
 	if bracelet:
@@ -228,6 +237,7 @@ func make_neutral():
 		hitbox.set_as_neutral()
 		hurtbox.set_as_neutral()
 	hurt_particles = hurt_particles_enemy
+	hurt_particles_num = hurt_particles_num_enemy
 	heal_particles = heal_particles_enemy
 	
 	if bracelet:
