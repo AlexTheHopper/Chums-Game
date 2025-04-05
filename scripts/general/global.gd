@@ -14,22 +14,42 @@ var current_world_num := 1
 var rooms: Node3D
 
 var room_lookup: Dictionary[int, Dictionary]
-
+var game_scene: PackedScene = load("res://scenes/general/game.tscn")
 
 func _ready():
-	if world_map == {}:
-		world_grid = get_world_grid(map_size)
-		create_world(map_size)
-		
-	current_room_node = get_parent().get_node("Game/Rooms/Lobby_World1")
-	rooms = get_parent().get_node("Game/Rooms")
 	room_lookup = {
 		1: {1: load("res://scenes/world/lobby_world_1.tscn"),
 				2: load("res://scenes/world/room_world_1.tscn"),
 				3: load("res://scenes/world/fountain_room_world_1.tscn"),
 				}
 			}
-				
+
+func start_game() -> void:
+	map_size = 5
+	room_size = 40.0
+	world_map = {}
+	world_grid = []
+	world_map_guide = {}
+	room_location = Vector2i(map_size, map_size)
+	room_history = [room_location]
+	in_battle = false
+	current_world_num = 1
+
+	#Creates scaffold for world
+	if world_map == {}:
+		world_grid = get_world_grid(map_size)
+		create_world(map_size)
+	
+	#Creates Player, Lobby, HUD
+	get_node("/root").add_child(game_scene.instantiate())
+	current_room_node = get_parent().get_node("Game/Rooms/Lobby_World1")
+	rooms = get_parent().get_node("Game/Rooms")
+
+	#Sets initial values for some singletons and connects important signals.
+	PlayerStats.initialize()
+	get_node("/root/Game/HUD").initialize()
+	
+
 func get_world_grid(size):
 	#2D Array of where actual rooms are in the world
 	var corridor_count := int(max(20 + size * size / 2, 5))
@@ -138,7 +158,7 @@ func has_door(location: Vector2, direction: Vector2) -> bool:
 	
 func transition_to_level(new_room_location: Vector2i):
 	if new_room_location in world_map:
-		TransitionScreen.transition()
+		TransitionScreen.transition(1)
 		await TransitionScreen.on_transition_finished
 		
 		room_location = new_room_location

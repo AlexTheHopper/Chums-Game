@@ -12,6 +12,7 @@ var desc := "This one-legged pink chum spends its whole day jumping around on it
 										"single_target": true}
 
 var default_move_speed := 1.5
+var can_walk := true
 
 var max_health := 100
 var start_health := 100

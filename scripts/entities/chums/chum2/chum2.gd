@@ -11,6 +11,7 @@ var desc := "This wooden chum was once part of a local tree, until a quite rude 
 										"single_target": true}
 
 var default_move_speed := 0.75
+var can_walk := true
 
 var max_health := 100
 var start_health := 100

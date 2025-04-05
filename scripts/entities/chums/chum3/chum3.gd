@@ -11,6 +11,7 @@ var desc := "Lurking in the shadows, and waiting for more prey is a chum with a 
 										"single_target": true}
 
 var default_move_speed := 1.0
+var can_walk := true
 
 var max_health := 100
 var start_health := 100

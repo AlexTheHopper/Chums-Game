@@ -150,16 +150,25 @@ func _on_health_changed(difference):
 	elif difference > 0.0 and state_machine.current_state.state_name != "Sleep":
 		healed(difference)
 
+func is_health_full() -> bool:
+	if health_node.health >= health_node.max_health:
+		return true
+	return false
+
 func damaged(amount):
 	$Hurtbox/AnimationPlayer.play("Hurt")
 	particle_zone.add_child(hurt_particles.instantiate())
 	
 	var hurt_num_inst = hurt_particles_num.instantiate()
-	hurt_num_inst.get_child(0).mesh.text = str(amount)
+	hurt_num_inst.get_child(0).mesh.text = "-" + str(amount)
 	particle_zone.add_child(hurt_num_inst)
 
-func healed(_amount):
+func healed(amount):
 	particle_zone.add_child(heal_particles.instantiate())
+	
+	var heal_num_inst = hurt_particles_num.instantiate()
+	heal_num_inst.get_child(0).mesh.text = "+" + str(amount)
+	particle_zone.add_child(heal_num_inst)
 
 func _on_health_health_depleted() -> void:
 	if current_group == "Chums_Enemy":

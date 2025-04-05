@@ -98,7 +98,6 @@ func _physics_process(delta: float) -> void:
 		camera_goal_vert = clamp(camera_goal_vert + 0.5, 0, 1)
 	$Camera_Controller/Camera_Path/PathFollow3D.progress_ratio = lerp($Camera_Controller/Camera_Path/PathFollow3D.progress_ratio, camera_goal_vert, 0.03)
 
-
 	# Handle jump.
 	if Input.is_action_pressed("jump"):
 		jump()

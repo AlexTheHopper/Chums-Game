@@ -11,6 +11,7 @@ var desc := "No one is really sure where this chum comes from. It seems a little
 										"single_target": true}
 
 var default_move_speed := 1.0
+var can_walk := true
 
 var max_health := 100
 var start_health := 100

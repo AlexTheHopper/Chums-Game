@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var chum_count = $Control/ChumCountPanel/Value
 @onready var anim_player = $Control/AnimationPlayer
 
-func _ready() -> void:
+func initialize() -> void:
 	PlayerStats.hud_health_change.connect(change_health)
 	change_health()
 	PlayerStats.hud_max_health_change.connect(change_max_health)

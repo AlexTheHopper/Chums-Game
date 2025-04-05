@@ -637,7 +637,7 @@ bone_idx = 0
 transform = Transform3D(0.981793, 0.126586, 0.14163, -0.126586, -0.119912, 0.984681, 0.14163, -0.984681, -0.101704, 0, 0.7, 0)
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(0.704781, 0.709425, -6.1396e-05, -0.709425, 0.704781, 2.98543e-07, 4.34825e-05, 4.33454e-05, 1, 0.4, 1.29954, -1.42612e-14)
+transform = Transform3D(0.704781, 0.709425, -6.1396e-05, -0.709425, 0.704781, 2.98665e-07, 4.34826e-05, 4.33454e-05, 1, 0.4, 1.29954, -1.42612e-14)
 bone_name = "Horn.L"
 bone_idx = 1
 

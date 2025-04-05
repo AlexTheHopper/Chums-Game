@@ -12,6 +12,7 @@ var desc := "An old log that has harnessed the modern technologies of the catapu
 										"single_target": true}
 
 var default_move_speed := 2.5
+var can_walk := true
 
 var max_health := 50
 var start_health := 50

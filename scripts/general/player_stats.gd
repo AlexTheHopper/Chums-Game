@@ -1,7 +1,7 @@
 extends Node
 
-@onready var player := get_tree().get_first_node_in_group("Player")
-@onready var health_node := player.get_node("Health")
+@onready var player: CharacterBody3D
+@onready var health_node
 
 @onready var player_health: float
 @onready var player_max_health: float
@@ -17,10 +17,13 @@ signal player_chums_changed
 signal insufficient_bracelets
 signal too_many_chums
 
-func _ready() -> void:
+func initialize() -> void:
+	player = get_tree().get_first_node_in_group("Player")
+	health_node = player.get_node("Health")
+
 	health_node.health_changed.connect(_on_player_health_changed)
 	player_health = health_node.health
-	
+
 	health_node.max_health_changed.connect(_on_player_max_health_changed)
 	player_max_health = health_node.max_health
 	

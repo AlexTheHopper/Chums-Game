@@ -48,7 +48,8 @@ func Physics_Update(_delta: float):
 	
 func get_target_info(pos, vel):
 	pos += Vector3(0, 0.3, 0)
-	var space_state = get_tree().current_scene.get_world_3d().direct_space_state
+	#var space_state = get_tree().current_scene.get_world_3d().direct_space_state
+	var space_state = get_tree().get_root().get_node("Game").get_world_3d().direct_space_state
 	var next_pos = pos
 	
 	for n in steps:
