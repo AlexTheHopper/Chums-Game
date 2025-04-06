@@ -156,19 +156,21 @@ func is_health_full() -> bool:
 	return false
 
 func damaged(amount):
-	$Hurtbox/AnimationPlayer.play("Hurt")
-	particle_zone.add_child(hurt_particles.instantiate())
+	if state_machine.current_state.state_name != "Knock":
+		$Hurtbox/AnimationPlayer.play("Hurt")
+		particle_zone.add_child(hurt_particles.instantiate())
 	
-	var hurt_num_inst = hurt_particles_num.instantiate()
-	hurt_num_inst.get_child(0).mesh.text = "-" + str(amount)
-	particle_zone.add_child(hurt_num_inst)
+		var hurt_num_inst = hurt_particles_num.instantiate()
+		hurt_num_inst.get_child(0).mesh.text = "-" + str(amount)
+		particle_zone.add_child(hurt_num_inst)
 
 func healed(amount):
-	particle_zone.add_child(heal_particles.instantiate())
-	
-	var heal_num_inst = hurt_particles_num.instantiate()
-	heal_num_inst.get_child(0).mesh.text = "+" + str(amount)
-	particle_zone.add_child(heal_num_inst)
+	if state_machine.current_state.state_name != "Knock":
+		particle_zone.add_child(heal_particles.instantiate())
+		
+		var heal_num_inst = hurt_particles_num.instantiate()
+		heal_num_inst.get_child(0).mesh.text = "+" + str(amount)
+		particle_zone.add_child(heal_num_inst)
 
 func _on_health_health_depleted() -> void:
 	if current_group == "Chums_Enemy":

@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var target: CharacterBody3D
 var grace := 1
-var heal_amount = 10
+var heal_amount = 25
 
 func _physics_process(_delta: float) -> void:
 	if grace <= 0.0:
