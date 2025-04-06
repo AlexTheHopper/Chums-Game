@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwtw3l04fav7g"]
+[gd_scene load_steps=16 format=3 uid="uid://cwtw3l04fav7g"]
 
 [ext_resource type="Script" uid="uid://uaj8v2pnjutj" path="res://scripts/general/hud.gd" id="1_n1psb"]
 [ext_resource type="Texture2D" uid="uid://yd7ub0ff2a2n" path="res://assets/entities/heart_img.png" id="2_45kxr"]
@@ -300,10 +300,120 @@ _data = {
 &"too_many_chums": SubResource("Animation_p21ms")
 }
 
+[sub_resource type="Animation" id="Animation_adyy0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseMenu/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.203922, 0.203922, 0.203922, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:is_paused")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PauseMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PauseMenu/HealthPanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pfecb"]
+resource_name = "pause"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseMenu/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.203922, 0.203922, 0.203922, 0), Color(0.203922, 0.203922, 0.203922, 0.427451)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:is_paused")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PauseMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PauseMenu/HealthPanel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.15, 0.155),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2r3oe"]
+_data = {
+&"RESET": SubResource("Animation_adyy0"),
+&"pause": SubResource("Animation_pfecb")
+}
+
 [node name="HUD" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_n1psb")
 
-[node name="Control" type="Control" parent="."]
+[node name="InGameHUD" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -311,7 +421,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthPanel" type="Panel" parent="Control"]
+[node name="HealthPanel" type="Panel" parent="InGameHUD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.022
@@ -324,7 +434,7 @@ offset_right = 0.359985
 offset_bottom = -0.167999
 theme_override_styles/panel = SubResource("StyleBoxFlat_1rkwe")
 
-[node name="TextureRect" type="TextureRect" parent="Control/HealthPanel"]
+[node name="TextureRect" type="TextureRect" parent="InGameHUD/HealthPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.25
@@ -332,7 +442,7 @@ anchor_bottom = 1.0
 texture = ExtResource("2_45kxr")
 expand_mode = 1
 
-[node name="PlayerHealthBar" parent="Control/HealthPanel" instance=ExtResource("3_d6pnr")]
+[node name="PlayerHealthBar" parent="InGameHUD/HealthPanel" instance=ExtResource("3_d6pnr")]
 layout_mode = 1
 anchor_left = 0.275
 anchor_top = 0.2
@@ -341,7 +451,7 @@ anchor_bottom = 0.8
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="BraceletsPanel" type="Panel" parent="Control"]
+[node name="BraceletsPanel" type="Panel" parent="InGameHUD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.022
@@ -354,7 +464,7 @@ offset_right = 0.23999
 offset_bottom = 0.311996
 theme_override_styles/panel = SubResource("StyleBoxFlat_p21ms")
 
-[node name="TextureRect" type="TextureRect" parent="Control/BraceletsPanel"]
+[node name="TextureRect" type="TextureRect" parent="InGameHUD/BraceletsPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.4
@@ -362,7 +472,7 @@ anchor_bottom = 1.0
 texture = ExtResource("3_8wiyd")
 expand_mode = 1
 
-[node name="Value" type="Label" parent="Control/BraceletsPanel"]
+[node name="Value" type="Label" parent="InGameHUD/BraceletsPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
@@ -374,7 +484,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChumCountPanel" type="Panel" parent="Control"]
+[node name="ChumCountPanel" type="Panel" parent="InGameHUD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.021
@@ -387,7 +497,7 @@ offset_right = 0.391983
 offset_bottom = -1.15199
 theme_override_styles/panel = SubResource("StyleBoxFlat_pfecb")
 
-[node name="TextureRect" type="TextureRect" parent="Control/ChumCountPanel"]
+[node name="TextureRect" type="TextureRect" parent="InGameHUD/ChumCountPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.4
@@ -395,7 +505,7 @@ anchor_bottom = 1.0
 texture = ExtResource("5_p21ms")
 expand_mode = 1
 
-[node name="Value" type="Label" parent="Control/ChumCountPanel"]
+[node name="Value" type="Label" parent="InGameHUD/ChumCountPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
@@ -407,7 +517,67 @@ text = "X / Y"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InGameHUD"]
 libraries = {
 &"": SubResource("AnimationLibrary_adyy0")
+}
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.203922, 0.203922, 0.203922, 0)
+
+[node name="HealthPanel" type="Panel" parent="PauseMenu"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1rkwe")
+
+[node name="Value" type="Label" parent="PauseMenu/HealthPanel"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 83.0
+offset_top = 13.5
+offset_right = -83.0
+offset_bottom = -13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.537011, 0.537011, 0.537011, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Paused."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_2r3oe")
 }

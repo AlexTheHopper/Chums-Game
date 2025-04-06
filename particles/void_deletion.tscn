@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8d65qpghv2db"]
+
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_ddosy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0fst"]
+transparency = 1
+vertex_color_use_as_albedo = true
+emission = Color(0.741176, 0.741176, 0.741176, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dp880"]
+material = SubResource("StandardMaterial3D_t0fst")
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Curve" id="Curve_5knp6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.703518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ddosy"]
+offsets = PackedFloat32Array(0, 0.459677, 0.83871, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[node name="Particles" type="Node3D"]
+script = ExtResource("1_ddosy")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 100
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.5
+randomness = 0.25
+mesh = SubResource("BoxMesh_dp880")
+emission_shape = 1
+emission_sphere_radius = 0.25
+direction = Vector3(0, 1, 0)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+radial_accel_min = 0.5
+radial_accel_max = 1.0
+scale_amount_curve = SubResource("Curve_5knp6")
+color_ramp = SubResource("Gradient_ddosy")
+
+[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://xi6g2eiqww0b"]
+[gd_scene load_steps=11 format=4 uid="uid://xi6g2eiqww0b"]
 
 [ext_resource type="Script" uid="uid://btywxp6yslwdc" path="res://scripts/general/main_menu.gd" id="1_qtr6c"]
 [ext_resource type="MeshLibrary" uid="uid://c6ohibnb6efn7" path="res://assets/world/world_1_mesh_lib_v1.tres" id="1_sk2tr"]
 [ext_resource type="PackedScene" uid="uid://dsr4pp61d2hjb" path="res://scenes/world/decorations/tree_1.tscn" id="3_sm4kk"]
 [ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="4_ftlmj"]
 [ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="5_ftlmj"]
+[ext_resource type="PackedScene" uid="uid://dkqrocdr2y8am" path="res://scenes/general/menu_being.tscn" id="6_pikal"]
 
 [sub_resource type="Environment" id="Environment_sm4kk"]
 ambient_light_source = 3
@@ -57,7 +58,10 @@ data = {
 metadata/_editor_floor_ = Vector3(-13, 1, -14)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 15, 10, 0)
+transform = Transform3D(0.707107, 0.353554, -0.612373, 0, 0.866026, 0.5, 0.707107, -0.353554, 0.612373, 0, 10, 15)
+
+[node name="Target" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -2.08616e-07, 1, -5, 13, -25)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.68387, 0)
@@ -153,3 +157,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Press Q To Start."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MenuBeing" parent="." instance=ExtResource("6_pikal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)
+
+[node name="Chums" type="Node3D" parent="."]

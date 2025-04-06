@@ -21,6 +21,7 @@ func _ready():
 		1: {1: load("res://scenes/world/lobby_world_1.tscn"),
 				2: load("res://scenes/world/room_world_1.tscn"),
 				3: load("res://scenes/world/fountain_room_world_1.tscn"),
+				4: load("res://scenes/world/void_room_world1.tscn"),
 				}
 			}
 
@@ -49,7 +50,6 @@ func start_game() -> void:
 	PlayerStats.initialize()
 	get_node("/root/Game/HUD").initialize()
 	
-
 func get_world_grid(size):
 	#2D Array of where actual rooms are in the world
 	var corridor_count := int(max(20 + size * size / 2, 5))
@@ -112,6 +112,9 @@ func set_room_type(location: Vector2i) -> int:
 	if location == Vector2i(map_size, map_size):
 		return 1 #Lobby
 		
+	elif randf() < 0.5:
+		return 4
+		
 	elif randf() < (per / 8):
 		return 3 #Fountain
 		
@@ -173,10 +176,8 @@ func transition_to_level(new_room_location: Vector2i):
 		current_room_node = new_room.instantiate()
 		rooms.add_child(current_room_node)
 	
-func reset():
-	room_location = Vector2(0, 0)
-	room_history = [Vector2(0, 0)]
-	game_begun = false
-	world_map = {}
-	_ready()
-	#get_tree().reload_current_scene()
+func return_to_menu():
+	TransitionScreen.transition(3)
+	await TransitionScreen.on_transition_finished
+	get_node("/root").add_child(load("res://scenes/general/main_menu.tscn").instantiate())
+	get_node("/root/Game").queue_free()

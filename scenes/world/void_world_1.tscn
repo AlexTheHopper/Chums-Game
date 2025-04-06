@@ -1,6 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d3m7ukebysy4h"]
+[gd_scene load_steps=11 format=3 uid="uid://b2qphphq5anyl"]
 
-[sub_resource type="Shader" id="Shader_mgyhe"]
+[ext_resource type="Script" uid="uid://bl27yojax7t1j" path="res://scripts/world/void_world_1.gd" id="1_w3553"]
+
+[sub_resource type="Shader" id="Shader_j0chv"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.stable's StandardMaterial3D.
 
 shader_type spatial;
@@ -52,7 +54,7 @@ void vertex() {
 
 	// UV1 Triplanar: Enabled (with World Triplanar)
 	uv1_power_normal = pow(abs(normal), vec3(uv1_blend_sharpness));
-	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset + TIME * 0.005;
+	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset + sin(TIME * 5.0);
 	uv1_power_normal /= dot(uv1_power_normal, vec3(1.0));
 	uv1_triplanar_pos *= vec3(1.0, -1.0, 1.0);
 }
@@ -107,30 +109,84 @@ void fragment() {
 "
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8wbyg"]
-noise_type = 0
+noise_type = 2
+frequency = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4ujy7"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j0chv"]
 seamless = true
 as_normal_map = true
 noise = SubResource("FastNoiseLite_8wbyg")
 
-[resource]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w3553"]
+noise_type = 2
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fpcbo"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_w3553")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j0chv"]
 render_priority = 0
-shader = SubResource("Shader_mgyhe")
-shader_parameter/albedo = Color(0.28761, 0.401754, 1, 1)
+shader = SubResource("Shader_j0chv")
+shader_parameter/albedo = Color(0, 0, 0, 1)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.1
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
-shader_parameter/texture_refraction = SubResource("NoiseTexture2D_4ujy7")
+shader_parameter/texture_refraction = SubResource("NoiseTexture2D_fpcbo")
 shader_parameter/refraction = 0.05
 shader_parameter/refraction_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/texture_normal = SubResource("NoiseTexture2D_4ujy7")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_j0chv")
 shader_parameter/normal_scale = 1.0
 shader_parameter/uv1_blend_sharpness = 1.0
 shader_parameter/uv1_scale = Vector3(0.1, 0.1, 0.1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w3553"]
+material = SubResource("ShaderMaterial_j0chv")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fpcbo"]
+size = Vector3(9.5, 0.6, 9.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bkab0"]
+size = Vector3(9.5, 0.2, 9.5)
+
+[node name="Void" type="Node3D"]
+script = ExtResource("1_w3553")
+
+[node name="Void" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("BoxMesh_w3553")
+
+[node name="KillZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+shape = SubResource("BoxShape3D_fpcbo")
+
+[node name="FlyZone" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlyZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_bkab0")
+
+[node name="Hearts" type="Node3D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
+[connection signal="body_entered" from="FlyZone" to="." method="_on_fly_zone_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

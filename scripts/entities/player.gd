@@ -48,6 +48,7 @@ var targeted_by := []
 
 
 var xform: Transform3D
+var chum_name := "Player"
 
 func _ready() -> void:
 	Global.game_begun = true
@@ -216,6 +217,10 @@ func healed(_amount):
 	particle_zone.add_child(heal_particles.instantiate())
 
 func _on_health_health_depleted() -> void:
+	#Stop all chums from battling
+	for group in ["Chums_Enemy", "Chums_Neutral", "Chums_Friend"]:
+		for chum in get_tree().get_nodes_in_group(group):
+			chum.set_state("Idle")
 	call_deferred("kill_player")
 	
 func has_damage() -> bool:
@@ -225,6 +230,5 @@ func get_agro_change_target():
 	return self
 
 func kill_player():
-	get_tree().reload_current_scene()
-	Global.reset()
+	Global.return_to_menu()
 	

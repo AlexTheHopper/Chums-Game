@@ -1,8 +1,10 @@
 extends CanvasLayer
 
-@onready var health_bar = $Control/HealthPanel/PlayerHealthBar
-@onready var chum_count = $Control/ChumCountPanel/Value
-@onready var anim_player = $Control/AnimationPlayer
+@onready var health_bar = $InGameHUD/HealthPanel/PlayerHealthBar
+@onready var chum_count = $InGameHUD/ChumCountPanel/Value
+@onready var IG_anim_player = $InGameHUD/AnimationPlayer
+@onready var P_anim_player = $PauseMenu/AnimationPlayer
+@export var is_paused: bool = false
 
 func initialize() -> void:
 	PlayerStats.hud_health_change.connect(change_health)
@@ -17,7 +19,22 @@ func initialize() -> void:
 	
 	PlayerStats.insufficient_bracelets.connect(indicate_bracelets)
 	PlayerStats.too_many_chums.connect(indicate_chum_count)
+	
+	P_anim_player.play("RESET")
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		toggle_pause()
+		
+func toggle_pause():
+	if is_paused and get_tree().paused:
+		get_tree().paused = false
+		P_anim_player.play_backwards("pause")
+		
+	elif not is_paused and not get_tree().paused:
+		get_tree().paused = true
+		P_anim_player.play("pause")
+		
 func change_health():
 	health_bar.set_health(PlayerStats.player_health)
 	
@@ -28,9 +45,9 @@ func change_chum_count():
 	chum_count.text = str(len(get_tree().get_nodes_in_group("Chums_Friend"))) + " / " + str(PlayerStats.player_max_chums)
 
 func change_bracelets():
-	$Control/BraceletsPanel/Value.text = str(PlayerStats.bracelets)
+	$InGameHUD/BraceletsPanel/Value.text = str(PlayerStats.bracelets)
 	
 func indicate_bracelets():
-	anim_player.play("insufficient_bracelets")
+	IG_anim_player.play("insufficient_bracelets")
 func indicate_chum_count():
-	anim_player.play("too_many_chums")
+	IG_anim_player.play("too_many_chums")
