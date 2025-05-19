@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2wlu5fsmxwey"]
+[gd_scene load_steps=6 format=3 uid="uid://d2wlu5fsmxwey"]
 
 [ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_gqanp"]
 
@@ -7,11 +7,16 @@ transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 billboard_mode = 1
+billboard_keep_scale = true
 
 [sub_resource type="TextMesh" id="TextMesh_nonec"]
 material = SubResource("StandardMaterial3D_gqanp")
 text = "999"
 font_size = 32
+
+[sub_resource type="Curve" id="Curve_gqanp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 0.75), 0.0, 0.0, 0, 0, Vector2(0.7, 0.75), 0.0, 0.0, 0, 0, Vector2(0.85, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="Gradient" id="Gradient_r4whh"]
 offsets = PackedFloat32Array(0, 0.8, 1)
@@ -24,15 +29,16 @@ script = ExtResource("1_gqanp")
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 emitting = false
 amount = 1
-lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.2
 mesh = SubResource("TextMesh_nonec")
 direction = Vector3(0, 1, 0)
-spread = 10.0
+spread = 5.0
+gravity = Vector3(0, -8, 0)
 initial_velocity_min = 6.0
-initial_velocity_max = 7.0
+initial_velocity_max = 6.0
+scale_amount_curve = SubResource("Curve_gqanp")
 color = Color(0.31263, 0, 0.0236355, 1)
 color_ramp = SubResource("Gradient_r4whh")
 

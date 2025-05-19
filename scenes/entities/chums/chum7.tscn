@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://qmnewa122jwi"]
+[gd_scene load_steps=25 format=4 uid="uid://qmnewa122jwi"]
 
 [ext_resource type="Script" uid="uid://btv00325jusq0" path="res://scripts/entities/chums/chum7/chum7.gd" id="1_d3e8j"]
 [ext_resource type="Texture2D" uid="uid://dx26hcvsnt6sr" path="res://Blender_Assets/Chum_Exports/chum7_chum_7_detach.png" id="1_o77uo"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="5_oteuo"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="6_8hikk"]
 [ext_resource type="Script" uid="uid://d3phwt88c834q" path="res://scripts/entities/chums/chum7/chum7_active.gd" id="7_d3e8j"]
+[ext_resource type="Script" uid="uid://b0fysivgskcy4" path="res://scripts/entities/chums/chum7/chum7_idle.gd" id="9_l614u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5jnu"]
 resource_name = "palette.001"
@@ -554,6 +555,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="Active" type="Node" parent="ChumSpecificStates"]
 script = ExtResource("7_d3e8j")
+
+[node name="Idle" type="Node" parent="ChumSpecificStates"]
+script = ExtResource("9_l614u")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true

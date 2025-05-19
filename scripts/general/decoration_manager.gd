@@ -23,10 +23,10 @@ func _ready() -> void:
 func get_random_decoration_world1():
 	var chance = randf()
 	var boost = Functions.map_range(Global.room_location.length(), Vector2(0, Global.map_size), Vector2(0, 0.1))
-	if chance + boost < 0.9:
+	if chance + boost < 0.95:
 		var rand_name = decorations_world1_common.pick_random()
 		return [decorations[rand_name], rand_name]
-	elif chance + boost < 0.95:
+	elif chance + boost < 0.98:
 		var rand_name = decorations_world1_uncommon.pick_random()
 		return [decorations[rand_name], rand_name]
 	else:

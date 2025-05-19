@@ -1,11 +1,17 @@
 extends Node
+var dev_mode = true
 
 var game_begun := false
-var map_size: int = 5
-var room_size: float = 40.0
+var map_size := 5
+var room_size := 40.0
 var world_map := {}
 var world_grid := []
-var world_map_guide := {}
+var world_map_guide = {"lobby": {},
+						"room": {},
+						"fountain": {},
+						"void": {},
+						}
+						
 var room_location := Vector2i(map_size, map_size)
 var room_history := [room_location]
 var in_battle := false
@@ -30,7 +36,12 @@ func start_game() -> void:
 	room_size = 40.0
 	world_map = {}
 	world_grid = []
-	world_map_guide = {}
+	world_map_guide = {"lobby": {},
+						"room": {},
+						"fountain": {},
+						"void": {},
+						}
+						
 	room_location = Vector2i(map_size, map_size)
 	room_history = [room_location]
 	in_battle = false
@@ -38,7 +49,7 @@ func start_game() -> void:
 
 	#Creates scaffold for world
 	if world_map == {}:
-		world_grid = get_world_grid(map_size)
+		world_grid = get_world_grid(map_size, current_world_num)
 		create_world(map_size)
 	
 	#Creates Player, Lobby, HUD
@@ -50,7 +61,7 @@ func start_game() -> void:
 	PlayerStats.initialize()
 	get_node("/root/Game/HUD").initialize()
 	
-func get_world_grid(size):
+func get_world_grid(size, world_n):
 	#2D Array of where actual rooms are in the world
 	var corridor_count := int(max(20 + size * size / 2, 5))
 	var corridor_lengths := range(2, max(size, 4))
@@ -98,12 +109,31 @@ func get_world_grid(size):
 		
 			if not x_remove in bounds and not y_remove in bounds:
 				grid[x_remove][y_remove] = set_room_type(Vector2i(x_remove, y_remove))
-	
+		
+	#Must have that at least one of each room type is present.
+	#Mainly for the world_map_guide
+	#this is a bit sloopy, maube TODO later.
+	var room_missing = []
+	for n in room_lookup[world_n].keys():
+		var exists = false
+		for slice in grid:
+			if n in slice:
+				exists = true
+		if not exists:
+			room_missing.append(n)
+	#Replace some normal rooms with the missing:
+	for y in grid.size():
+		for x in grid[0].size():
+			if grid[x][y] == 2 and room_missing.size() > 0: #Normal room that can safely be replaced
+				grid[x][y] = room_missing.pop_front()
 	#TESTPRINT:
 	for x in range(grid.size() - 1, -1, -1):
 		print(grid[x])
 
-	world_map_guide = Functions.astar2d(grid, Vector2i(size, size))
+	world_map_guide["lobby"] = Functions.astar2d(grid, 1)
+	world_map_guide["room"] = Functions.astar2d(grid, 2)
+	world_map_guide["fountain"] = Functions.astar2d(grid, 3)
+	world_map_guide["void"] = Functions.astar2d(grid, 4)
 	return(grid)
 	
 func set_room_type(location: Vector2i) -> int:
@@ -112,11 +142,11 @@ func set_room_type(location: Vector2i) -> int:
 	if location == Vector2i(map_size, map_size):
 		return 1 #Lobby
 		
-	elif randf() < 0.5:
-		return 4
-		
 	elif randf() < (per / 8):
-		return 3 #Fountain
+		if randf() < 0.75:
+			return 3 #Fountain
+		else:
+			return 4 #Void Pit
 		
 	else:
 		return 2 #Normal Room

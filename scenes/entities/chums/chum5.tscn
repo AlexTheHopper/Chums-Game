@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://3vd5ac7bjrem"]
+[gd_scene load_steps=29 format=4 uid="uid://3vd5ac7bjrem"]
 
 [ext_resource type="ArrayMesh" uid="uid://bixnf8lylqita" path="res://assets/world/world_1_other/proj_rock.vox" id="1_1b743"]
 [ext_resource type="Script" uid="uid://ck400lm52by5g" path="res://scripts/entities/chums/chum5/chum5.gd" id="1_x2il5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="5_tbdan"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="6_bnd3d"]
 [ext_resource type="PackedScene" uid="uid://dogp5icuw6k86" path="res://scenes/world/proj_rock.tscn" id="7_p1khf"]
+[ext_resource type="Script" uid="uid://bikfi02jjgig6" path="res://scripts/entities/chums/chum5/chum5_idle.gd" id="8_vc5g2"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kcloq"]
 load_path = "res://.godot/imported/chum5_chum_5_detach_Color.png-4fa34c9b351e429c7ebfdee89917febb.ctex"
@@ -809,7 +810,7 @@ mesh = SubResource("ArrayMesh_1b743")
 skin = SubResource("Skin_bhhp6")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 0.998989, 0.044964, 0, -0.044964, 0.998989, 0, 0.899421, -1.0317)
+transform = Transform3D(1, 0, 0, 0, 0.998989, 0.0449646, 0, -0.0449646, 0.998989, 0, 0.899421, -1.0317)
 bone_name = "TailTip"
 bone_idx = 2
 
@@ -829,7 +830,7 @@ metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 shape = SubResource("SphereShape3D_p1khf")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 0.492192, 0.870487, 0, -0.870487, 0.492192, 0, 0.653324, -0.596453)
+transform = Transform3D(1, 0, 0, 0, 0.492193, 0.870486, 0, -0.870486, 0.492193, 0, 0.653324, -0.596453)
 bone_name = "Tail"
 bone_idx = 1
 
@@ -874,6 +875,9 @@ script = ExtResource("5_bnd3d")
 [node name="AttackTimer" type="Timer" parent="ChumSpecificStates/Active"]
 
 [node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active"]
+
+[node name="Idle" type="Node" parent="ChumSpecificStates"]
+script = ExtResource("8_vc5g2")
 
 [node name="Particles" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.350146, 0)

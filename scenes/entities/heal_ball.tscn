@@ -17,8 +17,8 @@ size = Vector3(0.05, 0.05, 0.05)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.743719, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Gradient" id="Gradient_s7h8v"]
-colors = PackedColorArray(6.44952e-06, 0.716929, 0.20915, 1, 0.556619, 0.873559, 0, 1)
+[sub_resource type="Gradient" id="Gradient_1v0vs"]
+colors = PackedColorArray(0, 0.387119, 0.151429, 1, 0.19272, 0.886315, 0, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1v0vs"]
 radius = 0.3
@@ -42,7 +42,7 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_min = 0.2
 initial_velocity_max = 0.5
 scale_amount_curve = SubResource("Curve_fqqtf")
-color_initial_ramp = SubResource("Gradient_s7h8v")
+color_ramp = SubResource("Gradient_1v0vs")
 
 [node name="ContactZone" type="Area3D" parent="."]
 collision_layer = 8

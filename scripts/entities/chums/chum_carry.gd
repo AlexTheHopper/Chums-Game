@@ -42,7 +42,7 @@ func Physics_Update(_delta: float):
 		xform.basis.x = -xform.basis.z.cross(target_info["normal"])
 		xform.basis = xform.basis.orthonormalized()
 			
-		target_sprite.global_transform = target_sprite.global_transform.interpolate_with(xform, 0.3)
+		target_sprite.global_transform = target_sprite.global_transform.interpolate_with(xform, 0.2)
 
 	chum.move_and_slide()
 	

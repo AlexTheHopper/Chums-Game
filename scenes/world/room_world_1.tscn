@@ -80,7 +80,7 @@ curve = SubResource("Curve3D_jgcr4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
 
 [node name="SpawnTimer" type="Timer" parent="SpawnPath"]
-wait_time = 0.01
+wait_time = 0.5
 one_shot = true
 
 [node name="Currencies" type="Node3D" parent="."]

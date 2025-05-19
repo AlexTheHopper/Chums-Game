@@ -3,6 +3,7 @@ extends room
 @onready var spawn_point: PathFollow3D = $SpawnPath/SpawnPoint
 @onready var room_value = Global.world_map[Global.room_location]["value"]
 const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
+const TYPE := "room"
 var spawn_particles = preload("res://particles/spawn_particles_world1.tscn")
 
 func _ready() -> void:	
@@ -11,9 +12,12 @@ func _ready() -> void:
 	
 	if Global.world_map[Global.room_location]["to_spawn"] < 0:
 		#Maximum to spawn:
-		enemies_to_spawn = 3
+		enemies_to_spawn = int(Functions.map_range(room_value, Vector2(1, 10), Vector2(3, 6)))
 	else:
 		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
+		
+	if Global.dev_mode:
+		$SpawnPath/SpawnTimer.wait_time = 0.1
 	
 	super()
 	set_player_loc_on_entry()
@@ -91,7 +95,7 @@ func decorate():
 	super()
 	
 	#Streetlamp generally points to fastest way to lobby.
-	var to_lobby = Global.world_map_guide[Global.room_location] * 8
+	var to_lobby = Global.world_map_guide["lobby"][Global.room_location] * 8
 	var spawn_pos = Vector3(1, 0, 1)
 	spawn_pos.x += to_lobby.x + randf_range(-1.5, 1.5)
 	spawn_pos.z += to_lobby.y + randf_range(-1.5, 1.5)

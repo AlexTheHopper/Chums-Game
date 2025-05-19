@@ -6,7 +6,7 @@ extends Node
 @onready var player_health: float
 @onready var player_max_health: float
 @onready var bracelets := 0
-@onready var player_max_chums := 3
+@onready var player_max_chums := 5 if not Global.dev_mode else 10
 
 signal hud_health_change
 signal hud_max_health_change
@@ -27,8 +27,8 @@ func initialize() -> void:
 	health_node.max_health_changed.connect(_on_player_max_health_changed)
 	player_max_health = health_node.max_health
 	
-	bracelets = 0
-	player_max_chums = 3
+	bracelets = bracelets
+	player_max_chums = player_max_chums
 	
 func _on_player_health_changed(_difference):
 	player_health = health_node.health

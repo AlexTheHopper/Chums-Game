@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://b3e4tsjf4m8ud"]
+[gd_scene load_steps=27 format=4 uid="uid://b3e4tsjf4m8ud"]
 
 [ext_resource type="Script" uid="uid://mtqglvwpq5tm" path="res://scripts/entities/chums/chum2/chum2.gd" id="1_ctqgo"]
 [ext_resource type="Texture2D" uid="uid://bifb2db4upwe1" path="res://Blender_Assets/Chum_Exports/chum2_chum_2_detach.png" id="2_2vorv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="4_7nml4"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="5_4geia"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="7_la7d7"]
+[ext_resource type="Script" uid="uid://b36iijymi7qgj" path="res://scripts/entities/chums/chum2/chum2_idle.gd" id="7_xrr71"]
 [ext_resource type="Script" uid="uid://baskkk82q7b0" path="res://scripts/entities/chums/chum2/chum2_active.gd" id="8_dx3o6"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="10_b8ngf"]
 
@@ -682,6 +683,9 @@ script = ExtResource("8_dx3o6")
 
 [node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active"]
 autostart = true
+
+[node name="Idle" type="Node" parent="ChumSpecificStates"]
+script = ExtResource("7_xrr71")
 
 [node name="Particles" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.620481, 0)

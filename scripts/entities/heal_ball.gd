@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 var target: CharacterBody3D
 var grace := 1
-var heal_amount = 25
+@export var heal_amount = 1
 
 func _physics_process(_delta: float) -> void:
 	if grace <= 0.0:
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 
 func _on_contact_zone_body_entered(body: Node3D) -> void:
 	if body == target:
-		body.health_node.health += 10
+		body.health_node.health += heal_amount
 		queue_free()
 
 func on_target_death():

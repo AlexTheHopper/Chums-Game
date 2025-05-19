@@ -150,11 +150,6 @@ func _on_health_changed(difference):
 	elif difference > 0.0 and state_machine.current_state.state_name != "Sleep":
 		healed(difference)
 
-func is_health_full() -> bool:
-	if health_node.health >= health_node.max_health:
-		return true
-	return false
-
 func damaged(amount):
 	if state_machine.current_state.state_name != "Knock":
 		$Hurtbox/AnimationPlayer.play("Hurt")
@@ -338,15 +333,16 @@ func set_target_to(new_target):
 		new_target_health.health_depleted.connect(_on_target_death)
 		
 func _on_target_death():
-	var old_target_name = target.chum_name
-	var new_target_name = 'None'
-	set_new_target()
 	if target:
-		if not target is Player:
-			new_target_name = target.chum_name
-		elif target is Player:
-			new_target_name = "Player"
-	print("Self: " + str(self.chum_name) + '. Old Target: ' + str(old_target_name) + '. New target: ' + str(new_target_name))
-	if not self.target and state_machine.current_state.state_name != "Carry":
-		set_state("Idle")
+		var old_target_name = target.chum_name
+		var new_target_name = 'None'
+		set_new_target()
+		if target:
+			if not target is Player:
+				new_target_name = target.chum_name
+			elif target is Player:
+				new_target_name = "Player"
+		print("Self: " + str(self.chum_name) + '. Old Target: ' + str(old_target_name) + '. New target: ' + str(new_target_name))
+		if not self.target and state_machine.current_state.state_name != "Carry":
+			set_state("Idle")
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dug6hjktv786k"]
+[gd_scene load_steps=25 format=4 uid="uid://dug6hjktv786k"]
 
 [ext_resource type="Script" uid="uid://bupsorqmj7jcl" path="res://scripts/entities/chums/chum6/chum6.gd" id="1_2nv8b"]
 [ext_resource type="Texture2D" uid="uid://sjccf3f6g0hs" path="res://Blender_Assets/Chum_Exports/chum6_chum_6_detach.png" id="1_m64b0"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="5_gw7rm"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="6_4ym0f"]
 [ext_resource type="Script" uid="uid://i38am5netq5" path="res://scripts/entities/chums/chum6/chum6_active.gd" id="8_gw7rm"]
+[ext_resource type="Script" uid="uid://sgil0n6u2nff" path="res://scripts/entities/chums/chum6/chum6_idle.gd" id="9_4ym0f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nv8b"]
 resource_name = "palette"
@@ -560,3 +561,6 @@ max_speed = 1.0
 
 [node name="Active" type="Node" parent="ChumSpecificStates"]
 script = ExtResource("8_gw7rm")
+
+[node name="Idle" type="Node" parent="ChumSpecificStates"]
+script = ExtResource("9_4ym0f")

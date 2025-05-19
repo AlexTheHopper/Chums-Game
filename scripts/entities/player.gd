@@ -21,6 +21,7 @@ var can_align := true
 var is_carrying := false
 var is_attacking := false
 var is_launched := false
+var charging := 0.0
 var attacking_mult := 1.0
 
 @export var jump_height: float = 2
@@ -33,9 +34,12 @@ var attacking_mult := 1.0
 
 @export var hitbox: Hitbox
 @export var hurtbox: Hurtbox
+@export var base_damage := 10
+@export var max_extra_damage := 20
 @onready var particle_zone := $Particles
 @onready var health_node := $Health
 @onready var anim_player := $AnimationPlayer
+@onready var lantern := $Armature/Skeleton3D/BoneAttachment3D/Lantern
 
 @onready var hurt_particles := load("res://particles/damage_friendly.tscn")
 @onready var heal_particles := load("res://particles/heal_friendly.tscn")
@@ -55,7 +59,11 @@ func _ready() -> void:
 	$Health.immune = false
 	$Health.set_max_health(100)
 	$Health.set_health(100)
-	hitbox.damage = 50
+	if Global.dev_mode:
+		base_damage = 50
+		max_extra_damage = 100
+
+		hitbox.damage = base_damage
 	
 	hitbox.attack_info = {"speed": [1.3, 1.4, 1.5, 1.6, 1.7, 1.8].pick_random(),
 							"damage": 50,
@@ -72,9 +80,11 @@ func _physics_process(delta: float) -> void:
 	#Animations:
 	#Attack:
 	if Input.is_action_just_pressed("attack") and not is_attacking and not is_carrying:
-		anim_player.play("Swing")
 		is_attacking = true
+		charging += delta
 		attacking_mult = 0.1
+		anim_player.play("Swing")
+		anim_player.speed_scale = 0.12
 		anim_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
 	elif not is_attacking:
 		if Input.is_action_pressed("jump") and is_on_floor():
@@ -83,8 +93,20 @@ func _physics_process(delta: float) -> void:
 			anim_player.play("Run_Carry" if is_carrying else "Run_noCarry")
 		elif input_dir == Vector2.ZERO and is_on_floor():
 			anim_player.play("Idle_Carry" if is_carrying else "Idle_noCarry")
-			
 		attacking_mult = lerp(attacking_mult, 1.0, 0.05)
+		
+	#Increment charging and manage lantern size:
+	if charging > 0:
+		charging += delta
+		if charging > 0.5:
+			lantern.scale = lerp(lantern.scale, Vector3(1.5, 1.5, 1.5), 0.02)
+	#Varying damage based on charge:
+	if (Input.is_action_just_released("attack") and charging > 0.0) or charging > 2.0:
+		var damage_modifier = Functions.map_range(charging, Vector2(0.5, 2.0), Vector2(0.0, 1.0))
+		var attack_damage = base_damage + int(damage_modifier * max_extra_damage)
+		hitbox.damage = attack_damage
+		anim_player.speed_scale = 1.0
+		charging = 0.0
 	
 	#Rotating camera:
 	if Input.is_action_just_pressed("cam_left"):
@@ -176,6 +198,9 @@ func _process(_delta: float) -> void:
 			
 func _on_attack_finished(_anim_name):
 	is_attacking = false
+	charging = 0.0
+	hitbox.damage = base_damage
+	lantern.scale = Vector3(1.0, 1.0, 1.0)
 
 func jump():
 	if (is_on_floor() or coyote_time > 0) and not in_jump and not is_attacking:
@@ -210,11 +235,15 @@ func damaged(amount):
 	particle_zone.add_child(hurt_particles.instantiate())
 	
 	var hurt_num_inst = hurt_particles_num.instantiate()
-	hurt_num_inst.get_child(0).mesh.text = str(amount)
+	hurt_num_inst.get_child(0).mesh.text = "-" + str(amount)
 	particle_zone.add_child(hurt_num_inst)
 
-func healed(_amount):
+func healed(amount):
 	particle_zone.add_child(heal_particles.instantiate())
+	
+	var heal_num_inst = hurt_particles_num.instantiate()
+	heal_num_inst.get_child(0).mesh.text = "+" + str(amount)
+	particle_zone.add_child(heal_num_inst)
 
 func _on_health_health_depleted() -> void:
 	#Stop all chums from battling

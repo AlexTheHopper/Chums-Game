@@ -60,7 +60,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	nav_vel = safe_velocity
 
-
 func _on_nav_timer_timeout() -> void:
 	if chum.target:
 		chum.nav_agent.target_position = chum.target.global_position

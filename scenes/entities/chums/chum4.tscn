@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bio3pi6ddipta"]
+[gd_scene load_steps=27 format=4 uid="uid://bio3pi6ddipta"]
 
 [ext_resource type="Script" uid="uid://d25hlkl5ecsjq" path="res://scripts/entities/chums/chum4/chum4.gd" id="1_35t05"]
 [ext_resource type="Texture2D" uid="uid://b4c6l57q3gq30" path="res://Blender_Assets/Chum_Exports/chum4_2_chum_4_detach.png" id="2_63msc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dmof7v6wjfjl8" path="res://scripts/entities/chums/chum4/chum4_active.gd" id="6_2dogs"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="6_tlx3u"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="7_jbpsa"]
+[ext_resource type="Script" uid="uid://chipki7womifx" path="res://scripts/entities/chums/chum4/chum4_idle.gd" id="7_jjkdq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlf6f"]
 resource_name = "palette"
@@ -1139,6 +1140,9 @@ script = ExtResource("6_2dogs")
 [node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active"]
 
 [node name="AttackTimer" type="Timer" parent="ChumSpecificStates/Active"]
+
+[node name="Idle" type="Node" parent="ChumSpecificStates"]
+script = ExtResource("7_jjkdq")
 
 [node name="Particles" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600293, 0)

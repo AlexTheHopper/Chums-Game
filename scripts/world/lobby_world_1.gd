@@ -1,5 +1,7 @@
 extends room
 
+const TYPE := "lobby"
+
 func _ready() -> void:	
 	super()
 	set_player_loc_on_entry()

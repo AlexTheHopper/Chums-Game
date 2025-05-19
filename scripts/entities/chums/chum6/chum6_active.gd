@@ -42,12 +42,13 @@ func on_something_death():
 		
 func emit_object():
 	for n in to_emit:
-		for target_chum in get_tree().get_nodes_in_group(chum.current_group):
-			if target_chum != chum and not target_chum.is_health_full():
+		for target_chum in get_tree().get_nodes_in_group(chum.current_group) + get_tree().get_nodes_in_group("Player"):
+			if target_chum != chum and target_chum.has_damage() and not(target_chum is Player and chum.current_group == "Chums_Enemy"):
 				var obj = object.instantiate()
 				Global.current_room_node.get_node("Decorations").add_child(obj)
 				obj.target = target_chum
 				obj.global_position = chum.sleep_zone.global_position
+				obj.heal_amount = chum.attack["damage"]
 				obj.velocity = Vector3(0, 5, 0)
 	to_emit = 0
 

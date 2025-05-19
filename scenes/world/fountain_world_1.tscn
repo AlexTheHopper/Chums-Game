@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b74vi5vyt44bq"]
+[gd_scene load_steps=15 format=3 uid="uid://b74vi5vyt44bq"]
 
 [ext_resource type="Script" uid="uid://dch1vebwqobo4" path="res://scripts/world/fountain_world_1.gd" id="1_8wbyg"]
 
@@ -155,6 +155,21 @@ size = Vector3(9.5, 0.6, 9.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8wbyg"]
 size = Vector3(9.5, 0.2, 9.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wbyg"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_0423p"]
+material = SubResource("StandardMaterial3D_8wbyg")
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Curve" id="Curve_0uqmi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.251799, 1), 0.0, 0.0, 0, 0, Vector2(0.751799, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_m8jxi"]
+offsets = PackedFloat32Array(0.142857, 1)
+colors = PackedColorArray(0.205117, 0.205117, 0.205117, 1, 1, 1, 1, 1)
+
 [node name="Fountain" type="Node3D"]
 script = ExtResource("1_8wbyg")
 
@@ -184,6 +199,21 @@ shape = SubResource("BoxShape3D_8wbyg")
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+amount = 20
+randomness = 0.5
+mesh = SubResource("BoxMesh_0423p")
+emission_shape = 3
+emission_box_extents = Vector3(4, 0.2, 4)
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 4.0
+initial_velocity_max = 5.0
+scale_amount_curve = SubResource("Curve_0uqmi")
+color = Color(0, 0.320436, 0.640883, 1)
+color_initial_ramp = SubResource("Gradient_m8jxi")
 
 [connection signal="body_entered" from="HealZone" to="." method="_on_heal_zone_body_entered"]
 [connection signal="body_entered" from="FlyZone" to="." method="_on_fly_zone_body_entered"]

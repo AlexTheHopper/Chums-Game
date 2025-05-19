@@ -22,6 +22,7 @@ func spawn_chum():
 			var chum_instance = chum_to_spawn.instantiate()
 			get_parent().get_node("Chums").add_child(chum_instance)
 			chum_instance.global_position = $RayCast3D.get_collision_point()
+			chum_instance.get_node("GeneralChumBehaviour").visible = false
 			#Spawn spawn particles:
 			chum_instance.particle_zone.add_child(spawn_particles.instantiate())
 			

@@ -4,7 +4,7 @@ var chum_str := "chum7"
 var chum_name := "Ring of Pearls"
 
 
-var desc := "TODO."
+var desc := "Down on your luck with a low amount of friendship bracelets? Fear not, behold this flower which grants you an extra bracelet on every enemy defeat!"
 
 @onready var default_attack: Dictionary = {"speed": 1.6, #fastest quality still needs to be more than the attack animation length.
 										"damage": 10,
@@ -14,13 +14,13 @@ var desc := "TODO."
 var default_move_speed := 0.0
 var can_walk := false
 
-var max_health := 100
-var start_health := 100
+var max_health := 50
+var start_health := 50
 
 var maintains_agro := false
 var changes_agro_on_damaged := true
 var draws_agro_on_attack := true
 var always_targets_player := false
 
-var bracelet_count := 3
-var bracelet_cost := 3
+var bracelet_count := 1 if not Global.dev_mode else 1
+var bracelet_cost := 3 if not Global.dev_mode else 1

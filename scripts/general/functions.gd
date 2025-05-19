@@ -58,21 +58,25 @@ func dict_to_grid_coord(vector: Vector2, size: int) -> Vector2:
 func grid_to_dict_coord(vector: Vector2, size: int) -> Vector2:
 	return Vector2(int(vector.x - size), int(vector.y - size))
 		
-func astar2d(map: Array, goal: Vector2i):
+func astar2d(map: Array, goal: int):
 	var directions := [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
 
 	var size: int = map.size()
 	
 	var dir_map := {}
 	var visited := []
+	var queue := []
+
 	for x in range(size):
 		visited.append([])
 		for y in range(size):
-			visited[x].append(false)
 			
-	var queue = [goal]
-	visited[goal.x][goal.y] = true
-	dir_map[goal] = Vector2i(0, 0)
+			if map[x][y] == goal:
+				visited[x].append(true)
+				queue.append(Vector2i(x, y))
+				dir_map[Vector2i(x, y)] = Vector2i(0, 0)
+			else:
+				visited[x].append(false)
 	
 	while queue.size() > 0:
 		var current = queue.pop_front()

@@ -9,7 +9,7 @@ func Enter():
 	chum.anim_player.animation_finished.connect(woken)
 
 func Physics_Update(delta: float):
-	if chum.target:
+	if chum.target and chum.can_walk:
 		chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
 		
 	if not chum.is_on_floor():
