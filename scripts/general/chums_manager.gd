@@ -6,14 +6,24 @@ var quality_popup_active = false
 
 func _ready() -> void:
 	#Fill world1 chums:
-	world1_chums[0.0] = preload("res://scenes/entities/chums/chum1.tscn")
-	world1_chums[10.1] = preload("res://scenes/entities/chums/chum2.tscn")
-	world1_chums[10.2] = preload("res://scenes/entities/chums/chum3.tscn")
-	world1_chums[10.3] = preload("res://scenes/entities/chums/chum4.tscn")
-	world1_chums[10.4] = preload("res://scenes/entities/chums/chum5.tscn")
-	world1_chums[10.01] = preload("res://scenes/entities/chums/chum6.tscn")
-	world1_chums[10.02] = preload("res://scenes/entities/chums/chum7.tscn")
-	world1_chums[0.03] = preload("res://scenes/entities/chums/chum8.tscn")
+	if Global.dev_mode == false:
+		world1_chums[0.51] = preload("res://scenes/entities/chums/chum1.tscn")
+		world1_chums[0.1] = preload("res://scenes/entities/chums/chum2.tscn")
+		world1_chums[0.5] = preload("res://scenes/entities/chums/chum3.tscn")
+		world1_chums[2.0] = preload("res://scenes/entities/chums/chum4.tscn")
+		world1_chums[1.5] = preload("res://scenes/entities/chums/chum5.tscn")
+		world1_chums[1.75] = preload("res://scenes/entities/chums/chum6.tscn")
+		world1_chums[0.75] = preload("res://scenes/entities/chums/chum7.tscn")
+		world1_chums[2.5] = preload("res://scenes/entities/chums/chum8.tscn")
+	else:
+		world1_chums[0.01] = preload("res://scenes/entities/chums/chum1.tscn")
+		world1_chums[0.02] = preload("res://scenes/entities/chums/chum2.tscn")
+		world1_chums[0.03] = preload("res://scenes/entities/chums/chum3.tscn")
+		world1_chums[0.04] = preload("res://scenes/entities/chums/chum4.tscn")
+		world1_chums[0.05] = preload("res://scenes/entities/chums/chum5.tscn")
+		world1_chums[0.06] = preload("res://scenes/entities/chums/chum6.tscn")
+		world1_chums[0.07] = preload("res://scenes/entities/chums/chum7.tscn")
+		world1_chums[0.08] = preload("res://scenes/entities/chums/chum8.tscn")
 
 func get_random_world1_chum(room_value: float):
 	#A rooms value is its distance from the lobby. Room (0, 1) has a value of 1.

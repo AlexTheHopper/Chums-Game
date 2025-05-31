@@ -1,7 +1,7 @@
 extends Chum
 class_name Chum8
 var chum_str := "chum8"
-var chum_name := "Guide"
+var chum_name := "Bolt"
 
 var desc := "palceholder"
 
@@ -25,3 +25,4 @@ var bracelet_count := 1 if not Global.dev_mode else 1
 var bracelet_cost := 3 if not Global.dev_mode else 1
 
 var target_room_types := ["lobby", "room", "fountain", "void"]
+var can_seek := true

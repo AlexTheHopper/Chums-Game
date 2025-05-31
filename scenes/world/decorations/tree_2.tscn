@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dga50bkq2bhjr"]
+
+[ext_resource type="ArrayMesh" uid="uid://dn1ulofhc23yl" path="res://scenes/world/decorations/tree2.vox" id="1_58krd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bvonc"]
+height = 4.0
+radius = 0.4
+
+[node name="Tree2" type="StaticBody3D"]
+
+[node name="Tree2" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_58krd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_bvonc")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+radius = 0.75
+height = 2.0
+avoidance_layers = 3

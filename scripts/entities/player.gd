@@ -171,30 +171,31 @@ func _process(_delta: float) -> void:
 		print("FPS: " + str(Engine.get_frames_per_second()))
 		print('player health: ' + str($Health.health))
 		print('player pos: ' + str(global_position))
-		#for room in Global.world_map:
-			#print(room)
-			#print(Global.world_map[room])
-		#print("Enemies' positions:")
-		#for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
-			#print(chum.global_position)
-		#print("Neutrals' positions:")
-		#for chum in get_tree().get_nodes_in_group("Chums_Neutral"):
-			#print(chum.global_position)
+
 		print("friends:")
 		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
+			print(chum.chum_name)
 			print(chum.attack)
 			print(chum.quality)
 			print(chum.health_node.health)
+			if chum.target:
+				print("Target: " + str(chum.target))
 		print("enemies:")
 		for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
+			print(chum.chum_name)
 			print(chum.attack)
 			print(chum.quality)
 			print(chum.health_node.health)
+			if chum.target:
+				print("Target: " + str(chum.target))
 		print("neutral:")
 		for chum in get_tree().get_nodes_in_group("Chums_Neutral"):
+			print(chum.chum_name)
 			print(chum.attack)
 			print(chum.quality)
 			print(chum.health_node.health)
+			if chum.target:
+				print("Target: " + str(chum.target))
 			
 func _on_attack_finished(_anim_name):
 	is_attacking = false

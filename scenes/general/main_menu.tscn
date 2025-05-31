@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://xi6g2eiqww0b"]
+[gd_scene load_steps=12 format=4 uid="uid://xi6g2eiqww0b"]
 
 [ext_resource type="Script" uid="uid://btywxp6yslwdc" path="res://scripts/general/main_menu.gd" id="1_qtr6c"]
 [ext_resource type="MeshLibrary" uid="uid://c6ohibnb6efn7" path="res://assets/world/world_1_mesh_lib_v1.tres" id="1_sk2tr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="4_ftlmj"]
 [ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="5_ftlmj"]
 [ext_resource type="PackedScene" uid="uid://dkqrocdr2y8am" path="res://scenes/general/menu_being.tscn" id="6_pikal"]
+[ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="7_nalmj"]
 
 [sub_resource type="Environment" id="Environment_sm4kk"]
 ambient_light_source = 3
@@ -162,3 +163,15 @@ vertical_alignment = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)
 
 [node name="Chums" type="Node3D" parent="."]
+
+[node name="PunchingBag" parent="Chums" instance=ExtResource("7_nalmj")]
+transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, -25, 2, 2)
+
+[node name="PunchingBag2" parent="Chums" instance=ExtResource("7_nalmj")]
+transform = Transform3D(-0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, 26, 2, 0)
+
+[node name="PunchingBag3" parent="Chums" instance=ExtResource("7_nalmj")]
+transform = Transform3D(-0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, -0.642788, -4, 2, 24)
+
+[node name="PunchingBag4" parent="Chums" instance=ExtResource("7_nalmj")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1, 2, -23)

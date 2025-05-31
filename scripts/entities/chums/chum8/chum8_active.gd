@@ -27,6 +27,8 @@ func Enter():
 	attacking = false
 	has_touched_floor = false
 	
+	chum.can_seek = true
+	
 	set_target_location()
 
 func Physics_Update(delta: float):

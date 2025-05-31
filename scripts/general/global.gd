@@ -79,15 +79,13 @@ func get_world_grid(size, world_n):
 
 	#Start with coridoors:
 	var room_points = [Vector2i(size, size), Vector2i(size, size), Vector2i(size, size)]
-	#print('starting at: ' + str(room_points[0]))
 	#For each corridor:
 	for N in range(corridor_count):
 		var pos = room_points.pick_random()
 		var length = corridor_lengths.pick_random()
 		var dir = walks[0]
 		walks.append(walks.pop_front())
-		#print('At point ' + str(pos) + ' and heading in dir ' + str(dir) + ' for length ' + str(length))
-		
+
 		#For each tile:
 		for n in range(length):
 			grid[pos.x][pos.y] = set_room_type(pos)
@@ -98,11 +96,11 @@ func get_world_grid(size, world_n):
 		#Add end of corridor to list of spots:
 		if pos not in room_points:
 			room_points.append(pos)
-			#print('Appending ' + str(pos) + 'to room locs')
 			
 	#Rooms:
 	for N in range(room_count):
 		var pos = room_points.pick_random()
+		grid[pos.x][pos.y] = set_room_type(Vector2i(pos.x, pos.y))
 		for remove_pos in walks:
 			var x_remove = pos.x + remove_pos.x
 			var y_remove = pos.y + remove_pos.y

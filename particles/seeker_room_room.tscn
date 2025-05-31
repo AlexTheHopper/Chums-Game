@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://chy3m6o6fnws7"]
+
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_tkp7x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkp7x"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cxp57"]
+material = SubResource("StandardMaterial3D_tkp7x")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_tkp7x"]
+offsets = PackedFloat32Array(0, 0.857143)
+colors = PackedColorArray(0.690196, 0.65098, 0, 0.529412, 0.580206, 0.554158, 0, 1)
+
+[node name="Particles" type="Node3D"]
+script = ExtResource("1_tkp7x")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 0.8
+mesh = SubResource("BoxMesh_cxp57")
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 5.0
+initial_velocity_max = 6.0
+color_initial_ramp = SubResource("Gradient_tkp7x")
+
+[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]

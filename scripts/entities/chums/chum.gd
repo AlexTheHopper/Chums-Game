@@ -142,7 +142,10 @@ func find_enemy():
 
 func _on_recieved_damage(_damage, change_agro, attacker):
 	if change_agro:
-		set_target_to(attacker)
+		if attacker is Player:
+			set_target_to(attacker)
+		elif attacker.state_machine.current_state.state_name == "Active":
+			set_target_to(attacker)
 
 func _on_health_changed(difference):
 	if difference < 0.0:
@@ -342,7 +345,7 @@ func _on_target_death():
 				new_target_name = target.chum_name
 			elif target is Player:
 				new_target_name = "Player"
-		print("Self: " + str(self.chum_name) + '. Old Target: ' + str(old_target_name) + '. New target: ' + str(new_target_name))
+		print("Self: " + str(self.chum_name) + ". Group: " + str(current_group) + '. Old Target: ' + str(old_target_name) + '. New target: ' + str(new_target_name))
 		if not self.target and state_machine.current_state.state_name != "Carry":
 			set_state("Idle")
 		
