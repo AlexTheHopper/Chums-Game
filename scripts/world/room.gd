@@ -86,11 +86,11 @@ func save_room():
 																	"state": chum.state_machine.current_state.state_name,
 																	"health": chum.health_node.get_health(),
 																	"max_health": chum.health_node.get_max_health(),
-																	"attack": chum.attack,
-																	"move_speed": chum.move_speed,
+																	#"attack": chum.attack,
+																	#"move_speed": chum.move_speed,
 																	"quality": chum.quality,})
-																
-																
+	SaverLoader.save_game(Global.game_save_id)
+
 func load_room():
 	var room_info = Global.world_map[Global.room_location]
 	#Chums:
@@ -98,8 +98,8 @@ func load_room():
 		var chum_to_add = ChumsManager.get_specific_chum(chum["type"])
 		var chum_instance = chum_to_add.instantiate()
 		
-		chum_instance.attack = chum["attack"]
-		chum_instance.move_speed = chum["move_speed"]
+		#chum_instance.attack = chum["attack"]
+		#chum_instance.move_speed = chum["move_speed"]
 		chum_instance.quality = chum["quality"]
 		chum_instance.stats_set = true
 		

@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 		starting_game = true
 		TransitionScreen.transition(3)
 		await TransitionScreen.on_transition_finished
-		Global.start_game()
+		Global.start_game(1)
 		queue_free()
 	
 func _physics_process(_delta: float) -> void:

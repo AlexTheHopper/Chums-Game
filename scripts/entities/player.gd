@@ -170,6 +170,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("print_fps"):
 		print("FPS: " + str(Engine.get_frames_per_second()))
 		print('player health: ' + str($Health.health))
+		print('player max health: ' + str($Health.max_health))
 		print('player pos: ' + str(global_position))
 
 		print("friends:")

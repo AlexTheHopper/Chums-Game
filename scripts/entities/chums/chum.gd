@@ -81,9 +81,14 @@ func _ready() -> void:
 	#set_collision_mask_value(2, true) #Dont do this, so you cant push them in sleep.
 	set_collision_mask_value(4, true)
 	
-	if not stats_set:
-		attack = self.default_attack
-		move_speed = self.default_move_speed
+	attack = self.default_attack
+	move_speed = self.default_move_speed
+	if stats_set:
+		self.attack["speed"] *= (quality["speed"] / 10 + 1)
+		self.attack["damage"] = int(self.attack["damage"] * (quality["damage"] / 10 + 1))
+		self.move_speed *= (quality["move_speed"] / 10 + 1)
+		#Health already taken care of with start_health and max_health
+	else:
 		set_new_stats()
 	
 	#Otherwise, attack and move_speed are set by room.gd

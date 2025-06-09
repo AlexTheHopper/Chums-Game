@@ -35,7 +35,7 @@ func _ready() -> void:
 		$Body/BellPivot.queue_free()
 		activated = true
 	elif Global.world_map[Global.room_location]["to_spawn"] == 0:
-		finish_spawning()		
+		finish_spawning()
 		
 #Activate room when smacked if conditions met
 func attempt_activate():

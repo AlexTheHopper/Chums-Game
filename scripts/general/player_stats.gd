@@ -27,7 +27,8 @@ func initialize() -> void:
 	health_node.max_health_changed.connect(_on_player_max_health_changed)
 	player_max_health = health_node.max_health
 	
-	bracelets = bracelets
+	#To trigget sets:
+	bracelets = 0
 	player_max_chums = player_max_chums
 	
 func _on_player_health_changed(_difference):

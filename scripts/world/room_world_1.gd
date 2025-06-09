@@ -108,7 +108,7 @@ func _on_spawn_timer_timeout() -> void:
 	Global.world_map[Global.room_location]["value"] = room_value
 
 	#If run out of room_value:
-	if chum_to_spawn == null or room_value < 0.4:
+	if chum_to_spawn == null:
 		$RoomActivator.finish_spawning()
 		enemies_to_spawn = 0
 

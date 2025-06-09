@@ -20,7 +20,9 @@ var current_world_num := 1
 var rooms: Node3D
 
 var room_lookup: Dictionary[int, Dictionary]
+var world_info: Dictionary
 var game_scene: PackedScene = load("res://scenes/general/game.tscn")
+var game_save_id := 0
 
 func _ready():
 	room_lookup = {
@@ -30,10 +32,17 @@ func _ready():
 				4: load("res://scenes/world/void_room_world1.tscn"),
 				}
 			}
+	world_info = {
+		1: {'map_size': 5,
+			"room_size": 40.0}
+	}
 
-func start_game() -> void:
-	map_size = 4
-	room_size = 40.0
+func start_game(save_id = false) -> void:
+	in_battle = false
+	current_world_num = 1
+	
+	map_size = world_info[current_world_num]["map_size"]
+	room_size = world_info[current_world_num]["room_size"]
 	world_map = {}
 	world_grid = []
 	world_map_guide = {"lobby": {},
@@ -44,8 +53,7 @@ func start_game() -> void:
 						
 	room_location = Vector2i(map_size, map_size)
 	room_history = [room_location]
-	in_battle = false
-	current_world_num = 1
+	
 
 	#Creates scaffold for world
 	if world_map == {}:
@@ -54,12 +62,28 @@ func start_game() -> void:
 	
 	#Creates Player, Lobby, HUD
 	get_node("/root").add_child(game_scene.instantiate())
-	current_room_node = get_parent().get_node("Game/Rooms/Lobby_World1")
+	var lobby_room = room_lookup[current_world_num][1].instantiate()
+	get_node("/root/Game/Rooms").add_child(lobby_room)
+	current_room_node = lobby_room
 	rooms = get_parent().get_node("Game/Rooms")
-
+	
 	#Sets initial values for some singletons and connects important signals.
 	PlayerStats.initialize()
 	get_node("/root/Game/HUD").initialize()
+	
+	if save_id:
+		SaverLoader.load_game(save_id)
+		print('Now in: ' + str(room_location))
+		
+		if current_room_node:
+			current_room_node.queue_free()
+
+		#Create new room:
+		var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
+		current_room_node = new_room.instantiate()
+		rooms.add_child(current_room_node)
+
+	
 	
 func get_world_grid(size, world_n):
 	#2D Array of where actual rooms are in the world
@@ -187,14 +211,15 @@ func has_door(location: Vector2, direction: Vector2) -> bool:
 	#Otherwise g2g
 	return true
 	
-func transition_to_level(new_room_location: Vector2i):
+func transition_to_level(new_room_location: Vector2i, length = 1):
 	if new_room_location in world_map:
-		TransitionScreen.transition(1)
+		TransitionScreen.transition(length)
 		await TransitionScreen.on_transition_finished
 		
 		room_location = new_room_location
 		print('Now in: ' + str(new_room_location))
-		room_history.append(new_room_location)
+		if room_history[-1] != new_room_location:
+			room_history.append(new_room_location)
 		
 		if current_room_node:
 			current_room_node.queue_free()
@@ -203,6 +228,7 @@ func transition_to_level(new_room_location: Vector2i):
 		var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
 		current_room_node = new_room.instantiate()
 		rooms.add_child(current_room_node)
+
 	
 func return_to_menu():
 	TransitionScreen.transition(3)
