@@ -15,7 +15,7 @@ func _ready() -> void:
 	#Set correct layer/mask collisions:
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
-	
+
 	var parent_group = owner.get_groups()[0]
 	if parent_group in ["Chums_Enemy"]:
 		set_as_enemy()

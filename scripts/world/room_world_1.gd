@@ -48,6 +48,45 @@ func open_doors():
 	for door in get_node("Doors").get_children():
 		door.raise()
 
+func fill_tunnels():
+	#Fix walls etc.
+	var door_dist := 9
+	if not Global.world_map[Global.room_location]["has_x_pos"]:
+		if get_node_or_null("Doors/x_pos"):
+			get_node("Doors/x_pos").queue_free()
+		for w in range(-3, 4):
+			#Solid Blocks
+			grid_map.set_cell_item(Vector3(door_dist + 1, 0, w), 1, 22)
+			#Ramps:
+			grid_map.set_cell_item(Vector3(door_dist, 0, w), 16, 22)
+
+	if not Global.world_map[Global.room_location]["has_x_neg"]:
+		if get_node_or_null("Doors/x_neg"):
+			get_node("Doors/x_neg").queue_free()
+		for w in range(-3, 4):
+			#Solid Blocks
+			grid_map.set_cell_item(Vector3(-(door_dist + 1), 0, w), 1, 16)
+			#Ramps:
+			grid_map.set_cell_item(Vector3(-door_dist, 0, w), 16, 16)
+
+	if not Global.world_map[Global.room_location]["has_z_pos"]:
+		if get_node_or_null("Doors/z_pos"):
+			get_node("Doors/z_pos").queue_free()
+		for w in range(-3, 4):
+			#Solid Blocks
+			grid_map.set_cell_item(Vector3(w, 0, door_dist + 1), 1, 10)
+			#Ramps:
+			grid_map.set_cell_item(Vector3(w, 0, door_dist), 16, 10)
+
+	if not Global.world_map[Global.room_location]["has_z_neg"]:
+		if get_node_or_null("Doors/z_neg"):
+			get_node("Doors/z_neg").queue_free()
+		for w in range(-3, 4):
+			#Solid Blocks
+			grid_map.set_cell_item(Vector3(w, 0, -(door_dist + 1)), 1, 0)
+			#Ramps:
+			grid_map.set_cell_item(Vector3(w, 0, -door_dist), 16, 0)
+
 #Enemy chum spawner:
 func _on_spawn_timer_timeout() -> void:
 	enemies_to_spawn -= 1

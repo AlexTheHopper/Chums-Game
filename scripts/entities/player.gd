@@ -54,7 +54,7 @@ var targeted_by := []
 var xform: Transform3D
 var chum_name := "Player"
 
-func _ready() -> void:
+func _ready() -> void:	
 	Global.game_begun = true
 	$Health.immune = false
 	$Health.set_max_health(100)

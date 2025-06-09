@@ -8,6 +8,8 @@ var fading_out := false
 
 @export var disp_name: Label
 @export var disp_cost: Label
+@export var disp_health_title: Label
+@export var disp_health_value: Label
 @export var disp_move_speed_title: Label
 @export var disp_move_speed_value: Label
 @export var disp_damage_title: Label
@@ -25,9 +27,10 @@ func _ready() -> void:
 	#Front
 	disp_name.text = chum.chum_name
 	disp_cost.text = "Bracelets Needed: %s" %chum.bracelet_cost
-	disp_move_speed_value.text = str(chum.quality["move_speed"])
-	disp_damage_value.text = str(chum.quality["damage"])
-	disp_attack_speed_value.text = str(chum.quality["speed"])
+	disp_health_value.text = get_quality_text(chum.quality["health"])
+	disp_move_speed_value.text = get_quality_text(chum.quality["move_speed"])
+	disp_damage_value.text = get_quality_text(chum.quality["damage"])
+	disp_attack_speed_value.text = get_quality_text(chum.quality["speed"])
 	#Back
 	disp_name_back.text = disp_name.text
 	desc_back.text = chum.desc
@@ -67,9 +70,18 @@ func _process(_delta: float) -> void:
 		
 		if scale.x < 0.1:
 			queue_free()
-			
+
+func get_quality_text(quality):
+	var quality_int = int(round(quality))
 	
-			
+	if quality_int == 0:
+		return('-')
+		
+	if quality_int > 0:
+		return('+' + str(quality_int * 10) + '%')
+		
+	return(str(quality_int * 10) + '%')
+
 func remove():
 	ChumsManager.quality_popup_active = false
 	chum.has_quality_popup = false

@@ -24,3 +24,9 @@ var always_targets_player := false
 
 var bracelet_count := 1 if not Global.dev_mode else 1
 var bracelet_cost := 3 if not Global.dev_mode else 1
+
+#This chum cannot walk or attack
+func _ready() -> void:
+	super()
+	self.quality["speed"] = 0.0
+	self.quality["move_speed"] = 0.0

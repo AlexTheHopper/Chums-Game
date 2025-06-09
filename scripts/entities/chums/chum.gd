@@ -44,11 +44,12 @@ var current_group := "Chums_Neutral"
 var stats_set := false
 @onready var attack: Dictionary
 @onready var move_speed: float
-var quality := {"damage": 0, "speed": 0, "move_speed": 0}
+var quality := {"health": 0, "move_speed": 0, "damage": 0, "speed": 0}
 
 @onready var has_quality_popup := false
 
 @onready var target: Node
+@onready var next_target: Node
 var targeted_by := []
 var player_is_near := false
 var is_launched := false
@@ -112,6 +113,11 @@ func set_new_stats():
 	self.move_speed *= multiplier
 	quality["move_speed"] = 10 * (multiplier - 1)
 	
+	multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
+	self.max_health = int(self.max_health * multiplier)
+	self.start_health = self.max_health
+	quality["health"] = 10 * (multiplier - 1)
+	
 func create_sleep_particles():
 	sleep_zone.add_child(sleep_particles.instantiate())
 		
@@ -125,16 +131,17 @@ func disable_interaction():
 	interaction_area.shape.disabled = true
 	pass
 	
-#Runs when enemy chums wake up from room activator
+#Runs when enemy chums wake up from room activator if enemy
 func wake_up():
 	make_enemy()
+	set_new_target()
 	set_state("Wake")
 	health_node.immune = false
 	
 func set_state(state):
 	state_machine.on_child_transition(state_machine.current_state, state)
 
-#Runs when friend chums fight from room activator
+#Runs when friend chums fight from room activator if friend
 func find_enemy():
 	set_new_target()
 	if state_machine.current_state.state_name != "Carry":
@@ -142,10 +149,14 @@ func find_enemy():
 
 func _on_recieved_damage(_damage, change_agro, attacker):
 	if change_agro:
-		if attacker is Player:
-			set_target_to(attacker)
-		elif attacker.state_machine.current_state.state_name == "Active":
-			set_target_to(attacker)
+		if anim_player.get_current_animation() == "Attack":
+			next_target = attacker
+		else:
+			if attacker is Player:
+				set_target_to(attacker)
+			elif attacker.state_machine.current_state.state_name == "Active":
+				set_target_to(attacker)
+			next_target = target
 
 func _on_health_changed(difference):
 	if difference < 0.0:
@@ -313,6 +324,7 @@ func set_new_target():
 	target = body
 	if target:
 		target.targeted_by.append(self)
+		next_target = target
 	
 		#Connect to target to know when it dies:
 		var new_target_health = target.health_node

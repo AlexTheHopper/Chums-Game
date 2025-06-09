@@ -32,7 +32,7 @@ func _ready():
 			}
 
 func start_game() -> void:
-	map_size = 5
+	map_size = 4
 	room_size = 40.0
 	world_map = {}
 	world_grid = []
@@ -161,7 +161,7 @@ func create_world(size):
 										"activated": false,
 										"to_spawn": -1,
 										"value": Vector2(x - size, y - size).length(),
-										"bell_angle": randf_range(0, 2 * PI),
+										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
 										"heart_count": 3,
 										"chums": [],
 										"light_position": Vector3(),

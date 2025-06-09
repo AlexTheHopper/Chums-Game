@@ -4,6 +4,7 @@ var wobble_angle := Vector3.ZERO
 var wobble_velocity := Vector3.ZERO
 var damping := 0.5
 var stiffness := 10.0
+
 	
 func _physics_process(delta: float) -> void:
 	var restoring_force = -wobble_angle * stiffness
@@ -20,4 +21,4 @@ func _physics_process(delta: float) -> void:
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area is Hitbox:
 		var dir = Functions.vector_to_normalized(area, self)
-		wobble_velocity += Vector3(dir.z * area.damage, 0, -dir.x * area.damage).rotated(Vector3.UP, -rotation.y)
+		wobble_velocity += 3 * Vector3(dir.z * area.damage, 0, -dir.x * area.damage).rotated(Vector3.UP, -rotation.y)

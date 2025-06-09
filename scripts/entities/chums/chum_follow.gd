@@ -24,4 +24,4 @@ func Enter():
 		chum.anim_player.play("Walk")
 		return
 	chum.anim_player.play("Walk")
-	chum.target = player
+	chum.set_target_to(player)

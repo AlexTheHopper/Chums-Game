@@ -55,7 +55,12 @@ func attempt_attack():
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Attack":
-		attacking = false		
+		attacking = false
+		if chum.target != chum.next_target:
+			if chum.next_target is Player:
+				chum.set_target_to(chum.next_target)
+			elif chum.next_target.state_machine.current_state.state_name == "Active":
+				chum.set_target_to(chum.next_target)
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	nav_vel = safe_velocity

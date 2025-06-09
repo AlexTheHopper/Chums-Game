@@ -155,7 +155,7 @@ shape = SubResource("SphereShape3D_m26rw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hdihc")
+&"": SubResource("AnimationLibrary_hdihc")
 }
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]

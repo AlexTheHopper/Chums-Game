@@ -22,7 +22,7 @@ func set_notches():
 	#Add notches
 	var max_health = health_node.max_health
 	if max_health >= NOTCH_INC:
-		var notch_count = floor(1.0 * health_node.max_health / NOTCH_INC)
+		var notch_count = floor(1.0 * health_node.max_health / NOTCH_INC) + 1
 		var bar_length = $Health.mesh.size.x
 		var start_x = -0.5 * bar_length
 				
