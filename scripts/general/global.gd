@@ -2,8 +2,8 @@ extends Node
 var dev_mode = true
 
 var game_begun := false
-var map_size := 5
-var room_size := 40.0
+var map_size:int
+var room_size:float
 var world_map := {}
 var world_grid := []
 var world_map_guide = {"lobby": {},
@@ -22,7 +22,7 @@ var rooms: Node3D
 var room_lookup: Dictionary[int, Dictionary]
 var world_info: Dictionary
 var game_scene: PackedScene = load("res://scenes/general/game.tscn")
-var game_save_id := 0
+var game_save_id := 1
 
 func _ready():
 	room_lookup = {
@@ -37,7 +37,9 @@ func _ready():
 			"room_size": 40.0}
 	}
 
-func start_game(save_id = false) -> void:
+func start_game(save_id = null, new_game = false) -> void:
+	if save_id != null:
+		game_save_id = save_id
 	in_battle = false
 	current_world_num = 1
 	
@@ -71,7 +73,7 @@ func start_game(save_id = false) -> void:
 	PlayerStats.initialize()
 	get_node("/root/Game/HUD").initialize()
 	
-	if save_id:
+	if new_game == false:
 		SaverLoader.load_game(save_id)
 		print('Now in: ' + str(room_location))
 		
@@ -82,6 +84,10 @@ func start_game(save_id = false) -> void:
 		var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
 		current_room_node = new_room.instantiate()
 		rooms.add_child(current_room_node)
+	
+	#TESTPRINT:
+	for x in range(world_grid.size() - 1, -1, -1):
+		print(world_grid[x])
 
 	
 	
@@ -148,9 +154,6 @@ func get_world_grid(size, world_n):
 		for x in grid[0].size():
 			if grid[x][y] == 2 and room_missing.size() > 0: #Normal room that can safely be replaced
 				grid[x][y] = room_missing.pop_front()
-	#TESTPRINT:
-	for x in range(grid.size() - 1, -1, -1):
-		print(grid[x])
 
 	world_map_guide["lobby"] = Functions.astar2d(grid, 1)
 	world_map_guide["room"] = Functions.astar2d(grid, 2)

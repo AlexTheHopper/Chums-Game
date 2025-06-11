@@ -12,7 +12,7 @@ func _ready() -> void:
 	
 	if Global.world_map[Global.room_location]["to_spawn"] < 0:
 		#Maximum to spawn:
-		enemies_to_spawn = int(Functions.map_range(room_value, Vector2(1, 10), Vector2(3, 6)))
+		enemies_to_spawn = int(Functions.map_range(room_value, Vector2(1, Global.map_size), Vector2(3, 8)))
 	else:
 		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
 		
@@ -31,22 +31,7 @@ func set_chums_loc_on_entry():
 				chum.global_position = lerp(player.global_position, Vector3(1, 0, 1), 0.5) + Vector3(randf_range(-3, 3), 0, randf_range(-3, 3))
 				chum.rotation.y = randf_range(0, 2*PI)
 				chum.set_state("Idle")
-			
-func close_doors():
-	for door in get_node("Doors").get_children():
-		door.lower()
-	#Connect to enemies to know when to open doors
-	for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
-		chum.health_depleted.connect(check_enemy_count)
-		
-func check_enemy_count():
-	if len(get_tree().get_nodes_in_group("Chums_Enemy")) == 0:
-		Global.in_battle = false
-		open_doors()
-	
-func open_doors():
-	for door in get_node("Doors").get_children():
-		door.raise()
+
 
 func fill_tunnels():
 	#Fix walls etc.
@@ -107,18 +92,17 @@ func _on_spawn_timer_timeout() -> void:
 	room_value -= chum_value / 2
 	Global.world_map[Global.room_location]["value"] = room_value
 
-	#If run out of room_value:
-	if chum_to_spawn == null:
-		$RoomActivator.finish_spawning()
-		enemies_to_spawn = 0
-
 	#If still spawning:
-	elif enemies_to_spawn > 0:
+	if enemies_to_spawn > 0:
 		spawn_timer.start()
 
 	#If reach maximum chum count
-	elif not Global.world_map[Global.room_location]["activated"]:
+	else:
 		$RoomActivator.finish_spawning()
+		enemies_to_spawn = 0
+		
+		#Save game
+		save_room()
 		
 func apply_spawn_particles(chum):
 	chum.particle_zone.add_child(spawn_particles.instantiate())

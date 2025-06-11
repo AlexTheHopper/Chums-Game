@@ -28,6 +28,7 @@ func finish_spawning():
 	if player_proximity and not activated:
 		bell_mesh.set_material_overlay(white_overlay)
 
+
 #If room is already done, remove bell
 func _ready() -> void:
 	rotation.y = Global.world_map[Global.room_location]["bell_angle"]

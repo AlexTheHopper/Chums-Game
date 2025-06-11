@@ -89,6 +89,7 @@ func save_room():
 																	#"attack": chum.attack,
 																	#"move_speed": chum.move_speed,
 																	"quality": chum.quality,})
+	#Save game
 	SaverLoader.save_game(Global.game_save_id)
 
 func load_room():
@@ -150,4 +151,22 @@ func set_player_loc_on_entry():
 		player.get_node("Camera_Controller").rotation.y = cam_rotation
 		#Set camera goal to nearest multiple of PI / 4
 		player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
+
+func close_doors():
+	for door in get_node("Doors").get_children():
+		door.lower()
+	#Connect to enemies to know when to open doors
+	for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
+		chum.health_depleted.connect(check_enemy_count)
 		
+func check_enemy_count():
+	if len(get_tree().get_nodes_in_group("Chums_Enemy")) == 0:
+		Global.in_battle = false
+		open_doors()
+		
+		#Save game
+		save_room()
+	
+func open_doors():
+	for door in get_node("Doors").get_children():
+		door.raise()

@@ -149,7 +149,7 @@ func _physics_process(delta: float) -> void:
 	if input_dir:
 		player_goal_horz = $Camera_Controller.rotation.y - input_dir.angle() - (PI / 2)
 		player_goal_horz = fmod(player_goal_horz + PI, 2 * PI)
-		$Armature.rotation.y = lerp_angle($Armature.rotation.y, player_goal_horz, 0.35)
+		$Armature.rotation.y = lerp_angle($Armature.rotation.y, player_goal_horz, 0.35 * attacking_mult)
 
 	#Move character:
 	if direction:

@@ -78,7 +78,7 @@ mesh = ExtResource("1_fn6d3")
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 depth = 0.5
-polygon = PackedVector2Array(2, 0, 3, 0, 3, 5.8, 1, 5.8, -1, 5.8, -3, 5.8, -3, 0, -2, 0, -2, 2, 2, 2)
+polygon = PackedVector2Array(2, 0, 3, 0, 3, 10, 1, 10, -1, 10, -3, 10, -3, 0, -2, 0, -2, 2, 2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

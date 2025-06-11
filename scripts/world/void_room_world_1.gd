@@ -17,21 +17,6 @@ func set_chums_loc_on_entry():
 				chum.rotation.y = randf_range(0, 2*PI)
 				chum.set_state("Idle")
 
-func close_doors():
-	for door in get_node("Doors").get_children():
-		door.lower()
-	#Connect to enemies to know when to open doors
-	for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
-		chum.health_depleted.connect(check_enemy_count)
-		
-func check_enemy_count():
-	if len(get_tree().get_nodes_in_group("Chums_Enemy")) == 0:
-		Global.in_battle = false
-		open_doors()
-	
-func open_doors():
-	for door in get_node("Doors").get_children():
-		door.raise()
 	
 func decorate():
 	super()

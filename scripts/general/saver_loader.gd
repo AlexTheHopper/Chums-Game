@@ -5,21 +5,8 @@ func _ready() -> void:
 
 func ensure_save_folder() -> void:
 	var dir = DirAccess.open("user://")
-	print('ensuring folder')
 	if not dir.dir_exists("saves"):
-		print('saves folder does not exist, creating')
 		dir.make_dir("saves")
-	else:
-		print("save folder exists, we chillin")
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("TEMP_save"):
-		save_game(Global.game_save_id)
-	elif Input.is_action_just_pressed("TEMP_load"):
-		load_game(Global.game_save_id)
-	elif Input.is_action_just_pressed("TEMP_delete"):
-		delete_save(Global.game_save_id)
-
 
 func save_game(save_id) -> void:
 	print("saving game to id %s" % [save_id])
@@ -44,19 +31,19 @@ func save_game(save_id) -> void:
 	
 	#World Data:
 	saved_game.current_world_num = Global.current_world_num
-	saved_game.world_map = Global.world_map
 	saved_game.world_grid = Global.world_grid
-	saved_game.world_map_guide = Global.world_map_guide
 	saved_game.room_location = Global.room_location
 	saved_game.room_history = Global.room_history
+	saved_game.world_map_guide = Global.world_map_guide
+	saved_game.world_map = Global.world_map
 	
-	ResourceSaver.save(saved_game, "user://saves/savegame%s.tres" % [save_id])
+	ResourceSaver.save(saved_game, "user://saves/%s.tres" % [save_id])
 
 
 func load_game(save_id) -> void:
 	print("loading game from id %s" % [save_id])
 	ensure_save_folder()
-	var saved_game:SavedGame = load("user://saves/savegame%s.tres" % [save_id])
+	var saved_game:SavedGame = load("user://saves/%s.tres" % [save_id])
 	
 	#Load all save data:
 	#Player Data
@@ -87,11 +74,11 @@ func load_game(save_id) -> void:
 
 	#World Data:
 	Global.current_world_num = saved_game.current_world_num
-	Global.world_map = saved_game.world_map
 	Global.world_grid = saved_game.world_grid
-	Global.world_map_guide = saved_game.world_map_guide
 	Global.room_location = saved_game.room_location
 	Global.room_history = saved_game.room_history
+	Global.world_map_guide = saved_game.world_map_guide
+	Global.world_map = saved_game.world_map
 	
 	Global.game_save_id = save_id
 
@@ -100,4 +87,4 @@ func delete_save(save_id) -> void:
 	ensure_save_folder()
 	
 	var dir = DirAccess.open("user://")
-	dir.remove("saves/savegame%s.tres" % [save_id])
+	dir.remove("saves/%s.tres" % [save_id])

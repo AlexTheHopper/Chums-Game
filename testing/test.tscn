@@ -1,0 +1,94 @@
+[gd_scene load_steps=19 format=3 uid="uid://buic6kjiy1fhu"]
+
+[ext_resource type="ArrayMesh" uid="uid://0uig5n1e4k6s" path="res://testing/full_corner.vox" id="1_dv1a0"]
+[ext_resource type="ArrayMesh" uid="uid://jh6n1ujakbnm" path="res://testing/full_edge.vox" id="2_agbfe"]
+[ext_resource type="ArrayMesh" uid="uid://cb3nh02m2cs2o" path="res://testing/full_no_edge.vox" id="3_6aiuc"]
+[ext_resource type="ArrayMesh" uid="uid://totucybf50p6" path="res://testing/full_top_corner.vox" id="4_gxe6r"]
+[ext_resource type="ArrayMesh" uid="uid://bf27rktxu3v4i" path="res://testing/full_top_edge.vox" id="5_dm6ty"]
+[ext_resource type="ArrayMesh" uid="uid://b2wq063f4cn3u" path="res://testing/full_top_no_edge.vox" id="6_u61ba"]
+[ext_resource type="ArrayMesh" uid="uid://cyxcynm0yedh3" path="res://testing/full_top_turn.vox" id="7_hie2d"]
+[ext_resource type="ArrayMesh" uid="uid://b82p87r2b7xt4" path="res://testing/full_turn.vox" id="8_divlo"]
+[ext_resource type="ArrayMesh" uid="uid://4ddiymuydfl" path="res://testing/half_top_corner.vox" id="9_wexvt"]
+[ext_resource type="ArrayMesh" uid="uid://cneqmfw37yj8u" path="res://testing/half_top_edge.vox" id="10_axs5a"]
+[ext_resource type="ArrayMesh" uid="uid://bol3wf34pwius" path="res://testing/half_top_end.vox" id="11_82qcq"]
+[ext_resource type="ArrayMesh" uid="uid://dhecvk75d7ht0" path="res://testing/half_top_middle.vox" id="12_f1hgt"]
+[ext_resource type="ArrayMesh" uid="uid://cu4dmxecnq1m2" path="res://testing/half_top_no_edge.vox" id="13_qq2p1"]
+[ext_resource type="ArrayMesh" uid="uid://dpcyh2hymqri6" path="res://testing/half_top_ramp_bot.vox" id="14_hq8v4"]
+[ext_resource type="ArrayMesh" uid="uid://cbw1p7ckwemh5" path="res://testing/half_top_ramp_bot_left.vox" id="15_dvm1e"]
+[ext_resource type="ArrayMesh" uid="uid://dhr4k25wh341q" path="res://testing/half_top_ramp_bot_mid.vox" id="16_h81vg"]
+[ext_resource type="ArrayMesh" uid="uid://n5ar1ieg80c4" path="res://testing/half_top_ramp_bot_right.vox" id="17_q5e5f"]
+[ext_resource type="ArrayMesh" uid="uid://cf5qix11wjgtf" path="res://testing/half_top_turn.vox" id="18_l32s3"]
+
+[node name="Test" type="Node3D"]
+
+[node name="FullNoEdge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -5)
+mesh = ExtResource("3_6aiuc")
+
+[node name="FullEdge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -1)
+mesh = ExtResource("2_agbfe")
+
+[node name="FullCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 7)
+mesh = ExtResource("1_dv1a0")
+
+[node name="FullTurn" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 3)
+mesh = ExtResource("8_divlo")
+
+[node name="FullTopNoEdge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
+mesh = ExtResource("6_u61ba")
+
+[node name="FullTopEdge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+mesh = ExtResource("5_dm6ty")
+
+[node name="FullTopCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 7)
+mesh = ExtResource("4_gxe6r")
+
+[node name="FullTopTurn" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+mesh = ExtResource("7_hie2d")
+
+[node name="HalfTopNoEdge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
+mesh = ExtResource("13_qq2p1")
+
+[node name="HalfTopEdge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+mesh = ExtResource("10_axs5a")
+
+[node name="HalfTopCorner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 7)
+mesh = ExtResource("9_wexvt")
+
+[node name="HalfTopTurn" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
+mesh = ExtResource("18_l32s3")
+
+[node name="HalfTopMiddle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 15)
+mesh = ExtResource("12_f1hgt")
+
+[node name="HalfTopEnd" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 11)
+mesh = ExtResource("11_82qcq")
+
+[node name="HalfTopRampBot" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 7)
+mesh = ExtResource("14_hq8v4")
+
+[node name="HalfTopRampBotLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -5)
+mesh = ExtResource("15_dvm1e")
+
+[node name="HalfTopRampBotMid" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)
+mesh = ExtResource("16_h81vg")
+
+[node name="HalfTopRampBotRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 3)
+mesh = ExtResource("17_q5e5f")
