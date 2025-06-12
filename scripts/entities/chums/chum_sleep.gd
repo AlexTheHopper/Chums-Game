@@ -4,18 +4,14 @@ class_name Chum1_Sleep
 
 @onready var chum: CharacterBody3D
 @onready var sleep_particles := preload("res://particles/sleep_particles.tscn")
+var has_sleep_particles := false
 
 func Enter():
 	chum.call_deferred("enable_interaction")
 	chum.anim_player.play("Sleep")
-	call_deferred("create_sleep_particles")
-	
+
 	#We dont want the player to be able to push around the chums while theyre sleeping
 	chum.set_collision_mask_value(2, false)
-
-func create_sleep_particles():
-	chum.create_sleep_particles()
-
 
 func Physics_Update(delta: float):
 	chum.velocity = lerp(chum.velocity, Vector3.ZERO, 0.05)
@@ -24,8 +20,14 @@ func Physics_Update(delta: float):
 		chum.velocity.y += chum.get_gravity_dir() * delta
 	
 	chum.move_and_slide()
+	
+	if not has_sleep_particles:
+		chum.create_sleep_particles()
+		has_sleep_particles = true
+		
 
 func Exit():
+	chum.remove_sleep_particles()
 	chum.set_new_target()
 	
 	#If no enemies, set to idle
@@ -35,4 +37,4 @@ func Exit():
 	chum.call_deferred("disable_interaction")
 	chum.set_collision_mask_value(2, true)
 	
-	chum.remove_sleep_particles()
+	

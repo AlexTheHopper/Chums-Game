@@ -24,4 +24,4 @@ func _on_contact_zone_body_entered(body: Node3D) -> void:
 		queue_free()
 
 func on_target_death():
-	target = get_tree().get_first_node_in_group("Player")
+	queue_free()

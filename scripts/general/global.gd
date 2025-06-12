@@ -29,12 +29,21 @@ func _ready():
 		1: {1: load("res://scenes/world/lobby_world_1.tscn"),
 				2: load("res://scenes/world/room_world_1.tscn"),
 				3: load("res://scenes/world/fountain_room_world_1.tscn"),
-				4: load("res://scenes/world/void_room_world1.tscn"),
-				}
+				4: load("res://scenes/world/void_room_world_1.tscn"),
+				},
+				
+		2: {1: load("res://scenes/world/lobby_world_2.tscn"),
+				2: load("res://scenes/world/room_world_2.tscn"),
+				3: load("res://scenes/world/fountain_room_world_2.tscn"),
+				4: load("res://scenes/world/void_room_world_2.tscn"),
+				},
 			}
 	world_info = {
-		1: {'map_size': 5,
-			"room_size": 40.0}
+		1: {'map_size': 3,
+			"room_size": 40.0},
+		
+		2: {'map_size': 5,
+			"room_size": 40.0},
 	}
 
 func start_game(save_id = null, new_game = false) -> void:

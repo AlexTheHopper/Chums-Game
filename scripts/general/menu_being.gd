@@ -29,7 +29,7 @@ func set_new_target():
 
 func spawn_chum():
 	if $RayCast3D.is_colliding() and spawn_count > 0 and Functions.distance_squared(self, display_node) > 75.0:
-		var chum_to_spawn = ChumsManager.get_random_world1_chum(10.0)["object"]
+		var chum_to_spawn = ChumsManager.get_world_random_chum(10.0, 1)["object"]
 		if chum_to_spawn:
 			#Spawns chum
 			var chum_instance = chum_to_spawn.instantiate()

@@ -6,11 +6,37 @@ var spawning_finished = false
 
 @onready var white_overlay := preload("res://materials/outline_white.tres")
 @onready var black_overlay := preload("res://materials/outline_black.tres")
-@onready var bell_mesh := $Body/BellPivot/Bell
+@onready var bell_mesh
+
+@onready var frame_mesh_scene : Node
+@onready var frame_mesh_node := $Body
+@onready var bell_mesh_scene : Node
+@onready var bell_mesh_node := $Body/BellPivot/BellMesh
 
 @onready var player := get_tree().get_first_node_in_group("Player")
 
 signal activate_bell
+
+
+func _ready() -> void:
+	#Set visuals:
+	if Global.current_world_num:
+		frame_mesh_scene = load("res://assets/world/bell_frame_%s.tscn" % [Global.current_world_num]).instantiate()
+		bell_mesh_scene = load("res://assets/world/bell_%s.tscn" % [Global.current_world_num]).instantiate()
+	else:
+		frame_mesh_scene = load("res://assets/world/bell_frame_1.tscn").instantiate()
+		bell_mesh_scene = load("res://assets/world/bell_1.tscn").instantiate()
+	frame_mesh_node.add_child(frame_mesh_scene)
+	bell_mesh_node.add_child(bell_mesh_scene)
+	bell_mesh = bell_mesh_scene.get_node("Bell")
+	
+	#If room is already done, remove bell
+	rotation.y = Global.world_map[Global.room_location]["bell_angle"]
+	if Global.world_map[Global.room_location]["activated"]:
+		$Body/BellPivot.queue_free()
+		activated = true
+	elif Global.world_map[Global.room_location]["to_spawn"] == 0:
+		finish_spawning()
 
 #Runs on activation, makes chums do their thing
 func activate_chums():
@@ -29,15 +55,6 @@ func finish_spawning():
 		bell_mesh.set_material_overlay(white_overlay)
 
 
-#If room is already done, remove bell
-func _ready() -> void:
-	rotation.y = Global.world_map[Global.room_location]["bell_angle"]
-	if Global.world_map[Global.room_location]["activated"]:
-		$Body/BellPivot.queue_free()
-		activated = true
-	elif Global.world_map[Global.room_location]["to_spawn"] == 0:
-		finish_spawning()
-		
 #Activate room when smacked if conditions met
 func attempt_activate():
 	if player_proximity and not player.is_carrying and not activated and spawning_finished:

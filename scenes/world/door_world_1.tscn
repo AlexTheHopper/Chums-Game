@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcyjv52keuase"]
+[gd_scene load_steps=6 format=3 uid="uid://bcyjv52keuase"]
 
-[ext_resource type="ArrayMesh" uid="uid://b035egc6vcosi" path="res://assets/world/world_1_other/door.vox" id="1_fn6d3"]
 [ext_resource type="Script" uid="uid://p7lmstyqrdfm" path="res://scripts/world/door_world_1.gd" id="1_smsyp"]
-[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="2_js06l"]
 
 [sub_resource type="Animation" id="Animation_5p4kw"]
 resource_name = "lower"
@@ -10,26 +8,26 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Door:position")
+tracks/0/path = NodePath("CollisionPolygon3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -2, 0)]
+"values": [Vector3(0, 0, -0.5), Vector3(0, -2, -0.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionPolygon3D:position")
+tracks/1/path = NodePath("MeshNode:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, -0.5), Vector3(0, -2, -0.5)]
+"values": [Vector3(0, 0, 0), Vector3(0, -2, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ygmca"]
@@ -38,30 +36,46 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Door:position")
+tracks/0/path = NodePath("CollisionPolygon3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -2, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, -2, -0.5), Vector3(0, 0, -0.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionPolygon3D:position")
+tracks/1/path = NodePath("MeshNode:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -2, -0.5), Vector3(0, 0, -0.5)]
+"values": [Vector3(0, -2, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wtvm5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a7q25"]
 _data = {
+&"RESET": SubResource("Animation_wtvm5"),
 &"lower": SubResource("Animation_5p4kw"),
 &"raise": SubResource("Animation_ygmca")
 }
@@ -70,10 +84,6 @@ _data = {
 collision_mask = 0
 script = ExtResource("1_smsyp")
 animation_player = NodePath("AnimationPlayer")
-
-[node name="Door" type="MeshInstance3D" parent="."]
-material_overlay = ExtResource("2_js06l")
-mesh = ExtResource("1_fn6d3")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
@@ -84,3 +94,5 @@ polygon = PackedVector2Array(2, 0, 3, 0, 3, 10, 1, 10, -1, 10, -3, 10, -3, 0, -2
 libraries = {
 &"": SubResource("AnimationLibrary_a7q25")
 }
+
+[node name="MeshNode" type="Node3D" parent="."]

@@ -1,66 +1,63 @@
 extends Node
 
-var world1_chums : Dictionary
+var chums_values : Dictionary
+var chums_list : Dictionary
 var close_chums := []
 var quality_popup_active = false
 
 func _ready() -> void:
-	#Fill world1 chums:
-	if Global.dev_mode == false:
-		world1_chums[1] = {"object": preload("res://scenes/entities/chums/chum1.tscn"),
-							"value": 0.5}
-		world1_chums[2] = {"object": preload("res://scenes/entities/chums/chum2.tscn"),
-							"value": 0.1}
-		world1_chums[3] = {"object": preload("res://scenes/entities/chums/chum3.tscn"),
-							"value": 0.5}
-		world1_chums[4] = {"object": preload("res://scenes/entities/chums/chum4.tscn"),
-							"value": 2.0}
-		world1_chums[5] = {"object": preload("res://scenes/entities/chums/chum5.tscn"),
-							"value": 1.5}
-		world1_chums[6] = {"object": preload("res://scenes/entities/chums/chum6.tscn"),
-							"value": 1.5}
-		world1_chums[7] = {"object": preload("res://scenes/entities/chums/chum7.tscn"),
-							"value": 0.5}
-		world1_chums[8] = {"object": preload("res://scenes/entities/chums/chum8.tscn"),
-							"value": 2.0}
+	#Fill chums:
+	chums_list = {
+		1: preload("res://scenes/entities/chums/chum1.tscn"),
+		2: preload("res://scenes/entities/chums/chum2.tscn"),
+		3: preload("res://scenes/entities/chums/chum3.tscn"),
+		4: preload("res://scenes/entities/chums/chum4.tscn"),
+		5: preload("res://scenes/entities/chums/chum5.tscn"),
+		6: preload("res://scenes/entities/chums/chum6.tscn"),
+		7: preload("res://scenes/entities/chums/chum7.tscn"),
+		8: preload("res://scenes/entities/chums/chum8.tscn"),
+	}
 
-	else:
-		world1_chums[1] = {"object": preload("res://scenes/entities/chums/chum1.tscn"),
-							"value": 0.1}
-		world1_chums[2] = {"object": preload("res://scenes/entities/chums/chum2.tscn"),
-							"value": 0.1}
-		world1_chums[3] = {"object": preload("res://scenes/entities/chums/chum3.tscn"),
-							"value": 0.1}
-		world1_chums[4] = {"object": preload("res://scenes/entities/chums/chum4.tscn"),
-							"value": 0.1}
-		world1_chums[5] = {"object": preload("res://scenes/entities/chums/chum5.tscn"),
-							"value": 0.1}
-		world1_chums[6] = {"object": preload("res://scenes/entities/chums/chum6.tscn"),
-							"value": 0.1}
-		world1_chums[7] = {"object": preload("res://scenes/entities/chums/chum7.tscn"),
-							"value": 0.1}
-		world1_chums[8] = {"object": preload("res://scenes/entities/chums/chum8.tscn"),
-							"value": 0.1}
+	chums_values = {
+		1: {
+			1: 0.5,
+			2: 0.1,
+			3: 0.5,
+			4: 2.0,
+			5: 1.5,
+			6: 1.5,
+			7: 0.5,
+			8: 2.0,
+		},
+		2: {
+			1: 0.5,
+		},
+	}
 
-func get_random_world1_chum(room_value: float):
+	if Global.dev_mode:
+		for world_n in chums_values:
+			for chum_id in chums_values[world_n]:
+				chums_values[world_n][chum_id] = 0.01
+
+func get_world_random_chum(room_value: float, world_n: int):
 	#A rooms value is its distance from the lobby. Room (0, 1) has a value of 1.
 	#A room will randomly fill with chums but uses its value as currency.
 	#A room with a value of 5 could spawn two chums with value 2 and one with value 1.
 	#If a room runs out of value, it will not spawn anymore.
 	
 	#Sample for potential spawns:
-	var potential_values = []
-	for chum_id in world1_chums:
-		if world1_chums[chum_id]["value"] <= room_value:
-			potential_values.append(chum_id)
+	var potential_ids = []
+	for chum_id in chums_values[world_n]:
+		if chums_values[world_n][chum_id] <= room_value:
+			potential_ids.append(chum_id)
 	
 	#If nothing available, return
-	if len(potential_values) == 0:
+	if len(potential_ids) == 0:
 		return {"object": null, "value": 0}
 	
-	var chosen_id = potential_values.pick_random()
+	var chosen_id = potential_ids.pick_random()
 	
-	return world1_chums[chosen_id]
+	return {"object": chums_list[chosen_id], "value": chums_values[world_n][chosen_id]}
 	
 func get_specific_chum(chum_str):
 	return load("res://scenes/entities/chums/%s.tscn" % [chum_str])

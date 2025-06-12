@@ -3,7 +3,9 @@ class_name Quality_Popup
 
 @onready var camera := get_viewport().get_camera_3d()
 @onready var chum := get_parent()
-var base_scale = Vector3.ONE
+@onready var mesh_scene : Node
+@onready var mesh_node := $Container/MeshNode
+var base_scale := Vector3.ONE
 var fading_out := false
 
 @export var disp_name: Label
@@ -23,6 +25,13 @@ var fading_out := false
 var rotations := 1.0
 
 func _ready() -> void:
+	#Set visuals:
+	if Global.current_world_num:
+		mesh_scene = load("res://assets/entities/quality_popup_%s.tscn" % [Global.current_world_num]).instantiate()
+	else:
+		mesh_scene = load("res://assets/entities/quality_popup_1.tscn").instantiate()
+	mesh_node.add_child(mesh_scene)
+	
 	#Set all values:
 	#Front
 	disp_name.text = chum.chum_name

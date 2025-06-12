@@ -76,7 +76,7 @@ func fill_tunnels():
 func _on_spawn_timer_timeout() -> void:
 	enemies_to_spawn -= 1
 	
-	var chum_info = ChumsManager.get_random_world1_chum(room_value)
+	var chum_info = ChumsManager.get_world_random_chum(room_value, Global.current_world_num)
 	var chum_to_spawn = chum_info["object"]
 	var chum_value = chum_info["value"]
 	
@@ -133,7 +133,7 @@ func decorate():
 	var deco_n = Functions.map_range(from_lobby, Vector2(0, Global.map_size), Vector2(10, 100))
 	var angles = [0, PI/2, PI, 3*PI/2]
 	for n in deco_n:
-		var chosen_deco = DecorationManager.get_random_decoration_world1()
+		var chosen_deco = DecorationManager.get_random_decoration(Global.current_world_num)
 		var deco_inst = chosen_deco[0].instantiate()
 		$Decorations.add_child(deco_inst)
 		

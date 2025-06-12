@@ -1,9 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://ce86dk61xylkx"]
+[gd_scene load_steps=8 format=3 uid="uid://ce86dk61xylkx"]
 
 [ext_resource type="Script" uid="uid://b60jm7a13m5s" path="res://scripts/entities/room_activator.gd" id="1_w805r"]
-[ext_resource type="ArrayMesh" uid="uid://ds84tmrige4ss" path="res://assets/world/world_1_other/bell_frame.vox" id="2_anb2o"]
-[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="2_mand4"]
-[ext_resource type="ArrayMesh" uid="uid://8bbxaxucl7y3" path="res://assets/world/world_1_other/bell.vox" id="3_0vrnq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a8cbn"]
 height = 4.0
@@ -127,16 +124,8 @@ script = ExtResource("1_w805r")
 [node name="BellPivot" type="Node3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, 0)
 
-[node name="Bell" type="MeshInstance3D" parent="Body/BellPivot"]
+[node name="BellMesh" type="Node3D" parent="Body/BellPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.7, 0)
-material_overlay = ExtResource("2_mand4")
-mesh = ExtResource("3_0vrnq")
-skeleton = NodePath("../../..")
-
-[node name="BellFrame" type="MeshInstance3D" parent="Body"]
-material_overlay = ExtResource("2_mand4")
-mesh = ExtResource("2_anb2o")
-skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 2, 0)

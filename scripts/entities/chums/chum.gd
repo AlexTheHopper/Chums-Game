@@ -59,7 +59,6 @@ var initial_state_override = null
 signal health_depleted
 signal spawn_currency(type, location)
 
-
 func _ready() -> void:
 	add_to_group("Chums_Neutral")
 	body_mesh.set_material_overlay(black_overlay)
@@ -102,6 +101,10 @@ func _ready() -> void:
 	health_node.set_health_override(self.start_health)
 	health_node.immune = true
 	
+	#If override, change to that state now after all is initialised:
+	if initial_state_override:
+		set_state(initial_state_override)
+
 func get_gravity_dir():
 	return fall_gravity if velocity.y < 0.0 else jump_gravity
 	

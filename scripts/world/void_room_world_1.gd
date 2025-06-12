@@ -38,7 +38,7 @@ func decorate():
 	var angles = [0, PI/2, PI, 3*PI/2]
 	var dummy = 0
 	for n in deco_n:
-		var chosen_deco = DecorationManager.get_common_decoration_world1()
+		var chosen_deco = DecorationManager.get_common_decoration(Global.current_world_num)
 		var deco_inst = chosen_deco[0].instantiate()
 		$Decorations.add_child(deco_inst)
 		
