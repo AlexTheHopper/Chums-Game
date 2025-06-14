@@ -1,32 +1,38 @@
-extends Node
-class_name room
+extends room
 
-@onready var player = get_tree().get_first_node_in_group("Player")
-@onready var enemies_to_spawn: int
-
-var bracelet_tscn: PackedScene = preload("res://scenes/entities/currency_bracelet.tscn")
-
-@export var spawn_timer: Timer
-@export var grid_map: GridMap
+@onready var spawn_point: PathFollow3D = $SpawnPath/SpawnPoint
+@onready var room_value = Global.world_map[Global.room_location]["value"]
+const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
+const TYPE := "room"
+var spawn_particles = preload("res://particles/spawn_particles_world1.tscn")
 
 func _ready() -> void:
-	for group in ["Chums_Enemy", "Chums_Neutral"]:
-	#Remove all previous enemy chums:
-		for chum in get_tree().get_nodes_in_group(group):
-			chum.queue_free()
-		
-	#Fill new room:
-	if Global.world_map[Global.room_location]["entered"]:
-		load_room()
+	
+	$RoomActivator.activate_bell.connect(close_doors)
+	
+	if Global.world_map[Global.room_location]["to_spawn"] < 0:
+		#Maximum to spawn:
+		enemies_to_spawn = int(Functions.map_range(room_value, Vector2(1, Global.map_size), Vector2(3, 8)))
 	else:
-		self.decorate()
+		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
 		
-	if enemies_to_spawn > 0:
-		if spawn_timer:
-			spawn_timer.start()
-			
-	fill_tunnels()
-			
+	if Global.dev_mode:
+		$SpawnPath/SpawnTimer.wait_time = 0.1
+	
+	super()
+	set_player_loc_on_entry()
+	set_chums_loc_on_entry()
+
+func set_chums_loc_on_entry():
+	#Place friendly chums in front of the player:
+	if len(Global.room_history) >= 2:
+		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
+			if chum.state_machine.current_state.name != "Carry":
+				chum.global_position = lerp(player.global_position, Vector3(1, 0, 1), 0.5) + Vector3(randf_range(-3, 3), 0, randf_range(-3, 3))
+				chum.rotation.y = randf_range(0, 2*PI)
+				chum.set_state("Idle")
+
+
 func fill_tunnels():
 	#Fix walls etc.
 	var door_dist := 9
@@ -35,138 +41,108 @@ func fill_tunnels():
 			get_node("Doors/x_pos").queue_free()
 		for w in range(-3, 4):
 			#Solid Blocks
-			grid_map.set_cell_item(Vector3(door_dist, 0, w), 5, 22)
-			grid_map.set_cell_item(Vector3(door_dist + 1, 0, w), 4, 0)
+			grid_map.set_cell_item(Vector3(door_dist + 1, 0, w), 1, 22)
 			#Ramps:
-			grid_map.set_cell_item(Vector3(door_dist - 1, 0, w), 12, 22)
+			grid_map.set_cell_item(Vector3(door_dist, 0, w), 16, 22)
 
 	if not Global.world_map[Global.room_location]["has_x_neg"]:
 		if get_node_or_null("Doors/x_neg"):
 			get_node("Doors/x_neg").queue_free()
 		for w in range(-3, 4):
 			#Solid Blocks
-			grid_map.set_cell_item(Vector3(-door_dist, 0, w), 5, 16)
-			grid_map.set_cell_item(Vector3(-(door_dist + 1), 0, w), 4, 0)
+			grid_map.set_cell_item(Vector3(-(door_dist + 1), 0, w), 1, 16)
 			#Ramps:
-			grid_map.set_cell_item(Vector3(-(door_dist - 1), 0, w), 12, 16)
+			grid_map.set_cell_item(Vector3(-door_dist, 0, w), 16, 16)
 
 	if not Global.world_map[Global.room_location]["has_z_pos"]:
 		if get_node_or_null("Doors/z_pos"):
 			get_node("Doors/z_pos").queue_free()
 		for w in range(-3, 4):
 			#Solid Blocks
-			grid_map.set_cell_item(Vector3(w, 0, door_dist), 5, 10)
-			grid_map.set_cell_item(Vector3(w, 0, door_dist + 1), 4, 0)
+			grid_map.set_cell_item(Vector3(w, 0, door_dist + 1), 1, 10)
 			#Ramps:
-			grid_map.set_cell_item(Vector3(w, 0, door_dist - 1), 12, 0)
+			grid_map.set_cell_item(Vector3(w, 0, door_dist), 16, 10)
 
 	if not Global.world_map[Global.room_location]["has_z_neg"]:
 		if get_node_or_null("Doors/z_neg"):
 			get_node("Doors/z_neg").queue_free()
 		for w in range(-3, 4):
 			#Solid Blocks
-			grid_map.set_cell_item(Vector3(w, 0, -door_dist), 5, 0)
-			grid_map.set_cell_item(Vector3(w, 0, -(door_dist + 1)), 4, 10)
+			grid_map.set_cell_item(Vector3(w, 0, -(door_dist + 1)), 1, 0)
 			#Ramps:
-			grid_map.set_cell_item(Vector3(w, 0, -(door_dist - 1)), 12, 0)
+			grid_map.set_cell_item(Vector3(w, 0, -door_dist), 16, 0)
 
-func save_room():
-	#Remove previous data from room:
-	Global.world_map[Global.room_location]["chums"] = []
+#Enemy chum spawner:
+func _on_spawn_timer_timeout() -> void:
+	enemies_to_spawn -= 1
 	
-	#Add current data:
-	Global.world_map[Global.room_location]["entered"] = true
-	Global.world_map[Global.room_location]["to_spawn"] = enemies_to_spawn
+	var chum_info = ChumsManager.get_world_random_chum(room_value, Global.current_world_num)
+	var chum_to_spawn = chum_info["object"]
+	var chum_value = chum_info["value"]
 	
-	for group in ["Chums_Enemy", "Chums_Neutral"]:
-		for chum in get_tree().get_nodes_in_group(group):
-			Global.world_map[Global.room_location]["chums"].append({"type": chum.chum_str,
-																	"group": group,
-																	"position": chum.global_position,
-																	"state": chum.state_machine.current_state.state_name,
-																	"health": chum.health_node.get_health(),
-																	"max_health": chum.health_node.get_max_health(),
-																	#"attack": chum.attack,
-																	#"move_speed": chum.move_speed,
-																	"quality": chum.quality,})
-	#Save game
-	SaverLoader.save_game(Global.game_save_id)
-
-func load_room():
-	var room_info = Global.world_map[Global.room_location]
-	#Chums:
-	for chum in room_info["chums"]:
-		var chum_to_add = ChumsManager.get_specific_chum(chum["type"])
-		var chum_instance = chum_to_add.instantiate()
-		
-		#chum_instance.attack = chum["attack"]
-		#chum_instance.move_speed = chum["move_speed"]
-		chum_instance.quality = chum["quality"]
-		chum_instance.stats_set = true
-		
-		chum_instance.start_health = chum["health"]
-		chum_instance.max_health = chum["max_health"]
-		chum_instance.initial_state_override = chum["state"]
-		
-		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
-		
-		chum_instance.global_position = chum["position"]
+	if chum_to_spawn:
+		#Spawns chum
+		var chum_instance = chum_to_spawn.instantiate()
 		chum_instance.spawn_currency.connect(spawn_currency)
-	
-	#Decorations:
-	for deco in room_info["decorations"]:
-		var deco_inst = DecorationManager.decorations[deco["name"]].instantiate()
-		$Decorations.add_child(deco_inst)
-		deco_inst.global_position = deco["position"]
-		deco_inst.rotation.y = deco["rotation"]
-	#Light:
-	var street_light = DecorationManager.decorations["streetlamp"].instantiate()
-	$Decorations.add_child(street_light)
-	street_light.global_position = room_info["light_position"]
+		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
+		chum_instance.global_position = get_chum_spawn_loc()
 		
-func spawn_currency(_type, location):
-	var bracelet_instance = bracelet_tscn.instantiate()
-	$Currencies.add_child(bracelet_instance)
-	bracelet_instance.global_position = location
-	
-func decorate():
-	pass
+		#Spawn spawn particles:
+		call_deferred("apply_spawn_particles", chum_instance)
+	room_value -= chum_value / 2
+	Global.world_map[Global.room_location]["value"] = room_value
 
-func set_player_loc_on_entry():
-	if len(Global.room_history) >= 2:
-		var current_room = Global.room_history[-1]
-		var prev_room = Global.room_history[-2]
-		#Factor is how far from the centre of the room the player spawns.
-		var factor = (Global.room_size / 2) - 6.5
+	#If still spawning:
+	if enemies_to_spawn > 0:
+		spawn_timer.start()
 
-		#Put player next to the door they just came out of
-		var player_pos = Vector3(factor * (prev_room.x - current_room.x) + 1,
-								 player.global_position.y, 
-								factor * (prev_room.y - current_room.y) + 1)
-		player.global_position = player_pos
-		
-		#Set the player camera rotation so it doesnt spin around when entering room
-		var cam_rotation = fmod(player.get_node("Camera_Controller").rotation.y, 2 * PI)
-		player.get_node("Camera_Controller").global_position = player.global_position
-		player.get_node("Camera_Controller").rotation.y = cam_rotation
-		#Set camera goal to nearest multiple of PI / 4
-		player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
-
-func close_doors():
-	for door in get_node("Doors").get_children():
-		door.lower()
-	#Connect to enemies to know when to open doors
-	for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
-		chum.health_depleted.connect(check_enemy_count)
-		
-func check_enemy_count():
-	if len(get_tree().get_nodes_in_group("Chums_Enemy")) == 0:
-		Global.in_battle = false
-		open_doors()
+	#If reach maximum chum count
+	else:
+		$RoomActivator.finish_spawning()
+		enemies_to_spawn = 0
 		
 		#Save game
 		save_room()
+		
+func apply_spawn_particles(chum):
+	chum.particle_zone.add_child(spawn_particles.instantiate())
+		
+func get_chum_spawn_loc():
+	var pos = Vector3(1, 0, 1)
+	pos.x += randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15)
+	pos.z += randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15)
+	return pos
+
+
+func decorate():
+	super()
 	
-func open_doors():
-	for door in get_node("Doors").get_children():
-		door.raise()
+	#Streetlamp generally points to fastest way to lobby.
+	var to_lobby = Global.world_map_guide["lobby"][Global.room_location] * 8
+	var spawn_pos = Vector3(1, 0, 1)
+	spawn_pos.x += to_lobby.x + randf_range(-1.5, 1.5)
+	spawn_pos.z += to_lobby.y + randf_range(-1.5, 1.5)
+	
+	var light_obj = STREETLAMP.instantiate()
+	$Decorations.add_child(light_obj)
+	light_obj.global_position = spawn_pos
+	Global.world_map[Global.room_location]["light_position"] = spawn_pos
+	
+	#Other objects:
+	var from_lobby = Global.world_map[Global.room_location]["value"]
+	var deco_n = Functions.map_range(from_lobby, Vector2(0, Global.map_size), Vector2(10, 100))
+	var angles = [0, PI/2, PI, 3*PI/2]
+	for n in deco_n:
+		var chosen_deco = DecorationManager.get_random_decoration(Global.current_world_num)
+		var deco_inst = chosen_deco[0].instantiate()
+		$Decorations.add_child(deco_inst)
+		
+		var pos = Vector3(randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15),
+						0, randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15))
+		deco_inst.global_position = pos
+		var angle = angles.pick_random()
+		deco_inst.rotation.y = angle
+		
+		Global.world_map[Global.room_location]["decorations"].append({"name": chosen_deco[1], "position": pos, "rotation": angle})
+	
+	

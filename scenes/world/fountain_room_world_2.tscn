@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dybg7fl3l38de"]
 
-[ext_resource type="Script" uid="uid://5v5xge2hm6ms" path="res://scripts/world/fountain_room_world_1.gd" id="1_v65hl"]
+[ext_resource type="Script" uid="uid://5v5xge2hm6ms" path="res://scripts/world/fountain_room.gd" id="1_v65hl"]
 [ext_resource type="MeshLibrary" uid="uid://dx7bvoycvvogr" path="res://assets/world/world_2_mesh_lib_v1.tres" id="2_v65hl"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="3_ew6io"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_afdv0"]

@@ -35,6 +35,7 @@ func save_game(save_id) -> void:
 	saved_game.room_location = Global.room_location
 	saved_game.room_history = Global.room_history
 	saved_game.world_map_guide = Global.world_map_guide
+	saved_game.world_map_boss = Global.world_map_boss
 	saved_game.world_map = Global.world_map
 	
 	ResourceSaver.save(saved_game, "user://saves/%s.tres" % [save_id])
@@ -78,6 +79,7 @@ func load_game(save_id) -> void:
 	Global.room_location = saved_game.room_location
 	Global.room_history = saved_game.room_history
 	Global.world_map_guide = saved_game.world_map_guide
+	Global.world_map_boss = saved_game.world_map_boss
 	Global.world_map = saved_game.world_map
 	
 	Global.game_save_id = save_id

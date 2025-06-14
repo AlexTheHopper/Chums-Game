@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b74vi5vyt44bq"]
 
-[ext_resource type="Script" uid="uid://dch1vebwqobo4" path="res://scripts/world/fountain_world_1.gd" id="1_8wbyg"]
+[ext_resource type="Script" uid="uid://dch1vebwqobo4" path="res://scripts/world/fountain.gd" id="1_8wbyg"]
 
 [sub_resource type="Shader" id="Shader_mgyhe"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.stable's StandardMaterial3D.

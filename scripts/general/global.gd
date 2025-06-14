@@ -5,6 +5,7 @@ var game_begun := false
 var map_size:int
 var room_size:float
 var world_map := {}
+var world_map_boss := {}
 var world_grid := []
 var world_map_guide = {"lobby": {},
 						"room": {},
@@ -12,11 +13,12 @@ var world_map_guide = {"lobby": {},
 						"void": {},
 						}
 						
-var room_location := Vector2i(map_size, map_size)
-var room_history := [room_location]
+
 var in_battle := false
 var current_room_node: Node3D
 var current_world_num := 1
+var room_location := Vector2i(map_size, map_size)
+var room_history: Array
 var rooms: Node3D
 
 var room_lookup: Dictionary[int, Dictionary]
@@ -26,6 +28,10 @@ var game_save_id := 1
 
 func _ready():
 	room_lookup = {
+		#world 0 is the boss rooms
+		0: {Vector2i(1, 2): load("res://scenes/world/boss_room_world_1_2.tscn"),
+				},
+				
 		1: {1: load("res://scenes/world/lobby_world_1.tscn"),
 				2: load("res://scenes/world/room_world_1.tscn"),
 				3: load("res://scenes/world/fountain_room_world_1.tscn"),
@@ -55,6 +61,7 @@ func start_game(save_id = null, new_game = false) -> void:
 	map_size = world_info[current_world_num]["map_size"]
 	room_size = world_info[current_world_num]["room_size"]
 	world_map = {}
+	world_map_boss = {}
 	world_grid = []
 	world_map_guide = {"lobby": {},
 						"room": {},
@@ -63,13 +70,12 @@ func start_game(save_id = null, new_game = false) -> void:
 						}
 						
 	room_location = Vector2i(map_size, map_size)
-	room_history = [room_location]
-	
+	room_history = [[current_world_num, room_location]]	
 
 	#Creates scaffold for world
-	if world_map == {}:
-		world_grid = get_world_grid(map_size, current_world_num)
-		create_world(map_size)
+	if world_map == {} or new_game == true:
+		world_grid = get_world_grid(current_world_num)
+		create_world(current_world_num)
 	
 	#Creates Player, Lobby, HUD
 	get_node("/root").add_child(game_scene.instantiate())
@@ -84,7 +90,7 @@ func start_game(save_id = null, new_game = false) -> void:
 	
 	if new_game == false:
 		SaverLoader.load_game(save_id)
-		print('Now in: ' + str(room_location))
+		print('In world %s, room %s.' % [Global.current_world_num, str(room_location)])
 		
 		if current_room_node:
 			current_room_node.queue_free()
@@ -93,14 +99,14 @@ func start_game(save_id = null, new_game = false) -> void:
 		var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
 		current_room_node = new_room.instantiate()
 		rooms.add_child(current_room_node)
-	
+
 	#TESTPRINT:
 	for x in range(world_grid.size() - 1, -1, -1):
 		print(world_grid[x])
 
-	
-	
-func get_world_grid(size, world_n):
+
+func get_world_grid(world_n):
+	var size = world_info[world_n]["map_size"]
 	#2D Array of where actual rooms are in the world
 	var corridor_count := int(max(20 + size * size / 2, 5))
 	var corridor_lengths := range(2, max(size, 4))
@@ -185,8 +191,9 @@ func set_room_type(location: Vector2i) -> int:
 	else:
 		return 2 #Normal Room
 
-func create_world(size):
-	#Uses the world_grid to construct information about all rooms.	
+func create_world(world_n):
+	var size = world_info[world_n]["map_size"]
+	#Uses the world_grid to construct information about all rooms.
 	for y in range(0, (2 * size) + 1):
 		for x in range(0, (2 * size) + 1):
 			#This dict only has values for rooms you can enter.
@@ -205,8 +212,32 @@ func create_world(size):
 										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
 										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),
 										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
-										"has_z_neg": has_door(Vector2(x, y), Vector2(0, -1))}
-	
+										"has_z_neg": has_door(Vector2(x, y), Vector2(0, -1)),
+										}
+func create_world_boss() -> void:
+	#Created boss room information
+	#There is a boss room defined going from every world to any other world.
+	var max_world_n = room_lookup.keys().max()
+	for y in range(1, max_world_n + 1):
+		for x in range(1, max_world_n + 1):
+			world_map[Vector2i(x, y)] = {
+										"type": world_grid[x][y],
+										"entered": false,
+										"activated": false,
+										"to_spawn": -1,
+										"value": y * 2,
+										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
+										"heart_count": 3,
+										"chums": [],
+										"light_position": Vector3(),
+										"decorations": [],
+										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
+										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),
+										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
+										"has_z_neg": has_door(Vector2(x, y), Vector2(0, -1)),
+										}
+
+
 func has_door(location: Vector2, direction: Vector2) -> bool:
 	#Location in gridform
 	var bounds = [-1, (2 * map_size) + 1]
@@ -229,9 +260,11 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		await TransitionScreen.on_transition_finished
 		
 		room_location = new_room_location
-		print('Now in: ' + str(new_room_location))
-		if room_history[-1] != new_room_location:
-			room_history.append(new_room_location)
+		print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
+		if room_history[-1][1] != new_room_location:
+			print('to level')
+			print(Global.current_world_num)
+			room_history.append([Global.current_world_num, new_room_location])
 		
 		if current_room_node:
 			current_room_node.queue_free()
@@ -240,6 +273,60 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
 		current_room_node = new_room.instantiate()
 		rooms.add_child(current_room_node)
+
+func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
+	TransitionScreen.transition(length)
+	await TransitionScreen.on_transition_finished
+	
+	create_world_boss()
+	current_world_num = 0
+	
+	var new_room_location = Vector2i(source_world_n, destination_world_n)
+	room_location = new_room_location
+	print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
+
+	if room_history[-1][1] != new_room_location:
+			room_history.append([0, new_room_location])
+	
+	if current_room_node:
+		current_room_node.queue_free()
+
+	#Create new room:
+	var new_room = room_lookup[0][new_room_location]
+	current_room_node = new_room.instantiate()
+	rooms.add_child(current_room_node)
+
+func transition_to_world(destination_world_n: int, length = 1):
+	TransitionScreen.transition(length)
+	await TransitionScreen.on_transition_finished
+	
+	current_world_num = destination_world_n
+	map_size = world_info[current_world_num]["map_size"]
+	room_size = world_info[current_world_num]["room_size"]
+	
+	world_grid = get_world_grid(current_world_num)
+	#TESTPRINT:
+	for x in range(world_grid.size() - 1, -1, -1):
+		print(world_grid[x])
+	create_world(current_world_num)
+	
+	var new_room_location = Vector2i(map_size, map_size)
+	room_location = new_room_location
+	print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
+
+	if room_history[-1][1] != new_room_location:
+			print('to world')
+			print(Global.current_world_num)
+			room_history.append([current_world_num, new_room_location])
+	
+	if current_room_node:
+		current_room_node.queue_free()
+
+	#Create new room:
+	var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
+	current_room_node = new_room.instantiate()
+	rooms.add_child(current_room_node)
+
 
 	
 func return_to_menu():

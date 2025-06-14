@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b2qphphq5anyl"]
 
-[ext_resource type="Script" uid="uid://bl27yojax7t1j" path="res://scripts/world/void_world_1.gd" id="1_w3553"]
+[ext_resource type="Script" uid="uid://bl27yojax7t1j" path="res://scripts/world/void.gd" id="1_w3553"]
 
 [sub_resource type="Shader" id="Shader_j0chv"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.stable's StandardMaterial3D.

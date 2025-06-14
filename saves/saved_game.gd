@@ -16,4 +16,5 @@ extends Resource
 @export var room_location:Vector2i
 @export var room_history:Array
 @export var world_map_guide:Dictionary
+@export var world_map_boss:Dictionary
 @export var world_map:Dictionary

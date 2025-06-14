@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://1gx5nyg7wiu2"]
 
-[ext_resource type="Script" uid="uid://4lw84mysr4w3" path="res://scripts/world/fireflies_world_1.gd" id="1_r7gli"]
+[ext_resource type="Script" uid="uid://4lw84mysr4w3" path="res://scripts/world/fireflies.gd" id="1_r7gli"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi6j6"]
 vertex_color_use_as_albedo = true

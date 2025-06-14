@@ -1,13 +1,19 @@
 extends room
 
-const TYPE := "lobby"
+const TYPE := "boss"
 
-func _ready() -> void:	
-	super()
+func _ready() -> void:
+	for group in ["Chums_Enemy", "Chums_Neutral"]:
+	#Remove all previous enemy chums:
+		for chum in get_tree().get_nodes_in_group(group):
+			chum.queue_free()
+	load_room()
 	set_player_loc_on_entry()
 	set_chums_loc_on_entry()
-	
-	
+
+func set_player_loc_on_entry():
+	pass
+
 func set_chums_loc_on_entry():
 	#Place friendly chums in front of the player:
 	if len(Global.room_history) >= 2:
@@ -16,6 +22,3 @@ func set_chums_loc_on_entry():
 				chum.global_position = lerp(player.global_position, Vector3(1, 0, 1), 0.5) + Vector3(randf_range(-3, 3), 0, randf_range(-3, 3))
 				chum.rotation.y = randf_range(0, 2*PI)
 				chum.set_state("Idle")
-
-func load_room():
-	pass

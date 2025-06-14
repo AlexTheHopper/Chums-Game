@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://cxowi2h8wwrsi"]
+[gd_scene load_steps=91 format=4 uid="uid://cxowi2h8wwrsi"]
 
 [ext_resource type="Texture2D" uid="uid://c83cvjyx7xrq6" path="res://assets/world/world_2_tiles/full_no_edge_full_no_edge_Color.png" id="1_2nkrw"]
 [ext_resource type="Texture2D" uid="uid://cxfnuqqabu1nl" path="res://assets/world/world_2_tiles/full_edge_full_edge_Color.png" id="2_s5mr4"]
@@ -57,6 +57,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_okpv2")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2nkrw"]
+points = PackedVector3Array(1, 2, 1, 1, 2, -1, -1, 2, 1, 1, 0, 1, 1, 0, -1, -1, 2, -1, -1, 0, 1, -1, 0, -1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i0vq0"]
 resource_name = "full_edge_Material"
 albedo_texture = ExtResource("2_s5mr4")
@@ -94,6 +97,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j30j5")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s5mr4"]
+points = PackedVector3Array(1, 2, 0.8, 1, 2, -1, -1, 2, 0.8, 1, 0, 0.8, 1, 0, -1, -1, 2, -1, -1, 0, 0.8, -1, 0, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nkrw"]
 resource_name = "full_corner_Material"
@@ -133,6 +139,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wgdnp")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eeyiu"]
+points = PackedVector3Array(1, 2, 1, 1, 2, -1, -0.800117, 2, 1, 1, 0, 1, 1, 0, -1, -1, 2, -1, -0.800117, 0, 1, -0.900157, 2, 0.899961, -1, 0, -1, -1, 2, 0.799922, -0.900157, 0, 0.899961, -1, 0, 0.799922)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eeyiu"]
 resource_name = "full_turn_Material"
 albedo_texture = ExtResource("4_bindp")
@@ -170,6 +179,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_iwi53")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bindp"]
+points = PackedVector3Array(-0.8, 0, -1, -0.8, 0, 0.699922, -0.8, 2, -1, 1, 0, -1, -0.700098, 0, 0.8, -0.8, 2, 0.699922, 1, 2, -1, 1, 0, 0.8, -0.700098, 2, 0.8, 1, 2, 0.8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8kf0"]
 resource_name = "full_top_no_edge_Material"
@@ -209,6 +221,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nc7qc")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l8kf0"]
+points = PackedVector3Array(1, 2, 1, 1, 2, -1, -1, 2, 1, 1, 0, 1, 1, 0, -1, -1, 2, -1, -1, 0, 1, -1, 0, -1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljldb"]
 resource_name = "full_top_edge_Material"
 albedo_texture = ExtResource("6_dnvpj")
@@ -246,6 +261,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xb46o")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dnvpj"]
+points = PackedVector3Array(1, 2, 0.899961, 1, 2, -1, -1, 2, 0.899961, 1, 1.89996, 1, 1, 0, -1, -1, 2, -1, -1, 1.89996, 1, 1, 1.59984, 1, 1, 0, 0.799922, -1, 0, -1, -1, 1.59984, 1, -1, 0, 0.799922)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uk0og"]
 resource_name = "full_top_corner_Material"
@@ -285,6 +303,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d5qc5")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ljldb"]
+points = PackedVector3Array(1, 2, 1, 1, 0, 1, 1, 2, -1, -0.900157, 2, 1, 1, 0, -1, -0.800117, 0, 1, -1, 2, -1, -1, 2, 0.899961, -1, 1.89996, 1, -1, 0, -1, -1, 1.59984, 1, -0.900157, 0, 0.899961, -1, 0, 0.799922)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlkck"]
 resource_name = "full_top_turn_Material"
 albedo_texture = ExtResource("8_douou")
@@ -322,6 +343,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_peqmu")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_douou"]
+points = PackedVector3Array(1, 2, 0.899961, 1, 1.89996, 1, 1, 2, -1, -0.900157, 2, 0.899961, 1, 1.59984, 1, -1, 1.89996, 1, 1, 0, -1, -0.900157, 2, -1, 1, 0, 0.799922, -1, 1.59984, 1, -1, 1.89996, -1, -0.800117, 0, -1, -0.700078, 0, 0.799922, -1, 1.59984, -1, -0.800117, 0, 0.699883)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpw63"]
 resource_name = "half_top_no_edge_Material"
@@ -361,6 +385,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rhqiq")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uk0og"]
+points = PackedVector3Array(-1, 0, -1, -1, 1, -1, 1, 0, -1, -1, 0, 1, -1, 1, 1, 1, 1, -1, 1, 0, 1, 1, 1, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxaj7"]
 resource_name = "half_top_edge_Material"
 albedo_texture = ExtResource("10_spapx")
@@ -398,6 +425,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_itm3p")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_spapx"]
+points = PackedVector3Array(-1, 0, -1, -1, 1, -1, 1, 0, -1, -1, 0, 0.799922, -1, 1, 0.899961, 1, 1, -1, 1, 0, 0.799922, -1, 0.599941, 1, -1, 0.899961, 1, 1, 1, 0.899961, 1, 0.599941, 1, 1, 0.899961, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsuxl"]
 resource_name = "half_top_corner_Material"
@@ -437,6 +467,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_s8ncs")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wlkck"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 0.799922, -1, 1, -1, 1, 0, -1, -0.900157, 0, 0.899961, -1, 0.599941, 1, -1, 1, 0.899961, 1, 1, -1, 1, 0, 1, -0.800117, 0, 1, -1, 0.899961, 1, -0.900157, 1, 1, 1, 1, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vibk7"]
 resource_name = "half_top_turn_Material"
 albedo_texture = ExtResource("12_n8av3")
@@ -474,6 +507,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mktb0")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_n8av3"]
+points = PackedVector3Array(-1, 0.599941, -1, -1, 0.599941, 1, -1, 0.899961, -1, -0.800117, 0, -1, -1, 0.899961, 1, -0.800117, 0, 0.799922, 1, 0.599941, 1, -0.900157, 1, -1, 1, 0, -1, 1, 0.899961, 1, -0.900157, 1, 0.899961, 1, 0, 0.799922, 1, 1, -1, 1, 1, 0.899961)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsmtq"]
 resource_name = "half_top_middle_Material"
@@ -513,6 +549,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4qp0x")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lpw63"]
+points = PackedVector3Array(-1, 0.599941, -1, -1, 0.899961, -1, 1, 0.599941, -1, -1, 0, -0.800117, -1, 1, -0.900157, 1, 0.899961, -1, 1, 0, -0.800117, -1, 0, 0.799922, -1, 1, 0.899961, 1, 1, -0.900157, 1, 0, 0.799922, -1, 0.599941, 1, -1, 0.899961, 1, 1, 1, 0.899961, 1, 0.599941, 1, 1, 0.899961, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a30qi"]
 resource_name = "half_top_end_Material"
 albedo_texture = ExtResource("14_2hils")
@@ -550,6 +589,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nr6fp")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2hils"]
+points = PackedVector3Array(-1, 0.599941, -1, -1, 0.599941, 1, -1, 0.899961, -1, -0.800117, 0, -1, -1, 0.899961, 1, -0.800117, 0, 0.799922, 1, 0.599941, 1, -0.900157, 1, -1, 0.799922, 0, -1, -0.900157, 1, 0.899961, 1, 0.899961, 1, 0.799922, 0, 0.799922, 1, 0.599941, -1, 0.899961, 1, -1, 0.899961, 1, 0.899961, 1, 0.899961, -1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1xoh"]
 resource_name = "half_top_ramp_bot_Material"
@@ -589,6 +631,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5g0x8")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fxaj7"]
+points = PackedVector3Array(-1, 0.599941, -1, -1, 0.499902, -0.800068, -1, 0.899961, -1, -0.800117, 0, -1, -1, 0.0999413, -0.000156581, -1, 0.899961, -0.800068, -0.900157, 1, -1, -1, 0, 0.199961, 0.799922, 0, -1, -1, 0.69998, -0.40002, -0.900157, 1, -0.800068, 0.899961, 1, -1, -1, 0, 0.799941, 1, 0.599941, -1, 1, 0.499902, -0.800068, 1, 0.0999413, -0.000156581, 1, 0, 0.199961, -1, 0.0999413, 0.799941, -0.900157, 0.19998, 0.799941, 0.899961, 1, -0.800068, 1, 0.899961, -1, -0.900157, 0, 0.899814, 1, 0, 0.799941, -0.900157, 0.0999413, 0.899814, 0.899961, 0.19998, 0.799941, 1, 0.69998, -0.40002, 1, 0.899961, -0.800068, 0.899961, 0, 0.899814, 1, 0.0999413, 0.799941, 0.899961, 0.0999413, 0.899814)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyirt"]
 resource_name = "half_top_ramp_bot_left_Material"
 albedo_texture = ExtResource("16_8vl5m")
@@ -626,6 +671,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_c18mr")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8vl5m"]
+points = PackedVector3Array(-1, 0.599941, -1, -1, 0.499902, -0.800068, -1, 0.899961, -1, -0.800117, 0, -1, -1, 0.0999413, -0.000156581, -1, 0.899961, -0.800068, -0.900157, 1, -1, 1, 0, -1, -1, 0, 0.199961, -1, 0.69998, -0.40002, -0.900157, 1, -0.800068, 1, 1, -1, 1, 0, 0.899814, -1, 0, 0.799941, -1, 0.0999413, 0.799941, -0.900157, 0.19998, 0.799941, 1, 1, -0.800068, -0.900157, 0, 0.899814, 1, 0.0999413, 0.899814, -0.900157, 0.0999413, 0.899814, 1, 0.19998, 0.799941)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d35o2"]
 resource_name = "half_top_ramp_bot_mid_Material"
@@ -665,6 +713,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5tcqr")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lsuxl"]
+points = PackedVector3Array(-1, 0, -1, -1, 1, -1, 1, 0, -1, -1, 0, 0.899814, -1, 1, -0.800068, 1, 1, -1, 1, 0, 0.899814, -1, 0.0999413, 0.899814, -1, 0.19998, 0.799941, 1, 1, -0.800068, 1, 0.0999413, 0.899814, 1, 0.19998, 0.799941)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l26vd"]
 resource_name = "half_top_ramp_bot_right_Material"
 albedo_texture = ExtResource("18_4iarr")
@@ -703,6 +754,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ac6vf")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4iarr"]
+points = PackedVector3Array(-1, 0, -1, -1, 1, -1, 0.799922, 0, -1, -1, 0, 0.899814, -1, 1, -0.800068, 0.899961, 1, -1, 1, 0.599941, -1, 1, 0.499902, -0.800068, 1, 0.0999413, -0.000156581, 1, 0, 0.199961, -1, 0.0999413, 0.899814, 0.899961, 0, 0.899814, -1, 0.19998, 0.799941, 0.899961, 1, -0.800068, 1, 0.899961, -1, 1, 0, 0.799941, 0.899961, 0.0999413, 0.899814, 0.899961, 0.19998, 0.799941, 1, 0.69998, -0.40002, 1, 0.899961, -0.800068, 1, 0.0999413, 0.799941)
+
 [node name="world_2_tiles" type="Node3D"]
 
 [node name="full_no_edge" type="MeshInstance3D" parent="."]
@@ -710,86 +764,176 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 mesh = SubResource("ArrayMesh_vibk7")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="full_no_edge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_no_edge/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_2nkrw")
+
 [node name="full_edge" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
 mesh = SubResource("ArrayMesh_qsmtq")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="full_edge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_edge/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_s5mr4")
 
 [node name="full_corner" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 mesh = SubResource("ArrayMesh_s5mr4")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="full_corner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_corner/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_eeyiu")
+
 [node name="full_turn" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
 mesh = SubResource("ArrayMesh_bindp")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="full_turn"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_turn/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bindp")
 
 [node name="full_top_no_edge" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 mesh = SubResource("ArrayMesh_dnvpj")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="full_top_no_edge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_no_edge/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_l8kf0")
+
 [node name="full_top_edge" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 mesh = SubResource("ArrayMesh_douou")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="full_top_edge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_edge/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_dnvpj")
 
 [node name="full_top_corner" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 mesh = SubResource("ArrayMesh_spapx")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="full_top_corner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_corner/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ljldb")
+
 [node name="full_top_turn" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_n8av3")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="full_top_turn"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_turn/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_douou")
 
 [node name="half_top_no_edge" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 mesh = SubResource("ArrayMesh_2hils")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_no_edge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_no_edge/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_uk0og")
+
 [node name="half_top_edge" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
 mesh = SubResource("ArrayMesh_8vl5m")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_edge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_edge/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_spapx")
 
 [node name="half_top_corner" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
 mesh = SubResource("ArrayMesh_4iarr")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_corner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_corner/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_wlkck")
+
 [node name="half_top_turn" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
 mesh = SubResource("ArrayMesh_i0vq0")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_turn"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_turn/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_n8av3")
 
 [node name="half_top_middle" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
 mesh = SubResource("ArrayMesh_aili8")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_middle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_middle/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_lpw63")
+
 [node name="half_top_end" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
 mesh = SubResource("ArrayMesh_fku2w")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_end"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_end/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_2hils")
 
 [node name="half_top_ramp_bot" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 mesh = SubResource("ArrayMesh_p8gwv")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_fxaj7")
+
 [node name="half_top_ramp_bot_left" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
 mesh = SubResource("ArrayMesh_ql48d")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot_left"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot_left/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_8vl5m")
 
 [node name="half_top_ramp_bot_mid" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
 mesh = SubResource("ArrayMesh_bk82s")
 skeleton = NodePath("")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot_mid"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot_mid/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_lsuxl")
+
 [node name="half_top_ramp_bot_right" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
 mesh = SubResource("ArrayMesh_v6xul")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot_right"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot_right/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_4iarr")

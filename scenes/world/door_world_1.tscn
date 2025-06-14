@@ -1,6 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://bcyjv52keuase"]
 
-[ext_resource type="Script" uid="uid://p7lmstyqrdfm" path="res://scripts/world/door_world_1.gd" id="1_smsyp"]
+[ext_resource type="Script" uid="uid://p7lmstyqrdfm" path="res://scripts/world/door.gd" id="1_smsyp"]
+
+[sub_resource type="Animation" id="Animation_wtvm5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_5p4kw"]
 resource_name = "lower"
@@ -56,21 +71,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, -2, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_wtvm5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshNode:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a7q25"]

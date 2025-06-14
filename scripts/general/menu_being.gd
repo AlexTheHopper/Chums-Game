@@ -24,7 +24,6 @@ func set_new_target():
 		display_node.get_node("player/AnimationPlayer").play("Idle_noCarry")
 		#display_node.add_child(spawn_particles.instantiate())
 		for node in display_node.get_node("chums").get_children():
-			print(node)
 			node.add_child(spawn_particles.instantiate())
 
 func spawn_chum():
@@ -38,7 +37,6 @@ func spawn_chum():
 			chum_instance.get_node("GeneralChumBehaviour").visible = false
 			#Spawn spawn particles:
 			chum_instance.particle_zone.add_child(spawn_particles.instantiate())
-			print('1')
 			
 			spawn_count -= 1
 			
