@@ -127,7 +127,8 @@ func set_new_stats():
 	quality["health"] = 10 * (multiplier - 1)
 	
 func create_sleep_particles():
-	sleep_zone.add_child(sleep_particles.instantiate())
+	if Global.game_begun:
+		sleep_zone.add_child(sleep_particles.instantiate())
 		
 func remove_sleep_particles():
 	for child in sleep_zone.get_children():

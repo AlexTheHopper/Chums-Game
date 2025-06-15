@@ -11,10 +11,11 @@ var nav_vel := Vector3(0, 0, 0)
 var running := true
 var target_location : Vector3
 
-var room_particles := {"lobby": {1: preload("res://particles/seeker_room_lobby.tscn")},
-						"room": {1: preload("res://particles/seeker_room_room.tscn")},
-						"fountain": {1: preload("res://particles/seeker_room_fountain.tscn")},
-						"void": {1: preload("res://particles/seeker_room_void.tscn")}}
+var room_particles := {"lobby": preload("res://particles/seeker_room_lobby.tscn"),
+						"room": preload("res://particles/seeker_room_room.tscn"),
+						"fountain": preload("res://particles/seeker_room_fountain.tscn"),
+						"void": preload("res://particles/seeker_room_void.tscn"),
+						}
 
 func Enter():
 	idle_time = 0.0
@@ -63,7 +64,7 @@ func _on_smack_zone_area_entered(area: Area3D) -> void:
 
 func show_target_type():
 	print(chum.target_room_types[0])
-	var particle_instance = room_particles[chum.target_room_types[0]][Global.current_world_num].instantiate()
+	var particle_instance = room_particles[chum.target_room_types[0]].instantiate()
 	chum.particle_zone.add_child(particle_instance)
 
 func _on_run_delay_timeout() -> void:

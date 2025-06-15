@@ -38,7 +38,7 @@ func decorate():
 	var deco_n = Functions.map_range(from_lobby, Vector2(0, Global.map_size), Vector2(5, 20))
 	var angles = [0, PI/2, PI, 3*PI/2]
 	var dummy = 0
-	for n in deco_n:
+	for n in int(deco_n * DecorationManager.decorations_world[Global.current_world_num]['multiplier']):
 		var chosen_deco = DecorationManager.get_common_decoration(Global.current_world_num)
 		var deco_inst = chosen_deco[0].instantiate()
 		$Decorations.add_child(deco_inst)

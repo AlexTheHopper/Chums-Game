@@ -11,12 +11,13 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 
 [sub_resource type="Environment" id="Environment_5vans"]
 ambient_light_source = 3
-ambient_light_color = Color(0.73893, 0.821893, 0.656433, 1)
-ambient_light_sky_contribution = 0.9
+ambient_light_sky_contribution = 0.0
 tonemap_mode = 3
 fog_enabled = true
-fog_light_color = Color(0.0838779, 0.176419, 0.144425, 1)
-fog_density = 0.03
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.05
+fog_height = 5.0
+fog_height_density = 0.25
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("grid_map")]
 script = ExtResource("1_car0k")

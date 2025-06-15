@@ -1,8 +1,10 @@
 extends room
 
 const TYPE := "boss"
+@onready var player_spawn_node := $PlayerSpawn
 
 func _ready() -> void:
+	$RoomActivator.activate_bell.connect(close_doors)
 	for group in ["Chums_Enemy", "Chums_Neutral"]:
 	#Remove all previous enemy chums:
 		for chum in get_tree().get_nodes_in_group(group):
@@ -10,9 +12,22 @@ func _ready() -> void:
 	load_room()
 	set_player_loc_on_entry()
 	set_chums_loc_on_entry()
+	
+	#Spawns boss chums(s)
+	if Global.world_map[Global.room_location]["activated"] == false:
+		for chum_id in ChumsManager.boss_chums[Global.room_location].keys():
+			for n in ChumsManager.boss_chums[Global.room_location][chum_id]:
+				#Spawns chum
+				var chum_instance = ChumsManager.get_specific_chum_id(chum_id).instantiate()
+				chum_instance.spawn_currency.connect(spawn_currency)
+				get_parent().get_parent().get_node("Chums").add_child(chum_instance)
+				chum_instance.global_position = get_chum_spawn_loc()
+				
+				#Spawn spawn particles:
+				call_deferred("apply_spawn_particles", chum_instance)
 
 func set_player_loc_on_entry():
-	pass
+	move_player_and_camera(player_spawn_node.global_position, 0.0)
 
 func set_chums_loc_on_entry():
 	#Place friendly chums in front of the player:

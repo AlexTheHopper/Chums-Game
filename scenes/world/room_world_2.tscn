@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cr3ihcke5osl0"]
 
 [ext_resource type="Script" uid="uid://ci7owev45b6ka" path="res://scripts/world/room.gd" id="1_mfbql"]
-[ext_resource type="MeshLibrary" uid="uid://dx7bvoycvvogr" path="res://assets/world/world_2_mesh_lib_v1.tres" id="2_mfbql"]
+[ext_resource type="MeshLibrary" uid="uid://k4ywfdeg0qp7" path="res://assets/world/world_2_mesh_lib_v2.tres" id="2_mfbql"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="3_y3gcu"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_nctlv"]
 [ext_resource type="PackedScene" uid="uid://ce86dk61xylkx" path="res://scenes/entities/room_activator.tscn" id="5_3eraq"]
@@ -18,13 +18,13 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="Environment" id="Environment_1q6o2"]
+[sub_resource type="Environment" id="Environment_mfbql"]
 ambient_light_source = 3
-ambient_light_color = Color(0.73893, 0.821893, 0.656433, 1)
-ambient_light_sky_contribution = 0.9
+ambient_light_sky_contribution = 0.0
 tonemap_mode = 3
 fog_enabled = true
-fog_light_color = Color(0.173954, 0.323436, 0.271598, 1)
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.05
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("spawn_timer", "grid_map")]
 script = ExtResource("1_mfbql")
@@ -97,6 +97,6 @@ omni_shadow_mode = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1q6o2")
+environment = SubResource("Environment_mfbql")
 
 [connection signal="timeout" from="SpawnPath/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

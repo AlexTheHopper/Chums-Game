@@ -3,6 +3,7 @@ class_name room
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var enemies_to_spawn: int
+var spawn_particles = preload("res://particles/spawn_particles_world1.tscn")
 
 var is_doors_closed := false
 var bracelet_tscn: PackedScene = preload("res://scenes/entities/currency_bracelet.tscn")
@@ -27,7 +28,8 @@ func _ready() -> void:
 			spawn_timer.start()
 			
 	fill_tunnels()
-			
+
+
 func fill_tunnels():
 	#Fix walls etc.
 	var door_dist := 9
@@ -97,7 +99,7 @@ func load_room():
 	var room_info = Global.world_map[Global.room_location]
 	#Chums:
 	for chum in room_info["chums"]:
-		var chum_to_add = ChumsManager.get_specific_chum(chum["type"])
+		var chum_to_add = ChumsManager.get_specific_chum_str(chum["type"])
 		var chum_instance = chum_to_add.instantiate()
 		
 		#chum_instance.attack = chum["attack"]
@@ -108,7 +110,6 @@ func load_room():
 		chum_instance.start_health = chum["health"]
 		chum_instance.max_health = chum["max_health"]
 		chum_instance.initial_state_override = chum["state"]
-		print(chum["state"])
 		
 		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
 		
@@ -130,6 +131,16 @@ func spawn_currency(_type, location):
 	var bracelet_instance = bracelet_tscn.instantiate()
 	$Currencies.add_child(bracelet_instance)
 	bracelet_instance.global_position = location
+
+func apply_spawn_particles(chum):
+	chum.particle_zone.add_child(spawn_particles.instantiate())
+
+func get_chum_spawn_loc():
+	var pos = Vector3(1, 0, 1)
+	var half_room_size = Global.world_info[Global.current_world_num]["room_size"] / 2
+	pos.x += randf_range(-(half_room_size - 7), -1) if randf() < 0.5 else randf_range(3, (half_room_size - 5))
+	pos.z += randf_range(-(half_room_size - 7), -1) if randf() < 0.5 else randf_range(3, (half_room_size - 5))
+	return pos
 	
 func decorate():
 	pass
@@ -138,7 +149,6 @@ func set_player_loc_on_entry():
 	#sets player near entered door if there are two rooms entered and the last two are the same world.
 	if len(Global.room_history) >= 2:
 		if Global.room_history[-1][0] == Global.room_history[-2][0]:
-			print(Global.room_history)
 			var current_room = Global.room_history[-1][1]
 			var prev_room = Global.room_history[-2][1]
 			#Factor is how far from the centre of the room the player spawns.
@@ -148,15 +158,19 @@ func set_player_loc_on_entry():
 			var player_pos = Vector3(factor * (prev_room.x - current_room.x) + 1,
 									 player.global_position.y, 
 									factor * (prev_room.y - current_room.y) + 1)
-			player.global_position = player_pos
-			
-			#Set the player camera rotation so it doesnt spin around when entering room
-			var cam_rotation = fmod(player.get_node("Camera_Controller").rotation.y, 2 * PI)
-			player.get_node("Camera_Controller").global_position = player.global_position
-			player.get_node("Camera_Controller").rotation.y = cam_rotation
-			#Set camera goal to nearest multiple of PI / 4
-			player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
-	
+			move_player_and_camera(player_pos)
+
+func move_player_and_camera(new_position: Vector3, camera_angle = null) -> void:
+	player.global_position = new_position
+	#Set the player camera rotation so it doesnt spin around when entering room
+	var cam_rotation = fmod(player.get_node("Camera_Controller").rotation.y, 2 * PI)
+	if camera_angle is float or camera_angle is int:
+		cam_rotation = camera_angle
+	player.get_node("Camera_Controller").global_position = player.global_position
+	player.get_node("Camera_Controller").rotation.y = cam_rotation
+	#Set camera goal to nearest multiple of PI / 4
+	player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
+
 func close_doors():
 	if not is_doors_closed:
 		is_doors_closed = true

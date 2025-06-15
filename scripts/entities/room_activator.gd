@@ -20,7 +20,10 @@ signal activate_bell
 
 func _ready() -> void:
 	#Set visuals:
-	if Global.current_world_num:
+	if Global.current_world_num == 0:
+		frame_mesh_scene = load("res://assets/world/bell_frame_%s.tscn" % [Global.room_location[0]]).instantiate()
+		bell_mesh_scene = load("res://assets/world/bell_%s.tscn" % [Global.room_location[0]]).instantiate()
+	elif Global.current_world_num:
 		frame_mesh_scene = load("res://assets/world/bell_frame_%s.tscn" % [Global.current_world_num]).instantiate()
 		bell_mesh_scene = load("res://assets/world/bell_%s.tscn" % [Global.current_world_num]).instantiate()
 	else:

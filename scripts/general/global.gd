@@ -45,6 +45,9 @@ func _ready():
 				},
 			}
 	world_info = {
+		0: {'map_size': 3,
+			"room_size": 40.0},
+			
 		1: {'map_size': 3,
 			"room_size": 40.0},
 		
@@ -96,9 +99,14 @@ func start_game(save_id = null, new_game = false) -> void:
 			current_room_node.queue_free()
 
 		#Create new room:
-		var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
-		current_room_node = new_room.instantiate()
-		rooms.add_child(current_room_node)
+		if current_world_num == 0:
+			var new_room = room_lookup[current_world_num][room_location]
+			current_room_node = new_room.instantiate()
+			rooms.add_child(current_room_node)
+		else:
+			var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
+			current_room_node = new_room.instantiate()
+			rooms.add_child(current_room_node)
 
 	#TESTPRINT:
 	for x in range(world_grid.size() - 1, -1, -1):
@@ -224,12 +232,12 @@ func create_world_boss() -> void:
 										"type": world_grid[x][y],
 										"entered": false,
 										"activated": false,
-										"to_spawn": -1,
+										"to_spawn": 0,
 										"value": y * 2,
-										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
+										"bell_angle": 0,
 										"heart_count": 3,
 										"chums": [],
-										"light_position": Vector3(),
+										"light_position": Vector3(1.0, 0.0, -10.0),
 										"decorations": [],
 										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
 										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),
@@ -262,8 +270,6 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		room_location = new_room_location
 		print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
 		if room_history[-1][1] != new_room_location:
-			print('to level')
-			print(Global.current_world_num)
 			room_history.append([Global.current_world_num, new_room_location])
 		
 		if current_room_node:
@@ -315,8 +321,6 @@ func transition_to_world(destination_world_n: int, length = 1):
 	print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
 
 	if room_history[-1][1] != new_room_location:
-			print('to world')
-			print(Global.current_world_num)
 			room_history.append([current_world_num, new_room_location])
 	
 	if current_room_node:
@@ -326,6 +330,8 @@ func transition_to_world(destination_world_n: int, length = 1):
 	var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
+	
+	SaverLoader.save_game(Global.game_save_id)
 
 
 	

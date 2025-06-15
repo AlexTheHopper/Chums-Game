@@ -16,12 +16,14 @@ func _ready() -> void:
 					"tree2": preload("res://scenes/world/decorations/tree_2.tscn"),}
 	
 	decorations_world = {
-		1: {"common": ["grass1", "grass2", "grass3", "grass4", "grass5"],
+		1: {"multiplier": 1.0,
+			"common": ["grass1", "grass2", "grass3", "grass4", "grass5"],
 			"uncommon": ["tree2"],
 			"rare": ["tree1"]
 			},
 		
-		2: {"common": ["grass1"],
+		2: {"multiplier": 0.1,
+			"common": ["grass1"],
 			"uncommon": ["grass1"],
 			"rare": ["grass1"]
 			},

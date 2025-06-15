@@ -45,7 +45,7 @@ func change_display_chums(show_particles = false) -> void:
 	
 	var inc:int = 0
 	for chum_str in chum_list:
-		var chum_to_spawn = ChumsManager.get_specific_chum(chum_str)
+		var chum_to_spawn = ChumsManager.get_specific_chum_str(chum_str)
 		if chum_to_spawn:
 			#Spawns chum
 			var chum_instance = chum_to_spawn.instantiate()

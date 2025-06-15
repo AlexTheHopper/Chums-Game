@@ -1,21 +1,22 @@
 extends Node
 
-var chums_values : Dictionary
 var chums_list : Dictionary
+var chums_values : Dictionary
+var boss_chums : Dictionary
 var close_chums := []
 var quality_popup_active = false
 
 func _ready() -> void:
 	#Fill chums:
 	chums_list = {
-		1: preload("res://scenes/entities/chums/chum1.tscn"),
-		2: preload("res://scenes/entities/chums/chum2.tscn"),
-		3: preload("res://scenes/entities/chums/chum3.tscn"),
-		4: preload("res://scenes/entities/chums/chum4.tscn"),
-		5: preload("res://scenes/entities/chums/chum5.tscn"),
-		6: preload("res://scenes/entities/chums/chum6.tscn"),
-		7: preload("res://scenes/entities/chums/chum7.tscn"),
-		8: preload("res://scenes/entities/chums/chum8.tscn"),
+		1: preload("res://scenes/entities/chums/chum1.tscn"), #Flamenco
+		2: preload("res://scenes/entities/chums/chum2.tscn"), #Stump
+		3: preload("res://scenes/entities/chums/chum3.tscn"), #Pear
+		4: preload("res://scenes/entities/chums/chum4.tscn"), #Jabby
+		5: preload("res://scenes/entities/chums/chum5.tscn"), #Slate
+		6: preload("res://scenes/entities/chums/chum6.tscn"), #Healio
+		7: preload("res://scenes/entities/chums/chum7.tscn"), #Ring of Pearls
+		8: preload("res://scenes/entities/chums/chum8.tscn"), #Bolt
 	}
 
 	chums_values = {
@@ -30,8 +31,15 @@ func _ready() -> void:
 			8: 2.0,
 		},
 		2: {
-			1: 0.5,
+			4: 0.5,
+			8: 2.0
 		},
+	}
+	
+	#The vector2i defines which room, the keys of that dict are chum ids and the values are the count.
+	#They are spawned randomly somewhere in the room
+	boss_chums = {
+		Vector2i(1, 2): {4: 5,},
 	}
 
 	if Global.dev_mode:
@@ -59,5 +67,8 @@ func get_world_random_chum(room_value: float, world_n: int):
 	
 	return {"object": chums_list[chosen_id], "value": chums_values[world_n][chosen_id]}
 	
-func get_specific_chum(chum_str):
+func get_specific_chum_str(chum_str):
 	return load("res://scenes/entities/chums/%s.tscn" % [chum_str])
+
+func get_specific_chum_id(chum_id):
+	return chums_list[chum_id]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://btgb5ddyvoumy"]
+
+[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="1_yb0o4"]
+[ext_resource type="ArrayMesh" uid="uid://bcpqqy26d82k4" path="res://assets/world/world_2_other/bell_frame.vox" id="2_qr5jc"]
+
+[node name="BellFrame2" type="Node3D"]
+
+[node name="BellFrame" type="MeshInstance3D" parent="."]
+material_overlay = ExtResource("1_yb0o4")
+mesh = ExtResource("2_qr5jc")

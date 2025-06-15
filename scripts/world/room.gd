@@ -4,7 +4,6 @@ extends room
 @onready var room_value = Global.world_map[Global.room_location]["value"]
 const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
 const TYPE := "room"
-var spawn_particles = preload("res://particles/spawn_particles_world1.tscn")
 
 func _ready() -> void:
 	
@@ -103,16 +102,6 @@ func _on_spawn_timer_timeout() -> void:
 		
 		#Save game
 		save_room()
-		
-func apply_spawn_particles(chum):
-	chum.particle_zone.add_child(spawn_particles.instantiate())
-		
-func get_chum_spawn_loc():
-	var pos = Vector3(1, 0, 1)
-	pos.x += randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15)
-	pos.z += randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15)
-	return pos
-
 
 func decorate():
 	super()
@@ -132,7 +121,7 @@ func decorate():
 	var from_lobby = Global.world_map[Global.room_location]["value"]
 	var deco_n = Functions.map_range(from_lobby, Vector2(0, Global.map_size), Vector2(10, 100))
 	var angles = [0, PI/2, PI, 3*PI/2]
-	for n in deco_n:
+	for n in int(deco_n * DecorationManager.decorations_world[Global.current_world_num]['multiplier']):
 		var chosen_deco = DecorationManager.get_random_decoration(Global.current_world_num)
 		var deco_inst = chosen_deco[0].instantiate()
 		$Decorations.add_child(deco_inst)

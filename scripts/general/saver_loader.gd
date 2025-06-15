@@ -56,7 +56,7 @@ func load_game(save_id) -> void:
 	
 	#Friend Chums Data:
 	for chum in saved_game.friendly_chums:
-		var chum_to_add = ChumsManager.get_specific_chum(chum["type"])
+		var chum_to_add = ChumsManager.get_specific_chum_str(chum["type"])
 		var chum_instance = chum_to_add.instantiate()
 		
 		#chum_instance.attack = chum["attack"]
