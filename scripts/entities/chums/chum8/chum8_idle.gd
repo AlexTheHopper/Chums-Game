@@ -76,9 +76,10 @@ func _on_run_delay_timeout() -> void:
 		running = true
 	
 func set_target_location() -> void:
-	var l = (Global.room_size - 10) / 2
-	var dir = Global.world_map_guide[chum.target_room_types[0]][Global.room_location]
-	target_location = l * Vector3(dir.x, 0, dir.y) + Vector3(1, 0, 1)
+	if Global.current_room_node.TYPE != "boss":
+		var l = (Global.room_size - 10) / 2
+		var dir = Global.world_map_guide[chum.target_room_types[0]][Global.room_location]
+		target_location = l * Vector3(dir.x, 0, dir.y) + Vector3(1, 0, 1)
 
 func _on_navigation_agent_3d_target_reached_idle() -> void:
 	running = false

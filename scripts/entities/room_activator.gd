@@ -20,15 +20,14 @@ signal activate_bell
 
 func _ready() -> void:
 	#Set visuals:
+	var mesh_num = 1
 	if Global.current_world_num == 0:
-		frame_mesh_scene = load("res://assets/world/bell_frame_%s.tscn" % [Global.room_location[0]]).instantiate()
-		bell_mesh_scene = load("res://assets/world/bell_%s.tscn" % [Global.room_location[0]]).instantiate()
+		mesh_num = Global.room_location[0]
 	elif Global.current_world_num:
-		frame_mesh_scene = load("res://assets/world/bell_frame_%s.tscn" % [Global.current_world_num]).instantiate()
-		bell_mesh_scene = load("res://assets/world/bell_%s.tscn" % [Global.current_world_num]).instantiate()
-	else:
-		frame_mesh_scene = load("res://assets/world/bell_frame_1.tscn").instantiate()
-		bell_mesh_scene = load("res://assets/world/bell_1.tscn").instantiate()
+		mesh_num = Global.current_world_num
+		
+	frame_mesh_scene = load("res://assets/world/bell_frame_%s.tscn" % [mesh_num]).instantiate()
+	bell_mesh_scene = load("res://assets/world/bell_%s.tscn" % [mesh_num]).instantiate()
 	frame_mesh_node.add_child(frame_mesh_scene)
 	bell_mesh_node.add_child(bell_mesh_scene)
 	bell_mesh = bell_mesh_scene.get_node("Bell")
@@ -50,6 +49,7 @@ func activate_chums():
 		chum.find_enemy()
 		
 	activate_bell.emit()
+	print('emitting bell')
 
 #Allows bell to be activated
 func finish_spawning():

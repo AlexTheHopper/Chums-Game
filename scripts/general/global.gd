@@ -28,8 +28,8 @@ var game_save_id := 1
 
 func _ready():
 	room_lookup = {
-		#world 0 is the boss rooms
-		0: {Vector2i(1, 2): load("res://scenes/world/boss_room_world_1_2.tscn"),
+		#world 0 is the boss rooms, the keys of inner dict are the world you come from.
+		0: {1: load("res://scenes/world/boss_room_world_1.tscn"),
 				},
 				
 		1: {1: load("res://scenes/world/lobby_world_1.tscn"),
@@ -298,7 +298,7 @@ func transition_to_boss(source_world_n: int, destination_world_n: int, length = 
 		current_room_node.queue_free()
 
 	#Create new room:
-	var new_room = room_lookup[0][new_room_location]
+	var new_room = room_lookup[0][new_room_location[0]] #Go to boss room of the world you came from.
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
 

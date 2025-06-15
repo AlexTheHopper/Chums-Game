@@ -172,13 +172,15 @@ func move_player_and_camera(new_position: Vector3, camera_angle = null) -> void:
 	player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
 
 func close_doors():
+	#Connect to enemies to know when to open doors
+	for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
+		chum.health_depleted.connect(check_enemy_count)
+
 	if not is_doors_closed:
 		is_doors_closed = true
 		for door in get_node("Doors").get_children():
 			door.lower()
-		#Connect to enemies to know when to open doors
-		for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
-			chum.health_depleted.connect(check_enemy_count)
+		
 
 func check_enemy_count():
 	if len(get_tree().get_nodes_in_group("Chums_Enemy")) == 0:

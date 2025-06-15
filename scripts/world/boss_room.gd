@@ -5,6 +5,7 @@ const TYPE := "boss"
 
 func _ready() -> void:
 	$RoomActivator.activate_bell.connect(close_doors)
+	print('connecting to bell')
 	for group in ["Chums_Enemy", "Chums_Neutral"]:
 	#Remove all previous enemy chums:
 		for chum in get_tree().get_nodes_in_group(group):
@@ -25,6 +26,7 @@ func _ready() -> void:
 				
 				#Spawn spawn particles:
 				call_deferred("apply_spawn_particles", chum_instance)
+	close_doors()
 
 func set_player_loc_on_entry():
 	move_player_and_camera(player_spawn_node.global_position, 0.0)

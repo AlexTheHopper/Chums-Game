@@ -28,7 +28,6 @@ shader_parameter/my_texture = SubResource("ViewportTexture_teyl6")
 viewport_path = NodePath("Container/Description/SubViewport")
 
 [node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("disp_name", "disp_cost", "disp_health_title", "disp_health_value", "disp_move_speed_title", "disp_move_speed_value", "disp_damage_title", "disp_damage_value", "disp_attack_speed_title", "disp_attack_speed_value", "disp_name_back", "desc_back")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("1_purmp")
 disp_name = NodePath("Container/Display/SubViewport/Control/Name")
 disp_cost = NodePath("Container/Display/SubViewport/Control/Cost")
@@ -44,7 +43,7 @@ disp_name_back = NodePath("Container/Description/SubViewport/Control/Name")
 desc_back = NodePath("Container/Description/SubViewport/Control/Description")
 
 [node name="Container" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
 
 [node name="Display" type="Sprite3D" parent="Container"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.6, -0.05)

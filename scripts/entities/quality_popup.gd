@@ -26,12 +26,13 @@ var rotations := 1.0
 
 func _ready() -> void:
 	#Set visuals:
+	var mesh_num = 1
 	if Global.current_world_num == 0:
-		mesh_scene = load("res://assets/entities/quality_popup_%s.tscn" % [Global.room_location[0]]).instantiate()
+		mesh_num = Global.room_location[0]
 	elif Global.current_world_num:
-		mesh_scene = load("res://assets/entities/quality_popup_%s.tscn" % [Global.current_world_num]).instantiate()
-	else:
-		mesh_scene = load("res://assets/entities/quality_popup_1.tscn").instantiate()
+		mesh_num = Global.current_world_num
+		
+	mesh_scene = load("res://assets/entities/quality_popup_%s.tscn" % [mesh_num]).instantiate()
 	mesh_node.add_child(mesh_scene)
 	
 	#Set all values:
