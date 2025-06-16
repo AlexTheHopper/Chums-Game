@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://jf4jh3d5kyqm"]
+[gd_scene load_steps=5 format=3 uid="uid://brgem5mdbqdcb"]
 
-[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_5d744"]
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_tt41t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1dnw"]
 transparency = 1
@@ -11,11 +11,11 @@ material = SubResource("StandardMaterial3D_d1dnw")
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="Gradient" id="Gradient_5d744"]
-offsets = PackedFloat32Array(0, 0.722054)
-colors = PackedColorArray(0, 0, 0, 0.780392, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.767372)
+colors = PackedColorArray(0.211765, 0.211765, 0.211765, 1, 0.0475577, 0.0475576, 0.0475576, 1)
 
 [node name="Particles" type="Node3D"]
-script = ExtResource("1_5d744")
+script = ExtResource("1_tt41t")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 emitting = false

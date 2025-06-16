@@ -11,6 +11,7 @@ var world_map_guide = {"lobby": {},
 						"room": {},
 						"fountain": {},
 						"void": {},
+						"statue": {},
 						}
 						
 
@@ -29,30 +30,40 @@ var game_save_id := 1
 func _ready():
 	room_lookup = {
 		#world 0 is the boss rooms, the keys of inner dict are the world you come from.
-		0: {1: load("res://scenes/world/boss_room_world_1.tscn"),
+		0:		{1: load("res://scenes/world/boss_room_world_1.tscn"),
+				2: load("res://scenes/world/boss_room_world_2.tscn"),
 				},
 				
-		1: {1: load("res://scenes/world/lobby_world_1.tscn"),
+		1:		{1: load("res://scenes/world/lobby_world_1.tscn"),
 				2: load("res://scenes/world/room_world_1.tscn"),
 				3: load("res://scenes/world/fountain_room_world_1.tscn"),
 				4: load("res://scenes/world/void_room_world_1.tscn"),
+				5: load("res://scenes/world/statue_room_world_1.tscn"),
 				},
 				
-		2: {1: load("res://scenes/world/lobby_world_2.tscn"),
+		2:		{1: load("res://scenes/world/lobby_world_2.tscn"),
 				2: load("res://scenes/world/room_world_2.tscn"),
 				3: load("res://scenes/world/fountain_room_world_2.tscn"),
 				4: load("res://scenes/world/void_room_world_2.tscn"),
+				5: load("res://scenes/world/statue_room_world_2.tscn"),
 				},
 			}
+	#required and optional are the statue chum ids. To be super safe only rely on the last entry in required.
 	world_info = {
 		0: {'map_size': 3,
-			"room_size": 40.0},
+			"room_size": 40.0,
+			"required": [1],
+			"optional": [1]},
 			
 		1: {'map_size': 3,
-			"room_size": 40.0},
+			"room_size": 40.0,
+			"required": [4],
+			"optional": [1, 2, 3, 4, 5, 6, 7, 8]},
 		
 		2: {'map_size': 5,
-			"room_size": 40.0},
+			"room_size": 40.0,
+			"required": [1, 2, 4, 3],
+			"optional": [1, 2, 3, 4]},
 	}
 
 func start_game(save_id = null, new_game = false) -> void:
@@ -70,6 +81,7 @@ func start_game(save_id = null, new_game = false) -> void:
 						"room": {},
 						"fountain": {},
 						"void": {},
+						"statue": {},
 						}
 						
 	room_location = Vector2i(map_size, map_size)
@@ -164,7 +176,8 @@ func get_world_grid(world_n):
 	#Must have that at least one of each room type is present.
 	#Mainly for the world_map_guide
 	#this is a bit sloopy, maube TODO later.
-	var room_missing = []
+	#especially since it starts as 5,5 to ensure at least 3 statue rooms.
+	var room_missing = [5, 5]
 	for n in room_lookup[world_n].keys():
 		var exists = false
 		for slice in grid:
@@ -182,6 +195,7 @@ func get_world_grid(world_n):
 	world_map_guide["room"] = Functions.astar2d(grid, 2)
 	world_map_guide["fountain"] = Functions.astar2d(grid, 3)
 	world_map_guide["void"] = Functions.astar2d(grid, 4)
+	world_map_guide["statue"] = Functions.astar2d(grid, 5)
 	return(grid)
 	
 func set_room_type(location: Vector2i) -> int:
@@ -191,8 +205,10 @@ func set_room_type(location: Vector2i) -> int:
 		return 1 #Lobby
 		
 	elif randf() < (per / 8):
-		if randf() < 0.75:
+		if randf() < 0.7:
 			return 3 #Fountain
+		elif randf() < 0.7:
+			return 5
 		else:
 			return 4 #Void Pit
 		
@@ -201,10 +217,18 @@ func set_room_type(location: Vector2i) -> int:
 
 func create_world(world_n):
 	var size = world_info[world_n]["map_size"]
+	var required_statues = world_info[world_n]["required"]
+	var other_statues = world_info[world_n]["optional"]
+	var statue_id = 1
 	#Uses the world_grid to construct information about all rooms.
 	for y in range(0, (2 * size) + 1):
 		for x in range(0, (2 * size) + 1):
 			#This dict only has values for rooms you can enter.
+			#All rooms are assigned a statue id, but ensured that required statues are in the world.
+			statue_id = other_statues.pick_random()
+			if world_grid[x][y] == 5 and len(required_statues) > 0:
+				statue_id = required_statues.pop_back()
+				
 			if world_grid[x][y] != 0:
 				world_map[Vector2i(x, y)] = {
 										"type": world_grid[x][y],
@@ -217,6 +241,7 @@ func create_world(world_n):
 										"chums": [],
 										"light_position": Vector3(),
 										"decorations": [],
+										"statue_id": statue_id,
 										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
 										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),
 										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
@@ -239,6 +264,7 @@ func create_world_boss() -> void:
 										"chums": [],
 										"light_position": Vector3(1.0, 0.0, -10.0),
 										"decorations": [],
+										"statue_id": 1,
 										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
 										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),
 										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
@@ -334,9 +360,14 @@ func transition_to_world(destination_world_n: int, length = 1):
 	SaverLoader.save_game(Global.game_save_id)
 
 
-	
 func return_to_menu():
 	TransitionScreen.transition(3)
 	await TransitionScreen.on_transition_finished
-	get_node("/root").add_child(load("res://scenes/general/main_menu.tscn").instantiate())
+	call_deferred("restart_game_and_delete")
+
+func restart_game_and_delete():
 	get_node("/root/Game").queue_free()
+	SaverLoader.delete_save(game_save_id)
+	game_begun = false
+	game_save_id = 1
+	get_node("/root").add_child(load("res://scenes/general/main_menu.tscn").instantiate())

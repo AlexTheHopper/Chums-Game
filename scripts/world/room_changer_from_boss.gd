@@ -6,6 +6,9 @@ class_name room_changer_from_boss
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
+func _ready() -> void:
+	if Global.current_world_num == 0:
+		destination_world_n = Global.room_location[1]
 
 func _on_body_entered(body: Node3D) -> void:
 	if active and body is Player:

@@ -49,7 +49,6 @@ func activate_chums():
 		chum.find_enemy()
 		
 	activate_bell.emit()
-	print('emitting bell')
 
 #Allows bell to be activated
 func finish_spawning():

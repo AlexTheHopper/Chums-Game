@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm7edsnvhqcb8"]
+
+[ext_resource type="Script" uid="uid://h3h2dsbq4joa" path="res://scripts/world/statue.gd" id="1_0pl1r"]
+[ext_resource type="PackedScene" uid="uid://ccexq20uvxibi" path="res://scenes/world/room_changer_to_boss.tscn" id="2_jqxfr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0pl1r"]
+size = Vector3(9.5, 0.5, 9.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0pl1r"]
+radius = 2.0
+
+[node name="Statue" type="Node3D"]
+script = ExtResource("1_0pl1r")
+
+[node name="MeshNode" type="Node3D" parent="."]
+
+[node name="FlyZone" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlyZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_0pl1r")
+
+[node name="DetectionZone" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_0pl1r")
+
+[node name="RoomChanger" parent="." instance=ExtResource("2_jqxfr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[connection signal="body_entered" from="FlyZone" to="." method="_on_fly_zone_body_entered"]
+[connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]

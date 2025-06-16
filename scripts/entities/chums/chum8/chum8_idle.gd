@@ -15,6 +15,7 @@ var room_particles := {"lobby": preload("res://particles/seeker_room_lobby.tscn"
 						"room": preload("res://particles/seeker_room_room.tscn"),
 						"fountain": preload("res://particles/seeker_room_fountain.tscn"),
 						"void": preload("res://particles/seeker_room_void.tscn"),
+						"statue": preload("res://particles/seeker_room_statue.tscn"),
 						}
 
 func Enter():
