@@ -14,8 +14,8 @@ func set_chums_loc_on_entry():
 	if len(Global.room_history) >= 2:
 		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
 			if chum.state_machine.current_state.name != "Carry":
-				chum.global_position = lerp(player.global_position, Vector3(1, 0, 1), 0.5) + Vector3(randf_range(-3, 3), 0, randf_range(-3, 3))
-				chum.global_position.y = player.global_position.y
+				var rand_angle = randf_range(0, 2*PI)
+				chum.global_position = player.global_position + 3 * Vector3(sin(rand_angle), 0, cos(rand_angle))
 				chum.rotation.y = randf_range(0, 2*PI)
 				chum.set_state("Idle")
 

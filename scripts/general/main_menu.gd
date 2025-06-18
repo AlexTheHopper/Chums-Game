@@ -32,7 +32,6 @@ func _ready() -> void:
 
 	save_ids.append(null)
 	save_ids.sort()
-	print(saved_chums)
 	set_save_display()
 	change_display_chums(false)
 	
@@ -66,7 +65,7 @@ func change_display_chums(show_particles = false) -> void:
 
 func set_save_display() -> void:
 	if save_ids[save_id_n] == null:
-		save_display_label.text = "< New Reality >"
+		save_display_label.text = "< New Reality (%s) >" % [get_smallest_missing_int(save_ids)]
 	else:
 		save_display_label.text = "< Reality %s >" % [save_ids[save_id_n]]
 

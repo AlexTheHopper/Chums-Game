@@ -160,6 +160,16 @@ func set_player_loc_on_entry():
 									factor * (prev_room.y - current_room.y) + 1)
 			move_player_and_camera(player_pos)
 
+func set_chums_loc_on_entry():
+	#Place friendly chums in front of the player:
+	if len(Global.room_history) >= 2:
+		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
+			if chum.state_machine.current_state.name != "Carry":
+				var rand_angle = randf_range(0, 2*PI)
+				chum.global_position = player.global_position + 3 * Vector3(sin(rand_angle), 0, cos(rand_angle))
+				chum.rotation.y = randf_range(0, 2*PI)
+				chum.set_state("Idle")
+
 func move_player_and_camera(new_position: Vector3, camera_angle = null) -> void:
 	player.global_position = new_position
 	#Set the player camera rotation so it doesnt spin around when entering room

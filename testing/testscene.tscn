@@ -1,7 +1,17 @@
-[gd_scene load_steps=11 format=4 uid="uid://ev0qq4h760x1"]
+[gd_scene load_steps=14 format=4 uid="uid://ev0qq4h760x1"]
+
+[ext_resource type="Shader" uid="uid://cllw80cd638jk" path="res://testing/greyscale.gdshader" id="1_u2ba0"]
+[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="2_57euc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ldjf"]
+render_priority = 0
+shader = ExtResource("1_u2ba0")
+shader_parameter/emission_strength = 1.0
+shader_parameter/burn = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qq0nw"]
 resource_name = "chum_5_detach_Material.001"
+next_pass = ExtResource("2_57euc")
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
@@ -629,7 +639,7 @@ bones/4/name = "LegFront.L"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-2.38419e-07, 0.6, 0.8, -1, 4.76837e-08, -3.33786e-07, -2.38419e-07, -0.8, 0.6, 0.3, 0.1, -0.2)
 bones/4/enabled = true
-bones/4/position = Vector3(0.3, 0.1, -0.2)
+bones/4/position = Vector3(0.3, 0.0999999, -0.2)
 bones/4/rotation = Quaternion(-0.316228, 0.316228, -0.632456, 0.632455)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "LegBack.R"
@@ -643,11 +653,12 @@ bones/6/name = "LegFront.R"
 bones/6/parent = 0
 bones/6/rest = Transform3D(-2.38419e-07, -0.6, -0.8, 1, 4.76837e-08, -3.33786e-07, 2.38419e-07, -0.8, 0.6, -0.3, 0.1, -0.2)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.3, 0.1, -0.2)
+bones/6/position = Vector3(-0.3, 0.0999999, -0.2)
 bones/6/rotation = Quaternion(-0.316228, -0.316228, 0.632456, 0.632455)
 bones/6/scale = Vector3(1, 1, 1)
 
 [node name="chum_5_detach" type="MeshInstance3D" parent="chum5/Armature/Skeleton3D"]
+material_overlay = SubResource("ShaderMaterial_3ldjf")
 mesh = SubResource("ArrayMesh_2hk8o")
 skin = SubResource("Skin_68hbd")
 

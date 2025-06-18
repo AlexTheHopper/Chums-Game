@@ -9,7 +9,8 @@ func ensure_save_folder() -> void:
 		dir.make_dir("saves")
 
 func save_game(save_id) -> void:
-	print("saving game to id %s" % [save_id])
+	if Global.dev_mode:
+		print("saving game to id %s" % [save_id])
 	ensure_save_folder()
 	var saved_game:SavedGame = SavedGame.new()
 	
@@ -35,14 +36,14 @@ func save_game(save_id) -> void:
 	saved_game.room_location = Global.room_location
 	saved_game.room_history = Global.room_history
 	saved_game.world_map_guide = Global.world_map_guide
-	saved_game.world_map_boss = Global.world_map_boss
 	saved_game.world_map = Global.world_map
 	
 	ResourceSaver.save(saved_game, "user://saves/%s.tres" % [save_id])
 
 
 func load_game(save_id) -> void:
-	print("loading game from id %s" % [save_id])
+	if Global.dev_mode:
+		print("loading game from id %s" % [save_id])
 	ensure_save_folder()
 	var saved_game:SavedGame = load("user://saves/%s.tres" % [save_id])
 	
@@ -71,6 +72,7 @@ func load_game(save_id) -> void:
 		get_parent().get_node("Game/Chums").add_child(chum_instance)
 		chum_instance.make_friendly()
 		chum_instance.health_node.immune = false
+		print('adding chum')
 	PlayerStats.player_chums_changed.emit()
 
 	#World Data:
@@ -79,13 +81,13 @@ func load_game(save_id) -> void:
 	Global.room_location = saved_game.room_location
 	Global.room_history = saved_game.room_history
 	Global.world_map_guide = saved_game.world_map_guide
-	Global.world_map_boss = saved_game.world_map_boss
 	Global.world_map = saved_game.world_map
 	
 	Global.game_save_id = save_id
 
 func delete_save(save_id) -> void:
-	print("deleting save from id %s" % [save_id])
+	if Global.dev_mode:
+		print("deleting save from id %s" % [save_id])
 	ensure_save_folder()
 	
 	var dir = DirAccess.open("user://")

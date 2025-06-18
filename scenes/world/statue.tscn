@@ -1,18 +1,160 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm7edsnvhqcb8"]
+[gd_scene load_steps=17 format=3 uid="uid://bm7edsnvhqcb8"]
 
 [ext_resource type="Script" uid="uid://h3h2dsbq4joa" path="res://scripts/world/statue.gd" id="1_0pl1r"]
 [ext_resource type="PackedScene" uid="uid://ccexq20uvxibi" path="res://scenes/world/room_changer_to_boss.tscn" id="2_jqxfr"]
+[ext_resource type="ArrayMesh" uid="uid://ci6o7ub2tetis" path="res://assets/world/statue_base.vox" id="2_ulhrq"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ulhrq"]
+points = PackedVector3Array(1.36012, -1.46035, -3, 2.90568, 3.9, -0.0932585, 2.72686, 3.9, -0.0932585, 3.04762, -1.54762, -0.000298262, 3, 3.82494, -2.78267, 1.36505, 2.5, -0.0563734, 1.3335, 4.07143, -2.76159, 3.04762, -1.54762, -3.04732, 1.34803, -1.5, -0.0261206, 1.36012, 3.89143, -3, 1.90499, 3.3091, -0.000298262, 3, 3.82494, -0.0849462, 2.8, 3.74419, -2.91734, 2.9, 3.87905, -2.85409, 3.04762, -1.35621, -3.04732)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8002e"]
+points = PackedVector3Array(-3, 3.84054, 0.0761909, -1.17262, 3.89143, 3, -1.17763, 3.96937, 2.9, -1.15918, -1.5, 0.0261206, -3.04743, -1.35621, 3.04732, -1.17262, -1.46035, 3, -3, -1.40766, 0.0761909, -3, 3.84054, 2.79033, -1.17809, 2.5, 0.0563734, -1.14304, 4.07143, 2.76159, -2.72097, 3.9, 0.0932585, -2.8, 3.77299, 2.93351, -3, -1.40766, 2.97143, -2.9, 3.90039, 2.86494, -2.9, 3.90039, 0.0930445)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gk3p5"]
+points = PackedVector3Array(-3.04762, -1.54762, -3.04732, -2.74151, 3.9, -0.0932585, -1.80952, 4.07143, -2.76159, -1.82002, -1.5, -0.0261206, -3.04762, -1.54762, -0.000298262, -3, 3.76697, -2.7542, -1.82875, -1.46035, -3, -1.9049, 3.3091, -0.000298262, -3, 3.76697, -0.117492, -1.82875, 3.89143, -3, -2.81567, 3.7133, -2.9, -2.92029, 3.9, -0.0932585, -1.86725, 2.6, -0.142376, -3.04762, -1.35621, -3.04732)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vqmng"]
+points = PackedVector3Array(1.86725, 2.6, 0.142376, 2.81567, 3.7133, 2.9, 2.9, 3.79115, 2.80941, 3.04762, -1.54762, 3.04732, 1.82875, -1.46035, 3, 3.04762, -1.54762, 0.000298262, 3, 3.76697, 0.117492, 1.82875, 3.89143, 3, 1.82002, -1.5, 0.0261206, 1.9049, 3.3091, 0.000298262, 1.80952, 4.07143, 2.76159, 3, 3.76697, 2.7542, 2.92029, 3.9, 0.0932585, 2.74151, 3.9, 0.0932585, 3.04762, -1.35621, 3.04732)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bknvf"]
+points = PackedVector3Array(-1.71709, -1.38235, -3, 1.33333, -1.54762, -3.04762, 1.3067, -1.5, -1.44229, -1.64736, 2.5, -1.51211, -1.71709, 3.81609, -3, -1.78289, -1.5, -1.44229, 1.2409, 3.81609, -3, 1.27549, 2.5, -1.45837, -1.80952, 3.3091, -1.90481, 1.33333, 3.3091, -1.90481, -1.71364, 3.9, -2.72977, 1.23745, 3.9, -2.72977, -1.71364, 3.9, -2.90864, 1.23745, 3.9, -2.90864)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k13jm"]
+points = PackedVector3Array(0.9, 2.64418, -0.0313055, -1.7746, -1.5, -1.4127, 1.29841, -1.5, -1.4127, -1.7746, -1.5, -0.015873, -1.70018, 2.5, -1.37887, 1.29841, -1.5, -0.015873, 1.29565, 2.5, -1.41144, -1.70018, 2.5, -0.0497008, 1.29565, 2.5, -0.0171287, -0.905826, 2.6, -0.936819, -0.905826, 2.6, -0.0460318, 0.875461, 2.6, -0.936819)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ufl2i"]
+points = PackedVector3Array(0.912469, 2.6, 0.945999, -1.11005, -1.5, 0.0190475, -1.11005, -1.5, 1.69524, 1.77672, -1.5, 0.0190475, -1.10746, 2.5, 0.0205544, 1.77672, -1.5, 1.69524, -1.10746, 2.5, 1.69373, 1.70681, 2.5, 0.0596409, 1.70681, 2.5, 1.65464, -0.9, 2.65121, 0.0347538, 0.912469, 2.6, 0.0552382, -0.86928, 2.6, 0.945999)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qayqb"]
+points = PackedVector3Array(1.71945, 3.9, 2.73846, -1.11784, -1.5, 1.72571, -1.14286, -1.54762, 3.04749, 1.7845, -1.5, 1.72571, -1.14286, 3.3091, 1.90495, 1.70435, -1.34745, 3, -1.03768, 3.78237, 3, 1.80952, 3.3091, 1.90495, 1.70435, 3.78237, 3, -0.990523, 2.5, 1.7832, 1.65719, 2.5, 1.7832, -1.05278, 3.9, 2.73846, -1.05278, 3.9, 2.91737, 1.71945, 3.9, 2.91737)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0pl1r"]
 size = Vector3(9.5, 0.5, 9.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0pl1r"]
-radius = 2.0
+radius = 2.5
+
+[sub_resource type="Animation" id="Animation_gk3p5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 4.2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshNode/StatueBase/StaticBody3D:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshNode/StatueBase/StaticBody3D:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_8002e"]
+resource_name = "activate"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshNode:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 4.2, 0), Vector3(0, 4.2, 0), Vector3(0, -5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshNode/StatueBase/StaticBody3D:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshNode/StatueBase/StaticBody3D:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vqmng"]
+_data = {
+&"RESET": SubResource("Animation_gk3p5"),
+&"activate": SubResource("Animation_8002e")
+}
 
 [node name="Statue" type="Node3D"]
 script = ExtResource("1_0pl1r")
 
 [node name="MeshNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0)
+
+[node name="StatueBase" type="MeshInstance3D" parent="MeshNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7, 0)
+mesh = ExtResource("2_ulhrq")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshNode/StatueBase"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshNode/StatueBase/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ulhrq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshNode/StatueBase/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_8002e")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshNode/StatueBase/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_gk3p5")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshNode/StatueBase/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_vqmng")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="MeshNode/StatueBase/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bknvf")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="MeshNode/StatueBase/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_k13jm")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="MeshNode/StatueBase/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ufl2i")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="MeshNode/StatueBase/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_qayqb")
 
 [node name="FlyZone" type="Area3D" parent="."]
 collision_layer = 0
@@ -23,6 +165,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_0pl1r")
 
 [node name="DetectionZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 collision_layer = 0
 collision_mask = 8
 
@@ -33,5 +176,11 @@ shape = SubResource("SphereShape3D_0pl1r")
 [node name="RoomChanger" parent="." instance=ExtResource("2_jqxfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vqmng")
+}
+
 [connection signal="body_entered" from="FlyZone" to="." method="_on_fly_zone_body_entered"]
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

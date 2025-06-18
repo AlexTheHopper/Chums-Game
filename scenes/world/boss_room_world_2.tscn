@@ -18,13 +18,13 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="Environment" id="Environment_1q6o2"]
+[sub_resource type="Environment" id="Environment_x8u4m"]
 ambient_light_source = 3
-ambient_light_color = Color(0.73893, 0.821893, 0.656433, 1)
-ambient_light_sky_contribution = 0.9
+ambient_light_sky_contribution = 0.0
 tonemap_mode = 3
 fog_enabled = true
-fog_light_color = Color(0.173954, 0.323436, 0.271598, 1)
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.02
 
 [node name="Room" type="Node3D"]
 script = ExtResource("1_x8u4m")
@@ -77,10 +77,10 @@ omni_shadow_mode = 0
 [node name="Particles" parent="Decorations" instance=ExtResource("6_4n7qi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 1)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1q6o2")
-
 [node name="PlayerSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x8u4m")
 
 [connection signal="timeout" from="SpawnPath/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

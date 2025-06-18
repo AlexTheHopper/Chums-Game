@@ -99,7 +99,6 @@ func _ready() -> void:
 	health_node.immune = false
 	health_node.set_max_health_override(self.max_health)
 	health_node.set_health_override(self.start_health)
-	health_node.immune = true
 	
 	#If override, change to that state now after all is initialised:
 	if initial_state_override:

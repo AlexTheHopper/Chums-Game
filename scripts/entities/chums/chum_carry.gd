@@ -41,8 +41,7 @@ func Physics_Update(_delta: float):
 		xform.basis.y = target_info["normal"]
 		xform.basis.x = -xform.basis.z.cross(target_info["normal"])
 		xform.basis = xform.basis.orthonormalized()
-			
-		target_sprite.global_transform = target_sprite.global_transform.interpolate_with(xform, 0.2)
+		target_sprite.global_transform = target_sprite.global_transform.interpolate_with(xform, 0.2).orthonormalized()
 
 	chum.move_and_slide()
 	
@@ -59,7 +58,7 @@ func get_target_info(pos, vel):
 		var result = space_state.intersect_ray(query)
 		
 		if result:
-			if result["collider"] != player:
+			if result["collider"] != player and result["collider"] != chum:
 				return result
 		
 		vel.y += (chum.jump_gravity if vel.y > 0 else chum.fall_gravity) * time_step
