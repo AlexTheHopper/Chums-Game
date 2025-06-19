@@ -72,7 +72,6 @@ func load_game(save_id) -> void:
 		get_parent().get_node("Game/Chums").add_child(chum_instance)
 		chum_instance.make_friendly()
 		chum_instance.health_node.immune = false
-		print('adding chum')
 	PlayerStats.player_chums_changed.emit()
 
 	#World Data:

@@ -197,6 +197,9 @@ func check_enemy_count():
 		Global.in_battle = false
 		open_doors()
 		
+		#Update guide for chum 8 mainly:
+		Global.world_map_guide["room"] = Functions.astar2d(Global.world_grid, 2, true)
+		
 		#Save game
 		save_room()
 	

@@ -98,7 +98,7 @@ func _on_nav_timer_idle_timeout() -> void:
 	chum.nav_agent.set_velocity(new_vel)
 	
 func is_in_target_room():
-	if Global.current_room_node.TYPE == chum.target_room_types[0]:
+	if Global.world_map_guide[chum.target_room_types[0]][Global.room_location] == Vector2i(0, 0):
 		return true
 	return false
 

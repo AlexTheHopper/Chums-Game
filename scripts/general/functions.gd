@@ -58,7 +58,7 @@ func dict_to_grid_coord(vector: Vector2, size: int) -> Vector2:
 func grid_to_dict_coord(vector: Vector2, size: int) -> Vector2:
 	return Vector2(int(vector.x - size), int(vector.y - size))
 		
-func astar2d(map: Array, goal: int):
+func astar2d(map: Array, goal: int, only_activated := false):
 	var directions := [Vector2i(0, 1), Vector2i(0, -1), Vector2i(1, 0), Vector2i(-1, 0)]
 
 	var size: int = map.size()
@@ -71,7 +71,7 @@ func astar2d(map: Array, goal: int):
 		visited.append([])
 		for y in range(size):
 			
-			if map[x][y] == goal:
+			if map[x][y] == goal and (not only_activated or not Global.world_map[Vector2i(x, y)]["activated"]):
 				visited[x].append(true)
 				queue.append(Vector2i(x, y))
 				dir_map[Vector2i(x, y)] = Vector2i(0, 0)
@@ -89,6 +89,7 @@ func astar2d(map: Array, goal: int):
 					visited[n.x][n.y] = true
 					queue.append(n)
 					dir_map[n] = -d
+	print(dir_map)
 	return dir_map
 			
 			
