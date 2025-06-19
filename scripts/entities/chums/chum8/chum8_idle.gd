@@ -60,11 +60,10 @@ func _on_smack_zone_area_entered(area: Area3D) -> void:
 		show_target_type()
 		chum.can_seek = true
 		if not is_in_target_room():
-			$RunDelay.wait_time = 1.0
+			$RunDelay.wait_time = 1.5
 			$RunDelay.start()
 
 func show_target_type():
-	print(chum.target_room_types[0])
 	var particle_instance = room_particles[chum.target_room_types[0]].instantiate()
 	chum.particle_zone.add_child(particle_instance)
 
@@ -80,7 +79,7 @@ func set_target_location() -> void:
 	if Global.current_room_node.TYPE != "boss":
 		var l = (Global.room_size - 10) / 2
 		var dir = Global.world_map_guide[chum.target_room_types[0]][Global.room_location]
-		target_location = l * Vector3(dir.x, 0, dir.y) + Vector3(1, 0, 1)
+		target_location = l * Vector3(dir.x, chum.global_position.y, dir.y) + Vector3(1, 0, 1)
 
 func _on_navigation_agent_3d_target_reached_idle() -> void:
 	running = false

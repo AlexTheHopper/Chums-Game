@@ -56,9 +56,9 @@ var chum_name := "Player"
 
 func _ready() -> void:	
 	Global.game_begun = true
-	$Health.immune = false
-	$Health.set_max_health(100)
-	$Health.set_health(100)
+	health_node.immune = false
+	health_node.set_max_health(100)
+	health_node.set_health(100)
 	if Global.dev_mode:
 		base_damage = 50
 		max_extra_damage = 100
@@ -172,8 +172,8 @@ func _physics_process(delta: float) -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("print_fps"):
 		print("FPS: " + str(Engine.get_frames_per_second()))
-		print('player health: ' + str($Health.health))
-		print('player max health: ' + str($Health.max_health))
+		print('player health: ' + str(health_node.health))
+		print('player max health: ' + str(health_node.max_health))
 		print('player pos: ' + str(global_position))
 
 		print("friends:")
@@ -264,5 +264,5 @@ func get_agro_change_target():
 	return self
 
 func kill_player():
-	Global.return_to_menu()
+	Global.return_to_menu(true)
 	

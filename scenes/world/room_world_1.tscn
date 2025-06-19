@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cja6ofg20vexg"]
+[gd_scene load_steps=11 format=3 uid="uid://cja6ofg20vexg"]
 
 [ext_resource type="Script" uid="uid://ci7owev45b6ka" path="res://scripts/world/room.gd" id="1_c3888"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="2_4abfg"]
 [ext_resource type="MeshLibrary" uid="uid://cov6injr4x604" path="res://assets/world/world_1_mesh_lib_v4.tres" id="2_bufpa"]
 [ext_resource type="PackedScene" uid="uid://ce86dk61xylkx" path="res://scenes/entities/room_activator.tscn" id="4_2ndti"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_rgk6i"]
+[ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="5_dd4y7"]
 [ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="6_bufpa"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ovef2"]
@@ -69,6 +70,20 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17, 0
 
 [node name="x_pos" parent="Doors" instance=ExtResource("4_rgk6i")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 19, 0, 1)
+
+[node name="EntryIndicators" type="Node3D" parent="."]
+
+[node name="x_neg" parent="EntryIndicators" instance=ExtResource("5_dd4y7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19, 7, 1)
+
+[node name="x_pos" parent="EntryIndicators" instance=ExtResource("5_dd4y7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21, 7, 1)
+
+[node name="z_neg" parent="EntryIndicators" instance=ExtResource("5_dd4y7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, -19)
+
+[node name="z_pos" parent="EntryIndicators" instance=ExtResource("5_dd4y7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 6, 21)
 
 [node name="RoomActivator" parent="." instance=ExtResource("4_2ndti")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)

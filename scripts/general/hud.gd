@@ -5,6 +5,8 @@ extends CanvasLayer
 @onready var IG_anim_player = $InGameHUD/AnimationPlayer
 @onready var P_anim_player = $PauseMenu/AnimationPlayer
 @export var is_paused: bool = false
+@export var is_returning: bool = false
+
 
 func initialize() -> void:
 	PlayerStats.hud_health_change.connect(change_health)
@@ -23,8 +25,16 @@ func initialize() -> void:
 	P_anim_player.play("RESET")
 
 func _process(_delta: float) -> void:
+	if is_returning:
+		return
+
 	if Input.is_action_just_pressed("pause"):
 		toggle_pause()
+	
+	if is_paused and Input.is_action_just_pressed("attack"):
+		is_returning = true
+		toggle_pause()
+		Global.return_to_menu(false)
 		
 func toggle_pause():
 	if is_paused and get_tree().paused:

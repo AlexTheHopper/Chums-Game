@@ -39,7 +39,7 @@ func Physics_Update(delta: float):
 			chum.set_new_target()
 	else:
 		chum.velocity.y += chum.get_gravity_dir() * delta
-	
+
 	chum.move_and_slide()
 	
 func _on_navigation_agent_3d_target_reached() -> void:
