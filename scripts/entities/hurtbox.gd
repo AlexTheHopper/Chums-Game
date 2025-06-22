@@ -56,11 +56,12 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 		if owner and "target" in owner:
 			if owner.target:
 				if "maintains_agro" in owner.target:
-					maintains_agro = owner.target.maintains_agro
+					if randf() < owner.target.maintains_agro:
+						maintains_agro = true
+					#maintains_agro = owner.target.maintains_agro
 		
 		if changes_agro_on_damaged and hitbox.draws_agro_on_attack and not maintains_agro:
 			change_agro = true
-
 		recieved_damage.emit(hitbox.damage, change_agro, hitbox.owner.get_agro_change_target())
 		
 		

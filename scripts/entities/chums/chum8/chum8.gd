@@ -3,7 +3,7 @@ class_name Chum8
 var chum_str := "chum8"
 var chum_name := "Bolt"
 
-var desc := "palceholder"
+var desc := "palceholder, but also this lil guy will distract enemies attention 80% of the time! :D"
 
 @onready var default_attack: Dictionary = {"speed": 2.5, #fastest quality still needs to be more than the attack animation length.
 										"damage": 0.0,
@@ -16,7 +16,8 @@ var can_walk := true
 var max_health := 50
 var start_health := 50
 
-var maintains_agro := true
+#Chance that it maintains agro on chasing chum being hit
+var maintains_agro := 0.8
 var changes_agro_on_damaged := true
 var draws_agro_on_attack := false
 var always_targets_player := false

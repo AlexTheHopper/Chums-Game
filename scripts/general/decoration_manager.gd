@@ -13,7 +13,11 @@ func _ready() -> void:
 					"grass5": preload("res://scenes/world/decorations/grass_5.tscn"),
 	
 					"tree1": preload("res://scenes/world/decorations/tree_1.tscn"),
-					"tree2": preload("res://scenes/world/decorations/tree_2.tscn"),}
+					"tree2": preload("res://scenes/world/decorations/tree_2.tscn"),
+					
+					"rubble1": preload("res://scenes/world/decorations/rubble1.tscn"),
+					
+					"column1": preload("res://scenes/world/decorations/column1.tscn"),}
 	
 	decorations_world = {
 		1: {"multiplier": 1.0,
@@ -23,9 +27,9 @@ func _ready() -> void:
 			},
 		
 		2: {"multiplier": 0.1,
-			"common": ["grass1"],
-			"uncommon": ["grass1"],
-			"rare": ["grass1"]
+			"common": ["rubble1"],
+			"uncommon": ["column1"],
+			"rare": ["column1"]
 			},
 	}
 

@@ -1,6 +1,10 @@
 class_name SavedGame
 extends Resource
 
+#Save Time
+@export var unix_time:int
+@export var date_time:String
+
 #Player Stats
 @export var player_health:float
 @export var player_max_health:float
@@ -11,6 +15,7 @@ extends Resource
 @export var friendly_chums:Array[Dictionary]
 
 #World Info
+@export var world_transition_count:int
 @export var current_world_num:int
 @export var world_grid:Array
 @export var room_location:Vector2i

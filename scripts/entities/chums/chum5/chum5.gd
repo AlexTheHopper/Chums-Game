@@ -17,7 +17,8 @@ var can_walk := true
 var max_health := 50
 var start_health := 50
 
-var maintains_agro := false
+#Chance that it maintains agro on chasing chum being hit
+var maintains_agro := 0.0
 var changes_agro_on_damaged := true
 var draws_agro_on_attack := true
 var always_targets_player := false

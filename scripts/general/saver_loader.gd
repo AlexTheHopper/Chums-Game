@@ -15,6 +15,10 @@ func save_game(save_id) -> void:
 	var saved_game:SavedGame = SavedGame.new()
 	
 	#Save all save data:
+	#Time
+	saved_game.unix_time = int(Time.get_unix_time_from_system())
+	saved_game.date_time = Time.get_datetime_string_from_unix_time(saved_game.unix_time)
+	
 	#Player Data:
 	saved_game.player_health = PlayerStats.player_health
 	saved_game.player_max_health = PlayerStats.player_max_health
@@ -31,6 +35,7 @@ func save_game(save_id) -> void:
 											"state": "Idle"})
 	
 	#World Data:
+	saved_game.world_transition_count = Global.world_transition_count
 	saved_game.current_world_num = Global.current_world_num
 	saved_game.world_grid = Global.world_grid
 	saved_game.room_location = Global.room_location
@@ -75,6 +80,7 @@ func load_game(save_id) -> void:
 	PlayerStats.player_chums_changed.emit()
 
 	#World Data:
+	Global.world_transition_count = saved_game.world_transition_count
 	Global.current_world_num = saved_game.current_world_num
 	Global.world_grid = saved_game.world_grid
 	Global.room_location = saved_game.room_location

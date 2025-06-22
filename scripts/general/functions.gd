@@ -89,7 +89,6 @@ func astar2d(map: Array, goal: int, only_activated := false):
 					visited[n.x][n.y] = true
 					queue.append(n)
 					dir_map[n] = -d
-	print(dir_map)
 	return dir_map
 			
 			

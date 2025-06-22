@@ -2,6 +2,7 @@ extends Node
 var dev_mode = true
 
 var game_begun := false
+var world_transition_count := 0
 var map_size:int
 var room_size:float
 var world_map := {}
@@ -15,6 +16,7 @@ var world_map_guide = {"lobby": {},
 						
 
 var in_battle := false
+var is_alive := true
 var current_room_node: Node3D
 var current_world_num := 1
 var room_location := Vector2i(map_size, map_size)
@@ -48,19 +50,23 @@ func _ready():
 				},
 			}
 	#required and optional are the statue chum ids. To be super safe only rely on the last entry in required.
+	#Max chums needs to be AT LEAST 4, or change room.gd
 	world_info = {
 		0: {'map_size': 3,
 			"room_size": 40.0,
+			"max_chums": 100,
 			"required": [1],
 			"optional": [1]},
 			
 		1: {'map_size': 3,
 			"room_size": 40.0,
+			"max_chums": 5,
 			"required": [4],
 			"optional": [1, 2, 3, 4, 5, 6, 7, 8]},
 		
 		2: {'map_size': 5,
 			"room_size": 40.0,
+			"max_chums": 8,
 			"required": [1, 2, 4, 3],
 			"optional": [1, 2, 3, 4]},
 	}
@@ -103,14 +109,16 @@ func start_game(save_id = null, new_game = false) -> void:
 	
 	if new_game == false:
 		SaverLoader.load_game(save_id)
-		print('In world %s, room %s.' % [Global.current_world_num, str(room_location)])
+		
+		if Global.dev_mode:
+			print('In world %s, room %s.' % [Global.current_world_num, str(room_location)])
 		
 		if current_room_node:
 			current_room_node.queue_free()
 
 		#Create new room:
 		if current_world_num == 0:
-			var new_room = room_lookup[current_world_num][room_location]
+			var new_room = room_lookup[current_world_num][room_location[0]]
 			current_room_node = new_room.instantiate()
 			rooms.add_child(current_room_node)
 		else:
@@ -118,9 +126,9 @@ func start_game(save_id = null, new_game = false) -> void:
 			current_room_node = new_room.instantiate()
 			rooms.add_child(current_room_node)
 
-	#TESTPRINT:
-	for x in range(world_grid.size() - 1, -1, -1):
-		print(world_grid[x])
+	if Global.dev_mode:
+		for x in range(world_grid.size() - 1, -1, -1):
+			print(world_grid[x])
 
 
 func get_world_grid(world_n):
@@ -224,6 +232,7 @@ func create_world(world_n):
 	var required_statues = world_info[world_n]["required"]
 	var other_statues = world_info[world_n]["optional"]
 	var statue_id = 1
+	world_map = {}
 	#Uses the world_grid to construct information about all rooms.
 	for y in range(0, (2 * size) + 1):
 		for x in range(0, (2 * size) + 1):
@@ -242,15 +251,15 @@ func create_world(world_n):
 										"value": Vector2(x - size, y - size).length(),
 										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
 										"heart_count": 3,
-										"chums": [],
 										"light_position": Vector3(),
-										"decorations": [],
 										"statue_id": statue_id,
 										"statue_activated": false,
 										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
 										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),
 										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
 										"has_z_neg": has_door(Vector2(x, y), Vector2(0, -1)),
+										"chums": [],
+										"decorations": [],
 										}
 func create_world_boss() -> void:
 	#Created boss room information
@@ -266,15 +275,15 @@ func create_world_boss() -> void:
 										"value": y * 2,
 										"bell_angle": 0,
 										"heart_count": 3,
-										"chums": [],
 										"light_position": Vector3(1.0, 0.0, -10.0),
-										"decorations": [],
 										"statue_id": 1,
 										"statue_activated": false,
 										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
 										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),
 										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
 										"has_z_neg": has_door(Vector2(x, y), Vector2(0, -1)),
+										"chums": [],
+										"decorations": [],
 										}
 
 
@@ -300,7 +309,8 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		await TransitionScreen.on_transition_finished
 		
 		room_location = new_room_location
-		print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
+		if Global.dev_mode:
+			print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
 		if room_history[-1][1] != new_room_location or room_history[-1][0] != current_world_num:
 			room_history.append([current_world_num, new_room_location])
 		
@@ -323,7 +333,8 @@ func transition_to_boss(source_world_n: int, destination_world_n: int, length = 
 	
 	var new_room_location = Vector2i(source_world_n, destination_world_n)
 	room_location = new_room_location
-	print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
+	if Global.dev_mode:
+		print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
 
 	if room_history[-1][1] != new_room_location or room_history[-1][0] != current_world_num:
 			room_history.append([current_world_num, new_room_location])
@@ -342,13 +353,15 @@ func transition_to_world(destination_world_n: int, length = 1):
 	await TransitionScreen.on_transition_finished
 	
 	current_world_num = destination_world_n
+	world_transition_count += 1
 	map_size = world_info[current_world_num]["map_size"]
 	room_size = world_info[current_world_num]["room_size"]
 	
 	world_grid = get_world_grid(current_world_num)
-	#TESTPRINT:
-	for x in range(world_grid.size() - 1, -1, -1):
-		print(world_grid[x])
+	
+	if Global.dev_mode:
+		for x in range(world_grid.size() - 1, -1, -1):
+			print(world_grid[x])
 	create_world(current_world_num)
 	
 	var new_room_location = Vector2i(map_size, map_size)
@@ -372,6 +385,7 @@ func transition_to_world(destination_world_n: int, length = 1):
 func return_to_menu(delete = false):
 	TransitionScreen.transition(3)
 	await TransitionScreen.on_transition_finished
+	is_alive = true
 	call_deferred("restart_game_and_delete", delete)
 
 func restart_game_and_delete(delete):

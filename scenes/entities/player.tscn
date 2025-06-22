@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dmgabiox56kck"]
+[gd_scene load_steps=28 format=4 uid="uid://dmgabiox56kck"]
 
 [ext_resource type="Script" uid="uid://d1mbalfu0wlex" path="res://scripts/entities/player.gd" id="1_8mcap"]
 [ext_resource type="Script" uid="uid://cf5efj3v5c38n" path="res://scripts/entities/health.gd" id="2_foxub"]
@@ -431,6 +431,54 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D/PlayerMesh:mesh:surface_0/material:albedo_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_fjhog"]
 resource_name = "Run_Carry"
@@ -674,8 +722,61 @@ tracks/10/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_c5rqy"]
+resource_name = "Death"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0), Vector3(0, 10, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(0.75, 0.75, 0.75), Vector3(0.1, 0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D/PlayerMesh:mesh:surface_0/material:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.16667, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1l68m"]
 _data = {
+&"Death": SubResource("Animation_c5rqy"),
 &"Idle_Carry": SubResource("Animation_faxao"),
 &"Idle_noCarry": SubResource("Animation_7ptev"),
 &"Jump_Carry": SubResource("Animation_b5pgf"),
@@ -755,7 +856,7 @@ bones/2/parent = 0
 bones/2/rest = Transform3D(0, 1, 2.38419e-07, 2.38419e-07, -2.38419e-07, 1, 1, 0, -2.38419e-07, 0.4, 0.8, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0.4, 0.8, 0)
-bones/2/rotation = Quaternion(0.301537, 0.63959, 0.301537, -0.63959)
+bones/2/rotation = Quaternion(0.686297, 0.170284, 0.686297, -0.170284)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Leg.L"
 bones/3/parent = 0
@@ -769,7 +870,7 @@ bones/4/parent = 0
 bones/4/rest = Transform3D(0, -1, -2.38419e-07, -2.38419e-07, -2.38419e-07, 1, -1, 0, -2.38419e-07, -0.4, 0.8, 0)
 bones/4/enabled = true
 bones/4/position = Vector3(-0.4, 0.8, 0)
-bones/4/rotation = Quaternion(0.3126, -0.634257, -0.3126, -0.634256)
+bones/4/rotation = Quaternion(0.686297, -0.170284, -0.686297, -0.170284)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Leg.R"
 bones/5/parent = 0
@@ -786,7 +887,7 @@ mesh = SubResource("ArrayMesh_fbi0d")
 skin = SubResource("Skin_8wrh7")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(5.96046e-08, 0.77144, -0.636302, 0, 0.636302, 0.77144, 1, 0, 5.96046e-08, 0.4, 1.2, 0)
+transform = Transform3D(5.96046e-08, 0.467461, 0.884013, -7.45058e-08, -0.884013, 0.467461, 1, -7.45058e-08, 5.96046e-08, 0.4, 1.2, 0)
 bone_name = "Arm.L"
 bone_idx = 2
 
@@ -813,3 +914,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

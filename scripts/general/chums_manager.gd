@@ -25,6 +25,8 @@ func _ready() -> void:
 			"destination_world": 1}, #Ring of Pearls
 		8: {"object": preload("res://scenes/entities/chums/chum8.tscn"),
 			"destination_world": 1}, #Bolt
+		9: {"object": preload("res://scenes/entities/chums/chum9.tscn"),
+			"destination_world": 2}, #Fan
 	}
 
 	chums_values = {
@@ -40,7 +42,8 @@ func _ready() -> void:
 		},
 		2: {
 			4: 0.5,
-			8: 2.0
+			8: 2.0,
+			9: 2.0,
 		},
 	}
 	

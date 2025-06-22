@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	if Global.world_map[Global.room_location]["to_spawn"] < 0:
 		#Maximum to spawn:
-		enemies_to_spawn = int(Functions.map_range(room_value, Vector2(1, Global.map_size), Vector2(3, 8)))
+		enemies_to_spawn = int(Functions.map_range(room_value, Vector2(1, Global.map_size), Vector2(3, Global.world_info[Global.current_world_num]["max_chums"])))
 	else:
 		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
 		

@@ -22,7 +22,7 @@ func _ready() -> void:
 	#Set visuals:
 	var mesh_num = 1
 	if Global.current_world_num == 0:
-		mesh_num = Global.room_location[0]
+		mesh_num = Global.room_location[1]
 	elif Global.current_world_num:
 		mesh_num = Global.current_world_num
 		

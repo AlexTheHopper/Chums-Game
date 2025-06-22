@@ -45,9 +45,9 @@ var attacking_mult := 1.0
 @onready var heal_particles := load("res://particles/heal_friendly.tscn")
 @onready var hurt_particles_num := load("res://particles/damage_num_friendly.tscn")
 
-var changes_agro_on_damaged = true
-var draws_agro_on_attack = true
-var maintains_agro = false
+var changes_agro_on_damaged := true
+var draws_agro_on_attack := true
+var maintains_agro := 0.0
 var targeted_by := []
 
 
@@ -72,6 +72,8 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	if not Global.is_alive:
+		return
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	#Gets transformed input direction
@@ -170,7 +172,7 @@ func _physics_process(delta: float) -> void:
 	
 			
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("print_fps"):
+	if Input.is_action_just_pressed("print_fps") and Global.dev_mode:
 		print("FPS: " + str(Engine.get_frames_per_second()))
 		print('player health: ' + str(health_node.health))
 		print('player max health: ' + str(health_node.max_health))
@@ -252,11 +254,16 @@ func healed(amount):
 
 func _on_health_health_depleted() -> void:
 	#Stop all chums from battling
+	Global.is_alive = false
 	for group in ["Chums_Enemy", "Chums_Neutral", "Chums_Friend"]:
 		for chum in get_tree().get_nodes_in_group(group):
 			chum.set_state("Idle")
-	call_deferred("kill_player")
+	anim_player.play("Death")
 	
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Death":
+		call_deferred("kill_player")
+
 func has_damage() -> bool:
 	return health_node.get_health() < health_node.get_max_health()
 	
@@ -265,4 +272,3 @@ func get_agro_change_target():
 
 func kill_player():
 	Global.return_to_menu(true)
-	

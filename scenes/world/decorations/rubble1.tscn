@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d13hudifh0oji"]
+
+[ext_resource type="ArrayMesh" uid="uid://brcpipsvx7nfc" path="res://assets/world/world_2_other/rubble1.vox" id="1_yqk34"]
+
+[node name="Rubble1" type="Node3D"]
+
+[node name="Rubble1" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_yqk34")

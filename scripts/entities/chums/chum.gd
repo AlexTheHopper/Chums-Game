@@ -84,7 +84,7 @@ func _ready() -> void:
 	move_speed = self.default_move_speed
 	if stats_set:
 		self.attack["speed"] *= (quality["speed"] / 10 + 1)
-		self.attack["damage"] = int(self.attack["damage"] * (quality["damage"] / 10 + 1))
+		self.attack["damage"] = max(1, int(self.attack["damage"] * (quality["damage"] / 10 + 1)))
 		self.move_speed *= (quality["move_speed"] / 10 + 1)
 		#Health already taken care of with start_health and max_health
 	else:
@@ -365,7 +365,8 @@ func _on_target_death():
 				new_target_name = target.chum_name
 			elif target is Player:
 				new_target_name = "Player"
-		print("Self: " + str(self.chum_name) + ". Group: " + str(current_group) + '. Old Target: ' + str(old_target_name) + '. New target: ' + str(new_target_name))
+		if Global.dev_mode:
+			print("Self: " + str(self.chum_name) + ". Group: " + str(current_group) + '. Old Target: ' + str(old_target_name) + '. New target: ' + str(new_target_name))
 		if not self.target and state_machine.current_state.state_name != "Carry":
 			set_state("Idle")
 		
