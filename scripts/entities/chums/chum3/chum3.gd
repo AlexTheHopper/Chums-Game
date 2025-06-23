@@ -5,6 +5,7 @@ var chum_name := "Pear"
 
 var desc := "Lurking in the shadows, and waiting for more prey is a chum with a very pointy stick. It may be slow, but golly gosh, that stick works wonders. Those wonders being inflicting a lot of pain."
 
+var min_attack_speed := 2.55
 @onready var default_attack: Dictionary = {"speed": 3.2, #fastest quality still needs to be more than the attack animation length.
 										"damage": 40,
 										"distance": 1.3,

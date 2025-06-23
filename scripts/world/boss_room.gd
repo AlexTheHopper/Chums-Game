@@ -1,4 +1,5 @@
 extends room
+class_name boss_room
 
 const TYPE := "boss"
 @onready var player_spawn_node := $PlayerSpawn

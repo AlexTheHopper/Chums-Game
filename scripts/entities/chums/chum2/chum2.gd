@@ -5,6 +5,7 @@ var chum_name := "Stump"
 
 var desc := "This wooden chum was once part of a local tree, until a quite rude lumberjack decided that ol' stumpy didn't need its family anymore. These days it spends its time attacking anything unfamiliar with its signature spin attack."
 
+var min_attack_speed := 1.7
 @onready var default_attack: Dictionary = {"speed": 3.5, #fastest quality still needs to be more than the attack animation length.
 										"damage": 15,
 										"distance": 0.85,

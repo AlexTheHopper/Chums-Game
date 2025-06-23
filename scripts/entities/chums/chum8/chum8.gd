@@ -5,7 +5,8 @@ var chum_name := "Bolt"
 
 var desc := "palceholder, but also this lil guy will distract enemies attention 80% of the time! :D"
 
-@onready var default_attack: Dictionary = {"speed": 2.5, #fastest quality still needs to be more than the attack animation length.
+var min_attack_speed := 3.8
+@onready var default_attack: Dictionary = {"speed": 3.8, #fastest quality still needs to be more than the attack animation length.
 										"damage": 0.0,
 										"distance": 1.3,
 										"single_target": true}

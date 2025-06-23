@@ -44,6 +44,7 @@ var current_group := "Chums_Neutral"
 var stats_set := false
 @onready var attack: Dictionary
 @onready var move_speed: float
+var base_health: int
 var quality := {"health": 0, "move_speed": 0, "damage": 0, "speed": 0}
 
 @onready var has_quality_popup := false
@@ -82,6 +83,7 @@ func _ready() -> void:
 	
 	attack = self.default_attack
 	move_speed = self.default_move_speed
+	base_health = self.max_health
 	if stats_set:
 		self.attack["speed"] *= (quality["speed"] / 10 + 1)
 		self.attack["damage"] = max(1, int(self.attack["damage"] * (quality["damage"] / 10 + 1)))
@@ -124,7 +126,33 @@ func set_new_stats():
 	self.max_health = int(self.max_health * multiplier)
 	self.start_health = self.max_health
 	quality["health"] = 10 * (multiplier - 1)
+
+func increase_stats(per_increase: float) -> void:
+	#ATTACK SPEED INCREASE
+	if self.default_attack["speed"] > 0.0:
+		self.attack["speed"] = max(self.attack["speed"] - per_increase * self.default_attack["speed"], self.min_attack_speed)
+		quality["speed"] += int(10 * per_increase)
 	
+	#ATTACK DAMAGE INCREASE
+	if self.default_attack["damage"] > 0.0:
+		attack["damage"] += int(round(per_increase * self.default_attack["damage"]))
+
+		quality["damage"] += int(10 * per_increase)
+		if hitbox:
+			hitbox.attack_info = attack
+			hitbox.damage = attack["damage"]
+	
+	#MOVE SPEED INCREASE
+	if self.default_move_speed > 0.0:
+		self.move_speed += per_increase * self.default_move_speed
+		quality["move_speed"] += int(10 * per_increase)
+	
+	#HEALTH INCREAASE
+	self.max_health += int(per_increase * base_health)
+	health_node.set_max_health(health_node.get_max_health() + int(round(per_increase * base_health)))
+	#health_node.set_health(health_node.get_health())
+	quality["health"] += int(10 * per_increase)
+
 func create_sleep_particles():
 	if Global.game_begun:
 		sleep_zone.add_child(sleep_particles.instantiate())

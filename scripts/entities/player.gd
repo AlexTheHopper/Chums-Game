@@ -176,6 +176,8 @@ func _process(_delta: float) -> void:
 		print("FPS: " + str(Engine.get_frames_per_second()))
 		print('player health: ' + str(health_node.health))
 		print('player max health: ' + str(health_node.max_health))
+		print('player damage: ' + str(base_damage))
+		print('player extra damage: ' + str(max_extra_damage))
 		print('player pos: ' + str(global_position))
 
 		print("friends:")
@@ -269,6 +271,10 @@ func has_damage() -> bool:
 	
 func get_agro_change_target():
 	return self
+
+func increase_attack(amount: int) -> void:
+	base_damage += amount
+	max_extra_damage += int(amount / 2.0)
 
 func kill_player():
 	Global.return_to_menu(true)

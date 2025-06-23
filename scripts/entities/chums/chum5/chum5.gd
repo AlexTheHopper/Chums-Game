@@ -6,8 +6,9 @@ var chum_name := "Slate"
 
 var desc := "An old log that has harnessed the modern technologies of the catapult, allowing it to conjure rocks from nowhere and hurl them some distance. It's a tough job though, since this chum has little health and those rocks can also conjure a bit of hatred when hitting one's head."
 
+var min_attack_speed := 1.5
 @onready var default_attack: Dictionary = {"speed": 1.6, #fastest quality still needs to be more than the attack animation length.
-										"damage": 10,
+										"damage": 10.0,
 										"distance": 10.0,
 										"single_target": true}
 

@@ -24,6 +24,8 @@ func save_game(save_id) -> void:
 	saved_game.player_max_health = PlayerStats.player_max_health
 	saved_game.player_max_chums = PlayerStats.player_max_chums
 	saved_game.player_bracelets = PlayerStats.bracelets
+	saved_game.player_damage = get_tree().get_first_node_in_group("Player").base_damage
+	saved_game.player_extra_damage = get_tree().get_first_node_in_group("Player").max_extra_damage
 	
 	#Friend Chums Data:
 	saved_game.friendly_chums = []
@@ -56,10 +58,12 @@ func load_game(save_id) -> void:
 	#Player Data
 	get_tree().get_first_node_in_group("Player").health_node.health = saved_game.player_health
 	get_tree().get_first_node_in_group("Player").health_node.max_health = saved_game.player_max_health
+	get_tree().get_first_node_in_group("Player").base_damage = saved_game.player_damage
+	get_tree().get_first_node_in_group("Player").max_extra_damage = saved_game.player_extra_damage
 	PlayerStats.player_max_chums = saved_game.player_max_chums
 	PlayerStats.bracelets = saved_game.player_bracelets
 	PlayerStats.hud_bracelets_change.emit()
-	
+
 	#Friend Chums Data:
 	for chum in saved_game.friendly_chums:
 		var chum_to_add = ChumsManager.get_specific_chum_str(chum["type"])

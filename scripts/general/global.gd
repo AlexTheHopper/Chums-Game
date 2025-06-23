@@ -12,6 +12,7 @@ var world_map_guide = {"lobby": {},
 						"fountain": {},
 						"void": {},
 						"statue": {},
+						"upgrade": {},
 						}
 						
 
@@ -40,6 +41,7 @@ func _ready():
 				3: load("res://scenes/world/fountain_room_world_1.tscn"),
 				4: load("res://scenes/world/void_room_world_1.tscn"),
 				5: load("res://scenes/world/statue_room_world_1.tscn"),
+				6: load("res://scenes/world/upgrade_room_world_1.tscn"),
 				},
 				
 		2:		{1: load("res://scenes/world/lobby_world_2.tscn"),
@@ -47,6 +49,7 @@ func _ready():
 				3: load("res://scenes/world/fountain_room_world_2.tscn"),
 				4: load("res://scenes/world/void_room_world_2.tscn"),
 				5: load("res://scenes/world/statue_room_world_2.tscn"),
+				6: load("res://scenes/world/upgrade_room_world_2.tscn"),
 				},
 			}
 	#required and optional are the statue chum ids. To be super safe only rely on the last entry in required.
@@ -86,6 +89,7 @@ func start_game(save_id = null, new_game = false) -> void:
 						"fountain": {},
 						"void": {},
 						"statue": {},
+						"upgrade": {},
 						}
 						
 	room_location = Vector2i(map_size, map_size)
@@ -208,6 +212,7 @@ func get_world_grid(world_n):
 	world_map_guide["fountain"] = Functions.astar2d(grid, 3)
 	world_map_guide["void"] = Functions.astar2d(grid, 4)
 	world_map_guide["statue"] = Functions.astar2d(grid, 5)
+	world_map_guide["upgrade"] = Functions.astar2d(grid, 6)
 	return(grid)
 	
 func set_room_type(location: Vector2i) -> int:
@@ -216,11 +221,13 @@ func set_room_type(location: Vector2i) -> int:
 	if location == Vector2i(map_size, map_size):
 		return 1 #Lobby
 		
-	elif randf() < (per / 8):
+	elif randf() < (per / 9):
 		if randf() < 0.7:
 			return 3 #Fountain
+		elif randf() < 0.5:
+			return 6 # Upgrade
 		elif randf() < 0.7:
-			return 5
+			return 5 # Statue
 		else:
 			return 4 #Void Pit
 		
@@ -250,7 +257,7 @@ func create_world(world_n):
 										"to_spawn": -1,
 										"value": Vector2(x - size, y - size).length(),
 										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
-										"heart_count": 3,
+										"item_count": 3,
 										"light_position": Vector3(),
 										"statue_id": statue_id,
 										"statue_activated": false,
@@ -274,7 +281,7 @@ func create_world_boss() -> void:
 										"to_spawn": 0,
 										"value": y * 2,
 										"bell_angle": 0,
-										"heart_count": 3,
+										"item_count": 3,
 										"light_position": Vector3(1.0, 0.0, -10.0),
 										"statue_id": 1,
 										"statue_activated": false,

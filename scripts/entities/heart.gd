@@ -1,6 +1,6 @@
 extends CharacterBody3D
 var spin_speed := 0.0
-var particles := load("res://particles/heart_use.tscn")
+var particles := load("res://particles/upgrade_use.tscn")
 
 func _ready() -> void:
 	spin_speed = randf_range(0.1, 0.5)

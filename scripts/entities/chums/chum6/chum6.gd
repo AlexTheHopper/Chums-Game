@@ -6,7 +6,8 @@ var chum_name := "Healio"
 
 var desc := "Such a thoughtful and kind chum. Whenever an enemy chum is defeated, this little flower will send a helping hand by healing friends who need it."
 
-@onready var default_attack: Dictionary = {"speed": 1.6, #fastest quality still needs to be more than the attack animation length.
+var min_attack_speed := 2.55
+@onready var default_attack: Dictionary = {"speed": 0.0, #fastest quality still needs to be more than the attack animation length.
 										"damage": 10,
 										"distance": 1.3,
 										"single_target": true}

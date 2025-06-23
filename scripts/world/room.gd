@@ -1,4 +1,5 @@
 extends room
+class_name fight_room
 
 @onready var spawn_point: PathFollow3D = $SpawnPath/SpawnPoint
 @onready var room_value = Global.world_map[Global.room_location]["value"]

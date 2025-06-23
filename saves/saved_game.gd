@@ -10,6 +10,8 @@ extends Resource
 @export var player_max_health:float
 @export var player_bracelets:int
 @export var player_max_chums:int
+@export var player_damage: int
+@export var player_extra_damage: int
 
 #Friend Chums
 @export var friendly_chums:Array[Dictionary]

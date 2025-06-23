@@ -6,6 +6,7 @@ var chum_name := "Flamenco"
 
 var desc := "This one-legged pink chum spends its whole day jumping around on its singular foot. With no opposable thumbs nor opposable wings, the only means of travel is hopping, and the only means of attacking prey is pecking. God has forsaken this chum as rather useless, as such it shall spend its days hopping around in search of more things to throw its head into."
 
+var min_attack_speed := 1.25
 @onready var default_attack: Dictionary = {"speed": 1.6, #fastest quality still needs to be more than the attack animation length.
 										"damage": 10,
 										"distance": 1.3,

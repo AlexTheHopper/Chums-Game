@@ -6,7 +6,7 @@ var chum_name := "Fan"
 
 var desc := "TODO"
 
-@onready var default_attack: Dictionary = {"speed": 1.6, #fastest quality still needs to be more than the attack animation length.
+@onready var default_attack: Dictionary = {"speed": 1.0, #fastest quality still needs to be more than the attack animation length.
 										"damage": 5,
 										"distance": 1.3,
 										"single_target": true}
