@@ -27,8 +27,9 @@ fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 0.02
 
-[node name="Room" type="Node3D"]
+[node name="Room" type="Node3D" node_paths=PackedStringArray("grid_map")]
 script = ExtResource("1_x8u4m")
+grid_map = NodePath("NavigationRegion3D/GridMap")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ovef2")

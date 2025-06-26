@@ -32,7 +32,6 @@ func _ready() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if active and body is Player:
 		active = false
-		Global.current_room_node.save_room()
 		Global.transition_to_level(Global.room_location + Vector2i(x_dir, z_dir))
 
 

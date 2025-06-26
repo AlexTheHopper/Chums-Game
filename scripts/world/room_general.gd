@@ -3,6 +3,7 @@ class_name room
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var enemies_to_spawn: int
+@onready var player_spawn: Node3D = $PlayerSpawn
 var spawn_particles = preload("res://particles/spawn_particles_world1.tscn")
 
 var is_doors_closed := false
@@ -28,6 +29,8 @@ func _ready() -> void:
 			spawn_timer.start()
 			
 	fill_tunnels()
+	set_player_loc_on_entry()
+	set_chums_loc_on_entry()
 
 
 func fill_tunnels():

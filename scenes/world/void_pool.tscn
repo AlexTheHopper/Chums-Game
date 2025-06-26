@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b74vi5vyt44bq"]
+[gd_scene load_steps=11 format=3 uid="uid://b2qphphq5anyl"]
 
-[ext_resource type="Script" uid="uid://dch1vebwqobo4" path="res://scripts/world/fountain.gd" id="1_8wbyg"]
+[ext_resource type="Script" uid="uid://bl27yojax7t1j" path="res://scripts/world/void_pool.gd" id="1_7x7ok"]
 
-[sub_resource type="Shader" id="Shader_mgyhe"]
+[sub_resource type="Shader" id="Shader_j0chv"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.stable's StandardMaterial3D.
 
 shader_type spatial;
@@ -54,7 +54,7 @@ void vertex() {
 
 	// UV1 Triplanar: Enabled (with World Triplanar)
 	uv1_power_normal = pow(abs(normal), vec3(uv1_blend_sharpness));
-	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset + TIME * 0.005;
+	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset + sin(TIME * 5.0);
 	uv1_power_normal /= dot(uv1_power_normal, vec3(1.0));
 	uv1_triplanar_pos *= vec3(1.0, -1.0, 1.0);
 }
@@ -109,35 +109,37 @@ void fragment() {
 "
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8wbyg"]
-noise_type = 3
+noise_type = 2
+frequency = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4ujy7"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j0chv"]
 seamless = true
 as_normal_map = true
 noise = SubResource("FastNoiseLite_8wbyg")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_0423p"]
-noise_type = 3
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w3553"]
+noise_type = 2
+frequency = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0uqmi"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fpcbo"]
 seamless = true
 as_normal_map = true
-noise = SubResource("FastNoiseLite_0423p")
+noise = SubResource("FastNoiseLite_w3553")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8wbyg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j0chv"]
 render_priority = 0
-shader = SubResource("Shader_mgyhe")
-shader_parameter/albedo = Color(0.111377, 0.511742, 1, 0.501961)
+shader = SubResource("Shader_j0chv")
+shader_parameter/albedo = Color(0, 0, 0, 1)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.1
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
-shader_parameter/texture_refraction = SubResource("NoiseTexture2D_0uqmi")
+shader_parameter/texture_refraction = SubResource("NoiseTexture2D_fpcbo")
 shader_parameter/refraction = 0.05
 shader_parameter/refraction_texture_channel = Vector4(1, 0, 0, 0)
-shader_parameter/texture_normal = SubResource("NoiseTexture2D_4ujy7")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_j0chv")
 shader_parameter/normal_scale = 1.0
 shader_parameter/uv1_blend_sharpness = 1.0
 shader_parameter/uv1_scale = Vector3(0.1, 0.1, 0.1)
@@ -145,45 +147,30 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
-[sub_resource type="BoxMesh" id="BoxMesh_4ujy7"]
-material = SubResource("ShaderMaterial_8wbyg")
+[sub_resource type="BoxMesh" id="BoxMesh_w3553"]
+material = SubResource("ShaderMaterial_j0chv")
 size = Vector3(10, 1, 10)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mgyhe"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fpcbo"]
 size = Vector3(9.5, 0.6, 9.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8wbyg"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bkab0"]
 size = Vector3(9.5, 0.2, 9.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wbyg"]
-vertex_color_use_as_albedo = true
+[node name="Void" type="Node3D"]
+script = ExtResource("1_7x7ok")
 
-[sub_resource type="BoxMesh" id="BoxMesh_0423p"]
-material = SubResource("StandardMaterial3D_8wbyg")
-size = Vector3(0.05, 0.05, 0.05)
-
-[sub_resource type="Curve" id="Curve_0uqmi"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.251799, 1), 0.0, 0.0, 0, 0, Vector2(0.751799, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="Gradient" id="Gradient_m8jxi"]
-offsets = PackedFloat32Array(0.142857, 1)
-colors = PackedColorArray(0.205117, 0.205117, 0.205117, 1, 1, 1, 1, 1)
-
-[node name="Fountain" type="Node3D"]
-script = ExtResource("1_8wbyg")
-
-[node name="Water" type="MeshInstance3D" parent="."]
+[node name="Void" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-mesh = SubResource("BoxMesh_4ujy7")
+mesh = SubResource("BoxMesh_w3553")
 
-[node name="HealZone" type="Area3D" parent="."]
+[node name="KillZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 collision_layer = 0
 collision_mask = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HealZone"]
-shape = SubResource("BoxShape3D_mgyhe")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+shape = SubResource("BoxShape3D_fpcbo")
 
 [node name="FlyZone" type="Area3D" parent="."]
 collision_layer = 0
@@ -191,7 +178,7 @@ collision_mask = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FlyZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-shape = SubResource("BoxShape3D_8wbyg")
+shape = SubResource("BoxShape3D_bkab0")
 
 [node name="Hearts" type="Node3D" parent="."]
 
@@ -200,21 +187,6 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-amount = 20
-randomness = 0.5
-mesh = SubResource("BoxMesh_0423p")
-emission_shape = 3
-emission_box_extents = Vector3(4, 0.2, 4)
-direction = Vector3(0, 1, 0)
-spread = 10.0
-initial_velocity_min = 4.0
-initial_velocity_max = 5.0
-scale_amount_curve = SubResource("Curve_0uqmi")
-color = Color(0, 0.320436, 0.640883, 1)
-color_initial_ramp = SubResource("Gradient_m8jxi")
-
-[connection signal="body_entered" from="HealZone" to="." method="_on_heal_zone_body_entered"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="FlyZone" to="." method="_on_fly_zone_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

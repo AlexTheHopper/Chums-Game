@@ -114,4 +114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, -19)
 [node name="z_pos" parent="EntryIndicators" instance=ExtResource("7_s2b00")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 6, 21)
 
+[node name="PlayerSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
+
 [connection signal="timeout" from="SpawnPath/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

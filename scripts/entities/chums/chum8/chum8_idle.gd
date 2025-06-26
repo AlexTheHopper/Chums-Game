@@ -16,11 +16,12 @@ var room_particles := {"lobby": preload("res://particles/seeker_room_lobby.tscn"
 						"fountain": preload("res://particles/seeker_room_fountain.tscn"),
 						"void": preload("res://particles/seeker_room_void.tscn"),
 						"statue": preload("res://particles/seeker_room_statue.tscn"),
+						"upgrade": preload("res://particles/seeker_room_upgrade.tscn"),
 						}
 
 func Enter():
 	idle_time = 0.0
-	set_target_location()
+	#set_target_location()
 	chum.call_deferred("enable_interaction")
 	
 	chum.anim_player.play("Idle")
@@ -32,9 +33,10 @@ func Enter():
 	if not is_in_target_room():
 		$RunDelay.wait_time = 1.0
 		$RunDelay.start()
-	
+		
+		running = false
 
-func Physics_Update(delta: float):		
+func Physics_Update(delta: float):
 	if chum.is_on_floor():
 		if running:
 			chum.velocity = nav_vel
@@ -68,7 +70,7 @@ func show_target_type():
 	chum.particle_zone.add_child(particle_instance)
 
 func _on_run_delay_timeout() -> void:
-	if not is_in_target_room() and chum.can_seek and Global.current_room_nodeTYPE != "boss":
+	if not is_in_target_room() and chum.can_seek and Global.current_room_node.TYPE != "boss":
 		chum.anim_player.play("Walk")
 		set_target_location()
 		_on_nav_timer_idle_timeout() #Avoids delay before moving

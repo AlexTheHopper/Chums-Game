@@ -4,13 +4,7 @@ class_name upgrase_room
 const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
 const TYPE := "upgrade"
 
-func _ready() -> void:	
-	super()
-	set_player_loc_on_entry()
-	set_chums_loc_on_entry()
-
-
-func decorate():	
+func decorate():
 	#Streetlamp generally points to fastest way to lobby.
 	var to_lobby = Global.world_map_guide["lobby"][Global.room_location] * 13
 	var spawn_pos = Vector3(1, 0, 1)

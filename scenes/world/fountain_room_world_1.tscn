@@ -5,7 +5,7 @@
 [ext_resource type="MeshLibrary" uid="uid://cov6injr4x604" path="res://assets/world/world_1_mesh_lib_v4.tres" id="2_cl25v"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="3_kaitu"]
 [ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="5_cl25v"]
-[ext_resource type="PackedScene" uid="uid://b74vi5vyt44bq" path="res://scenes/world/fountain_world_1.tscn" id="5_kaitu"]
+[ext_resource type="PackedScene" uid="uid://b74vi5vyt44bq" path="res://scenes/world/fountain_pool.tscn" id="5_kaitu"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="7_tepd7"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cl25v"]
@@ -95,3 +95,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, -19)
 
 [node name="z_pos" parent="EntryIndicators" instance=ExtResource("7_tepd7")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 6, 21)
+
+[node name="PlayerSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)

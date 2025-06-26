@@ -58,20 +58,20 @@ func _ready():
 		0: {'map_size': 3,
 			"room_size": 40.0,
 			"max_chums": 100,
-			"required": [1],
-			"optional": [1]},
+			"required": [1],  #To 1, redundant
+			"optional": [1]}, #To 1, redundant
 			
 		1: {'map_size': 3,
 			"room_size": 40.0,
 			"max_chums": 5,
-			"required": [4],
-			"optional": [1, 2, 3, 4, 5, 6, 7, 8]},
+			"required": [4], 					   #To world 2
+			"optional": [1, 2, 3, 4, 5, 6, 7, 8]}, #To worlds 1, 2
 		
 		2: {'map_size': 5,
 			"room_size": 40.0,
 			"max_chums": 8,
-			"required": [1, 2, 4, 3],
-			"optional": [1, 2, 3, 4]},
+			"required": [1, 2, 4, 3],  #To worlds 1, 2
+			"optional": [1, 2, 3, 4]}, #To worlds 1, 2
 	}
 
 func start_game(save_id = null, new_game = false) -> void:
@@ -185,7 +185,7 @@ func get_world_grid(world_n):
 		
 	#Must have that at least one of each room type is present.
 	#Mainly for the world_map_guide
-	#this is a bit sloopy, maube TODO later.
+	#this is a bit sloopy, maybe TODO later.
 	#especially since it starts as 5,5 to ensure at least 3 statue rooms.
 	var room_missing = [5, 5]
 	var rooms_replace = []
@@ -275,7 +275,7 @@ func create_world_boss() -> void:
 	for y in range(1, max_world_n + 1):
 		for x in range(1, max_world_n + 1):
 			world_map[Vector2i(x, y)] = {
-										"type": world_grid[x][y],
+										"type": 0,
 										"entered": false,
 										"activated": false,
 										"to_spawn": 0,
@@ -285,10 +285,10 @@ func create_world_boss() -> void:
 										"light_position": Vector3(1.0, 0.0, -10.0),
 										"statue_id": 1,
 										"statue_activated": false,
-										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
-										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),
-										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
-										"has_z_neg": has_door(Vector2(x, y), Vector2(0, -1)),
+										"has_x_pos": false,
+										"has_x_neg": false,
+										"has_z_pos": false,
+										"has_z_neg": true,
 										"chums": [],
 										"decorations": [],
 										}
@@ -314,6 +314,7 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 	if new_room_location in world_map:
 		TransitionScreen.transition(length)
 		await TransitionScreen.on_transition_finished
+		current_room_node.save_room()
 		
 		room_location = new_room_location
 		if Global.dev_mode:
@@ -328,12 +329,12 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
 		current_room_node = new_room.instantiate()
 		rooms.add_child(current_room_node)
-		
-		current_room_node.save_room()
+
 
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
 	TransitionScreen.transition(length)
 	await TransitionScreen.on_transition_finished
+	current_room_node.save_room()
 	
 	create_world_boss()
 	current_world_num = 0
@@ -353,11 +354,12 @@ func transition_to_boss(source_world_n: int, destination_world_n: int, length = 
 	var new_room = room_lookup[0][new_room_location[0]] #Go to boss room of the world you came from.
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
-	current_room_node.save_room()
+	
 
 func transition_to_world(destination_world_n: int, length = 1):
 	TransitionScreen.transition(length)
 	await TransitionScreen.on_transition_finished
+	current_room_node.save_room()
 	
 	current_world_num = destination_world_n
 	world_transition_count += 1
@@ -385,8 +387,6 @@ func transition_to_world(destination_world_n: int, length = 1):
 	var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
-	
-	current_room_node.save_room()
 
 
 func return_to_menu(delete = false):
