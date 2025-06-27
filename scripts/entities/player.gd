@@ -81,14 +81,14 @@ func _physics_process(delta: float) -> void:
 
 	#Animations:
 	#Attack:
-	if Input.is_action_just_pressed("attack") and not is_attacking and not is_carrying:
+	if Input.is_action_just_pressed("attack") and not is_attacking and not is_carrying and Global.is_alive:
 		is_attacking = true
 		charging += delta
 		attacking_mult = 0.1
 		anim_player.play("Swing")
 		anim_player.speed_scale = 0.12
 		anim_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
-	elif not is_attacking:
+	elif not is_attacking and Global.is_alive:
 		if Input.is_action_pressed("jump") and is_on_floor():
 			anim_player.play("Jump_Carry" if is_carrying else "Jump_noCarry")
 		elif input_dir != Vector2.ZERO and is_on_floor():
@@ -257,6 +257,7 @@ func healed(amount):
 func _on_health_health_depleted() -> void:
 	#Stop all chums from battling
 	Global.is_alive = false
+	anim_player.speed_scale = 1.0
 	for group in ["Chums_Enemy", "Chums_Neutral", "Chums_Friend"]:
 		for chum in get_tree().get_nodes_in_group(group):
 			chum.set_state("Idle")

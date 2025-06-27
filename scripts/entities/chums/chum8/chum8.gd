@@ -29,8 +29,8 @@ var bracelet_cost := 3 if not Global.dev_mode else 1
 var target_room_types := ["lobby", "room", "fountain", "void", "upgrade", "statue"]
 var can_seek := true
 
-#This chum cannot attack or have strength
-func _ready() -> void:
-	super()
-	self.quality["speed"] = 0.0
-	self.quality["damage"] = 0.0
+#Control of qualities
+var has_attack_speed := false
+var has_attack_damage := false
+var has_move_speed := true
+var has_health := true

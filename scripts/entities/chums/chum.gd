@@ -106,6 +106,20 @@ func _ready() -> void:
 	#If override, change to that state now after all is initialised:
 	if initial_state_override:
 		set_state(initial_state_override)
+	
+	#And make sure stat displays only what the chum can do:
+	if not self.has_attack_speed:
+		quality["speed"] = 0.0
+	if not self.has_attack_damage:
+		attack["damage"] = 0
+		quality["damage"] = 0.0
+		if hitbox:
+			hitbox.attack_info = attack
+			hitbox.damage = attack["damage"]
+	if not self.has_move_speed:
+		quality["move_speed"] = 0.0
+		self.move_speed = 0.0
+	#Unsure about has_health, maybe come back to
 
 func get_gravity_dir():
 	return fall_gravity if velocity.y < 0.0 else jump_gravity
@@ -133,13 +147,13 @@ func level_up(count: int, attack_speed_up: bool = true, attack_damage_up: bool =
 		current_level += 1
 		var per_increase = 0.1
 		#ATTACK SPEED INCREASE
-		if attack_speed_up:
+		if attack_speed_up and self.has_attack_speed:
 			if self.default_attack["speed"] > 0.0:
 				self.attack["speed"] = max(self.attack["speed"] - per_increase * self.default_attack["speed"], self.min_attack_speed)
 				quality["speed"] += int(10 * per_increase)
 			
-			#ATTACK DAMAGE INCREASE
-		if attack_damage_up:
+		#ATTACK DAMAGE INCREASE
+		if attack_damage_up and self.has_attack_damage:
 			if self.default_attack["damage"] > 0.0:
 				attack["damage"] += int(round(per_increase * self.default_attack["damage"]))
 
@@ -147,15 +161,15 @@ func level_up(count: int, attack_speed_up: bool = true, attack_damage_up: bool =
 				if hitbox:
 					hitbox.attack_info = attack
 					hitbox.damage = attack["damage"]
-			
-			#MOVE SPEED INCREASE
-		if move_speed_up:
+
+		#MOVE SPEED INCREASE
+		if move_speed_up and self.has_move_speed:
 			if self.default_move_speed > 0.0:
 				self.move_speed += per_increase * self.default_move_speed
 				quality["move_speed"] += int(10 * per_increase)
-			
-			#HEALTH INCREAASE
-		if health_up:
+
+		#HEALTH INCREAASE
+		if health_up and self.has_health:
 			self.max_health += int(per_increase * base_health)
 			health_node.set_max_health(health_node.get_max_health() + int(round(per_increase * base_health)))
 			#health_node.set_health(health_node.get_health())
