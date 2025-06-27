@@ -83,7 +83,6 @@ func save_room():
 	#Add current data:
 	Global.world_map[Global.room_location]["entered"] = true
 	Global.world_map[Global.room_location]["to_spawn"] = enemies_to_spawn
-	
 	for group in ["Chums_Enemy", "Chums_Neutral"]:
 		for chum in get_tree().get_nodes_in_group(group):
 			Global.world_map[Global.room_location]["chums"].append({"type": chum.chum_str,
@@ -91,11 +90,7 @@ func save_room():
 																	"position": chum.global_position,
 																	"state": chum.state_machine.current_state.state_name,
 																	"health": chum.health_node.get_health(),
-																	"max_health": chum.health_node.get_max_health(),
-																	#"attack": chum.attack,
-																	#"move_speed": chum.move_speed,
 																	"quality": chum.quality,
-																	"level": chum.current_level,
 																	})
 	#Save game
 	SaverLoader.save_game(Global.game_save_id)
@@ -106,16 +101,14 @@ func load_room():
 	for chum in room_info["chums"]:
 		var chum_to_add = ChumsManager.get_specific_chum_str(chum["type"])
 		var chum_instance = chum_to_add.instantiate()
-		
-		chum_instance.current_level = chum["level"]
 		chum_instance.quality = chum["quality"]
 		chum_instance.stats_set = true
 		
 		chum_instance.start_health = chum["health"]
-		chum_instance.max_health = chum["max_health"]
 		chum_instance.initial_state_override = chum["state"]
 		
 		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
+		print('loading room saved chum %s with health %s and state %s' % [chum["type"], chum["health"], chum["state"]])
 		
 		chum_instance.global_position = chum["position"]
 		chum_instance.spawn_currency.connect(spawn_currency)
@@ -201,8 +194,9 @@ func check_enemy_count():
 		Global.in_battle = false
 		open_doors()
 		
-		#Update guide for chum 8 mainly:
-		Global.world_map_guide["room"] = Functions.astar2d(Global.world_grid, 2, true)
+		#Update guide for chum 8 mainly but not in boss rooms:
+		if self is not boss_room:
+			Global.world_map_guide["room"] = Functions.astar2d(Global.world_grid, 2, true)
 		
 		#Save game
 		save_room()

@@ -7,16 +7,18 @@ var chum_name := "Healio"
 var desc := "Such a thoughtful and kind chum. Whenever an enemy chum is defeated, this little flower will send a helping hand by healing friends who need it."
 
 var min_attack_speed := 2.55
-@onready var default_attack: Dictionary = {"speed": 0.0, #fastest quality still needs to be more than the attack animation length.
-										"damage": 10,
-										"distance": 1.3,
-										"single_target": true}
 
-var default_move_speed := 0.0
-var can_walk := false
+var base_attack_speed := 0.0
+var base_attack_damage := 10
+var base_move_speed := 0.0
+var base_health := 50
+#Control of qualities
+var has_attack_speed := false
+var has_attack_damage := true
+var has_move_speed := false
+var has_health := true
 
-var max_health := 50
-var start_health := 50
+var attack_distance := 1.3
 
 #Chance that it maintains agro on chasing chum being hit
 var maintains_agro := 0.0
@@ -26,9 +28,3 @@ var always_targets_player := false
 
 var bracelet_count := 1 if not Global.dev_mode else 1
 var bracelet_cost := 3 if not Global.dev_mode else 1
-
-#Control of qualities
-var has_attack_speed := false
-var has_attack_damage := true
-var has_move_speed := false
-var has_health := true

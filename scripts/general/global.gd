@@ -270,6 +270,7 @@ func create_world(world_n):
 										}
 func create_world_boss() -> void:
 	#Created boss room information
+	world_map = {}
 	#There is a boss room defined going from every world to any other world.
 	var max_world_n = room_lookup.keys().max()
 	for y in range(1, max_world_n + 1):

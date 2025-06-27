@@ -10,7 +10,7 @@ var attacking := false
 var has_touched_floor := false
 
 func Enter():
-	attack_timer.wait_time = chum.attack["speed"]
+	attack_timer.wait_time = chum.attack_speed
 	attack_timer.one_shot = true
 	attack_timer.autostart = true
 	
@@ -28,7 +28,7 @@ func Enter():
 
 func Physics_Update(delta: float):
 	#Chase target
-	if not attacking and Functions.distance_squared(chum, chum.target) > pow(chum.default_attack["distance"], 2) and chum.is_on_floor():
+	if not attacking and chum.is_on_floor():
 		chum.anim_player.play("Walk")
 		chum.velocity = nav_vel
 		

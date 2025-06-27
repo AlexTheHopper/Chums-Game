@@ -63,13 +63,7 @@ func _ready() -> void:
 		base_damage = 50
 		max_extra_damage = 100
 
-		hitbox.damage = base_damage
-	
-	hitbox.attack_info = {"speed": [1.3, 1.4, 1.5, 1.6, 1.7, 1.8].pick_random(),
-							"damage": 50,
-							"distance": 1.5,
-							"single_target": true}
-	
+		hitbox.damage = base_damage	
 
 func _physics_process(delta: float) -> void:
 	if not Global.is_alive:
@@ -183,7 +177,7 @@ func _process(_delta: float) -> void:
 		print("friends:")
 		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
 			print(chum.chum_name)
-			print(chum.attack)
+			print(chum.hitbox.damage)
 			print(chum.quality)
 			print(chum.health_node.health)
 			if chum.target:
@@ -191,7 +185,7 @@ func _process(_delta: float) -> void:
 		print("enemies:")
 		for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
 			print(chum.chum_name)
-			print(chum.attack)
+			print(chum.hitbox.damage)
 			print(chum.quality)
 			print(chum.health_node.health)
 			if chum.target:
@@ -199,7 +193,7 @@ func _process(_delta: float) -> void:
 		print("neutral:")
 		for chum in get_tree().get_nodes_in_group("Chums_Neutral"):
 			print(chum.chum_name)
-			print(chum.attack)
+			print(chum.hitbox.damage)
 			print(chum.quality)
 			print(chum.health_node.health)
 			if chum.target:

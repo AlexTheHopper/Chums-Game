@@ -33,9 +33,7 @@ func save_game(save_id) -> void:
 		saved_game.friendly_chums.append({"type": chum.chum_str,
 											"quality": chum.quality,
 											"health": chum.health_node.get_health(),
-											"max_health": chum.health_node.get_max_health(),
-											"state": "Idle",
-											"level": chum.current_level})
+											"state": "Idle",})
 	
 	#World Data:
 	saved_game.world_transition_count = Global.world_transition_count
@@ -70,12 +68,10 @@ func load_game(save_id) -> void:
 		var chum_to_add = ChumsManager.get_specific_chum_str(chum["type"])
 		var chum_instance = chum_to_add.instantiate()
 		
-		chum_instance.current_level = chum["level"]
 		chum_instance.quality = chum["quality"]
 		chum_instance.stats_set = true
 		
 		chum_instance.start_health = chum["health"]
-		chum_instance.max_health = chum["max_health"]
 		chum_instance.initial_state_override = chum["state"]
 		
 		get_parent().get_node("Game/Chums").add_child(chum_instance)

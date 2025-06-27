@@ -41,8 +41,8 @@ func _ready() -> void:
 	disp_cost.text = "Bracelets Needed: %s" %chum.bracelet_cost
 	disp_health_value.text = get_quality_text(chum.quality["health"])
 	disp_move_speed_value.text = get_quality_text(chum.quality["move_speed"])
-	disp_damage_value.text = get_quality_text(chum.quality["damage"])
-	disp_attack_speed_value.text = get_quality_text(chum.quality["speed"])
+	disp_damage_value.text = get_quality_text(chum.quality["attack_damage"])
+	disp_attack_speed_value.text = get_quality_text(chum.quality["attack_speed"])
 	#Back
 	disp_name_back.text = disp_name.text
 	desc_back.text = chum.desc
@@ -83,16 +83,14 @@ func _process(_delta: float) -> void:
 		if scale.x < 0.1:
 			queue_free()
 
-func get_quality_text(quality):
-	var quality_int = int(round(quality))
-	
-	if quality_int == 0:
+func get_quality_text(quality):	
+	if quality == 0:
 		return('-')
 		
-	if quality_int > 0:
-		return('+' + str(quality_int * 10) + '%')
+	if quality > 0:
+		return('+' + str(quality * 10) + '%')
 		
-	return(str(quality_int * 10) + '%')
+	return(str(quality * 10) + '%')
 
 func remove():
 	ChumsManager.quality_popup_active = false

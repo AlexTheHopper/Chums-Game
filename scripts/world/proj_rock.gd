@@ -33,7 +33,7 @@ func _ready() -> void:
 	if origin:
 		draws_agro_on_attack = origin.draws_agro_on_attack
 		$Hitbox.draws_agro_on_attack = draws_agro_on_attack
-		$Hitbox.damage = origin.attack["damage"]
+		$Hitbox.damage = origin.hitbox.damage
 		var parent_group = Functions.get_parent_group(origin)
 		if parent_group in ["Chums_Enemy"]:
 			$Hitbox.set_as_enemy()

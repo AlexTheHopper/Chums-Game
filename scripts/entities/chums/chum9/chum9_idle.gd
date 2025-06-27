@@ -13,12 +13,6 @@ func Enter():
 	chum.call_deferred("enable_interaction")
 	
 	chum.anim_player.play("Idle")
-	
-#func Update(_delta: float):	
-	##Follow player if far enough away, and room beaten:
-	#if Global.world_map[Global.room_location]["activated"] and chum.can_walk:
-		#if Functions.distance_squared(chum, player) > pow(chum.follow_distance, 2):
-			#Transitioned.emit(self, "Follow")
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():

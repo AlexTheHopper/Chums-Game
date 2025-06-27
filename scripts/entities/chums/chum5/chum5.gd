@@ -7,16 +7,18 @@ var chum_name := "Slate"
 var desc := "An old log that has harnessed the modern technologies of the catapult, allowing it to conjure rocks from nowhere and hurl them some distance. It's a tough job though, since this chum has little health and those rocks can also conjure a bit of hatred when hitting one's head."
 
 var min_attack_speed := 1.5
-@onready var default_attack: Dictionary = {"speed": 1.6, #fastest quality still needs to be more than the attack animation length.
-										"damage": 10.0,
-										"distance": 10.0,
-										"single_target": true}
 
-var default_move_speed := 2.5
-var can_walk := true
+var base_attack_speed := 1.6
+var base_attack_damage := 10
+var base_move_speed := 2.5
+var base_health := 50
+#Control of qualities
+var has_attack_speed := true
+var has_attack_damage := true
+var has_move_speed := true
+var has_health := true
 
-var max_health := 50
-var start_health := 50
+var attack_distance := 10.0
 
 #Chance that it maintains agro on chasing chum being hit
 var maintains_agro := 0.0
@@ -26,12 +28,6 @@ var always_targets_player := false
 
 var bracelet_count := 1 if not Global.dev_mode else 1
 var bracelet_cost := 3 if not Global.dev_mode else 1
-
-#Control of qualities
-var has_attack_speed := true
-var has_attack_damage := true
-var has_move_speed := true
-var has_health := true
 
 @onready var rock := $Body/Armature/Skeleton3D/BoneAttachment3D/RockZone/ProjRock
 @onready var rock_zone := $Body/Armature/Skeleton3D/BoneAttachment3D/RockZone

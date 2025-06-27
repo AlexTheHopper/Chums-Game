@@ -7,8 +7,8 @@ const TYPE := "boss"
 func _ready() -> void:
 	super()
 	$RoomActivator.activate_bell.connect(close_doors)
-	Global.world_map[Global.room_location]["entered"] = true
 	spawn_boss_chums()
+	Global.world_map[Global.room_location]["entered"] = true
 
 func fill_tunnels() -> void:
 	pass
@@ -17,7 +17,7 @@ func set_player_loc_on_entry():
 	move_player_and_camera(player_spawn.global_position, 0.0)
 
 func spawn_boss_chums() -> void:
-	if Global.world_map[Global.room_location]["activated"] == false:
+	if not Global.world_map[Global.room_location]["entered"]:
 		for chum_id in ChumsManager.boss_chums[Global.room_location].keys():
 			for n in ChumsManager.boss_chums[Global.room_location][chum_id]:
 				#Spawns chum
@@ -28,6 +28,7 @@ func spawn_boss_chums() -> void:
 				
 				#Spawn spawn particles:
 				call_deferred("apply_spawn_particles", chum_instance)
+	if not Global.world_map[Global.room_location]["activated"]:
 		close_doors()
 
 func decorate() -> void:

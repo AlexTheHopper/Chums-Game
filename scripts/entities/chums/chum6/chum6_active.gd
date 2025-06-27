@@ -48,7 +48,7 @@ func emit_object():
 				Global.current_room_node.get_node("Decorations").add_child(obj)
 				obj.target = target_chum
 				obj.global_position = chum.sleep_zone.global_position
-				obj.heal_amount = chum.attack["damage"]
+				obj.heal_amount = chum.hitbox.damage
 				obj.velocity = Vector3(0, 5, 0)
 				if target_chum is not Player:
 					target_chum.health_depleted.connect(obj.on_target_death)

@@ -20,7 +20,7 @@ func Physics_Update(delta: float):
 		Transitioned.emit(self, "Idle")
 	
 func Enter():
-	if not chum.can_walk:
+	if not chum.has_move_speed:
 		chum.anim_player.play("Walk")
 		return
 	chum.anim_player.play("Walk")

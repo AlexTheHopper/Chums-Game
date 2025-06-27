@@ -42,11 +42,11 @@ var current_group := "Chums_Neutral"
 @onready var hurt_particles_num := hurt_particles_num_enemy
 
 var stats_set := false
-@onready var attack: Dictionary
-@onready var move_speed: float
-var base_health: int
-var current_level := 1
-var quality := {"health": 0, "move_speed": 0, "damage": 0, "speed": 0}
+var quality: Dictionary[String, int] = {"health": 0, "move_speed": 0, "attack_damage": 0, "attack_speed": 0}
+var move_speed: float
+var attack_speed: float
+var start_health: int
+var max_move_speed: float
 
 @onready var has_quality_popup := false
 
@@ -82,98 +82,76 @@ func _ready() -> void:
 	#set_collision_mask_value(2, true) #Dont do this, so you cant push them in sleep.
 	set_collision_mask_value(4, true)
 	
-	attack = self.default_attack
-	move_speed = self.default_move_speed
-	base_health = self.max_health
-	if stats_set:
-		self.attack["speed"] *= (quality["speed"] / 10 + 1)
-		self.attack["damage"] = max(1, int(self.attack["damage"] * (quality["damage"] / 10 + 1)))
-		self.move_speed *= (quality["move_speed"] / 10 + 1)
-		#Health already taken care of with start_health and max_health
-	else:
-		set_new_stats()
+	#Stats:
+	move_speed = self.base_move_speed
+	max_move_speed = move_speed * 5.0
+
+	#And make sure stat displays only what the chum can do:
+	if not self.has_attack_speed:
+		quality["attack_speed"] = 0
+	if not self.has_attack_damage:
+		quality["attack_damage"] = 0
+	if not self.has_move_speed:
+		quality["move_speed"] = 0
+	#Unsure about has_health, maybe come back to it
 	
-	#Otherwise, attack and move_speed are set by room.gd
-	if hitbox:
-		hitbox.attack_info = attack
-		hitbox.damage = attack["damage"]
-	nav_agent.target_desired_distance = attack["distance"]
+	nav_agent.target_desired_distance = self.attack_distance
 	nav_agent.avoidance_enabled = true
 	health_node.immune = false
-	health_node.set_max_health_override(self.max_health)
-	health_node.set_health_override(self.start_health)
+	
+	if not stats_set:
+		set_new_stats()
+		start_health = int(self.base_health * (1.0 + float(quality["health"]) / 10.0))
+	set_stats_from_quality()
+	health_node.set_health_override(start_health)
+
+	
 	
 	#If override, change to that state now after all is initialised:
 	if initial_state_override:
 		set_state(initial_state_override)
-	
-	#And make sure stat displays only what the chum can do:
-	if not self.has_attack_speed:
-		quality["speed"] = 0.0
-	if not self.has_attack_damage:
-		attack["damage"] = 0
-		quality["damage"] = 0.0
-		if hitbox:
-			hitbox.attack_info = attack
-			hitbox.damage = attack["damage"]
-	if not self.has_move_speed:
-		quality["move_speed"] = 0.0
-		self.move_speed = 0.0
-	#Unsure about has_health, maybe come back to
 
 func get_gravity_dir():
 	return fall_gravity if velocity.y < 0.0 else jump_gravity
 	
-func set_new_stats():
-	var multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
-	self.attack["speed"] *= multiplier
-	quality["speed"] = 10 * (1 - multiplier)
+func set_new_stats() -> void:
+	var new_quality = [-2, -1, 0, 1, 2].pick_random()
+	quality["health"] = new_quality
+
+	new_quality = [-2, -1, 0, 1, 2].pick_random()
+	quality["move_speed"] = new_quality
+
+	new_quality = [-2, -1, 0, 1, 2].pick_random()
+	quality["attack_damage"] = new_quality
+
+	new_quality = [-2, -1, 0, 1, 2].pick_random()
+	quality["attack_speed"] = new_quality
+
+func set_stats_from_quality() -> void:
+	health_node.set_max_health_override(int(self.base_health * (1.0 + float(quality["health"]) / 10.0)))
+
+	move_speed = min(max_move_speed, self.base_move_speed * (1.0 + float(quality["move_speed"]) / 10.0))
+
+	hitbox.damage = self.base_attack_damage * (1.0 + float(quality["attack_damage"]) / 10.0)
+
+	attack_speed = max(self.min_attack_speed, self.base_attack_speed * (1.0 - float(quality["attack_speed"]) / 10.0))
+
+
+func increase_stats(attack_speed_count: int = 1, attack_damage_count: int = 1, move_speed_count: int = 1, health_count: int = 1) -> void:
+	if self.has_health:
+		quality["health"] += health_count
+
+	if self.has_move_speed:
+		quality["move_speed"] += move_speed_count
+
+	if self.has_attack_damage:
+		quality["attack_damage"] += attack_damage_count
+
+	if self.has_attack_speed:
+		quality["attack_speed"] += attack_speed_count
 	
-	multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
-	self.attack["damage"] = int(self.attack["damage"] * multiplier)
-	quality["damage"] = 10 * (multiplier - 1)
-	
-	multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
-	self.move_speed *= multiplier
-	quality["move_speed"] = 10 * (multiplier - 1)
-	
-	multiplier = [0.8, 0.9, 1.0, 1.1, 1.2].pick_random()
-	self.max_health = int(self.max_health * multiplier)
-	self.start_health = self.max_health
-	quality["health"] = 10 * (multiplier - 1)
-
-func level_up(count: int, attack_speed_up: bool = true, attack_damage_up: bool = true, move_speed_up: bool = true, health_up: bool = true) -> void:
-	for lvl in count:
-		current_level += 1
-		var per_increase = 0.1
-		#ATTACK SPEED INCREASE
-		if attack_speed_up and self.has_attack_speed:
-			if self.default_attack["speed"] > 0.0:
-				self.attack["speed"] = max(self.attack["speed"] - per_increase * self.default_attack["speed"], self.min_attack_speed)
-				quality["speed"] += int(10 * per_increase)
-			
-		#ATTACK DAMAGE INCREASE
-		if attack_damage_up and self.has_attack_damage:
-			if self.default_attack["damage"] > 0.0:
-				attack["damage"] += int(round(per_increase * self.default_attack["damage"]))
-
-				quality["damage"] += int(10 * per_increase)
-				if hitbox:
-					hitbox.attack_info = attack
-					hitbox.damage = attack["damage"]
-
-		#MOVE SPEED INCREASE
-		if move_speed_up and self.has_move_speed:
-			if self.default_move_speed > 0.0:
-				self.move_speed += per_increase * self.default_move_speed
-				quality["move_speed"] += int(10 * per_increase)
-
-		#HEALTH INCREAASE
-		if health_up and self.has_health:
-			self.max_health += int(per_increase * base_health)
-			health_node.set_max_health(health_node.get_max_health() + int(round(per_increase * base_health)))
-			#health_node.set_health(health_node.get_health())
-			quality["health"] += int(10 * per_increase)
+	#APPLY CHANGES
+	set_stats_from_quality()
 
 func create_sleep_particles():
 	if Global.game_begun:
@@ -187,8 +165,7 @@ func enable_interaction():
 	interaction_area.shape.disabled = false
 func disable_interaction():
 	interaction_area.shape.disabled = true
-	pass
-	
+
 #Runs when enemy chums wake up from room activator if enemy
 func wake_up():
 	make_enemy()

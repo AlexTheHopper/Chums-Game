@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var P_anim_player = $PauseMenu/AnimationPlayer
 @export var is_paused: bool = false
 @export var is_returning: bool = false
+var is_exit_warning: bool = false
 
 
 func initialize() -> void:
@@ -32,16 +33,25 @@ func _process(_delta: float) -> void:
 		toggle_pause()
 	
 	if is_paused and Input.is_action_just_pressed("attack"):
-		is_returning = true
-		toggle_pause()
-		Global.return_to_menu(false)
+		if Global.in_battle and is_exit_warning:
+			toggle_pause()
+			get_tree().get_first_node_in_group("Player")._on_health_health_depleted()
+		elif Global.in_battle:
+			$PauseMenu/ReturnPanel/Value.text = "Q to quit and delete save"
+			is_exit_warning = true
+		else:
+			is_returning = true
+			toggle_pause()
+			Global.return_to_menu(false)
 		
 func toggle_pause():
+	is_exit_warning = false
 	if is_paused and get_tree().paused:
 		get_tree().paused = false
 		P_anim_player.play_backwards("pause")
 		
 	elif not is_paused and not get_tree().paused:
+		$PauseMenu/ReturnPanel/Value.text = "Q to return to menu"
 		get_tree().paused = true
 		P_anim_player.play("pause")
 		

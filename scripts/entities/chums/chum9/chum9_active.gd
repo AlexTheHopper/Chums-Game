@@ -6,7 +6,7 @@ class_name Chum9_Active
 var has_touched_floor := false
 
 func Enter():
-	chum.anim_player.speed_scale = 1 + (chum.quality["speed"] / 10)
+	chum.anim_player.speed_scale = 1 + (chum.quality["attack_speed"] / 10)
 	chum.anim_player.play("Attack")
 	has_touched_floor = false
 
