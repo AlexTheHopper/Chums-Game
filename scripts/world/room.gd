@@ -77,6 +77,18 @@ func _on_spawn_timer_timeout() -> void:
 		
 		#Spawn spawn particles:
 		call_deferred("apply_spawn_particles", chum_instance)
+		
+		#Scale based on world transition count.
+		#For twice the transition count, cost goes up and each stat has a % chance to increase
+		#This % goes from 50% to 100% as transition count goes from 0 to 10
+		var max_level = Global.world_transition_count
+		var per_inc =  Functions.map_range(max_level, Vector2(0, 10), Vector2(0.5, 1.0))
+		max_level *= 2
+		for lvl in max_level:
+			chum_instance.level_up(1, randf() < per_inc, randf() < per_inc, randf() < per_inc, randf() < per_inc)
+
+		chum_instance.bracelet_cost += max_level
+
 	room_value -= chum_value / 2
 	Global.world_map[Global.room_location]["value"] = room_value
 
