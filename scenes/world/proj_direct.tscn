@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://5qhnjhtuadmc"]
+
+[ext_resource type="Script" uid="uid://bhp5nqg321a4j" path="res://scripts/world/proj_direct.gd" id="1_5kxci"]
+[ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_uo0u1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pppel"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0agd8"]
+radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kxci"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_uafm8"]
+material = SubResource("StandardMaterial3D_5kxci")
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Curve" id="Curve_i514e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.498364, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_lhp1a"]
+offsets = PackedFloat32Array(0.439166, 1)
+colors = PackedColorArray(0.231015, 7.43139e-05, 0.805916, 1, 0.33233, 0.582968, 1, 1)
+
+[node name="ProjDirect" type="Area3D"]
+collision_layer = 8
+collision_mask = 11
+script = ExtResource("1_5kxci")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pppel")
+
+[node name="Hitbox" type="Area3D" parent="."]
+script = ExtResource("4_uo0u1")
+metadata/_custom_type_script = "uid://qmw71aj2hoe3"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("SphereShape3D_0agd8")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0484589, 0, 0)
+amount = 50
+mesh = SubResource("BoxMesh_uafm8")
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.2
+scale_amount_curve = SubResource("Curve_i514e")
+color_ramp = SubResource("Gradient_lhp1a")
+
+[node name="Grace" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]
+[connection signal="timeout" from="Grace" to="." method="_on_grace_timeout"]

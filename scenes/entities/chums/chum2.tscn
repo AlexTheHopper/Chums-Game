@@ -118,26 +118,26 @@ tracks/7/keys = PackedFloat32Array(0, 1, 2.64246e-07, -2.62505e-14, -1, 9.68891e
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/8/path = NodePath("../Hitbox/CollisionShape3D:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.966667, 1.66667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../Hitbox/CollisionShape3D:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.9, 1.23333, 1.36667, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 1.5708), Vector3(0, 0, 1.5708), Vector3(0, 3.14159, 1.5708), Vector3(0, 4.02822, 1.5708), Vector3(0, 6.28319, 1.5708)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.889515, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_0rv2g"]
@@ -278,46 +278,22 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/0/path = NodePath("Armature/Skeleton3D/BodyMesh:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Hitbox/CollisionShape3D:rotation")
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 1.5708)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Armature/Skeleton3D/BodyMesh:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Hurtbox/CollisionShape3D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -618,35 +594,35 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0.3, 0)
-bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/rotation = Quaternion(0, -0.0114234, 0, 0.999935)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Horn.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0.707107, 0.707107, -1.9744e-07, -0.707107, 0.707107, 1.9744e-07, 2.79223e-07, 0, 1, 0.4, 1, 0)
 bones/1/enabled = true
-bones/1/position = Vector3(0.4, 1, -1.6643e-14)
-bones/1/rotation = Quaternion(-5.3427e-08, -1.28984e-07, -0.382683, 0.92388)
+bones/1/position = Vector3(0.4, 1, -1.86273e-10)
+bones/1/rotation = Quaternion(-5.38572e-08, -1.28806e-07, -0.382683, 0.92388)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Leg.L"
 bones/2/parent = 0
 bones/2/rest = Transform3D(-1, 1.38732e-20, 5.28492e-07, 1.38732e-20, -1, 5.2501e-14, 5.28492e-07, 5.2501e-14, 1, 0.3, -5.96046e-08, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0.3, -5.96046e-08, 0)
-bones/2/rotation = Quaternion(2.64246e-07, 2.62505e-14, 1, 0)
+bones/2/rotation = Quaternion(2.64246e-07, 2.62505e-14, 1, -2.79699e-23)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Horn.R"
 bones/3/parent = 0
 bones/3/rest = Transform3D(0.707107, -0.707107, 1.9744e-07, 0.707107, 0.707107, 1.9744e-07, -2.79223e-07, 0, 1, -0.4, 1, 0)
 bones/3/enabled = true
-bones/3/position = Vector3(-0.4, 1, -1.6643e-14)
-bones/3/rotation = Quaternion(-5.3427e-08, 1.28984e-07, 0.382683, 0.92388)
+bones/3/position = Vector3(-0.4, 1, -1.86275e-10)
+bones/3/rotation = Quaternion(-5.29968e-08, 1.29162e-07, 0.382683, 0.92388)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Leg.R"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-1, -1.38732e-20, -5.28492e-07, -1.38732e-20, -1, 5.2501e-14, -5.28492e-07, 5.2501e-14, 1, -0.3, -5.96046e-08, 0)
 bones/4/enabled = true
 bones/4/position = Vector3(-0.3, -5.96046e-08, 0)
-bones/4/rotation = Quaternion(-2.64246e-07, 2.62505e-14, 1, 0)
+bones/4/rotation = Quaternion(-2.63315e-07, 2.62505e-14, 1, 2.59484e-23)
 bones/4/scale = Vector3(1, 1, 1)
 
 [node name="BodyMesh" type="MeshInstance3D" parent="Body/Armature/Skeleton3D"]
@@ -654,7 +630,7 @@ mesh = SubResource("ArrayMesh_xrr71")
 skin = SubResource("Skin_81clb")
 
 [node name="BoneAttachmentSleepZone" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+transform = Transform3D(0.999739, 0, -0.0228453, 0, 1, 0, 0.0228453, 0, 0.999739, 0, 0.3, 0)
 bone_name = "Body"
 bone_idx = 0
 
@@ -662,7 +638,7 @@ bone_idx = 0
 transform = Transform3D(0.981793, 0.126586, 0.14163, -0.126586, -0.119912, 0.984681, 0.14163, -0.984681, -0.101704, 0, 0.7, 0)
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(0.707108, 0.707106, -1.9744e-07, -0.707106, 0.707108, 1.9744e-07, 2.79223e-07, -3.12639e-13, 1, 0.4, 1.3, -1.6643e-14)
+transform = Transform3D(0.706923, 0.706921, -0.0228455, -0.707106, 0.707108, 1.98099e-07, 0.0161544, 0.016154, 0.999739, 0.399896, 1.3, 0.00913812)
 bone_name = "Horn.L"
 bone_idx = 1
 
@@ -684,7 +660,6 @@ script = ExtResource("4_7nml4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 shape = SubResource("CapsuleShape3D_5tnam")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox"]
 libraries = {
@@ -695,7 +670,7 @@ libraries = {
 script = ExtResource("5_4geia")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0, 0.826052, 0)
+transform = Transform3D(-3.61999e-06, -1, 4.46638e-06, 1, -3.61999e-06, 0, 1.61683e-11, 4.46638e-06, 1, 0, 0.826052, 0)
 shape = SubResource("CapsuleShape3D_d82fa")
 disabled = true
 

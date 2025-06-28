@@ -236,7 +236,9 @@ func set_room_type(location: Vector2i) -> int:
 
 func create_world(world_n):
 	var size = world_info[world_n]["map_size"]
-	var required_statues = world_info[world_n]["required"]
+	var required_statues := []
+	for id in world_info[world_n]["required"]:
+		required_statues.append(id) 
 	var other_statues = world_info[world_n]["optional"]
 	var statue_id = 1
 	world_map = {}
@@ -402,4 +404,5 @@ func restart_game_and_delete(delete):
 		SaverLoader.delete_save(game_save_id)
 	game_begun = false
 	game_save_id = 1
+	world_transition_count = 0
 	get_node("/root").add_child(load("res://scenes/general/main_menu.tscn").instantiate())

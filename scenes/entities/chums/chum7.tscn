@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://qmnewa122jwi"]
+[gd_scene load_steps=26 format=4 uid="uid://btglyen2dgjiw"]
 
 [ext_resource type="Script" uid="uid://btv00325jusq0" path="res://scripts/entities/chums/chum7/chum7.gd" id="1_d3e8j"]
 [ext_resource type="Texture2D" uid="uid://dx26hcvsnt6sr" path="res://Blender_Assets/Chum_Exports/chum7_chum_7_detach.png" id="1_o77uo"]
@@ -252,6 +252,21 @@ tracks/7/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_1bywp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_3hqig"]
 resource_name = "Sleep"
 length = 5.0
@@ -358,21 +373,6 @@ tracks/6/path = NodePath("Armature/Skeleton3D:Leaf4")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = PackedFloat32Array(0, 1, 0.706667, 0, 0, 0.707547, 0.366667, 1, 0.705834, -3.73443e-05, 3.87955e-05, 0.708378, 0.466667, 1, 0.704808, -8.32732e-05, 8.65067e-05, 0.709398, 0.533333, 1, 0.70379, -0.000128774, 0.000133773, 0.710408, 0.6, 1, 0.702447, -0.000188725, 0.000196053, 0.711736, 0.633333, 1, 0.70165, -0.00022424, 0.000232946, 0.712521, 0.666667, 1, 0.700764, -0.000263699, 0.000273937, 0.713393, 0.7, 1, 0.69975, -0.000308794, 0.000320785, 0.714388, 0.733333, 1, 0.698632, -0.000358403, 0.000372318, 0.715481, 0.766667, 1, 0.697407, -0.000412713, 0.000428736, 0.716675, 0.8, 1, 0.696069, -0.000471913, 0.000490236, 0.717975, 0.833333, 1, 0.694613, -0.000536193, 0.000557013, 0.719383, 0.866667, 1, 0.692992, -0.000607628, 0.000631222, 0.720945, 0.9, 1, 0.691239, -0.000684712, 0.0007113, 0.722626, 0.933333, 1, 0.689348, -0.000767638, 0.000797443, 0.72443, 0.966667, 1, 0.687314, -0.000856591, 0.00088985, 0.726359, 1, 1, 0.685132, -0.000951761, 0.000988716, 0.728417, 1.03333, 1, 0.682744, -0.0010556, 0.00109659, 0.730656, 1.06667, 1, 0.680192, -0.00116623, 0.00121151, 0.733032, 1.1, 1, 0.677469, -0.00128383, 0.00133368, 0.735549, 1.13333, 1, 0.67457, -0.00140858, 0.00146327, 0.738208, 1.16667, 1, 0.671488, -0.00154067, 0.00160049, 0.741012, 1.2, 1, 0.668156, -0.00168293, 0.00174827, 0.744017, 1.23333, 1, 0.664623, -0.00183308, 0.00190425, 0.747174, 1.26667, 1, 0.660883, -0.00199128, 0.0020686, 0.750483, 1.3, 1, 0.65693, -0.00215773, 0.00224151, 0.753945, 1.33333, 1, 0.652756, -0.00233258, 0.00242315, 0.757561, 1.36667, 1, 0.648281, -0.00251901, 0.00261681, 0.761392, 1.4, 1, 0.643566, -0.00271434, 0.00281973, 0.76538, 1.43333, 1, 0.638604, -0.00291872, 0.00303205, 0.769524, 1.46667, 1, 0.633387, -0.00313231, 0.00325393, 0.773822, 1.5, 1, 0.627906, -0.00335524, 0.00348551, 0.778274, 1.53333, 1, 0.622073, -0.00359095, 0.00373038, 0.782942, 1.56667, 1, 0.615957, -0.0038364, 0.00398536, 0.787761, 1.6, 1, 0.609549, -0.00409168, 0.00425055, 0.792726, 1.63333, 1, 0.602843, -0.00435688, 0.00452605, 0.797835, 1.66667, 1, 0.59583, -0.00463209, 0.00481195, 0.803083, 1.7, 1, 0.525197, -0.00677112, 0.00727677, 0.850923, 1.73333, 1, 0.356355, -0.0112309, 0.0124695, 0.9342, 1.76667, 1, 0.107241, -0.0166127, 0.0187845, 0.993917, 1.8, 1, -0.164807, -0.0211175, 0.024128, 0.985805, 1.83333, 1, -0.375643, -0.0236105, 0.0271387, 0.926066, 1.875, 1, -0.464814, -0.0243628, 0.0280699, 0.884628)
-
-[sub_resource type="Animation" id="Animation_1bywp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_20phk"]
 _data = {
@@ -577,9 +577,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="ChumInterractionArea" parent="." instance=ExtResource("6_8hikk")]
 
-[node name="Particles" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-
 [node name="ChumSpecificStates" type="Node" parent="."]
 
 [node name="Active" type="Node" parent="ChumSpecificStates"]
@@ -587,6 +584,9 @@ script = ExtResource("7_d3e8j")
 
 [node name="Idle" type="Node" parent="ChumSpecificStates"]
 script = ExtResource("9_l614u")
+
+[node name="Particles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true

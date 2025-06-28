@@ -53,7 +53,7 @@ func _ready() -> void:
 func set_vel_to_pos(start_pos, target_pos):
 	#Velocity:
 	var dx = target_pos.x - start_pos.x
-	var dy = target_pos.y - start_pos.y
+	var dy = target_pos.y - start_pos.y + 0.5 #This makes the rock not aim for the ground under the target
 	var dz = target_pos.z - start_pos.z
 	velocity = Vector3(dx, dy + 0.5 * gravity_ * hit_time * hit_time, dz) / hit_time
 

@@ -27,6 +27,8 @@ func _ready() -> void:
 			"destination_world": 1}, #Bolt
 		9: {"object": preload("res://scenes/entities/chums/chum9.tscn"),
 			"destination_world": 2}, #Fan
+		10: {"object": preload("res://scenes/entities/chums/chum10.tscn"),
+			"destination_world": 2}, #Floaty
 	}
 
 	chums_values = {
@@ -44,16 +46,17 @@ func _ready() -> void:
 			4: 0.5,
 			8: 2.0,
 			9: 2.0,
+			10: 1.5
 		},
 	}
 	
 	#The vector2i defines which room, the keys of that dict are chum ids and the values are the count.
 	#They are spawned randomly somewhere in the room
 	boss_chums = {
-		Vector2i(1, 1): {4: 5,},
-		Vector2i(1, 2): {4: 5,},
-		Vector2i(2, 1): {4: 5,},
-		Vector2i(2, 2): {4: 5,},
+		Vector2i(1, 1): {3: 5, 5: 3},
+		Vector2i(1, 2): {3: 5, 4: 3},
+		Vector2i(2, 1): {10: 6, 5: 3},
+		Vector2i(2, 2): {10: 6, 4: 3},
 	}
 
 	if Global.dev_mode:
