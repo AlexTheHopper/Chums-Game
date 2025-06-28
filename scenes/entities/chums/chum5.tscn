@@ -368,6 +368,18 @@ tracks/11/path = NodePath("Armature/Skeleton3D:LegFront.R")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = PackedFloat32Array(0, 1, -0.316228, -0.316228, 0.632456, 0.632455, 0.0333333, 1, -0.316228, -0.316228, 0.632456, 0.632455, 0.0666667, 1, -0.308399, -0.311862, 0.638919, 0.631993, 0.1, 1, -0.288616, -0.300755, 0.654771, 0.630493, 0.133333, 1, -0.255376, -0.281858, 0.67991, 0.626946, 0.166667, 1, -0.209991, -0.255605, 0.71135, 0.620122, 0.2, 1, -0.152504, -0.221645, 0.746656, 0.608376, 0.233333, 1, -0.0897404, -0.18371, 0.779731, 0.591792, 0.266667, 1, -0.0251326, -0.143762, 0.808033, 0.570775, 0.3, 1, 0.037793, -0.103993, 0.830099, 0.546528, 0.333333, 1, 0.0956267, -0.0666919, 0.845587, 0.520951, 0.366667, 1, 0.14173, -0.0364325, 0.854587, 0.498263, 0.4, 1, 0.176284, -0.0134406, 0.859333, 0.479885, 0.433333, 1, 0.200757, 0.00295354, 0.861578, 0.466232, 0.466667, 1, 0.217357, 0.01405, 0.862496, 0.456792, 0.5, 1, 0.228979, 0.0217286, 0.86278, 0.45023, 0.533333, 1, 0.235464, 0.0259823, 0.862813, 0.446583, 0.566667, 1, 0.239126, 0.0284863, 0.862885, 0.444339, 0.6, 1, 0.240638, 0.0297804, 0.863124, 0.442971, 0.633333, 1, 0.239265, 0.0298165, 0.863784, 0.442425, 0.666667, 1, 0.232858, 0.0279581, 0.865239, 0.443122, 0.7, 1, 0.216161, 0.0221946, 0.867982, 0.446531, 0.733333, 1, 0.193477, 0.0141793, 0.871035, 0.451291, 0.766667, 1, 0.165995, 0.00438018, 0.873881, 0.4569, 0.8, 1, 0.13497, -0.00671556, 0.876061, 0.462876, 0.866667, 1, 0.0683969, -0.0305074, 0.877225, 0.474203, 0.9, 1, 0.0371126, -0.041645, 0.876169, 0.478766, 0.933333, 1, 0.00928418, -0.0515202, 0.874384, 0.482403, 0.966667, 1, -0.0137256, -0.0596625, 0.872307, 0.48511, 1, 1, -0.030605, -0.0656234, 0.870437, 0.486926, 1.03333, 1, -0.0367936, -0.0678074, 0.869676, 0.487557, 1.04167, 1, -0.0383405, -0.068353, 0.86948, 0.487711)
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_vc5g2"]
 length = 0.001
@@ -394,6 +406,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_jwj7o"]
@@ -826,6 +850,7 @@ metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D/Hitbox"]
 shape = SubResource("SphereShape3D_p1khf")
+disabled = true
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
 transform = Transform3D(1, 0, 0, 0, 0.800001, 0.599999, 0, -0.599999, 0.800001, 0, 0.6, -0.6)

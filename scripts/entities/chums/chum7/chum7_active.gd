@@ -12,7 +12,6 @@ var to_emit := 0
 func Enter():
 	chum.anim_player.animation_finished.connect(_on_animation_player_animation_finished)
 	chum.anim_player.play("Idle")
-	chum.hitbox.enable()
 	emitting = false
 	has_touched_floor = false
 	
@@ -65,4 +64,3 @@ func Exit():
 	emit_object()
 	for cur_conn in self.get_incoming_connections():
 		cur_conn.signal.disconnect(cur_conn.callable)
-	chum.hitbox.disable()

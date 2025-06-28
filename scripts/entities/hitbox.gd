@@ -31,12 +31,6 @@ func set_as_neutral():
 	set_collision_layer_value(9, false)
 	set_collision_layer_value(10, false)
 
-func enable() -> void:
-	collision.disabled = false
-
-func disaable() -> void:
-	collision.disabled = true
-
 func set_damage(value: int):
 	damage = value
 	

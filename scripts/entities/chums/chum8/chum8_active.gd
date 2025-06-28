@@ -24,7 +24,6 @@ func Enter():
 	chum.anim_player.animation_finished.connect(_on_animation_player_animation_finished)
 	chum.anim_player.play("Walk")
 	nav_timer.start()
-	chum.hitbox.enable()
 	attacking = false
 	has_touched_floor = false
 	
@@ -94,5 +93,3 @@ func Exit():
 	chum.nav_agent.target_reached.disconnect(_on_navigation_agent_3d_target_reached)
 	chum.nav_agent.velocity_computed.disconnect(_on_navigation_agent_3d_velocity_computed)
 	chum.anim_player.animation_finished.disconnect(_on_animation_player_animation_finished)
-	
-	chum.hitbox.disable()

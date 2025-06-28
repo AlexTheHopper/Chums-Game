@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bx0sygluiytaj"]
+[gd_scene load_steps=26 format=4 uid="uid://bx0sygluiytaj"]
 
 [ext_resource type="Script" uid="uid://dtw0ocqvm7rem" path="res://scripts/entities/chums/chum9/chum9.gd" id="1_4cr8o"]
 [ext_resource type="Texture2D" uid="uid://c4lcunx2vpymt" path="res://Blender_Assets/Chum_Exports/chum9_chum_9_Color.png" id="2_sw1vc"]
@@ -101,6 +101,54 @@ tracks/4/path = NodePath("Armature/Skeleton3D:Bone.005")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = PackedFloat32Array(0, 1, 0.703511, -1.6944e-07, -1.6773e-07, 0.710684)
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D3:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D4:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_4cr8o"]
 resource_name = "Idle"
@@ -180,6 +228,54 @@ tracks/4/path = NodePath("Armature/Skeleton3D:Bone.005")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = PackedFloat32Array(0, 1, 0.703511, -1.6944e-07, -1.6773e-07, 0.710684, 0.0333333, 1, 0.702205, -1.69748e-07, -1.67419e-07, 0.711975, 0.0666667, 1, 0.699009, -1.70496e-07, -1.66657e-07, 0.715113, 0.1, 1, 0.693968, -1.71663e-07, -1.65455e-07, 0.720006, 0.133333, 1, 0.687114, -1.73223e-07, -1.63821e-07, 0.72655, 0.166667, 1, 0.678462, -1.75151e-07, -1.61758e-07, 0.734635, 0.2, 1, 0.66749, -1.77531e-07, -1.59142e-07, 0.744619, 0.233333, 1, 0.654764, -1.80205e-07, -1.56108e-07, 0.755834, 0.266667, 1, 0.640279, -1.83139e-07, -1.52654e-07, 0.768142, 0.3, 1, 0.624033, -1.863e-07, -1.48781e-07, 0.781398, 0.333333, 1, 0.606024, -1.89649e-07, -1.44487e-07, 0.795446, 0.366667, 1, 0.585843, -1.9322e-07, -1.39676e-07, 0.810425, 0.4, 1, 0.564015, -1.96878e-07, -1.34472e-07, 0.825765, 0.433333, 1, 0.540597, -2.00577e-07, -1.28888e-07, 0.841282, 0.466667, 1, 0.515663, -2.04275e-07, -1.22944e-07, 0.856792, 0.5, 1, 0.489308, -2.07928e-07, -1.1666e-07, 0.872111, 0.533333, 1, 0.461472, -2.11514e-07, -1.10024e-07, 0.887155, 0.566667, 1, 0.432641, -2.1495e-07, -1.0315e-07, 0.901567, 0.666667, 1, 0.342073, -2.24036e-07, -8.15566e-08, 0.939673, 0.7, 1, 0.311424, -2.26562e-07, -7.42492e-08, 0.950271, 0.733333, 1, 0.281015, -2.28811e-07, -6.69991e-08, 0.959703, 0.766667, 1, 0.251072, -2.30782e-07, -5.98603e-08, 0.967968, 0.8, 1, 0.221815, -2.32479e-07, -5.28849e-08, 0.975089, 0.833333, 1, 0.193457, -2.33915e-07, -4.61237e-08, 0.981109, 0.866667, 1, 0.166707, -2.35082e-07, -3.97461e-08, 0.986007, 0.9, 1, 0.141365, -2.36024e-07, -3.3704e-08, 0.989958, 0.933333, 1, 0.117581, -2.36765e-07, -2.80334e-08, 0.993063, 0.966667, 1, 0.0954915, -2.37329e-07, -2.27669e-08, 0.99543, 1, 1, 0.0752211, -2.37743e-07, -1.79341e-08, 0.997167, 1.03333, 1, 0.0575889, -2.38023e-07, -1.37303e-08, 0.99834, 1.06667, 1, 0.0420642, -2.38208e-07, -1.00289e-08, 0.999115, 1.1, 1, 0.0287341, -2.3832e-07, -6.85074e-09, 0.999587, 1.13333, 1, 0.0176835, -2.38381e-07, -4.21608e-09, 0.999844, 1.16667, 1, 0.00899602, -2.38409e-07, -2.14482e-09, 0.99996, 1.2, 1, 0.00363524, -2.38417e-07, -8.66709e-10, 0.999993, 1.23333, 1, 0.000918013, -2.38418e-07, -2.18871e-10, 1, 1.25, 1, 0, -2.38419e-07, 0, 1)
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D3:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D4:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_csfc1"]
 resource_name = "Sleep"
@@ -260,11 +356,63 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = PackedFloat32Array(0, 1, 0, -2.38419e-07, 0, 1, 0.0333333, 1, 0.00183607, -2.38418e-07, -4.37753e-10, 0.999998, 0.0666667, 1, 0.0063157, -2.38414e-07, -1.50578e-09, 0.99998, 0.1, 1, 0.0133399, -2.38397e-07, -3.18049e-09, 0.999911, 0.133333, 1, 0.0228151, -2.38357e-07, -5.43954e-09, 0.99974, 0.166667, 1, 0.0346521, -2.38275e-07, -8.2617e-09, 0.999399, 0.2, 1, 0.049474, -2.38127e-07, -1.17955e-08, 0.998775, 0.233333, 1, 0.0664077, -2.37892e-07, -1.58328e-08, 0.997793, 0.266667, 1, 0.0853608, -2.37548e-07, -2.03516e-08, 0.99635, 0.3, 1, 0.106233, -2.37069e-07, -2.53278e-08, 0.994341, 0.333333, 1, 0.128914, -2.36429e-07, -3.07354e-08, 0.991656, 0.366667, 1, 0.153794, -2.35582e-07, -3.66673e-08, 0.988103, 0.4, 1, 0.180099, -2.3452e-07, -4.29389e-08, 0.983649, 0.433333, 1, 0.207658, -2.33221e-07, -4.95096e-08, 0.978202, 0.466667, 1, 0.236289, -2.31667e-07, -5.63357e-08, 0.971683, 0.5, 1, 0.265797, -2.29842e-07, -6.33709e-08, 0.964029, 0.533333, 1, 0.296162, -2.27723e-07, -7.06106e-08, 0.955138, 0.566667, 1, 0.326792, -2.25329e-07, -7.79132e-08, 0.945096, 0.666667, 1, 0.417965, -2.16595e-07, -9.96505e-08, 0.908463, 0.7, 1, 0.447203, -2.13249e-07, -1.06621e-07, 0.894433, 0.733333, 1, 0.47545, -2.09747e-07, -1.13356e-07, 0.879743, 0.766667, 1, 0.502544, -2.06125e-07, -1.19816e-07, 0.864552, 0.8, 1, 0.528345, -2.02424e-07, -1.25967e-07, 0.84903, 0.833333, 1, 0.552734, -1.98688e-07, -1.31782e-07, 0.833358, 0.866667, 1, 0.575191, -1.95031e-07, -1.37136e-07, 0.818019, 0.9, 1, 0.595981, -1.9145e-07, -1.42093e-07, 0.802999, 0.933333, 1, 0.615069, -1.87987e-07, -1.46644e-07, 0.788474, 0.966667, 1, 0.632432, -1.84683e-07, -1.50784e-07, 0.774616, 1, 1, 0.64806, -1.81577e-07, -1.54509e-07, 0.76159, 1.03333, 1, 0.661416, -1.78818e-07, -1.57694e-07, 0.750019, 1.06667, 1, 0.672994, -1.76346e-07, -1.60454e-07, 0.739648, 1.1, 1, 0.6828, -1.7419e-07, -1.62792e-07, 0.730605, 1.13333, 1, 0.690834, -1.7238e-07, -1.64708e-07, 0.723013, 1.16667, 1, 0.69709, -1.70942e-07, -1.66199e-07, 0.716984, 1.2, 1, 0.700923, -1.70049e-07, -1.67113e-07, 0.713237, 1.23333, 1, 0.702859, -1.69594e-07, -1.67575e-07, 0.71133, 1.25, 1, 0.703511, -1.6944e-07, -1.6773e-07, 0.710684)
 
+[sub_resource type="Animation" id="Animation_tbrl0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D2:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D3:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D4:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tbrl0"]
 _data = {
 &"Attack": SubResource("Animation_0ro48"),
 &"Idle": SubResource("Animation_4cr8o"),
 &"Knock": SubResource("Animation_obc6m"),
+&"RESET": SubResource("Animation_tbrl0"),
 &"Sleep": SubResource("Animation_csfc1"),
 &"Wake": SubResource("Animation_gmfye")
 }
@@ -357,7 +505,7 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0, 0.992772, 0, 0.120018)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.002"
 bones/1/parent = 0
@@ -403,7 +551,6 @@ skin = SubResource("Skin_nte7n")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.7, -0.2)
 
 [node name="Bone" type="BoneAttachment3D" parent="body/Armature/Skeleton3D"]
-transform = Transform3D(-0.971191, 0, 0.238301, 0, 1, 0, -0.238301, 0, -0.971191, 0, 0, 0)
 bone_name = "Bone"
 bone_idx = 0
 
@@ -415,18 +562,22 @@ metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="body/Armature/Skeleton3D/Bone/Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 0)
 shape = SubResource("SphereShape3D_4cr8o")
+disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="body/Armature/Skeleton3D/Bone/Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 0)
 shape = SubResource("SphereShape3D_4cr8o")
+disabled = true
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="body/Armature/Skeleton3D/Bone/Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8)
 shape = SubResource("SphereShape3D_4cr8o")
+disabled = true
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="body/Armature/Skeleton3D/Bone/Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, -1.8)
 shape = SubResource("SphereShape3D_4cr8o")
+disabled = true
 
 [node name="SleepZone" type="Node3D" parent="body/Armature/Skeleton3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
