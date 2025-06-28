@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var chum_count = $InGameHUD/ChumCountPanel/Value
 @onready var IG_anim_player = $InGameHUD/AnimationPlayer
 @onready var P_anim_player = $PauseMenu/AnimationPlayer
+@onready var S_anim_player = $SavedIndicator/AnimationPlayer
 @export var is_paused: bool = false
 @export var is_returning: bool = false
 var is_exit_warning: bool = false
@@ -22,6 +23,8 @@ func initialize() -> void:
 	
 	PlayerStats.insufficient_bracelets.connect(indicate_bracelets)
 	PlayerStats.too_many_chums.connect(indicate_chum_count)
+	
+	SaverLoader.Saved.connect(indicate_saved)
 	
 	P_anim_player.play("RESET")
 
@@ -67,7 +70,10 @@ func change_chum_count():
 func change_bracelets():
 	$InGameHUD/BraceletsPanel/Value.text = str(PlayerStats.bracelets)
 	
-func indicate_bracelets():
+func indicate_bracelets() -> void:
 	IG_anim_player.play("insufficient_bracelets")
-func indicate_chum_count():
+func indicate_chum_count() -> void:
 	IG_anim_player.play("too_many_chums")
+func indicate_saved() -> void:
+	#S_anim_player.play("display")
+	pass

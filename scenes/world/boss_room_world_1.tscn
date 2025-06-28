@@ -62,14 +62,19 @@ omni_shadow_mode = 0
 [node name="Particles" parent="Decorations" instance=ExtResource("6_sj2si")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 1)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1q6o2")
-
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1q6o2")
 
 [node name="EntryIndicators" type="Node3D" parent="."]
 
 [node name="z_neg" parent="EntryIndicators" instance=ExtResource("7_j4cx8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, -19)
 is_permanent = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

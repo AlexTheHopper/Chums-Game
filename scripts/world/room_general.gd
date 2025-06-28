@@ -108,8 +108,7 @@ func load_room():
 		chum_instance.initial_state_override = chum["state"]
 		
 		get_parent().get_parent().get_node("Chums").add_child(chum_instance)
-		print('loading room saved chum %s with health %s and state %s' % [chum["type"], chum["health"], chum["state"]])
-		
+
 		chum_instance.global_position = chum["position"]
 		chum_instance.spawn_currency.connect(spawn_currency)
 	

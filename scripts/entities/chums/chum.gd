@@ -103,7 +103,7 @@ func _ready() -> void:
 		set_new_stats()
 		start_health = int(self.base_health * (1.0 + float(quality["health"]) / 10.0))
 	set_stats_from_quality()
-	health_node.set_health_override(start_health)
+	health_node.set_health(start_health)
 
 	
 	
@@ -256,7 +256,7 @@ func make_enemy():
 		nav_agent.set_avoidance_mask_value(1, false)
 		nav_agent.set_avoidance_mask_value(2, true)
 	
-func make_friendly():
+func make_friendly(to_heal = true):
 	remove_from_group("Chums_Enemy")
 	remove_from_group("Chums_Neutral")
 	add_to_group("Chums_Friend")
@@ -279,7 +279,8 @@ func make_friendly():
 		nav_agent.set_avoidance_mask_value(2, false)
 	
 	#Reset health to full:
-	health_node.set_health(health_node.get_max_health())
+	if to_heal:
+		health_node.set_health(health_node.get_max_health())
 	
 func make_neutral():
 	remove_from_group("Chums_Enemy")

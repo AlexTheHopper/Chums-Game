@@ -1,5 +1,9 @@
 extends Node
 
+signal Saved
+signal Loaded
+signal Deleted
+
 func _ready() -> void:
 	ensure_save_folder()
 
@@ -45,6 +49,7 @@ func save_game(save_id) -> void:
 	saved_game.world_map = Global.world_map
 	
 	ResourceSaver.save(saved_game, "user://saves/%s.tres" % [save_id])
+	Saved.emit()
 
 
 func load_game(save_id) -> void:
@@ -75,7 +80,7 @@ func load_game(save_id) -> void:
 		chum_instance.initial_state_override = chum["state"]
 		
 		get_parent().get_node("Game/Chums").add_child(chum_instance)
-		chum_instance.make_friendly()
+		chum_instance.make_friendly(false)
 		chum_instance.health_node.immune = false
 	PlayerStats.player_chums_changed.emit()
 
@@ -89,6 +94,8 @@ func load_game(save_id) -> void:
 	Global.world_map = saved_game.world_map
 	
 	Global.game_save_id = save_id
+	
+	Loaded.emit()
 
 func delete_save(save_id) -> void:
 	if Global.dev_mode:
@@ -97,3 +104,5 @@ func delete_save(save_id) -> void:
 	
 	var dir = DirAccess.open("user://")
 	dir.remove("saves/%s.tres" % [save_id])
+	
+	Deleted.emit()

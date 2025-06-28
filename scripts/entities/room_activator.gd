@@ -37,7 +37,7 @@ func _ready() -> void:
 	if Global.world_map[Global.room_location]["activated"]:
 		$Body/BellPivot.queue_free()
 		activated = true
-	elif Global.world_map[Global.room_location]["to_spawn"] == 0:
+	elif Global.world_map[Global.room_location]["to_spawn"] == 0 and Global.current_room_node.TYPE != "boss":
 		finish_spawning()
 
 #Runs on activation, makes chums do their thing
