@@ -46,7 +46,7 @@ func set_as_neutral():
 	
 
 func _on_area_entered(hitbox: Hitbox) -> void:
-	if hitbox != null:			
+	if hitbox != null:
 		#Remove damage
 		health_node.health -= hitbox.damage		
 		

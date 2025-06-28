@@ -8,6 +8,7 @@ var has_touched_floor := false
 func Enter():
 	chum.anim_player.speed_scale = 1 + (chum.quality["attack_speed"] / 10)
 	chum.anim_player.play("Attack")
+	chum.hitbox.enable()
 	has_touched_floor = false
 
 func Physics_Update(delta: float):
@@ -23,3 +24,4 @@ func Physics_Update(delta: float):
 
 func Exit():
 	chum.anim_player.speed_scale = 1.0
+	chum.hitbox.disable()

@@ -357,7 +357,7 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/rotation = Quaternion(0, 0.992772, 0, 0.120018)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.002"
 bones/1/parent = 0
@@ -403,6 +403,7 @@ skin = SubResource("Skin_nte7n")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.7, -0.2)
 
 [node name="Bone" type="BoneAttachment3D" parent="body/Armature/Skeleton3D"]
+transform = Transform3D(-0.971191, 0, 0.238301, 0, 1, 0, -0.238301, 0, -0.971191, 0, 0, 0)
 bone_name = "Bone"
 bone_idx = 0
 

@@ -3,7 +3,7 @@ class_name Hitbox
 
 @onready var attack_info: Dictionary
 @export var damage: int = 0 : set = set_damage, get = get_damage
-
+@onready var collision: CollisionShape3D = $CollisionShape3D
 @onready var draws_agro_on_attack = owner.draws_agro_on_attack
 
 func _ready() -> void:
@@ -30,7 +30,12 @@ func set_as_friendly():
 func set_as_neutral():
 	set_collision_layer_value(9, false)
 	set_collision_layer_value(10, false)
-	
+
+func enable() -> void:
+	collision.disabled = false
+
+func disaable() -> void:
+	collision.disabled = true
 
 func set_damage(value: int):
 	damage = value
