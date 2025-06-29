@@ -29,6 +29,8 @@ func _ready() -> void:
 			"destination_world": 2}, #Fan
 		10: {"object": preload("res://scenes/entities/chums/chum10.tscn"),
 			"destination_world": 2}, #Floaty
+		11: {"object": preload("res://scenes/entities/chums/chum11.tscn"),
+			"destination_world": 2}, #Melly
 	}
 
 	chums_values = {
@@ -41,6 +43,7 @@ func _ready() -> void:
 			6: 1.5,
 			7: 0.5,
 			8: 2.0,
+			11: 0.0,
 		},
 		2: {
 			4: 0.5,

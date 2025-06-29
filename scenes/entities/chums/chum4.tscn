@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dmof7v6wjfjl8" path="res://scripts/entities/chums/chum4/chum4_active.gd" id="6_2dogs"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="6_tlx3u"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="7_jbpsa"]
-[ext_resource type="Script" uid="uid://chipki7womifx" path="res://scripts/entities/chums/chum4/chum4_idle.gd" id="7_jjkdq"]
+[ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="7_jjkdq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlf6f"]
 resource_name = "palette"
@@ -1054,7 +1054,7 @@ bones/7/name = "LegFront.L"
 bones/7/parent = 0
 bones/7/rest = Transform3D(-0.70994, 0.57735, -0.403302, 0.00570023, 0.57735, 0.816477, 0.704239, 0.57735, -0.413175, 0.2, 0.1, 0.2)
 bones/7/enabled = true
-bones/7/position = Vector3(0.2, 0.1, 0.2)
+bones/7/position = Vector3(0.19934, 0.124595, 0.199136)
 bones/7/rotation = Quaternion(0.177401, 0.821655, 0.424092, -0.336985)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "FootFront.L"
@@ -1068,7 +1068,7 @@ bones/9/name = "LegBack.R"
 bones/9/parent = 0
 bones/9/rest = Transform3D(0.707107, -0.57735, 0.408248, -1.19209e-07, 0.57735, 0.816497, -0.707107, -0.57735, 0.408248, -0.2, 0.1, -0.2)
 bones/9/enabled = true
-bones/9/position = Vector3(-0.2, 0.1, -0.2)
+bones/9/position = Vector3(-0.199242, 0.1246, -0.199242)
 bones/9/rotation = Quaternion(-0.424708, 0.339851, 0.17592, 0.820473)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "FootBack.R"
@@ -1098,7 +1098,7 @@ mesh = SubResource("ArrayMesh_jfkxr")
 skin = SubResource("Skin_63msc")
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(-1, -1.03029e-13, -8.74228e-08, -8.74228e-08, 1.51992e-06, 1, 3.19744e-14, 1, -1.46031e-06, 0, 1.9, -0.500001)
+transform = Transform3D(-1, -9.59233e-14, -8.74228e-08, -8.74228e-08, 1.54972e-06, 1, 3.55271e-14, 1, -1.49012e-06, 0, 1.9, -0.500001)
 bone_name = "Tail3"
 bone_idx = 4
 

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="6_rew02"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="7_1i77b"]
 [ext_resource type="Script" uid="uid://bji8bwk6d8g2q" path="res://scripts/entities/chums/chum9/chum9_active.gd" id="8_4cr8o"]
-[ext_resource type="Script" uid="uid://byxccsbm166d2" path="res://scripts/entities/chums/chum9/chum9_idle.gd" id="9_4cr8o"]
+[ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="9_4cr8o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cr8o"]
 resource_name = "chum_9_Material"
@@ -277,6 +277,57 @@ tracks/8/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_tbrl0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D2:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D3:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D4:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_csfc1"]
 resource_name = "Sleep"
 length = 0.0416667
@@ -355,57 +406,6 @@ tracks/4/path = NodePath("Armature/Skeleton3D:Bone.005")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = PackedFloat32Array(0, 1, 0, -2.38419e-07, 0, 1, 0.0333333, 1, 0.00183607, -2.38418e-07, -4.37753e-10, 0.999998, 0.0666667, 1, 0.0063157, -2.38414e-07, -1.50578e-09, 0.99998, 0.1, 1, 0.0133399, -2.38397e-07, -3.18049e-09, 0.999911, 0.133333, 1, 0.0228151, -2.38357e-07, -5.43954e-09, 0.99974, 0.166667, 1, 0.0346521, -2.38275e-07, -8.2617e-09, 0.999399, 0.2, 1, 0.049474, -2.38127e-07, -1.17955e-08, 0.998775, 0.233333, 1, 0.0664077, -2.37892e-07, -1.58328e-08, 0.997793, 0.266667, 1, 0.0853608, -2.37548e-07, -2.03516e-08, 0.99635, 0.3, 1, 0.106233, -2.37069e-07, -2.53278e-08, 0.994341, 0.333333, 1, 0.128914, -2.36429e-07, -3.07354e-08, 0.991656, 0.366667, 1, 0.153794, -2.35582e-07, -3.66673e-08, 0.988103, 0.4, 1, 0.180099, -2.3452e-07, -4.29389e-08, 0.983649, 0.433333, 1, 0.207658, -2.33221e-07, -4.95096e-08, 0.978202, 0.466667, 1, 0.236289, -2.31667e-07, -5.63357e-08, 0.971683, 0.5, 1, 0.265797, -2.29842e-07, -6.33709e-08, 0.964029, 0.533333, 1, 0.296162, -2.27723e-07, -7.06106e-08, 0.955138, 0.566667, 1, 0.326792, -2.25329e-07, -7.79132e-08, 0.945096, 0.666667, 1, 0.417965, -2.16595e-07, -9.96505e-08, 0.908463, 0.7, 1, 0.447203, -2.13249e-07, -1.06621e-07, 0.894433, 0.733333, 1, 0.47545, -2.09747e-07, -1.13356e-07, 0.879743, 0.766667, 1, 0.502544, -2.06125e-07, -1.19816e-07, 0.864552, 0.8, 1, 0.528345, -2.02424e-07, -1.25967e-07, 0.84903, 0.833333, 1, 0.552734, -1.98688e-07, -1.31782e-07, 0.833358, 0.866667, 1, 0.575191, -1.95031e-07, -1.37136e-07, 0.818019, 0.9, 1, 0.595981, -1.9145e-07, -1.42093e-07, 0.802999, 0.933333, 1, 0.615069, -1.87987e-07, -1.46644e-07, 0.788474, 0.966667, 1, 0.632432, -1.84683e-07, -1.50784e-07, 0.774616, 1, 1, 0.64806, -1.81577e-07, -1.54509e-07, 0.76159, 1.03333, 1, 0.661416, -1.78818e-07, -1.57694e-07, 0.750019, 1.06667, 1, 0.672994, -1.76346e-07, -1.60454e-07, 0.739648, 1.1, 1, 0.6828, -1.7419e-07, -1.62792e-07, 0.730605, 1.13333, 1, 0.690834, -1.7238e-07, -1.64708e-07, 0.723013, 1.16667, 1, 0.69709, -1.70942e-07, -1.66199e-07, 0.716984, 1.2, 1, 0.700923, -1.70049e-07, -1.67113e-07, 0.713237, 1.23333, 1, 0.702859, -1.69594e-07, -1.67575e-07, 0.71133, 1.25, 1, 0.703511, -1.6944e-07, -1.6773e-07, 0.710684)
-
-[sub_resource type="Animation" id="Animation_tbrl0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D2:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D3:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Armature/Skeleton3D/Bone/Hitbox/CollisionShape3D4:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tbrl0"]
 _data = {

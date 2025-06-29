@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="5_oteuo"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="6_8hikk"]
 [ext_resource type="Script" uid="uid://d3phwt88c834q" path="res://scripts/entities/chums/chum7/chum7_active.gd" id="7_d3e8j"]
-[ext_resource type="Script" uid="uid://b0fysivgskcy4" path="res://scripts/entities/chums/chum7/chum7_idle.gd" id="9_l614u"]
+[ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="9_l614u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5jnu"]
 resource_name = "palette.001"

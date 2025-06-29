@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="5_tbdan"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="6_bnd3d"]
 [ext_resource type="PackedScene" uid="uid://dogp5icuw6k86" path="res://scenes/world/proj_rock.tscn" id="7_p1khf"]
-[ext_resource type="Script" uid="uid://bikfi02jjgig6" path="res://scripts/entities/chums/chum5/chum5_idle.gd" id="8_vc5g2"]
+[ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="9_mtxb2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcloq"]
 resource_name = "chum_5_detach_Material.001"
@@ -900,7 +900,7 @@ script = ExtResource("5_bnd3d")
 [node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active"]
 
 [node name="Idle" type="Node" parent="ChumSpecificStates"]
-script = ExtResource("8_vc5g2")
+script = ExtResource("9_mtxb2")
 
 [node name="Particles" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.350146, 0)

@@ -29,6 +29,7 @@ var follow_distance := 10.0
 @onready var black_overlay := preload("res://materials/outline_black.tres")
 
 var current_group := "Chums_Neutral"
+var previous_group := "Chums_Neutral"
 
 @onready var particle_zone := $Particles
 @onready var hurt_particles_enemy := load("res://particles/damage_enemy.tscn")
@@ -87,15 +88,6 @@ func _ready() -> void:
 	move_speed = self.base_move_speed
 	max_move_speed = move_speed * 5.0
 
-	#And make sure stat displays only what the chum can do:
-	if not self.has_attack_speed:
-		quality["attack_speed"] = 0
-	if not self.has_attack_damage:
-		quality["attack_damage"] = 0
-	if not self.has_move_speed:
-		quality["move_speed"] = 0
-	#Unsure about has_health, maybe come back to it
-	
 	nav_agent.target_desired_distance = self.attack_distance
 	nav_agent.avoidance_enabled = true
 	health_node.immune = false
@@ -103,6 +95,14 @@ func _ready() -> void:
 	if not stats_set:
 		set_new_stats()
 		start_health = int(self.base_health * (1.0 + float(quality["health"]) / 10.0))
+		#And make sure stat displays only what the chum can do:
+		if not self.has_attack_speed:
+			quality["attack_speed"] = 0
+		if not self.has_attack_damage:
+			quality["attack_damage"] = 0
+		if not self.has_move_speed:
+			quality["move_speed"] = 0
+		#Unsure about has_health, maybe come back to it
 	set_stats_from_quality()
 	health_node.set_health(start_health)
 
@@ -236,13 +236,14 @@ func get_agro_change_target():
 	return self
 
 func put_to_sleep_temp(duration: float) -> void:
-	temp_sleep_time = duration
+	temp_sleep_time += duration
 	set_state("SleepTemp")
 	
 func make_enemy():
 	remove_from_group("Chums_Friend")
 	remove_from_group("Chums_Neutral")
 	add_to_group("Chums_Enemy")
+	previous_group = current_group
 	current_group = "Chums_Enemy"
 	body_mesh.set_material_overlay(red_overlay)
 	if hitbox:
@@ -265,6 +266,7 @@ func make_friendly(to_heal = true):
 	remove_from_group("Chums_Enemy")
 	remove_from_group("Chums_Neutral")
 	add_to_group("Chums_Friend")
+	previous_group = current_group
 	current_group = "Chums_Friend"
 	body_mesh.set_material_overlay(blue_overlay)
 	if hitbox:
@@ -291,6 +293,7 @@ func make_neutral():
 	remove_from_group("Chums_Enemy")
 	remove_from_group("Chums_Friend")
 	add_to_group("Chums_Neutral")
+	previous_group = current_group
 	current_group = "Chums_Neutral"
 	body_mesh.set_material_overlay(black_overlay)
 	if hitbox:

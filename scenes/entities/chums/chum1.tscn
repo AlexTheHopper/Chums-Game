@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="6_p7nbp"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="7_42xiv"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="7_p1xu3"]
-[ext_resource type="Script" uid="uid://dfw138m8snfur" path="res://scripts/entities/chums/chum1/chum1_idle.gd" id="7_sr3ur"]
+[ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="7_sr3ur"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="10_nmqh7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03uqa"]

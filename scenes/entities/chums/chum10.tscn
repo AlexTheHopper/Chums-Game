@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="6_muyps"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="7_e2pr8"]
 [ext_resource type="Script" uid="uid://dn6kue8m5cyl7" path="res://scripts/entities/chums/chum10/chum10_active.gd" id="7_gf8ah"]
-[ext_resource type="Script" uid="uid://djqr3pc2134md" path="res://scripts/entities/chums/chum10/chum10_idle.gd" id="8_25tx6"]
+[ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="10_25tx6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vot6o"]
 resource_name = "chum_10_Material"
@@ -296,6 +296,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0.5, 0.5, 0.5), Vector3(0.6, 0.6, 0.6), Vector3(0.5, 0.5, 0.5)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/Chum10:mesh:surface_0/material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.90978, 0, 0.120645, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_l614u"]
 length = 0.001
@@ -310,6 +322,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.5, 0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body/Chum10:mesh:surface_0/material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1bywp"]
@@ -389,7 +413,7 @@ script = ExtResource("7_gf8ah")
 [node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active"]
 
 [node name="Idle" type="Node" parent="ChumSpecificStates"]
-script = ExtResource("8_25tx6")
+script = ExtResource("10_25tx6")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
