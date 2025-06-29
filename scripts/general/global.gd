@@ -357,7 +357,6 @@ func transition_to_boss(source_world_n: int, destination_world_n: int, length = 
 	var new_room = room_lookup[0][new_room_location[0]] #Go to boss room of the world you came from.
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
-	
 
 func transition_to_world(destination_world_n: int, length = 1):
 	TransitionScreen.transition(length)
@@ -390,7 +389,6 @@ func transition_to_world(destination_world_n: int, length = 1):
 	var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
-
 
 func return_to_menu(delete = false):
 	TransitionScreen.transition(3)

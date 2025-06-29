@@ -147,7 +147,7 @@ func _physics_process(delta: float) -> void:
 		player_goal_horz = $Camera_Controller.rotation.y - input_dir.angle() - (PI / 2)
 		player_goal_horz = fmod(player_goal_horz + PI, 2 * PI)
 		$Armature.rotation.y = lerp_angle($Armature.rotation.y, player_goal_horz, 0.35 * attacking_mult)
-		$Armature.rotation.x = lerp_angle($Armature.rotation.x, 0.2, 0.05)
+		$Armature.rotation.x = lerp_angle($Armature.rotation.x, 0.15, 0.05)
 	else:
 		$Armature.rotation.x = lerp_angle($Armature.rotation.x, 0.0, 0.1)
 
@@ -168,6 +168,7 @@ func _physics_process(delta: float) -> void:
 			
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("print_fps") and Global.dev_mode:
+		get_tree().call_group("Chums_Enemy", "put_to_sleep_temp", 5.0)
 		print("FPS: " + str(Engine.get_frames_per_second()))
 		print('player health: ' + str(health_node.health))
 		print('player max health: ' + str(health_node.max_health))

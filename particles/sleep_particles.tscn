@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://2yafynwddodb"]
+[gd_scene load_steps=6 format=3 uid="uid://2yafynwddodb"]
+
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_304qr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0qij"]
 transparency = 1
@@ -18,6 +20,7 @@ offsets = PackedFloat32Array(0.0516717, 0.765957, 1)
 colors = PackedColorArray(0.190762, 0.190762, 0.190762, 1, 0.336608, 0.336608, 0.336608, 1, 1, 1, 1, 0)
 
 [node name="sleep_particles" type="Node3D"]
+script = ExtResource("1_304qr")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 amount = 25
@@ -36,3 +39,5 @@ angular_velocity_max = 20.0
 angle_max = 180.0
 scale_amount_curve = SubResource("Curve_d0yde")
 color_ramp = SubResource("Gradient_iwkoc")
+
+[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]

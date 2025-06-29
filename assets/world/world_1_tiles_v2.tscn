@@ -23,7 +23,7 @@
 resource_name = "full_no_edge_Material"
 albedo_texture = ExtResource("4_t8nku")
 emission_texture = ExtResource("4_t8nku")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5dulq"]
 _surfaces = [{
@@ -64,7 +64,7 @@ size = Vector3(2, 2, 2)
 resource_name = "full_edge_Material"
 albedo_texture = ExtResource("4_q6i6l")
 emission_texture = ExtResource("4_q6i6l")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hi5cl"]
 _surfaces = [{
@@ -105,7 +105,7 @@ size = Vector3(2, 2, 1.8)
 resource_name = "full_corner_Material"
 albedo_texture = ExtResource("1_fso51")
 emission_texture = ExtResource("1_fso51")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1bquc"]
 _surfaces = [{
@@ -146,7 +146,7 @@ size = Vector3(2, 2, 2)
 resource_name = "full_turn_Material"
 albedo_texture = ExtResource("4_qhget")
 emission_texture = ExtResource("4_qhget")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_oic26"]
 _surfaces = [{
@@ -187,7 +187,7 @@ size = Vector3(1.8, 2, 1.8)
 resource_name = "full_grass_no_edge_Material"
 albedo_texture = ExtResource("6_mkjyc")
 emission_texture = ExtResource("6_mkjyc")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vic4t"]
 _surfaces = [{
@@ -228,7 +228,7 @@ size = Vector3(2, 2, 2)
 resource_name = "full_grass_edge_Material"
 albedo_texture = ExtResource("7_tpu28")
 emission_texture = ExtResource("7_tpu28")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mvcim"]
 _surfaces = [{
@@ -269,7 +269,7 @@ size = Vector3(2, 2, 1.8)
 resource_name = "full_grass_corner_Material.002"
 albedo_texture = ExtResource("7_gtujs")
 emission_texture = ExtResource("7_gtujs")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tpu28"]
 _surfaces = [{
@@ -310,7 +310,7 @@ size = Vector3(2, 2, 2)
 resource_name = "full_grass_turn_Material"
 albedo_texture = ExtResource("8_gtujs")
 emission_texture = ExtResource("8_gtujs")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_26txf"]
 _surfaces = [{
@@ -351,7 +351,7 @@ size = Vector3(1.8, 2, 1.8)
 resource_name = "half_grass_no_edge_Material"
 albedo_texture = ExtResource("9_gtujs")
 emission_texture = ExtResource("9_gtujs")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ykqmb"]
 _surfaces = [{
@@ -392,7 +392,7 @@ size = Vector3(2, 1, 2)
 resource_name = "half_grass_edge_Material"
 albedo_texture = ExtResource("10_mkjyc")
 emission_texture = ExtResource("10_mkjyc")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_x2gbj"]
 _surfaces = [{
@@ -433,7 +433,7 @@ size = Vector3(2, 1, 1.8)
 resource_name = "half_grass_corner_Material"
 albedo_texture = ExtResource("11_tpu28")
 emission_texture = ExtResource("11_tpu28")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_t5qe7"]
 _surfaces = [{
@@ -474,7 +474,7 @@ size = Vector3(2, 1, 2)
 resource_name = "half_grass_turn_Material"
 albedo_texture = ExtResource("12_nywx0")
 emission_texture = ExtResource("12_nywx0")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_j2qoy"]
 _surfaces = [{
@@ -515,7 +515,7 @@ size = Vector3(1.8, 1, 1.8)
 resource_name = "half_grass_middle_Material"
 albedo_texture = ExtResource("13_vic4t")
 emission_texture = ExtResource("13_vic4t")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_l3ybf"]
 _surfaces = [{
@@ -556,7 +556,7 @@ size = Vector3(2, 1, 1.6)
 resource_name = "half_grass_end_Material"
 albedo_texture = ExtResource("14_lgfww")
 emission_texture = ExtResource("14_lgfww")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_o2hj4"]
 _surfaces = [{
@@ -597,7 +597,7 @@ size = Vector3(1.6, 1, 1.8)
 resource_name = "half_grass_ramp_bot_Material.001"
 albedo_texture = ExtResource("15_gtujs")
 emission_texture = ExtResource("15_gtujs")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_da2ru"]
 _surfaces = [{
@@ -638,7 +638,7 @@ points = PackedVector3Array(-1, 0.599941, -1, -1, 0.499902, -0.800068, -1, 0.899
 resource_name = "half_grass_ramp_bot_left_Material.001"
 albedo_texture = ExtResource("16_mkjyc")
 emission_texture = ExtResource("16_mkjyc")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pjyvx"]
 _surfaces = [{
@@ -679,7 +679,7 @@ points = PackedVector3Array(-1, 0.599941, -1, -1, 0.499902, -0.800068, -1, 0.899
 resource_name = "half_grass_ramp_bot_mid_Material"
 albedo_texture = ExtResource("17_tpu28")
 emission_texture = ExtResource("17_tpu28")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0hhi7"]
 _surfaces = [{
@@ -720,7 +720,7 @@ points = PackedVector3Array(-1, 0, -1, -1, 1, -1, 1, 0, -1, -1, 0, 0.899814, -1,
 resource_name = "half_grass_ramp_bot_right_Material"
 albedo_texture = ExtResource("18_nywx0")
 emission_texture = ExtResource("18_nywx0")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8ndp4"]
 _surfaces = [{

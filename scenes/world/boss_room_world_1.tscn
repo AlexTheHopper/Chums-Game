@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dk3wsun7t332"]
 
 [ext_resource type="Script" uid="uid://c6qlwabjvx62t" path="res://scripts/world/boss_room.gd" id="1_nk6ji"]
-[ext_resource type="MeshLibrary" uid="uid://cov6injr4x604" path="res://assets/world/world_1_mesh_lib_v4.tres" id="2_j4cx8"]
+[ext_resource type="MeshLibrary" uid="uid://butb4o7o4gehr" path="res://assets/world/world_1_mesh_lib_v5.tres" id="2_j4cx8"]
 [ext_resource type="PackedScene" uid="uid://hhmbawbvav0e" path="res://scenes/world/room_changer_from_boss.tscn" id="3_3x5yt"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_h3fyi"]
 [ext_resource type="PackedScene" uid="uid://ce86dk61xylkx" path="res://scenes/entities/room_activator.tscn" id="5_g8v8b"]

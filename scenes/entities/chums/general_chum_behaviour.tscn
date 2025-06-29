@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://diu3gcoi63283"]
+[gd_scene load_steps=14 format=4 uid="uid://diu3gcoi63283"]
 
 [ext_resource type="PackedScene" uid="uid://c1saa1y5s8j4y" path="res://scenes/entities/health_bar.tscn" id="1_lawoc"]
 [ext_resource type="Script" uid="uid://gwmvx18rear3" path="res://scripts/entities/chums/general_chum_behaviour.gd" id="1_oye00"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bf0vq7mtcptmd" path="res://scripts/entities/chums/chum_carry.gd" id="8_yg2b4"]
 [ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="9_jk122"]
 [ext_resource type="Script" uid="uid://c2jyvpy2ven06" path="res://scripts/entities/chums/chum_follow.gd" id="10_57lte"]
+[ext_resource type="Script" uid="uid://cmy2br801q42f" path="res://scripts/entities/chums/chum_sleeptemp.gd" id="11_jk122"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jixn2"]
 next_pass = ExtResource("9_jk122")
@@ -69,5 +70,8 @@ skeleton = NodePath("../..")
 
 [node name="Follow" type="Node" parent="State_Machine"]
 script = ExtResource("10_57lte")
+
+[node name="SleepTemp" type="Node" parent="State_Machine"]
+script = ExtResource("11_jk122")
 
 [connection signal="timeout" from="State_Machine/Wake/WakeTimer" to="State_Machine/Wake" method="_on_wake_timer_timeout"]

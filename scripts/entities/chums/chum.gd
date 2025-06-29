@@ -47,6 +47,7 @@ var move_speed: float
 var attack_speed: float
 var start_health: int
 var max_move_speed: float
+var temp_sleep_time: float
 
 @onready var has_quality_popup := false
 
@@ -159,7 +160,7 @@ func create_sleep_particles():
 		
 func remove_sleep_particles():
 	for child in sleep_zone.get_children():
-		child.queue_free()
+		child.stop_emitting()
 		
 func enable_interaction():
 	interaction_area.shape.disabled = false
@@ -233,6 +234,10 @@ func has_damage() -> bool:
 	
 func get_agro_change_target():
 	return self
+
+func put_to_sleep_temp(duration: float) -> void:
+	temp_sleep_time = duration
+	set_state("SleepTemp")
 	
 func make_enemy():
 	remove_from_group("Chums_Friend")

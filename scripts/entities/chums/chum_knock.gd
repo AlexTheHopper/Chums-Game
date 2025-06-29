@@ -1,11 +1,11 @@
 extends State
-class_name Chum1_Knock
+class_name Chum_Knock
 @onready var state_name := "Knock"
 
 @onready var chum: CharacterBody3D
 @onready var player := get_tree().get_first_node_in_group("Player")
 
-func Enter():
+func Enter() -> void:
 	if chum.current_group == "Chums_Friend":
 		PlayerStats.call_deferred("friend_chums_changed")
 	chum.make_neutral()
@@ -20,7 +20,7 @@ func Enter():
 	chum.anim_player.play("Knock")
 	
 
-func Physics_Update(delta: float):
+func Physics_Update(delta: float) -> void:
 	chum.velocity  = lerp(chum.velocity, Vector3(), 0.1)
 	
 	if Input.is_action_just_pressed("interract") and len(ChumsManager.close_chums) > 0:
@@ -32,7 +32,7 @@ func Physics_Update(delta: float):
 	
 	chum.move_and_slide()
 	
-func Exit():
+func Exit() -> void:
 	#Reallow collisions with player, chums
 	chum.set_collision_layer_value(4, true)
 	

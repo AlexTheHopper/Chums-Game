@@ -1,5 +1,5 @@
 extends State
-class_name Chum1_Carry
+class_name Chum_Carry
 @onready var state_name := "Carry"
 
 @onready var chum: CharacterBody3D
@@ -13,14 +13,14 @@ var steps := 50
 var time_step := 0.025
 var target_info = false
 
-func Enter():
+func Enter() -> void:
 	if not chum.is_in_group("Chums_Friend"):
 		chum.make_friendly(true)
 	chum.anim_player.play("Idle")
 	
 	target_sprite.visible = true
 
-func Physics_Update(_delta: float):
+func Physics_Update(_delta: float) -> void:
 	chum.global_position = lerp(chum.global_position, player.global_position + Vector3(0, 1.5, 0), 0.8)
 	chum.rotation.y = lerp_angle(chum.rotation.y, player.player_goal_horz, 0.5)
 	throw_vel_i = (Vector3(0, throw_hor, 0) + Vector3(0, 0, throw_vert).rotated(Vector3.UP, player.get_node("Armature").rotation.y))
@@ -66,6 +66,6 @@ func get_target_info(pos, vel):
 		
 	return false
 	
-func Exit():
+func Exit() -> void:
 	chum.set_new_target()
 	target_sprite.visible = false
