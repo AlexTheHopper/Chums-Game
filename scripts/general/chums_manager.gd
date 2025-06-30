@@ -31,6 +31,8 @@ func _ready() -> void:
 			"destination_world": 2}, #Floaty
 		11: {"object": preload("res://scenes/entities/chums/chum11.tscn"),
 			"destination_world": 2}, #Melly
+		12: {"object": preload("res://scenes/entities/chums/chum12.tscn"),
+			"destination_world": 2}, #Ram
 	}
 
 	chums_values = {
@@ -43,13 +45,14 @@ func _ready() -> void:
 			6: 1.5,
 			7: 0.5,
 			8: 2.0,
-			11: 0.0,
 		},
 		2: {
 			4: 0.5,
 			8: 2.0,
 			9: 2.0,
-			10: 1.5
+			10: 1.5,
+			11: 1.0,
+			12: 1.0,
 		},
 	}
 	
@@ -59,7 +62,7 @@ func _ready() -> void:
 		Vector2i(1, 1): {3: 5, 5: 3},
 		Vector2i(1, 2): {3: 5, 4: 3},
 		Vector2i(2, 1): {10: 6, 5: 3},
-		Vector2i(2, 2): {10: 6, 4: 3},
+		Vector2i(2, 2): {10: 3, 4: 3, 12: 3},
 	}
 
 	if Global.dev_mode:
