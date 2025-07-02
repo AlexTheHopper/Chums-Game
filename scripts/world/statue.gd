@@ -1,6 +1,7 @@
 extends Node3D
 
 var chum_id: int
+var chum_ids := []
 var active := true
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var mesh_node: Node3D = $MeshNode
@@ -17,6 +18,11 @@ func _ready() -> void:
 		animation_player.speed_scale = 10.0
 		animation_player.play("activate")
 		open_door()
+	
+	#To account for chums with the same shape mesh
+	chum_ids.append(chum_id)
+	if chum_id in [6, 7]:
+		chum_ids += [6, 7]
 
 func _on_fly_zone_body_entered(body: Node3D) -> void:
 	if body is Chum:
@@ -29,7 +35,7 @@ func _on_fly_zone_body_entered(body: Node3D) -> void:
 
 func _on_detection_zone_body_entered(body: Node3D) -> void:
 	if body is Chum and active:
-		if body.chum_str == "chum%s" % [chum_id]:
+		if body.chum_id in chum_ids:
 			Global.world_map[Global.room_location]["statue_activated"] = true
 			animation_player.play("activate")
 			open_door()

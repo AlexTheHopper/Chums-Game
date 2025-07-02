@@ -38,11 +38,12 @@ func on_something_death():
 		chum.anim_player.play("Attack")
 		
 func emit_object():
-	for n in to_emit:
-		var obj = object.instantiate()
-		Global.current_room_node.get_node("Currencies").add_child(obj)
-		obj.global_position = chum.sleep_zone.global_position
-		obj.apply_impulse(Vector3(0, 3, 0))
+	for n in to_emit: #Amount of bracelets to release
+		for strength in max(floor(chum.hitbox.damage / 10.0), 1): #releases more if it is powered up, needs to be multiples of 10 so rounding doesnt stop it
+			var obj = object.instantiate()
+			Global.current_room_node.get_node("Currencies").add_child(obj)
+			obj.global_position = chum.sleep_zone.global_position
+			obj.apply_impulse(Vector3(0, 3, 0))
 	to_emit = 0
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

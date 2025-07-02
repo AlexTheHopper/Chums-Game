@@ -1,6 +1,8 @@
 extends Node3D
 
 @onready var item_tscn := load("res://scenes/entities/upgrade_item.tscn")
+@onready var items: Node3D = $Items
+
 var item_num := -1
 var items_set := false
 var active := false
@@ -22,20 +24,20 @@ func _ready() -> void:
 		
 		var item_inst = item_tscn.instantiate()
 		item_inst.position = Vector3(x, 2, z)
-		$Items.add_child(item_inst)
+		items.add_child(item_inst)
 		
 
 func _physics_process(delta: float) -> void:
-	$Items.rotation.y += delta / 2
+	items.rotation.y += delta / 2
 
 func _on_active_zone_body_entered(body: Node3D) -> void:
 	#Remove a visual heart and heal body if body has damage:
-	if len($Items.get_children()) > 0 and active:
-		$Items.get_children().pick_random().remove()
+	if len(items.get_children()) > 0 and active:
+		items.get_children().pick_random().remove()
 		Global.world_map[Global.room_location]["item_count"] -= 1
 		item_num -= 1
 		active = false
-		$Timer.start()
+		items.start()
 		
 		if body is Player:
 			body.increase_stats(10) #Increase base damage by x and extra damage by int(x/2). Increase health by int(x/2)

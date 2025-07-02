@@ -1,5 +1,6 @@
 extends Chum
 class_name Chum12
+var chum_id := 12
 var chum_str := "chum12"
 var chum_name := "Ram"
 

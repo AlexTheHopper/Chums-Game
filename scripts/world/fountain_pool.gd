@@ -1,6 +1,8 @@
 extends Node3D
 
 @onready var heart_tscn := load("res://scenes/entities/heart_item.tscn")
+@onready var hearts: Node3D = $Hearts
+
 var heart_num := -1
 var hearts_set := false
 var active := false
@@ -22,21 +24,21 @@ func _ready() -> void:
 		
 		var heart_inst = heart_tscn.instantiate()
 		heart_inst.position = Vector3(x, 2, z)
-		$Hearts.add_child(heart_inst)
+		hearts.add_child(heart_inst)
 		
 
 func _physics_process(delta: float) -> void:
-	$Hearts.rotation.y += delta / 2
+	hearts.rotation.y += delta / 2
 
 func _on_heal_zone_body_entered(body: Node3D) -> void:
 	#Remove a visual heart and heal body if body has damage:
-	if len($Hearts.get_children()) > 0 and body.has_damage() and active:
-		$Hearts.get_children().pick_random().remove()
+	if len(hearts.get_children()) > 0 and body.has_damage() and active:
+		hearts.get_children().pick_random().remove()
 		Global.world_map[Global.room_location]["item_count"] -= 1
 		heart_num -= 1
 		body.health_node.health += HEART_HEAL
 		active = false
-		$Timer.start()
+		hearts.start()
 
 
 func _on_fly_zone_body_entered(body: Node3D) -> void:
