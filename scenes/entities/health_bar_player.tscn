@@ -20,6 +20,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_udgud")
 
+[node name="Damaged" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.133
+anchor_right = 0.832
+anchor_bottom = 0.867
+offset_top = 0.0100002
+offset_right = 25.0
+offset_bottom = -0.0100002
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.718381, 0.718381, 0.718381, 1)
+
 [node name="Health" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -59,3 +73,8 @@ anchors_preset = -1
 anchor_right = 0.016
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
+
+[node name="DamagedTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]

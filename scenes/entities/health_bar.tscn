@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1saa1y5s8j4y"]
+[gd_scene load_steps=9 format=3 uid="uid://c1saa1y5s8j4y"]
 
 [ext_resource type="Script" uid="uid://mfqmun4mwhwu" path="res://scripts/entities/health_bar.gd" id="1_22ocg"]
 [ext_resource type="PackedScene" uid="uid://cka0qlipgy7q8" path="res://scenes/entities/health_bar_notch.tscn" id="2_1opjk"]
@@ -23,10 +23,20 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_hwuqx")
 size = Vector3(1.01, 0.11, 0.11)
 
-[node name="HealthBar" type="Node3D" node_paths=PackedStringArray("current_health_bar", "max_health_bar")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs5lt"]
+resource_local_to_scene = true
+render_priority = -1
+
+[sub_resource type="BoxMesh" id="BoxMesh_s6tem"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_fs5lt")
+size = Vector3(0.99, 0.08, 0.08)
+
+[node name="HealthBar" type="Node3D" node_paths=PackedStringArray("current_health_bar", "max_health_bar", "damaged_bar")]
 script = ExtResource("1_22ocg")
 current_health_bar = NodePath("Health")
 max_health_bar = NodePath("Frame")
+damaged_bar = NodePath("Damaged")
 notch_scene = ExtResource("2_1opjk")
 
 [node name="Health" type="MeshInstance3D" parent="."]
@@ -34,3 +44,11 @@ mesh = SubResource("BoxMesh_yhmx4")
 
 [node name="Frame" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_h7ggc")
+
+[node name="Damaged" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_s6tem")
+
+[node name="DamagedTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]

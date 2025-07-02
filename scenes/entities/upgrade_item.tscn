@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://76mk268mlnx4"]
 
-[ext_resource type="Script" uid="uid://cdsl78l58v7xi" path="res://scripts/entities/heart.gd" id="1_fcc3g"]
+[ext_resource type="Script" uid="uid://ch63eacastbdu" path="res://scripts/entities/upgrade_item.gd" id="1_fcc3g"]
 [ext_resource type="ArrayMesh" uid="uid://dtcar2s2q6eey" path="res://assets/entities/upgrade.vox" id="2_fcc3g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w8uya"]
@@ -90,7 +90,7 @@ _data = {
 &"remove": SubResource("Animation_pymxx")
 }
 
-[node name="Heart" type="CharacterBody3D"]
+[node name="Upgrade" type="CharacterBody3D"]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_fcc3g")

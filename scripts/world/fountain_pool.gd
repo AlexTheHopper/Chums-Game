@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var heart_tscn := load("res://scenes/entities/heart.tscn")
+@onready var heart_tscn := load("res://scenes/entities/heart_item.tscn")
 var heart_num := -1
 var hearts_set := false
 var active := false

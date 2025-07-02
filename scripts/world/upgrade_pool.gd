@@ -38,7 +38,7 @@ func _on_active_zone_body_entered(body: Node3D) -> void:
 		$Timer.start()
 		
 		if body is Player:
-			body.increase_attack(10) #Increase base damage by x and extra damage by int(x/2)
+			body.increase_stats(10) #Increase base damage by x and extra damage by int(x/2). Increase health by int(x/2)
 		elif body is Chum:
 			body.increase_stats() #Increase all stats by 10% base per level
 

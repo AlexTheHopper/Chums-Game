@@ -54,7 +54,7 @@ var targeted_by := []
 var xform: Transform3D
 var chum_name := "Player"
 
-func _ready() -> void:	
+func _ready() -> void:
 	Global.game_begun = true
 	health_node.immune = false
 	health_node.set_max_health(100)
@@ -269,9 +269,11 @@ func has_damage() -> bool:
 func get_agro_change_target():
 	return self
 
-func increase_attack(amount: int) -> void:
+func increase_stats(amount: int) -> void:
 	base_damage += amount
 	max_extra_damage += int(amount / 2.0)
+	
+	health_node.max_health += int(amount / 2.0)
 
 func kill_player():
 	Global.return_to_menu(true)

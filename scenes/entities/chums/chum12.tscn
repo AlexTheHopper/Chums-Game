@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://be1ks06nvp6h4"]
+[gd_scene load_steps=27 format=4 uid="uid://be1ks06nvp6h4"]
 
 [ext_resource type="Script" uid="uid://5o16h4g10t1q" path="res://scripts/entities/chums/chum12/chum12.gd" id="1_brjwm"]
 [ext_resource type="Texture2D" uid="uid://6fg21ugja2pr" path="res://Blender_Assets/Chum_Exports/chum12_chum_12_detach_Color.png" id="3_qexya"]
@@ -102,10 +102,23 @@ tracks/5/path = NodePath("Armature/Skeleton3D:LegFront.R")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = PackedFloat32Array(0, 1, 0.653281, -0.653282, -0.270598, 0.270598, 0.0333333, 1, 0.653281, -0.653282, -0.270598, 0.270598, 0.0666667, 1, 0.651969, -0.654348, -0.272068, 0.26971, 0.1, 1, 0.648596, -0.657058, -0.275818, 0.267435, 0.133333, 1, 0.642856, -0.66157, -0.282116, 0.263576, 0.166667, 1, 0.634883, -0.667631, -0.290691, 0.258247, 0.2, 1, 0.624286, -0.675338, -0.301791, 0.251213, 0.233333, 1, 0.611909, -0.683862, -0.314352, 0.243068, 0.266667, 1, 0.597906, -0.692928, -0.328074, 0.233936, 0.3, 1, 0.582453, -0.702269, -0.342655, 0.223953, 0.333333, 1, 0.565755, -0.711632, -0.357794, 0.213272, 0.4, 1, 0.529934, -0.7294, -0.388306, 0.190694, 0.433333, 1, 0.511727, -0.737325, -0.402878, 0.179379, 0.466667, 1, 0.493784, -0.744465, -0.416674, 0.168323, 0.5, 1, 0.476471, -0.75076, -0.42948, 0.157742, 0.533333, 1, 0.460801, -0.755978, -0.440666, 0.148234, 0.566667, 1, 0.446827, -0.760264, -0.450331, 0.139808, 0.6, 1, 0.434917, -0.763654, -0.458345, 0.132665, 0.633333, 1, 0.425429, -0.766186, -0.464587, 0.126999, 0.666667, 1, 0.418709, -0.76789, -0.468933, 0.122999, 0.7, 1, 0.41633, -0.768477, -0.470457, 0.121585, 0.733333, 1, 0.445388, -0.76097, -0.453615, 0.129568, 0.766667, 1, 0.512674, -0.739118, -0.410883, 0.148476, 0.8, 1, 0.607716, -0.6958, -0.340392, 0.175147, 0.833333, 1, 0.706211, -0.630361, -0.250619, 0.202736, 0.866667, 1, 0.77514, -0.565764, -0.172475, 0.222084, 0.9, 1, 0.807751, -0.526742, -0.128578, 0.231406, 0.933333, 1, 0.815985, -0.515127, -0.115689, 0.235434, 0.966667, 1, 0.808755, -0.523431, -0.124172, 0.237734, 1, 1, 0.795469, -0.537974, -0.139231, 0.241718, 1.03333, 1, 0.776144, -0.55765, -0.160045, 0.247008, 1.06667, 1, 0.753684, -0.578602, -0.182819, 0.252503, 1.1, 1, 0.729392, -0.599266, -0.205974, 0.257766, 1.13333, 1, 0.704873, -0.618296, -0.227996, 0.262455, 1.16667, 1, 0.682007, -0.634586, -0.247457, 0.266331, 1.2, 1, 0.665464, -0.64558, -0.260952, 0.268866, 1.23333, 1, 0.656486, -0.651287, -0.268084, 0.270153, 1.25, 1, 0.653281, -0.653282, -0.270598, 0.270598)
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/Hitbox:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.786519, 0.945612, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.7, 0), Vector3(0, 1.7, 0), Vector3(0, 1.8, 0), Vector3(0, 1.7, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_5brcv"]
 resource_name = "Idle"
 length = 5.0
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -198,6 +211,7 @@ tracks/5/keys = PackedFloat32Array(0, 1, 0.653281, -0.653282, -0.270598, 0.27059
 [sub_resource type="Animation" id="Animation_v8jys"]
 resource_name = "Sleep"
 length = 5.0
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -289,6 +303,7 @@ tracks/5/keys = PackedFloat32Array(0, 1, 0.10887, -0.10887, -0.698675, 0.698675,
 
 [sub_resource type="Animation" id="Animation_mkm38"]
 resource_name = "Walk"
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -332,11 +347,27 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = PackedFloat32Array(0, 1, 0.653281, -0.653282, -0.270598, 0.270598, 0.5, 1, 0.653281, -0.653282, -0.270598, 0.270598, 0.533333, 1, 0.660629, -0.659842, -0.253356, 0.252958, 0.566667, 1, 0.673271, -0.671079, -0.220184, 0.218812, 0.6, 1, 0.685678, -0.682033, -0.181272, 0.178374, 0.633333, 1, 0.694386, -0.6898, -0.147379, 0.142418, 0.666667, 1, 0.69805, -0.693574, -0.129582, 0.122023, 0.7, 1, 0.673635, -0.717458, -0.138399, 0.110979, 0.733333, 1, 0.624425, -0.759573, -0.156066, 0.0937322, 0.766667, 1, 0.563294, -0.803148, -0.178177, 0.0768494, 0.8, 1, 0.506463, -0.835749, -0.201209, 0.0673384, 0.833333, 1, 0.472665, -0.849551, -0.222721, 0.0724313, 0.9, 1, 0.456515, -0.822186, -0.289522, 0.178272, 0.933333, 1, 0.500536, -0.782432, -0.291421, 0.228776, 0.966667, 1, 0.583114, -0.718001, -0.277343, 0.259874, 1, 1, 0.653281, -0.653282, -0.270598, 0.270598)
 
+[sub_resource type="Animation" id="Animation_brjwm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/Hitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.7, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uvf24"]
 _data = {
 &"Attack": SubResource("Animation_6wojn"),
 &"Idle": SubResource("Animation_5brcv"),
 &"Knock": SubResource("Animation_ccv4r"),
+&"RESET": SubResource("Animation_brjwm"),
 &"Sleep": SubResource("Animation_v8jys"),
 &"Wake": SubResource("Animation_1ukg2"),
 &"Walk": SubResource("Animation_mkm38")
@@ -431,36 +462,36 @@ bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 1.50996e-07, 1.50996e-07, 0, -1, 0, 1, 0, 0, 0.6, -0.9)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0.6, -0.705641)
-bones/0/rotation = Quaternion(0.724934, 5.35861e-08, 5.32808e-08, 0.688819)
+bones/0/position = Vector3(0, 0.6, -0.9)
+bones/0/rotation = Quaternion(0.707552, -0.00248063, 0.00212722, 0.706653)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "LegBack.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(-3.57628e-07, 0.707107, 0.707107, 1, 4.21467e-08, 4.63615e-07, 2.98023e-07, 0.707107, -0.707107, 0.3, 0.3, 0.3)
 bones/1/enabled = true
 bones/1/position = Vector3(0.3, 0.3, 0.3)
-bones/1/rotation = Quaternion(0.764342, 0.548218, 0.17103, 0.293235)
+bones/1/rotation = Quaternion(0.659407, 0.659259, 0.255222, 0.255778)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "LegFront.L"
 bones/2/parent = 0
 bones/2/rest = Transform3D(-3.57628e-07, 0.707107, 0.707107, 1, 4.21467e-08, 4.63615e-07, 2.98023e-07, 0.707107, -0.707107, 0.3, 1.3, 0.3)
 bones/2/enabled = true
 bones/2/position = Vector3(0.3, 1.3, 0.3)
-bones/2/rotation = Quaternion(0.824985, 0.510165, 0.0932759, 0.224568)
+bones/2/rotation = Quaternion(0.653281, 0.653282, 0.270598, 0.270598)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "LegBack.R"
 bones/3/parent = 0
 bones/3/rest = Transform3D(-4.76837e-07, -0.707107, -0.707107, -1, 1.05367e-07, 5.68983e-07, -3.27826e-07, 0.707107, -0.707107, -0.3, 0.3, 0.3)
 bones/3/enabled = true
 bones/3/position = Vector3(-0.3, 0.3, 0.3)
-bones/3/rotation = Quaternion(-0.766384, 0.53868, 0.17476, -0.303213)
+bones/3/rotation = Quaternion(-0.653281, 0.653282, 0.270598, -0.270598)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "LegFront.R"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-4.76837e-07, -0.707107, -0.707107, -1, 1.05367e-07, 5.68983e-07, -3.27826e-07, 0.707107, -0.707107, -0.3, 1.3, 0.3)
 bones/4/enabled = true
 bones/4/position = Vector3(-0.3, 1.3, 0.3)
-bones/4/rotation = Quaternion(-0.814355, 0.517024, 0.11762, -0.235961)
+bones/4/rotation = Quaternion(-0.658378, 0.657838, 0.258775, -0.258501)
 bones/4/scale = Vector3(1, 1, 1)
 
 [node name="chum_12_detach" type="MeshInstance3D" parent="Body/Armature/Skeleton3D"]
@@ -468,16 +499,16 @@ mesh = SubResource("ArrayMesh_agndc")
 skin = SubResource("Skin_jktwu")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 4.29114e-09, 1.51072e-07, 1.51094e-07, -0.051058, -0.998696, 3.42791e-09, 0.998695, -0.0510581, 0, 0.6, -0.705641)
+transform = Transform3D(0.999979, -0.00651677, -0.000495642, -0.000503927, -0.00126994, -0.999999, 0.00651613, 0.999978, -0.00127316, 0, 0.6, -0.9)
 bone_name = "Body"
 bone_idx = 0
 
 [node name="Hitbox" type="Area3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 script = ExtResource("5_0tr32")
 metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D/Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 shape = SubResource("SphereShape3D_4pe87")
 
 [node name="Bracelet" parent="Body/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("6_ah7ac")]

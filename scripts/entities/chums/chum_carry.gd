@@ -42,6 +42,8 @@ func Physics_Update(_delta: float) -> void:
 		xform.basis.x = -xform.basis.z.cross(target_info["normal"])
 		xform.basis = xform.basis.orthonormalized()
 		target_sprite.global_transform = target_sprite.global_transform.interpolate_with(xform, 0.2).orthonormalized()
+		if Input.is_action_pressed("attack"):
+			print(target_info)
 
 	chum.move_and_slide()
 	

@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://doc0b1wjqgvyd"]
+
+[sub_resource type="GDScript" id="GDScript_h60rk"]
+script/source = "extends Node3D
+
+@export var id_1: int
+@export var id_2: int
+@onready var spawn_1: Node3D = $Spawn1
+@onready var spawn_2: Node3D = $Spawn2
+
+func start() -> void:
+	var chum1 = ChumsManager.get_specific_chum_id(id_1).instantiate()
+	add_child(chum1)
+	chum1.global_position = spawn_1.global_position
+	
+	chum1.make_enemy()
+	chum1.set_state(\"Wake\")
+	
+	var chum2 = ChumsManager.get_specific_chum_id(id_2).instantiate()
+	add_child(chum2)
+	chum2.global_position = spawn_2.global_position
+	
+	chum2.make_friendly()
+	chum2.set_state(\"Wake\")
+	
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2ewn"]
+size = Vector3(1, 5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c2lrv"]
+size = Vector3(10, 5, 1)
+
+[node name="Node3D" type="Node3D"]
+script = SubResource("GDScript_h60rk")
+
+[node name="Area3D3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_t2ewn")
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_c2lrv")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_c2lrv")
+
+[node name="Area3D4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_t2ewn")
+
+[node name="Spawn1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2.5)
+
+[node name="Spawn2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -2.5)
