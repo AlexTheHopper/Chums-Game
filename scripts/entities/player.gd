@@ -47,6 +47,8 @@ var attacking_mult := 1.0
 
 var changes_agro_on_damaged := true
 var draws_agro_on_attack := true
+var knockback_strength := 0.0
+var knockback_weight := 1.0
 var maintains_agro := 0.0
 var targeted_by := []
 
@@ -64,7 +66,8 @@ func _ready() -> void:
 		base_damage = 50
 		max_extra_damage = 100
 
-		hitbox.damage = base_damage	
+		hitbox.damage = base_damage
+		health_node.max_health = 500
 
 func _physics_process(delta: float) -> void:
 	if not Global.is_alive:
@@ -153,14 +156,14 @@ func _physics_process(delta: float) -> void:
 
 	#Move character:
 	if direction:
-		velocity.x = direction.x * SPEED * attacking_mult * (0.1 if is_launched else 1.0)
-		velocity.z = direction.z * SPEED * attacking_mult * (0.1 if is_launched else 1.0)
+		velocity.x = direction.x * SPEED * attacking_mult * (0.2 if is_launched else 1.0)
+		velocity.z = direction.z * SPEED * attacking_mult * (0.2 if is_launched else 1.0)
 
 	#Slow down after letting go of controls
-	elif not is_launched:
+	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
 	move_and_slide()
 	#Match camera controller position to self
 	$Camera_Controller.position = lerp($Camera_Controller.position, position, 0.1)

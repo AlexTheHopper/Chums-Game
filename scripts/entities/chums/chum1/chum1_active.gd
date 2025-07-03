@@ -34,6 +34,7 @@ func Physics_Update(delta: float):
 		
 	if chum.is_on_floor():
 		chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
+		chum.is_launched = false
 		if not has_touched_floor:
 			has_touched_floor = true
 			chum.set_new_target()
@@ -75,6 +76,7 @@ func _on_nav_timer_timeout() -> void:
 		
 func Exit():
 	nav_timer.stop()
+	chum.is_launched = false
 	
 	nav_timer.timeout.disconnect(_on_nav_timer_timeout)
 	chum.nav_agent.target_reached.disconnect(_on_navigation_agent_3d_target_reached)

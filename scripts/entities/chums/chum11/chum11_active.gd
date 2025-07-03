@@ -10,6 +10,7 @@ func Enter():
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():
+		chum.is_launched = false
 		if not has_touched_floor:
 			has_touched_floor = true
 			chum.velocity = Vector3(0, 0, 0)
@@ -20,4 +21,4 @@ func Physics_Update(delta: float):
 	chum.move_and_slide()
 
 func Exit():
-	pass
+	chum.is_launched = false

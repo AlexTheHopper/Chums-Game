@@ -22,6 +22,7 @@ func Enter():
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():
+		chum.is_launched = false
 		if not has_touched_floor:
 			has_touched_floor = true
 			chum.velocity = Vector3(0, 0, 0)
@@ -63,5 +64,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func Exit():
 	chum.anim_player.animation_finished.disconnect(_on_animation_player_animation_finished)
 	emit_object()
+	chum.is_launched = false
 	for cur_conn in self.get_incoming_connections():
 		cur_conn.signal.disconnect(cur_conn.callable)

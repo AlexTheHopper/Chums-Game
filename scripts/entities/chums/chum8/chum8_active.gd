@@ -38,6 +38,7 @@ func Physics_Update(delta: float):
 		chum.velocity = nav_vel
 		
 	if chum.is_on_floor():
+		chum.is_launched = false
 		if chum.velocity.length() > 1:
 			chum.rotation.y = lerp_angle(chum.rotation.y, Vector2(chum.velocity.x, -chum.velocity.z).angle() + PI/2, 0.5)
 		if not has_touched_floor:
@@ -88,6 +89,7 @@ func _on_nav_timer_timeout() -> void:
 		
 func Exit():
 	nav_timer.stop()
+	chum.is_launched = false
 	
 	nav_timer.timeout.disconnect(_on_nav_timer_timeout)
 	chum.nav_agent.target_reached.disconnect(_on_navigation_agent_3d_target_reached)

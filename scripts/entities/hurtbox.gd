@@ -3,14 +3,13 @@ class_name Hurtbox
 
 signal recieved_damage(damage: int, change_agro: bool)
 
-@onready var entity := owner
 var health_node: Node
 
 @onready var changes_agro_on_damaged = owner.changes_agro_on_damaged
 
 func _ready() -> void:
-	await entity.ready
-	health_node = entity.health_node
+	await owner.ready
+	health_node = owner.health_node
 	connect("area_entered", _on_area_entered)
 	#Set correct layer/mask collisions:
 	set_collision_layer_value(1, false)
@@ -46,22 +45,44 @@ func set_as_neutral():
 	
 
 func _on_area_entered(hitbox: Hitbox) -> void:
-	if hitbox != null:
-		#Remove damage
-		health_node.health -= hitbox.damage		
-		
-		#Check to change agression
-		var change_agro = false
-		var maintains_agro = false
-		if owner and "target" in owner:
-			if owner.target:
-				if "maintains_agro" in owner.target:
-					if randf() < owner.target.maintains_agro:
-						maintains_agro = true
-					#maintains_agro = owner.target.maintains_agro
-		
-		if changes_agro_on_damaged and hitbox.draws_agro_on_attack and not maintains_agro:
-			change_agro = true
-		recieved_damage.emit(hitbox.damage, change_agro, hitbox.owner.get_agro_change_target())
-		
+	if hitbox == null or owner.health_node.get_immune():
+		return
+	#Remove damage
+	health_node.health -= hitbox.damage
+	
+	var change_agro: bool
+	change_agro = change_agression(hitbox)
+	apply_knockback(owner, hitbox.owner)
+
+	recieved_damage.emit(hitbox.damage, change_agro, hitbox.owner.get_agro_change_target())
+
+func change_agression(hitbox) -> bool:
+	#Check to change agression
+	var change_agro = false
+	var maintains_agro = false
+	if owner and "target" in owner:
+		if owner.target:
+			if "maintains_agro" in owner.target:
+				if randf() < owner.target.maintains_agro:
+					maintains_agro = true
+	if changes_agro_on_damaged and hitbox.draws_agro_on_attack and not maintains_agro:
+		change_agro = true
+	return change_agro
+
+func apply_knockback(target, source) -> void:
+	var strength: float = source.knockback_strength
+	print("strength: %s" % [strength])
+	if is_zero_approx(strength):
+		return
+	var y_strength: float = strength / 2.0
+	
+	var impulse: Vector3 = Functions.vector_to_normalized(source, target) * strength / target.knockback_weight
+	impulse.y = max(y_strength, 0)
+	
+	target.call_deferred("set", "velocity", impulse)
+	target.call_deferred("set", "is_launched", true)
+
+	print("vel: %s" % [impulse])
+	if target is Player:
+		target.anim_player.call_deferred("play", "Jump_Carry" if target.is_carrying else "Jump_noCarry")
 		

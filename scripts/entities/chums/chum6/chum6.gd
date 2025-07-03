@@ -4,7 +4,6 @@ var chum_id := 6
 var chum_str := "chum6"
 var chum_name := "Healio"
 
-
 var desc := "Such a thoughtful and kind chum. Whenever an enemy chum is defeated, this little flower will send a helping hand by healing friends who need it."
 
 var min_attack_speed := 2.55
@@ -20,6 +19,8 @@ var has_move_speed := false
 var has_health := true
 
 var attack_distance := 1.3
+var knockback_strength := 0.0
+var knockback_weight := 1.0
 
 #Chance that it maintains agro on chasing chum being hit
 var maintains_agro := 0.0

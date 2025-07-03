@@ -4,7 +4,6 @@ var chum_id := 12
 var chum_str := "chum12"
 var chum_name := "Ram"
 
-
 var desc := "TODO"
 
 var min_attack_speed := 1.3
@@ -20,6 +19,8 @@ var has_move_speed := true
 var has_health := true
 
 var attack_distance := 1.2
+var knockback_strength := 0.0
+var knockback_weight := 2.5
 
 #Chance that it maintains agro on chasing chum being hit
 var maintains_agro := 0.0

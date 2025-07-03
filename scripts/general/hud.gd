@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 	if is_returning:
 		return
 
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and Global.is_alive:
 		toggle_pause()
 	
 	if is_paused and Input.is_action_just_pressed("attack"):

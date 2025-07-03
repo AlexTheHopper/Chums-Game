@@ -4,7 +4,6 @@ var chum_id := 11
 var chum_str := "chum11"
 var chum_name := "Melly"
 
-
 var desc := "Portable Melatonin! This little antennae friend doesn't do much by itself, however when defeated it lets out a burst of sleepyness, causing enemy chums to fall back asleep for a short while."
 
 var min_attack_speed := 0.0
@@ -20,6 +19,8 @@ var has_move_speed := false
 var has_health := true
 
 var attack_distance := 0.0
+var knockback_strength := 0.0
+var knockback_weight := 5.0
 
 #Chance that it maintains agro on chasing chum being hit
 var maintains_agro := 0.0

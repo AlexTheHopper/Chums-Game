@@ -4,7 +4,6 @@ var chum_id := 9
 var chum_str := "chum9"
 var chum_name := "Fan"
 
-
 var desc := "TODO"
 
 var min_attack_speed := 1.7
@@ -20,6 +19,8 @@ var has_move_speed := false
 var has_health := true
 
 var attack_distance := 1.5
+var knockback_strength := 0.0
+var knockback_weight := 5.0
 
 #Chance that it maintains agro on chasing chum being hit
 var maintains_agro := 0.0

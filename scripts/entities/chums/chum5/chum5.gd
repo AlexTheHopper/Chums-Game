@@ -4,7 +4,6 @@ var chum_id := 5
 var chum_str := "chum5"
 var chum_name := "Slate"
 
-
 var desc := "An old log that has harnessed the modern technologies of the catapult, allowing it to conjure rocks from nowhere and hurl them some distance. It's a tough job though, since this chum has little health and those rocks can also conjure a bit of hatred when hitting one's head."
 
 var min_attack_speed := 1.5
@@ -20,6 +19,8 @@ var has_move_speed := true
 var has_health := true
 
 var attack_distance := 10.0
+var knockback_strength := 0.0
+var knockback_weight := 1.25
 
 #Chance that it maintains agro on chasing chum being hit
 var maintains_agro := 0.0
