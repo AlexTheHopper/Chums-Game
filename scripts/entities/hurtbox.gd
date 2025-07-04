@@ -71,18 +71,16 @@ func change_agression(hitbox) -> bool:
 
 func apply_knockback(target, source) -> void:
 	var strength: float = source.knockback_strength
-	print("strength: %s" % [strength])
 	if is_zero_approx(strength):
 		return
+
 	var y_strength: float = strength / 2.0
-	
+
 	var impulse: Vector3 = Functions.vector_to_normalized(source, target) * strength / target.knockback_weight
 	impulse.y = max(y_strength, 0)
 	
 	target.call_deferred("set", "velocity", impulse)
 	target.call_deferred("set", "is_launched", true)
 
-	print("vel: %s" % [impulse])
 	if target is Player:
 		target.anim_player.call_deferred("play", "Jump_Carry" if target.is_carrying else "Jump_noCarry")
-		

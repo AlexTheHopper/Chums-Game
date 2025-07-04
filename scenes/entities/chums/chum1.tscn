@@ -796,14 +796,14 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 2.30941e-16, -2.70267e-16, -6.29342e-17, 0.863248, 0.50478, 3.49882e-16, -0.50478, 0.863248, 0, 0.710634, 2.98023e-08)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0.710634, 2.98023e-08)
-bones/1/rotation = Quaternion(-0.261488, 2.53551e-16, -4.13742e-16, 0.965207)
+bones/1/rotation = Quaternion(-0.261488, -1.60626e-16, -7.61172e-17, 0.965207)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Tail"
 bones/2/parent = 0
 bones/2/rest = Transform3D(1, 8.09415e-16, 2.69799e-16, 7.21371e-16, -0.970965, 0.239223, 4.55597e-16, -0.239224, -0.970963, 0, -0.0633238, -0.788029)
 bones/2/enabled = true
 bones/2/position = Vector3(0, -0.0633238, -0.788029)
-bones/2/rotation = Quaternion(0.992321, 5.31475e-16, -1.25362e-16, -0.123688)
+bones/2/rotation = Quaternion(0.992715, 3.85505e-16, 1.8268e-16, -0.12049)
 bones/2/scale = Vector3(1, 1, 0.999999)
 bones/3/name = "Leg1.L"
 bones/3/parent = 0
@@ -853,7 +853,7 @@ mesh = SubResource("ArrayMesh_sr3ur")
 skin = SubResource("Skin_usabi")
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 6.66092e-16, 7.05835e-16, -5.47858e-16, 0.987763, -0.155962, -8.01083e-16, 0.155962, 0.987763, 0, 1.65, 0.5)
+transform = Transform3D(1, 2.30941e-16, -2.70267e-16, -2.70267e-16, 0.987763, -0.155963, 2.30942e-16, 0.155963, 0.987763, 0, 1.65, 0.5)
 bone_name = "Head"
 bone_idx = 1
 

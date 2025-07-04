@@ -19,7 +19,7 @@ var has_move_speed := true
 var has_health := true
 
 var attack_distance := 0.85
-var knockback_strength := 0.0
+var knockback_strength := 10.0
 var knockback_weight := 1.5
 
 #Chance that it maintains agro on chasing chum being hit

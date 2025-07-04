@@ -4,7 +4,7 @@ extends Area3D
 @export var target: CharacterBody3D
 
 @export var draws_agro_on_attack := false
-
+var knockback_strength: float
 var velocity := Vector3(0, 0, 0)
 var active := false
 var position_: Vector3
@@ -20,6 +20,7 @@ func _ready() -> void:
 		draws_agro_on_attack = origin.draws_agro_on_attack
 		$Hitbox.draws_agro_on_attack = draws_agro_on_attack
 		$Hitbox.damage = origin.hitbox.damage
+		knockback_strength = origin.knockback_strength
 		var parent_group = Functions.get_parent_group(origin)
 		if parent_group in ["Chums_Enemy"]:
 			$Hitbox.set_as_enemy()
