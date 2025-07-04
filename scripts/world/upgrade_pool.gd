@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var item_tscn := load("res://scenes/entities/upgrade_item.tscn")
 @onready var items: Node3D = $Items
+@onready var items_timer: Timer = $Timer
 
 var item_num := -1
 var items_set := false
@@ -37,7 +38,7 @@ func _on_active_zone_body_entered(body: Node3D) -> void:
 		Global.world_map[Global.room_location]["item_count"] -= 1
 		item_num -= 1
 		active = false
-		items.start()
+		items_timer.start()
 		
 		if body is Player:
 			body.increase_stats(10) #Increase base damage by x and extra damage by int(x/2). Increase health by int(x/2)

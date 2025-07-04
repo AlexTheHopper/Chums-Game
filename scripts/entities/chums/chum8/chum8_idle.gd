@@ -29,12 +29,16 @@ func Enter():
 	nav_timer_idle.wait_time = randf_range(0.2, 0.4)
 	chum.nav_agent.target_reached.connect(_on_navigation_agent_3d_target_reached_idle)
 	chum.nav_agent.velocity_computed.connect(_on_navigation_agent_3d_velocity_computed_idle)
+	Global.room_changed.connect(_on_room_changed)
+	chum.can_seek = false
+	running = false
 
-	if not is_in_target_room():
-		$RunDelay.wait_time = 1.0
-		$RunDelay.start()
-		
-		running = false
+func _on_room_changed():
+	$RunDelay.wait_time = 1.0
+	$RunDelay.start()
+	chum.can_seek = true
+	running = false
+	chum.velocity = Vector3.ZERO
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():
@@ -84,11 +88,11 @@ func set_target_location() -> void:
 		target_location = l * Vector3(dir.x, chum.global_position.y, dir.y) + Vector3(1, 0, 1)
 
 func _on_navigation_agent_3d_target_reached_idle() -> void:
-	running = false
 	chum.velocity = Vector3(0, 0, 0)
 	chum.anim_player.play("Idle")
 	nav_timer_idle.stop()
 	$RunDelay.stop()
+	running = false
 
 func _on_navigation_agent_3d_velocity_computed_idle(safe_velocity: Vector3) -> void:
 	nav_vel = safe_velocity
@@ -114,3 +118,4 @@ func Exit():
 	
 	chum.nav_agent.target_reached.disconnect(_on_navigation_agent_3d_target_reached_idle)
 	chum.nav_agent.velocity_computed.disconnect(_on_navigation_agent_3d_velocity_computed_idle)
+	Global.room_changed.disconnect(_on_room_changed)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=4 uid="uid://dmgabiox56kck"]
+[gd_scene load_steps=30 format=4 uid="uid://dmgabiox56kck"]
 
 [ext_resource type="Script" uid="uid://d1mbalfu0wlex" path="res://scripts/entities/player.gd" id="1_8mcap"]
 [ext_resource type="Script" uid="uid://cf5efj3v5c38n" path="res://scripts/entities/health.gd" id="2_foxub"]
 [ext_resource type="Texture2D" uid="uid://qoftnyn10nd" path="res://Blender_Assets/Other_Exports/player_player.png" id="3_8dc6w"]
+[ext_resource type="Script" uid="uid://cwcyxfm4jw16k" path="res://scripts/entities/chums/nudge_zone.gd" id="4_dnykm"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_f0wg7"]
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_6214k"]
 [ext_resource type="Material" uid="uid://tqe7rbh07xh7" path="res://materials/xray_material_player.tres" id="5_sb1xe"]
@@ -84,6 +85,9 @@ _data = {
 &"Hurt": SubResource("Animation_ss7kx"),
 &"RESET": SubResource("Animation_dnykm")
 }
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ss7kx"]
+radius = 0.35
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00hcs"]
 resource_name = "palette"
@@ -833,6 +837,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_c5rqy")
 }
 
+[node name="NudgeZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+script = ExtResource("4_dnykm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NudgeZone"]
+shape = SubResource("SphereShape3D_ss7kx")
+
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
@@ -914,4 +925,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
+[connection signal="body_entered" from="NudgeZone" to="NudgeZone" method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

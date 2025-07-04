@@ -66,6 +66,7 @@ func astar2d(map: Array, goal: int, only_activated := false):
 	var dir_map := {}
 	var visited := []
 	var queue := []
+	var goal_in_map := false
 
 	for x in range(size):
 		visited.append([])
@@ -75,8 +76,15 @@ func astar2d(map: Array, goal: int, only_activated := false):
 				visited[x].append(true)
 				queue.append(Vector2i(x, y))
 				dir_map[Vector2i(x, y)] = Vector2i(0, 0)
+				goal_in_map = true
 			else:
 				visited[x].append(false)
+	#If it doesnt exist, count all rooms as dont go anywhere
+	if not goal_in_map:
+		for x in range(size):
+			for y in range(size):
+				dir_map[Vector2i(x, y)] = Vector2i(0, 0)
+		return dir_map
 	
 	while queue.size() > 0:
 		var current = queue.pop_front()

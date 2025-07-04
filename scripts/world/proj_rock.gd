@@ -47,7 +47,7 @@ func _ready() -> void:
 			rock_target.set_material_overlay(black_overlay)
 
 	if target:
-		target_position = target.global_position
+		target_position = target.global_position + target.velocity * 0.5
 		set_vel_to_pos(global_position, target_position)
 		rock_target.global_position = target_position
 
@@ -55,7 +55,7 @@ func _ready() -> void:
 func set_vel_to_pos(start_pos, target_pos):
 	#Velocity:
 	var dx = target_pos.x - start_pos.x
-	var dy = target_pos.y - start_pos.y + 0.5 #This makes the rock not aim for the ground under the target
+	var dy = target_pos.y - start_pos.y
 	var dz = target_pos.z - start_pos.z
 	velocity = Vector3(dx, dy + 0.5 * gravity_ * hit_time * hit_time, dz) / hit_time
 

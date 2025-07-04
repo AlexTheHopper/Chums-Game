@@ -1,5 +1,5 @@
 extends State
-class_name Chum_Idle
+class_name Chum13_Idle
 @onready var state_name := "Idle"
 
 @onready var chum: CharacterBody3D
@@ -10,14 +10,15 @@ class_name Chum_Idle
 func Enter():
 	idle_time = 0.0
 	chum.call_deferred("enable_interaction")
-	
+	chum.set_target_to(player)
 	chum.anim_player.play("Idle")
 	
 func Update(_delta: float):	
 	#Follow player if far enough away, and room beaten:
 	if Global.world_map[Global.room_location]["activated"] and chum.has_move_speed:
 		if Functions.distance_squared(chum, player) > pow(chum.follow_distance, 2):
-			Transitioned.emit(self, "Follow")
+			chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
+			chum.anim_player.play("Jump")
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():

@@ -160,7 +160,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = direction.z * SPEED * attacking_mult * (0.2 if is_launched else 1.0)
 
 	#Slow down after letting go of controls
-	elif is_on_floor():
+	elif is_on_floor() or not is_launched:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	

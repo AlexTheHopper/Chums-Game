@@ -129,13 +129,13 @@ func set_new_stats() -> void:
 	quality["attack_speed"] = new_quality
 
 func set_stats_from_quality() -> void:
-	health_node.set_max_health_override(int(self.base_health * (1.0 + float(quality["health"]) / 10.0)))
+	health_node.set_max_health_override(int(self.base_health * (1.0 + (float(quality["health"]) / 10.0))))
 
-	move_speed = min(max_move_speed, self.base_move_speed * (1.0 + float(quality["move_speed"]) / 10.0))
+	move_speed = min(max_move_speed, self.base_move_speed * (1.0 + (float(quality["move_speed"]) / 10.0)))
 
-	hitbox.damage = self.base_attack_damage * (1.0 + float(quality["attack_damage"]) / 10.0)
+	hitbox.damage = self.base_attack_damage * (1.0 + (float(quality["attack_damage"]) / 10.0))
 
-	attack_speed = max(self.min_attack_speed, self.base_attack_speed * (1.0 - float(quality["attack_speed"]) / 10.0))
+	attack_speed = max(self.min_attack_speed, self.base_attack_speed * (1.0 - (float(quality["attack_speed"]) / 10.0)))
 
 
 func increase_stats(attack_speed_count: int = 1, attack_damage_count: int = 1, move_speed_count: int = 1, health_count: int = 1) -> void:

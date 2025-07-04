@@ -29,6 +29,10 @@ var world_info: Dictionary
 var game_scene: PackedScene = load("res://scenes/general/game.tscn")
 var game_save_id := 1
 
+signal room_changed
+signal room_changed_to_boss
+signal room_changed_from_boss
+
 func _ready():
 	room_lookup = {
 		#world 0 is the boss rooms, the keys of inner dict are the world you come from.
@@ -53,6 +57,7 @@ func _ready():
 				},
 			}
 	#required and optional are the statue chum ids. To be super safe only rely on the last entry in required.
+	#room_counts are how many of each normal room to replace with that id. They will not replace ones next to the lobby.
 	#Max chums needs to be AT LEAST 4, or change room.gd
 	world_info = {
 		0: {'map_size': 3,
@@ -64,14 +69,28 @@ func _ready():
 		1: {'map_size': 3,
 			"room_size": 40.0,
 			"max_chums": 5,
-			"required": [4], 					   #To world 2
-			"optional": [1, 2, 3, 4, 5, 6, 7, 8]}, #To worlds 1, 2
+			"statue_required": [4], 					   #To world 2
+			"statue_optional": [1, 2, 3, 5, 6, 7, 8], #To worlds 1, 2
+			"room_counts": {	1: 0, #Lobby - keep this as 0
+							2: 0, #Normal room - also 0
+							3: 3, #Fountain
+							4: 2, #Void
+							5: 3, #Statue - AT LEAST length of statue_required
+							6: 0}, #Upgrade
+			},
 		
 		2: {'map_size': 5,
 			"room_size": 40.0,
 			"max_chums": 8,
-			"required": [1, 2, 4, 3],  #To worlds 1, 2
-			"optional": [1, 2, 3, 4]}, #To worlds 1, 2
+			"statue_required": [1, 2, 3, 4],  #To worlds 1, 2
+			"statue_optional": [5, 8, 4, 4], #To worlds 1, 2
+			"room_counts": {	1: 0, #Lobby - keep this as 0
+							2: 0, #Normal room - also 0
+							3: 6, #Fountain
+							4: 5, #Void
+							5: 6, #Statue - AT LEAST length of statue_required
+							6: 5}, #Upgrade
+			},
 	}
 
 func start_game(save_id = null, new_game = false) -> void:
@@ -98,6 +117,7 @@ func start_game(save_id = null, new_game = false) -> void:
 	#Creates scaffold for world
 	if world_map == {} or new_game == true:
 		world_grid = get_world_grid(current_world_num)
+		set_world_map_guides()
 		create_world(current_world_num)
 	
 	#Creates Player, Lobby, HUD
@@ -113,6 +133,7 @@ func start_game(save_id = null, new_game = false) -> void:
 	
 	if new_game == false:
 		SaverLoader.load_game(save_id)
+		set_world_map_guides()
 		
 		if Global.dev_mode:
 			print('In world %s, room %s.' % [Global.current_world_num, str(room_location)])
@@ -163,7 +184,7 @@ func get_world_grid(world_n):
 
 		#For each tile:
 		for n in range(length):
-			grid[pos.x][pos.y] = set_room_type(pos)
+			grid[pos.x][pos.y] = 2
 			if pos.x + dir.x in bounds or pos.y + dir.y in bounds:
 				break
 			pos = Vector2i(pos.x + dir.x, pos.y + dir.y)
@@ -175,72 +196,69 @@ func get_world_grid(world_n):
 	#Rooms:
 	for N in range(room_count):
 		var pos = room_points.pick_random()
-		grid[pos.x][pos.y] = set_room_type(Vector2i(pos.x, pos.y))
+		grid[pos.x][pos.y] = 2
 		for remove_pos in walks:
 			var x_remove = pos.x + remove_pos.x
 			var y_remove = pos.y + remove_pos.y
 		
 			if not x_remove in bounds and not y_remove in bounds:
-				grid[x_remove][y_remove] = set_room_type(Vector2i(x_remove, y_remove))
-		
-	#Must have that at least one of each room type is present.
-	#Mainly for the world_map_guide
-	#this is a bit sloopy, maybe TODO later.
-	#especially since it starts as 5,5 to ensure at least 3 statue rooms.
-	var room_missing = [5, 5]
-	var rooms_replace = []
-	for n in room_lookup[world_n].keys():
-		var exists = false
-		for y in grid.size():
-			for x in grid[0].size():
+				grid[x_remove][y_remove] = 2
 
-				if grid[x][y] == 2:
-					rooms_replace.append(Vector2i(x, y))
-				if grid[x][y] == n:
-					exists = true
+	#Define lobby starting room
+	grid[map_size][map_size] = 1
+	#Define rooms to add:
+	var rooms_missing := []
+	for type in world_info[world_n]["room_counts"].keys():
+		for count in world_info[world_n]["room_counts"][type]:
+			rooms_missing.append(type)
+	rooms_missing = bring_to_front(rooms_missing, 5, true) # We want to put in the statues first *just in case* this list is too long and we miss the statues
 
-		if not exists:
-			room_missing.append(n)
-	#Replace some normal rooms with the missing:
+	#Replaces normal rooms with required from world_info
+	var rooms_replace := []
+	for y in grid.size():
+		for x in grid[0].size():
+			if abs(x - map_size) <= 1 and abs(y - map_size) <= 1:
+				continue
+			if grid[x][y] == 2: # if normal room - safe to potentially replace
+				rooms_replace.append(Vector2i(x, y))
 	rooms_replace.shuffle()
-	for add_type in room_missing:
+
+	#Replace some normal rooms with the missing:
+	for add_type in rooms_missing:
 		grid[rooms_replace[-1][0]][rooms_replace[-1][1]] = add_type
 		rooms_replace.pop_back()
+		if len(rooms_replace) <= 0:
+			break
 
-	world_map_guide["lobby"] = Functions.astar2d(grid, 1)
-	world_map_guide["room"] = Functions.astar2d(grid, 2)
-	world_map_guide["fountain"] = Functions.astar2d(grid, 3)
-	world_map_guide["void"] = Functions.astar2d(grid, 4)
-	world_map_guide["statue"] = Functions.astar2d(grid, 5)
-	world_map_guide["upgrade"] = Functions.astar2d(grid, 6)
 	return(grid)
+
+func set_world_map_guides() -> void:
+	world_map_guide["lobby"] = Functions.astar2d(world_grid, 1)
+	world_map_guide["room"] = Functions.astar2d(world_grid, 2)
+	world_map_guide["fountain"] = Functions.astar2d(world_grid, 3)
+	world_map_guide["void"] = Functions.astar2d(world_grid, 4)
+	world_map_guide["statue"] = Functions.astar2d(world_grid, 5)
+	world_map_guide["upgrade"] = Functions.astar2d(world_grid, 6)
+
+func bring_to_front(list: Array, to_front: int, shuffle: bool) -> Array:
+	var to_front_list := []
+	var others := []
 	
-func set_room_type(location: Vector2i) -> int:
-	#Percentage to edge of map
-	var per: float = Functions.map_range((location - Vector2i(map_size, map_size)).length(), Vector2(0, map_size), Vector2(0, 1))
-	if location == Vector2i(map_size, map_size):
-		return 1 #Lobby
-		
-	elif randf() < (per / 9):
-		if randf() < 0.7:
-			return 3 #Fountain
-		elif randf() < 0.5:
-			return 6 # Upgrade
-		elif randf() < 0.7:
-			return 5 # Statue
+	for value in list:
+		if value == to_front:
+			to_front_list.append(value)
 		else:
-			return 4 #Void Pit
-		
-	else:
-		return 2 #Normal Room
+			others.append(value)
+	others.shuffle()
+	return to_front_list + others
 
 func create_world(world_n):
-	var size = world_info[world_n]["map_size"]
+	var size: int = world_info[world_n]["map_size"]
 	var required_statues := []
-	for id in world_info[world_n]["required"]:
+	for id in world_info[world_n]["statue_required"]:
 		required_statues.append(id) 
-	var other_statues = world_info[world_n]["optional"]
-	var statue_id = 1
+	var other_statues: Array = world_info[world_n]["statue_optional"]
+	var statue_id := 1
 	world_map = {}
 	#Uses the world_grid to construct information about all rooms.
 	for y in range(0, (2 * size) + 1):
@@ -315,6 +333,7 @@ func has_door(location: Vector2, direction: Vector2) -> bool:
 	
 func transition_to_level(new_room_location: Vector2i, length = 1):
 	if new_room_location in world_map:
+		room_changed.emit()
 		TransitionScreen.transition(length)
 		await TransitionScreen.on_transition_finished
 		current_room_node.save_room()
@@ -335,6 +354,7 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 
 
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
+	room_changed_to_boss.emit()
 	TransitionScreen.transition(length)
 	await TransitionScreen.on_transition_finished
 	current_room_node.save_room()
@@ -359,6 +379,7 @@ func transition_to_boss(source_world_n: int, destination_world_n: int, length = 
 	rooms.add_child(current_room_node)
 
 func transition_to_world(destination_world_n: int, length = 1):
+	room_changed_from_boss.emit()
 	TransitionScreen.transition(length)
 	await TransitionScreen.on_transition_finished
 	current_room_node.save_room()
@@ -369,6 +390,7 @@ func transition_to_world(destination_world_n: int, length = 1):
 	room_size = world_info[current_world_num]["room_size"]
 	
 	world_grid = get_world_grid(current_world_num)
+	set_world_map_guides()
 	
 	if Global.dev_mode:
 		for x in range(world_grid.size() - 1, -1, -1):
@@ -404,3 +426,36 @@ func restart_game_and_delete(delete):
 	game_save_id = 1
 	world_transition_count = 0
 	get_node("/root").add_child(load("res://scenes/general/main_menu.tscn").instantiate())
+
+
+
+
+func test_grid_system(world_n, count):
+	for n in count:
+		var test_world_grid = get_world_grid(world_n)
+		
+		var is_okay: bool = true
+		var counts = {0: 0, #Nothing
+					1: 0, #Lobby 
+					2: 0, #Normal room 
+					3: 0, #Fountain
+					4: 0, #Void
+					5: 0, #Statue 
+					6: 0} #Upgrade
+					
+		for y in test_world_grid.size():
+			for x in test_world_grid[0].size():
+				counts[test_world_grid[x][y]] += 1
+		
+		for type in world_info[world_n]["room_counts"].keys():
+			if world_info[world_n]["room_counts"][type] != 0:
+				if world_info[world_n]["room_counts"][type] != counts[type]:
+					is_okay = false
+		
+		if not is_okay:
+			print("faulty grid:")
+			for x in range(test_world_grid.size() - 1, -1, -1):
+				print(test_world_grid[x])
+		else:
+			pass
+			#print("Grid %s successful" % [n])

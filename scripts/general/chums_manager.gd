@@ -33,6 +33,8 @@ func _ready() -> void:
 			"destination_world": 2}, #Melly
 		12: {"object": preload("res://scenes/entities/chums/chum12.tscn"),
 			"destination_world": 2}, #Ram
+		13: {"object": preload("res://scenes/entities/chums/chum13.tscn"),
+			"destination_world": 2}, #Leapy
 	}
 
 	chums_values = {
@@ -53,6 +55,7 @@ func _ready() -> void:
 			10: 1.5,
 			11: 1.0,
 			12: 1.0,
+			13: 2.5,
 		},
 	}
 	

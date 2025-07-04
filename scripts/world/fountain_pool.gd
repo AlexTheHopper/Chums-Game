@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var heart_tscn := load("res://scenes/entities/heart_item.tscn")
 @onready var hearts: Node3D = $Hearts
+@onready var hearts_timer: Timer = $Timer
 
 var heart_num := -1
 var hearts_set := false
@@ -38,7 +39,7 @@ func _on_heal_zone_body_entered(body: Node3D) -> void:
 		heart_num -= 1
 		body.health_node.health += HEART_HEAL
 		active = false
-		hearts.start()
+		hearts_timer.start()
 
 
 func _on_fly_zone_body_entered(body: Node3D) -> void:
