@@ -332,7 +332,7 @@ func attempt_carry():
 	if is_friend or PlayerStats.bracelets >= self.bracelet_cost:
 		if not is_friend:
 			PlayerStats.bracelets_added(-self.bracelet_cost)
-			PlayerStats.call_deferred("friend_chums_changed")
+			PlayerStats.call_deferred("friend_chums_changed", 1, self)
 		get_tree().get_first_node_in_group("Player").is_carrying = true
 		set_state("Carry")
 

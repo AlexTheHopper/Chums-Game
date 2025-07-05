@@ -7,7 +7,7 @@ class_name Chum_Knock
 
 func Enter() -> void:
 	if chum.current_group == "Chums_Friend":
-		PlayerStats.call_deferred("friend_chums_changed")
+		PlayerStats.call_deferred("friend_chums_changed", -1, chum)
 	chum.make_neutral()
 	
 	#Allow player,chums to walk through

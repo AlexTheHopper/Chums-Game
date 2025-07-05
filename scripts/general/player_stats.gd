@@ -13,6 +13,10 @@ signal hud_max_health_change
 signal hud_bracelets_change
 
 signal player_chums_changed
+signal player_chums_increased
+signal player_chums_decreased
+
+signal player_max_chums_increase
 
 signal insufficient_bracelets
 signal too_many_chums
@@ -43,8 +47,17 @@ func bracelets_added(value):
 	bracelets += value
 	hud_bracelets_change.emit()
 	
-func friend_chums_changed():
+func friend_chums_changed(change, chum):
 	player_chums_changed.emit()
+	if change > 0:
+		player_chums_increased.emit(chum)
+	else:
+		player_chums_decreased.emit(chum)
+
+func add_max_chums(n):
+	print('add_max_chums')
+	player_max_chums_increase.emit(n)
+	player_max_chums += n
 	
 func emit_insufficient_bracelets():
 	insufficient_bracelets.emit()

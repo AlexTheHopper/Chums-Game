@@ -1,13 +1,14 @@
 extends CanvasLayer
 
-@onready var health_bar = $InGameHUD/HealthPanel/PlayerHealthBar
-@onready var chum_count = $InGameHUD/ChumCountPanel/Value
-@onready var IG_anim_player = $InGameHUD/AnimationPlayer
-@onready var P_anim_player = $PauseMenu/AnimationPlayer
-@onready var S_anim_player = $SavedIndicator/AnimationPlayer
+@onready var health_bar: Control = $InGameHUD/HealthPanel/PlayerHealthBar
+@onready var IG_anim_player: AnimationPlayer = $InGameHUD/AnimationPlayer
+@onready var P_anim_player: AnimationPlayer = $PauseMenu/AnimationPlayer
+@onready var S_anim_player: AnimationPlayer = $SavedIndicator/AnimationPlayer
+@onready var chum_indicators: Control = $InGameHUD/ChumIndicators
 @export var is_paused: bool = false
 @export var is_returning: bool = false
 var is_exit_warning: bool = false
+const chum_indicator_tscn = preload("res://scenes/general/hud_chum.tscn")
 
 
 func initialize() -> void:
@@ -18,8 +19,10 @@ func initialize() -> void:
 	PlayerStats.hud_bracelets_change.connect(change_bracelets)
 	change_bracelets()
 	
-	PlayerStats.player_chums_changed.connect(change_chum_count)
-	chum_count.text = "0 / " + str(PlayerStats.player_max_chums)
+	PlayerStats.player_chums_increased.connect(chum_indicators_add)
+	PlayerStats.player_chums_decreased.connect(chum_indicators_remove)
+	
+	PlayerStats.player_max_chums_increase.connect(max_chums_increased)
 	
 	PlayerStats.insufficient_bracelets.connect(indicate_bracelets)
 	PlayerStats.too_many_chums.connect(indicate_chum_count)
@@ -64,9 +67,6 @@ func change_health():
 func change_max_health():
 	health_bar.set_max_health(PlayerStats.player_max_health)
 	
-func change_chum_count():
-	chum_count.text = str(len(get_tree().get_nodes_in_group("Chums_Friend"))) + " / " + str(PlayerStats.player_max_chums)
-
 func change_bracelets():
 	$InGameHUD/BraceletsPanel/Value.text = str(PlayerStats.bracelets)
 	
@@ -74,6 +74,51 @@ func indicate_bracelets() -> void:
 	IG_anim_player.play("insufficient_bracelets")
 func indicate_chum_count() -> void:
 	IG_anim_player.play("too_many_chums")
+	chum_indicators.get_children()[0].animation_player.play("full")
 func indicate_saved() -> void:
 	#S_anim_player.play("display")
 	pass
+
+func add_chum_indicators() -> void:
+	var current_chums = get_tree().get_nodes_in_group("Chums_Friend")
+	var current_chums_count = len(current_chums)
+
+	for n in PlayerStats.player_max_chums:
+		var new_indicator = chum_indicator_tscn.instantiate()
+		new_indicator.global_position = get_indicator_position(n)
+		
+		#If ther is a chum in that slot, visualise it
+		if n + 1 <= current_chums_count:
+			new_indicator.chum = current_chums[n]
+		chum_indicators.add_child(new_indicator)
+
+func max_chums_increased(extra_n):
+	var current_n = PlayerStats.player_max_chums
+	for n in range(current_n, current_n + extra_n):
+		print(n)
+		var new_indicator = chum_indicator_tscn.instantiate()
+		new_indicator.global_position = get_indicator_position(n)
+		chum_indicators.add_child(new_indicator)
+
+func get_indicator_position(n: int) -> Vector2:
+	var screen_size: Vector2 = $InGameHUD.size
+	var indicator_gap: float = 10.0 #Pixels between indicators
+	var indicator_size: float = 50.0
+	var total_size: float = indicator_gap + indicator_size
+	var max_indicators_vert = floor(screen_size.y / (indicator_gap + indicator_size))
+
+	var x: float = screen_size.x - (total_size * floor(n / max_indicators_vert)) - total_size
+	var y: float = total_size * fmod(n, max_indicators_vert) + indicator_gap
+	return Vector2(x, y)
+
+func chum_indicators_add(chum) -> void:
+	for indicator in chum_indicators.get_children():
+		if indicator.chum == null:
+			indicator.add_chum(chum)
+			return
+
+func chum_indicators_remove(chum) -> void:
+	for indicator in chum_indicators.get_children():
+		if indicator.chum == chum:
+			indicator.remove_chum()
+			return

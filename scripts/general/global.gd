@@ -150,6 +150,7 @@ func start_game(save_id = null, new_game = false) -> void:
 			var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
 			current_room_node = new_room.instantiate()
 			rooms.add_child(current_room_node)
+	get_node("/root/Game/HUD").add_chum_indicators()
 
 	if Global.dev_mode:
 		for x in range(world_grid.size() - 1, -1, -1):
