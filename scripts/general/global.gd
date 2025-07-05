@@ -1,5 +1,5 @@
 extends Node
-var dev_mode = true
+var dev_mode = false
 
 var game_begun := false
 var world_transition_count := 0
@@ -70,7 +70,7 @@ func _ready():
 			"room_size": 40.0,
 			"max_chums": 5,
 			"statue_required": [4], 					   #To world 2
-			"statue_optional": [1, 2, 3, 5, 6, 7, 8], #To worlds 1, 2
+			"statue_optional": [1, 2, 3, 4, 5, 6, 7, 8], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
 							3: 3, #Fountain

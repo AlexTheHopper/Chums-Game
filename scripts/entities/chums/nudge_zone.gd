@@ -16,7 +16,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if parent is Player and body is not Chum:
 		return
-	elif body is not Chum or body == parent or parent.state_machine.current_state.state_name != "Active":
+	elif body is not Chum or body == parent or parent.state_machine.current_state.state_name not in ["Active", "Sleep", "Idle"]:
 		return
 
 	var angle: float = Functions.angle_to_xz(self, body)
