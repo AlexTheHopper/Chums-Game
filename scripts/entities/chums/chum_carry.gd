@@ -5,6 +5,7 @@ class_name Chum_Carry
 @onready var chum: CharacterBody3D
 @onready var player := get_tree().get_first_node_in_group("Player")
 @onready var target_sprite := $ThrowTarget
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var throw_vel_i: Vector3
 var throw_hor := 10.0
@@ -18,7 +19,8 @@ func Enter() -> void:
 		chum.make_friendly(true)
 	chum.anim_player.play("Idle")
 	
-	target_sprite.visible = true
+	#target_sprite.visible = true
+	animation_player.play("appear")
 
 func Physics_Update(_delta: float) -> void:
 	chum.global_position = lerp(chum.global_position, player.global_position + Vector3(0, 1.5, 0), 0.8)
@@ -70,4 +72,5 @@ func get_target_info(pos, vel):
 	
 func Exit() -> void:
 	chum.set_new_target()
-	target_sprite.visible = false
+	#target_sprite.visible = false
+	animation_player.play("disappear")

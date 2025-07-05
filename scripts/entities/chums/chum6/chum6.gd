@@ -9,7 +9,7 @@ var desc := "Such a thoughtful and kind chum. Whenever an enemy chum is defeated
 var min_attack_speed := 2.55
 
 var base_attack_speed := 0.0
-var base_attack_damage := 10
+var base_attack_damage := 5
 var base_move_speed := 0.0
 var base_health := 50
 #Control of qualities
