@@ -163,7 +163,6 @@ func _physics_process(delta: float) -> void:
 	elif is_on_floor() or not is_launched:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
 	move_and_slide()
 	#Match camera controller position to self
 	$Camera_Controller.position = lerp($Camera_Controller.position, position, 0.1)

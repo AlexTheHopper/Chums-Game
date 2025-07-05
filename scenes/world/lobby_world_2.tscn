@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyym6kdv7wyrl"]
+[gd_scene load_steps=8 format=3 uid="uid://dyym6kdv7wyrl"]
 
 [ext_resource type="Script" uid="uid://cptocnh6wklx4" path="res://scripts/world/lobby.gd" id="1_car0k"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="2_a022c"]
 [ext_resource type="MeshLibrary" uid="uid://bchy01diiy23l" path="res://assets/world/world_2_mesh_lib_v3.tres" id="3_wts7r"]
+[ext_resource type="PackedScene" uid="uid://b3pl257olydkx" path="res://scenes/entities/chum_increaser.tscn" id="5_4xt6p"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="9_dlqpl"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4mvd4"]
@@ -57,6 +58,15 @@ data = {
 metadata/_editor_floor_ = Vector3(15, 3, -15)
 
 [node name="Decorations" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
+omni_range = 50.0
+omni_attenuation = 0.5
+omni_shadow_mode = 0
+
+[node name="ChumIncreaser" parent="Decorations" instance=ExtResource("5_4xt6p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -10)
 
 [node name="Entities" type="Node3D" parent="."]
 

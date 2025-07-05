@@ -55,7 +55,6 @@ func friend_chums_changed(change, chum):
 		player_chums_decreased.emit(chum)
 
 func add_max_chums(n):
-	print('add_max_chums')
 	player_max_chums_increase.emit(n)
 	player_max_chums += n
 	
