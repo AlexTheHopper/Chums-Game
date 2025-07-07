@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://0smlqtllr6c8"]
+[gd_scene load_steps=10 format=3 uid="uid://0smlqtllr6c8"]
 
 [ext_resource type="StyleBox" uid="uid://c88sa0i4f86uq" path="res://resources/hud_panel.tres" id="1_t813e"]
 [ext_resource type="Script" uid="uid://dqrlw44ag04n4" path="res://scripts/general/hud_chum.gd" id="2_lgdkm"]
+[ext_resource type="Texture2D" uid="uid://bm7puepokio68" path="res://assets/entities/chum_icons/chum3_128.png" id="3_t813e"]
 
 [sub_resource type="Animation" id="Animation_t813e"]
 length = 0.001
@@ -15,7 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(32, 32)]
+"values": [Vector2(40, 40)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -27,7 +28,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(9, 9)]
+"values": [Vector2(5, 5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -127,7 +128,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(32, 32)]
+"values": [Vector2(0, 0), Vector2(40, 40)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -139,7 +140,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(25, 25), Vector2(9, 9)]
+"values": [Vector2(25, 25), Vector2(5, 5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -191,7 +192,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(32, 32)]
+"values": [Vector2(0, 0), Vector2(40, 40)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -203,7 +204,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(25, 25), Vector2(9, 9)]
+"values": [Vector2(25, 25), Vector2(5, 5)]
 }
 
 [sub_resource type="Animation" id="Animation_abg36"]
@@ -219,7 +220,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(32, 32)]
+"values": [Vector2(40, 40)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -231,7 +232,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(9, 9)]
+"values": [Vector2(5, 5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -319,7 +320,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(32, 32), Vector2(0, 1.90735e-06)]
+"values": [Vector2(40, 40), Vector2(0, 1.90735e-06)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -331,7 +332,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(9, 9), Vector2(25, 25)]
+"values": [Vector2(5, 5), Vector2(25, 25)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -382,9 +383,13 @@ anchor_left = 0.18
 anchor_top = 0.18
 anchor_right = 0.807
 anchor_bottom = 0.82
-offset_right = 0.649998
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.65001
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_t813e")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
