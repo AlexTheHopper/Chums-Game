@@ -6,7 +6,6 @@ class_name Chum7_Idle
 @onready var player := get_tree().get_first_node_in_group("Player")
 @onready var idle_direction: Vector3
 @onready var idle_time := 0.0
-var wander_offset := randf_range(0, 2 * PI)
 
 func Enter():
 	idle_time = 0.0

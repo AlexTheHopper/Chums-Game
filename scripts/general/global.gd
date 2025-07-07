@@ -7,6 +7,7 @@ var map_size:int
 var room_size:float
 var world_map := {}
 var world_grid := []
+var save_seed: int
 var world_map_guide = {"lobby": {},
 						"room": {},
 						"fountain": {},
@@ -98,6 +99,7 @@ func start_game(save_id = null, new_game = false) -> void:
 		game_save_id = save_id
 	in_battle = false
 	current_world_num = 1
+	save_seed = 0 if dev_mode else randi()
 	
 	map_size = world_info[current_world_num]["map_size"]
 	room_size = world_info[current_world_num]["room_size"]
@@ -156,8 +158,10 @@ func start_game(save_id = null, new_game = false) -> void:
 		for x in range(world_grid.size() - 1, -1, -1):
 			print(world_grid[x])
 
-
 func get_world_grid(world_n):
+	#Seeded randomness - Same based on global seed, world number and transition count.
+	seed(save_seed + hash(str(world_n) + str(world_transition_count)))
+
 	var size = world_info[world_n]["map_size"]
 	#2D Array of where actual rooms are in the world
 	var corridor_count := int(max(20 + size * size / 2, 5))
@@ -212,7 +216,7 @@ func get_world_grid(world_n):
 	for type in world_info[world_n]["room_counts"].keys():
 		for count in world_info[world_n]["room_counts"][type]:
 			rooms_missing.append(type)
-	rooms_missing = bring_to_front(rooms_missing, 5, true) # We want to put in the statues first *just in case* this list is too long and we miss the statues
+	rooms_missing = bring_to_front(rooms_missing, 5, false) # We want to put in the statues first *just in case* this list is too long and we miss the statues
 
 	#Replaces normal rooms with required from world_info
 	var rooms_replace := []
@@ -250,10 +254,14 @@ func bring_to_front(list: Array, to_front: int, shuffle: bool) -> Array:
 			to_front_list.append(value)
 		else:
 			others.append(value)
-	others.shuffle()
+	if shuffle:
+		others.shuffle()
 	return to_front_list + others
 
 func create_world(world_n):
+	#Seeded randomness - Same based on global seed, world number and transition count.
+	seed(save_seed + hash(str(world_n) + str(world_transition_count)))
+	
 	var size: int = world_info[world_n]["map_size"]
 	var required_statues := []
 	for id in world_info[world_n]["statue_required"]:
@@ -279,7 +287,6 @@ func create_world(world_n):
 										"value": Vector2(x - size, y - size).length(),
 										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
 										"item_count": 3,
-										"light_position": Vector3(),
 										"statue_id": statue_id,
 										"statue_activated": false,
 										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
@@ -287,7 +294,6 @@ func create_world(world_n):
 										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
 										"has_z_neg": has_door(Vector2(x, y), Vector2(0, -1)),
 										"chums": [],
-										"decorations": [],
 										}
 func create_world_boss() -> void:
 	#Created boss room information
@@ -312,7 +318,6 @@ func create_world_boss() -> void:
 										"has_z_pos": false,
 										"has_z_neg": true,
 										"chums": [],
-										"decorations": [],
 										}
 
 
@@ -412,6 +417,9 @@ func transition_to_world(destination_world_n: int, length = 1):
 	var new_room = room_lookup[current_world_num][world_map[room_location]["type"]]
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
+
+func randomize_seed() -> void:
+	seed(randi())
 
 func return_to_menu(delete = false):
 	TransitionScreen.transition(3)

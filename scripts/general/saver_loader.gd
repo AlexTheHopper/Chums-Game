@@ -22,7 +22,8 @@ func save_game(save_id) -> void:
 	#Time
 	saved_game.unix_time = int(Time.get_unix_time_from_system())
 	saved_game.date_time = Time.get_datetime_string_from_unix_time(saved_game.unix_time)
-	
+	saved_game.save_seed = Global.save_seed
+
 	#Player Data:
 	saved_game.player_health = PlayerStats.player_health
 	saved_game.player_max_health = PlayerStats.player_max_health
@@ -58,6 +59,7 @@ func load_game(save_id) -> void:
 	var saved_game:SavedGame = load("user://saves/%s.tres" % [save_id])
 	
 	#Load all save data:
+	Global.save_seed = saved_game.save_seed
 	#Player Data
 	get_tree().get_first_node_in_group("Player").health_node.health = saved_game.player_health
 	get_tree().get_first_node_in_group("Player").health_node.max_health = saved_game.player_max_health

@@ -41,7 +41,7 @@ func _on_timer_timeout() -> void:
 		$RoomActivator.finish_spawning()
 		save_room()
 		return
-	
+
 	#Spawns chum
 	var chum_id = boss_chums_to_spawn.pop_back()
 	var chum_instance = ChumsManager.get_specific_chum_id(chum_id).instantiate()

@@ -21,13 +21,12 @@ func _ready() -> void:
 	#Fill new room:
 	if Global.world_map[Global.room_location]["entered"]:
 		load_room()
-	else:
-		self.decorate()
+	self.decorate() #RNG seed is autoset here
 		
 	if enemies_to_spawn > 0:
 		if spawn_timer:
 			spawn_timer.start()
-			
+	Global.randomize_seed() #Back to complete random.
 	fill_tunnels()
 	set_player_loc_on_entry()
 	set_chums_loc_on_entry()
@@ -111,18 +110,7 @@ func load_room():
 
 		chum_instance.global_position = chum["position"]
 		chum_instance.spawn_currency.connect(spawn_currency)
-	
-	#Decorations:
-	for deco in room_info["decorations"]:
-		var deco_inst = DecorationManager.decorations[deco["name"]].instantiate()
-		$Decorations.add_child(deco_inst)
-		deco_inst.global_position = deco["position"]
-		deco_inst.rotation.y = deco["rotation"]
-	#Light:
-	var street_light = DecorationManager.decorations["streetlamp"].instantiate()
-	$Decorations.add_child(street_light)
-	street_light.global_position = room_info["light_position"]
-		
+
 func spawn_currency(_type, location):
 	var bracelet_instance = bracelet_tscn.instantiate()
 	$Currencies.add_child(bracelet_instance)
@@ -139,7 +127,9 @@ func get_chum_spawn_loc():
 	return pos
 	
 func decorate():
-	pass
+	#Seeded randomness - Same based on global seed, world number, transition count and room loc.
+	#Each room then has its own way of decorating.
+	seed(Global.save_seed + hash(str(Global.current_world_num) + str(Global.world_transition_count) + str(Global.room_location)))
 
 func set_player_loc_on_entry():
 	#sets player near entered door if there are two rooms entered and the last two are the same world.

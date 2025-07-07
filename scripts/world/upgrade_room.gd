@@ -5,6 +5,7 @@ const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
 const TYPE := "upgrade"
 
 func decorate():
+	super()
 	#Streetlamp generally points to fastest way to lobby.
 	var to_lobby = Global.world_map_guide["lobby"][Global.room_location] * 13
 	var spawn_pos = Vector3(1, 0, 1)
@@ -14,7 +15,6 @@ func decorate():
 	var light_obj = STREETLAMP.instantiate()
 	$Decorations.add_child(light_obj)
 	light_obj.global_position = spawn_pos
-	Global.world_map[Global.room_location]["light_position"] = spawn_pos
 	
 	#Other objects:
 	var from_lobby = Global.world_map[Global.room_location]["value"]
@@ -41,5 +41,3 @@ func decorate():
 		deco_inst.global_position = pos
 		var angle = angles.pick_random()
 		deco_inst.rotation.y = angle
-		
-		Global.world_map[Global.room_location]["decorations"].append({"name": chosen_deco[1], "position": pos, "rotation": angle})
