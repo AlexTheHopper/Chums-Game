@@ -25,8 +25,14 @@ func _ready() -> void:
 			"uncommon": ["tree2"],
 			"rare": ["tree1"]
 			},
-		
+
 		2: {"multiplier": 0.1,
+			"common": ["rubble1"],
+			"uncommon": ["column1"],
+			"rare": ["column1"]
+			},
+
+		3: {"multiplier": 0.5,
 			"common": ["rubble1"],
 			"uncommon": ["column1"],
 			"rare": ["column1"]

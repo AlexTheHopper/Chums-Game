@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://hnr384heiwvx"
+path="res://.godot/imported/world_3_tiles_half_top_end_Color.png-ad4b724f555441fdeac1e3c9c5593268.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "0c9901c0ef8f053bee7fcb1fc088d3c7"
+}
+
+[deps]
+
+source_file="res://assets/world/world_3_tiles/world_3_tiles_half_top_end_Color.png"
+dest_files=["res://.godot/imported/world_3_tiles_half_top_end_Color.png-ad4b724f555441fdeac1e3c9c5593268.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="1_fpf3g"]
 [ext_resource type="ArrayMesh" uid="uid://dhm61vn54ggq7" path="res://assets/world/world_2_other/door.vox" id="2_5nut2"]
 
-[node name="Door_1" type="Node3D"]
+[node name="Door_2" type="Node3D"]
 
 [node name="Door" type="MeshInstance3D" parent="."]
 material_overlay = ExtResource("1_fpf3g")

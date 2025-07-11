@@ -6,7 +6,8 @@ var active := true
 var particles := load("res://particles/chum_increaser_use.tscn")
 
 func _ready() -> void:
-	#Remove if have entered this world, or world is starting world.
+	#Remove if have entered this world, or world is starting world. TODO this doesnt work
+	#If you go to a new world, get this, then go to another room and reload, room history doesnt update but itll save your total chums.
 	var past_worlds_data := Global.room_history.slice(0, Global.room_history.size() - 1)
 	var past_worlds := past_worlds_data.map(func(item): return item[0])
 	print(past_worlds)

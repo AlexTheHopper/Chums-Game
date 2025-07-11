@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://oibb4eya8bl2"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddbmed8yxcnij" path="res://assets/world/world_3_other/door.vox" id="1_ltni4"]
+[ext_resource type="Material" uid="uid://capb3mnwndcbl" path="res://materials/simple_outline.tres" id="1_rxaah"]
+
+[node name="Door_3" type="Node3D"]
+
+[node name="Door" type="MeshInstance3D" parent="."]
+material_overlay = ExtResource("1_rxaah")
+mesh = ExtResource("1_ltni4")

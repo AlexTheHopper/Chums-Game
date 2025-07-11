@@ -95,7 +95,6 @@ func add_chum_indicators() -> void:
 func max_chums_increased(extra_n):
 	var current_n = PlayerStats.player_max_chums
 	for n in range(current_n, current_n + extra_n):
-		print(n)
 		var new_indicator = chum_indicator_tscn.instantiate()
 		new_indicator.global_position = get_indicator_position(n)
 		chum_indicators.add_child(new_indicator)

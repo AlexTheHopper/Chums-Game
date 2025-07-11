@@ -32,7 +32,7 @@ func _ready() -> void:
 	elif Global.current_world_num:
 		mesh_num = Global.current_world_num
 		
-	mesh_scene = load("res://assets/entities/quality_popup_%s.tscn" % [mesh_num]).instantiate()
+	mesh_scene = load("res://assets/world/quality_popup_%s.tscn" % [mesh_num]).instantiate()
 	mesh_node.add_child(mesh_scene)
 	
 	#Set all values:

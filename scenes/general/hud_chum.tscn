@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://0smlqtllr6c8"]
+[gd_scene load_steps=9 format=3 uid="uid://0smlqtllr6c8"]
 
 [ext_resource type="StyleBox" uid="uid://c88sa0i4f86uq" path="res://resources/hud_panel.tres" id="1_t813e"]
 [ext_resource type="Script" uid="uid://dqrlw44ag04n4" path="res://scripts/general/hud_chum.gd" id="2_lgdkm"]
-[ext_resource type="Texture2D" uid="uid://bm7puepokio68" path="res://assets/entities/chum_icons/chum3_128.png" id="3_t813e"]
 
 [sub_resource type="Animation" id="Animation_t813e"]
 length = 0.001
@@ -389,7 +388,6 @@ offset_right = 4.65001
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_t813e")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
