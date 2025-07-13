@@ -44,6 +44,11 @@ func _on_active_zone_body_entered(body: Node3D) -> void:
 			body.increase_stats(10) #Increase base damage by x and extra damage by int(x/2). Increase health by int(x/2)
 		elif body is Chum:
 			body.increase_stats() #Increase all stats by 10% base per level
+		
+		if item_num <= 0:
+			print(Global.room_location)
+			Global.world_map[Global.room_location]["activated"] = true
+			Global.world_map_guide["upgrade"] = Functions.astar2d(Global.world_grid, 6, true)
 
 
 func _on_fly_zone_body_entered(body: Node3D) -> void:

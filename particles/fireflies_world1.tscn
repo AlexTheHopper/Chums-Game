@@ -4,7 +4,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi6j6"]
 vertex_color_use_as_albedo = true
-emission_enabled = true
 emission = Color(0.741385, 0.741385, 0.741385, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_r7gli"]
@@ -16,7 +15,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.248744, 1), 0.0, 0.0, 0, 0, Ve
 point_count = 5
 
 [sub_resource type="Gradient" id="Gradient_nbbbv"]
-colors = PackedColorArray(0.490044, 0.526085, 3.85046e-07, 1, 0.970927, 0.755128, 0, 1)
+colors = PackedColorArray(0.995842, 1, 0.573049, 1, 1, 1, 1, 1)
 
 [node name="Particles" type="Node3D"]
 script = ExtResource("1_r7gli")

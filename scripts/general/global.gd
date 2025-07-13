@@ -1,5 +1,5 @@
 extends Node
-var dev_mode = false
+var dev_mode = true
 
 var game_begun := false
 var world_transition_count := 0
@@ -15,7 +15,6 @@ var world_map_guide = {"lobby": {},
 						"statue": {},
 						"upgrade": {},
 						}
-						
 
 var in_battle := false
 var is_alive := true
@@ -27,32 +26,11 @@ var rooms: Node3D
 var world_info: Dictionary
 var game_scene: PackedScene = load("res://scenes/general/game.tscn")
 var game_save_id := 1
+var player: Player
 
 signal room_changed
 signal room_changed_to_boss
-signal room_changed_from_boss
-
-func get_room_tscn(world_n, room_id) -> PackedScene:
-	
-	if world_n == 0:
-		return load("res://scenes/world/boss_room_world_%s.tscn" % [room_id])
-	match room_id:
-		1:
-			return load("res://scenes/world/lobby_world_%s.tscn" % [world_n])
-		2:
-			return load("res://scenes/world/room_world_%s.tscn" % [world_n])
-		3:
-			return load("res://scenes/world/fountain_room_world_%s.tscn" % [world_n])
-		4:
-			return load("res://scenes/world/void_room_world_%s.tscn" % [world_n])
-		5:
-			return load("res://scenes/world/statue_room_world_%s.tscn" % [world_n])
-		6:
-			return load("res://scenes/world/upgrade_room_world_%s.tscn" % [world_n])
-
-	print("SHOULD NOT REACH HERE")
-	return load("res://scenes/world/lobby_world_1.tscn")
- 
+signal room_changed_from_boss 
 
 func _ready():
 	#required and optional are the statue chum ids. To be super safe only rely on the last entry in required.
@@ -105,6 +83,28 @@ func _ready():
 			},
 	}
 
+func get_room_tscn(world_n, room_id) -> PackedScene:
+	print("worldn: %s" % world_n)
+	print("room_id: %s" % room_id)
+	if world_n == 0:
+		return load("res://scenes/world/boss_room_world_%s.tscn" % [room_id])
+	match room_id:
+		1:
+			return load("res://scenes/world/lobby_world_%s.tscn" % [world_n])
+		2:
+			return load("res://scenes/world/room_world_%s.tscn" % [world_n])
+		3:
+			return load("res://scenes/world/fountain_room_world_%s.tscn" % [world_n])
+		4:
+			return load("res://scenes/world/void_room_world_%s.tscn" % [world_n])
+		5:
+			return load("res://scenes/world/statue_room_world_%s.tscn" % [world_n])
+		6:
+			return load("res://scenes/world/upgrade_room_world_%s.tscn" % [world_n])
+
+	print("SHOULD NOT REACH HERE - Global.get_room_tscn()")
+	return load("res://scenes/world/lobby_world_1.tscn") #Only as backup when room cannot be found.
+
 func start_game(save_id = null, new_game = false) -> void:
 	if save_id != null:
 		game_save_id = save_id
@@ -114,8 +114,6 @@ func start_game(save_id = null, new_game = false) -> void:
 	if save_id != null and dev_mode:
 		save_seed = save_id
 	
-	map_size = world_info[current_world_num]["map_size"]
-	room_size = world_info[current_world_num]["room_size"]
 	world_map = {}
 	world_grid = []
 	world_map_guide = {"lobby": {},
@@ -126,45 +124,66 @@ func start_game(save_id = null, new_game = false) -> void:
 						"upgrade": {},
 						}
 						
-	room_location = Vector2i(map_size, map_size)
-	room_history = [[current_world_num, room_location]]
+
+	if new_game:
+		#Creates scaffold for world
+		map_size = world_info[current_world_num]["map_size"]
+		room_size = world_info[current_world_num]["room_size"]
+		room_location = Vector2i(map_size, map_size)
+		room_history = [[current_world_num, room_location]]
+		
+		if world_map == {} or new_game == true:
+			world_grid = get_world_grid(current_world_num)
+			create_world(current_world_num)
+			set_world_map_guides()
+		
+		#Creates Player, Lobby, HUD
+		get_node("/root").add_child(game_scene.instantiate())
+		player = get_tree().get_first_node_in_group("Player")
+		
+		#Sets initial values for some singletons and connects important signals.
+		PlayerStats.initialize()
+		get_node("/root/Game/HUD").initialize()
+		
+		rooms = get_parent().get_node("Game/Rooms")
+		var lobby_room = get_room_tscn(1, 1) #Lobby of world 1
+		current_room_node = lobby_room.instantiate()
+		rooms.add_child(current_room_node)
 	
-	#Creates scaffold for world
-	if world_map == {} or new_game == true:
-		world_grid = get_world_grid(current_world_num)
-		set_world_map_guides()
-		create_world(current_world_num)
-	
-	#Creates Player, Lobby, HUD
-	get_node("/root").add_child(game_scene.instantiate())
-	var lobby_room = get_room_tscn(1, 1).instantiate() #Lobby of world 1
-	get_node("/root/Game/Rooms").add_child(lobby_room)
-	current_room_node = lobby_room
-	rooms = get_parent().get_node("Game/Rooms")
-	
-	#Sets initial values for some singletons and connects important signals.
-	PlayerStats.initialize()
-	get_node("/root/Game/HUD").initialize()
-	
-	if new_game == false:
+	else:
+		get_node("/root").add_child(game_scene.instantiate())
+		player = get_tree().get_first_node_in_group("Player")
+		
+		#Sets initial values for some singletons and connects important signals.
+		PlayerStats.initialize()
+		get_node("/root/Game/HUD").initialize()
+		
+		rooms = get_parent().get_node("Game/Rooms")
 		SaverLoader.load_game(save_id)
+		map_size = world_info[current_world_num]["map_size"]
+		room_size = world_info[current_world_num]["room_size"]
 		set_world_map_guides()
 		
 		if Global.dev_mode:
 			print('In world %s, room %s.' % [Global.current_world_num, str(room_location)])
-		
-		if current_room_node:
-			current_room_node.queue_free()
 
 		#Create new room:
 		if current_world_num == 0:
-			var new_room = get_room_tscn(room_location[0], current_world_num)
+			var new_room = get_room_tscn(current_world_num, room_location[0])
 			current_room_node = new_room.instantiate()
 			rooms.add_child(current_room_node)
 		else:
 			var new_room = get_room_tscn(current_world_num, world_map[room_location]["type"])
 			current_room_node = new_room.instantiate()
 			rooms.add_child(current_room_node)
+
+		#Look at center of room when load
+		if len(room_history) > 1 and current_room_node.TYPE != "lobby":
+			var cam_rotation = Functions.angle_to_xz(current_room_node, player)
+			player.get_node("Camera_Controller").rotation.y = cam_rotation
+			#Set camera goal to nearest multiple of PI / 4
+			player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
+
 	get_node("/root/Game/HUD").add_chum_indicators()
 
 	if Global.dev_mode:
@@ -251,12 +270,14 @@ func get_world_grid(world_n):
 	return(grid)
 
 func set_world_map_guides() -> void:
-	world_map_guide["lobby"] = Functions.astar2d(world_grid, 1)
-	world_map_guide["room"] = Functions.astar2d(world_grid, 2)
-	world_map_guide["fountain"] = Functions.astar2d(world_grid, 3)
-	world_map_guide["void"] = Functions.astar2d(world_grid, 4)
-	world_map_guide["statue"] = Functions.astar2d(world_grid, 5)
-	world_map_guide["upgrade"] = Functions.astar2d(world_grid, 6)
+	if current_world_num == 0:
+		return
+	world_map_guide["lobby"] = Functions.astar2d(world_grid, 1, false)
+	world_map_guide["room"] = Functions.astar2d(world_grid, 2, true)
+	world_map_guide["fountain"] = Functions.astar2d(world_grid, 3, true)
+	world_map_guide["void"] = Functions.astar2d(world_grid, 4, false)
+	world_map_guide["statue"] = Functions.astar2d(world_grid, 5, true)
+	world_map_guide["upgrade"] = Functions.astar2d(world_grid, 6, true)
 
 func bring_to_front(list: Array, to_front: int, shuffle: bool) -> Array:
 	var to_front_list := []
@@ -301,7 +322,6 @@ func create_world(world_n):
 										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
 										"item_count": 3,
 										"statue_id": statue_id,
-										"statue_activated": false,
 										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
 										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),
 										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
@@ -325,7 +345,6 @@ func create_world_boss() -> void:
 										"item_count": 3,
 										"light_position": Vector3(1.0, 0.0, -10.0),
 										"statue_id": 1,
-										"statue_activated": false,
 										"has_x_pos": false,
 										"has_x_neg": false,
 										"has_z_pos": false,
@@ -355,7 +374,6 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		room_changed.emit()
 		TransitionScreen.transition(length)
 		await TransitionScreen.on_transition_finished
-		current_room_node.save_room()
 		
 		room_location = new_room_location
 		if Global.dev_mode:
@@ -371,12 +389,10 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		current_room_node = new_room.instantiate()
 		rooms.add_child(current_room_node)
 
-
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
 	room_changed_to_boss.emit()
 	TransitionScreen.transition(length)
 	await TransitionScreen.on_transition_finished
-	current_room_node.save_room()
 	
 	create_world_boss()
 	current_world_num = 0
@@ -401,7 +417,6 @@ func transition_to_world(destination_world_n: int, length = 1):
 	room_changed_from_boss.emit()
 	TransitionScreen.transition(length)
 	await TransitionScreen.on_transition_finished
-	current_room_node.save_room()
 	
 	current_world_num = destination_world_n
 	world_transition_count += 1
@@ -409,12 +424,12 @@ func transition_to_world(destination_world_n: int, length = 1):
 	room_size = world_info[current_world_num]["room_size"]
 	
 	world_grid = get_world_grid(current_world_num)
-	set_world_map_guides()
 	
 	if Global.dev_mode:
 		for x in range(world_grid.size() - 1, -1, -1):
 			print(world_grid[x])
 	create_world(current_world_num)
+	set_world_map_guides()
 	
 	var new_room_location = Vector2i(map_size, map_size)
 	room_location = new_room_location

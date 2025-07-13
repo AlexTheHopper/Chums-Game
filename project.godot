@@ -153,4 +153,5 @@ avoidance/layer_2="Enemy"
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+scaling_3d/scale=0.75
 occlusion_culling/use_occlusion_culling=true

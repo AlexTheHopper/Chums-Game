@@ -402,7 +402,7 @@ radius = 0.3
 height = 1.25
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_volkl"]
-radius = 0.3
+radius = 0.4
 height = 1.25
 
 [sub_resource type="Animation" id="Animation_ygc7o"]
@@ -523,7 +523,7 @@ mesh = SubResource("ArrayMesh_agndc")
 skin = SubResource("Skin_jktwu")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, -1.81609e-09, 1.51192e-07, 1.51164e-07, -0.0106423, -0.999943, 3.42501e-09, 0.999943, -0.0106423, 0, 0.6, -0.859498)
+transform = Transform3D(1, -1.81608e-09, 1.51192e-07, 1.51164e-07, -0.0106419, -0.999943, 3.42494e-09, 0.999943, -0.0106419, 0, 0.6, -0.859498)
 bone_name = "Body"
 bone_idx = 0
 

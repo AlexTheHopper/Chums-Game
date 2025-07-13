@@ -488,6 +488,57 @@ tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = PackedFloat32Array(0, 1, 0.204967, -0.0440241, -0.173055, 0.962342, 0.0666667, 1, 0.205352, -0.0440934, -0.173038, 0.96226, 0.1, 1, 0.20632, -0.0442674, -0.172993, 0.962053, 0.133333, 1, 0.207921, -0.0445553, -0.172919, 0.961708, 0.166667, 1, 0.210066, -0.044941, -0.172819, 0.961242, 0.2, 1, 0.212753, -0.0454241, -0.172693, 0.960651, 0.233333, 1, 0.215711, -0.0459557, -0.172552, 0.959991, 0.266667, 1, 0.218847, -0.0465193, -0.172401, 0.959281, 0.333333, 1, 0.225293, -0.0476776, -0.172085, 0.957788, 0.366667, 1, 0.228331, -0.0482235, -0.171932, 0.957068, 0.4, 1, 0.231097, -0.0487203, -0.171792, 0.956404, 0.433333, 1, 0.2335, -0.049152, -0.171669, 0.95582, 0.466667, 1, 0.235452, -0.0495025, -0.171569, 0.955341, 0.5, 1, 0.236862, -0.0497558, -0.171495, 0.954992, 0.566667, 1, 0.236556, -0.0497007, -0.171511, 0.955068, 0.6, 1, 0.234099, -0.0492595, -0.171638, 0.955673, 0.633333, 1, 0.229886, -0.0485027, -0.171854, 0.956695, 0.666667, 1, 0.224001, -0.0474454, -0.172149, 0.958091, 0.7, 1, 0.216053, -0.0460172, -0.172536, 0.959914, 0.733333, 1, 0.206676, -0.0443315, -0.172977, 0.961977, 0.766667, 1, 0.195949, -0.0424021, -0.17346, 0.964219, 0.8, 1, 0.183951, -0.0402432, -0.173973, 0.966579, 0.833333, 1, 0.170765, -0.0378691, -0.174506, 0.968996, 0.866667, 1, 0.15618, -0.0352418, -0.175055, 0.971453, 0.9, 1, 0.140677, -0.0324473, -0.175595, 0.973819, 0.933333, 1, 0.124353, -0.0295029, -0.176113, 0.976038, 0.966667, 1, 0.10731, -0.0264266, -0.176601, 0.978058, 1, 1, 0.0896531, -0.0232372, -0.177049, 0.979835, 1.03333, 1, 0.0714068, -0.0199391, -0.177451, 0.981333, 1.16667, 1, -0.00317682, -0.00643222, -0.178451, 0.983923, 1.2, 1, -0.0214831, -0.00311085, -0.17854, 0.983693, 1.23333, 1, -0.0393611, 0.000135159, -0.178567, 0.98314, 1.26667, 1, -0.0566975, 0.00328504, -0.178537, 0.982293, 1.3, 1, -0.0733819, 0.00631852, -0.178455, 0.981188, 1.33333, 1, -0.0893072, 0.00921588, -0.178329, 0.979866, 1.36667, 1, -0.104026, 0.0118953, -0.178171, 0.978413, 1.4, 1, -0.11769, 0.0143843, -0.177987, 0.976864, 1.43333, 1, -0.13021, 0.0166661, -0.177788, 0.975274, 1.46667, 1, -0.141498, 0.0187243, -0.177583, 0.9737, 1.5, 1, -0.151469, 0.0205432, -0.177382, 0.972199, 1.53333, 1, -0.159521, 0.0220124, -0.177205, 0.97091, 1.56667, 1, -0.166005, 0.023196, -0.177054, 0.969823, 1.6, 1, -0.170838, 0.0240786, -0.176936, 0.968983, 1.63333, 1, -0.173937, 0.0246445, -0.176858, 0.968432, 1.66667, 1, -0.175213, 0.0248775, -0.176826, 0.968201)
 
+[sub_resource type="Animation" id="Animation_7q848"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.583723, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.738389, 0.0407652, 0.254562)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_yfu6m"]
 resource_name = "Sleep"
 length = 3.75
@@ -754,57 +805,6 @@ tracks/11/interp = 0
 tracks/11/loop_wrap = true
 tracks/11/keys = PackedFloat32Array(0, 1, 0.204967, -0.0440241, -0.173055, 0.962342)
 
-[sub_resource type="Animation" id="Animation_7q848"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.583723, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.738389, 0.0407652, 0.254562)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D2:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6uonl"]
 _data = {
 &"Attack": SubResource("Animation_5rhlr"),
@@ -971,7 +971,7 @@ mesh = SubResource("ArrayMesh_l6fkf")
 skin = SubResource("Skin_qfx86")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Body/Skeleton3D"]
-transform = Transform3D(0.984063, -0.0281176, -0.175583, 9.31323e-10, 0.987419, -0.158124, 0.17782, 0.155604, 0.971683, 0, 0.688278, -0.05)
+transform = Transform3D(0.984063, -0.0281177, -0.175583, -3.72529e-09, 0.987419, -0.158124, 0.17782, 0.155604, 0.971683, 0, 0.688278, -0.05)
 bone_name = "Bone"
 bone_idx = 0
 

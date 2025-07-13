@@ -30,7 +30,9 @@ func _ready() -> void:
 	fill_tunnels()
 	set_player_loc_on_entry()
 	set_chums_loc_on_entry()
-
+	if self.TYPE != "boss":
+		#Save game
+		SaverLoader.save_game(Global.game_save_id)
 
 func fill_tunnels():
 	#Fix walls etc.
@@ -84,13 +86,14 @@ func save_room():
 	Global.world_map[Global.room_location]["to_spawn"] = enemies_to_spawn
 	for group in ["Chums_Enemy", "Chums_Neutral"]:
 		for chum in get_tree().get_nodes_in_group(group):
-			Global.world_map[Global.room_location]["chums"].append({"type": chum.chum_str,
-																	"group": group,
-																	"position": chum.global_position,
-																	"state": chum.state_machine.current_state.state_name,
-																	"health": chum.health_node.get_health(),
-																	"quality": chum.quality,
-																	})
+			Global.world_map[Global.room_location]["chums"].append({
+				"type": chum.chum_str,
+				"group": group,
+				"position": chum.global_position,
+				"state": chum.state_machine.current_state.state_name,
+				"health": chum.health_node.get_health(),
+				"quality": chum.quality,
+				})
 	#Save game
 	SaverLoader.save_game(Global.game_save_id)
 

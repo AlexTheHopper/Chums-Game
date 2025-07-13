@@ -7,10 +7,8 @@ var boss_chums_to_spawn := []
 
 
 func _ready() -> void:
-	super()
 	$RoomActivator.activate_bell.connect(close_doors)
 	
-
 	for chum_id in ChumsManager.boss_chums[Global.room_location].keys():
 		for n in ChumsManager.boss_chums[Global.room_location][chum_id]:
 			boss_chums_to_spawn.append(chum_id)
@@ -22,9 +20,7 @@ func _ready() -> void:
 		$Timer.start()
 	else:
 		$RoomActivator.finish_spawning()
-
-	Global.world_map[Global.room_location]["entered"] = true
-
+	super()
 
 func fill_tunnels() -> void:
 	pass

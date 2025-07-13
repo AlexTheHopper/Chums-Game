@@ -4,7 +4,7 @@
 [ext_resource type="MeshLibrary" uid="uid://df2pgexonlgah" path="res://assets/world/world_3_mesh_lib_v2.tres" id="2_r5mjj"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="3_sfbgc"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_1cgth"]
-[ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="5_frohw"]
+[ext_resource type="PackedScene" uid="uid://cywa3wbei5dlc" path="res://particles/fireflies_world3.tscn" id="5_r5mjj"]
 [ext_resource type="PackedScene" uid="uid://bm7edsnvhqcb8" path="res://scenes/world/statue.tscn" id="6_hfyg5"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="7_gkxiy"]
 
@@ -17,8 +17,7 @@ ambient_light_source = 3
 ambient_light_color = Color(1, 0.456736, 0.854935, 1)
 tonemap_mode = 3
 fog_enabled = true
-fog_light_color = Color(0.275543, 9.36384e-05, 0.301039, 1)
-fog_density = 0.015
+fog_light_color = Color(0.382219, 0.00018333, 0.415945, 1)
 fog_height_density = 1.0
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("grid_map")]
@@ -71,11 +70,10 @@ transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 19, 0, 1
 [node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
 omni_range = 40.0
-omni_attenuation = 0.75
+omni_attenuation = 0.2
 omni_shadow_mode = 0
 
-[node name="Particles" parent="Decorations" instance=ExtResource("5_frohw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 1)
+[node name="Particles" parent="Decorations" instance=ExtResource("5_r5mjj")]
 
 [node name="Statue" parent="." instance=ExtResource("6_hfyg5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)

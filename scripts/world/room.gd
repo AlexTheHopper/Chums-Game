@@ -109,7 +109,7 @@ func decorate():
 	
 	var light_obj = STREETLAMP.instantiate()
 	$Decorations.add_child(light_obj)
-	light_obj.global_position = spawn_pos
+	light_obj.global_position = spawn_pos.snapped(Vector3(0.1, 0.1, 0.1))
 	
 	#Other objects:
 	var from_lobby = Global.world_map[Global.room_location]["value"]
@@ -122,6 +122,6 @@ func decorate():
 		
 		var pos = Vector3(randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15),
 						0, randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15))
-		deco_inst.global_position = pos
+		deco_inst.global_position = pos.snapped(Vector3(0.1, 0.1, 0.1))
 		var angle = angles.pick_random()
 		deco_inst.rotation.y = angle

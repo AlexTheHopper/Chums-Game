@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cywa3wbei5dlc"]
+
+[ext_resource type="Script" uid="uid://4lw84mysr4w3" path="res://scripts/world/fireflies.gd" id="1_vtp5o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi6j6"]
+vertex_color_use_as_albedo = true
+emission = Color(0.741385, 0.741385, 0.741385, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r7gli"]
+material = SubResource("StandardMaterial3D_yi6j6")
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Curve" id="Curve_e8k2b"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.248744, 1), 0.0, 0.0, 0, 0, Vector2(0.497487, 1), 0.0, 0.0, 0, 0, Vector2(0.751256, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Gradient" id="Gradient_nbbbv"]
+colors = PackedColorArray(0.995842, 1, 0.573049, 1, 1, 1, 1, 1)
+
+[node name="Particles" type="Node3D"]
+script = ExtResource("1_vtp5o")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+amount = 100
+lifetime = 5.0
+randomness = 0.5
+mesh = SubResource("BoxMesh_r7gli")
+emission_shape = 3
+emission_box_extents = Vector3(20, 1, 20)
+spread = 180.0
+gravity = Vector3(0, 0.75, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.2
+angular_velocity_min = 0.2
+angular_velocity_max = 0.5
+linear_accel_min = -0.1
+linear_accel_max = 0.1
+radial_accel_min = -0.05
+radial_accel_max = 0.05
+tangential_accel_min = -1.0
+tangential_accel_max = 1.0
+angle_max = 360.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_e8k2b")
+color_initial_ramp = SubResource("Gradient_nbbbv")

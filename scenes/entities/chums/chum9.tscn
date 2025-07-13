@@ -60,7 +60,6 @@ bind/5/bone = -1
 bind/5/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4cr8o"]
-radius = 0.3
 
 [sub_resource type="Animation" id="Animation_0ro48"]
 resource_name = "Attack"
@@ -560,22 +559,22 @@ script = ExtResource("4_gmfye")
 metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="body/Armature/Skeleton3D/Bone/Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, 0)
 shape = SubResource("SphereShape3D_4cr8o")
 disabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="body/Armature/Skeleton3D/Bone/Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 0, 0)
 shape = SubResource("SphereShape3D_4cr8o")
 disabled = true
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="body/Armature/Skeleton3D/Bone/Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.6)
 shape = SubResource("SphereShape3D_4cr8o")
 disabled = true
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="body/Armature/Skeleton3D/Bone/Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, -1.8)
+transform = Transform3D(1, 0, 0, 0, 1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, -1.6)
 shape = SubResource("SphereShape3D_4cr8o")
 disabled = true
 

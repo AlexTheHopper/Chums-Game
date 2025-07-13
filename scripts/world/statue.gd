@@ -13,7 +13,7 @@ func _ready() -> void:
 	chum_id = Global.world_map[Global.room_location]["statue_id"]
 	mesh_node.add_child(load("res://assets/world/chum_statues/chum_%s_statue.tscn" % [chum_id]).instantiate())
 	
-	if Global.world_map[Global.room_location]["statue_activated"]:
+	if Global.world_map[Global.room_location]["activated"]:
 		mesh_node.visible = false
 		animation_player.speed_scale = 10.0
 		animation_player.play("activate")
@@ -36,9 +36,10 @@ func _on_fly_zone_body_entered(body: Node3D) -> void:
 func _on_detection_zone_body_entered(body: Node3D) -> void:
 	if body is Chum and active:
 		if body.chum_id in chum_ids:
-			Global.world_map[Global.room_location]["statue_activated"] = true
+			Global.world_map[Global.room_location]["activated"] = true
 			animation_player.play("activate")
 			open_door()
+			Global.world_map_guide["statue"] = Functions.astar2d(Global.world_grid, 5, true)
 			
 func open_door() -> void:
 	to_boss.active = true

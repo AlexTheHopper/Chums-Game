@@ -40,6 +40,10 @@ func _on_heal_zone_body_entered(body: Node3D) -> void:
 		body.health_node.health += HEART_HEAL
 		active = false
 		hearts_timer.start()
+		
+		if heart_num <= 0:
+			Global.world_map[Global.room_location]["activated"] = true
+			Global.world_map_guide["fountain"] = Functions.astar2d(Global.world_grid, 3, true)
 
 
 func _on_fly_zone_body_entered(body: Node3D) -> void:

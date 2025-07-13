@@ -236,6 +236,8 @@ func get_agro_change_target():
 	return self
 
 func put_to_sleep_temp(duration: float) -> void:
+	if state_machine.current_state.state_name == "Carry":
+		return
 	temp_sleep_time += duration
 	set_state("SleepTemp")
 	
