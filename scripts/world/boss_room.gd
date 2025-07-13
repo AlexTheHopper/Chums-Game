@@ -52,4 +52,4 @@ func _on_timer_timeout() -> void:
 	#For X transition counts, cost goes up by 2X and each quality stat can increase from X to 2X.
 	var count = Global.world_transition_count
 	chum_instance.increase_stats(randi_range(count, 2 * count), randi_range(count, 2 * count), randi_range(count, 2 * count), randi_range(count, 2 * count))
-	chum_instance.bracelet_cost += count * 2
+	chum_instance.bracelet_cost += count

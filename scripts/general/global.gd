@@ -1,5 +1,5 @@
 extends Node
-var dev_mode = true
+var dev_mode = false
 
 var game_begun := false
 var world_transition_count := 0
@@ -84,8 +84,6 @@ func _ready():
 	}
 
 func get_room_tscn(world_n, room_id) -> PackedScene:
-	print("worldn: %s" % world_n)
-	print("room_id: %s" % room_id)
 	if world_n == 0:
 		return load("res://scenes/world/boss_room_world_%s.tscn" % [room_id])
 	match room_id:

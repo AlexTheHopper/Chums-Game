@@ -10,7 +10,6 @@ func _ready() -> void:
 	#If you go to a new world, get this, then go to another room and reload, room history doesnt update but itll save your total chums.
 	var past_worlds_data := Global.room_history.slice(0, Global.room_history.size() - 1)
 	var past_worlds := past_worlds_data.map(func(item): return item[0])
-	print(past_worlds)
 	if Global.current_world_num in past_worlds:
 		queue_free()
 	animation_player.play("idle")
