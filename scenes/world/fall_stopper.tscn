@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq08vipfekj02"]
+
+[ext_resource type="Script" uid="uid://b2cdwixl0d5jj" path="res://scripts/world/fall_stopper.gd" id="1_41d1u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aukul"]
+size = Vector3(200, 5, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41d1u"]
+transparency = 1
+albedo_color = Color(0.371885, 0, 0.0628564, 0.811765)
+
+[sub_resource type="BoxMesh" id="BoxMesh_82fw2"]
+material = SubResource("StandardMaterial3D_41d1u")
+size = Vector3(200, 5, 200)
+
+[node name="FallStopper" type="Area3D"]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource("1_41d1u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_aukul")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_82fw2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

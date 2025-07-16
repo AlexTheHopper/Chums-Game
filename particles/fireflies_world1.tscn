@@ -15,7 +15,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.248744, 1), 0.0, 0.0, 0, 0, Ve
 point_count = 5
 
 [sub_resource type="Gradient" id="Gradient_nbbbv"]
-colors = PackedColorArray(0.995842, 1, 0.573049, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.837572, 1, 0.553266, 1, 0, 0.966199, 0.428652, 1)
 
 [node name="Particles" type="Node3D"]
 script = ExtResource("1_r7gli")

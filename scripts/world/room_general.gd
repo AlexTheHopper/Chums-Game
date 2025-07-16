@@ -92,6 +92,7 @@ func save_room():
 				"position": chum.global_position,
 				"state": chum.state_machine.current_state.state_name,
 				"health": chum.health_node.get_health(),
+				"cost": chum.bracelet_cost,
 				"quality": chum.quality,
 				})
 	#Save game
@@ -104,6 +105,7 @@ func load_room():
 		var chum_to_add = ChumsManager.get_specific_chum_str(chum["type"])
 		var chum_instance = chum_to_add.instantiate()
 		chum_instance.quality = chum["quality"]
+		chum_instance.bracelet_cost = chum["cost"]
 		chum_instance.stats_set = true
 		
 		chum_instance.start_health = chum["health"]

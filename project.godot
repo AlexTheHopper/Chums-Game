@@ -24,6 +24,7 @@ Functions="*res://scripts/general/functions.gd"
 PlayerStats="*res://scripts/general/player_stats.gd"
 DecorationManager="*res://scripts/general/decoration_manager.gd"
 SaverLoader="*res://scripts/general/saver_loader.gd"
+Cheats="*res://testing/cheats.gd"
 
 [display]
 

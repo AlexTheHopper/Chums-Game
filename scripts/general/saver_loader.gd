@@ -35,10 +35,13 @@ func save_game(save_id) -> void:
 	#Friend Chums Data:
 	saved_game.friendly_chums = []
 	for chum in get_tree().get_nodes_in_group("Chums_Friend"):
-		saved_game.friendly_chums.append({"type": chum.chum_str,
-											"quality": chum.quality,
-											"health": chum.health_node.get_health(),
-											"state": "Idle",})
+		saved_game.friendly_chums.append({
+			"type": chum.chum_str,
+			"quality": chum.quality,
+			"health": chum.health_node.get_health(),
+			"state": "Idle",
+			"cost": chum.bracelet_cost,
+			})
 	
 	#World Data:
 	saved_game.world_transition_count = Global.world_transition_count
@@ -75,6 +78,7 @@ func load_game(save_id) -> void:
 		var chum_instance = chum_to_add.instantiate()
 		
 		chum_instance.quality = chum["quality"]
+		chum_instance.bracelet_cost = chum["cost"]
 		chum_instance.stats_set = true
 		
 		chum_instance.start_health = chum["health"]

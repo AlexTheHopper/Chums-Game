@@ -15,7 +15,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.248744, 1), 0.0, 0.0, 0, 0, Ve
 point_count = 5
 
 [sub_resource type="Gradient" id="Gradient_nbbbv"]
-colors = PackedColorArray(0.995842, 1, 0.573049, 1, 1, 1, 1, 1)
+colors = PackedColorArray(1, 0.57498, 0.897867, 1, 0.834388, 0.667595, 1, 1)
 
 [node name="Particles" type="Node3D"]
 script = ExtResource("1_vtp5o")
@@ -44,4 +44,5 @@ angle_max = 360.0
 scale_amount_min = 0.5
 scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_e8k2b")
+color = Color(0.86683, 0.86683, 0.86683, 1)
 color_initial_ramp = SubResource("Gradient_nbbbv")

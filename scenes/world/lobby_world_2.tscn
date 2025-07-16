@@ -66,7 +66,7 @@ omni_attenuation = 0.5
 omni_shadow_mode = 0
 
 [node name="ChumIncreaser" parent="Decorations" instance=ExtResource("5_4xt6p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.75, -10)
 
 [node name="Entities" type="Node3D" parent="."]
 

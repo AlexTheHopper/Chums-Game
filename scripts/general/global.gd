@@ -1,5 +1,5 @@
 extends Node
-var dev_mode = false
+var dev_mode = true
 
 var game_begun := false
 var world_transition_count := 0
