@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c115b3o53shsm"]
+
+[ext_resource type="Script" uid="uid://c5l3lfbhqjsbm" path="res://scripts/entities/lore_drop.gd" id="1_2kqqw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2kqqw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ain8g"]
+radius = 2.0
+
+[node name="LoreDrop" type="Node3D"]
+script = ExtResource("1_2kqqw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_2kqqw")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ain8g")
+
+[node name="Popup" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

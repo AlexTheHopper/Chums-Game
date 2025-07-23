@@ -1,7 +1,9 @@
 extends Node
 
-var decorations : Dictionary
-var decorations_world : Dictionary
+var decorations : Dictionary[String, PackedScene]
+var decorations_world : Dictionary[int, Dictionary]
+
+var lore_texts : Dictionary[int, Dictionary]
 
 func _ready() -> void:
 	decorations = {"streetlamp": preload("res://scenes/world/streetlamp.tscn"),
@@ -37,6 +39,17 @@ func _ready() -> void:
 			"uncommon": ["column1"],
 			"rare": ["column1"]
 			},
+	}
+	
+	lore_texts = {
+		0: {"front": "wawaweeeewa",
+			"back": "mah waaaafe"},
+		1: {"front": "bing1",
+			"back": "bong1"},
+		2: {"front": "bing2",
+			"back": "bong2"},
+		3: {"front": "bing3",
+			"back": "bong3"},
 	}
 
 func get_random_decoration(world_n):

@@ -53,7 +53,9 @@ func _ready():
 							3: 3, #Fountain
 							4: 2, #Void
 							5: 3, #Statue - AT LEAST length of statue_required
-							6: 0}, #Upgrade
+							6: 0, #Upgrade
+							7: 1, #Lore
+							}, 
 			},
 
 		2: {'map_size': 5,
@@ -66,7 +68,9 @@ func _ready():
 							3: 6, #Fountain
 							4: 5, #Void
 							5: 6, #Statue - AT LEAST length of statue_required
-							6: 5}, #Upgrade
+							6: 5, #Upgrade
+							7: 1, #Lore
+							},
 			},
 
 		3: {'map_size': 5,
@@ -79,7 +83,9 @@ func _ready():
 							3: 6, #Fountain
 							4: 5, #Void
 							5: 6, #Statue - AT LEAST length of statue_required
-							6: 5}, #Upgrade
+							6: 5, #Upgrade
+							7: 1, #Lore
+							},
 			},
 	}
 
@@ -99,6 +105,8 @@ func get_room_tscn(world_n, room_id) -> PackedScene:
 			return load("res://scenes/world/statue_room_world_%s.tscn" % [world_n])
 		6:
 			return load("res://scenes/world/upgrade_room_world_%s.tscn" % [world_n])
+		7:
+			return load("res://scenes/world/lore_room_world_%s.tscn" % [world_n])
 
 	print("SHOULD NOT REACH HERE - Global.get_room_tscn()")
 	return load("res://scenes/world/lobby_world_1.tscn") #Only as backup when room cannot be found.
@@ -300,6 +308,7 @@ func create_world(world_n):
 		required_statues.append(id) 
 	var other_statues: Array = world_info[world_n]["statue_optional"]
 	var statue_id := 1
+	var item_count := 3
 	world_map = {}
 	#Uses the world_grid to construct information about all rooms.
 	for y in range(0, (2 * size) + 1):
@@ -309,6 +318,13 @@ func create_world(world_n):
 			statue_id = other_statues.pick_random()
 			if world_grid[x][y] == 5 and len(required_statues) > 0:
 				statue_id = required_statues.pop_back()
+
+			if world_grid[x][y] == 7:
+				#item_count is used to determine the lore text on appropriate rooms
+				item_count = DecorationManager.lore_texts.keys().pick_random()
+			else:
+				#otherwise choose actual item count
+				item_count = int(Functions.map_range(Global.world_transition_count, Vector2(0, 7), Vector2(3, 6))) + [-1, 0, 1].pick_random()
 				
 			if world_grid[x][y] != 0:
 				world_map[Vector2i(x, y)] = {
@@ -318,7 +334,7 @@ func create_world(world_n):
 										"to_spawn": -1,
 										"value": Vector2(x - size, y - size).length(),
 										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
-										"item_count": 3,
+										"item_count": item_count,
 										"statue_id": statue_id,
 										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
 										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),

@@ -1,0 +1,43 @@
+extends room
+class_name lore_room
+
+const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
+const TYPE := "lore"
+
+func decorate():
+	super()
+	#Streetlamp generally points to fastest way to lobby.
+	var to_lobby = Global.world_map_guide["lobby"][Global.room_location] * 13
+	var spawn_pos = Vector3(1, 0, 1)
+	spawn_pos.x += to_lobby.x + randf_range(-1.5, 1.5)
+	spawn_pos.z += to_lobby.y + randf_range(-1.5, 1.5)
+		
+	var light_obj = STREETLAMP.instantiate()
+	$Decorations.add_child(light_obj)
+	light_obj.global_position = spawn_pos.snapped(Vector3(0.1, 0.1, 0.1))
+	
+	#Other objects:
+	var from_lobby = Global.world_map[Global.room_location]["value"]
+	var deco_n = 2 * Functions.map_range(from_lobby, Vector2(0, Global.map_size), Vector2(5, 20))
+	var angles = [0, PI/2, PI, 3*PI/2]
+	var dummy = 0
+	for n in int(deco_n * DecorationManager.decorations_world[Global.current_world_num]['multiplier']):
+		var chosen_deco = DecorationManager.get_common_decoration(Global.current_world_num)
+		var deco_inst = chosen_deco[0].instantiate()
+		$Decorations.add_child(deco_inst)
+		
+		var x = randf_range(-13, 15)
+		var y = 0
+		if -3 < x and x < 5:
+			y = randf_range(-13, -3) if randf() < 0.5 else randf_range(5, 15)
+		else:
+			y = randf_range(-13, 15)
+		if randf() < 0.5:
+			dummy = x
+			x = y
+			y = dummy
+		var pos = Vector3(x, 0, y)
+		
+		deco_inst.global_position = pos.snapped(Vector3(0.1, 0.1, 0.1))
+		var angle = angles.pick_random()
+		deco_inst.rotation.y = angle

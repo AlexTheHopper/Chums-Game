@@ -12,7 +12,7 @@ render_priority = 2
 shader = ExtResource("2_piaxk")
 shader_parameter/my_texture = SubResource("ViewportTexture_1lra1")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ysojj"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4m2w7"]
 viewport_path = NodePath("Container/Display/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_teyl6"]
@@ -24,7 +24,7 @@ render_priority = 2
 shader = ExtResource("2_piaxk")
 shader_parameter/my_texture = SubResource("ViewportTexture_teyl6")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_oocfh"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_v3w6n"]
 viewport_path = NodePath("Container/Description/SubViewport")
 
 [node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("disp_name", "disp_cost", "disp_health_title", "disp_health_value", "disp_move_speed_title", "disp_move_speed_value", "disp_damage_title", "disp_damage_value", "disp_attack_speed_title", "disp_attack_speed_value", "disp_name_back", "desc_back")]
@@ -48,7 +48,7 @@ transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 
 [node name="Display" type="Sprite3D" parent="Container"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.6, -0.05)
 material_override = SubResource("ShaderMaterial_wx1s1")
-texture = SubResource("ViewportTexture_ysojj")
+texture = SubResource("ViewportTexture_4m2w7")
 
 [node name="SubViewport" type="SubViewport" parent="Container/Display"]
 
@@ -171,7 +171,7 @@ vertical_alignment = 1
 [node name="Description" type="Sprite3D" parent="Container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 0.05)
 material_override = SubResource("ShaderMaterial_ixmmc")
-texture = SubResource("ViewportTexture_oocfh")
+texture = SubResource("ViewportTexture_v3w6n")
 
 [node name="SubViewport" type="SubViewport" parent="Container/Description"]
 

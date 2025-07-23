@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=3 uid="uid://csgrf3dwl23t3"]
+
+[ext_resource type="Script" uid="uid://1vvlo33tbowe" path="res://scripts/entities/text_popup.gd" id="1_6yad1"]
+[ext_resource type="Shader" uid="uid://db57gow0ouvok" path="res://materials/nodepthtest.gdshader" id="2_unajj"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1lra1"]
+viewport_path = NodePath("Container/Display/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wx1s1"]
+resource_local_to_scene = true
+render_priority = 2
+shader = ExtResource("2_unajj")
+shader_parameter/my_texture = SubResource("ViewportTexture_1lra1")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4m2w7"]
+viewport_path = NodePath("Container/Display/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_teyl6"]
+viewport_path = NodePath("Container/Description/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ixmmc"]
+resource_local_to_scene = true
+render_priority = 2
+shader = ExtResource("2_unajj")
+shader_parameter/my_texture = SubResource("ViewportTexture_teyl6")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_v3w6n"]
+viewport_path = NodePath("Container/Description/SubViewport")
+
+[node name="TextPopup" type="Node3D" node_paths=PackedStringArray("title_front", "text_front", "title_back", "text_back")]
+script = ExtResource("1_6yad1")
+title_front = NodePath("Container/Display/SubViewport/Control/Name")
+text_front = NodePath("Container/Display/SubViewport/Control/Description")
+title_back = NodePath("Container/Description/SubViewport/Control/Name")
+text_back = NodePath("Container/Description/SubViewport/Control/Description")
+
+[node name="Container" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+
+[node name="Display" type="Sprite3D" parent="Container"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.6, -0.05)
+material_override = SubResource("ShaderMaterial_wx1s1")
+texture = SubResource("ViewportTexture_4m2w7")
+
+[node name="SubViewport" type="SubViewport" parent="Container/Display"]
+
+[node name="Control" type="Control" parent="Container/Display/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Container/Display/SubViewport/Control"]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 1)
+
+[node name="Name" type="Label" parent="Container/Display/SubViewport/Control"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 32
+text = "CHUM_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Container/Display/SubViewport/Control"]
+custom_minimum_size = Vector2(480, 400)
+layout_mode = 0
+offset_top = 100.0
+offset_right = 512.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 24
+text = "Bracelets Needed: X"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Sprite3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 0.05)
+material_override = SubResource("ShaderMaterial_ixmmc")
+texture = SubResource("ViewportTexture_v3w6n")
+
+[node name="SubViewport" type="SubViewport" parent="Container/Description"]
+
+[node name="Control" type="Control" parent="Container/Description/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Container/Description/SubViewport/Control"]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Name" type="Label" parent="Container/Description/SubViewport/Control"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 32
+text = "CHUM_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="Container/Description/SubViewport/Control"]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 512.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 24
+text = "CHUM_DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MeshNode" type="Node3D" parent="Container"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
