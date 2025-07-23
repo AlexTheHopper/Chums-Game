@@ -42,14 +42,20 @@ func _ready() -> void:
 	}
 	
 	lore_texts = {
-		0: {"front": "wawaweeeewa",
-			"back": "mah waaaafe"},
-		1: {"front": "bing1",
-			"back": "bong1"},
-		2: {"front": "bing2",
-			"back": "bong2"},
-		3: {"front": "bing3",
-			"back": "bong3"},
+		0: {"front": "How many...",
+			"back": "...is too many?"},
+
+		1: {"front": "They fight well...",
+			"back": "...but not wisely."},
+
+		2: {"front": "This time...",
+			"back": "...that one is different."},
+
+		3: {"front": "Perhaps the search is over...",
+			"back": "...or perhaps, this one can take over."},
+
+		4: {"front": "I am not even sure...",
+			"back": "...if I know how to count this high."},
 	}
 
 func get_random_decoration(world_n):

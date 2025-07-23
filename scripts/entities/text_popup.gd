@@ -28,6 +28,8 @@ func _ready() -> void:
 	mesh_node.add_child(mesh_scene)
 	
 	var text_num = Global.world_map[Global.room_location]["item_count"]
+	if text_num not in Global.viewed_lore:
+		Global.viewed_lore.append(text_num)
 	
 	#Set all values:
 	#Front

@@ -7,6 +7,7 @@ var map_size:int
 var room_size:float
 var world_map := {}
 var world_grid := []
+var viewed_lore := []
 var save_seed: int
 var world_map_guide = {"lobby": {},
 						"room": {},
@@ -321,7 +322,13 @@ func create_world(world_n):
 
 			if world_grid[x][y] == 7:
 				#item_count is used to determine the lore text on appropriate rooms
-				item_count = DecorationManager.lore_texts.keys().pick_random()
+				#Filter all of them to remove ones that have been read.
+				#If all have been read, show 0.
+				var unseen_lores = DecorationManager.lore_texts.keys().filter(func(item): return not (Global.viewed_lore).has(item))
+				if len(unseen_lores) > 0:
+					item_count = unseen_lores.pick_random()
+				else:
+					item_count = 0
 			else:
 				#otherwise choose actual item count
 				item_count = int(Functions.map_range(Global.world_transition_count, Vector2(0, 7), Vector2(3, 6))) + [-1, 0, 1].pick_random()

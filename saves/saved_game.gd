@@ -19,6 +19,7 @@ extends Resource
 
 #World Info
 @export var world_transition_count:int
+@export var viewed_lore:Array
 @export var current_world_num:int
 @export var world_grid:Array
 @export var room_location:Vector2i

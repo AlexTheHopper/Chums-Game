@@ -45,6 +45,7 @@ func save_game(save_id) -> void:
 	
 	#World Data:
 	saved_game.world_transition_count = Global.world_transition_count
+	saved_game.viewed_lore = Global.viewed_lore
 	saved_game.current_world_num = Global.current_world_num
 	saved_game.world_grid = Global.world_grid
 	saved_game.room_location = Global.room_location
@@ -91,6 +92,7 @@ func load_game(save_id) -> void:
 
 	#World Data:
 	Global.world_transition_count = saved_game.world_transition_count
+	Global.viewed_lore = saved_game.viewed_lore
 	Global.current_world_num = saved_game.current_world_num
 	Global.world_grid = saved_game.world_grid
 	Global.room_location = saved_game.room_location
