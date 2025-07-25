@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx5fxr7cy058t"]
+
+[ext_resource type="ArrayMesh" uid="uid://hrnpa4mc1fus" path="res://assets/world/world_3_other/lore_base.vox" id="1_5o65h"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aih3k"]
+points = PackedVector3Array(-2.80031, 0, -3, -3, 0, -2.80031, -2.80031, 0.0999217, -3, 2.79973, 0, -3, -3, 0, 2.79973, -3, 0.0999217, -2.80031, -2.90016, 0.199951, -2.90016, -2.60004, 0.69999, -2.60004, 2.79973, 0.0999217, -3, 3, 0, -2.80031, -3, 0.0999217, 2.79973, -2.80031, 0, 3, -2.60004, 0.69999, 2.59945, -2.00039, 1.1, -2.00039, 2.59945, 0.69999, -2.60004, 2.89957, 0.199951, -2.90016, 3, 0.0999217, -2.80031, 3, 0, 2.79973, -2.80031, 0.0999217, 3, -2.90016, 0.199951, 2.89957, 2.79973, 0, 3, -2.00039, 1.1, 1.9998, 2.59945, 0.69999, 2.59945, 1.9998, 1.1, -2.00039, 3, 0.0999217, 2.79973, 2.79973, 0.0999217, 3, 1.9998, 1.1, 1.9998, 2.89957, 0.199951, 2.89957)
+
+[node name="Base" type="StaticBody3D"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_aih3k")
+
+[node name="LoreBase" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_5o65h")
