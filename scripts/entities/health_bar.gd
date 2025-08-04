@@ -6,6 +6,8 @@ extends Node3D
 @export var damaged_bar: MeshInstance3D
 @export var notch_scene: PackedScene
 @onready var damaged_timer: Timer = $DamagedTimer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+var is_player := false
 
 var health_ratio := 1.0
 var damaged_health_ratio := 1.0
@@ -22,6 +24,10 @@ func _ready() -> void:
 	_on_max_health_changed(0)
 	
 	set_notches()
+	
+	if owner is Player:
+		is_player = true
+		visible = false
 
 func _physics_process(_delta: float) -> void:
 	if not is_shrinking:
@@ -34,6 +40,9 @@ func _physics_process(_delta: float) -> void:
 	if abs(damaged_health_ratio - health_ratio) < 0.01:
 		is_shrinking = false
 		damaged_bar.visible = false
+		
+		if is_player:
+			animation_player.play("fade_out")
 
 
 func set_notches():
@@ -67,6 +76,9 @@ func _on_health_changed(_difference):
 	if health_ratio <= 0.0:
 		health_color = Color(0.0, 0.0, 0.0, 1.0)
 	current_health_bar.mesh.material.albedo_color = health_color
+	
+	if is_player:
+		animation_player.play("fade_in")
 	
 func _on_max_health_changed(_difference):
 	#Reset notches:

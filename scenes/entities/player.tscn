@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dmgabiox56kck"]
+[gd_scene load_steps=31 format=4 uid="uid://dmgabiox56kck"]
 
 [ext_resource type="Script" uid="uid://d1mbalfu0wlex" path="res://scripts/entities/player.gd" id="1_8mcap"]
 [ext_resource type="Script" uid="uid://cf5efj3v5c38n" path="res://scripts/entities/health.gd" id="2_foxub"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_6214k"]
 [ext_resource type="Material" uid="uid://tqe7rbh07xh7" path="res://materials/xray_material_player.tres" id="5_sb1xe"]
 [ext_resource type="PackedScene" uid="uid://2eost3t4boox" path="res://scenes/entities/lantern.tscn" id="7_rhmd7"]
+[ext_resource type="PackedScene" uid="uid://c1saa1y5s8j4y" path="res://scenes/entities/health_bar.tscn" id="9_c5rqy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_as0st"]
 radius = 0.33
@@ -31,26 +32,26 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Armature:scale")
+tracks/0/path = NodePath("../Armature/Skeleton3D/PlayerMesh:mesh:surface_0/material:albedo_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.5, 0.5, 0.5), Vector3(0.6, 0.6, 0.6), Vector3(0.5, 0.5, 0.5)]
+"values": [Color(1, 1, 1, 1), Color(0.603188, 0, 0.0840069, 1), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Armature/Skeleton3D/PlayerMesh:mesh:surface_0/material:albedo_color")
+tracks/1/path = NodePath("../Armature/Skeleton3D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.603188, 0, 0.0840069, 1), Color(1, 1, 1, 1)]
+"values": [Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dnykm"]
@@ -58,26 +59,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Armature:scale")
+tracks/0/path = NodePath("../Armature/Skeleton3D/PlayerMesh:mesh:surface_0/material:albedo_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.5, 0.5, 0.5)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Armature/Skeleton3D/PlayerMesh:mesh:surface_0/material:albedo_color")
+tracks/1/path = NodePath("../Armature/Skeleton3D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector3(1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c5rqy"]
@@ -914,6 +915,10 @@ script = ExtResource("4_f0wg7")
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.805624, 0.170112, 0.0391083)
 shape = SubResource("BoxShape3D_mtmvl")
 disabled = true
+
+[node name="HealthBar" parent="Armature" node_paths=PackedStringArray("health_node") instance=ExtResource("9_c5rqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, 0)
+health_node = NodePath("../../Health")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -4,7 +4,7 @@ var chum_id := 8
 var chum_str := "chum8"
 var chum_name := "Bolt"
 
-var desc := "palceholder, but also this lil guy will distract enemies attention 80% of the time! :D"
+var desc := "Just a silly little guy! With no defense mechanisms, it seems Evolution should have forgotten it long ago. Although, Bolt will distract enemies attention 80% of the time!"
 
 var min_attack_speed := 3.8
 

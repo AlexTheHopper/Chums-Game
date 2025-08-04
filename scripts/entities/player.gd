@@ -40,6 +40,7 @@ var attacking_mult := 1.0
 @onready var health_node := $Health
 @onready var anim_player := $AnimationPlayer
 @onready var lantern := $Armature/Skeleton3D/BoneAttachment3D/Lantern
+@onready var armature: Node3D = $Armature
 
 @onready var hurt_particles := load("res://particles/damage_friendly.tscn")
 @onready var heal_particles := load("res://particles/heal_friendly.tscn")
@@ -149,10 +150,10 @@ func _physics_process(delta: float) -> void:
 	if input_dir:
 		player_goal_horz = $Camera_Controller.rotation.y - input_dir.angle() - (PI / 2)
 		player_goal_horz = fmod(player_goal_horz + PI, 2 * PI)
-		$Armature.rotation.y = lerp_angle($Armature.rotation.y, player_goal_horz, 0.35 * attacking_mult)
-		$Armature.rotation.x = lerp_angle($Armature.rotation.x, 0.15, 0.05)
+		armature.rotation.y = lerp_angle(armature.rotation.y, player_goal_horz, 0.35 * attacking_mult)
+		armature.rotation.x = lerp_angle(armature.rotation.x, 0.15, 0.05)
 	else:
-		$Armature.rotation.x = lerp_angle($Armature.rotation.x, 0.0, 0.1)
+		armature.rotation.x = lerp_angle(armature.rotation.x, 0.0, 0.1)
 
 	#Move character:
 	if direction:
