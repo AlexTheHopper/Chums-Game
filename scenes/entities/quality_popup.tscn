@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgd4xkckyqdcg"]
+[gd_scene load_steps=11 format=3 uid="uid://bgd4xkckyqdcg"]
 
 [ext_resource type="Script" uid="uid://b0rs5b6ow7au3" path="res://scripts/entities/quality_popup.gd" id="1_purmp"]
 [ext_resource type="Shader" uid="uid://db57gow0ouvok" path="res://materials/nodepthtest.gdshader" id="2_piaxk"]
+[ext_resource type="Shader" uid="uid://pjxd0dallace" path="res://materials/glitch_quality.gdshader" id="3_v3w6n"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1lra1"]
 viewport_path = NodePath("Container/Display/SubViewport")
@@ -14,6 +15,14 @@ shader_parameter/my_texture = SubResource("ViewportTexture_1lra1")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4m2w7"]
 viewport_path = NodePath("Container/Display/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kl30j"]
+shader = ExtResource("3_v3w6n")
+shader_parameter/shake_power = 0.01
+shader_parameter/shake_rate = 0.1
+shader_parameter/shake_speed = 1.0
+shader_parameter/shake_block_size = 100.0
+shader_parameter/shake_color_rate = 0.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_teyl6"]
 viewport_path = NodePath("Container/Description/SubViewport")
@@ -168,6 +177,13 @@ text = "ATTK_SPEED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="GlitchShader" type="ColorRect" parent="Container/Display/SubViewport"]
+material = SubResource("ShaderMaterial_kl30j")
+custom_minimum_size = Vector2(512, 512)
+offset_right = 512.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 0)
+
 [node name="Description" type="Sprite3D" parent="Container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 0.05)
 material_override = SubResource("ShaderMaterial_ixmmc")
@@ -208,6 +224,13 @@ text = "CHUM_DESCRIPTION"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="GlitchShader" type="ColorRect" parent="Container/Description/SubViewport"]
+material = SubResource("ShaderMaterial_kl30j")
+custom_minimum_size = Vector2(512, 512)
+offset_right = 512.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 0)
 
 [node name="MeshNode" type="Node3D" parent="Container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://csgrf3dwl23t3"]
+[gd_scene load_steps=12 format=3 uid="uid://csgrf3dwl23t3"]
 
 [ext_resource type="Script" uid="uid://1vvlo33tbowe" path="res://scripts/entities/text_popup.gd" id="1_6yad1"]
 [ext_resource type="Shader" uid="uid://db57gow0ouvok" path="res://materials/nodepthtest.gdshader" id="2_unajj"]
+[ext_resource type="Shader" uid="uid://ctnymwlu63rrn" path="res://materials/glitch_lore.gdshader" id="3_unajj"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1lra1"]
 viewport_path = NodePath("Container/Display/SubViewport")
@@ -15,6 +16,14 @@ shader_parameter/my_texture = SubResource("ViewportTexture_1lra1")
 [sub_resource type="ViewportTexture" id="ViewportTexture_4m2w7"]
 viewport_path = NodePath("Container/Display/SubViewport")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_unajj"]
+shader = ExtResource("3_unajj")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.1
+shader_parameter/shake_speed = 3.0
+shader_parameter/shake_block_size = 100.0
+shader_parameter/shake_color_rate = 0.05
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_teyl6"]
 viewport_path = NodePath("Container/Description/SubViewport")
 
@@ -26,6 +35,14 @@ shader_parameter/my_texture = SubResource("ViewportTexture_teyl6")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_v3w6n"]
 viewport_path = NodePath("Container/Description/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l2ikr"]
+shader = ExtResource("3_unajj")
+shader_parameter/shake_power = 0.02
+shader_parameter/shake_rate = 0.1
+shader_parameter/shake_speed = 3.0
+shader_parameter/shake_block_size = 100.0
+shader_parameter/shake_color_rate = 0.05
 
 [node name="TextPopup" type="Node3D" node_paths=PackedStringArray("title_front", "text_front", "title_back", "text_back")]
 script = ExtResource("1_6yad1")
@@ -80,6 +97,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="GlitchShader" type="ColorRect" parent="Container/Display/SubViewport"]
+material = SubResource("ShaderMaterial_unajj")
+custom_minimum_size = Vector2(512, 512)
+offset_right = 512.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 0)
+
 [node name="Description" type="Sprite3D" parent="Container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 0.05)
 material_override = SubResource("ShaderMaterial_ixmmc")
@@ -121,6 +145,13 @@ text = "back_text"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="GlitchShader" type="ColorRect" parent="Container/Description/SubViewport"]
+material = SubResource("ShaderMaterial_l2ikr")
+custom_minimum_size = Vector2(512, 512)
+offset_right = 512.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 0)
 
 [node name="MeshNode" type="Node3D" parent="Container"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)

@@ -77,7 +77,7 @@ func _on_health_changed(_difference):
 		health_color = Color(0.0, 0.0, 0.0, 1.0)
 	current_health_bar.mesh.material.albedo_color = health_color
 	
-	if is_player:
+	if is_player and not visible:
 		animation_player.play("fade_in")
 	
 func _on_max_health_changed(_difference):
