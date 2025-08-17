@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgdnxjjilfhli"
-path="res://.godot/imported/chum9_128.png-3ef3653b64428a0026d23d49fe1af1a9.ctex"
+uid="uid://bk0puaj0tyuyi"
+path="res://.godot/imported/chum14_512.png-be0842eb3d333c530ec6505cf54a720e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/entities/chum_icons/chum9_128.png"
-dest_files=["res://.godot/imported/chum9_128.png-3ef3653b64428a0026d23d49fe1af1a9.ctex"]
+source_file="res://assets/entities/chum_icons/chum14_512.png"
+dest_files=["res://.godot/imported/chum14_512.png-be0842eb3d333c530ec6505cf54a720e.ctex"]
 
 [params]
 

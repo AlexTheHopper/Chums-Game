@@ -63,6 +63,7 @@ func _ready() -> void:
 	health_node.set_max_health(100)
 	health_node.set_health(100)
 	anim_player.play("RESET")
+	print('reset')
 	if Global.dev_mode:
 		base_damage = 50
 		max_extra_damage = 100

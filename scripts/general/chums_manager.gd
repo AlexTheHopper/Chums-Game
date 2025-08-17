@@ -35,6 +35,8 @@ func _ready() -> void:
 			"destination_world": 2}, #Ram
 		13: {"object": preload("res://scenes/entities/chums/chum13.tscn"),
 			"destination_world": 3}, #Leapy
+		14: {"object": preload("res://scenes/entities/chums/chum14.tscn"),
+			"destination_world": 1}, #Clop
 	}
 
 	chums_values = {
@@ -70,12 +72,14 @@ func _ready() -> void:
 	#They are spawned randomly somewhere in the room
 	#i.e. Vector2i(3, 2) is the boss room from world 3 to world 2
 	boss_chums = {
-		Vector2i(1, 1): {3: 5, 5: 3},
-		Vector2i(1, 2): {3: 5, 4: 3},
-		Vector2i(1, 3): {3: 5, 4: 3},
+		Vector2i(1, 1): {14: 1, 3: 5, 5: 3},
+		Vector2i(1, 2): {14: 1, 3: 5, 4: 3},
+		Vector2i(1, 3): {14: 1, 3: 5, 4: 3},
+
 		Vector2i(2, 1): {10: 6, 5: 3},
 		Vector2i(2, 2): {10: 3, 4: 3, 12: 3},
 		Vector2i(2, 3): {10: 3, 4: 3, 12: 3},
+
 		Vector2i(3, 1): {3: 5, 5: 3},
 		Vector2i(3, 2): {3: 5, 4: 3},
 		Vector2i(3, 3): {3: 5, 4: 3},
