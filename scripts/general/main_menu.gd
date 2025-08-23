@@ -117,6 +117,6 @@ func get_smallest_missing_int(list) -> int:
 	for n in list:
 		if n == lowest:
 			lowest += 1
-		else:
+		elif n != null:
 			break
 	return lowest

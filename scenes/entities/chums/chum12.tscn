@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://6fg21ugja2pr" path="res://Blender_Assets/Chum_Exports/chum12_chum_12_detach_Color.png" id="3_qexya"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="5_0tr32"]
 [ext_resource type="PackedScene" uid="uid://cdfad011ncqxd" path="res://scenes/entities/chums/bracelet_4.tscn" id="6_ah7ac"]
-[ext_resource type="Script" uid="uid://c5apnrhppuo7w" path="res://scripts/entities/chums/chum12/chum12_active.gd" id="6_yh2u4"]
+[ext_resource type="Script" uid="uid://bm2xqgfajrt6s" path="res://scripts/entities/chums/chum_active_base.gd" id="6_brjwm"]
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="7_35sdx"]
 [ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="9_nrpqm"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="10_5ybtx"]
@@ -567,7 +567,7 @@ libraries = {
 [node name="ChumSpecificStates" type="Node" parent="."]
 
 [node name="Active" type="Node" parent="ChumSpecificStates"]
-script = ExtResource("6_yh2u4")
+script = ExtResource("6_brjwm")
 
 [node name="AttackTimer" type="Timer" parent="ChumSpecificStates/Active"]
 

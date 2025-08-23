@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="3_0ll25"]
 [ext_resource type="PackedScene" uid="uid://cdfad011ncqxd" path="res://scenes/entities/chums/bracelet_4.tscn" id="3_pde15"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="4_v0ro4"]
+[ext_resource type="Script" uid="uid://bm2xqgfajrt6s" path="res://scripts/entities/chums/chum_active_base.gd" id="6_jh81s"]
 [ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="7_jh81s"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="9_67dvc"]
-[ext_resource type="Script" uid="uid://d0ujotm4rcbap" path="res://scripts/entities/chums/chum3/chum3_active.gd" id="9_abui3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gaslq"]
 resource_local_to_scene = true
@@ -813,7 +813,7 @@ mesh = SubResource("ArrayMesh_jh81s")
 skin = SubResource("Skin_it3ej")
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(-0.941823, -7.10543e-14, 0.33611, 0.33611, 4.08562e-14, 0.941823, -8.52651e-14, 1, -2.16872e-14, -0.701666, 0.734906, 9.59233e-15)
+transform = Transform3D(-0.941823, -7.81597e-14, 0.33611, 0.33611, 4.9738e-14, 0.941823, -9.23706e-14, 1, -2.43517e-14, -0.701666, 0.734906, 1.1191e-14)
 bone_name = "Spear"
 bone_idx = 6
 
@@ -861,7 +861,7 @@ libraries = {
 [node name="ChumSpecificStates" type="Node" parent="."]
 
 [node name="Active" type="Node" parent="ChumSpecificStates"]
-script = ExtResource("9_abui3")
+script = ExtResource("6_jh81s")
 
 [node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active"]
 

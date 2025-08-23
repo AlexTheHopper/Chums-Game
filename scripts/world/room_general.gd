@@ -8,6 +8,7 @@ var spawn_particles = preload("res://particles/spawn_particles_world1.tscn")
 
 var is_doors_closed := false
 var bracelet_tscn: PackedScene = preload("res://scenes/entities/currency_bracelet.tscn")
+const RANDOM_LEVEL_BEING = preload("res://scenes/general/random_level_being.tscn")
 
 @export var spawn_timer: Timer
 @export var grid_map: GridMap
@@ -33,6 +34,11 @@ func _ready() -> void:
 	if self.TYPE != "boss":
 		#Save game
 		SaverLoader.save_game(Global.game_save_id)
+	
+	#Maybe spawn being to circle level for a bit
+	if randf() < 0.05:
+		var being = RANDOM_LEVEL_BEING.instantiate()
+		$Decorations.add_child(being)
 
 func fill_tunnels():
 	#Fix walls etc.

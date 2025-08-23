@@ -42,19 +42,24 @@ func _ready() -> void:
 	}
 	
 	lore_texts = {
-		0: {"front": "How many...",
+		0: {"info": "0 . 0",
+			"front": "How many...",
 			"back": "...is too many?"},
 
-		1: {"front": "They fight well...",
+		1: {"info": "0 . 1",
+			"front": "They fight well...",
 			"back": "...but not wisely."},
 
-		2: {"front": "This time...",
+		2: {"info": "0 . 500",
+			"front": "This time...",
 			"back": "...that one is different."},
 
-		3: {"front": "Perhaps the search is over...",
+		3: {"info": "50 . 0",
+			"front": "Perhaps the search is over...",
 			"back": "...or perhaps, this one can take over."},
 
-		4: {"front": "I am not even sure...",
+		4: {"info": "50 . 1000",
+			"front": "I am not even sure...",
 			"back": "...if I know how to count this high."},
 	}
 

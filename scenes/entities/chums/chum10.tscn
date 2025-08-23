@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_nkhmd"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="6_muyps"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="7_e2pr8"]
-[ext_resource type="Script" uid="uid://dn6kue8m5cyl7" path="res://scripts/entities/chums/chum10/chum10_active.gd" id="7_gf8ah"]
+[ext_resource type="Script" uid="uid://bm2xqgfajrt6s" path="res://scripts/entities/chums/chum_active_base.gd" id="9_25tx6"]
 [ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="10_25tx6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vot6o"]
@@ -407,7 +407,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="ChumSpecificStates" type="Node" parent="."]
 
 [node name="Active" type="Node" parent="ChumSpecificStates"]
-script = ExtResource("7_gf8ah")
+script = ExtResource("9_25tx6")
 
 [node name="AttackTimer" type="Timer" parent="ChumSpecificStates/Active"]
 

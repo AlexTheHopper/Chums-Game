@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="3_atygh"]
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="4_gnxrs"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="5_gnxrs"]
-[ext_resource type="Script" uid="uid://ccc007q34twsb" path="res://scripts/entities/chums/chum14/chum14_active.gd" id="6_fi211"]
+[ext_resource type="Script" uid="uid://bm2xqgfajrt6s" path="res://scripts/entities/chums/chum_active_base.gd" id="6_fi211"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="6_of6d0"]
 [ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="7_55aai"]
 
@@ -469,6 +469,21 @@ tracks/16/interp = 0
 tracks/16/loop_wrap = true
 tracks/16/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_fi211"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachment3D2/Hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_i12r5"]
 resource_name = "Sleep"
 length = 0.0416667
@@ -850,21 +865,6 @@ tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.4, 1, 1.19772e-10, -2.65427e-09, -3.65703e-10, 1, 0.433333, 1, -0.00453544, -5.63336e-05, 0.000414458, 0.99999, 0.466667, 1, -0.0167535, -0.000208086, 0.00153097, 0.999858, 0.5, 1, -0.0384072, -0.000477036, 0.00350973, 0.999256, 0.533333, 1, -0.0642497, -0.000798009, 0.00587128, 0.997916, 0.566667, 1, -0.0868999, -0.00107934, 0.0079411, 0.996185, 0.6, 1, -0.102197, -0.00126934, 0.00933899, 0.99472, 0.633333, 1, -0.108686, -0.00134993, 0.00993195, 0.994026, 0.666667, 1, -0.107582, -0.00133622, 0.00983105, 0.994147, 0.7, 1, -0.104473, -0.00129761, 0.00954699, 0.994481, 0.733333, 1, -0.100089, -0.00124316, 0.00914639, 0.994936, 0.766667, 1, -0.0945823, -0.00117476, 0.00864313, 0.995479, 0.8, 1, -0.0881035, -0.00109429, 0.00805109, 0.996078, 0.833333, 1, -0.0808057, -0.00100365, 0.0073842, 0.996702, 0.866667, 1, -0.0727251, -0.000903281, 0.00664578, 0.997329, 0.9, 1, -0.0642887, -0.000798497, 0.00587484, 0.997914, 0.966667, 1, -0.046973, -0.000583431, 0.0042925, 0.998887, 1, 1, -0.0384072, -0.000477036, 0.00350973, 0.999256, 1.03333, 1, -0.0303073, -0.00037643, 0.00276955, 0.999537, 1.06667, 1, -0.0227906, -0.000283069, 0.00208266, 0.999738, 1.1, 1, -0.0160131, -0.000198888, 0.00146331, 0.999871, 1.13333, 1, -0.01013, -0.000125815, 0.000925698, 0.999948, 1.16667, 1, -0.00529621, -6.57704e-05, 0.000483979, 0.999986, 1.2, 1, -0.00216993, -2.69549e-05, 0.000198294, 0.999998, 1.23333, 1, -0.000555343, -6.90039e-06, 5.0749e-05, 1, 1.66667, 1, 0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_fi211"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachment3D2/Hitbox/CollisionShape3D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nhcsy"]
 _data = {
 &"Attack": SubResource("Animation_a63wj"),
@@ -1070,7 +1070,7 @@ mesh = SubResource("ArrayMesh_atygh")
 skin = SubResource("Skin_2lbgn")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(0.911235, 0, 0.411887, 0, 1, 0, -0.411887, 0, 0.911235, 0, 2.6, 0)
+transform = Transform3D(0.911236, 0, 0.411886, 0, 1, 0, -0.411886, 0, 0.911236, 0, 2.6, 0)
 bone_name = "Head"
 bone_idx = 1
 
@@ -1081,7 +1081,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(-0.0756996, 0.996986, 0.0170012, 0.231615, 0.000997186, 0.972807, 0.969858, 0.0775789, -0.230992, 0.0210178, 1.36947, 1.085)
+transform = Transform3D(-0.0756987, 0.996986, 0.0170016, 0.231615, 0.000996619, 0.972807, 0.969858, 0.0775781, -0.230992, 0.0210181, 1.36947, 1.085)
 bone_name = "Club"
 bone_idx = 11
 
@@ -1129,7 +1129,7 @@ script = ExtResource("6_fi211")
 script = ExtResource("7_55aai")
 
 [node name="Particles" type="Node3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="GeneralChumBehaviour" parent="." instance=ExtResource("5_gnxrs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)

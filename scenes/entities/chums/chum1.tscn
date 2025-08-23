@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ciwi2o48j3e63" path="res://scripts/entities/chums/chum1/chum1.gd" id="1_oac54"]
 [ext_resource type="Texture2D" uid="uid://cxkp71yodd30s" path="res://Blender_Assets/Chum_Exports/chum1_chum_1_diffuse2.png" id="2_r5iir"]
 [ext_resource type="PackedScene" uid="uid://cdfad011ncqxd" path="res://scenes/entities/chums/bracelet_4.tscn" id="3_jadnq"]
-[ext_resource type="Script" uid="uid://dpq0axvrrpgde" path="res://scripts/entities/chums/chum1/chum1_active.gd" id="5_3wtul"]
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="6_p7nbp"]
+[ext_resource type="Script" uid="uid://bm2xqgfajrt6s" path="res://scripts/entities/chums/chum_active_base.gd" id="6_sr3ur"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="7_42xiv"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="7_p1xu3"]
 [ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="7_sr3ur"]
@@ -853,7 +853,7 @@ mesh = SubResource("ArrayMesh_sr3ur")
 skin = SubResource("Skin_usabi")
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 2.30941e-16, -2.70267e-16, -2.70267e-16, 0.987763, -0.155963, 2.30942e-16, 0.155963, 0.987763, 0, 1.65, 0.5)
+transform = Transform3D(1, 2.30941e-16, -2.70267e-16, -2.70267e-16, 0.987763, -0.155962, 2.30942e-16, 0.155962, 0.987763, 0, 1.65, 0.5)
 bone_name = "Head"
 bone_idx = 1
 
@@ -896,7 +896,7 @@ disabled = true
 [node name="ChumSpecificStates" type="Node" parent="."]
 
 [node name="Active" type="Node" parent="ChumSpecificStates"]
-script = ExtResource("5_3wtul")
+script = ExtResource("6_sr3ur")
 
 [node name="AttackTimer" type="Timer" parent="ChumSpecificStates/Active"]
 

@@ -33,10 +33,10 @@ func _ready() -> void:
 	
 	#Set all values:
 	#Front
-	title_front.text = str(text_num)
+	title_front.text = DecorationManager.lore_texts[text_num]["info"]
 	text_front.text = DecorationManager.lore_texts[text_num]["front"]
 	#Back
-	title_back.text = str(text_num)
+	title_back.text = DecorationManager.lore_texts[text_num]["info"]
 	text_back.text = DecorationManager.lore_texts[text_num]["back"]
 
 	scale = Vector3(0.1, 0.1, 0.1)

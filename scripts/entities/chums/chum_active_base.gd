@@ -1,5 +1,5 @@
 extends State
-class_name Chum4_Active
+class_name Chum_Active_Base
 @onready var state_name := "Active"
 
 @onready var chum: CharacterBody3D
@@ -30,10 +30,13 @@ func Physics_Update(delta: float):
 	if chum.is_on_floor():
 		if not attacking:
 			chum.anim_player.play("Walk")
+			chum.velocity = nav_vel
+		else:
+			chum.velocity = nav_vel * 0.1
 
 		chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
 		chum.is_launched = false
-		chum.velocity = nav_vel
+		
 		if not has_touched_floor:
 			has_touched_floor = true
 			chum.set_new_target()
@@ -64,7 +67,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	nav_vel = safe_velocity
-
 
 func _on_nav_timer_timeout() -> void:
 	if chum.target:
