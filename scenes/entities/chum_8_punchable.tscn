@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://8nonmtfaklwe"]
+
+[ext_resource type="PackedScene" uid="uid://ktm7u4nirl6q" path="res://assets/world/chum_statues/chum_8_statue.tscn" id="1_cfcoj"]
+[ext_resource type="Script" uid="uid://bpf7yroom1eud" path="res://scripts/entities/chum_8_punchable.gd" id="1_tl8kc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tl8kc"]
+
+[node name="Chum8Punchable" type="Area3D"]
+collision_layer = 776
+collision_mask = 777
+script = ExtResource("1_tl8kc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("SphereShape3D_tl8kc")
+
+[node name="Chum8Statue" parent="." instance=ExtResource("1_cfcoj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Particles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[connection signal="area_entered" from="." to="." method="_on_smack_zone_area_entered"]

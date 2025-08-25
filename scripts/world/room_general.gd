@@ -37,8 +37,9 @@ func _ready() -> void:
 	
 	#Maybe spawn being to circle level for a bit
 	if randf() < 0.05:
-		var being = RANDOM_LEVEL_BEING.instantiate()
-		$Decorations.add_child(being)
+		for n in range(range(Global.world_transition_count + 1).pick_random() + 1):
+			var being = RANDOM_LEVEL_BEING.instantiate()
+			$Decorations.add_child(being)
 
 func fill_tunnels():
 	#Fix walls etc.

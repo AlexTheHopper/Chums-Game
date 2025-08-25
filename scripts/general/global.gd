@@ -70,7 +70,7 @@ func _ready():
 							4: 5, #Void
 							5: 6, #Statue - AT LEAST length of statue_required
 							6: 5, #Upgrade
-							7: 1, #Lore
+							7: 2, #Lore
 							},
 			},
 
@@ -85,7 +85,7 @@ func _ready():
 							4: 5, #Void
 							5: 6, #Statue - AT LEAST length of statue_required
 							6: 5, #Upgrade
-							7: 1, #Lore
+							7: 2, #Lore
 							},
 			},
 	}
