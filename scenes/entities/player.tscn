@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=4 uid="uid://dmgabiox56kck"]
+[gd_scene load_steps=32 format=4 uid="uid://dmgabiox56kck"]
 
 [ext_resource type="Script" uid="uid://d1mbalfu0wlex" path="res://scripts/entities/player.gd" id="1_8mcap"]
 [ext_resource type="Script" uid="uid://cf5efj3v5c38n" path="res://scripts/entities/health.gd" id="2_foxub"]
 [ext_resource type="Texture2D" uid="uid://qoftnyn10nd" path="res://Blender_Assets/Other_Exports/player_player.png" id="3_8dc6w"]
+[ext_resource type="Script" uid="uid://c88nh6mj5g4fa" path="res://scripts/general/camera.gd" id="3_b6tgf"]
 [ext_resource type="Script" uid="uid://cwcyxfm4jw16k" path="res://scripts/entities/chums/nudge_zone.gd" id="4_dnykm"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_f0wg7"]
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_6214k"]
@@ -619,7 +620,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0.166934, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.2, 0), Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0.15, 0), Vector3(0, 0, 0), Vector3(0, 0.15, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_e6xph"]
@@ -692,7 +693,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.166934, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0.15, 0), Vector3(0, 0, 0), Vector3(0, 0.15, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_8ualu"]
@@ -790,6 +791,20 @@ tracks/10/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.266667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_swing_start"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1l68m"]
 _data = {
@@ -830,10 +845,13 @@ transform = Transform3D(0.999996, 0, 0, 0, 0.196109, 0.980544, 0, -0.980544, 0.1
 [node name="Camera_Target" type="Node3D" parent="Camera_Controller/Camera_Path/PathFollow3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999632, 0.0273123, 0, -0.0273124, 0.999634, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Path/PathFollow3D/Camera_Target"]
+[node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Path/PathFollow3D/Camera_Target" groups=["Camera"]]
 transform = Transform3D(1, 0, 0, 0, 0.819169, -0.573587, 0, 0.573588, 0.819167, 0, 0, 0)
 current = true
 size = 15.0
+script = ExtResource("3_b6tgf")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera_Controller"]
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, -2, 0)
@@ -911,7 +929,7 @@ mesh = SubResource("ArrayMesh_fbi0d")
 skin = SubResource("Skin_8wrh7")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-1.19209e-07, 0.467461, 0.884014, 0, -0.884014, 0.467461, 1, 0, -1.19209e-07, 0.4, 1.2, 0)
+transform = Transform3D(5.96046e-08, 0.467461, 0.884013, -7.45058e-08, -0.884013, 0.467461, 1, -7.45058e-08, 5.96046e-08, 0.4, 1.2, 0)
 bone_name = "Arm.L"
 bone_idx = 2
 

@@ -36,6 +36,8 @@ func _ready() -> void:
 		cycle_save_id(1)
 	set_save_display()
 	change_display_chums(false)
+
+	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE.MENU)
 	
 	
 func change_display_chums(show_particles = false) -> void:

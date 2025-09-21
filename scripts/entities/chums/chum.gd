@@ -197,12 +197,22 @@ func _on_recieved_damage(_damage, change_agro, attacker):
 func _on_health_changed(difference):
 	if difference < 0.0:
 		damaged(-difference)
+		if current_group == "Chums_Friend":
+			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HURT_FRIENDLY)
+		else:
+			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HURT_NOT_FRIENDLY)
+
 	elif difference > 0.0 and state_machine.current_state.state_name != "Sleep":
 		healed(difference)
+		if current_group == "Chums_Friend":
+			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HEAL_FRIENDLY)
+		else:
+			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HEAL_NOT_FRIENDLY)
 
 func damaged(amount):
 	if state_machine.current_state.state_name != "Knock":
 		$Hurtbox/AnimationPlayer.play("Hurt")
+		get_tree().get_first_node_in_group("Camera").trigger_shake(0.25)
 		particle_zone.add_child(hurt_particles.instantiate())
 	
 		var hurt_num_inst = hurt_particles_num.instantiate()
@@ -218,7 +228,12 @@ func healed(amount):
 		particle_zone.add_child(heal_num_inst)
 
 func _on_health_health_depleted() -> void:
-	if current_group == "Chums_Enemy":
+	if current_group == "Chums_Friend":
+		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_DEATH_FRIENDLY)
+	else:
+		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_DEATH_NOT_FRIENDLY)
+		
+		#Spawn Bracelets
 		for n in self.bracelet_count:
 			spawn_currency.emit("bracelet", global_position)
 			
@@ -227,6 +242,7 @@ func _on_health_health_depleted() -> void:
 	
 			
 	set_state("Knock")
+	get_tree().get_first_node_in_group("Camera").trigger_shake(0.5)
 	health_depleted.emit()
 	
 func has_damage() -> bool:

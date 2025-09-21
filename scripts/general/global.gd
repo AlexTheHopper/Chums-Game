@@ -192,6 +192,7 @@ func start_game(save_id = null, new_game = false) -> void:
 			player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
 
 	get_node("/root/Game/HUD").add_chum_indicators()
+	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d" % current_world_num])
 
 	if Global.dev_mode:
 		for x in range(world_grid.size() - 1, -1, -1):
@@ -467,6 +468,8 @@ func transition_to_world(destination_world_n: int, length = 1):
 	var new_room = get_room_tscn(current_world_num, world_map[room_location]["type"])
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
+	
+	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d" % destination_world_n])
 
 func randomize_seed() -> void:
 	seed(randi())

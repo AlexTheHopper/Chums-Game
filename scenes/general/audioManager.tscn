@@ -1,0 +1,210 @@
+[gd_scene load_steps=25 format=3 uid="uid://cgxncfk1gen6c"]
+
+[ext_resource type="Script" uid="uid://begws5tgrylwi" path="res://scripts/general/audio_manager.gd" id="1_fwuy1"]
+[ext_resource type="Script" uid="uid://b8xh410owphar" path="res://resources/sound_effect.gd" id="2_xi5h2"]
+[ext_resource type="AudioStream" uid="uid://bmdywhgew1xwa" path="res://assets/audio/testing/hitTest.wav" id="3_sf3pu"]
+[ext_resource type="Script" uid="uid://bi73r60ulsu7q" path="res://resources/sound_music.gd" id="4_lpos2"]
+[ext_resource type="AudioStream" uid="uid://djv0nxvec4gob" path="res://assets/audio/testing/lobby_music.wav" id="5_bga3x"]
+[ext_resource type="AudioStream" uid="uid://cmehy1m1rqu5a" path="res://assets/audio/testing/normal_music.wav" id="6_rxm80"]
+
+[sub_resource type="Resource" id="Resource_sf3pu"]
+resource_name = "On Player Attacks"
+script = ExtResource("2_xi5h2")
+limit = 2
+type = 0
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_lpos2"]
+resource_name = "On Player Hurt"
+script = ExtResource("2_xi5h2")
+limit = 1
+type = 1
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_slcbk"]
+resource_name = "On Player Jump"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 2
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_ovui0"]
+resource_name = "On Player Land"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 3
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_bga3x"]
+resource_name = "On Player Heal"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 4
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_rxm80"]
+resource_name = "On Player Death"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 5
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_8yobu"]
+resource_name = "On Chum Hurt Friendly"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 6
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_k1p65"]
+resource_name = "On Chum Heal Friendly"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 7
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_w1isn"]
+resource_name = "On Chum Death Friendly"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 8
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_6yffi"]
+resource_name = "On Chum Hurt Not Friendly"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 9
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_hs34q"]
+resource_name = "On Chum Heal Not Friendly"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 10
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_4niny"]
+resource_name = "On Chum Death Not Friendly"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 11
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_mglc6"]
+resource_name = "On Bell Hit"
+script = ExtResource("2_xi5h2")
+limit = 5
+type = 12
+sound_effect = ExtResource("3_sf3pu")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_qs8em"]
+resource_name = "Null"
+script = ExtResource("4_lpos2")
+limit = 5
+type = 0
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://bi73r60ulsu7q"
+
+[sub_resource type="Resource" id="Resource_ae5oe"]
+resource_name = "Menu"
+script = ExtResource("4_lpos2")
+limit = 5
+type = 1
+sound_music = ExtResource("5_bga3x")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://bi73r60ulsu7q"
+
+[sub_resource type="Resource" id="Resource_tpt5d"]
+resource_name = "World 1"
+script = ExtResource("4_lpos2")
+limit = 5
+type = 2
+sound_music = ExtResource("6_rxm80")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://bi73r60ulsu7q"
+
+[sub_resource type="Resource" id="Resource_qbirx"]
+resource_name = "World 2"
+script = ExtResource("4_lpos2")
+limit = 5
+type = 3
+sound_music = ExtResource("5_bga3x")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://bi73r60ulsu7q"
+
+[sub_resource type="Resource" id="Resource_ft4fm"]
+resource_name = "World 3"
+script = ExtResource("4_lpos2")
+limit = 5
+type = 4
+sound_music = ExtResource("6_rxm80")
+volume = -20.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+metadata/_custom_type_script = "uid://bi73r60ulsu7q"
+
+[node name="AudioManager" type="Node3D"]
+script = ExtResource("1_fwuy1")
+sound_effects = Array[ExtResource("2_xi5h2")]([SubResource("Resource_sf3pu"), SubResource("Resource_lpos2"), SubResource("Resource_slcbk"), SubResource("Resource_ovui0"), SubResource("Resource_bga3x"), SubResource("Resource_rxm80"), SubResource("Resource_8yobu"), SubResource("Resource_k1p65"), SubResource("Resource_w1isn"), SubResource("Resource_6yffi"), SubResource("Resource_hs34q"), SubResource("Resource_4niny"), SubResource("Resource_mglc6")])
+sound_musics = Array[ExtResource("4_lpos2")]([SubResource("Resource_qs8em"), SubResource("Resource_ae5oe"), SubResource("Resource_tpt5d"), SubResource("Resource_qbirx"), SubResource("Resource_ft4fm")])

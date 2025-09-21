@@ -25,6 +25,7 @@ PlayerStats="*res://scripts/general/player_stats.gd"
 DecorationManager="*res://scripts/general/decoration_manager.gd"
 SaverLoader="*res://scripts/general/saver_loader.gd"
 Cheats="*res://testing/cheats.gd"
+AudioManager="*res://scenes/general/audioManager.tscn"
 
 [display]
 
@@ -44,6 +45,7 @@ Player=""
 Chums_Enemy="Chums not yet befriended"
 Chums_Friend="Chums that have been befriended"
 Chums_Neutral="Chums that are just chilling"
+Camera=""
 
 [gui]
 

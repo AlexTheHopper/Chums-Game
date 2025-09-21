@@ -63,6 +63,7 @@ func _ready() -> void:
 	health_node.set_max_health(100)
 	health_node.set_health(100)
 	anim_player.play("RESET")
+	$Camera_Controller/AudioListener3D.make_current()
 	if Global.dev_mode:
 		base_damage = 50
 		max_extra_damage = 100
@@ -108,7 +109,7 @@ func _physics_process(delta: float) -> void:
 		hitbox.damage = attack_damage
 		anim_player.speed_scale = 1.0
 		charging = 0.0
-	
+
 	#Rotating camera:
 	if Input.is_action_just_pressed("cam_left"):
 		camera_goal_horz += deg_to_rad(45)
@@ -203,7 +204,10 @@ func _process(_delta: float) -> void:
 			print(chum.health_node.health)
 			if chum.target:
 				print("Target: " + str(chum.target))
-			
+
+func _on_swing_start() -> void:
+	AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_ATTACKS)
+
 func _on_attack_finished(_anim_name):
 	is_attacking = false
 	charging = 0.0
@@ -214,6 +218,7 @@ func jump():
 	if (is_on_floor() or coyote_time > 0) and not in_jump and not is_attacking:
 		velocity.y = jump_velocity
 		in_jump = true
+		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_JUMP)
 
 	if jumping_time:
 		velocity.y += JUMPING_VELOCITY
@@ -235,11 +240,14 @@ func align_with_floor(normal):
 func _on_health_changed(difference):
 	if difference < 0.0:
 		damaged(-difference)
+		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_HURT)
 	elif difference > 0.0:
 		healed(difference)
+		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_HEAL)
 
 func damaged(amount):
 	$Hurtbox/AnimationPlayer.play("Hurt")
+	get_tree().get_first_node_in_group("Camera").trigger_shake(1.0)
 	particle_zone.add_child(hurt_particles.instantiate())
 	
 	var hurt_num_inst = hurt_particles_num.instantiate()
@@ -261,6 +269,8 @@ func _on_health_health_depleted() -> void:
 		for chum in get_tree().get_nodes_in_group(group):
 			chum.set_state("Idle")
 	anim_player.play("Death")
+	get_tree().get_first_node_in_group("Camera").trigger_shake(2.5)
+	AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_DEATH)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Death":
