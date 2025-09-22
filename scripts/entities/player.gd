@@ -58,6 +58,7 @@ var xform: Transform3D
 var chum_name := "Player"
 
 func _ready() -> void:
+	$Camera_Controller.rotation.y = 0.0
 	Global.game_begun = true
 	health_node.immune = false
 	health_node.set_max_health(100)
@@ -112,9 +113,9 @@ func _physics_process(delta: float) -> void:
 
 	#Rotating camera:
 	if Input.is_action_just_pressed("cam_left"):
-		camera_goal_horz += deg_to_rad(45)
+		camera_goal_horz += PI / 4.0
 	elif Input.is_action_just_pressed("cam_right"):
-		camera_goal_horz -= deg_to_rad(45)
+		camera_goal_horz -= PI / 4.0
 	$Camera_Controller.rotation.y = lerp($Camera_Controller.rotation.y, camera_goal_horz, 0.05)
 	
 	if Input.is_action_just_pressed("cam_down"):
@@ -136,6 +137,7 @@ func _physics_process(delta: float) -> void:
 		in_jump = false
 		is_launched = false
 		#align_with_floor($RayCast3D.get_collision_normal())
+
 	else:
 		velocity.y += get_gravity_dir() * delta
 		coyote_time = max(0, coyote_time - 1)
@@ -218,6 +220,7 @@ func jump():
 	if (is_on_floor() or coyote_time > 0) and not in_jump and not is_attacking:
 		velocity.y = jump_velocity
 		in_jump = true
+		
 		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_JUMP)
 
 	if jumping_time:

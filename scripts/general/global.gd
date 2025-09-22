@@ -472,7 +472,7 @@ func transition_to_world(destination_world_n: int, length = 1):
 	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d" % destination_world_n])
 
 func randomize_seed() -> void:
-	seed(randi())
+	seed(randi() + hash(room_history))
 
 func return_to_menu(delete = false):
 	TransitionScreen.transition(3)

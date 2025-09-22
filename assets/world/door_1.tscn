@@ -1,9 +1,8 @@
 [gd_scene load_steps=4 format=4 uid="uid://dmq4bdaggbfd"]
 
-[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="1_fpf3g"]
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_fpf3g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vy1a1"]
-next_pass = ExtResource("1_fpf3g")
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 
@@ -22,4 +21,5 @@ _surfaces = [{
 [node name="Door_1" type="Node3D"]
 
 [node name="Door" type="MeshInstance3D" parent="."]
+material_overlay = ExtResource("1_fpf3g")
 mesh = SubResource("ArrayMesh_7pcpi")

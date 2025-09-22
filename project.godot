@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Chums"
 run/main_scene="uid://xi6g2eiqww0b"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/icon.png"
 
 [autoload]

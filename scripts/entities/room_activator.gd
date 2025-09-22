@@ -64,6 +64,7 @@ func attempt_activate():
 		activate_chums()
 		bell_mesh.set_material_overlay(black_overlay)
 		$AnimationPlayer.play("ring")
+		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_BELL_HIT)
 			
 		Global.world_map[Global.room_location]["activated"] = true
 		Global.in_battle = true

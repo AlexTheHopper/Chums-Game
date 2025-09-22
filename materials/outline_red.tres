@@ -1,9 +1,22 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dpk7qc3oqt0d2"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ydckkf0kcsv2"]
 
-[ext_resource type="Shader" uid="uid://cqe8i7y126r4f" path="res://materials/outline_shader.gdshader" id="1_7s3dj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iebkp"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.3137255, 0.05490196, 0.02745098, 1)
+grow = true
+grow_amount = 0.1
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
 
 [resource]
-render_priority = 0
-shader = ExtResource("1_7s3dj")
-shader_parameter/outline_color = Color(0.315676, 0.0566716, 0.0267216, 1)
-shader_parameter/outline_width = 2.0
+next_pass = SubResource("StandardMaterial3D_iebkp")
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+stencil_mode = 1
+stencil_flags = 2
+stencil_color = Color(0.3137255, 0.05490196, 0.02745098, 1)
+stencil_outline_thickness = 0.1

@@ -1,7 +1,8 @@
 [gd_scene load_steps=9 format=4 uid="uid://plnbfk6a6cuv"]
 
 [ext_resource type="Script" uid="uid://cdsl78l58v7xi" path="res://scripts/entities/heart_item.gd" id="1_8v50q"]
-[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="2_27un1"]
+[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black_old.tres" id="2_27un1"]
+
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8net"]
 next_pass = ExtResource("2_27un1")

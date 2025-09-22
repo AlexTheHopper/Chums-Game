@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bm7edsnvhqcb8"]
+[gd_scene load_steps=18 format=3 uid="uid://bm7edsnvhqcb8"]
 
 [ext_resource type="Script" uid="uid://h3h2dsbq4joa" path="res://scripts/world/statue.gd" id="1_0pl1r"]
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="2_8002e"]
 [ext_resource type="PackedScene" uid="uid://ccexq20uvxibi" path="res://scenes/world/room_changer_to_boss.tscn" id="2_jqxfr"]
 [ext_resource type="ArrayMesh" uid="uid://ci6o7ub2tetis" path="res://assets/world/statue_base.vox" id="2_ulhrq"]
 
@@ -112,6 +113,29 @@ tracks/2/keys = {
 "update": 1,
 "values": [1, 0]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 2.5, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"do_shake"
+}, {
+"args": [],
+"method": &"do_shake"
+}, {
+"args": [],
+"method": &"do_shake"
+}, {
+"args": [],
+"method": &"do_shake"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vqmng"]
 _data = {
@@ -127,6 +151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0)
 
 [node name="StatueBase" type="MeshInstance3D" parent="MeshNode"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7, 0)
+material_overlay = ExtResource("2_8002e")
 mesh = ExtResource("2_ulhrq")
 skeleton = NodePath("../..")
 

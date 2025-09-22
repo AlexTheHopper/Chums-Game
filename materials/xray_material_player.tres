@@ -1,18 +1,24 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://tqe7rbh07xh7"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xu77l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fq62s"]
 render_priority = -1
+transparency = 1
 no_depth_test = true
 shading_mode = 0
-albedo_color = Color(0.125911, 0.125911, 0.125911, 1)
+albedo_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
 
 [resource]
 render_priority = -2
-next_pass = SubResource("StandardMaterial3D_xu77l")
+next_pass = SubResource("StandardMaterial3D_fq62s")
 blend_mode = 4
 cull_mode = 1
 no_depth_test = true
-shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
-grow = true
 grow_amount = 0.05
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.11372549, 0.11372549, 0.11372549, 1)

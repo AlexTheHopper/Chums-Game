@@ -50,6 +50,8 @@ var start_health: int
 var max_move_speed: float
 var temp_sleep_time: float
 
+var test := 0
+
 @onready var has_quality_popup := false
 
 @onready var target: Node
@@ -195,6 +197,10 @@ func _on_recieved_damage(_damage, change_agro, attacker):
 			next_target = target
 
 func _on_health_changed(difference):
+	#Stop already fainted chums from making noise on room entry
+	if initial_state_override == "Knock":
+		return
+
 	if difference < 0.0:
 		damaged(-difference)
 		if current_group == "Chums_Friend":
@@ -228,6 +234,10 @@ func healed(amount):
 		particle_zone.add_child(heal_num_inst)
 
 func _on_health_health_depleted() -> void:
+	#Stop already fainted chums from making noise on room entry
+	if initial_state_override == "Knock":
+		return
+
 	if current_group == "Chums_Friend":
 		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_DEATH_FRIENDLY)
 	else:
@@ -411,16 +421,16 @@ func set_target_to(new_target):
 		
 func _on_target_death():
 	if target:
-		var old_target_name = target.chum_name
-		var new_target_name = 'None'
+		#var old_target_name = target.chum_name
+		#var new_target_name = 'None'
 		set_new_target()
-		if target:
-			if not target is Player:
-				new_target_name = target.chum_name
-			elif target is Player:
-				new_target_name = "Player"
-		if Global.dev_mode:
-			print("Self: " + str(self.chum_name) + ". Group: " + str(current_group) + '. Old Target: ' + str(old_target_name) + '. New target: ' + str(new_target_name))
+		#if target:
+			#if not target is Player:
+				#new_target_name = target.chum_name
+			#elif target is Player:
+				#new_target_name = "Player"
+		#if Global.dev_mode:
+			#print("Self: " + str(self.chum_name) + ". Group: " + str(current_group) + '. Old Target: ' + str(old_target_name) + '. New target: ' + str(new_target_name))
 		if not self.target and state_machine.current_state.state_name != "Carry":
 			set_state("Idle")
 		

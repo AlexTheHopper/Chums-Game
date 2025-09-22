@@ -20,4 +20,5 @@ func _process(delta: float) -> void:
 func _on_collection_zone_body_entered(body: Node3D) -> void:
 	if body is Player:
 		PlayerStats.bracelets_added(1)
+		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_BRACELET_COLLECT)
 		queue_free()

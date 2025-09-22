@@ -54,6 +54,7 @@ autostart = true
 navigation_mesh = SubResource("NavigationMesh_kvjwp")
 
 [node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+visible = false
 mesh_library = ExtResource("5_m3b6f")
 cell_center_y = false
 data = {

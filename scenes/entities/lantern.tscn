@@ -1,25 +1,57 @@
-[gd_scene load_steps=5 format=4 uid="uid://2eost3t4boox"]
+[gd_scene load_steps=7 format=4 uid="uid://2eost3t4boox"]
 
-[ext_resource type="Material" uid="uid://tqe7rbh07xh7" path="res://materials/xray_material_player.tres" id="1_1k0kw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbyh7"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.05
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gkti"]
-transparency = 4
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfc2x"]
+next_pass = SubResource("StandardMaterial3D_wbyh7")
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftut0"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktyu4"]
+next_pass = SubResource("StandardMaterial3D_ftut0")
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.11372549, 0.11372549, 0.11372549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpt46"]
 shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0d6k"]
-shading_mode = 0
-disable_ambient_light = true
-vertex_color_use_as_albedo = true
-vertex_color_is_srgb = true
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_odvvt"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_xrxwq"]
 _surfaces = [{
-"aabb": AABB(-0.3, -0.2, -0.4, 0.7, 1.5, 0.7),
+"aabb": AABB(-0.3, -0.2, -0.4, 0.70000005, 1.5000001, 0.70000005),
 "attribute_data": PackedByteArray("Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/4q4h/+KuIf/iriH/4q4h/+KuIf/iriH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/4q4h/+KuIf/iriH/4q4h/+KuIf/iriH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/4q4h/+KuIf/iriH/4q4h/+KuIf/iriH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/4q4h/+KuIf/iriH/4q4h/+KuIf/iriH/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/4q4h/+KuIf/iriH/4q4h/+KuIf/iriH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/4q4h/+KuIf/iriH/4q4h/+KuIf/iriH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/4q4h/+KuIf/iriH/4q4h/+KuIf/iriH//8gy///IMv//yDL//8gy///IMv//yDL/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH//8gy///IMv//yDL//8gy///IMv//yDL/4q4h/+KuIf/iriH/4q4h/+KuIf/iriH/+MMx//jDMf/4wzH/+MMx//jDMf/4wzH/RUVF/0VFRf9FRUX/RUVF/0VFRf9FRUX/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/"),
 "format": 34359738383,
-"material": SubResource("StandardMaterial3D_e0d6k"),
+"material": SubResource("StandardMaterial3D_cpt46"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 840,
@@ -30,10 +62,9 @@ _surfaces = [{
 
 [node name="Lantern" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.55, 0)
-layers = 2
-material_override = SubResource("StandardMaterial3D_7gkti")
-material_overlay = ExtResource("1_1k0kw")
-mesh = SubResource("ArrayMesh_odvvt")
+material_override = SubResource("StandardMaterial3D_rfc2x")
+material_overlay = SubResource("StandardMaterial3D_ktyu4")
+mesh = SubResource("ArrayMesh_xrxwq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0410609, 0.269849, -0.0309175)

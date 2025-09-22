@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://qteb5yp5am2n"]
 
-[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black.tres" id="1_35e1q"]
+[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black_old.tres" id="1_35e1q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cu1gk"]
 shading_mode = 0

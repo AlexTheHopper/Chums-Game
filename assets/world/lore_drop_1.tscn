@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://g1hgamgw3ixa"]
+[gd_scene load_steps=4 format=3 uid="uid://g1hgamgw3ixa"]
 
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_2dpmu"]
 [ext_resource type="ArrayMesh" uid="uid://xh6n682twhko" path="res://assets/world/world_1_other/lore_base.vox" id="1_aih3k"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aih3k"]
@@ -9,6 +10,7 @@ points = PackedVector3Array(-2.80031, 0, -3, -3, 0, -2.80031, -2.80031, 0.099921
 collision_mask = 0
 
 [node name="LoreBase" type="MeshInstance3D" parent="."]
+material_overlay = ExtResource("1_2dpmu")
 mesh = ExtResource("1_aih3k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

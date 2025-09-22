@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dmgabiox56kck"]
+[gd_scene load_steps=34 format=4 uid="uid://dmgabiox56kck"]
 
 [ext_resource type="Script" uid="uid://d1mbalfu0wlex" path="res://scripts/entities/player.gd" id="1_8mcap"]
 [ext_resource type="Script" uid="uid://cf5efj3v5c38n" path="res://scripts/entities/health.gd" id="2_foxub"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cwcyxfm4jw16k" path="res://scripts/entities/chums/nudge_zone.gd" id="4_dnykm"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_f0wg7"]
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_6214k"]
-[ext_resource type="Material" uid="uid://tqe7rbh07xh7" path="res://materials/xray_material_player.tres" id="5_sb1xe"]
 [ext_resource type="PackedScene" uid="uid://2eost3t4boox" path="res://scenes/entities/lantern.tscn" id="7_rhmd7"]
 [ext_resource type="PackedScene" uid="uid://c1saa1y5s8j4y" path="res://scenes/entities/health_bar.tscn" id="9_c5rqy"]
 
@@ -91,14 +90,47 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_ss7kx"]
 radius = 0.35
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5rqy"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.1
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_00hcs"]
 resource_name = "palette"
+next_pass = SubResource("StandardMaterial3D_c5rqy")
 transparency = 4
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_8dc6w")
 texture_filter = 2
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6tgf"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.1148968, 0.11489681, 0.1148968, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73kkf"]
+next_pass = SubResource("StandardMaterial3D_b6tgf")
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.1148968, 0.11489681, 0.1148968, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fbi0d"]
 resource_name = "player_Untitled"
@@ -840,7 +872,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28403, 0)
 curve = SubResource("Curve3D_yc3t0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Camera_Controller/Camera_Path"]
-transform = Transform3D(0.999996, 0, 0, 0, 0.196109, 0.980544, 0, -0.980544, 0.196109, 0, 11, 6.5)
+transform = Transform3D(0.999996, 0, 0, 0, 0.19610848, 0.98054314, 0, -0.98054314, 0.19610848, 0, 11, 6.5)
 
 [node name="Camera_Target" type="Node3D" parent="Camera_Controller/Camera_Path/PathFollow3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999632, 0.0273123, 0, -0.0273124, 0.999634, 0, 0, 0)
@@ -924,12 +956,12 @@ bones/5/scale = Vector3(1, 1, 1)
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="Armature/Skeleton3D"]
 material_override = SubResource("StandardMaterial3D_00hcs")
-material_overlay = ExtResource("5_sb1xe")
+material_overlay = SubResource("StandardMaterial3D_73kkf")
 mesh = SubResource("ArrayMesh_fbi0d")
 skin = SubResource("Skin_8wrh7")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(5.96046e-08, 0.467461, 0.884013, -7.45058e-08, -0.884013, 0.467461, 1, -7.45058e-08, 5.96046e-08, 0.4, 1.2, 0)
+transform = Transform3D(-1.1920929e-07, 0.46746144, 0.88401353, 0, -0.88401365, 0.46746144, 1.0000001, 0, -1.1920929e-07, 0.4, 1.2, 0)
 bone_name = "Arm.L"
 bone_idx = 2
 

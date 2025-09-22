@@ -27,6 +27,7 @@ randomness = 0.5
 mesh = SubResource("BoxMesh_8hipd")
 emission_shape = 3
 emission_box_extents = Vector3(20, 6, 20)
+direction = Vector3(1, -0.25, 0)
 spread = 180.0
 gravity = Vector3(0, -0.3, 0)
 initial_velocity_min = 0.1

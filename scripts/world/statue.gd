@@ -52,3 +52,7 @@ func open_door() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "activate":
 		mesh_node.visible = false
+
+func do_shake() -> void:
+	get_tree().get_first_node_in_group("Camera").trigger_shake(2.5, 2.5)
+	#TODO SOUND
