@@ -10,7 +10,7 @@
 [sub_resource type="Resource" id="Resource_sf3pu"]
 resource_name = "On Player Attacks"
 script = ExtResource("2_xi5h2")
-limit = 2
+limit = 1
 type = 0
 sound_effect = ExtResource("3_sf3pu")
 volume = -20.0
@@ -205,6 +205,7 @@ pitch_randomness = 0.0
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [node name="AudioManager" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_fwuy1")
 sound_effects = Array[ExtResource("2_xi5h2")]([SubResource("Resource_sf3pu"), SubResource("Resource_lpos2"), SubResource("Resource_slcbk"), SubResource("Resource_ovui0"), SubResource("Resource_bga3x"), SubResource("Resource_rxm80"), SubResource("Resource_8yobu"), SubResource("Resource_k1p65"), SubResource("Resource_w1isn"), SubResource("Resource_6yffi"), SubResource("Resource_hs34q"), SubResource("Resource_4niny"), SubResource("Resource_mglc6")])
 sound_musics = Array[ExtResource("4_lpos2")]([SubResource("Resource_qs8em"), SubResource("Resource_ae5oe"), SubResource("Resource_tpt5d"), SubResource("Resource_qbirx"), SubResource("Resource_ft4fm")])
