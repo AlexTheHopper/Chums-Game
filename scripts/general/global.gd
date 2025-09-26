@@ -1,5 +1,5 @@
 extends Node
-var dev_mode = true
+var dev_mode = false
 
 var game_begun := false
 var world_transition_count := 0
@@ -32,6 +32,11 @@ var player: Player
 signal room_changed
 signal room_changed_to_boss
 signal room_changed_from_boss 
+
+@export var settings: Dictionary[String, float] = {
+	"camera_shake": 1.0,
+	"audio_music": 1.0,
+	"audio_effects": 1.0}
 
 func _ready():
 	#required and optional are the statue chum ids. To be super safe only rely on the last entry in required.
@@ -192,7 +197,10 @@ func start_game(save_id = null, new_game = false) -> void:
 			player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
 
 	get_node("/root/Game/HUD").add_chum_indicators()
-	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d" % current_world_num])
+	if current_world_num == 0:
+		AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d" % room_history[-2][0]])
+	else:
+		AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d" % current_world_num])
 
 	if Global.dev_mode:
 		for x in range(world_grid.size() - 1, -1, -1):

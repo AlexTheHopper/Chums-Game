@@ -55,4 +55,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func do_shake() -> void:
 	get_tree().get_first_node_in_group("Camera").trigger_shake(2.5, 2.5)
-	#TODO SOUND
+	AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_STATUE_SHAKE)

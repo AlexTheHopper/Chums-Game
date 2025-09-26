@@ -7,7 +7,7 @@ extends Camera3D
 var current_shake := 0.0
 
 func trigger_shake(strength = 1.0, attenuation = 1.0) -> void:
-	current_shake = shake_power * strength
+	current_shake = shake_power * strength * Global.settings["camera_shake"]
 	shake_attenuation = attenuation
 
 func _process(delta: float) -> void:

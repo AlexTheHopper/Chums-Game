@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cgxncfk1gen6c"]
+[gd_scene load_steps=34 format=3 uid="uid://cgxncfk1gen6c"]
 
 [ext_resource type="Script" uid="uid://begws5tgrylwi" path="res://scripts/general/audio_manager.gd" id="1_fwuy1"]
 [ext_resource type="Script" uid="uid://b8xh410owphar" path="res://resources/sound_effect.gd" id="2_xi5h2"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dxgfn2xw1qxfc" path="res://assets/audio/on_player_heal.ogg" id="6_4niny"]
 [ext_resource type="AudioStream" uid="uid://cmehy1m1rqu5a" path="res://assets/audio/testing/normal_music.wav" id="6_rxm80"]
 [ext_resource type="AudioStream" uid="uid://cagk3r5g11ofm" path="res://assets/audio/on_chum_heal.ogg" id="7_ovui0"]
+[ext_resource type="AudioStream" uid="uid://b6w4osr8cjnmj" path="res://assets/audio/on_statue_shake.ogg" id="10_4niny"]
 
 [sub_resource type="Resource" id="Resource_sf3pu"]
 resource_name = "On Player Attacks"
@@ -54,8 +55,8 @@ script = ExtResource("2_xi5h2")
 type = 4
 sound_effect = ExtResource("6_4niny")
 volume = -40.0
-pitch_scale = 0.8
-pitch_randomness = 0.05
+pitch_scale = 0.9
+pitch_randomness = 0.1
 metadata/_custom_type_script = "uid://b8xh410owphar"
 
 [sub_resource type="Resource" id="Resource_rxm80"]
@@ -125,6 +126,15 @@ volume = -40.0
 pitch_randomness = 0.1
 metadata/_custom_type_script = "uid://b8xh410owphar"
 
+[sub_resource type="Resource" id="Resource_asn2t"]
+resource_name = "On Statue Shake"
+script = ExtResource("2_xi5h2")
+type = 14
+sound_effect = ExtResource("10_4niny")
+volume = -30.0
+pitch_randomness = 0.5
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
 [sub_resource type="Resource" id="Resource_qs8em"]
 resource_name = "Null"
 script = ExtResource("4_lpos2")
@@ -161,7 +171,7 @@ metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 [node name="AudioManager" type="Node3D"]
 process_mode = 3
 script = ExtResource("1_fwuy1")
-sound_effects = Array[ExtResource("2_xi5h2")]([SubResource("Resource_sf3pu"), SubResource("Resource_lpos2"), SubResource("Resource_slcbk"), SubResource("Resource_ovui0"), SubResource("Resource_bga3x"), SubResource("Resource_rxm80"), SubResource("Resource_8yobu"), SubResource("Resource_k1p65"), SubResource("Resource_w1isn"), SubResource("Resource_6yffi"), SubResource("Resource_hs34q"), SubResource("Resource_4niny"), SubResource("Resource_mglc6"), SubResource("Resource_1obp5")])
+sound_effects = Array[ExtResource("2_xi5h2")]([SubResource("Resource_sf3pu"), SubResource("Resource_lpos2"), SubResource("Resource_slcbk"), SubResource("Resource_ovui0"), SubResource("Resource_bga3x"), SubResource("Resource_rxm80"), SubResource("Resource_8yobu"), SubResource("Resource_k1p65"), SubResource("Resource_w1isn"), SubResource("Resource_6yffi"), SubResource("Resource_hs34q"), SubResource("Resource_4niny"), SubResource("Resource_mglc6"), SubResource("Resource_1obp5"), SubResource("Resource_asn2t")])
 sound_musics = Array[ExtResource("4_lpos2")]([SubResource("Resource_qs8em"), SubResource("Resource_ae5oe"), SubResource("Resource_tpt5d"), SubResource("Resource_qbirx"), SubResource("Resource_ft4fm")])
 
 [node name="Music" type="Node3D" parent="."]

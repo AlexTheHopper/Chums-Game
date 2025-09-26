@@ -26,6 +26,8 @@ func _ready() -> void:
 ## Creates a sound effect at a specific location if the limit has not been reached. Pass [param location] for the global position of the audio effect, and [param type] for the SoundEffect to be queued.
 func create_3d_audio_at_location(location: Vector3, type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 	if sound_effect_dict.has(type):
+		if Global.dev_mode:
+			print("3D Audio: %s" % type)
 		var sound_effect: SoundEffect = sound_effect_dict[type]
 		if sound_effect.has_open_limit():
 			sound_effect.change_audio_count(1)
@@ -46,6 +48,8 @@ func create_3d_audio_at_location(location: Vector3, type: SoundEffect.SOUND_EFFE
 ## Creates a sound effect if the limit has not been reached. Pass [param type] for the SoundEffect to be queued.
 func create_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 	if sound_effect_dict.has(type):
+		if Global.dev_mode:
+			print("Audio: %s" % type)
 		var sound_effect: SoundEffect = sound_effect_dict[type]
 		if sound_effect.has_open_limit():
 			sound_effect.change_audio_count(1)
@@ -65,6 +69,8 @@ func create_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 
 func create_music(type: SoundMusic.SOUND_MUSIC_TYPE) -> void:
 	if sound_music_dict.has(type):
+		if Global.dev_mode:
+			print("Music: %s" % type)
 		var sound_music: SoundMusic = sound_music_dict[type]
 
 		#Do not start music again if its the same one
@@ -83,7 +89,10 @@ func create_music(type: SoundMusic.SOUND_MUSIC_TYPE) -> void:
 		new_audio.pitch_scale = sound_music.pitch_scale
 		new_audio.pitch_scale += randf_range(-sound_music.pitch_randomness, sound_music.pitch_randomness)
 		new_audio.finished.connect(new_audio.play)
-		get_tree().create_tween().tween_property(new_audio, "volume_db", sound_music.volume, MUSIC_FADE_TIME)
+		get_tree().create_tween().tween_property(new_audio, 
+												"volume_db",
+												sound_music.volume,
+												MUSIC_FADE_TIME)
 		new_audio.play()
 
 		current_music_type = type

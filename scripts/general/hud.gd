@@ -55,12 +55,25 @@ func toggle_pause():
 	if is_paused and get_tree().paused:
 		get_tree().paused = false
 		P_anim_player.play_backwards("pause")
-		
+
+		set_pause_volume(1.0)
+
 	elif not is_paused and not get_tree().paused:
 		$PauseMenu/ReturnPanel/Value.text = "Q to return to menu"
 		get_tree().paused = true
 		P_anim_player.play("pause")
-		
+
+		set_pause_volume(0.25)
+
+func set_pause_volume(amplitude) -> void:
+	var vol_tween := get_tree().create_tween()
+	vol_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	vol_tween.tween_property(AudioManager.current_music_node,
+											"volume_db",
+											AudioManager.sound_music_dict[AudioManager.current_music_type].volume * (2 - amplitude),
+											1.0)
+	vol_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+
 func change_health():
 	health_bar.set_health(PlayerStats.player_health)
 	
