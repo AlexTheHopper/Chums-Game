@@ -1,5 +1,5 @@
 extends Node
-var dev_mode = false
+var dev_mode = true
 
 var game_begun := false
 var world_transition_count := 0
@@ -52,7 +52,7 @@ func _ready():
 		1: {'map_size': 3,
 			"room_size": 40.0,
 			"max_chums": 5,
-			"statue_required": [4], 					   #To world 2
+			"statue_required": [4, 13], 					   #To world 2, 3
 			"statue_optional": [1, 2, 3, 4, 5, 6, 7, 8], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
@@ -64,15 +64,15 @@ func _ready():
 							}, 
 			},
 
-		2: {'map_size': 5,
+		2: {'map_size': 4,
 			"room_size": 40.0,
 			"max_chums": 8,
-			"statue_required": [1, 3, 4, 13],  #To worlds 1, 2, 3
-			"statue_optional": [5, 8, 4, 4], #To worlds 1, 2
+			"statue_required": [3, 4, 8, 8],  #To worlds 1, 2
+			"statue_optional": [5, 4, 8, 8], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
-							3: 6, #Fountain
-							4: 5, #Void
+							3: 5, #Fountain
+							4: 4, #Void
 							5: 6, #Statue - AT LEAST length of statue_required
 							6: 5, #Upgrade
 							7: 2, #Lore
@@ -82,7 +82,7 @@ func _ready():
 		3: {'map_size': 5,
 			"room_size": 40.0,
 			"max_chums": 10,
-			"statue_required": [4, 6, 8],  #To worlds 1, 2
+			"statue_required": [4, 6, 8, 13],  #To worlds 1, 2, 3
 			"statue_optional": [6, 11, 13], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
@@ -114,7 +114,7 @@ func get_room_tscn(world_n, room_id) -> PackedScene:
 		7:
 			return load("res://scenes/world/lore_room_world_%s.tscn" % [world_n])
 
-	print("SHOULD NOT REACH HERE - Global.get_room_tscn()")
+	push_error("Global failed to find room type for world_n, room_id: ", world_n, ", ", room_id)
 	return load("res://scenes/world/lobby_world_1.tscn") #Only as backup when room cannot be found.
 
 func start_game(save_id = null, new_game = false) -> void:

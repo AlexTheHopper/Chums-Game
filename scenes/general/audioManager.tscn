@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cgxncfk1gen6c"]
+[gd_scene load_steps=36 format=3 uid="uid://cgxncfk1gen6c"]
 
 [ext_resource type="Script" uid="uid://begws5tgrylwi" path="res://scripts/general/audio_manager.gd" id="1_fwuy1"]
 [ext_resource type="Script" uid="uid://b8xh410owphar" path="res://resources/sound_effect.gd" id="2_xi5h2"]
@@ -6,13 +6,15 @@
 [ext_resource type="AudioStream" uid="uid://cugjuw473ki8x" path="res://assets/audio/hitTest.ogg" id="3_rxm80"]
 [ext_resource type="AudioStream" uid="uid://bh8mksq11nin5" path="res://assets/audio/on_bell_hit.ogg" id="4_8yobu"]
 [ext_resource type="Script" uid="uid://bi73r60ulsu7q" path="res://resources/sound_music.gd" id="4_lpos2"]
-[ext_resource type="AudioStream" uid="uid://die57wo5cnjvp" path="res://assets/audio/bracelet_collect.ogg" id="4_rxm80"]
-[ext_resource type="AudioStream" uid="uid://djv0nxvec4gob" path="res://assets/audio/testing/lobby_music.wav" id="5_bga3x"]
+[ext_resource type="AudioStream" uid="uid://die57wo5cnjvp" path="res://assets/audio/on_bracelet_collect.ogg" id="4_rxm80"]
 [ext_resource type="AudioStream" uid="uid://p4ewins02iyh" path="res://assets/audio/on_player_jump.ogg" id="5_hs34q"]
 [ext_resource type="AudioStream" uid="uid://dxgfn2xw1qxfc" path="res://assets/audio/on_player_heal.ogg" id="6_4niny"]
-[ext_resource type="AudioStream" uid="uid://cmehy1m1rqu5a" path="res://assets/audio/testing/normal_music.wav" id="6_rxm80"]
 [ext_resource type="AudioStream" uid="uid://cagk3r5g11ofm" path="res://assets/audio/on_chum_heal.ogg" id="7_ovui0"]
 [ext_resource type="AudioStream" uid="uid://b6w4osr8cjnmj" path="res://assets/audio/on_statue_shake.ogg" id="10_4niny"]
+[ext_resource type="AudioStream" uid="uid://dajj0fiw6nagl" path="res://assets/audio/music_lobby.wav" id="12_mglc6"]
+[ext_resource type="AudioStream" uid="uid://ca7futgwsypwv" path="res://assets/audio/music_world_1.wav" id="13_ae5oe"]
+[ext_resource type="AudioStream" uid="uid://rugtqjcd5dve" path="res://assets/audio/music_world_2.wav" id="14_tpt5d"]
+[ext_resource type="AudioStream" uid="uid://dwsrlj0iusifo" path="res://assets/audio/music_world_3.wav" id="15_qbirx"]
 
 [sub_resource type="Resource" id="Resource_sf3pu"]
 resource_name = "On Player Attacks"
@@ -54,9 +56,7 @@ resource_name = "On Player Heal"
 script = ExtResource("2_xi5h2")
 type = 4
 sound_effect = ExtResource("6_4niny")
-volume = -40.0
-pitch_scale = 0.9
-pitch_randomness = 0.1
+volume = -50.0
 metadata/_custom_type_script = "uid://b8xh410owphar"
 
 [sub_resource type="Resource" id="Resource_rxm80"]
@@ -144,28 +144,28 @@ metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 resource_name = "Menu"
 script = ExtResource("4_lpos2")
 type = 1
-sound_music = ExtResource("5_bga3x")
+sound_music = ExtResource("12_mglc6")
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [sub_resource type="Resource" id="Resource_tpt5d"]
 resource_name = "World 1"
 script = ExtResource("4_lpos2")
 type = 2
-sound_music = ExtResource("6_rxm80")
+sound_music = ExtResource("13_ae5oe")
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [sub_resource type="Resource" id="Resource_qbirx"]
 resource_name = "World 2"
 script = ExtResource("4_lpos2")
 type = 3
-sound_music = ExtResource("5_bga3x")
+sound_music = ExtResource("14_tpt5d")
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [sub_resource type="Resource" id="Resource_ft4fm"]
 resource_name = "World 3"
 script = ExtResource("4_lpos2")
 type = 4
-sound_music = ExtResource("6_rxm80")
+sound_music = ExtResource("15_qbirx")
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [node name="AudioManager" type="Node3D"]

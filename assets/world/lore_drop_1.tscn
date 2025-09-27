@@ -3,8 +3,8 @@
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_2dpmu"]
 [ext_resource type="ArrayMesh" uid="uid://xh6n682twhko" path="res://assets/world/world_1_other/lore_base.vox" id="1_aih3k"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aih3k"]
-points = PackedVector3Array(-2.80031, 0, -3, -3, 0, -2.80031, -2.80031, 0.0999217, -3, 2.79973, 0, -3, -3, 0, 2.79973, -3, 0.0999217, -2.80031, -2.90016, 0.199951, -2.90016, -2.60004, 0.69999, -2.60004, 2.79973, 0.0999217, -3, 3, 0, -2.80031, -3, 0.0999217, 2.79973, -2.80031, 0, 3, -2.60004, 0.69999, 2.59945, -2.00039, 1.1, -2.00039, 2.59945, 0.69999, -2.60004, 2.89957, 0.199951, -2.90016, 3, 0.0999217, -2.80031, 3, 0, 2.79973, -2.80031, 0.0999217, 3, -2.90016, 0.199951, 2.89957, 2.79973, 0, 3, -2.00039, 1.1, 1.9998, 2.59945, 0.69999, 2.59945, 1.9998, 1.1, -2.00039, 3, 0.0999217, 2.79973, 2.79973, 0.0999217, 3, 1.9998, 1.1, 1.9998, 2.89957, 0.199951, 2.89957)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2dpmu"]
+points = PackedVector3Array(-3, 0, -3, -3, 0, 3, -3, 0.099921696, -3, 3, 0, -3, -3, 0.099921696, 3, 3, 0, 3, -2.8003132, 0.29998043, -2.8003132, 3, 0.099921696, -3, -2.0003915, 1.1, 1.999804, -2.300509, 0.7999119, 2.2999215, -2.70047, 0.39990214, 2.6998825, -2.8003132, 0.29998043, 2.799726, 3, 0.099921696, 3, -2.70047, 0.39990214, -2.70047, 2.799726, 0.29998043, -2.8003132, 2.6998825, 0.39990214, -2.70047, 2.2999215, 0.7999119, -2.300509, 1.999804, 1.1, -2.0003915, -2.0003915, 1.1, -2.0003915, 1.999804, 1.1, 1.999804, -2.300509, 0.7999119, -2.300509)
 
 [node name="Base" type="StaticBody3D"]
 collision_mask = 0
@@ -14,4 +14,4 @@ material_overlay = ExtResource("1_2dpmu")
 mesh = ExtResource("1_aih3k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_aih3k")
+shape = SubResource("ConvexPolygonShape3D_2dpmu")

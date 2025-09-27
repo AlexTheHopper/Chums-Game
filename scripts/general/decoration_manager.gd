@@ -42,25 +42,51 @@ func _ready() -> void:
 	}
 	
 	lore_texts = {
-		0: {"info": "0 . 0",
-			"front": "How many...",
-			"back": "...is too many?"},
+		0: {"info": "1000 . 0",
+			"front": "How many have there been now? Hundreds? Thousands? I can't quite remember...",
+			"back": "Yet I have found solace in this futility. A kind of meditation. This will be my life now."},
 
-		1: {"info": "0 . 1",
-			"front": "They fight well...",
-			"back": "...but not wisely."},
 
-		2: {"info": "0 . 500",
-			"front": "This time...",
-			"back": "...that one is different."},
+		1: {"info": "25 . 0",
+			"front": "This surely cannot be possible. Twenty five times and twenty five catastrophes...",
+			"back": "I do not know how many they are willing to try, I have little hope."},
 
-		3: {"info": "50 . 0",
-			"front": "Perhaps the search is over...",
-			"back": "...or perhaps, this one can take over."},
+		2: {"info": "50 . 0",
+			"front": "I have seen the one that runs, it shows interesting properties...",
+			"back": "With a keen sense of direction, it may not be able to help itself but perhaps others?"},
 
-		4: {"info": "50 . 1000",
-			"front": "I am not even sure...",
-			"back": "...if I know how to count this high."},
+		3: {"info": "75 . 0",
+			"front": "We have been instructed to vary the tests. Perhaps a change in scenery will offer a solution...",
+			"back": "Yet I see no significant changes, in the end, all is to perish."},
+
+		4: {"info": "100 . 0",
+			"front": "Perhaps we are to be the ones moving on, with an impossibility of unwilling death we cannot cause a catastrophe...",
+			"back": "However where is the value in a life that never ends?"},
+		
+		5: {"info": "125 . 0",
+			"front": "They sometimes show promise these days, but it has become more of an entertainment, betting on the limited time until catastrophe...",
+			"back": "Yet, the inevitability reigns and our one shortcoming is revealed."},
+
+
+		6: {"info": "1500 . 0",
+			"front": "This one may show the greatest potential of all...",
+			"back": "We remain cautiously optimistic."},
+		
+		7: {"info": "1501 . 0",
+			"front": "Yet again, we are shown what was inevitable from the beginning...",
+			"back": "We are close to giving up."},
+		
+		8: {"info": "2500 . 0",
+			"front": "We are all that remains now. It has gone and left us in this infinite cycle of injustice...",
+			"back": "What are we working towards now?"},
+		
+		9: {"info": "2525 . 0",
+			"front": "Without direction, we change tactics. To create something to finish this for us...",
+			"back": "Is it possible?"},
+		
+		10: {"info": "2550 . 0",
+			"front": "They must be sentient, with intelligence beyond the rest...",
+			"back": "To complete the goal, and let us rest."},
 	}
 
 func get_random_decoration(world_n):

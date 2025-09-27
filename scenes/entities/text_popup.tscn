@@ -85,13 +85,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Description" type="Label" parent="Container/Display/SubViewport/Control"]
-custom_minimum_size = Vector2(480, 400)
 layout_mode = 0
 offset_top = 100.0
 offset_right = 512.0
-offset_bottom = 500.0
+offset_bottom = 400.0
 theme_override_colors/font_color = Color(0.356863, 0.356863, 0.356863, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "front_text"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -138,9 +137,9 @@ vertical_alignment = 1
 layout_mode = 0
 offset_top = 100.0
 offset_right = 512.0
-offset_bottom = 500.0
+offset_bottom = 400.0
 theme_override_colors/font_color = Color(0.356863, 0.356863, 0.356863, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "back_text"
 horizontal_alignment = 1
 vertical_alignment = 1
