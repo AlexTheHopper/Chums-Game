@@ -38,6 +38,7 @@ func Physics_Update(_delta: float) -> void:
 	target_info = get_target_info(chum.global_position, throw_vel_i)
 	if target_info:
 		target_sprite.global_position = target_info["position"]
+		
 		#Rotate target to match terrain
 		var xform = target_sprite.global_transform
 		xform.basis.y = target_info["normal"]

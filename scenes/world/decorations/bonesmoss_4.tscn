@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmr6ffe1nc4f6"]
+
+[ext_resource type="ArrayMesh" uid="uid://b7ty1xekuo10e" path="res://assets/world/world_1_other/bonesmoss4.vox" id="1_hfim1"]
+
+[node name="Bonesmoss4" type="Node3D"]
+
+[node name="Bonesmoss4" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_hfim1")

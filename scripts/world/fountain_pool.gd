@@ -9,7 +9,8 @@ var hearts_set := false
 var active := false
 
 const HEART_DIST := 4.0
-const HEART_HEAL := 20
+const HEART_HEAL_FACTOR := 0.1
+const HEART_HEAL_MIN := 25.0
 
 func _ready() -> void:
 	if not hearts_set:
@@ -37,7 +38,7 @@ func _on_heal_zone_body_entered(body: Node3D) -> void:
 		hearts.get_children().pick_random().remove()
 		Global.world_map[Global.room_location]["item_count"] -= 1
 		heart_num -= 1
-		body.health_node.health += HEART_HEAL
+		body.health_node.health += max(body.health_node.max_health * HEART_HEAL_FACTOR, HEART_HEAL_MIN)
 		active = false
 		hearts_timer.start()
 		

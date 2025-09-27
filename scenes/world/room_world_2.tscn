@@ -20,13 +20,16 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="Environment" id="Environment_mfbql"]
+[sub_resource type="Environment" id="Environment_y3gcu"]
 ambient_light_source = 3
-ambient_light_sky_contribution = 0.0
+ambient_light_color = Color(0.54901963, 0.54901963, 0.54901963, 1)
+ambient_light_sky_contribution = 0.5
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_density = 0.05
+fog_height = 5.0
+fog_height_density = 0.25
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("spawn_timer", "grid_map")]
 script = ExtResource("1_mfbql")
@@ -89,16 +92,7 @@ one_shot = true
 
 [node name="Decorations" type="Node3D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
-omni_range = 50.0
-omni_attenuation = 0.5
-omni_shadow_mode = 0
-
 [node name="Particles" parent="Decorations" instance=ExtResource("6_s2b00")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_mfbql")
 
 [node name="EntryIndicators" type="Node3D" parent="."]
 
@@ -119,5 +113,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
 
 [node name="FallStopper" parent="." instance=ExtResource("8_y3gcu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
+light_indirect_energy = 0.0
+omni_range = 40.0
+omni_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y3gcu")
 
 [connection signal="timeout" from="SpawnPath/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

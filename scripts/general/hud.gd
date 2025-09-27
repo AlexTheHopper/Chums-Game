@@ -43,7 +43,7 @@ func _process(_delta: float) -> void:
 			toggle_pause()
 			get_tree().get_first_node_in_group("Player")._on_health_health_depleted()
 		elif Global.in_battle:
-			$PauseMenu/ReturnPanel/Value.text = "Q to quit and delete save"
+			$PauseMenu/ReturnPanel/Value.text = "'Attack' to quit and delete save"
 			is_exit_warning = true
 		else:
 			is_returning = true
@@ -59,7 +59,7 @@ func toggle_pause():
 		set_pause_volume(1.0)
 
 	elif not is_paused and not get_tree().paused:
-		$PauseMenu/ReturnPanel/Value.text = "Q to return to menu"
+		$PauseMenu/ReturnPanel/Value.text = "'Attack' to return to menu"
 		get_tree().paused = true
 		P_anim_player.play("pause")
 

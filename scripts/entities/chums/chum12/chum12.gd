@@ -18,7 +18,7 @@ var has_attack_damage := true
 var has_move_speed := true
 var has_health := true
 
-var attack_distance := 1.0
+var attack_distance := 1.3
 var knockback_strength := 0.0
 var knockback_weight := 2.5
 

@@ -13,6 +13,18 @@ func _ready() -> void:
 					"grass3": preload("res://scenes/world/decorations/grass_3.tscn"),
 					"grass4": preload("res://scenes/world/decorations/grass_4.tscn"),
 					"grass5": preload("res://scenes/world/decorations/grass_5.tscn"),
+					
+					"bones1": preload("res://scenes/world/decorations/bones_1.tscn"),
+					"bones2": preload("res://scenes/world/decorations/bones_2.tscn"),
+					"bones3": preload("res://scenes/world/decorations/bones_3.tscn"),
+					"bones4": preload("res://scenes/world/decorations/bones_4.tscn"),
+					"bones5": preload("res://scenes/world/decorations/bones_5.tscn"),
+					
+					"bonesmoss1": preload("res://scenes/world/decorations/bonesmoss_1.tscn"),
+					"bonesmoss2": preload("res://scenes/world/decorations/bonesmoss_2.tscn"),
+					"bonesmoss3": preload("res://scenes/world/decorations/bonesmoss_3.tscn"),
+					"bonesmoss4": preload("res://scenes/world/decorations/bonesmoss_4.tscn"),
+					"bonesmoss5": preload("res://scenes/world/decorations/bonesmoss_5.tscn"),
 	
 					"tree1": preload("res://scenes/world/decorations/tree_1.tscn"),
 					"tree2": preload("res://scenes/world/decorations/tree_2.tscn"),
@@ -25,19 +37,19 @@ func _ready() -> void:
 		1: {"multiplier": 1.0,
 			"common": ["grass1", "grass2", "grass3", "grass4", "grass5"],
 			"uncommon": ["tree2"],
-			"rare": ["tree1"]
+			"rare": ["bonesmoss1", "bonesmoss2", "bonesmoss3", "bonesmoss4", "bonesmoss5"],
 			},
 
 		2: {"multiplier": 0.1,
-			"common": ["rubble1"],
+			"common": ["rubble1", "rubble1", "rubble1", "bones1", "bones2", "bones3", "bones4", "bones5"],
 			"uncommon": ["column1"],
-			"rare": ["column1"]
+			"rare": ["column1"],
 			},
 
 		3: {"multiplier": 0.5,
 			"common": ["rubble1"],
-			"uncommon": ["column1"],
-			"rare": ["column1"]
+			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5"],
+			"rare": ["column1"],
 			},
 	}
 	

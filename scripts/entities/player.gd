@@ -79,7 +79,6 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	#Gets transformed input direction
 	var direction = ($Camera_Controller.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-
 	#Animations:
 	#Attack:
 	if Input.is_action_just_pressed("attack") and not is_attacking and not is_carrying and Global.is_alive:

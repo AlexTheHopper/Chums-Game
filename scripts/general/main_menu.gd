@@ -91,7 +91,7 @@ func _process(delta: float) -> void:
 	if fmod(camera_a, 2 * PI) < 0.5:
 		camera_returning = false
 	
-	if Input.is_action_just_pressed("attack") and not starting_game:
+	if (Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("jump")) and not starting_game:
 		starting_game = true
 		TransitionScreen.transition(3)
 		await TransitionScreen.on_transition_finished

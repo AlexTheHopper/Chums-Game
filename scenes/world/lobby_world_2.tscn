@@ -12,7 +12,8 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 
 [sub_resource type="Environment" id="Environment_5vans"]
 ambient_light_source = 3
-ambient_light_sky_contribution = 0.0
+ambient_light_color = Color(0.54901963, 0.54901963, 0.54901963, 1)
+ambient_light_sky_contribution = 0.5
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
@@ -26,6 +27,7 @@ grid_map = NodePath("NavigationRegion3D/GridMap")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
+light_color = Color(0.54896253, 0.5489626, 0.5489625, 1)
 omni_range = 40.0
 omni_attenuation = 0.1
 omni_shadow_mode = 0
@@ -61,8 +63,8 @@ metadata/_editor_floor_ = Vector3(15, 3, -15)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
-omni_range = 50.0
-omni_attenuation = 0.5
+light_indirect_energy = 0.0
+omni_range = 40.0
 omni_shadow_mode = 0
 
 [node name="ChumIncreaser" parent="Decorations" instance=ExtResource("5_4xt6p")]
