@@ -17,9 +17,12 @@ func Physics_Update(delta: float) -> void:
 	#chum.anim_player.play("Walk")
 
 	chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
-		
-	if not chum.is_on_floor():
+	
+	if chum.is_on_floor():
+		chum.anim_player.play("Walk")
+	else:
 		chum.velocity.y += chum.get_gravity_dir() * delta
+		
 	chum.move_and_slide()
 	
 	#Go to idle if close enough:

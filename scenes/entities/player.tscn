@@ -872,7 +872,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28403, 0)
 curve = SubResource("Curve3D_yc3t0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Camera_Controller/Camera_Path"]
-transform = Transform3D(0.999996, 0, 0, 0, 0.19610848, 0.98054314, 0, -0.98054314, 0.19610848, 0, 11, 6.5)
+transform = Transform3D(0.999996, 0, 0, 0, 0.19610846, 0.9805431, 0, -0.9805431, 0.19610846, 0, 11, 6.5)
 
 [node name="Camera_Target" type="Node3D" parent="Camera_Controller/Camera_Path/PathFollow3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999632, 0.0273123, 0, -0.0273124, 0.999634, 0, 0, 0)
@@ -930,7 +930,7 @@ bones/2/parent = 0
 bones/2/rest = Transform3D(0, 1, 2.38419e-07, 2.38419e-07, -2.38419e-07, 1, 1, 0, -2.38419e-07, 0.4, 0.8, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0.4, 0.8, 0)
-bones/2/rotation = Quaternion(0.686297, 0.170284, 0.686297, -0.170284)
+bones/2/rotation = Quaternion(0.301537, 0.6395901, 0.30153704, -0.63959)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Leg.L"
 bones/3/parent = 0
@@ -944,7 +944,7 @@ bones/4/parent = 0
 bones/4/rest = Transform3D(0, -1, -2.38419e-07, -2.38419e-07, -2.38419e-07, 1, -1, 0, -2.38419e-07, -0.4, 0.8, 0)
 bones/4/enabled = true
 bones/4/position = Vector3(-0.4, 0.8, 0)
-bones/4/rotation = Quaternion(0.686297, -0.170284, -0.686297, -0.170284)
+bones/4/rotation = Quaternion(0.31259996, -0.63425696, -0.31259996, -0.63425595)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Leg.R"
 bones/5/parent = 0
@@ -961,7 +961,7 @@ mesh = SubResource("ArrayMesh_fbi0d")
 skin = SubResource("Skin_8wrh7")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
-transform = Transform3D(-1.1920929e-07, 0.46746144, 0.88401353, 0, -0.88401365, 0.46746144, 1.0000001, 0, -1.1920929e-07, 0.4, 1.2, 0)
+transform = Transform3D(-1.1920929e-07, 0.7714403, -0.63630176, 0, 0.6363017, 0.7714403, 1, 5.9604645e-08, -1.1920929e-07, 0.4, 1.2, 0)
 bone_name = "Arm.L"
 bone_idx = 2
 

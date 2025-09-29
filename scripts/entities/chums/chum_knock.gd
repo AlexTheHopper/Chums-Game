@@ -23,7 +23,7 @@ func Enter() -> void:
 func Physics_Update(delta: float) -> void:
 	chum.velocity  = lerp(chum.velocity, Vector3(), 0.1)
 	
-	if Input.is_action_just_pressed("interract") and len(ChumsManager.close_chums) > 0:
+	if Input.is_action_just_pressed("interact") and len(ChumsManager.close_chums) > 0:
 		if ChumsManager.close_chums[0] == chum:
 			chum.attempt_carry()
 			

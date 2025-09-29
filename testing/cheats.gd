@@ -60,6 +60,7 @@ func _process(delta: float) -> void:
 			
 		
 	if Input.is_action_just_pressed("test2"):
+		PlayerStats.bracelets_added(1)
 		if not Global.in_battle:
 			statue_id += 1
 			to_statue_timer = 1.0

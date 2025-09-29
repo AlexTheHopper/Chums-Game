@@ -25,7 +25,7 @@ var room_location := Vector2i(map_size, map_size)
 var room_history: Array
 var rooms: Node3D
 var world_info: Dictionary
-var game_scene: PackedScene = load("res://scenes/general/game.tscn")
+#var game_scene: PackedScene = load("res://scenes/general/game.tscn")
 var game_save_id := 1
 var player: Player
 
@@ -42,6 +42,7 @@ func _ready():
 	#required and optional are the statue chum ids. To be super safe only rely on the last entry in required.
 	#room_counts are how many of each normal room to replace with that id. They will not replace ones next to the lobby.
 	#Max chums needs to be AT LEAST 4, or change room.gd
+
 	world_info = {
 		0: {'map_size': 3,
 			"room_size": 40.0,
@@ -150,6 +151,7 @@ func start_game(save_id = null, new_game = false) -> void:
 			set_world_map_guides()
 		
 		#Creates Player, Lobby, HUD
+		var game_scene = load("res://scenes/general/game.tscn")
 		get_node("/root").add_child(game_scene.instantiate())
 		player = get_tree().get_first_node_in_group("Player")
 		
@@ -163,6 +165,7 @@ func start_game(save_id = null, new_game = false) -> void:
 		rooms.add_child(current_room_node)
 	
 	else:
+		var game_scene = load("res://scenes/general/game.tscn")
 		get_node("/root").add_child(game_scene.instantiate())
 		player = get_tree().get_first_node_in_group("Player")
 		
@@ -205,6 +208,31 @@ func start_game(save_id = null, new_game = false) -> void:
 	if Global.dev_mode:
 		for x in range(world_grid.size() - 1, -1, -1):
 			print(world_grid[x])
+
+func start_tutorial() -> void:
+	current_world_num = 0
+	in_battle = false
+	
+	#Creates Player, Lobby, HUD
+	var game_scene = load("res://scenes/general/game.tscn")
+	get_node("/root").add_child(game_scene.instantiate())
+	player = get_tree().get_first_node_in_group("Player")
+
+	#Sets initial values for some singletons and connects important signals.
+	PlayerStats.initialize()
+	get_node("/root/Game/HUD").initialize()
+	
+	create_world_boss() # Also used for tutorial as it stops many map related things happening
+	Global.room_location = Vector2i(1, 1)
+	
+	rooms = get_parent().get_node("Game/Rooms")
+	var lobby_room = load("res://scenes/world/room_tutorial.tscn")
+	current_room_node = lobby_room.instantiate()
+	rooms.add_child(current_room_node)
+
+	get_node("/root/Game/HUD").add_chum_indicators()
+	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE.WORLD_1)
+	
 
 func get_world_grid(world_n):
 	#Seeded randomness - Same based on global seed, world number and transition count.

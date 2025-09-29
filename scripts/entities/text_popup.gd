@@ -7,6 +7,7 @@ class_name Text_Popup
 @onready var mesh_node := $Container/MeshNode
 var base_scale := Vector3.ONE
 var fading_out := false
+var is_lore := true
 
 @export var title_front: Label
 @export var text_front: Label
@@ -23,21 +24,24 @@ func _ready() -> void:
 		mesh_num = Global.room_location[0]
 	elif Global.current_world_num:
 		mesh_num = Global.current_world_num
+	if not mesh_num:
+		mesh_num = 1
 		
 	mesh_scene = load("res://assets/world/quality_popup_%s.tscn" % [mesh_num]).instantiate()
 	mesh_node.add_child(mesh_scene)
 	
-	var text_num = Global.world_map[Global.room_location]["item_count"]
-	if text_num not in Global.viewed_lore:
-		Global.viewed_lore.append(text_num)
-	
-	#Set all values:
-	#Front
-	title_front.text = DecorationManager.lore_texts[text_num]["info"]
-	text_front.text = DecorationManager.lore_texts[text_num]["front"]
-	#Back
-	title_back.text = DecorationManager.lore_texts[text_num]["info"]
-	text_back.text = DecorationManager.lore_texts[text_num]["back"]
+	if is_lore:
+		var text_num = Global.world_map[Global.room_location]["item_count"]
+		if text_num not in Global.viewed_lore:
+			Global.viewed_lore.append(text_num)
+		
+		#Set all values:
+		#Front
+		title_front.text = DecorationManager.lore_texts[text_num]["info"]
+		text_front.text = DecorationManager.lore_texts[text_num]["front"]
+		#Back
+		title_back.text = DecorationManager.lore_texts[text_num]["info"]
+		text_back.text = DecorationManager.lore_texts[text_num]["back"]
 
 	scale = Vector3(0.1, 0.1, 0.1)
 

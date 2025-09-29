@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgd4xkckyqdcg"]
+[gd_scene load_steps=12 format=3 uid="uid://bgd4xkckyqdcg"]
 
 [ext_resource type="Script" uid="uid://b0rs5b6ow7au3" path="res://scripts/entities/quality_popup.gd" id="1_purmp"]
 [ext_resource type="Shader" uid="uid://db57gow0ouvok" path="res://materials/nodepthtest.gdshader" id="2_piaxk"]
+[ext_resource type="Texture2D" uid="uid://b3jp5c72uunir" path="res://materials/ui/ui_rotate.tres" id="3_kl30j"]
 [ext_resource type="Shader" uid="uid://pjxd0dallace" path="res://materials/glitch_quality.gdshader" id="3_v3w6n"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1lra1"]
@@ -177,6 +178,11 @@ text = "ATTK_SPEED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="UI_ROTATE" type="Sprite2D" parent="Container/Display/SubViewport/Control"]
+position = Vector2(475, 475)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_kl30j")
+
 [node name="GlitchShader" type="ColorRect" parent="Container/Display/SubViewport"]
 material = SubResource("ShaderMaterial_kl30j")
 custom_minimum_size = Vector2(512, 512)
@@ -224,6 +230,11 @@ text = "CHUM_DESCRIPTION"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="UI_ROTATE" type="Sprite2D" parent="Container/Description/SubViewport/Control"]
+position = Vector2(475, 475)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_kl30j")
 
 [node name="GlitchShader" type="ColorRect" parent="Container/Description/SubViewport"]
 material = SubResource("ShaderMaterial_kl30j")

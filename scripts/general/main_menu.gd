@@ -69,9 +69,9 @@ func change_display_chums(show_particles = false) -> void:
 
 func set_save_display() -> void:
 	if save_ids[save_id_n] == null:
-		save_display_label.text = "< New Reality (%s) >" % [get_smallest_missing_int(save_ids)]
+		save_display_label.text = "New (%s)" % [get_smallest_missing_int(save_ids)]
 	else:
-		save_display_label.text = "< Reality %s >" % [save_ids[save_id_n]]
+		save_display_label.text = "Reality %s" % [save_ids[save_id_n]]
 
 func _process(delta: float) -> void:
 	camera_a += delta / 25
@@ -100,6 +100,13 @@ func _process(delta: float) -> void:
 		if savegame_id == null:
 			savegame_id = get_smallest_missing_int(save_ids)
 		Global.start_game(savegame_id, is_new_game)
+		queue_free()
+	
+	if Input.is_action_just_pressed("cycle") and not starting_game:
+		starting_game = true
+		TransitionScreen.transition(3)
+		await TransitionScreen.on_transition_finished
+		Global.start_tutorial()
 		queue_free()
 
 func _physics_process(delta: float) -> void:

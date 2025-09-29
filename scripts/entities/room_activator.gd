@@ -25,6 +25,8 @@ func _ready() -> void:
 		mesh_num = Global.room_location[1]
 	elif Global.current_world_num:
 		mesh_num = Global.current_world_num
+	if not mesh_num:
+		mesh_num = 1
 		
 	frame_mesh_scene = load("res://assets/world/bell_frame_%s.tscn" % [mesh_num]).instantiate()
 	bell_mesh_scene = load("res://assets/world/bell_%s.tscn" % [mesh_num]).instantiate()
@@ -33,6 +35,7 @@ func _ready() -> void:
 	bell_mesh = bell_mesh_scene.get_node("Bell")
 	
 	#If room is already done, remove bell
+
 	rotation.y = Global.world_map[Global.room_location]["bell_angle"]
 	if Global.world_map[Global.room_location]["activated"]:
 		$Body/BellPivot.queue_free()

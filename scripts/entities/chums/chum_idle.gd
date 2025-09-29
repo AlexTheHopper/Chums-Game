@@ -25,7 +25,7 @@ func Physics_Update(delta: float):
 	else:
 		chum.velocity.y += chum.get_gravity_dir() * delta
 		
-	if Input.is_action_just_pressed("interract") and chum.is_in_group("Chums_Friend") and len(ChumsManager.close_chums) > 0:
+	if Input.is_action_just_pressed("interact") and chum.is_in_group("Chums_Friend") and len(ChumsManager.close_chums) > 0:
 		
 		if ChumsManager.close_chums[0] == chum and idle_time > 1.0:
 			chum.attempt_carry()

@@ -5,6 +5,8 @@ class_name Chum
 @export var jump_peak_time: float = 0.3
 @export var jump_fall_time: float = 0.25
 
+@export var initial_state_override := ""
+
 @onready var jump_velocity: float = (2.0 * jump_height) / jump_peak_time
 @onready var jump_gravity: float = (-2.0 * jump_height) / (jump_peak_time ** 2)
 @onready var fall_gravity: float = (-2.0 * jump_height) / (jump_fall_time ** 2)
@@ -60,8 +62,6 @@ var targeted_by := []
 var player_is_near := false
 var is_launched := false
 
-var initial_state_override = null
-
 signal health_depleted
 signal spawn_currency(type, location)
 
@@ -113,6 +113,7 @@ func _ready() -> void:
 	#If override, change to that state now after all is initialised:
 	if initial_state_override:
 		set_state(initial_state_override)
+		initial_state_override = ""
 
 func get_gravity_dir():
 	return fall_gravity if velocity.y < 0.0 else jump_gravity

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://xi6g2eiqww0b"]
+[gd_scene load_steps=27 format=4 uid="uid://xi6g2eiqww0b"]
 
 [ext_resource type="Script" uid="uid://btywxp6yslwdc" path="res://scripts/general/main_menu.gd" id="1_qtr6c"]
 [ext_resource type="MeshLibrary" uid="uid://cov6injr4x604" path="res://assets/world/world_1_mesh_lib_v4.tres" id="2_nalmj"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://0kfmqmrttl5k" path="res://assets/world/streetlamp_1.tscn" id="3_tdqsr"]
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="4_ftlmj"]
 [ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="5_ftlmj"]
+[ext_resource type="Texture2D" uid="uid://cap83e4hirsjt" path="res://materials/ui/ui_attack.tres" id="6_88aja"]
 [ext_resource type="PackedScene" uid="uid://dkqrocdr2y8am" path="res://scenes/general/menu_being.tscn" id="6_pikal"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="7_nalmj"]
+[ext_resource type="Texture2D" uid="uid://nk3u737hqkhg" path="res://materials/ui/ui_cam_left.tres" id="7_t4jgv"]
+[ext_resource type="Texture2D" uid="uid://b34ts0ajdpuia" path="res://materials/ui/ui_cam_right.tres" id="8_m5i1f"]
 [ext_resource type="Texture2D" uid="uid://qoftnyn10nd" path="res://Blender_Assets/Other_Exports/player_player.png" id="9_88aja"]
+[ext_resource type="Texture2D" uid="uid://cby0mvvo2k3mc" path="res://materials/ui/ui_cycle.tres" id="9_m5i1f"]
 
 [sub_resource type="Environment" id="Environment_sm4kk"]
 ambient_light_source = 3
@@ -598,9 +602,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -212.0
+offset_left = -222.0
 offset_top = -175.0
-offset_right = -37.0
+offset_right = -22.0
 offset_bottom = -125.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -621,9 +625,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "'Attack' To Start"
+text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UI_ATTACK" type="Sprite2D" parent="Control/StartInfo"]
+position = Vector2(170, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_88aja")
 
 [node name="SaveSelect" type="Panel" parent="Control"]
 layout_mode = 1
@@ -632,9 +641,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -212.0
+offset_left = -222.0
 offset_top = -100.0
-offset_right = -37.0
+offset_right = -22.0
 offset_bottom = -50.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -655,9 +664,59 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "< Reality X >"
+text = "Reality X"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UI_CAMLEFT" type="Sprite2D" parent="Control/SaveSelect"]
+visible = false
+position = Vector2(30, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_t4jgv")
+
+[node name="UI_CAMRIGHT" type="Sprite2D" parent="Control/SaveSelect"]
+position = Vector2(170, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_m5i1f")
+
+[node name="TutorialInfo" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1122.0
+offset_top = -100.0
+offset_right = -922.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ftlmj")
+
+[node name="Value" type="Label" parent="Control/TutorialInfo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -11.5
+offset_right = 64.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UI_CAMLEFT" type="Sprite2D" parent="Control/TutorialInfo"]
+position = Vector2(30, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_m5i1f")
 
 [node name="MenuBeing" parent="." instance=ExtResource("6_pikal")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)

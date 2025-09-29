@@ -12,6 +12,8 @@ func _ready() -> void:
 		mesh_num = Global.room_location[1]
 	elif Global.current_world_num:
 		mesh_num = Global.current_world_num
+	if not mesh_num:
+		mesh_num = 1
 		
 	mesh_scene = load("res://assets/world/streetlamp_%s.tscn" % [mesh_num]).instantiate()
 	add_child(mesh_scene)

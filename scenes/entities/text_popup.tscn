@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://csgrf3dwl23t3"]
+[gd_scene load_steps=13 format=3 uid="uid://csgrf3dwl23t3"]
 
 [ext_resource type="Script" uid="uid://1vvlo33tbowe" path="res://scripts/entities/text_popup.gd" id="1_6yad1"]
 [ext_resource type="Shader" uid="uid://db57gow0ouvok" path="res://materials/nodepthtest.gdshader" id="2_unajj"]
+[ext_resource type="Texture2D" uid="uid://b3jp5c72uunir" path="res://materials/ui/ui_rotate.tres" id="3_t46wm"]
 [ext_resource type="Shader" uid="uid://ctnymwlu63rrn" path="res://materials/glitch_lore.gdshader" id="3_unajj"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1lra1"]
@@ -96,6 +97,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="UI_ROTATE" type="Sprite2D" parent="Container/Display/SubViewport/Control"]
+position = Vector2(475, 475)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_t46wm")
+
 [node name="GlitchShader" type="ColorRect" parent="Container/Display/SubViewport"]
 material = SubResource("ShaderMaterial_unajj")
 custom_minimum_size = Vector2(512, 512)
@@ -144,6 +150,11 @@ text = "back_text"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="UI_ROTATE" type="Sprite2D" parent="Container/Description/SubViewport/Control"]
+position = Vector2(475, 475)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_t46wm")
 
 [node name="GlitchShader" type="ColorRect" parent="Container/Description/SubViewport"]
 material = SubResource("ShaderMaterial_l2ikr")
