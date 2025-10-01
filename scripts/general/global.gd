@@ -226,8 +226,8 @@ func start_tutorial() -> void:
 	Global.room_location = Vector2i(1, 1)
 	
 	rooms = get_parent().get_node("Game/Rooms")
-	var lobby_room = load("res://scenes/world/room_tutorial.tscn")
-	current_room_node = lobby_room.instantiate()
+	var room_tutorial = load("res://scenes/world/room_tutorial_1.tscn")
+	current_room_node = room_tutorial.instantiate()
 	rooms.add_child(current_room_node)
 
 	get_node("/root/Game/HUD").add_chum_indicators()
@@ -426,7 +426,7 @@ func has_door(location: Vector2, direction: Vector2) -> bool:
 	
 	#Otherwise g2g
 	return true
-	
+
 func transition_to_level(new_room_location: Vector2i, length = 1):
 	if new_room_location in world_map:
 		room_changed.emit()

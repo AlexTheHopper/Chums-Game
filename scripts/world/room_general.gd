@@ -123,8 +123,9 @@ func load_room():
 		chum_instance.global_position = chum["position"]
 		chum_instance.spawn_currency.connect(spawn_currency)
 
-func spawn_currency(_type, location):
+func spawn_currency(_type, location, vel = Vector3(0.0, 0.0, 0.0)):
 	var bracelet_instance = bracelet_tscn.instantiate()
+	bracelet_instance.extra_vel = vel
 	$Currencies.add_child(bracelet_instance)
 	bracelet_instance.global_position = location
 
@@ -196,11 +197,12 @@ func check_enemy_count():
 		open_doors()
 		
 		#Update guide for chum 8 mainly but not in boss rooms:
-		if self is not boss_room:
+		if self is not boss_room and self is not tutorial_room:
 			Global.world_map_guide["room"] = Functions.astar2d(Global.world_grid, 2, true)
 		
 		#Save game
-		save_room()
+		if self is not tutorial_room:
+			save_room()
 	
 func open_doors():
 	if is_doors_closed:

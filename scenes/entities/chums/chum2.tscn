@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://b3e4tsjf4m8ud"]
+[gd_scene load_steps=29 format=4 uid="uid://b3e4tsjf4m8ud"]
 
 [ext_resource type="Script" uid="uid://mtqglvwpq5tm" path="res://scripts/entities/chums/chum2/chum2.gd" id="1_ctqgo"]
 [ext_resource type="Texture2D" uid="uid://bifb2db4upwe1" path="res://Blender_Assets/Chum_Exports/chum2_chum_2_detach.png" id="2_2vorv"]
@@ -10,7 +10,20 @@
 [ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="7_xrr71"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="10_b8ngf"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_toejc"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.01
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrr71"]
+next_pass = SubResource("StandardMaterial3D_toejc")
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 stencil_mode = 1

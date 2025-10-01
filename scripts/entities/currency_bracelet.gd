@@ -1,11 +1,11 @@
 extends RigidBody3D
 
 @onready var player := get_tree().get_first_node_in_group("Player")
+@export var extra_vel: Vector3
 var grace := 0.5
 
 func _ready() -> void:
-	apply_impulse(Vector3(randf_range(-1, 1), 5, randf_range(-1, 1)))
-
+	apply_impulse(Vector3(randf_range(-1, 1), 5, randf_range(-1, 1)) + extra_vel)
 
 func _physics_process(_delta: float) -> void:
 	if grace <= 0.0:

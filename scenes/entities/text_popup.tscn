@@ -75,27 +75,28 @@ offset_right = 512.0
 offset_bottom = 512.0
 color = Color(0, 0, 0, 1)
 
-[node name="Name" type="Label" parent="Container/Display/SubViewport/Control"]
+[node name="Name" type="RichTextLabel" parent="Container/Display/SubViewport/Control"]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 100.0
-theme_override_colors/font_color = Color(0.357191, 0.357191, 0.357191, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_colors/default_color = Color(0.35686275, 0.35686275, 0.35686275, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 text = "front_title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="Container/Display/SubViewport/Control"]
+[node name="Description" type="RichTextLabel" parent="Container/Display/SubViewport/Control"]
 layout_mode = 0
 offset_top = 100.0
 offset_right = 512.0
 offset_bottom = 400.0
-theme_override_colors/font_color = Color(0.356863, 0.356863, 0.356863, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_colors/default_color = Color(0.35686275, 0.35686275, 0.35686275, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 text = "front_text"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="UI_ROTATE" type="Sprite2D" parent="Container/Display/SubViewport/Control"]
 position = Vector2(475, 475)
@@ -129,27 +130,28 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
 
-[node name="Name" type="Label" parent="Container/Description/SubViewport/Control"]
+[node name="Name" type="RichTextLabel" parent="Container/Description/SubViewport/Control"]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 100.0
-theme_override_colors/font_color = Color(0.356863, 0.356863, 0.356863, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_colors/default_color = Color(0.35686275, 0.35686275, 0.35686275, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 text = "back_title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="Container/Description/SubViewport/Control"]
+[node name="Description" type="RichTextLabel" parent="Container/Description/SubViewport/Control"]
 layout_mode = 0
 offset_top = 100.0
 offset_right = 512.0
 offset_bottom = 400.0
-theme_override_colors/font_color = Color(0.356863, 0.356863, 0.356863, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_colors/default_color = Color(0.35686275, 0.35686275, 0.35686275, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 text = "back_text"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="UI_ROTATE" type="Sprite2D" parent="Container/Description/SubViewport/Control"]
 position = Vector2(475, 475)

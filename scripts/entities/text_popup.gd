@@ -7,13 +7,18 @@ class_name Text_Popup
 @onready var mesh_node := $Container/MeshNode
 var base_scale := Vector3.ONE
 var fading_out := false
-var is_lore := true
 
-@export var title_front: Label
-@export var text_front: Label
+var is_custom := false
+var custom_title_front: String
+var custom_text_front: String
+var custom_title_back: String
+var custom_text_back: String
 
-@export var title_back: Label
-@export var text_back: Label
+@export var title_front: RichTextLabel
+@export var text_front: RichTextLabel
+
+@export var title_back: RichTextLabel
+@export var text_back: RichTextLabel
 
 var rotations := 1.0
 
@@ -30,7 +35,16 @@ func _ready() -> void:
 	mesh_scene = load("res://assets/world/quality_popup_%s.tscn" % [mesh_num]).instantiate()
 	mesh_node.add_child(mesh_scene)
 	
-	if is_lore:
+	if is_custom:
+		#Set all values:
+		#Front
+		title_front.text = custom_title_front
+		text_front.text = custom_text_front
+		#Back
+		title_back.text = custom_title_back
+		text_back.text = custom_text_back
+
+	else:
 		var text_num = Global.world_map[Global.room_location]["item_count"]
 		if text_num not in Global.viewed_lore:
 			Global.viewed_lore.append(text_num)

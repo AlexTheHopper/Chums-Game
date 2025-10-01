@@ -6,5 +6,5 @@
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("1_c1le3")
-path = "cam_left"
+path = "move_right"
 metadata/_custom_type_script = "uid://dcfudola7tys2"
