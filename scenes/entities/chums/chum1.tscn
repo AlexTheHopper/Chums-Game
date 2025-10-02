@@ -853,7 +853,7 @@ mesh = SubResource("ArrayMesh_sr3ur")
 skin = SubResource("Skin_usabi")
 
 [node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 2.30941e-16, -2.70267e-16, -2.70267e-16, 0.987763, -0.155962, 2.30942e-16, 0.155962, 0.987763, 0, 1.65, 0.5)
+transform = Transform3D(1, 2.3094112e-16, -2.7026706e-16, -2.7026653e-16, 0.98776305, -0.15596211, 2.3094176e-16, 0.15596211, 0.98776305, 0, 1.6500009, 0.49999964)
 bone_name = "Head"
 bone_idx = 1
 
@@ -915,6 +915,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 2.0
-neighbor_distance = 2.0
-max_neighbors = 5
-max_speed = 5.0

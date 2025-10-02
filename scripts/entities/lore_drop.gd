@@ -20,16 +20,24 @@ func _ready() -> void:
 		mesh_num = Global.current_world_num
 	if not mesh_num:
 		mesh_num = 1
-	
-	mesh_scene = load("res://assets/world/lore_drop_%s.tscn" % [mesh_num]).instantiate()
-	mesh_node.add_child(mesh_scene)
+
+	if is_custom:
+		mesh_scene = load("res://assets/world/sign.tscn").instantiate()
+		mesh_node.add_child(mesh_scene)
+	else:
+		mesh_scene = load("res://assets/world/lore_drop_%s.tscn" % [mesh_num]).instantiate()
+		mesh_node.add_child(mesh_scene)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
 		var to_add = text_popup_scene.instantiate()
 		if is_custom:
 			make_custom(to_add)
-		popup.add_child(to_add)
+			popup.add_child(to_add)
+			to_add.global_position += Vector3(0.0, 1.0, 0.0)
+		else:
+			popup.add_child(to_add)
+		
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body is Player:

@@ -43,13 +43,13 @@ func Physics_Update(_delta: float) -> void:
 		var xform = target_sprite.global_transform
 		xform.basis.y = target_info["normal"]
 		xform.basis.x = -xform.basis.z.cross(target_info["normal"])
-		xform.basis = xform.basis.orthonormalized()
-		target_sprite.global_transform = target_sprite.global_transform.interpolate_with(xform, 0.2).orthonormalized()
-		if Input.is_action_pressed("attack") and Global.dev_mode:
-			print(target_info)
+		#Check if valid transform:
+		if xform.basis.x.length() > 0.001:
+			xform.basis = xform.basis.orthonormalized()
+			target_sprite.global_transform = target_sprite.global_transform.interpolate_with(xform, 0.2).orthonormalized()
 
 	chum.move_and_slide()
-	
+
 func get_target_info(pos, vel):
 	pos += Vector3(0, 0.3, 0)
 	#var space_state = get_tree().current_scene.get_world_3d().direct_space_state
