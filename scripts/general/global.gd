@@ -1,5 +1,5 @@
 extends Node
-var dev_mode = true
+var dev_mode = false
 
 var game_begun := false
 var world_transition_count := 0
@@ -211,6 +211,7 @@ func start_game(save_id = null, new_game = false) -> void:
 
 func start_tutorial() -> void:
 	current_world_num = 0
+	map_size = 10
 	in_battle = false
 	
 	#Creates Player, Lobby, HUD

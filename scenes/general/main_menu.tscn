@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://0kfmqmrttl5k" path="res://assets/world/streetlamp_1.tscn" id="3_tdqsr"]
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="4_ftlmj"]
 [ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="5_ftlmj"]
-[ext_resource type="Texture2D" uid="uid://cap83e4hirsjt" path="res://materials/ui/ui_attack.tres" id="6_88aja"]
+[ext_resource type="Texture2D" uid="uid://cqdbk8d1nvodj" path="res://materials/ui/ui_jump.tres" id="6_m5i1f"]
 [ext_resource type="PackedScene" uid="uid://dkqrocdr2y8am" path="res://scenes/general/menu_being.tscn" id="6_pikal"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="7_nalmj"]
 [ext_resource type="Texture2D" uid="uid://nk3u737hqkhg" path="res://materials/ui/ui_cam_left.tres" id="7_t4jgv"]
@@ -629,10 +629,10 @@ text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UI_ATTACK" type="Sprite2D" parent="Control/StartInfo"]
+[node name="UI_JUMP" type="Sprite2D" parent="Control/StartInfo"]
 position = Vector2(170, 25)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_88aja")
+texture = ExtResource("6_m5i1f")
 
 [node name="SaveSelect" type="Panel" parent="Control"]
 layout_mode = 1

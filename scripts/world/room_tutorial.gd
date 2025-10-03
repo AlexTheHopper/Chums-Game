@@ -11,7 +11,12 @@ func _ready() -> void:
 	for entity in $Entities.get_children():
 		if entity is Chum:
 			entity.spawn_currency.connect(spawn_currency)
-
+	
+	#Rotate all trees and grasses (I cant be bothered doing this manually they can be random)
+	for deco in $Decorations/Large.get_children():
+		deco.rotation.y = [0.0, PI / 2, PI, 3 * PI / 2].pick_random()
+	for deco in $Decorations/Small.get_children():
+		deco.rotation.y = [0.0, PI / 2, PI, 3 * PI / 2].pick_random()
 #func load_room() -> void:
 	#pass
 #

@@ -884,6 +884,7 @@ size = 15.0
 script = ExtResource("3_b6tgf")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera_Controller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 2)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, -2, 0)

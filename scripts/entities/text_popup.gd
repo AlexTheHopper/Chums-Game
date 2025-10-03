@@ -43,6 +43,10 @@ func _ready() -> void:
 		#Back
 		title_back.text = custom_title_back
 		text_back.text = custom_text_back
+		
+		#Stop glitch shaders
+		$Container/Display/SubViewport/GlitchShader.visible = false
+		$Container/Description/SubViewport/GlitchShader.visible = false
 
 	else:
 		var text_num = Global.world_map[Global.room_location]["item_count"]

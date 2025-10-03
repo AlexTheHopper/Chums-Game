@@ -52,8 +52,6 @@ var start_health: int
 var max_move_speed: float
 var temp_sleep_time: float
 
-var test := 0
-
 @onready var has_quality_popup := false
 
 @onready var target: Node
