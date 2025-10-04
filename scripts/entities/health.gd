@@ -53,7 +53,7 @@ func set_temporary_immune(time: float):
 	immune_timer.start()
 	
 func set_health(value: int):
-	if value < health and immune:
+	if (value < health and immune) or (not Global.is_alive):
 		return
 		
 	var clamped_value = clampi(value, 0, max_health)

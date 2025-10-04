@@ -32,6 +32,8 @@ func _ready() -> void:
 
 	save_ids.append(null)
 	save_ids.sort()
+	if save_ids == [null]:
+		$Control/SaveSelect/UI_CAMRIGHT.visible = false
 	if save_ids[save_id_n] == null:
 		cycle_save_id(1)
 	set_save_display()
