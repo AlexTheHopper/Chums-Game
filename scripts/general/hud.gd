@@ -5,6 +5,8 @@ extends CanvasLayer
 @onready var P_anim_player: AnimationPlayer = $PauseMenu/AnimationPlayer
 @onready var S_anim_player: AnimationPlayer = $SavedIndicator/AnimationPlayer
 @onready var chum_indicators: Control = $InGameHUD/ChumIndicators
+@onready var minimap: Control = $InGameHUD/MinimapPanel/Minimap
+@onready var compass_img: Sprite2D = $InGameHUD/CompassPanel/Compass
 @export var is_paused: bool = false
 @export var is_returning: bool = false
 var is_exit_warning: bool = false
@@ -49,6 +51,9 @@ func _process(_delta: float) -> void:
 			is_returning = true
 			toggle_pause()
 			Global.return_to_menu(false)
+	
+	#Compass
+	compass_img.rotation = -get_tree().get_first_node_in_group("Player").camera_controller.rotation.y
 		
 func toggle_pause():
 	is_exit_warning = false
@@ -134,3 +139,10 @@ func chum_indicators_remove(chum) -> void:
 		if indicator.chum == chum:
 			indicator.remove_chum()
 			return
+
+func display_minimap(value: bool) -> void:
+	$InGameHUD/MinimapPanel.visible = value
+	$InGameHUD/CompassPanel.visible = value
+	
+	if value == true:
+		minimap.update_minimap()

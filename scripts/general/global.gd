@@ -1,5 +1,5 @@
 extends Node
-var dev_mode = false
+var dev_mode = true
 
 var game_begun := false
 var world_transition_count := 0
@@ -232,6 +232,7 @@ func start_tutorial() -> void:
 	rooms.add_child(current_room_node)
 
 	get_node("/root/Game/HUD").add_chum_indicators()
+	get_node("/root/Game/HUD").display_minimap(false)
 	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE.WORLD_1)
 	
 
@@ -435,6 +436,7 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		await TransitionScreen.on_transition_finished
 		
 		room_location = new_room_location
+		Global.world_map[Global.room_location]["entered"] = true
 		if Global.dev_mode:
 			print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
 		if room_history[-1][1] != new_room_location or room_history[-1][0] != current_world_num:
@@ -447,6 +449,8 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		var new_room = get_room_tscn(current_world_num, world_map[room_location]["type"])
 		current_room_node = new_room.instantiate()
 		rooms.add_child(current_room_node)
+		
+		get_node("/root/Game/HUD").display_minimap(true)
 
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
 	room_changed_to_boss.emit()
@@ -471,6 +475,9 @@ func transition_to_boss(source_world_n: int, destination_world_n: int, length = 
 	var new_room = get_room_tscn(0, new_room_location[0]) #Go to boss room of the world you came from.
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
+	
+	get_node("/root/Game/HUD").display_minimap(false)
+
 
 func transition_to_world(destination_world_n: int, length = 1):
 	room_changed_from_boss.emit()
@@ -492,6 +499,7 @@ func transition_to_world(destination_world_n: int, length = 1):
 	
 	var new_room_location = Vector2i(map_size, map_size)
 	room_location = new_room_location
+	Global.world_map[Global.room_location]["entered"] = true
 	if Global.dev_mode:
 		print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
 
@@ -505,6 +513,8 @@ func transition_to_world(destination_world_n: int, length = 1):
 	var new_room = get_room_tscn(current_world_num, world_map[room_location]["type"])
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
+
+	get_node("/root/Game/HUD").display_minimap(true)
 	
 	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d" % destination_world_n])
 

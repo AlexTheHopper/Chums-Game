@@ -23,7 +23,7 @@ colors = PackedColorArray(0.190762, 0.190762, 0.190762, 1, 0.336608, 0.336608, 0
 script = ExtResource("1_304qr")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
-amount = 25
+amount = 15
 lifetime = 5.0
 mesh = SubResource("TextMesh_cl7bj")
 emission_shape = 1

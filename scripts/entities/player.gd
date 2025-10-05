@@ -41,6 +41,7 @@ var attacking_mult := 1.0
 @onready var anim_player := $AnimationPlayer
 @onready var lantern := $Armature/Skeleton3D/BoneAttachment3D/Lantern
 @onready var armature: Node3D = $Armature
+@onready var camera_controller: Node3D = $Camera_Controller
 
 @onready var hurt_particles := load("res://particles/damage_friendly.tscn")
 @onready var heal_particles := load("res://particles/heal_friendly.tscn")
@@ -58,7 +59,7 @@ var xform: Transform3D
 var chum_name := "Player"
 
 func _ready() -> void:
-	$Camera_Controller.rotation.y = 0.0
+	camera_controller.rotation.y = 0.0
 	Global.game_begun = true
 	health_node.immune = false
 	health_node.set_max_health(100)
@@ -78,7 +79,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	#Gets transformed input direction
-	var direction = ($Camera_Controller.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (camera_controller.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	#Animations:
 	#Attack:
 	if Input.is_action_just_pressed("attack") and not is_attacking and not is_carrying and Global.is_alive:
@@ -115,7 +116,7 @@ func _physics_process(delta: float) -> void:
 		camera_goal_horz += PI / 4.0
 	elif Input.is_action_just_pressed("cam_right"):
 		camera_goal_horz -= PI / 4.0
-	$Camera_Controller.rotation.y = lerp($Camera_Controller.rotation.y, camera_goal_horz, 0.05)
+	camera_controller.rotation.y = lerp(camera_controller.rotation.y, camera_goal_horz, 0.05)
 	
 	if Input.is_action_just_pressed("cam_down"):
 		camera_goal_vert = clamp(camera_goal_vert - 0.5, 0, 1)
@@ -150,7 +151,7 @@ func _physics_process(delta: float) -> void:
 
 	#Rotate character:
 	if input_dir:
-		player_goal_horz = $Camera_Controller.rotation.y - input_dir.angle() - (PI / 2)
+		player_goal_horz = camera_controller.rotation.y - input_dir.angle() - (PI / 2)
 		player_goal_horz = fmod(player_goal_horz + PI, 2 * PI)
 		armature.rotation.y = lerp_angle(armature.rotation.y, player_goal_horz, 0.35 * attacking_mult)
 		armature.rotation.x = lerp_angle(armature.rotation.x, 0.15, 0.05)
@@ -168,7 +169,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	move_and_slide()
 	#Match camera controller position to self
-	$Camera_Controller.position = lerp($Camera_Controller.position, position, 0.1)
+	camera_controller.position = lerp(camera_controller.position, position, 0.1)
 	
 			
 func _process(_delta: float) -> void:

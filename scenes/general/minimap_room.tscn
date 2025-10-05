@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxcp7bi7fxdea"]
+
+[ext_resource type="Script" uid="uid://ce7upekh0wx21" path="res://scripts/general/minimap_room.gd" id="1_ap5w8"]
+[ext_resource type="Texture2D" uid="uid://cuq7herddia4a" path="res://icon.svg" id="2_cv65l"]
+
+[node name="MinimapRoom" type="Node2D" node_paths=PackedStringArray("main_img", "x_pos_img", "x_neg_img", "z_pos_img", "z_neg_img")]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_ap5w8")
+main_img = NodePath("Main")
+x_pos_img = NodePath("x_pos")
+x_neg_img = NodePath("x_neg")
+z_pos_img = NodePath("z_pos")
+z_neg_img = NodePath("z_neg")
+
+[node name="x_pos" type="Sprite2D" parent="."]
+position = Vector2(48, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cv65l")
+
+[node name="x_neg" type="Sprite2D" parent="."]
+position = Vector2(-48, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cv65l")
+
+[node name="z_pos" type="Sprite2D" parent="."]
+position = Vector2(0, 48)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cv65l")
+
+[node name="z_neg" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cv65l")
+
+[node name="Main" type="Sprite2D" parent="."]
+texture = ExtResource("2_cv65l")
