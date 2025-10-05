@@ -99,8 +99,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UI_ROTATE" type="Sprite2D" parent="Container/Display/SubViewport/Control"]
-position = Vector2(475, 475)
-scale = Vector2(0.5, 0.5)
+position = Vector2(460, 460)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_t46wm")
 
 [node name="GlitchShader" type="ColorRect" parent="Container/Display/SubViewport"]
@@ -154,8 +154,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UI_ROTATE" type="Sprite2D" parent="Container/Description/SubViewport/Control"]
-position = Vector2(475, 475)
-scale = Vector2(0.5, 0.5)
+position = Vector2(460, 460)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_t46wm")
 
 [node name="GlitchShader" type="ColorRect" parent="Container/Description/SubViewport"]

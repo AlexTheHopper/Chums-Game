@@ -22,8 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://d13hudifh0oji" path="res://scenes/world/decorations/rubble1.tscn" id="11_g78x0"]
 [ext_resource type="PackedScene" uid="uid://drxheem3aa6jh" path="res://scenes/entities/chums/chum3.tscn" id="13_7q0c4"]
 [ext_resource type="PackedScene" uid="uid://1cljepgnwwhp" path="res://scenes/world/decorations/bones_1.tscn" id="13_k6tt5"]
-[ext_resource type="PackedScene" uid="uid://cdsetgtd0thee" path="res://scenes/world/streetlamp.tscn" id="14_7q0c4"]
 [ext_resource type="PackedScene" uid="uid://bmswb3oj6st7v" path="res://scenes/world/decorations/bones_3.tscn" id="14_vjdh7"]
+[ext_resource type="PackedScene" uid="uid://0kfmqmrttl5k" path="res://assets/world/streetlamp_1.tscn" id="15_514xl"]
 [ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="15_vjdh7"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ovef2"]
@@ -33,7 +33,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 [sub_resource type="Environment" id="Environment_1q6o2"]
 ambient_light_source = 3
 ambient_light_color = Color(0.73893, 0.821893, 0.656433, 1)
-ambient_light_sky_contribution = 0.0
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0.07840704, 0.20185399, 0.15984046, 1)
@@ -59,23 +58,22 @@ metadata/_editor_floor_ = Vector3(11, 1, -15)
 
 [node name="Decorations" type="Node3D" parent="."]
 
-[node name="Streetlamp" parent="Decorations" instance=ExtResource("14_7q0c4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0, -7.2)
-
 [node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
-omni_range = 50.0
-omni_attenuation = 8.532
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, -6.3692274)
+omni_range = 40.0
+omni_attenuation = 0.15
 omni_shadow_mode = 0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Decorations"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, -51)
 omni_range = 50.0
+omni_attenuation = 0.15
 omni_shadow_mode = 0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Decorations"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, -95)
 omni_range = 50.0
+omni_attenuation = 0.15
 omni_shadow_mode = 0
 
 [node name="Particles" parent="Decorations" instance=ExtResource("15_vjdh7")]
@@ -86,6 +84,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, -50)
 
 [node name="Particles3" parent="Decorations" instance=ExtResource("15_vjdh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7, -90)
+
+[node name="Streetlamp1" parent="Decorations" instance=ExtResource("15_514xl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.046064, 0, -2.8125196)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decorations/Streetlamp1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 0)
+omni_range = 10.0
+omni_attenuation = 0.25
 
 [node name="Large" type="Node3D" parent="Decorations"]
 
