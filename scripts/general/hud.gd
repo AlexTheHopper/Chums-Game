@@ -141,7 +141,9 @@ func chum_indicators_remove(chum) -> void:
 			return
 
 func display_minimap(value: bool) -> void:
+	$InGameHUD/MinimapBack.visible = value
 	$InGameHUD/MinimapPanel.visible = value
+	$InGameHUD/MinimapFade.visible = value
 	
 	if value == true:
 		minimap.update_minimap()
