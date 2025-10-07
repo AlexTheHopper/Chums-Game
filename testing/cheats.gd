@@ -68,3 +68,6 @@ func _process(delta: float) -> void:
 		else:
 			for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
 				chum.health_node.health = 0
+		
+		for loc in Global.world_map.keys():
+			Global.world_map[loc]["entered"] = true

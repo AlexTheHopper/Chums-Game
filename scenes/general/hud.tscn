@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cwtw3l04fav7g"]
+[gd_scene load_steps=27 format=3 uid="uid://cwtw3l04fav7g"]
 
 [ext_resource type="Script" uid="uid://uaj8v2pnjutj" path="res://scripts/general/hud.gd" id="1_n1psb"]
 [ext_resource type="Texture2D" uid="uid://cg7qoa8wicp8p" path="res://assets/entities/heart_128.png" id="2_dh6d1"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://nnce4xltggqo" path="res://assets/entities/bracelet_128.png" id="4_p21ms"]
 [ext_resource type="Texture2D" uid="uid://cap83e4hirsjt" path="res://materials/ui/ui_attack.tres" id="5_p21ms"]
 [ext_resource type="PackedScene" uid="uid://cj3njvuucqayr" path="res://scenes/general/minimap.tscn" id="5_pfecb"]
-[ext_resource type="Texture2D" uid="uid://cuq7herddia4a" path="res://icon.svg" id="6_5vyhu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p21ms"]
 bg_color = Color(0.158472, 0.158472, 0.158472, 1)
@@ -31,6 +30,42 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37424"]
+bg_color = Color(0.10747979, 0.107479714, 0.107479684, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 70
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 70
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vyhu"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+
+[sub_resource type="Gradient" id="Gradient_pfecb"]
+offsets = PackedFloat32Array(0, 0.41055718, 0.662614, 0.7082067, 1)
+colors = PackedColorArray(0.15686275, 0.15686275, 0.15686275, 0, 0.15686275, 0.15686275, 0.15686275, 0, 0.15686275, 0.15686275, 0.15686275, 1, 0.15686275, 0.15686275, 0.15686275, 0, 0.15686275, 0.15686275, 0.15686275, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5vyhu"]
+gradient = SubResource("Gradient_pfecb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4l38w"]
+texture = SubResource("GradientTexture2D_5vyhu")
 
 [sub_resource type="Animation" id="Animation_4l38w"]
 length = 0.001
@@ -475,44 +510,56 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MinimapPanel" type="Panel" parent="InGameHUD"]
+[node name="MinimapBack" type="Panel" parent="InGameHUD"]
+custom_minimum_size = Vector2(140, 140)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.78700006
+anchor_left = 0.81600004
 anchor_top = 0.015000001
-anchor_right = 0.93900007
-anchor_bottom = 0.28500003
-offset_left = 0.37591553
+anchor_right = 0.93700004
+anchor_bottom = 0.231
+offset_left = -0.032043457
 offset_top = 0.27999973
-offset_right = 0.27197266
-offset_bottom = 0.3199768
-theme_override_styles/panel = SubResource("StyleBoxFlat_p21ms")
+offset_right = 0.57592773
+offset_bottom = 0.31199646
+theme_override_styles/panel = SubResource("StyleBoxFlat_37424")
+
+[node name="MinimapPanel" type="Panel" parent="InGameHUD"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81600004
+anchor_top = 0.015000001
+anchor_right = 0.93700004
+anchor_bottom = 0.231
+offset_left = -0.032043457
+offset_top = 0.27999973
+offset_right = 0.57592773
+offset_bottom = 0.31199646
+theme_override_styles/panel = SubResource("StyleBoxFlat_5vyhu")
 
 [node name="Minimap" parent="InGameHUD/MinimapPanel" instance=ExtResource("5_pfecb")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
-offset_left = 87.0
-offset_top = 87.0
-offset_right = 87.0
-offset_bottom = 87.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+offset_right = 0.0
+offset_bottom = 0.0
 
-[node name="CompassPanel" type="Panel" parent="InGameHUD"]
+[node name="MinimapFade" type="Panel" parent="InGameHUD"]
+custom_minimum_size = Vector2(140, 140)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.74
+anchor_left = 0.81600004
 anchor_top = 0.015000001
-anchor_right = 0.78300005
-anchor_bottom = 0.093
-offset_left = -0.47998047
+anchor_right = 0.93700004
+anchor_bottom = 0.231
+offset_left = -0.032043457
 offset_top = 0.27999973
-offset_right = -0.016052246
-offset_bottom = -0.26399994
-theme_override_styles/panel = SubResource("StyleBoxFlat_p21ms")
-
-[node name="Compass" type="Sprite2D" parent="InGameHUD/CompassPanel"]
-position = Vector2(25, 25)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("6_5vyhu")
+offset_right = 0.57592773
+offset_bottom = 0.31199646
+theme_override_styles/panel = SubResource("StyleBoxTexture_4l38w")
 
 [node name="ChumIndicators" type="Control" parent="InGameHUD"]
 anchors_preset = 0
