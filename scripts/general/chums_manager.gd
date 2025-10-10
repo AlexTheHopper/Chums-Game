@@ -37,6 +37,8 @@ func _ready() -> void:
 			"destination_world": 3}, #Leapy
 		14: {"object": preload("res://scenes/entities/chums/chum14.tscn"),
 			"destination_world": 1}, #Clop
+		15: {"object": preload("res://scenes/entities/chums/chum15.tscn"),
+			"destination_world": 2}, #Medusa
 	}
 
 	chums_values = {
@@ -76,9 +78,9 @@ func _ready() -> void:
 		Vector2i(1, 2): {14: 1, 3: 4, 4: 4},
 		Vector2i(1, 3): {14: 1, 3: 4, 4: 4},
 
-		Vector2i(2, 1): {10: 6, 5: 3},
-		Vector2i(2, 2): {10: 3, 4: 3, 12: 3},
-		Vector2i(2, 3): {10: 2, 4: 2, 12: 2, 13: 2},
+		Vector2i(2, 1): {15: 1, 10: 3, 5: 3},
+		Vector2i(2, 2): {15: 1, 10: 2, 4: 2, 12: 2},
+		Vector2i(2, 3): {15: 1, 10: 2, 4: 2, 12: 2, 13: 2},
 
 		Vector2i(3, 1): {3: 5, 5: 3},
 		Vector2i(3, 2): {3: 5, 4: 3},

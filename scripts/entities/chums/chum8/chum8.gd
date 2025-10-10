@@ -28,8 +28,8 @@ var changes_agro_on_damaged := true
 var draws_agro_on_attack := false
 var always_targets_player := false
 
-var bracelet_count := 1 if not Global.dev_mode else 1
-var bracelet_cost := 3 if not Global.dev_mode else 1
+var bracelet_count := 1
+var bracelet_cost := 3
 
 var target_room_types := ["lobby", "room", "fountain", "void", "upgrade", "statue"]
 var can_seek := true

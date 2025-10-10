@@ -49,7 +49,8 @@ func _on_timer_timeout() -> void:
 	call_deferred("apply_spawn_particles", chum_instance)
 	
 	#Scale based on world transition count.
-	#For X transition counts, cost goes up by 2X and each quality stat can increase from X to 2X.
+	#For X transition counts, each quality stat can increase from X to 2X.
 	var count = Global.world_transition_count
 	chum_instance.increase_stats(randi_range(count, 2 * count), randi_range(count, 2 * count), randi_range(count, 2 * count), randi_range(count, 2 * count))
-	chum_instance.bracelet_cost += count
+	#chum_instance.bracelet_cost += count
+	chum_instance.bracelet_cost = get_chum_cost(chum_instance.quality)
