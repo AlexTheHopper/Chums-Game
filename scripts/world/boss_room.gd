@@ -53,4 +53,4 @@ func _on_timer_timeout() -> void:
 	var count = Global.world_transition_count
 	chum_instance.increase_stats(randi_range(count, 2 * count), randi_range(count, 2 * count), randi_range(count, 2 * count), randi_range(count, 2 * count))
 	#chum_instance.bracelet_cost += count
-	chum_instance.bracelet_cost = get_chum_cost(chum_instance.quality)
+	chum_instance.bracelet_cost = get_chum_cost(chum_instance)

@@ -139,11 +139,11 @@ func get_chum_spawn_loc():
 	pos.z += randf_range(-(half_room_size - 7), -1) if randf() < 0.5 else randf_range(3, (half_room_size - 5))
 	return pos
 
-func get_chum_cost(quality: Dictionary[String, int]) -> int:
+func get_chum_cost(chum: Chum) -> int:
 	var sum = 0.0
-	for value in quality.values():
+	for value in chum.quality.values():
 		sum += float(value)
-	return max(ceil(sum/2), 3)
+	return max(ceil(sum/2), chum.bracelet_cost)
 
 func decorate():
 	#Seeded randomness - Same based on global seed, world number, transition count and room loc.

@@ -422,24 +422,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -30)
 is_custom = true
 custom_title_front = "Bracelets!"
 custom_text_front = "Use [img]res://materials/ui/ui_attack.tres[/img] to retreive friendship bracelets. These can normally only be obtained from chums."
+custom_title_back = "Bracelets!"
+custom_text_back = "When an enemy chum is knocked down, they will drop a bracelet for you!"
 
 [node name="Recruit" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -51.735)
 is_custom = true
 custom_title_front = "Chums!"
 custom_text_front = "Use [img]res://materials/ui/ui_interact.tres[/img] to make best friends with knocked down chums! (For a cost of friendship bracelets...)"
+custom_title_back = "Bracelets!"
+custom_text_back = "Stronger chums will require more bracelets, but if a friend is knocked down, its cost of revival will never change!"
 
 [node name="Carry" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -72)
 is_custom = true
 custom_title_front = "Carry!"
-custom_text_front = "Use [img]res://materials/ui/ui_interact.tres[/img] to bring your friends with you! When there are no threats, they will follow you automatically."
+custom_text_front = "Use [img]res://materials/ui/ui_interact.tres[/img] to bring your friends with you!"
+custom_title_back = "Carry!"
+custom_text_back = "When there are no threats, they will follow you automatically."
 
 [node name="Battle" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -83)
 is_custom = true
 custom_title_front = "Battle!"
-custom_text_front = "Use [img]res://materials/ui/ui_attack.tres[/img] to ring the bell and wake enemy chums then battle for glory! Hold it for a stronger smack!"
+custom_text_front = "Use [img]res://materials/ui/ui_attack.tres[/img] to ring the bell and wake enemy chums then battle for glory! You can hold [img]res://materials/ui/ui_attack.tres[/img] to wind up for a bigger smack!"
+custom_title_back = "Placement!"
+custom_text_back = "Make sure to strategically place your chums before battle for a higher chance of survival!"
 
 [node name="Cycle" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4, -111)
@@ -447,11 +455,13 @@ is_custom = true
 custom_title_front = "Too Crowded?"
 custom_text_front = "Use [img]res://materials/ui/ui_cycle.tres[/img] to cycle between chum information if there are too many close by!"
 
-[node name="Cycle2" parent="Texts" instance=ExtResource("10_pr45q")]
+[node name="Pause" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, -111)
 is_custom = true
 custom_title_front = "Need A Break?"
 custom_text_front = "Use [img]res://materials/ui/ui_pause.tres[/img] to take a breather!"
+custom_title_back = "Be Careful!"
+custom_text_back = "If you quit during a fight, you will die."
 
 [connection signal="area_entered" from="Entities/PunchingBag/BraceletSpawner" to="Entities/PunchingBag/BraceletSpawner" method="_on_area_entered"]
 [connection signal="area_entered" from="Entities/PunchingBag2/BraceletSpawner" to="Entities/PunchingBag2/BraceletSpawner" method="_on_area_entered"]

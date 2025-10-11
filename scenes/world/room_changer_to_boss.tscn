@@ -22,6 +22,7 @@ script = ExtResource("1_ikml1")
 shape = SubResource("BoxShape3D_aukul")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_82fw2")
 
 [node name="Grace" type="Timer" parent="."]
