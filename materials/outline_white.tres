@@ -3,6 +3,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iebkp"]
 render_priority = 1
 transparency = 1
+cull_mode = 2
 shading_mode = 0
 grow = true
 grow_amount = 0.1

@@ -40,8 +40,9 @@ fog_density = 0.05
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7q0c4"]
 
-[node name="Room" type="Node3D"]
+[node name="Room" type="Node3D" node_paths=PackedStringArray("grid_map")]
 script = ExtResource("1_va22v")
+grid_map = NodePath("NavigationRegion3D/GridMap")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ovef2")

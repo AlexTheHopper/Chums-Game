@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://76mk268mlnx4"]
+[gd_scene load_steps=8 format=3 uid="uid://76mk268mlnx4"]
 
 [ext_resource type="Script" uid="uid://ch63eacastbdu" path="res://scripts/entities/upgrade_item.gd" id="1_fcc3g"]
 [ext_resource type="ArrayMesh" uid="uid://dtcar2s2q6eey" path="res://assets/entities/upgrade.vox" id="2_fcc3g"]
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="2_hwmsv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w8uya"]
 
@@ -96,6 +97,7 @@ collision_mask = 0
 script = ExtResource("1_fcc3g")
 
 [node name="Upgrade" type="MeshInstance3D" parent="."]
+material_overlay = ExtResource("2_hwmsv")
 mesh = ExtResource("2_fcc3g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

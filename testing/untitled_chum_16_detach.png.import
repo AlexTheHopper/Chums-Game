@@ -2,24 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf4qd4pxln3mr"
-path.s3tc="res://.godot/imported/chum6_chum_7_detach.png-1832d501284def8333997b9a46e7e683.s3tc.ctex"
+uid="uid://cuo4ldp43cwxt"
+path="res://.godot/imported/untitled_chum_16_detach.png-bc1438a818b04ac7dcf6f5a4766dbd1a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
-"md5": "811ad5411f65ba845e2f0b1c31644cb6"
+"md5": "09ea2d2ebeea3ed09e11091761f1d5cb"
 }
 
 [deps]
 
-source_file="res://Blender_Assets/BlenderFiles/chum6_chum_7_detach.png"
-dest_files=["res://.godot/imported/chum6_chum_7_detach.png-1832d501284def8333997b9a46e7e683.s3tc.ctex"]
+source_file="res://testing/untitled_chum_16_detach.png"
+dest_files=["res://.godot/imported/untitled_chum_16_detach.png-bc1438a818b04ac7dcf6f5a4766dbd1a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -65,6 +65,7 @@ bind/7/bone = -1
 bind/7/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, -0.8, -1.85)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0cg04"]
+radius = 1.0
 
 [sub_resource type="Animation" id="Animation_v4bwi"]
 resource_name = "Attack"
@@ -425,7 +426,7 @@ _data = {
 &"RESET": SubResource("Animation_0cg04")
 }
 
-[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
+[node name="Entity2" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
 script = ExtResource("1_2nv8b")
 anim_player = NodePath("Body/AnimationPlayer")
 body_mesh = NodePath("Body/Armature/Skeleton3D/Untitled")
@@ -474,28 +475,28 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(0, -1, 0, 0, 0, 1, -1, 0, 0, -0.8, 0.45, 0)
 bones/4/enabled = true
 bones/4/position = Vector3(-0.8, 0.45, 0)
-bones/4/rotation = Quaternion(0.37758, -0.597857, -0.37758, -0.597857)
+bones/4/rotation = Quaternion(0.37758014, -0.5978573, -0.37758014, -0.5978573)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Leaf1"
 bones/5/parent = 3
 bones/5/rest = Transform3D(0, 1, 0, 0, 0, 1, 1, 0, 0, 0.8, 0.45, 0)
 bones/5/enabled = true
 bones/5/position = Vector3(0.8, 0.45, 0)
-bones/5/rotation = Quaternion(0.366961, 0.604433, 0.366961, -0.604433)
+bones/5/rotation = Quaternion(0.36696112, 0.60443324, 0.36696112, -0.60443324)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Leaf2"
 bones/6/parent = 3
 bones/6/rest = Transform3D(-1, 0, 8.74228e-08, 8.74228e-08, 0, 1, 0, 1, 0, 0, 0.45, 0.8)
 bones/6/enabled = true
 bones/6/position = Vector3(0, 0.45, 0.8)
-bones/6/rotation = Quaternion(-0.036865, 0.86994, 0.49028, -0.0383578)
+bones/6/rotation = Quaternion(-0.036864996, 0.8699398, 0.49027988, -0.038357798)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "Leaf4"
 bones/7/parent = 3
 bones/7/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.45, -0.8)
 bones/7/enabled = true
 bones/7/position = Vector3(0, 0.45, -0.8)
-bones/7/rotation = Quaternion(-0.423535, -0.0369517, 0.0369058, 0.904373)
+bones/7/rotation = Quaternion(-0.42353502, -0.036951702, 0.0369058, 0.90437305)
 bones/7/scale = Vector3(1, 1, 1)
 
 [node name="Untitled" type="MeshInstance3D" parent="Body/Armature/Skeleton3D"]
@@ -508,13 +509,13 @@ bone_name = "Stem2"
 bone_idx = 2
 
 [node name="Bracelet" parent="Body/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_ogbap")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.221309, -0.333892)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.2, -0.3)
 
 [node name="SleepZone" type="Node3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Hitbox" type="Area3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D"]
-transform = Transform3D(2.0000036, 0, 0, 0, 2.0000038, 0, 0, 0, 2.0000002, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("3_r60hp")
 metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 

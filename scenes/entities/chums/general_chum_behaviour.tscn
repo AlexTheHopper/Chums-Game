@@ -8,13 +8,12 @@
 [ext_resource type="Script" uid="uid://pxt0re10uyrn" path="res://scripts/entities/chums/chum_wake.gd" id="5_3v78s"]
 [ext_resource type="Script" uid="uid://ckr6mybdhnq54" path="res://scripts/entities/chums/chum_knock.gd" id="7_ri37u"]
 [ext_resource type="Script" uid="uid://bf0vq7mtcptmd" path="res://scripts/entities/chums/chum_carry.gd" id="8_yg2b4"]
-[ext_resource type="Material" uid="uid://e3fhwif55snt" path="res://materials/outline_black_old.tres" id="9_jk122"]
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="9_jixn2"]
 [ext_resource type="Script" uid="uid://c2jyvpy2ven06" path="res://scripts/entities/chums/chum_follow.gd" id="10_57lte"]
 [ext_resource type="Script" uid="uid://cmy2br801q42f" path="res://scripts/entities/chums/chum_sleeptemp.gd" id="11_jk122"]
 [ext_resource type="Script" uid="uid://cwcyxfm4jw16k" path="res://scripts/entities/chums/nudge_zone.gd" id="12_jixn2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jixn2"]
-next_pass = ExtResource("9_jk122")
 transparency = 1
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
@@ -160,6 +159,7 @@ script = ExtResource("8_yg2b4")
 [node name="ThrowTarget" type="MeshInstance3D" parent="State_Machine/Carry"]
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
 visible = false
+material_overlay = ExtResource("9_jixn2")
 mesh = SubResource("ArrayMesh_j0lof")
 skeleton = NodePath("../..")
 

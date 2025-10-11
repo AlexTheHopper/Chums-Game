@@ -65,6 +65,7 @@ bind/7/bone = -1
 bind/7/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, -0.8, -1.85)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v5jnu"]
+radius = 1.0
 
 [sub_resource type="Animation" id="Animation_87uk3"]
 resource_name = "Attack"
@@ -536,13 +537,13 @@ bone_name = "Stem2"
 bone_idx = 2
 
 [node name="Bracelet" parent="Body/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_k8xnm")]
-transform = Transform3D(1, 2.38524e-17, -3.72527e-09, -1.86262e-09, -4.37722e-08, -1, 7.91684e-12, 1, -4.4005e-08, -0.00774251, 0.267577, -0.306193)
+transform = Transform3D(1, 2.38524e-17, -3.72527e-09, -1.86262e-09, -4.37722e-08, -1, 7.91684e-12, 1, -4.4005e-08, -0.008, 0.2, -0.3)
 
 [node name="SleepZone" type="Node3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(1, 1.86263e-09, -7.27593e-12, 8.36354e-16, 1, 2.32831e-10, 7.59642e-12, 2.32831e-10, 1, -0.0150092, 0.520254, -0.00135776)
 
 [node name="Hitbox" type="Area3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("3_oteuo")
 metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 

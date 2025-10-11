@@ -39,6 +39,8 @@ func _ready() -> void:
 			"destination_world": 1}, #Clop
 		15: {"object": preload("res://scenes/entities/chums/chum15.tscn"),
 			"destination_world": 2}, #Medusa
+		16: {"object": preload("res://scenes/entities/chums/chum16.tscn"),
+			"destination_world": 1}, #Flowey - would go to world 3 but same model as chums 6/7
 	}
 
 	chums_values = {
@@ -67,6 +69,7 @@ func _ready() -> void:
 			8: 2.0,
 			11: 2.5,
 			13: 5.0,
+			16: 1.0,
 		},
 	}
 	

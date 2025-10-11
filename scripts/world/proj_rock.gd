@@ -21,12 +21,17 @@ var position_: Vector3
 var target_position: Vector3
 
 var hit_time := 1.0
+var on_fire := false
 
 func _ready() -> void:
 	$AnimationPlayer.play("fade_in")
 	$Hitbox.damage = 1.0
 	
 	rotation_ = Vector3(0, randf_range(0.5, 1.0) * 10, 0)
+	
+	if on_fire:
+		$FireParticles.visible = true
+		hit_time = 2.5
 	
 	if position_:
 		global_position = position_

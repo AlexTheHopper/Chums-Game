@@ -832,7 +832,7 @@ mesh = SubResource("ArrayMesh_1b743")
 skin = SubResource("Skin_bhhp6")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.57952e-06, 0, 1.57952e-06, 1, 0, 1, -0.9)
+transform = Transform3D(1, 0, 0, 0, 0.99999994, -1.5795231e-06, 0, 1.5795231e-06, 0.99999994, 0, 1.0000002, -0.8999996)
 bone_name = "TailTip"
 bone_idx = 2
 
@@ -853,7 +853,7 @@ shape = SubResource("SphereShape3D_p1khf")
 disabled = true
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 0, 0, 0.800001, 0.599999, 0, -0.599999, 0.800001, 0, 0.6, -0.6)
+transform = Transform3D(1, 0, 0, 0, 0.80000055, 0.59999925, 0, -0.59999925, 0.80000055, 0, 0.6, -0.6)
 bone_name = "Tail"
 bone_idx = 1
 
