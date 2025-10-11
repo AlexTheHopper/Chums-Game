@@ -454,6 +454,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4, -111)
 is_custom = true
 custom_title_front = "Too Crowded?"
 custom_text_front = "Use [img]res://materials/ui/ui_cycle.tres[/img] to cycle between chum information if there are too many close by!"
+custom_title_back = "Information!"
+custom_text_back = "You can use [img]res://materials/ui/ui_rotate.tres[/img] to view information about each chum on the back of their popup!"
 
 [node name="Pause" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, -111)
