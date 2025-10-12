@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://d1ob5gartfkiy"]
+[gd_scene load_steps=29 format=4 uid="uid://d1ob5gartfkiy"]
 
 [ext_resource type="Script" uid="uid://b1ycj5baa7p72" path="res://scripts/entities/chums/chum16/chum16.gd" id="1_tmtre"]
 [ext_resource type="Texture2D" uid="uid://bl1lm8h6qm8qx" path="res://Blender_Assets/Chum_Exports/chum16_chum_16_detach_Color.png" id="2_tmtre"]
@@ -65,6 +65,21 @@ bind/7/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, -0.8, -1.85)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_npntf"]
 radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmtre"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_jt7g0"]
+material = SubResource("StandardMaterial3D_tmtre")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_ko7qr"]
+_data = [Vector2(0, 0.50151366), 0.0, 0.0, 0, 0, Vector2(0.5052084, 0.50151366), 0.0, 0.0, 0, 0, Vector2(0.7473959, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_npntf"]
+offsets = PackedFloat32Array(0, 0.6843575, 1)
+colors = PackedColorArray(0.12065207, 0.05019348, 0.12175814, 1, 0.2214038, 0.057345957, 0.012645537, 1, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_oubsg"]
 resource_name = "Attack"
@@ -520,6 +535,18 @@ metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D/Hitbox"]
 shape = SubResource("SphereShape3D_npntf")
+
+[node name="FireParticles" type="CPUParticles3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+emitting = false
+lifetime = 1.75
+mesh = SubResource("BoxMesh_jt7g0")
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 0.5, 0)
+initial_velocity_min = 0.3
+initial_velocity_max = 0.5
+scale_amount_curve = SubResource("Curve_ko7qr")
+color_ramp = SubResource("Gradient_npntf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
 libraries = {

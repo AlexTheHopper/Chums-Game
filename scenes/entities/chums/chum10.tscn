@@ -279,7 +279,6 @@ radius = 0.3
 height = 1.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25tx6"]
-radius = 0.3
 height = 1.3
 
 [sub_resource type="Animation" id="Animation_d3e8j"]

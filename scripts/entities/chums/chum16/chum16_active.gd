@@ -22,6 +22,8 @@ func Enter():
 	else:
 		for chum_ in get_tree().get_nodes_in_group("Chums_Enemy"):
 			chum_.health_depleted.connect(on_something_death)
+	
+	chum.fire_particles.emitting = true
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():
@@ -72,3 +74,5 @@ func Exit():
 	chum.is_launched = false
 	for cur_conn in self.get_incoming_connections():
 		cur_conn.signal.disconnect(cur_conn.callable)
+	
+	chum.fire_particles.emitting = false

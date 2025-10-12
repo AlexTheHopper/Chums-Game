@@ -5,6 +5,10 @@ var room_1_seed = 100
 var room_2_seed = 101
 var current_room = 1
 var rng
+const CAGE_TESTING = preload("uid://doc0b1wjqgvyd")
+
+
+var distance_dict := {}
 
 func _ready() -> void:
 	Global.current_room_node = self
@@ -12,20 +16,26 @@ func _ready() -> void:
 	get_node("/root/Testscene/HUD").initialize()
 	get_node("/root/Testscene/HUD").add_chum_indicators()
 	rng = RandomNumberGenerator.new()
+	
+	for i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]:
+		create_cage(Vector3(6.0, 0.0, i * 12.0), i, 16)
+		
+	
+	#for i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]:
+		#var chum_to_add = ChumsManager.get_specific_chum_id(i)
+		#var chum_instance = chum_to_add.instantiate()
+		#$Test.add_child(chum_instance)
+	#
+	#for chum in $Test.get_children():
+		#for node in chum.get_children():
+			#if node is CollisionShape3D:
+				#distance_dict[chum.chum_id] = {"radius": node.shape.radius, "attack_distance": chum.attack_distance}
+	#print(distance_dict)
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("attack"):
-		if current_room == 1:
-			current_room = 2
-			print('room: 2')
-			rng.seed = room_2_seed
-		else:
-			current_room = 1
-			print('room 1')
-			rng.seed = room_1_seed
-		for n in range(5):
-			print(rng.randi_range(0, 10))
-
-
-func _on_timer_timeout() -> void:
-	print(randi())
+func create_cage(spawn_position, id1, id2):
+	var to_add = CAGE_TESTING.instantiate()
+	to_add.id_1 = id1
+	to_add.id_2 = id2
+	
+	cages.add_child(to_add)
+	to_add.global_position = spawn_position

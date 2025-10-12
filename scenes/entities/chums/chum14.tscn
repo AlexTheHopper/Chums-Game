@@ -1070,7 +1070,7 @@ mesh = SubResource("ArrayMesh_atygh")
 skin = SubResource("Skin_2lbgn")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(0.911236, 0, 0.411886, 0, 1, 0, -0.411886, 0, 0.911236, 0, 2.6, 0)
+transform = Transform3D(0.9112355, 0, 0.4118858, 0, 1, 0, -0.4118858, 0, 0.9112355, 0, 2.6, 0)
 bone_name = "Head"
 bone_idx = 1
 
@@ -1081,7 +1081,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
-transform = Transform3D(-0.0756987, 0.996986, 0.0170016, 0.231615, 0.000996619, 0.972807, 0.969858, 0.0775781, -0.230992, 0.0210181, 1.36947, 1.085)
+transform = Transform3D(-0.0756987, 0.9969857, 0.01700157, 0.23161495, 0.0009966195, 0.97280705, 0.96985775, 0.07757807, -0.23099232, 0.021018088, 1.369468, 1.0850003)
 bone_name = "Club"
 bone_idx = 11
 

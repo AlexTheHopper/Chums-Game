@@ -40,7 +40,7 @@ func _ready() -> void:
 		15: {"object": preload("res://scenes/entities/chums/chum15.tscn"),
 			"destination_world": 2}, #Medusa
 		16: {"object": preload("res://scenes/entities/chums/chum16.tscn"),
-			"destination_world": 1}, #Flowey - would go to world 3 but same model as chums 6/7
+			"destination_world": 3}, #Flowey
 	}
 
 	chums_values = {

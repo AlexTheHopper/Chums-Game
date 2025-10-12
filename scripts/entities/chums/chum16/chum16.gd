@@ -30,3 +30,7 @@ var always_targets_player := false
 
 var bracelet_count := 1
 var bracelet_cost := 3
+
+
+
+@onready var fire_particles : CPUParticles3D = $Body/Armature/Skeleton3D/BoneAttachment3D/FireParticles
