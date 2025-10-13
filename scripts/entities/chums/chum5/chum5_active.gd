@@ -28,7 +28,7 @@ func Enter():
 
 func Physics_Update(delta: float):
 	#Chase target
-	if not attacking and chum.is_on_floor():
+	if not attacking and chum.is_on_floor() and Functions.distance_squared(chum, chum.target) > chum.attack_distance ** 2:
 		chum.anim_player.play("Walk")
 		chum.velocity = nav_vel
 		

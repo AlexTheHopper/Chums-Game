@@ -9,7 +9,7 @@ var desc := "TODO"
 var min_attack_speed := 0.75
 
 var base_attack_speed := 2.0
-var base_attack_damage := 20
+var base_attack_damage := 10
 var base_move_speed := 0.5
 var base_health := 100
 #Control of qualities
@@ -18,7 +18,7 @@ var has_attack_damage := true
 var has_move_speed := true
 var has_health := true
 
-var attack_distance := 0.7
+var attack_distance := 0.85
 var knockback_strength := 0.0
 var knockback_weight := 1.0
 
@@ -46,5 +46,5 @@ func jump_to_target() -> void:
 	var dx = target_pos.x - self.global_position.x
 	var dy = target_pos.y - self.global_position.y
 	var dz = target_pos.z - self.global_position.z
-	self.velocity = Vector3(dx, dy + 0.5 * self.get_gravity_dir() * hit_time * hit_time * -1, dz) / hit_time
+	self.velocity = Vector3(dx, dy + 0.4 * self.get_gravity_dir() * hit_time * hit_time * -1, dz) / hit_time
 	self.move_and_slide()

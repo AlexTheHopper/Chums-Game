@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://doc0b1wjqgvyd"]
+[gd_scene load_steps=11 format=3 uid="uid://doc0b1wjqgvyd"]
 
 [sub_resource type="GDScript" id="GDScript_h60rk"]
 script/source = "extends Node3D
@@ -9,9 +9,11 @@ script/source = "extends Node3D
 @onready var spawn_2: Node3D = $Spawn2
 var hit_1:=false
 var hit_2:=false
+var chum1
+var chum2
 
 func _ready() -> void:
-	var chum1 = ChumsManager.get_specific_chum_id(id_1).instantiate()
+	chum1 = ChumsManager.get_specific_chum_id(id_1).instantiate()
 	add_child(chum1)
 	chum1.global_position = spawn_1.global_position
 	
@@ -19,7 +21,7 @@ func _ready() -> void:
 	chum1.set_state(\"Wake\")
 	chum1.hurtbox.recieved_damage.connect(damaged_1)
 	
-	var chum2 = ChumsManager.get_specific_chum_id(id_2).instantiate()
+	chum2 = ChumsManager.get_specific_chum_id(id_2).instantiate()
 	add_child(chum2)
 	chum2.global_position = spawn_2.global_position
 	
@@ -27,19 +29,16 @@ func _ready() -> void:
 	chum2.set_state(\"Wake\")
 	chum2.hurtbox.recieved_damage.connect(damaged_2)
 
-func damaged_1(a, b, c):
+func damaged_1(_a, _b, _c):
 	hit_1 = true
-func damaged_2(a, b, c):
+func damaged_2(_a, _b, _c):
 	hit_2 = true
 
 func _on_timer_timeout() -> void:
-	if not hit_1 and hit_2:
-		print(\"From %s, %s. Only %s has been hit\" % [id_1, id_2, id_2])
-	if not hit_2 and hit_1:
-		print(\"From %s, %s. Only %s has been hit\" % [id_1, id_2, id_1])
-	if not hit_1 and not hit_2:
-		print(\"From %s, %s. Neither have been hit\")
-	
+	if not hit_1:
+		print(\"%s did not hit %s!\" % [chum2.chum_name, chum1.chum_name])
+	if not hit_2:
+		print(\"%s did not hit %s!\" % [chum1.chum_name, chum2.chum_name])
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t2ewn"]
@@ -47,7 +46,7 @@ size = Vector3(1, 5, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h60rk"]
 transparency = 1
-albedo_color = Color(0.76862746, 0.23137255, 1, 0.0627451)
+albedo_color = Color(0.76862746, 0.23137255, 1, 0.03137255)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rbbme"]
 material = SubResource("StandardMaterial3D_h60rk")
@@ -67,6 +66,13 @@ size = Vector3(10, 5, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_c2lrv"]
 material = SubResource("StandardMaterial3D_h60rk")
 size = Vector3(1, 5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h60rk"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bay54"]
+material = SubResource("StandardMaterial3D_h60rk")
+size = Vector3(10, 1, 10)
 
 [node name="Node3D" type="Node3D"]
 script = SubResource("GDScript_h60rk")
@@ -107,6 +113,15 @@ shape = SubResource("BoxShape3D_t2ewn")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D4"]
 mesh = SubResource("BoxMesh_c2lrv")
 
+[node name="Area3D5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D5"]
+shape = SubResource("BoxShape3D_h60rk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D5"]
+mesh = SubResource("BoxMesh_bay54")
+
 [node name="Spawn1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 2)
 
@@ -114,7 +129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -2)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 7.5
+wait_time = 12.5
 one_shot = true
 autostart = true
 

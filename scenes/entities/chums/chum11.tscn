@@ -133,9 +133,8 @@ _data = {
 height = 1.0
 radius = 0.2
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_4cr8o"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g0wji"]
 height = 1.0
-radius = 0.3
 
 [sub_resource type="Animation" id="Animation_4ym0f"]
 resource_name = "Hurt"
@@ -198,9 +197,9 @@ _data = {
 &"RESET": SubResource("Animation_0cg04")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_3p1s0"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3p1s0"]
+radius = 0.3
 height = 1.0
-radius = 0.2
 
 [node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
 script = ExtResource("1_g0wji")
@@ -265,7 +264,7 @@ metadata/_custom_type_script = "uid://boh0vifvx5x5c"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CylinderShape3D_4cr8o")
+shape = SubResource("CapsuleShape3D_g0wji")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox"]
 libraries = {
@@ -278,7 +277,7 @@ metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CylinderShape3D_3p1s0")
+shape = SubResource("CapsuleShape3D_3p1s0")
 
 [node name="GeneralChumBehaviour" parent="." instance=ExtResource("7_a0uvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

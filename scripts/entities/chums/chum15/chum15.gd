@@ -8,7 +8,7 @@ var desc := "Like an absolute record."
 
 var min_attack_speed := 3.7
 
-var base_attack_speed := 5.0
+var base_attack_speed := 4.5
 var base_attack_damage := 10
 var base_move_speed := 2.5
 var base_health := 250
@@ -18,7 +18,7 @@ var has_attack_damage := true
 var has_move_speed := true
 var has_health := true
 
-var attack_distance := 1.5
+var attack_distance := 1.25
 var knockback_strength := 0.0
 var knockback_weight := 15.0
 
