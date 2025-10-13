@@ -16,7 +16,7 @@ func _ready() -> void:
 	chum1 = ChumsManager.get_specific_chum_id(id_1).instantiate()
 	add_child(chum1)
 	chum1.global_position = spawn_1.global_position
-	
+	chum1.health_node.set_max_health_override(500)
 	chum1.make_enemy()
 	chum1.set_state(\"Wake\")
 	chum1.hurtbox.recieved_damage.connect(damaged_1)
@@ -24,7 +24,7 @@ func _ready() -> void:
 	chum2 = ChumsManager.get_specific_chum_id(id_2).instantiate()
 	add_child(chum2)
 	chum2.global_position = spawn_2.global_position
-	
+	chum2.health_node.set_max_health_override(500)
 	chum2.make_friendly()
 	chum2.set_state(\"Wake\")
 	chum2.hurtbox.recieved_damage.connect(damaged_2)

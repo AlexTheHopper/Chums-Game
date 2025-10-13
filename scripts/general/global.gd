@@ -68,14 +68,14 @@ func _ready():
 		2: {'map_size': 4,
 			"room_size": 40.0,
 			"max_chums": 8,
-			"statue_required": [3, 4, 8, 8],  #To worlds 1, 2
+			"statue_required": [3, 4, 5, 8],  #To worlds 1, 2
 			"statue_optional": [5, 4, 8, 8], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
-							3: 5, #Fountain
-							4: 4, #Void
-							5: 6, #Statue - AT LEAST length of statue_required
-							6: 5, #Upgrade
+							3: 4, #Fountain
+							4: 2, #Void
+							5: 5, #Statue - AT LEAST length of statue_required
+							6: 4, #Upgrade
 							7: 2, #Lore
 							},
 			},
@@ -135,6 +135,7 @@ func start_game(save_id = null, new_game = false) -> void:
 						"void": {},
 						"statue": {},
 						"upgrade": {},
+						"lore": {},
 						}
 						
 
@@ -203,9 +204,9 @@ func start_game(save_id = null, new_game = false) -> void:
 	Global.world_map[Global.room_location]["entered"] = true
 	get_node("/root/Game/HUD").display_minimap(true)
 	if current_world_num == 0:
-		AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d" % room_history[-2][0]])
+		AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_IDLE" % room_history[-2][0]])
 	else:
-		AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d" % current_world_num])
+		AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_IDLE" % current_world_num])
 
 	if Global.dev_mode:
 		for x in range(world_grid.size() - 1, -1, -1):
@@ -235,17 +236,20 @@ func start_tutorial() -> void:
 
 	get_node("/root/Game/HUD").add_chum_indicators()
 	get_node("/root/Game/HUD").display_minimap(false)
-	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE.WORLD_1)
+	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE.WORLD_1_IDLE)
 	
 
-func get_world_grid(world_n):
+func get_world_grid(world_n, set_seed := 0):
 	#Seeded randomness - Same based on global seed, world number and transition count.
-	seed(save_seed + hash(str(world_n) + str(world_transition_count)))
+	if set_seed:
+		seed(set_seed)
+	else:
+		seed(save_seed + hash(str(world_n) + str(world_transition_count)))
 
 	var size = world_info[world_n]["map_size"]
 	#2D Array of where actual rooms are in the world
-	var corridor_count := int(max(20 + size * size / 2, 5))
-	var corridor_lengths := range(2, max(size, 4))
+	var corridor_count := int(max(25 + size * size / 2, 5))
+	var corridor_lengths := range(2, max(1.5 * size, 4))
 	var walks := [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
 	var room_count := int(max(size * size / 2, 1))
 	var bounds = [-1, (2 * size) + 1]
@@ -326,6 +330,7 @@ func set_world_map_guides() -> void:
 	world_map_guide["void"] = Functions.astar2d(world_grid, 4, false)
 	world_map_guide["statue"] = Functions.astar2d(world_grid, 5, true)
 	world_map_guide["upgrade"] = Functions.astar2d(world_grid, 6, true)
+	world_map_guide["lore"] = Functions.astar2d(world_grid, 7, false)
 
 func bring_to_front(list: Array, to_front: int, shuffle: bool) -> Array:
 	var to_front_list := []
@@ -518,7 +523,7 @@ func transition_to_world(destination_world_n: int, length = 1):
 
 	get_node("/root/Game/HUD").display_minimap(true)
 	
-	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d" % destination_world_n])
+	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_IDLE" % destination_world_n])
 
 func randomize_seed() -> void:
 	seed(randi() + hash(room_history))
@@ -543,8 +548,7 @@ func restart_game_and_delete(delete):
 
 func test_grid_system(world_n, count):
 	for n in count:
-		var test_world_grid = get_world_grid(world_n)
-		
+		var test_world_grid = get_world_grid(world_n, n)
 		var is_okay: bool = true
 		var counts = {0: 0, #Nothing
 					1: 0, #Lobby 
@@ -552,7 +556,9 @@ func test_grid_system(world_n, count):
 					3: 0, #Fountain
 					4: 0, #Void
 					5: 0, #Statue 
-					6: 0} #Upgrade
+					6: 0, #Upgrade
+					7: 0, #Lore
+					}
 					
 		for y in test_world_grid.size():
 			for x in test_world_grid[0].size():
@@ -568,5 +574,8 @@ func test_grid_system(world_n, count):
 			for x in range(test_world_grid.size() - 1, -1, -1):
 				print(test_world_grid[x])
 		else:
+			var test = float(counts[2])/float(counts[2]+counts[3]+counts[4]+counts[5]+counts[6]+counts[7])
+			print("percentage of normal rooms: %s" % test)
+			for x in range(test_world_grid.size() - 1, -1, -1):
+				print(test_world_grid[x])
 			pass
-			#print("Grid %s successful" % [n])

@@ -13,8 +13,8 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih0mo"]
 resource_name = "chum_13_detach_Material"
 cull_mode = 2
+shading_mode = 0
 albedo_texture = ExtResource("2_vsiq3")
-emission_texture = ExtResource("2_vsiq3")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_l6fkf"]

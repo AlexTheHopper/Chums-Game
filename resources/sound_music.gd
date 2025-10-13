@@ -6,9 +6,12 @@ extends Resource
 enum SOUND_MUSIC_TYPE {
 	NULL,
 	MENU,
-	WORLD_1,
-	WORLD_2,
-	WORLD_3,
+	WORLD_1_IDLE,
+	WORLD_1_BATTLE,
+	WORLD_2_IDLE,
+	WORLD_2_BATTLE,
+	WORLD_3_IDLE,
+	WORLD_3_BATTLE,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundMusic to play simultaneously before culled.

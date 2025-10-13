@@ -13,9 +13,8 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cr8o"]
 resource_name = "chum_9_Material"
 cull_mode = 2
+shading_mode = 0
 albedo_texture = ExtResource("2_sw1vc")
-emission_enabled = true
-emission_texture = ExtResource("2_sw1vc")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_obc6m"]

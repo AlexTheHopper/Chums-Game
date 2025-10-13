@@ -25,6 +25,7 @@ metadata/_stencil_owned = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrr71"]
 next_pass = SubResource("StandardMaterial3D_toejc")
 transparency = 1
+shading_mode = 0
 albedo_color = Color(1, 1, 1, 0)
 stencil_mode = 1
 stencil_flags = 2

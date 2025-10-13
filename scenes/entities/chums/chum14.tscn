@@ -12,9 +12,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3rlx"]
 resource_name = "chum14_detach_Material.001"
+shading_mode = 0
 albedo_texture = ExtResource("1_f7h4a")
-emission_enabled = true
-emission_texture = ExtResource("1_f7h4a")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_atygh"]

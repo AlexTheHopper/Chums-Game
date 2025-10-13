@@ -201,6 +201,11 @@ func check_enemy_count():
 	if len(get_tree().get_nodes_in_group("Chums_Enemy")) == 0:
 		Global.in_battle = false
 		open_doors()
+
+		if Global.current_world_num == 0:
+			AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_IDLE" % Global.room_history[-2][0]])
+		else:
+			AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_IDLE" % Global.current_world_num])
 		
 		#Update guide for chum 8 mainly but not in boss rooms:
 		if self is not boss_room and self is not tutorial_room:

@@ -14,8 +14,8 @@ load_path = "res://.godot/imported/chum15_chum_15_detach_Color.png-7dd3a0f7b9a1d
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0aev"]
 resource_name = "chum_15_detach_Material"
+shading_mode = 0
 albedo_texture = SubResource("CompressedTexture2D_gwslq")
-emission_texture = SubResource("CompressedTexture2D_gwslq")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_lwp06"]

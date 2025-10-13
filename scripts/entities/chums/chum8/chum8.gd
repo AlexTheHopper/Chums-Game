@@ -4,7 +4,7 @@ var chum_id := 8
 var chum_str := "chum8"
 var chum_name := "Bolt"
 
-var desc := "Just a silly little guy! With no defense mechanisms, it seems Evolution should have forgotten it long ago. Although, Bolt will distract enemies attention 80% of the time!"
+var desc := "Just a silly little guy! With no defense mechanisms, it seems Evolution should have forgotten it long ago. Although, Bolt will distract enemies attention 80% of the time! It may also give up some secrets if it is smacked."
 
 var min_attack_speed := 3.8
 
@@ -31,5 +31,5 @@ var always_targets_player := false
 var bracelet_count := 1
 var bracelet_cost := 3
 
-var target_room_types := ["lobby", "room", "fountain", "void", "upgrade", "statue"]
+var target_room_types := ["lobby", "room", "fountain", "void", "upgrade", "statue", "lore"]
 var can_seek := true

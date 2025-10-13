@@ -13,7 +13,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03uqa"]
 resource_local_to_scene = true
 resource_name = "Material.001"
+shading_mode = 0
 vertex_color_use_as_albedo = true
+albedo_color = Color(0.49803922, 0.49803922, 0.49803922, 1)
 albedo_texture = ExtResource("2_r5iir")
 texture_filter = 2
 
@@ -729,7 +731,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.887602, 0, 0.146869, 1), Color(1, 1, 1, 1)]
+"values": [Color(0.49747366, 0.49747366, 0.49747366, 1), Color(0.887602, 0, 0.146869, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_sr3ur"]
@@ -756,7 +758,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(0.49803922, 0.49803922, 0.49803922, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_517v1"]

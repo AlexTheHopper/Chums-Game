@@ -6,8 +6,9 @@ var room_particles := {"lobby": preload("res://particles/seeker_room_lobby.tscn"
 						"void": preload("res://particles/seeker_room_void.tscn"),
 						"statue": preload("res://particles/seeker_room_statue.tscn"),
 						"upgrade": preload("res://particles/seeker_room_upgrade.tscn"),
+						"lore": preload("res://particles/seeker_room_lore.tscn"),
 						}
-var target_room_types := ["lobby", "room", "fountain", "void", "upgrade", "statue"]
+var target_room_types := ["lobby", "room", "fountain", "void", "upgrade", "statue", "lore"]
 
 
 func _on_smack_zone_area_entered(area: Area3D) -> void:

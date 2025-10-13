@@ -72,6 +72,11 @@ func attempt_activate():
 		Global.world_map[Global.room_location]["activated"] = true
 		Global.in_battle = true
 
+		if Global.current_world_num == 0:
+			AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_BATTLE" % Global.room_history[-2][0]])
+		else:
+			AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_BATTLE" % Global.current_world_num])
+
 #Keep track of player proximity and change outline colour
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:

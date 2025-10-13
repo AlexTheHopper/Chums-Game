@@ -3,6 +3,7 @@ extends Node3D
 signal completed
 
 func _ready() -> void:
+	$CPUParticles3D.mesh = $CPUParticles3D.mesh.duplicate()
 	$CPUParticles3D.emitting = true
 
 func stop_emitting() -> void:
