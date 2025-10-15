@@ -53,6 +53,10 @@ func _on_area_entered(hitbox: Hitbox) -> void:
 	var change_agro: bool
 	change_agro = change_agression(hitbox)
 	apply_knockback(owner, hitbox.owner)
+	if hitbox.owner is Player:
+		var dmg: int = hitbox.damage
+		var max_dmg: int = hitbox.owner.base_damage + hitbox.owner.max_extra_damage
+		AudioManager.controller_shake(0.0, Functions.map_range(dmg, Vector2(0, max_dmg), Vector2(0.5, 1.0)), Functions.map_range(dmg, Vector2(0, max_dmg), Vector2(0.1, 0.3)))
 
 	recieved_damage.emit(hitbox.damage, change_agro, hitbox.owner.get_agro_change_target())
 

@@ -100,3 +100,6 @@ func remove_other_audios() -> void:
 	for song in music.get_children():
 		if song != current_music_node:
 			song.queue_free()
+
+func controller_shake(weak_mag := 0.0, strong_mag := 0.0, duration := 0.0) -> void:
+	Input.start_joy_vibration(0, weak_mag, strong_mag, duration)

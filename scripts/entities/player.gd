@@ -240,7 +240,7 @@ func align_with_floor(normal):
 		global_transform = global_transform.interpolate_with(xform, 0.3)
 		rotation.y = 0
 		
-func _on_health_changed(difference):
+func _on_health_changed(difference: int):
 	if difference < 0.0:
 		damaged(-difference)
 		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_HURT)
@@ -248,7 +248,7 @@ func _on_health_changed(difference):
 		healed(difference)
 		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_HEAL)
 
-func damaged(amount):
+func damaged(amount: int):
 	$Hurtbox/AnimationPlayer.play("Hurt")
 	get_tree().get_first_node_in_group("Camera").trigger_shake(1.0)
 	particle_zone.add_child(hurt_particles.instantiate())
@@ -256,6 +256,8 @@ func damaged(amount):
 	var hurt_num_inst = hurt_particles_num.instantiate()
 	hurt_num_inst.get_child(0).mesh.text = "-" + str(amount)
 	particle_zone.add_child(hurt_num_inst)
+	
+	AudioManager.controller_shake(Functions.map_range(amount, Vector2(1, 50), Vector2(0.1, 1.0)), 0.0, Functions.map_range(amount, Vector2(1, 50), Vector2(0.15, 0.75)))
 
 func healed(amount):
 	particle_zone.add_child(heal_particles.instantiate())

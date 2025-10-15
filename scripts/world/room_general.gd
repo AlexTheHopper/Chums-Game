@@ -186,6 +186,15 @@ func move_player_and_camera(new_position: Vector3, camera_angle = null) -> void:
 	#Set camera goal to nearest multiple of PI / 4
 	player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
 
+func open_doors():
+	if is_doors_closed:
+		is_doors_closed = false
+		for door in get_node("Doors").get_children():
+			door.raise()
+
+		#I think this needs to be deferred since the last chum dying overrides the vibration length?
+		AudioManager.call_deferred("controller_shake", 0.0, 0.75, 1.0)
+
 func close_doors():
 	#Connect to enemies to know when to open doors
 	for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
@@ -195,7 +204,8 @@ func close_doors():
 		is_doors_closed = true
 		for door in get_node("Doors").get_children():
 			door.lower()
-		
+
+		AudioManager.controller_shake(0.75, 0.0, 2.0)
 
 func check_enemy_count():
 	if len(get_tree().get_nodes_in_group("Chums_Enemy")) == 0:
@@ -214,9 +224,3 @@ func check_enemy_count():
 		#Save game
 		if self is not tutorial_room:
 			save_room()
-	
-func open_doors():
-	if is_doors_closed:
-		is_doors_closed = false
-		for door in get_node("Doors").get_children():
-			door.raise()
