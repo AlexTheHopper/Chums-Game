@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhw2xr3q47bms"]
+[gd_scene load_steps=4 format=3 uid="uid://bhw2xr3q47bms"]
 
 [ext_resource type="ArrayMesh" uid="uid://b8gedsuhhhku8" path="res://assets/world/world_1_other/sign.vox" id="1_6infh"]
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_mtgna"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6infh"]
 
@@ -8,6 +9,7 @@
 collision_mask = 0
 
 [node name="Sign" type="MeshInstance3D" parent="."]
+material_overlay = ExtResource("1_mtgna")
 mesh = ExtResource("1_6infh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
