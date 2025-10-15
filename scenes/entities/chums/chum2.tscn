@@ -506,7 +506,7 @@ radius = 0.3
 height = 0.7
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tnam"]
-radius = 0.3
+radius = 0.4
 height = 1.0
 
 [sub_resource type="Animation" id="Animation_jfiiq"]

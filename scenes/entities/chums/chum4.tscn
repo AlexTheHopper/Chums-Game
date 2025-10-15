@@ -921,8 +921,8 @@ radius = 0.3
 height = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bni3t"]
-radius = 0.3
-height = 1.0
+radius = 0.4
+height = 1.1
 
 [sub_resource type="Animation" id="Animation_63msc"]
 resource_name = "Hurt"

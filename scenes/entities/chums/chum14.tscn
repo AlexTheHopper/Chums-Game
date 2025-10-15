@@ -880,6 +880,7 @@ radius = 0.35
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lu1dw"]
 radius = 0.4
+height = 2.1
 
 [sub_resource type="Animation" id="Animation_atygh"]
 resource_name = "Hurt"

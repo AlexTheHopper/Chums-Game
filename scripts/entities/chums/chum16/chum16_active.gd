@@ -12,6 +12,7 @@ var to_emit := 0
 func Enter():
 	chum.anim_player.animation_finished.connect(_on_animation_player_animation_finished)
 	chum.anim_player.play("Idle")
+	to_emit = 0
 	emitting = false
 	has_touched_floor = false
 	

@@ -383,7 +383,7 @@ height = 0.9
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_go1hd"]
 radius = 0.35
-height = 0.9
+height = 1.0
 
 [sub_resource type="Animation" id="Animation_atgja"]
 resource_name = "Hurt"

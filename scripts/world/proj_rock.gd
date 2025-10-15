@@ -50,11 +50,13 @@ func _ready() -> void:
 			rock_target.set_material_overlay(blue_overlay)
 		else:
 			rock_target.set_material_overlay(black_overlay)
-
+	
 	if target:
+		hit_time *= randf_range(0.8, 1.2)
 		target_position = target.global_position + target.velocity * 0.5
 		set_vel_to_pos(global_position, target_position)
 		rock_target.global_position = target_position
+	
 
 
 func set_vel_to_pos(start_pos, target_pos):

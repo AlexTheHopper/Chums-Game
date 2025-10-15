@@ -427,7 +427,7 @@ height = 1.25
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_volkl"]
 radius = 0.4
-height = 1.25
+height = 1.3
 
 [sub_resource type="Animation" id="Animation_ygc7o"]
 resource_name = "Hurt"

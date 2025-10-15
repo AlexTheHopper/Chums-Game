@@ -419,7 +419,8 @@ _data = {
 height = 1.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4cr8o"]
-height = 1.5
+height = 1.6
+radius = 0.6
 
 [sub_resource type="Animation" id="Animation_4ym0f"]
 resource_name = "Hurt"
