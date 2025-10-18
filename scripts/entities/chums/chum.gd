@@ -94,7 +94,6 @@ func _ready() -> void:
 	
 	if not stats_set:
 		set_new_stats()
-		start_health = int(self.base_health * (1.0 + float(quality["health"]) / 10.0))
 		#And make sure stat displays only what the chum can do:
 		if not self.has_attack_speed:
 			quality["attack_speed"] = 0
@@ -102,8 +101,10 @@ func _ready() -> void:
 			quality["attack_damage"] = 0
 		if not self.has_move_speed:
 			quality["move_speed"] = 0
-		#Unsure about has_health, maybe come back to it
+		if not self.has_health:
+			quality["move_speed"] = 0
 	set_stats_from_quality()
+	start_health = int(self.base_health * (1.0 + float(quality["health"]) / 10.0))
 	health_node.set_health(start_health)
 
 	
