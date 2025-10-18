@@ -147,6 +147,7 @@ resource_name = "Menu"
 script = ExtResource("4_lpos2")
 type = 1
 sound_music = ExtResource("12_mglc6")
+volume = -25.0
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [sub_resource type="Resource" id="Resource_tpt5d"]
@@ -154,6 +155,7 @@ resource_name = "World 1 Idle"
 script = ExtResource("4_lpos2")
 type = 2
 sound_music = ExtResource("13_ae5oe")
+volume = -15.0
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [sub_resource type="Resource" id="Resource_68p7j"]
@@ -161,6 +163,7 @@ resource_name = "World 1 Battle"
 script = ExtResource("4_lpos2")
 type = 3
 sound_music = ExtResource("14_qbirx")
+volume = -10.0
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [sub_resource type="Resource" id="Resource_qbirx"]
@@ -168,6 +171,7 @@ resource_name = "World 2 Idle"
 script = ExtResource("4_lpos2")
 type = 4
 sound_music = ExtResource("14_tpt5d")
+volume = -15.0
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [sub_resource type="Resource" id="Resource_xa7y2"]
@@ -175,6 +179,7 @@ resource_name = "World 2 Battle"
 script = ExtResource("4_lpos2")
 type = 5
 sound_music = ExtResource("16_ft4fm")
+volume = -10.0
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [sub_resource type="Resource" id="Resource_ft4fm"]
@@ -182,6 +187,7 @@ resource_name = "World 3 Idle"
 script = ExtResource("4_lpos2")
 type = 6
 sound_music = ExtResource("15_qbirx")
+volume = -15.0
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
 [sub_resource type="Resource" id="Resource_5ngse"]

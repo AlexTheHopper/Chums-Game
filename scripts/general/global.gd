@@ -1,5 +1,5 @@
 extends Node
-var dev_mode = true
+var dev_mode = false
 
 var game_begun := false
 var world_transition_count := 0
@@ -15,6 +15,7 @@ var world_map_guide = {"lobby": {},
 						"void": {},
 						"statue": {},
 						"upgrade": {},
+						"lore": {},
 						}
 
 var in_battle := false
@@ -57,10 +58,10 @@ func _ready():
 			"statue_optional": [1, 2, 3, 4, 5, 6, 7, 8], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
-							3: 3, #Fountain
+							3: 2, #Fountain
 							4: 2, #Void
 							5: 3, #Statue - AT LEAST length of statue_required
-							6: 0, #Upgrade
+							6: 1, #Upgrade
 							7: 1, #Lore
 							}, 
 			},

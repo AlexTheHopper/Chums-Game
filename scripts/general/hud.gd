@@ -53,8 +53,7 @@ func _process(_delta: float) -> void:
 	
 	#Minimap rotation
 	minimap.rotation = get_tree().get_first_node_in_group("Player").camera_controller.rotation.y
-	#minimap.rotation = get_tree().get_first_node_in_group("Player").camera_controller.rotation.y
-		
+
 func toggle_pause():
 	is_exit_warning = false
 	if is_paused and get_tree().paused:
@@ -105,7 +104,7 @@ func add_chum_indicators() -> void:
 		var new_indicator = chum_indicator_tscn.instantiate()
 		new_indicator.global_position = get_indicator_position(n)
 		
-		#If ther is a chum in that slot, visualise it
+		#If there is a chum in that slot, visualise it
 		if n + 1 <= current_chums_count:
 			new_indicator.chum = current_chums[n]
 		chum_indicators.add_child(new_indicator)
