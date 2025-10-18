@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw0p4kkjvkl3g"]
+[gd_scene load_steps=7 format=3 uid="uid://dv6ocsm2oj3fp"]
 
-[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_pgrdt"]
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_vvgfd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1y0l2"]
 transparency = 1
@@ -16,14 +16,14 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_87nrx"]
 offsets = PackedFloat32Array(0.00985222, 0.763547, 1)
-colors = PackedColorArray(4.39193e-07, 0.259233, 0.0473697, 1, 0.0402974, 0.355382, 1.92523e-07, 1, 0.314387, 0.345811, 3.85046e-07, 1)
+colors = PackedColorArray(0.20691353, 0.20691356, 0.20691347, 1, 0.46229082, 0.46229053, 0.4622907, 1, 0.82, 0.82, 0.82, 1)
 
 [sub_resource type="Gradient" id="Gradient_0ohf4"]
 offsets = PackedFloat32Array(0, 0.832512)
 colors = PackedColorArray(0.10748, 0.10748, 0.10748, 1, 0.273873, 0.273873, 0.273873, 1)
 
 [node name="SpawnParticles" type="Node3D"]
-script = ExtResource("1_pgrdt")
+script = ExtResource("1_vvgfd")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 emitting = false

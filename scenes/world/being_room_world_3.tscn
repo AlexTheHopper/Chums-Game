@@ -39,7 +39,7 @@ metadata/_editor_floor_ = Vector3(15, 0, -15)
 
 [node name="RoomChanger" parent="RoomChangers" instance=ExtResource("3_68h10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -23)
-destination_world_n = 2
+destination_world_n = 3
 
 [node name="Doors" type="Node3D" parent="."]
 

@@ -10,45 +10,45 @@ func _ready() -> void:
 	#Fill chums:
 	chums_list = {
 		1: {"object": preload("res://scenes/entities/chums/chum1.tscn"),
-			"destination_world": 1}, #Flamenco
+			"destination_world": 1, "guard_world_n": false}, #Flamenco
 		2: {"object": preload("res://scenes/entities/chums/chum2.tscn"),
-			"destination_world": 1}, #Stump
+			"destination_world": 1, "guard_world_n": false}, #Stump
 		3: {"object": preload("res://scenes/entities/chums/chum3.tscn"),
-			"destination_world": 1}, #Pear
+			"destination_world": 1, "guard_world_n": false}, #Pear
 		4: {"object": preload("res://scenes/entities/chums/chum4.tscn"),
-			"destination_world": 2}, #Jabby
+			"destination_world": 2, "guard_world_n": false}, #Jabby
 		5: {"object": preload("res://scenes/entities/chums/chum5.tscn"),
-			"destination_world": 1}, #Slate
+			"destination_world": 1, "guard_world_n": false}, #Slate
 		6: {"object": preload("res://scenes/entities/chums/chum6.tscn"),
-			"destination_world": 1}, #Healio
+			"destination_world": 1, "guard_world_n": false}, #Healio
 		7: {"object": preload("res://scenes/entities/chums/chum7.tscn"),
-			"destination_world": 1}, #Ring of Pearls
+			"destination_world": 1, "guard_world_n": false}, #Ring of Pearls
 		8: {"object": preload("res://scenes/entities/chums/chum8.tscn"),
-			"destination_world": 1}, #Bolt
+			"destination_world": 1, "guard_world_n": false}, #Bolt
 		9: {"object": preload("res://scenes/entities/chums/chum9.tscn"),
-			"destination_world": 2}, #Fan
+			"destination_world": 2, "guard_world_n": false}, #Fan
 		10: {"object": preload("res://scenes/entities/chums/chum10.tscn"),
-			"destination_world": 2}, #Floaty
+			"destination_world": 2, "guard_world_n": false}, #Floaty
 		11: {"object": preload("res://scenes/entities/chums/chum11.tscn"),
-			"destination_world": 2}, #Melly
+			"destination_world": 2, "guard_world_n": false}, #Melly
 		12: {"object": preload("res://scenes/entities/chums/chum12.tscn"),
-			"destination_world": 2}, #Ram
+			"destination_world": 2, "guard_world_n": false}, #Ram
 		13: {"object": preload("res://scenes/entities/chums/chum13.tscn"),
-			"destination_world": 3}, #Leapy
+			"destination_world": 3, "guard_world_n": false}, #Leapy
 		14: {"object": preload("res://scenes/entities/chums/chum14.tscn"),
-			"destination_world": 1}, #Clop
+			"destination_world": 1, "guard_world_n": 1}, #Clop
 		15: {"object": preload("res://scenes/entities/chums/chum15.tscn"),
-			"destination_world": 2}, #Medusa
+			"destination_world": 2, "guard_world_n": 2}, #Medusa
 		16: {"object": preload("res://scenes/entities/chums/chum16.tscn"),
-			"destination_world": 3}, #Flowey
+			"destination_world": 3, "guard_world_n": false}, #Flowey
 		17: {"object": preload("res://scenes/entities/chums/chum17.tscn"),
-			"destination_world": 1}, #Being
+			"destination_world": 1, "guard_world_n": false}, #Being
 		18: {"object": preload("res://scenes/entities/chums/chum18.tscn"),
-			"destination_world": 2}, #Being
+			"destination_world": 2, "guard_world_n": false}, #Being
 		19: {"object": preload("res://scenes/entities/chums/chum19.tscn"),
-			"destination_world": 3}, #Being
+			"destination_world": 3, "guard_world_n": false}, #Being
 		20: {"object": preload("res://scenes/entities/chums/chum20.tscn"),
-			"destination_world": 4}, #Being
+			"destination_world": 4, "guard_world_n": false}, #Being
 	}
 
 	chums_values = {

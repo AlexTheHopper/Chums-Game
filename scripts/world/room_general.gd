@@ -4,7 +4,7 @@ class_name room
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var enemies_to_spawn: int
 @onready var player_spawn: Node3D = $PlayerSpawn
-var spawn_particles = preload("res://particles/spawn_particles_world1.tscn")
+var spawn_particles: PackedScene
 
 var is_doors_closed := false
 var bracelet_tscn: PackedScene = preload("res://scenes/entities/currency_bracelet.tscn")
@@ -23,7 +23,12 @@ func _ready() -> void:
 	if Global.world_map[Global.room_location]["entered"]:
 		load_room()
 	self.decorate() #RNG seed is autoset here
-		
+	
+	if Global.current_world_num == 0:
+		spawn_particles = load("res://particles/spawn_particles_world%s.tscn" % Global.room_location[0])
+	else:
+		spawn_particles = load("res://particles/spawn_particles_world%s.tscn" % Global.current_world_num)
+	
 	if enemies_to_spawn > 0:
 		if spawn_timer:
 			spawn_timer.start()
@@ -31,8 +36,7 @@ func _ready() -> void:
 	fill_tunnels()
 	set_player_loc_on_entry()
 	set_chums_loc_on_entry()
-	if self.TYPE != "boss":
-		#Save game
+	if self is not boss_room and self is not being_room:
 		SaverLoader.save_game(Global.game_save_id)
 	
 	#Maybe spawn being to circle level for a bit
@@ -220,9 +224,9 @@ func check_enemy_count():
 			AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_IDLE" % Global.current_world_num])
 		
 		#Update guide for chum 8 mainly but not in boss rooms:
-		if self is not boss_room and self is not tutorial_room:
+		if self is not boss_room and self is not tutorial_room and self is not being_room:
 			Global.world_map_guide["room"] = Functions.astar2d(Global.world_grid, 2, true)
 		
 		#Save game
-		if self is not tutorial_room:
+		if self is not tutorial_room and self is not being_room:
 			save_room()

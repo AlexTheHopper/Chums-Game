@@ -6,14 +6,16 @@ var radius := randf_range(5.0, 15.0)
 var time := 0.0
 var angle := randf_range(0, 2 * PI)
 @onready var timer: Timer = $Timer
-
+var world_n_to_chun_id: Dictionary[int, int] = {1: 17, 2: 18, 3: 19, 4: 20}
 var rising := false
 
 func _ready() -> void:
 	
-	#height = 5.0
-	#radius = 15.0
-	#speed = 0.75
+	var possible_particles := []
+	for history in Global.room_history:
+		if history[0] not in possible_particles and history[0] in world_n_to_chun_id.keys():
+			possible_particles.append(world_n_to_chun_id[history[0]])
+	add_child(load("res://particles/chum%s_particles.tscn" % possible_particles.pick_random()).instantiate())
 	
 	#Spawns in the air somewhere
 	global_position = 15.0 * Vector3(sin(angle), 1.0, cos(angle))

@@ -33,6 +33,7 @@ var player: Player
 signal room_changed
 signal room_changed_to_boss
 signal room_changed_from_boss 
+signal room_changed_to_being
 
 @export var settings: Dictionary[String, float] = {
 	"camera_shake": 1.0,
@@ -54,13 +55,13 @@ func _ready():
 		1: {'map_size': 3,
 			"room_size": 40.0,
 			"max_chums": 5,
-			"statue_required": [4, 13], 					   #To world 2, 3
-			"statue_optional": [1, 2, 3, 4, 5, 6, 7, 8], #To worlds 1, 2
+			"statue_required": [4, 13, 14], 					   #To world 2, 3
+			"statue_optional": [1, 2, 3, 5, 6, 7, 8], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
 							3: 2, #Fountain
 							4: 2, #Void
-							5: 3, #Statue - AT LEAST length of statue_required
+							5: 4, #Statue - AT LEAST length of statue_required
 							6: 1, #Upgrade
 							7: 1, #Lore
 							}, 
@@ -69,7 +70,7 @@ func _ready():
 		2: {'map_size': 4,
 			"room_size": 40.0,
 			"max_chums": 8,
-			"statue_required": [3, 4, 5, 8],  #To worlds 1, 2
+			"statue_required": [3, 4, 5, 8, 15],  #To worlds 1, 2
 			"statue_optional": [5, 4, 8, 8], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
@@ -84,7 +85,7 @@ func _ready():
 		3: {'map_size': 5,
 			"room_size": 40.0,
 			"max_chums": 10,
-			"statue_required": [4, 6, 8, 13],  #To worlds 1, 2, 3
+			"statue_required": [4, 6, 8, 13],  #To worlds 1, 2, 3 #TODO world 3 boss statue room
 			"statue_optional": [6, 11, 13], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
@@ -115,6 +116,8 @@ func get_room_tscn(world_n, room_id) -> PackedScene:
 			return load("res://scenes/world/upgrade_room_world_%s.tscn" % [world_n])
 		7:
 			return load("res://scenes/world/lore_room_world_%s.tscn" % [world_n])
+		8:
+			return load("res://scenes/world/being_room_world_%s.tscn" % [world_n])
 
 	push_error("Global failed to find room type for world_n, room_id: ", world_n, ", ", room_id)
 	return load("res://scenes/world/lobby_world_1.tscn") #Only as backup when room cannot be found.
@@ -481,6 +484,32 @@ func transition_to_boss(source_world_n: int, destination_world_n: int, length = 
 
 	#Create new room:
 	var new_room = get_room_tscn(0, new_room_location[0]) #Go to boss room of the world you came from.
+	current_room_node = new_room.instantiate()
+	rooms.add_child(current_room_node)
+	
+	get_node("/root/Game/HUD").display_minimap(false)
+
+func transition_to_being(source_world_n: int, destination_world_n: int, length = 1):
+	room_changed_to_being.emit()
+	TransitionScreen.transition(length)
+	await TransitionScreen.on_transition_finished
+	
+	create_world_boss()
+	current_world_num = 0
+	
+	var new_room_location = Vector2i(source_world_n, destination_world_n)
+	room_location = new_room_location
+	if Global.dev_mode:
+		print('Now in being world: %s.' % destination_world_n)
+
+	if room_history[-1][1] != new_room_location or room_history[-1][0] != current_world_num:
+			room_history.append([current_world_num, new_room_location])
+	
+	if current_room_node:
+		current_room_node.queue_free()
+
+	#Create new room:
+	var new_room = get_room_tscn(destination_world_n, 8) #Go to being room (8) for the destination world n.
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
 	

@@ -3,6 +3,8 @@ class_name being_room
 
 const TYPE := "being"
 
+const being_chums: Dictionary[int, int] = {1: 17, 2: 18, 3: 19, 4: 20} #world: chum_id
+
 
 func _ready() -> void:
 	$RoomActivator.activate_bell.connect(close_doors)
@@ -12,6 +14,13 @@ func _ready() -> void:
 	else:
 		$RoomActivator.finish_spawning()
 	super()
+	
+	#Spawns chum
+	var chum_id = being_chums[Global.room_location[1]]
+	var chum_instance = ChumsManager.get_specific_chum_id(chum_id).instantiate()
+	chum_instance.spawn_currency.connect(spawn_currency)
+	get_parent().get_parent().get_node("Chums").add_child(chum_instance)
+	chum_instance.global_position = Vector3(1.0, 0.0, -5.0)
 
 func fill_tunnels() -> void:
 	pass

@@ -16,8 +16,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.751256, 1), 0.0, 0.0, 0, 0, Ve
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_tkero"]
-offsets = PackedFloat32Array(0, 0.36828, 1)
-colors = PackedColorArray(0.0862745, 0.0862745, 0, 1, 0.0862745, 0.0862745, 0, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.00089445437, 0.36828, 1)
+colors = PackedColorArray(0.026132934, 0.053484246, 0.22906664, 1, 0.10396656, 0.16466591, 0.4022098, 1, 1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4lc5"]
 shading_mode = 0
@@ -32,7 +32,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.261307, 1), 0.0, 0.0, 0, 0, Ve
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_yr0jc"]
-colors = PackedColorArray(4.58746e-08, 0.0825223, 0.00832629, 1, 0.0879843, 0.0858073, 3.60981e-08, 1)
+colors = PackedColorArray(0, 0, 0.11764706, 1, 0, 0, 0.07, 1)
 
 [node name="BeingParticles" type="Node3D"]
 script = ExtResource("1_fo4wt")

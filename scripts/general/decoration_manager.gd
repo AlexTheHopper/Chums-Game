@@ -74,29 +74,32 @@ func _ready() -> void:
 		4: {"info": "100 . 0",
 			"front": "Perhaps we are to be the ones moving on, with an impossibility of unwilling death we cannot cause a catastrophe...",
 			"back": "However where is the value in a life that never ends?"},
-		
+
 		5: {"info": "125 . 0",
 			"front": "They sometimes show promise these days, but it has become more of an entertainment, betting on the limited time until catastrophe...",
 			"back": "Yet, the inevitability reigns and our one shortcoming is revealed."},
 
+		6: {"info": "750 . 0",
+			"front": "Some of us have been imprisoned, for we do not posess the skill...",
+			"back": "Or at this point, it seems, the luck."},
 
-		6: {"info": "1500 . 0",
+		7: {"info": "1500 . 0",
 			"front": "This one may show the greatest potential of all...",
 			"back": "We remain cautiously optimistic."},
-		
-		7: {"info": "1501 . 0",
+
+		8: {"info": "1501 . 0",
 			"front": "Yet again, we are shown what was inevitable from the beginning...",
 			"back": "We are close to giving up."},
-		
-		8: {"info": "2500 . 0",
+
+		9: {"info": "2500 . 0",
 			"front": "We are all that remains now. It has gone and left us in this infinite cycle of injustice...",
 			"back": "What are we working towards now?"},
-		
-		9: {"info": "2525 . 0",
+
+		10: {"info": "2525 . 0",
 			"front": "Without direction, we change tactics. To create something to finish this for us...",
 			"back": "Is it possible?"},
-		
-		10: {"info": "2550 . 0",
+
+		11: {"info": "2550 . 0",
 			"front": "They must be sentient, with intelligence beyond the rest...",
 			"back": "To complete the goal, and let us rest."},
 	}

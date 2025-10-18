@@ -3,9 +3,11 @@ class_name room_changer_to_boss
 
 @export var active := false
 @export var destination_world_n : int
+@onready var source_world_n : int
 var override_world := false
 var chum_id : int
-@onready var source_world_n : int
+var to_being_n: int = false
+
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
@@ -15,11 +17,16 @@ func _ready() -> void:
 	if not override_world:
 		chum_id = Global.world_map[Global.room_location]["statue_id"]
 		destination_world_n = ChumsManager.chums_list[chum_id]["destination_world"]
+		to_being_n = ChumsManager.chums_list[chum_id]["guard_world_n"]
+		print('setting statue to_being_n to %s' % to_being_n)
 
 func _on_body_entered(body: Node3D) -> void:
 	if active and body is Player:
 		active = false
-		Global.transition_to_boss(source_world_n, destination_world_n)
+		if to_being_n:
+			Global.transition_to_being(source_world_n, to_being_n)
+		else:
+			Global.transition_to_boss(source_world_n, destination_world_n)
 		
 
 func _on_grace_timeout() -> void:
