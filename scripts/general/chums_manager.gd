@@ -41,6 +41,14 @@ func _ready() -> void:
 			"destination_world": 2}, #Medusa
 		16: {"object": preload("res://scenes/entities/chums/chum16.tscn"),
 			"destination_world": 3}, #Flowey
+		17: {"object": preload("res://scenes/entities/chums/chum17.tscn"),
+			"destination_world": 1}, #Being
+		18: {"object": preload("res://scenes/entities/chums/chum18.tscn"),
+			"destination_world": 2}, #Being
+		19: {"object": preload("res://scenes/entities/chums/chum19.tscn"),
+			"destination_world": 3}, #Being
+		20: {"object": preload("res://scenes/entities/chums/chum20.tscn"),
+			"destination_world": 4}, #Being
 	}
 
 	chums_values = {

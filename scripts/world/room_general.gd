@@ -174,6 +174,8 @@ func set_chums_loc_on_entry():
 				chum.global_position = player.global_position + 3 * Vector3(sin(rand_angle), 0, cos(rand_angle))
 				chum.rotation.y = randf_range(0, 2*PI)
 				chum.set_state("Idle")
+				if chum.being_particles:
+					chum.being_particles.restart_particles()
 
 func move_player_and_camera(new_position: Vector3, camera_angle = null) -> void:
 	player.global_position = new_position

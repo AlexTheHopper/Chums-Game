@@ -1,20 +1,20 @@
-[gd_scene load_steps=28 format=4 uid="uid://05k1rfnc4w3u"]
+[gd_scene load_steps=28 format=4 uid="uid://uxdciua7g0nc"]
 
-[ext_resource type="Script" uid="uid://btmxt1jag4n2d" path="res://scripts/entities/chums/chumsBeing/chum17.gd" id="1_ule0r"]
-[ext_resource type="Texture2D" uid="uid://bcx7bs3vb0put" path="res://Blender_Assets/Chum_Exports/being_frame_being_frame_detach_Color.png" id="2_1xidp"]
-[ext_resource type="PackedScene" uid="uid://cdfad011ncqxd" path="res://scenes/entities/chums/bracelet_4.tscn" id="3_03kxu"]
-[ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_6udtw"]
-[ext_resource type="PackedScene" uid="uid://cqt8xjtqjv5y8" path="res://particles/chum17_particles.tscn" id="4_uqetm"]
-[ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_0j80w"]
-[ext_resource type="Script" uid="uid://cy0kdfml2k6hn" path="res://scripts/entities/chums/chumsBeing/chum_being_active.gd" id="5_ae0hp"]
-[ext_resource type="Script" uid="uid://r4uy0m3rotx8" path="res://scripts/entities/chums/chumsBeing/chum_being_idle.gd" id="6_kihup"]
-[ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="8_i25hg"]
-[ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="9_hi80w"]
+[ext_resource type="Script" uid="uid://co07xj4fg5x3h" path="res://scripts/entities/chums/chumsBeing/chum19.gd" id="1_63iwa"]
+[ext_resource type="Texture2D" uid="uid://bcx7bs3vb0put" path="res://Blender_Assets/Chum_Exports/being_frame_being_frame_detach_Color.png" id="2_kvmap"]
+[ext_resource type="PackedScene" uid="uid://cdfad011ncqxd" path="res://scenes/entities/chums/bracelet_4.tscn" id="3_ccehk"]
+[ext_resource type="PackedScene" uid="uid://dvnjoypewurwv" path="res://particles/chum19_particles.tscn" id="4_63iwa"]
+[ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="5_8bv1g"]
+[ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="6_m5fln"]
+[ext_resource type="Script" uid="uid://cy0kdfml2k6hn" path="res://scripts/entities/chums/chumsBeing/chum_being_active.gd" id="7_jng68"]
+[ext_resource type="Script" uid="uid://r4uy0m3rotx8" path="res://scripts/entities/chums/chumsBeing/chum_being_idle.gd" id="8_hkoqd"]
+[ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="9_tidsn"]
+[ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="10_ecmln"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ae0hp"]
 resource_name = "being_frame_detach_Material"
 shading_mode = 0
-albedo_texture = ExtResource("2_1xidp")
+albedo_texture = ExtResource("2_kvmap")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kihup"]
@@ -2223,7 +2223,7 @@ _data = {
 }
 
 [node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet", "being_particles")]
-script = ExtResource("1_ule0r")
+script = ExtResource("1_63iwa")
 anim_player = NodePath("Body/AnimationPlayer")
 body_mesh = NodePath("Body/Base/Skeleton3D/being_frame_detach")
 sleep_zone = NodePath("Body/Base/SleepZone")
@@ -2231,7 +2231,7 @@ hitbox = NodePath("Body/Base/Hitbox")
 hurtbox = NodePath("Hurtbox")
 interaction_area = NodePath("ChumInterractionArea")
 bracelet = NodePath("Body/Base/Skeleton3D/BoneAttachment3D/Bracelet")
-indicator_color = Color(0, 0.1793567, 0.08271458, 1)
+indicator_color = Color(0.24288705, 0.04368879, 0.10506331, 1)
 being_particles = NodePath("Body/Base/Skeleton3D/BoneAttachment3D2/BeingParticles")
 
 [node name="Body" type="Node3D" parent="."]
@@ -2399,7 +2399,7 @@ transform = Transform3D(-1, 0, 8.7422784e-08, 8.7422784e-08, 0, 1, 0, 1, 0, 7.10
 bone_name = "EdgeTF"
 bone_idx = 12
 
-[node name="Bracelet" parent="Body/Base/Skeleton3D/BoneAttachment3D" instance=ExtResource("3_03kxu")]
+[node name="Bracelet" parent="Body/Base/Skeleton3D/BoneAttachment3D" instance=ExtResource("3_ccehk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.6, 0)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Body/Base/Skeleton3D"]
@@ -2407,13 +2407,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 bone_name = "Base_2"
 bone_idx = 0
 
-[node name="BeingParticles" parent="Body/Base/Skeleton3D/BoneAttachment3D2" instance=ExtResource("4_uqetm")]
+[node name="BeingParticles" parent="Body/Base/Skeleton3D/BoneAttachment3D2" instance=ExtResource("4_63iwa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="SleepZone" type="Node3D" parent="Body/Base"]
 
 [node name="Hitbox" type="Area3D" parent="Body/Base"]
-script = ExtResource("4_6udtw")
+script = ExtResource("5_8bv1g")
 metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Base/Hitbox"]
@@ -2429,7 +2429,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("CapsuleShape3D_a227j")
 
 [node name="Hurtbox" type="Area3D" parent="."]
-script = ExtResource("5_0j80w")
+script = ExtResource("6_m5fln")
 metadata/_custom_type_script = "uid://boh0vifvx5x5c"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
@@ -2444,18 +2444,18 @@ libraries = {
 [node name="ChumSpecificStates" type="Node" parent="."]
 
 [node name="Active" type="Node" parent="ChumSpecificStates"]
-script = ExtResource("5_ae0hp")
+script = ExtResource("7_jng68")
 
 [node name="Idle" type="Node" parent="ChumSpecificStates"]
-script = ExtResource("6_kihup")
+script = ExtResource("8_hkoqd")
 
 [node name="Particles" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="GeneralChumBehaviour" parent="." instance=ExtResource("8_i25hg")]
+[node name="GeneralChumBehaviour" parent="." instance=ExtResource("9_tidsn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
-[node name="ChumInterractionArea" parent="." instance=ExtResource("9_hi80w")]
+[node name="ChumInterractionArea" parent="." instance=ExtResource("10_ecmln")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 2.0

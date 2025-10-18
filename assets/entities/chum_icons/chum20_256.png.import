@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcx7bs3vb0put"
-path="res://.godot/imported/being_frame_being_frame_detach_Color.png-67ebde356efa704595e6380a84b879a7.ctex"
+uid="uid://dr4pg1js1gb7j"
+path="res://.godot/imported/chum20_256.png-73d0b909c76127d0aaa2ba395fc93801.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "d3333338f54bd04d47db9668fe105a76"
 }
 
 [deps]
 
-source_file="res://Blender_Assets/Chum_Exports/being_frame_being_frame_detach_Color.png"
-dest_files=["res://.godot/imported/being_frame_being_frame_detach_Color.png-67ebde356efa704595e6380a84b879a7.ctex"]
+source_file="res://assets/entities/chum_icons/chum20_256.png"
+dest_files=["res://.godot/imported/chum20_256.png-73d0b909c76127d0aaa2ba395fc93801.ctex"]
 
 [params]
 
@@ -26,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -40,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

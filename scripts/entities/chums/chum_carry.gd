@@ -21,6 +21,11 @@ func Enter() -> void:
 	
 	#target_sprite.visible = true
 	animation_player.play("appear")
+	
+	chum.global_position = player.global_position + Vector3(0, 1.5, 0)
+	chum.rotation.y = player.player_goal_horz
+	if chum.being_particles:
+		chum.being_particles.restart_particles()
 
 func Physics_Update(_delta: float) -> void:
 	chum.global_position = lerp(chum.global_position, player.global_position + Vector3(0, 1.5, 0), 0.8)

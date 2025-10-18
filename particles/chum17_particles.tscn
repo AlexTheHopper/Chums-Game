@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqt8xjtqjv5y8"]
+
+[ext_resource type="Script" uid="uid://dkxskfkb4jmjl" path="res://particles/chum_being_particles.gd" id="1_1mb2o"]
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_43wa8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cu1gk"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_tfk7b"]
+material = SubResource("StandardMaterial3D_cu1gk")
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Curve" id="Curve_mqdr3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.751256, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_tkero"]
+offsets = PackedFloat32Array(0, 0.36828, 1)
+colors = PackedColorArray(0.0862745, 0.0862745, 0, 1, 0.0862745, 0.0862745, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4lc5"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_bnkh7"]
+material = SubResource("StandardMaterial3D_u4lc5")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="Curve" id="Curve_vjwy7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.261307, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_yr0jc"]
+colors = PackedColorArray(4.58746e-08, 0.0825223, 0.00832629, 1, 0.0879843, 0.0858073, 3.60981e-08, 1)
+
+[node name="BeingParticles" type="Node3D"]
+script = ExtResource("1_1mb2o")
+
+[node name="SmallParticles" type="CPUParticles3D" parent="."]
+amount = 50
+lifetime = 5.0
+randomness = 0.5
+mesh = SubResource("BoxMesh_tfk7b")
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.2
+scale_amount_curve = SubResource("Curve_mqdr3")
+color_ramp = SubResource("Gradient_tkero")
+
+[node name="LargeParticles" type="CPUParticles3D" parent="."]
+material_overlay = ExtResource("1_43wa8")
+amount = 50
+randomness = 0.5
+mesh = SubResource("BoxMesh_bnkh7")
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.2
+scale_amount_curve = SubResource("Curve_vjwy7")
+color_ramp = SubResource("Gradient_yr0jc")

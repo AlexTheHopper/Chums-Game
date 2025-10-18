@@ -53,6 +53,9 @@ var max_move_speed: float
 var temp_sleep_time: float
 
 @onready var has_quality_popup := false
+@export var indicator_color := Color.from_rgba8(40, 40, 40, 255)
+@export var being_particles: Node3D
+
 
 @onready var target: Node
 @onready var next_target: Node
@@ -102,9 +105,9 @@ func _ready() -> void:
 		if not self.has_move_speed:
 			quality["move_speed"] = 0
 		if not self.has_health:
-			quality["move_speed"] = 0
-	set_stats_from_quality()
+			quality["health"] = 0
 	start_health = int(self.base_health * (1.0 + float(quality["health"]) / 10.0))
+	set_stats_from_quality()
 	health_node.set_health(start_health)
 
 	
