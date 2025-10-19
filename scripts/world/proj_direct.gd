@@ -15,6 +15,7 @@ var move_speed := 2.5
 func _ready() -> void:	
 	if position_:
 		global_position = position_
+	$MeshInstance3D.rotation = Vector3(randf(), randf(), randf())
 
 	if origin:
 		draws_agro_on_attack = origin.draws_agro_on_attack
@@ -33,6 +34,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	position += velocity * delta
+	$MeshInstance3D.rotation.y += delta * 5
 
 func set_vel_to_pos(start_pos, target_pos):
 	#Velocity:
@@ -47,6 +49,7 @@ func _on_body_entered(_body: Node3D) -> void:
 
 func disable_interaction():
 	$Hitbox/CollisionShape3D.disabled = true
+	$MeshInstance3D.visible = false
 
 func get_agro_change_target():
 	return origin

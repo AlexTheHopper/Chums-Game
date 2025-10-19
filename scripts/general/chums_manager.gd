@@ -16,7 +16,7 @@ func _ready() -> void:
 		3: {"object": preload("res://scenes/entities/chums/chum3.tscn"),
 			"destination_world": 1, "guard_world_n": false}, #Pear
 		4: {"object": preload("res://scenes/entities/chums/chum4.tscn"),
-			"destination_world": 1, "guard_world_n": false}, #Jabby
+			"destination_world": 2, "guard_world_n": false}, #Jabby
 		5: {"object": preload("res://scenes/entities/chums/chum5.tscn"),
 			"destination_world": 1, "guard_world_n": false}, #Slate
 		6: {"object": preload("res://scenes/entities/chums/chum6.tscn"),
@@ -28,7 +28,7 @@ func _ready() -> void:
 		9: {"object": preload("res://scenes/entities/chums/chum9.tscn"),
 			"destination_world": 2, "guard_world_n": false}, #Fan
 		10: {"object": preload("res://scenes/entities/chums/chum10.tscn"),
-			"destination_world": 2, "guard_world_n": false}, #Floaty
+			"destination_world": 4, "guard_world_n": false}, #Floaty
 		11: {"object": preload("res://scenes/entities/chums/chum11.tscn"),
 			"destination_world": 2, "guard_world_n": false}, #Melly
 		12: {"object": preload("res://scenes/entities/chums/chum12.tscn"),
@@ -80,9 +80,11 @@ func _ready() -> void:
 			11: 2.5,
 			13: 5.0,
 			16: 1.0,
+			21: 1.0
 		},
 		4: {
-			1: 0.1, #TODO ALL THESE
+			8: 2.0,
+			10: 0.1, #TODO ALL THESE
 		},
 	}
 	

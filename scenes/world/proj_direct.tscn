@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5qhnjhtuadmc"]
+[gd_scene load_steps=12 format=3 uid="uid://5qhnjhtuadmc"]
 
 [ext_resource type="Script" uid="uid://bhp5nqg321a4j" path="res://scripts/world/proj_direct.gd" id="1_5kxci"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_uo0u1"]
@@ -25,6 +25,15 @@ point_count = 3
 offsets = PackedFloat32Array(0.439166, 1)
 colors = PackedColorArray(0.231015, 7.43139e-05, 0.805916, 1, 0.33233, 0.582968, 1, 1)
 
+[sub_resource type="Gradient" id="Gradient_5kxci"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uafm8"]
+albedo_color = Color(0.0471014, 8.543208e-06, 0.24151981, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i514e"]
+material = SubResource("StandardMaterial3D_uafm8")
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="ProjDirect" type="Area3D"]
 collision_layer = 8
 collision_mask = 11
@@ -41,20 +50,25 @@ metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 shape = SubResource("SphereShape3D_0agd8")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0484589, 0, 0)
 amount = 50
+lifetime = 0.5
 mesh = SubResource("BoxMesh_uafm8")
 direction = Vector3(0, 0, 0)
+spread = 180.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 0.1
-initial_velocity_max = 0.2
+initial_velocity_min = 0.05
+initial_velocity_max = 0.1
 scale_amount_curve = SubResource("Curve_i514e")
 color_ramp = SubResource("Gradient_lhp1a")
+color_initial_ramp = SubResource("Gradient_5kxci")
 
 [node name="Grace" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
 autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_i514e")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]
