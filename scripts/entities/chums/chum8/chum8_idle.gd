@@ -75,7 +75,7 @@ func show_target_type():
 	chum.particle_zone.add_child(particle_instance)
 
 func _on_run_delay_timeout() -> void:
-	if not is_in_target_room() and chum.can_seek and Global.current_room_node.TYPE != "boss":
+	if not is_in_target_room() and chum.can_seek and Global.current_room_node.TYPE != "boss" and Global.current_room_node.TYPE != "being":
 		chum.anim_player.play("Walk")
 		set_target_location()
 		_on_nav_timer_idle_timeout() #Avoids delay before moving

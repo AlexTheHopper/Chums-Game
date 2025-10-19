@@ -513,6 +513,33 @@ tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = PackedFloat32Array(0, 1, -0.7071068, 4.3549836e-08, -2.1213725e-07, 0.7071068, 0.033333335, 1, -0.7071068, 4.3549836e-08, -2.1213725e-07, 0.7071068, 0.06666667, 1, -0.70636463, 4.361258e-08, -2.1189074e-07, 0.70784825, 0.1, 1, -0.7044256, 4.381147e-08, -2.1127926e-07, 0.70977783, 0.13333334, 1, -0.70108455, 4.4286345e-08, -2.1039577e-07, 0.71307814, 0.16666667, 1, -0.696386, 4.5243496e-08, -2.0954481e-07, 0.71766746, 0.2, 1, -0.6899753, 4.6196728e-08, -2.0775653e-07, 0.7238329, 0.23333333, 1, -0.68232644, 4.82111e-08, -2.0575034e-07, 0.7310477, 0.26666668, 1, -0.67346615, 4.9143416e-08, -2.0256543e-07, 0.7392181, 0.3, 1, -0.66342086, 4.942709e-08, -1.9938375e-07, 0.7482465, 0.33333334, 1, -0.65221745, 5.207201e-08, -1.9952981e-07, 0.75803196, 0.36666667, 1, -0.63960296, 5.073159e-08, -1.9458096e-07, 0.7687055, 0.4, 1, -0.6259587, 4.773982e-08, -1.8462907e-07, 0.77985626, 0.43333334, 1, -0.6113302, 4.8471748e-08, -1.78633e-07, 0.79137564, 0.46666667, 1, -0.5957696, 5.5200648e-08, -1.7940806e-07, 0.8031554, 0.5, 1, -0.5793362, 6.709663e-08, -1.8362441e-07, 0.8150887, 0.53333336, 1, -0.56197244, 5.106323e-08, -1.8777985e-07, 0.827156, 0.56666666, 1, -0.5439764, 5.5872313e-08, -1.5747882e-07, 0.83910054, 0.7, 1, -0.46773618, 7.1917285e-08, -1.2672236e-07, 0.88386816, 0.73333335, 1, -0.4483201, 6.4285125e-08, -1.2635637e-07, 0.8938732, 0.76666665, 1, -0.42904642, 6.692004e-08, -1.185701e-07, 0.9032825, 0.8, 1, -0.41004217, 7.656668e-08, -1.08672936e-07, 0.9120666, 0.8333333, 1, -0.39143527, 6.6870214e-08, -1.093677e-07, 0.92020565, 0.8666667, 1, -0.37364733, 6.44959e-08, -1.1433565e-07, 0.9275709, 0.9, 1, -0.3566079, 6.9849904e-08, -1.09262615e-07, 0.93425417, 0.93333334, 1, -0.34043443, 7.289293e-08, -9.641575e-08, 0.9402683, 0.96666664, 1, -0.3252412, 7.145467e-08, -8.43739e-08, 0.9456311, 1, 1, -0.31113902, 7.1234446e-08, -8.8023945e-08, 0.9503645, 1.0333333, 1, -0.29871064, 6.48433e-08, -8.532335e-08, 0.95434374, 1.0666667, 1, -0.28766477, 6.4354786e-08, -7.652445e-08, 0.9577311, 1.1, 1, -0.27809772, 6.665128e-08, -7.159022e-08, 0.9605528, 1.1333333, 1, -0.27010345, 6.882539e-08, -7.135363e-08, 0.9628313, 1.1666666, 1, -0.26377368, 6.818046e-08, -6.7517945e-08, 0.96458465, 1.2, 1, -0.25984344, 6.935445e-08, -6.7775986e-08, 0.9656508, 1.2333333, 1, -0.2578468, 6.9488074e-08, -6.750948e-08, 0.96618587, 1.25, 1, -0.25717103, 6.9381585e-08, -6.7288894e-08, 0.966366)
 
+[sub_resource type="Animation" id="Animation_46y4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_e202g"]
 resource_name = "Sleep"
 length = 3.75
@@ -913,33 +940,6 @@ tracks/18/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0.4, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_46y4q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/Hitbox/CollisionShape3D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Armature:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bs4x1"]
