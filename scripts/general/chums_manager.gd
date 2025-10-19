@@ -51,6 +51,8 @@ func _ready() -> void:
 			"destination_world": 4, "guard_world_n": false}, #Being
 		21: {"object": preload("res://scenes/entities/chums/chum21.tscn"),
 			"destination_world": 3, "guard_world_n": false}, #Charles
+		22: {"object": preload("res://scenes/entities/chums/chum22.tscn"),
+			"destination_world": 3, "guard_world_n": 3}, #Spot
 		23: {"object": preload("res://scenes/entities/chums/chum23.tscn"),
 			"destination_world": 4, "guard_world_n": 4}, #Globe
 	}
@@ -104,10 +106,10 @@ func _ready() -> void:
 		Vector2i(2, 3): {15: 1, 10: 2, 4: 2, 12: 2, 13: 2},
 		Vector2i(2, 4): {15: 1, 10: 2, 4: 2, 12: 2, 13: 2},
 
-		Vector2i(3, 1): {3: 5, 5: 3},
-		Vector2i(3, 2): {3: 5, 4: 3},
-		Vector2i(3, 3): {3: 5, 4: 3},
-		Vector2i(3, 4): {3: 5, 4: 3},
+		Vector2i(3, 1): {3: 5, 5: 3, 22: 1},
+		Vector2i(3, 2): {3: 5, 4: 3, 22: 1},
+		Vector2i(3, 3): {3: 5, 4: 3, 22: 1},
+		Vector2i(3, 4): {3: 5, 4: 3, 22: 1},
 		
 		Vector2i(4, 1): {3: 5, 5: 3, 23: 1},
 		Vector2i(4, 2): {3: 5, 4: 3, 23: 1},
