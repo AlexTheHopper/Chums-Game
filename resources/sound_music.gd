@@ -12,6 +12,8 @@ enum SOUND_MUSIC_TYPE {
 	WORLD_2_BATTLE,
 	WORLD_3_IDLE,
 	WORLD_3_BATTLE,
+	WORLD_4_IDLE,
+	WORLD_4_BATTLE,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundMusic to play simultaneously before culled.

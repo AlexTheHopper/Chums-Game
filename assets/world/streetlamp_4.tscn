@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://doffw5iielc2v"]
+
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_jh5k5"]
+[ext_resource type="ArrayMesh" uid="uid://cm4u1re5jwu0f" path="res://assets/world/world_4_other/streetlamp.vox" id="2_iof41"]
+
+[node name="Streetlamp4" type="Node3D"]
+
+[node name="Streetlamp" type="MeshInstance3D" parent="."]
+material_overlay = ExtResource("1_jh5k5")
+mesh = ExtResource("2_iof41")

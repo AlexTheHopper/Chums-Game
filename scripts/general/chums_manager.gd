@@ -16,7 +16,7 @@ func _ready() -> void:
 		3: {"object": preload("res://scenes/entities/chums/chum3.tscn"),
 			"destination_world": 1, "guard_world_n": false}, #Pear
 		4: {"object": preload("res://scenes/entities/chums/chum4.tscn"),
-			"destination_world": 2, "guard_world_n": false}, #Jabby
+			"destination_world": 4, "guard_world_n": false}, #Jabby
 		5: {"object": preload("res://scenes/entities/chums/chum5.tscn"),
 			"destination_world": 1, "guard_world_n": false}, #Slate
 		6: {"object": preload("res://scenes/entities/chums/chum6.tscn"),
@@ -79,6 +79,9 @@ func _ready() -> void:
 			13: 5.0,
 			16: 1.0,
 		},
+		4: {
+			1: 0.1, #TODO ALL THESE
+		},
 	}
 	
 	#The vector2i defines which room, the keys of that dict are chum ids and the values are the count.
@@ -88,14 +91,22 @@ func _ready() -> void:
 		Vector2i(1, 1): {14: 1, 3: 4, 4: 4},
 		Vector2i(1, 2): {14: 1, 3: 4, 4: 4},
 		Vector2i(1, 3): {14: 1, 3: 4, 4: 4},
+		Vector2i(1, 4): {14: 1, 3: 4, 4: 4},
 
 		Vector2i(2, 1): {15: 1, 10: 3, 5: 3},
 		Vector2i(2, 2): {15: 1, 10: 2, 4: 2, 12: 2},
 		Vector2i(2, 3): {15: 1, 10: 2, 4: 2, 12: 2, 13: 2},
+		Vector2i(2, 4): {15: 1, 10: 2, 4: 2, 12: 2, 13: 2},
 
 		Vector2i(3, 1): {3: 5, 5: 3},
 		Vector2i(3, 2): {3: 5, 4: 3},
 		Vector2i(3, 3): {3: 5, 4: 3},
+		Vector2i(3, 4): {3: 5, 4: 3},
+		
+		Vector2i(4, 1): {3: 5, 5: 3},
+		Vector2i(4, 2): {3: 5, 4: 3},
+		Vector2i(4, 3): {3: 5, 4: 3},
+		Vector2i(4, 4): {3: 5, 4: 3},
 	}
 
 	if Global.dev_mode:

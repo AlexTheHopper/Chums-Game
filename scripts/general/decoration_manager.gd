@@ -51,6 +51,12 @@ func _ready() -> void:
 			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5"],
 			"rare": ["column1"],
 			},
+		
+		4: {"multiplier": 0.5,
+			"common": ["rubble1"],
+			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5"],
+			"rare": ["column1"],
+			},
 	}
 	
 	lore_texts = {
