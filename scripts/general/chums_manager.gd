@@ -50,7 +50,9 @@ func _ready() -> void:
 		20: {"object": preload("res://scenes/entities/chums/chum20.tscn"),
 			"destination_world": 4, "guard_world_n": false}, #Being
 		21: {"object": preload("res://scenes/entities/chums/chum21.tscn"),
-			"destination_world": 3, "guard_world_n": false}, #Being
+			"destination_world": 3, "guard_world_n": false}, #Charles
+		23: {"object": preload("res://scenes/entities/chums/chum23.tscn"),
+			"destination_world": 4, "guard_world_n": 4}, #Globe
 	}
 
 	chums_values = {
@@ -107,10 +109,10 @@ func _ready() -> void:
 		Vector2i(3, 3): {3: 5, 4: 3},
 		Vector2i(3, 4): {3: 5, 4: 3},
 		
-		Vector2i(4, 1): {3: 5, 5: 3},
-		Vector2i(4, 2): {3: 5, 4: 3},
-		Vector2i(4, 3): {3: 5, 4: 3},
-		Vector2i(4, 4): {3: 5, 4: 3},
+		Vector2i(4, 1): {3: 5, 5: 3, 23: 1},
+		Vector2i(4, 2): {3: 5, 4: 3, 23: 1},
+		Vector2i(4, 3): {3: 5, 4: 3, 23: 1},
+		Vector2i(4, 4): {3: 5, 4: 3, 23: 1},
 	}
 
 func get_world_random_chum(room_value: float, world_n: int):
