@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="3_c4pdf"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_5fp3g"]
 [ext_resource type="PackedScene" uid="uid://ce86dk61xylkx" path="res://scenes/entities/room_activator.tscn" id="5_tux0a"]
-[ext_resource type="PackedScene" uid="uid://cywa3wbei5dlc" path="res://particles/fireflies_world3.tscn" id="6_k61ye"]
+[ext_resource type="PackedScene" uid="uid://76o2xw5bqotd" path="res://particles/fireflies_world4.tscn" id="6_onkki"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="7_nxla6"]
 [ext_resource type="PackedScene" uid="uid://cq08vipfekj02" path="res://scenes/world/fall_stopper.tscn" id="8_an7on"]
 
@@ -88,13 +88,13 @@ one_shot = true
 
 [node name="Decorations" type="Node3D" parent="."]
 
+[node name="Particles" parent="Decorations" instance=ExtResource("6_onkki")]
+
 [node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
 omni_range = 50.0
 omni_attenuation = 0.1
 omni_shadow_mode = 0
-
-[node name="Particles" parent="Decorations" instance=ExtResource("6_k61ye")]
 
 [node name="EntryIndicators" type="Node3D" parent="."]
 

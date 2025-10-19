@@ -4,7 +4,7 @@
 [ext_resource type="MeshLibrary" uid="uid://cwy8hn4kix4q7" path="res://assets/world/world_4_mesh_liv_v3.tres" id="2_1crrd"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="3_ioe4l"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_kdwi3"]
-[ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="5_ojr7o"]
+[ext_resource type="PackedScene" uid="uid://76o2xw5bqotd" path="res://particles/fireflies_world4.tscn" id="5_1crrd"]
 [ext_resource type="PackedScene" uid="uid://b2qphphq5anyl" path="res://scenes/world/void_pool.tscn" id="6_05bkj"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="7_7u2wu"]
 
@@ -73,8 +73,7 @@ omni_range = 40.0
 omni_attenuation = 0.75
 omni_shadow_mode = 0
 
-[node name="Particles" parent="Decorations" instance=ExtResource("5_ojr7o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 1)
+[node name="Particles" parent="Decorations" instance=ExtResource("5_1crrd")]
 
 [node name="Void" parent="." instance=ExtResource("6_05bkj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)

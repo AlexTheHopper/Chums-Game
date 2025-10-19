@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_fs8gn"]
 [ext_resource type="PackedScene" uid="uid://ce86dk61xylkx" path="res://scenes/entities/room_activator.tscn" id="5_etgcd"]
 [ext_resource type="PackedScene" uid="uid://cdsetgtd0thee" path="res://scenes/world/streetlamp.tscn" id="6_jh3n1"]
-[ext_resource type="PackedScene" uid="uid://cywa3wbei5dlc" path="res://particles/fireflies_world3.tscn" id="7_jevh8"]
+[ext_resource type="PackedScene" uid="uid://76o2xw5bqotd" path="res://particles/fireflies_world4.tscn" id="7_fcqan"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="8_x3dm7"]
 [ext_resource type="PackedScene" uid="uid://cq08vipfekj02" path="res://scenes/world/fall_stopper.tscn" id="9_bdbb2"]
 
@@ -62,7 +62,7 @@ omni_shadow_mode = 0
 [node name="Streetlamp" parent="Decorations" instance=ExtResource("6_jh3n1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -10)
 
-[node name="Particles" parent="Decorations" instance=ExtResource("7_jevh8")]
+[node name="Particles" parent="Decorations" instance=ExtResource("7_fcqan")]
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)

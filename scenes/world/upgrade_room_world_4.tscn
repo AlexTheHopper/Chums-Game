@@ -4,7 +4,7 @@
 [ext_resource type="MeshLibrary" uid="uid://cwy8hn4kix4q7" path="res://assets/world/world_4_mesh_liv_v3.tres" id="2_o5fug"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="3_30mci"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_ynrq6"]
-[ext_resource type="PackedScene" uid="uid://cywa3wbei5dlc" path="res://particles/fireflies_world3.tscn" id="5_o7mv3"]
+[ext_resource type="PackedScene" uid="uid://76o2xw5bqotd" path="res://particles/fireflies_world4.tscn" id="5_o5fug"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="6_mdg5n"]
 [ext_resource type="PackedScene" uid="uid://brfh2yxq041x" path="res://scenes/world/upgrade_pool.tscn" id="7_ey0pr"]
 
@@ -72,7 +72,7 @@ omni_range = 40.0
 omni_attenuation = 0.2
 omni_shadow_mode = 0
 
-[node name="Particles" parent="Decorations" instance=ExtResource("5_o7mv3")]
+[node name="Particles" parent="Decorations" instance=ExtResource("5_o5fug")]
 
 [node name="EntryIndicators" type="Node3D" parent="."]
 
