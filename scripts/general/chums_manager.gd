@@ -16,7 +16,7 @@ func _ready() -> void:
 		3: {"object": preload("res://scenes/entities/chums/chum3.tscn"),
 			"destination_world": 1, "guard_world_n": false}, #Pear
 		4: {"object": preload("res://scenes/entities/chums/chum4.tscn"),
-			"destination_world": 4, "guard_world_n": false}, #Jabby
+			"destination_world": 1, "guard_world_n": false}, #Jabby
 		5: {"object": preload("res://scenes/entities/chums/chum5.tscn"),
 			"destination_world": 1, "guard_world_n": false}, #Slate
 		6: {"object": preload("res://scenes/entities/chums/chum6.tscn"),
@@ -49,6 +49,8 @@ func _ready() -> void:
 			"destination_world": 3, "guard_world_n": false}, #Being
 		20: {"object": preload("res://scenes/entities/chums/chum20.tscn"),
 			"destination_world": 4, "guard_world_n": false}, #Being
+		21: {"object": preload("res://scenes/entities/chums/chum21.tscn"),
+			"destination_world": 3, "guard_world_n": false}, #Being
 	}
 
 	chums_values = {
@@ -108,11 +110,6 @@ func _ready() -> void:
 		Vector2i(4, 3): {3: 5, 4: 3},
 		Vector2i(4, 4): {3: 5, 4: 3},
 	}
-
-	if Global.dev_mode:
-		for world_n in chums_values:
-			for chum_id in chums_values[world_n]:
-				chums_values[world_n][chum_id] = 0.01
 
 func get_world_random_chum(room_value: float, world_n: int):
 	#A rooms value is its distance from the lobby. Room (0, 1) has a value of 1.
