@@ -8,8 +8,8 @@ var desc := "Just a cute doggo."
 
 var min_attack_speed := 3.2
 
-var base_attack_speed := 5.0
-var base_attack_damage := 35
+var base_attack_speed := 4.5
+var base_attack_damage := 50
 var base_move_speed := 3.0
 var base_health := 150
 #Control of qualities

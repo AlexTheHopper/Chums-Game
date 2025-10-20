@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckhjmq08ksffk"]
+
+[ext_resource type="ArrayMesh" uid="uid://bb3l4rx4eu5t1" path="res://scenes/world/decorations/lore_base_neutral.vox" id="1_3bjor"]
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_gu3gt"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vuf6d"]
+points = PackedVector3Array(-3, 0, -3, -3, 0, 3, -3, 0.099921696, -3, 3, 0, -3, -3, 0.099921696, 3, 3, 0, 3, -2.8003132, 0.29998043, -2.8003132, 3, 0.099921696, -3, -2.0003915, 1.1, 1.999804, -2.300509, 0.7999119, 2.2999215, -2.70047, 0.39990214, 2.6998825, -2.8003132, 0.29998043, 2.799726, 3, 0.099921696, 3, -2.70047, 0.39990214, -2.70047, 2.799726, 0.29998043, -2.8003132, 2.6998825, 0.39990214, -2.70047, 2.2999215, 0.7999119, -2.300509, 1.999804, 1.1, -2.0003915, -2.0003915, 1.1, -2.0003915, 1.999804, 1.1, 1.999804, -2.300509, 0.7999119, -2.300509)
+
+[node name="Base" type="StaticBody3D"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_vuf6d")
+
+[node name="LoreBaseNeutral" type="MeshInstance3D" parent="."]
+material_overlay = ExtResource("1_gu3gt")
+mesh = ExtResource("1_3bjor")

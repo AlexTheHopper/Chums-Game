@@ -1,13 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cye4mq80jv22n"]
+[gd_scene load_steps=8 format=3 uid="uid://cye4mq80jv22n"]
 
 [ext_resource type="Script" uid="uid://cptocnh6wklx4" path="res://scripts/world/lobby.gd" id="1_mj63l"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="2_ej3mg"]
 [ext_resource type="MeshLibrary" uid="uid://butb4o7o4gehr" path="res://assets/world/world_1_mesh_lib_v5.tres" id="3_5vans"]
-[ext_resource type="PackedScene" uid="uid://dsr4pp61d2hjb" path="res://scenes/world/decorations/tree_1.tscn" id="4_08n1u"]
-[ext_resource type="PackedScene" uid="uid://bwd1nmtnhqpjf" path="res://scenes/world/decorations/grass_3.tscn" id="5_5i0q2"]
-[ext_resource type="PackedScene" uid="uid://dkx7amga74n6l" path="res://scenes/world/decorations/grass_5.tscn" id="6_ykt5u"]
-[ext_resource type="PackedScene" uid="uid://c8gvfnlca5kdw" path="res://scenes/world/decorations/grass_2.tscn" id="7_6yr5y"]
-[ext_resource type="PackedScene" uid="uid://dc4mgqwg7lyna" path="res://scenes/world/decorations/grass_4.tscn" id="8_il4fu"]
+[ext_resource type="PackedScene" uid="uid://df2vpfo6a1ew6" path="res://scenes/world/prisoner_statues.tscn" id="5_h0uwc"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="9_5vans"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4mvd4"]
@@ -65,66 +61,6 @@ metadata/_editor_floor_ = Vector3(11, 0, -15)
 
 [node name="Decorations" type="Node3D" parent="."]
 
-[node name="Tree1" parent="Decorations" instance=ExtResource("4_08n1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -12)
-
-[node name="Tree2" parent="Decorations" instance=ExtResource("4_08n1u")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0, 12)
-
-[node name="Tree3" parent="Decorations" instance=ExtResource("4_08n1u")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10, 0, 13)
-
-[node name="Tree4" parent="Decorations" instance=ExtResource("4_08n1u")]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -9, 0, -11)
-
-[node name="Grass6" parent="Decorations" instance=ExtResource("5_5i0q2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 0, 14)
-
-[node name="Grass7" parent="Decorations" instance=ExtResource("5_5i0q2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 11)
-
-[node name="Grass8" parent="Decorations" instance=ExtResource("5_5i0q2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 14)
-
-[node name="Grass9" parent="Decorations" instance=ExtResource("5_5i0q2")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9, 0, 10)
-
-[node name="Grass10" parent="Decorations" instance=ExtResource("6_ykt5u")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 14)
-
-[node name="Grass11" parent="Decorations" instance=ExtResource("6_ykt5u")]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -8, 0, 12)
-
-[node name="Grass12" parent="Decorations" instance=ExtResource("6_ykt5u")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 0, 13)
-
-[node name="Grass13" parent="Decorations" instance=ExtResource("6_ykt5u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 11)
-
-[node name="Grass14" parent="Decorations" instance=ExtResource("7_6yr5y")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0, -9)
-
-[node name="Grass15" parent="Decorations" instance=ExtResource("7_6yr5y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
-
-[node name="Grass16" parent="Decorations" instance=ExtResource("7_6yr5y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -13)
-
-[node name="Grass17" parent="Decorations" instance=ExtResource("7_6yr5y")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 0, -11)
-
-[node name="Grass18" parent="Decorations" instance=ExtResource("8_il4fu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -13)
-
-[node name="Grass19" parent="Decorations" instance=ExtResource("8_il4fu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0, -11)
-
-[node name="Grass20" parent="Decorations" instance=ExtResource("8_il4fu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -12)
-
-[node name="Grass21" parent="Decorations" instance=ExtResource("8_il4fu")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13, 0, -9)
-
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="PunchingBag" parent="Entities" instance=ExtResource("9_5vans")]
@@ -156,3 +92,6 @@ environment = SubResource("Environment_5vans")
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+
+[node name="PrisonerStatues" parent="." instance=ExtResource("5_h0uwc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)

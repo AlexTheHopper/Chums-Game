@@ -4,7 +4,7 @@
 [ext_resource type="MeshLibrary" uid="uid://bchy01diiy23l" path="res://assets/world/world_2_mesh_lib_v3.tres" id="2_88xpp"]
 [ext_resource type="PackedScene" uid="uid://hhmbawbvav0e" path="res://scenes/world/room_changer_from_boss.tscn" id="3_hcxvf"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_3bssj"]
-[ext_resource type="PackedScene" uid="uid://ce86dk61xylkx" path="res://scenes/entities/room_activator.tscn" id="5_sqdf5"]
+[ext_resource type="PackedScene" uid="uid://ckhjmq08ksffk" path="res://assets/world/lore_drop_neutral.tscn" id="4_qwnpb"]
 [ext_resource type="PackedScene" uid="uid://cdsetgtd0thee" path="res://scenes/world/streetlamp.tscn" id="6_627fy"]
 [ext_resource type="PackedScene" uid="uid://cy1t5fvebown2" path="res://particles/fireflies_world2.tscn" id="7_jyw76"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="8_aw0qg"]
@@ -45,13 +45,13 @@ metadata/_editor_floor_ = Vector3(15, 0, -15)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -23)
 destination_world_n = 2
 
+[node name="Base" parent="RoomChangers" instance=ExtResource("4_qwnpb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
 [node name="Doors" type="Node3D" parent="."]
 
 [node name="z_neg" parent="Doors" instance=ExtResource("4_3bssj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -17)
-
-[node name="RoomActivator" parent="." instance=ExtResource("5_sqdf5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="Currencies" type="Node3D" parent="."]
 
@@ -59,6 +59,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="Streetlamp" parent="Decorations" instance=ExtResource("6_627fy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -10)
+
+[node name="Streetlamp2" parent="Decorations" instance=ExtResource("6_627fy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 1)
+
+[node name="Streetlamp3" parent="Decorations" instance=ExtResource("6_627fy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 1)
 
 [node name="Particles" parent="Decorations" instance=ExtResource("7_jyw76")]
 

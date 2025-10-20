@@ -4,10 +4,10 @@
 [ext_resource type="MeshLibrary" uid="uid://butb4o7o4gehr" path="res://assets/world/world_1_mesh_lib_v5.tres" id="2_7wk3d"]
 [ext_resource type="PackedScene" uid="uid://hhmbawbvav0e" path="res://scenes/world/room_changer_from_boss.tscn" id="3_xl5cy"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_i66hj"]
-[ext_resource type="PackedScene" uid="uid://ce86dk61xylkx" path="res://scenes/entities/room_activator.tscn" id="5_khm64"]
 [ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="6_gjxpg"]
 [ext_resource type="PackedScene" uid="uid://cdsetgtd0thee" path="res://scenes/world/streetlamp.tscn" id="7_2073u"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="8_yvmva"]
+[ext_resource type="PackedScene" uid="uid://ckhjmq08ksffk" path="res://assets/world/lore_drop_neutral.tscn" id="9_02tlp"]
 [ext_resource type="PackedScene" uid="uid://cq08vipfekj02" path="res://scenes/world/fall_stopper.tscn" id="9_kcxfg"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ovef2"]
@@ -47,9 +47,6 @@ destination_world_n = 1
 [node name="z_neg" parent="Doors" instance=ExtResource("4_i66hj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -17)
 
-[node name="RoomActivator" parent="." instance=ExtResource("5_khm64")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
-
 [node name="Currencies" type="Node3D" parent="."]
 
 [node name="Decorations" type="Node3D" parent="."]
@@ -66,6 +63,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 1)
 [node name="Streetlamp" parent="Decorations" instance=ExtResource("7_2073u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -10)
 
+[node name="Streetlamp2" parent="Decorations" instance=ExtResource("7_2073u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 1)
+
+[node name="Streetlamp3" parent="Decorations" instance=ExtResource("7_2073u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 1)
+
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
 
@@ -80,3 +83,6 @@ is_permanent = true
 
 [node name="FallStopper" parent="." instance=ExtResource("9_kcxfg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
+[node name="Base" parent="." instance=ExtResource("9_02tlp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)

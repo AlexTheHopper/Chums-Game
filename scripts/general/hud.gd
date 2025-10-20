@@ -91,7 +91,8 @@ func indicate_bracelets() -> void:
 	IG_anim_player.play("insufficient_bracelets")
 func indicate_chum_count() -> void:
 	IG_anim_player.play("too_many_chums")
-	chum_indicators.get_children()[0].animation_player.play("full")
+	for child in chum_indicators.get_children():
+		child.animation_player.play("full")
 func indicate_saved() -> void:
 	#S_anim_player.play("display")
 	pass

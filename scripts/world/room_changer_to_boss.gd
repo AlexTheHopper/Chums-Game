@@ -18,7 +18,6 @@ func _ready() -> void:
 		chum_id = Global.world_map[Global.room_location]["statue_id"]
 		destination_world_n = ChumsManager.chums_list[chum_id]["destination_world"]
 		to_being_n = ChumsManager.chums_list[chum_id]["guard_world_n"]
-		print('setting statue to_being_n to %s' % to_being_n)
 
 func _on_body_entered(body: Node3D) -> void:
 	if active and body is Player:
