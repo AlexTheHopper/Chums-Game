@@ -1,7 +1,10 @@
 extends Node3D
 
+signal prisoners_changed
+
 @onready var prisoner_statue: MeshInstance3D = $PrisonerStatue
 var close_chums := []
+var current_chum: int = 0
 const default_overlay: Resource = preload("uid://2bkpq6hg3vot")
 const overlays: Dictionary[int, Resource] = {17: preload("uid://c73d6kn6loqe7"),
 											18: preload("uid://dnbueftif4745"),
@@ -12,7 +15,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Chum:
 		if body.chum_id in overlays.keys():
 			close_chums.append(body.chum_id)
+			current_chum = body.chum_id
 			prisoner_statue.set_material_overlay(overlays[body.chum_id])
+			prisoners_changed.emit()
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
@@ -20,6 +25,9 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 		if body.chum_id in overlays.keys():
 			close_chums.erase(body.chum_id)
 			if len(close_chums) == 0:
+				current_chum = 0
 				prisoner_statue.set_material_overlay(default_overlay)
 			else:
-				prisoner_statue.set_material_overlay(overlays[close_chums[-1]])
+				current_chum = close_chums[-1]
+				prisoner_statue.set_material_overlay(overlays[current_chum])
+			prisoners_changed.emit()
