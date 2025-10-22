@@ -1,8 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3wrbhoaeypkv"]
+[gd_scene load_steps=5 format=3 uid="uid://d3wrbhoaeypkv"]
 
+[ext_resource type="Script" uid="uid://ccsimpi3va2ld" path="res://scripts/entities/destructable_decoration.gd" id="1_3xa88"]
 [ext_resource type="ArrayMesh" uid="uid://ohqgi3c7vtts" path="res://assets/world/world_1_other/grass1.vox" id="1_w4wpn"]
 
-[node name="Grass1" type="Node3D"]
+[sub_resource type="Gradient" id="Gradient_3xa88"]
+offsets = PackedFloat32Array(0, 0.5072464, 1)
+colors = PackedColorArray(0.058815062, 0.2734132, 0, 1, 2.1658839e-06, 0.6705109, 0.2795166, 1, 1, 1, 1, 0.5803922)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oaedn"]
+
+[node name="Grass1" type="Node3D" node_paths=PackedStringArray("hit_zone", "mesh")]
+script = ExtResource("1_3xa88")
+hit_zone = NodePath("Area3D")
+mesh = NodePath("Grass1")
+gradient = SubResource("Gradient_3xa88")
 
 [node name="Grass1" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_w4wpn")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_oaedn")

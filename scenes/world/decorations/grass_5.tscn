@@ -1,8 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkx7amga74n6l"]
+[gd_scene load_steps=5 format=3 uid="uid://dkx7amga74n6l"]
 
 [ext_resource type="ArrayMesh" uid="uid://bp7k1lemlosry" path="res://assets/world/world_1_other/grass5.vox" id="1_cy5kl"]
+[ext_resource type="Script" uid="uid://ccsimpi3va2ld" path="res://scripts/entities/destructable_decoration.gd" id="1_kimgl"]
 
-[node name="Grass5" type="Node3D"]
+[sub_resource type="Gradient" id="Gradient_kimgl"]
+offsets = PackedFloat32Array(0, 0.5072464, 1)
+colors = PackedColorArray(0.058815062, 0.2734132, 0, 1, 2.1658839e-06, 0.6705109, 0.2795166, 1, 1, 1, 1, 0.5803922)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ao0kb"]
+
+[node name="Grass5" type="Node3D" node_paths=PackedStringArray("hit_zone", "mesh")]
+script = ExtResource("1_kimgl")
+hit_zone = NodePath("Area3D")
+mesh = NodePath("Grass5")
+gradient = SubResource("Gradient_kimgl")
 
 [node name="Grass5" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_cy5kl")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ao0kb")

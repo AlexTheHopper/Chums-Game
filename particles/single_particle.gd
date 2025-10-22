@@ -1,13 +1,16 @@
 extends Node3D
-
+@onready var cpu_particles_3d: CPUParticles3D = $CPUParticles3D
+@export var gradient: Gradient
 signal completed
 
 func _ready() -> void:
-	$CPUParticles3D.mesh = $CPUParticles3D.mesh.duplicate()
-	$CPUParticles3D.emitting = true
+	cpu_particles_3d.mesh = cpu_particles_3d.mesh.duplicate()
+	if gradient:
+		cpu_particles_3d.color_ramp = gradient
+	cpu_particles_3d.emitting = true
 
 func stop_emitting() -> void:
-	$CPUParticles3D.emitting = false
+	cpu_particles_3d.emitting = false
 
 func _on_cpu_particles_3d_finished() -> void:
 	completed.emit()

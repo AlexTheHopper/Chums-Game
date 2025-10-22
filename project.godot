@@ -32,6 +32,7 @@ ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [editor]
 

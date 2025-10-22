@@ -1,0 +1,24 @@
+extends Node3D
+
+@export var hit_zone: Area3D
+@export var mesh: MeshInstance3D
+@export var gradient: Gradient
+
+const DECORATION_DESTROYED = preload("res://particles/decoration_destroyed.tscn")
+
+func _ready() -> void:
+	hit_zone.area_entered.connect(_on_area_entered)
+
+func _on_area_entered(area) -> void:
+	if area is Hitbox:
+		var angle = Functions.angle_to_xz(area, self)
+		var particles = DECORATION_DESTROYED.instantiate()
+		if gradient:
+			particles.gradient = gradient
+		add_child(particles)
+		particles.rotation.y = angle
+		get_tree().create_tween().tween_property(mesh, "scale", Vector3(0.0, 0.0, 0.0), 0.1)
+		particles.completed.connect(_on_particles_completed)
+
+func _on_particles_completed() -> void:
+	queue_free()
