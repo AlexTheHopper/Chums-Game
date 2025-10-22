@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnygmlvl7vivy"]
+[gd_scene load_steps=7 format=3 uid="uid://cnygmlvl7vivy"]
 
 [ext_resource type="Script" uid="uid://cptocnh6wklx4" path="res://scripts/world/lobby.gd" id="1_35b8p"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="2_n8qxc"]
 [ext_resource type="MeshLibrary" uid="uid://df2pgexonlgah" path="res://assets/world/world_3_mesh_lib_v2.tres" id="3_35b8p"]
-[ext_resource type="PackedScene" uid="uid://b3pl257olydkx" path="res://scenes/entities/chum_increaser.tscn" id="4_6n0o7"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="5_teftj"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4mvd4"]
@@ -61,9 +60,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
 omni_range = 40.0
 omni_attenuation = 0.2
 omni_shadow_mode = 0
-
-[node name="ChumIncreaser" parent="Decorations" instance=ExtResource("4_6n0o7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.75, -10)
 
 [node name="Entities" type="Node3D" parent="."]
 

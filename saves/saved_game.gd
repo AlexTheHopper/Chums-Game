@@ -13,6 +13,7 @@ extends Resource
 @export var player_max_chums:int
 @export var player_damage: int
 @export var player_extra_damage: int
+@export var player_collected_lanterns: Dictionary
 
 #Friend Chums
 @export var friendly_chums:Array[Dictionary]

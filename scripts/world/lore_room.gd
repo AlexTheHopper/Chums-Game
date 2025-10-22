@@ -4,6 +4,15 @@ class_name lore_room
 const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
 const TYPE := "lore"
 
+func _ready() -> void:
+	super()
+	
+	#If the player has collected the lantern, show lore. Otherwise only give the lantern.
+	if PlayerStats.collected_lanterns[0]:
+		$Decorations/ChumIncreaser.queue_free()
+	else:
+		$Decorations/LoreDrop.queue_free()
+
 func decorate():
 	super()
 	#Streetlamp generally points to fastest way to lobby.

@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://civ4vg55s21np"]
+[gd_scene load_steps=13 format=3 uid="uid://civ4vg55s21np"]
 
 [ext_resource type="Script" uid="uid://bxr17kpdco3sq" path="res://scripts/world/lore_room.gd" id="1_i136b"]
 [ext_resource type="MeshLibrary" uid="uid://bchy01diiy23l" path="res://assets/world/world_2_mesh_lib_v3.tres" id="2_gu3k2"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="3_28ama"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_80dvu"]
 [ext_resource type="PackedScene" uid="uid://cy1t5fvebown2" path="res://particles/fireflies_world2.tscn" id="5_bnwyn"]
+[ext_resource type="PackedScene" uid="uid://b3pl257olydkx" path="res://scenes/entities/chum_increaser.tscn" id="6_gu3k2"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="7_bd7vv"]
+[ext_resource type="PackedScene" uid="uid://ckhjmq08ksffk" path="res://assets/world/lore_drop_neutral.tscn" id="8_28ama"]
 [ext_resource type="PackedScene" uid="uid://c115b3o53shsm" path="res://scenes/entities/lore_drop.tscn" id="8_egnoy"]
 [ext_resource type="PackedScene" uid="uid://cq08vipfekj02" path="res://scenes/world/fall_stopper.tscn" id="8_g0dp6"]
 
@@ -73,6 +75,17 @@ transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 19, 0, 1
 
 [node name="Particles" parent="Decorations" instance=ExtResource("5_bnwyn")]
 
+[node name="LoreDrop" parent="Decorations" instance=ExtResource("8_egnoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="ChumIncreaser" type="Node3D" parent="Decorations"]
+
+[node name="ChumIncreaser" parent="Decorations/ChumIncreaser" instance=ExtResource("6_gu3k2")]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 1, 1.85, 1)
+
+[node name="Base" parent="Decorations/ChumIncreaser" instance=ExtResource("8_28ama")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
 [node name="EntryIndicators" type="Node3D" parent="."]
 
 [node name="x_neg" parent="EntryIndicators" instance=ExtResource("7_bd7vv")]
@@ -92,9 +105,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
 
 [node name="FallStopper" parent="." instance=ExtResource("8_g0dp6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
-
-[node name="LoreDrop" parent="." instance=ExtResource("8_egnoy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)

@@ -55,14 +55,14 @@ func _ready():
 		1: {'map_size': 3,
 			"room_size": 40.0,
 			"max_chums": 5,
-			"statue_required": [4, 13, 14], 					   #To world 2, 3
+			"statue_required": [4, 6, 13, 14, 10], 					   #To all worlds.
 			"statue_optional": [1, 2, 3, 5, 6, 7, 8], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
 							3: 2, #Fountain
-							4: 2, #Void
-							5: 4, #Statue - AT LEAST length of statue_required
-							6: 1, #Upgrade
+							4: 1, #Void
+							5: 5, #Statue - AT LEAST length of statue_required
+							6: 0, #Upgrade
 							7: 1, #Lore
 							}, 
 			},
@@ -70,7 +70,7 @@ func _ready():
 		2: {'map_size': 4,
 			"room_size": 40.0,
 			"max_chums": 8,
-			"statue_required": [3, 4, 5, 8, 15],  #To worlds 1, 2
+			"statue_required": [4, 8, 15, 21],  #To worlds 1, 2, 3
 			"statue_optional": [5, 4, 8, 8], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
@@ -85,7 +85,7 @@ func _ready():
 		3: {'map_size': 5,
 			"room_size": 40.0,
 			"max_chums": 10,
-			"statue_required": [4, 6, 8, 10, 13, 22],  #To worlds 1, 2, 3, 4 #TODO world 3 boss statue room
+			"statue_required": [8, 8, 13, 13, 22],  #To worlds 1, 3, 4 #TODO ADD chum that is only found in world 4.
 			"statue_optional": [6, 11, 13], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
@@ -100,7 +100,7 @@ func _ready():
 		4: {'map_size': 6,
 			"room_size": 40.0,
 			"max_chums": 12,
-			"statue_required": [4, 6, 8, 10, 13, 23],  #To worlds 1, 2, 3, 4
+			"statue_required": [6, 8, 10, 23],  #To worlds 1, 4
 			"statue_optional": [6, 11, 13], #To worlds 1, 2
 			"room_counts": {	1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0

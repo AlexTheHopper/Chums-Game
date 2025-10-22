@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bq4h35550me5j"]
+[gd_scene load_steps=13 format=3 uid="uid://bq4h35550me5j"]
 
 [ext_resource type="Script" uid="uid://bxr17kpdco3sq" path="res://scripts/world/lore_room.gd" id="1_u37l3"]
 [ext_resource type="MeshLibrary" uid="uid://cwy8hn4kix4q7" path="res://assets/world/world_4_mesh_liv_v3.tres" id="2_u37l3"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_2j5ab"]
 [ext_resource type="PackedScene" uid="uid://cywa3wbei5dlc" path="res://particles/fireflies_world3.tscn" id="5_pc6wa"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="6_n7lg0"]
+[ext_resource type="PackedScene" uid="uid://b3pl257olydkx" path="res://scenes/entities/chum_increaser.tscn" id="6_wj36n"]
 [ext_resource type="PackedScene" uid="uid://cq08vipfekj02" path="res://scenes/world/fall_stopper.tscn" id="7_h2nvh"]
+[ext_resource type="PackedScene" uid="uid://ckhjmq08ksffk" path="res://assets/world/lore_drop_neutral.tscn" id="8_p3nh2"]
 [ext_resource type="PackedScene" uid="uid://c115b3o53shsm" path="res://scenes/entities/lore_drop.tscn" id="8_xxgm6"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cl25v"]
@@ -76,6 +78,17 @@ omni_shadow_mode = 0
 
 [node name="Particles" parent="Decorations" instance=ExtResource("5_pc6wa")]
 
+[node name="LoreDrop" parent="Decorations" instance=ExtResource("8_xxgm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="ChumIncreaser" type="Node3D" parent="Decorations"]
+
+[node name="ChumIncreaser" parent="Decorations/ChumIncreaser" instance=ExtResource("6_wj36n")]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 1, 1.85, 1)
+
+[node name="Base" parent="Decorations/ChumIncreaser" instance=ExtResource("8_p3nh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
 [node name="EntryIndicators" type="Node3D" parent="."]
 
 [node name="x_neg" parent="EntryIndicators" instance=ExtResource("6_n7lg0")]
@@ -95,9 +108,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
 
 [node name="FallStopper" parent="." instance=ExtResource("7_h2nvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
-
-[node name="LoreDrop" parent="." instance=ExtResource("8_xxgm6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_u37l3")

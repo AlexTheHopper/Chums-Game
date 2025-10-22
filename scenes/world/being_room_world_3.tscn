@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbtwo3hodg3t8"]
+[gd_scene load_steps=13 format=3 uid="uid://bbtwo3hodg3t8"]
 
 [ext_resource type="Script" uid="uid://bayhmdondua1g" path="res://scripts/world/being_room.gd" id="1_ken63"]
 [ext_resource type="MeshLibrary" uid="uid://df2pgexonlgah" path="res://assets/world/world_3_mesh_lib_v2.tres" id="2_811bh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_wcyvq"]
 [ext_resource type="PackedScene" uid="uid://cdsetgtd0thee" path="res://scenes/world/streetlamp.tscn" id="6_2toyl"]
 [ext_resource type="PackedScene" uid="uid://cywa3wbei5dlc" path="res://particles/fireflies_world3.tscn" id="7_ke646"]
+[ext_resource type="PackedScene" uid="uid://b3pl257olydkx" path="res://scenes/entities/chum_increaser.tscn" id="8_811bh"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="8_whbml"]
 [ext_resource type="PackedScene" uid="uid://cq08vipfekj02" path="res://scenes/world/fall_stopper.tscn" id="9_cov3p"]
 
@@ -69,6 +70,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 1)
 
 [node name="Particles" parent="Decorations" instance=ExtResource("7_ke646")]
+
+[node name="ChumIncreaser" parent="Decorations" instance=ExtResource("8_811bh")]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 1, 0.75, 7)
+lantern_world = 3
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
