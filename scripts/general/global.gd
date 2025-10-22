@@ -405,6 +405,7 @@ func create_world(world_n):
 										"activated": false,
 										"to_spawn": -1,
 										"value": Vector2(x - size, y - size).length(),
+										"max_value": Vector2(x - size, y - size).length(),
 										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
 										"item_count": item_count,
 										"statue_id": statue_id,
@@ -413,6 +414,7 @@ func create_world(world_n):
 										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
 										"has_z_neg": has_door(Vector2(x, y), Vector2(0, -1)),
 										"chums": [],
+										"removed_decorations": [],
 										}
 func create_world_boss() -> void:
 	#Created boss room information
@@ -427,6 +429,7 @@ func create_world_boss() -> void:
 										"activated": false,
 										"to_spawn": 0,
 										"value": y * 2,
+										"max_value": y * 2,
 										"bell_angle": 0,
 										"item_count": 3,
 										"light_position": Vector3(1.0, 0.0, -10.0),
@@ -436,6 +439,7 @@ func create_world_boss() -> void:
 										"has_z_pos": false,
 										"has_z_neg": true,
 										"chums": [],
+										"removed_decorations": [],
 										}
 
 

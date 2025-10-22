@@ -113,16 +113,23 @@ func decorate():
 	light_obj.global_position = spawn_pos.snapped(Vector3(0.1, 0.1, 0.1))
 	
 	#Other objects:
-	var from_lobby = Global.world_map[Global.room_location]["value"]
+	var from_lobby = Global.world_map[Global.room_location]["max_value"]
 	var deco_n = Functions.map_range(from_lobby, Vector2(0, Global.map_size), Vector2(10, 100))
-	var angles = [0, PI/2, PI, 3*PI/2]
+	var angles := [0, PI/2, PI, 3*PI/2]
+	var decos_to_add := []
+
 	for n in int(deco_n * DecorationManager.decorations_world[Global.current_world_num]['multiplier']):
 		var chosen_deco = DecorationManager.get_random_decoration(Global.current_world_num)
-		var deco_inst = chosen_deco[0].instantiate()
-		$Decorations.add_child(deco_inst)
-		
 		var pos = Vector3(randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15),
-						0, randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15))
-		deco_inst.global_position = pos.snapped(Vector3(0.1, 0.1, 0.1))
+						0, randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15)).snapped(Vector3(0.1, 0.1, 0.1))
 		var angle = angles.pick_random()
-		deco_inst.rotation.y = angle
+
+		decos_to_add.append([chosen_deco[0], pos, angle])
+
+	for deco in decos_to_add:
+		if deco[1] not in Global.world_map[Global.room_location]["removed_decorations"]:
+			var to_add = deco[0].instantiate()
+			$Decorations.add_child(to_add)
+			to_add.global_position = deco[1]
+			to_add.rotation.y = deco[2]
+	decos_to_add = []

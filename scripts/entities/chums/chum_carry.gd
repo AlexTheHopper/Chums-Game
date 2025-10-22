@@ -17,6 +17,7 @@ var target_info = false
 func Enter() -> void:
 	if not chum.is_in_group("Chums_Friend"):
 		chum.make_friendly(true)
+		Global.current_room_node.save_room()
 	chum.anim_player.play("Idle")
 	
 	#target_sprite.visible = true
