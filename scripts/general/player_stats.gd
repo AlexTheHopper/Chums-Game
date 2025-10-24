@@ -6,8 +6,10 @@ extends Node
 @onready var player_health: float
 @onready var player_max_health: float
 @onready var bracelets := 0
-@onready var player_max_chums := 5 if not Global.dev_mode else 10
+@onready var player_max_chums := 5 if not Global.dev_mode else 5
 @onready var collected_lanterns := {0: false, 1: false, 2: false, 3: false, 4: false}
+@onready var player_chums_befriended := 0
+@onready var player_unique_chums_befriended := []
 
 signal hud_health_change
 signal hud_max_health_change
@@ -31,6 +33,9 @@ func initialize() -> void:
 
 	health_node.max_health_changed.connect(_on_player_max_health_changed)
 	player_max_health = health_node.max_health
+	
+	player_chums_befriended = 0
+	player_unique_chums_befriended = []
 	
 	#To trigget sets:
 	bracelets = 0

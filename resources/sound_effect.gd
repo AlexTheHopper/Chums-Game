@@ -21,6 +21,7 @@ enum SOUND_EFFECT_TYPE {
 	ON_BELL_HIT,
 	ON_BRACELET_COLLECT,
 	ON_STATUE_SHAKE,
+	ON_GRASS_DESTROYED,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.

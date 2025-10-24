@@ -46,6 +46,8 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area is Hitbox:
 		var dir = Functions.vector_to_normalized(area, self)
 		wobble_velocity += 3 * Vector3(dir.z * area.damage, 0, -dir.x * area.damage).rotated(Vector3.UP, -rotation.y)
+		
+		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_HURT)
 
 func _on_player_damaged(difference) -> void:
 	if difference < 0:

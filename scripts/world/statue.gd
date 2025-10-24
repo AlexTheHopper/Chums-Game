@@ -36,11 +36,9 @@ func _on_fly_zone_body_entered(body: Node3D) -> void:
 func _on_detection_zone_body_entered(body: Node3D) -> void:
 	if body is Chum and active:
 		if body.chum_id in chum_ids:
-			Global.world_map[Global.room_location]["activated"] = true
 			animation_player.play("activate")
 			open_door()
-			Global.world_map_guide["statue"] = Functions.astar2d(Global.world_grid, 5, true)
-			
+
 func open_door() -> void:
 	to_boss.active = true
 	active = false
@@ -52,8 +50,11 @@ func open_door() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "activate":
 		mesh_node.visible = false
+		Global.world_map[Global.room_location]["activated"] = true
+		Global.world_map_guide["statue"] = Functions.astar2d(Global.world_grid, 5, true)
 
 func do_shake() -> void:
-	get_tree().get_first_node_in_group("Camera").trigger_shake(2.5, 2.5)
-	AudioManager.controller_shake(randf_range(0.6, 0.9), 0.0, randf_range(0.5, 0.75))
-	AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_STATUE_SHAKE)
+	if not Global.world_map[Global.room_location]["activated"]:
+		get_tree().get_first_node_in_group("Camera").trigger_shake(2.5, 2.5)
+		AudioManager.controller_shake(randf_range(0.6, 0.9), 0.0, randf_range(0.5, 0.75))
+		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_STATUE_SHAKE)

@@ -320,6 +320,10 @@ func make_friendly(to_heal = true):
 	if to_heal:
 		health_node.set_health(health_node.get_max_health())
 	
+	PlayerStats.player_chums_befriended += 1
+	if self.chum_id not in PlayerStats.player_unique_chums_befriended:
+		PlayerStats.player_unique_chums_befriended.append(self.chum_id)
+	
 func make_neutral():
 	remove_from_group("Chums_Enemy")
 	remove_from_group("Chums_Friend")

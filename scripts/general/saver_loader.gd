@@ -32,7 +32,9 @@ func save_game(save_id) -> void:
 	saved_game.player_collected_lanterns = PlayerStats.collected_lanterns
 	saved_game.player_damage = get_tree().get_first_node_in_group("Player").base_damage
 	saved_game.player_extra_damage = get_tree().get_first_node_in_group("Player").max_extra_damage
-	
+	saved_game.player_chums_befriended = PlayerStats.player_chums_befriended
+	saved_game.player_unique_chums_befriended = PlayerStats.player_unique_chums_befriended
+
 	#Friend Chums Data:
 	saved_game.friendly_chums = []
 	for chum in get_tree().get_nodes_in_group("Chums_Friend"):
@@ -74,6 +76,8 @@ func load_game(save_id) -> void:
 	PlayerStats.bracelets = saved_game.player_bracelets
 	PlayerStats.hud_bracelets_change.emit()
 	PlayerStats.collected_lanterns = saved_game.player_collected_lanterns
+	PlayerStats.player_chums_befriended = saved_game.player_chums_befriended
+	PlayerStats.player_unique_chums_befriended = saved_game.player_unique_chums_befriended
 
 	#Friend Chums Data:
 	for chum in saved_game.friendly_chums:

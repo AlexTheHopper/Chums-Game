@@ -5,6 +5,7 @@ const TYPE := "tutorial"
 
 func _ready() -> void:
 	$RoomActivator.activate_bell.connect(close_doors)
+	Global.room_history = [[1, Vector2(1, 2)], [1, Vector2(1, 1)]]
 	move_player_and_camera($PlayerSpawn.global_position)
 	set_chums_loc_on_entry()
 	

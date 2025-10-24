@@ -7,12 +7,6 @@ const being_chums: Dictionary[int, int] = {1: 17, 2: 18, 3: 19, 4: 20} #world: c
 
 
 func _ready() -> void:
-	#$RoomActivator.activate_bell.connect(close_doors)
-	#
-	#if not Global.world_map[Global.room_location]["activated"]:
-		#close_doors()
-	#else:
-		#$RoomActivator.finish_spawning()
 	super()
 	
 	#Spawns chum if not on team:
@@ -32,8 +26,30 @@ func _ready() -> void:
 func fill_tunnels() -> void:
 	pass
 
-func decorate() -> void:
+func save_room() -> void:
 	pass
+
+func decorate() -> void:
+	#Other objects:
+	var deco_n = 100
+	var angles := [0, PI/2, PI, 3*PI/2]
+	var decos_to_add := []
+
+	for n in int(deco_n * DecorationManager.decorations_world[Global.room_location[1]]['multiplier']):
+		var chosen_deco = DecorationManager.get_random_decoration(Global.room_location[1])
+		var pos = Vector3(randf_range(-14, -1) if randf() < 0.5 else randf_range(3, 16),
+						0, randf_range(-14, -1) if randf() < 0.5 else randf_range(3, 16)).snapped(Vector3(0.1, 0.1, 0.1))
+		var angle = angles.pick_random()
+
+		decos_to_add.append([chosen_deco[0], pos, angle])
+
+	for deco in decos_to_add:
+		if deco[1] not in Global.world_map[Global.room_location]["removed_decorations"]:
+			var to_add = deco[0].instantiate()
+			$Decorations.add_child(to_add)
+			to_add.global_position = deco[1]
+			to_add.rotation.y = deco[2]
+	decos_to_add = []
 
 func set_player_loc_on_entry():
 	move_player_and_camera(player_spawn.global_position, 0.0)

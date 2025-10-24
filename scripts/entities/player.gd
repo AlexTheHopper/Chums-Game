@@ -35,7 +35,7 @@ var attacking_mult := 1.0
 @export var hitbox: Hitbox
 @export var hurtbox: Hurtbox
 @export var base_damage := 10
-@export var max_extra_damage := 20
+@export var max_extra_damage := 30
 @onready var particle_zone := $Particles
 @onready var health_node := $Health
 @onready var anim_player := $AnimationPlayer

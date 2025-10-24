@@ -15,6 +15,9 @@ extends Resource
 @export var player_extra_damage: int
 @export var player_collected_lanterns: Dictionary
 
+@export var player_chums_befriended: int
+@export var player_unique_chums_befriended: Array
+
 #Friend Chums
 @export var friendly_chums:Array[Dictionary]
 

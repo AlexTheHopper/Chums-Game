@@ -4,11 +4,13 @@ class_name room
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var enemies_to_spawn: int
 @onready var player_spawn: Node3D = $PlayerSpawn
+@onready var decorations: Node3D = $Decorations
 var spawn_particles: PackedScene
 
 var is_doors_closed := false
 var bracelet_tscn: PackedScene = preload("res://scenes/entities/currency_bracelet.tscn")
 const RANDOM_LEVEL_BEING = preload("res://scenes/general/random_level_being.tscn")
+
 
 @export var spawn_timer: Timer
 @export var grid_map: GridMap
@@ -43,7 +45,7 @@ func _ready() -> void:
 	if randf() < 0.05:
 		for n in range(range(Global.world_transition_count + 1).pick_random() + 1):
 			var being = RANDOM_LEVEL_BEING.instantiate()
-			$Decorations.add_child(being)
+			decorations.add_child(being)
 
 func fill_tunnels():
 	#Fix walls etc.
@@ -153,6 +155,12 @@ func decorate():
 	#Seeded randomness - Same based on global seed, world number, transition count and room loc.
 	#Each room then has its own way of decorating.
 	seed(Global.save_seed + hash(str(Global.current_world_num) + str(Global.world_transition_count) + str(Global.room_location)))
+
+func remove_destroyed_decorations() -> void:
+	var to_remove: Array = Global.world_map[Global.room_location]["removed_decorations"]
+	for deco in decorations.get_children():
+		if deco.global_position in to_remove:
+			deco.queue_free()
 
 func set_player_loc_on_entry():
 	#sets player near entered door if there are two rooms entered and the last two are the same world.

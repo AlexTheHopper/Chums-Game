@@ -14,6 +14,7 @@ script = ExtResource("1_or82n")
 hit_zone = NodePath("Area3D")
 mesh = NodePath("Grass2")
 gradient = SubResource("Gradient_or82n")
+sound_effect = 15
 
 [node name="Grass2" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_6oh0j")

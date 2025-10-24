@@ -3,7 +3,7 @@ extends room
 const TYPE := "lobby"
 
 func load_room():
-	pass
+	remove_destroyed_decorations()
 
 func set_player_loc_on_entry():
 	super()

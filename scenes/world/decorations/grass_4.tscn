@@ -8,12 +8,14 @@ offsets = PackedFloat32Array(0, 0.5072464, 1)
 colors = PackedColorArray(0.058815062, 0.2734132, 0, 1, 2.1658839e-06, 0.6705109, 0.2795166, 1, 1, 1, 1, 0.5803922)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8auck"]
+height = 1.0
 
 [node name="Grass4" type="Node3D" node_paths=PackedStringArray("hit_zone", "mesh")]
 script = ExtResource("1_hdyjr")
 hit_zone = NodePath("Area3D")
 mesh = NodePath("Grass4")
 gradient = SubResource("Gradient_hdyjr")
+sound_effect = 15
 
 [node name="Grass4" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_bxn1n")
@@ -23,5 +25,5 @@ collision_layer = 0
 collision_mask = 768
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_8auck")
