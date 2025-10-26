@@ -21,6 +21,7 @@ func _ready() -> void:
 	else:
 		$RoomActivator.finish_spawning()
 	super()
+	get_node("/root/Game/HUD").display_minimap(false)
 
 func fill_tunnels() -> void:
 	pass

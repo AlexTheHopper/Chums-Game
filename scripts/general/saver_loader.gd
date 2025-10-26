@@ -60,11 +60,12 @@ func save_game(save_id) -> void:
 
 
 func load_game(save_id) -> void:
-	if Global.dev_mode:
-		print("loading game from id %s" % [save_id])
 	ensure_save_folder()
 	var saved_game:SavedGame = load("user://saves/%s.tres" % [save_id])
-	
+
+	if Global.dev_mode:
+		print("loading game from id %s with seed %s" % [save_id, saved_game.save_seed])
+
 	#Load all save data:
 	Global.save_seed = saved_game.save_seed
 	#Player Data

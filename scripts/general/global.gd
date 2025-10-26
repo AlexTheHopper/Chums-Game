@@ -1,5 +1,5 @@
 extends Node
-var dev_mode = true
+var dev_mode = false
 
 var game_begun := false
 var world_transition_count := 0
@@ -159,6 +159,8 @@ func start_game(save_id = null, new_game = false) -> void:
 						
 
 	if new_game:
+		if Global.dev_mode:
+			print("Starting new game on file %s with seed %s." % [save_id, save_seed])
 		#Creates scaffold for world
 		map_size = world_info[current_world_num]["map_size"]
 		room_size = world_info[current_world_num]["room_size"]
@@ -221,7 +223,6 @@ func start_game(save_id = null, new_game = false) -> void:
 
 	get_node("/root/Game/HUD").add_chum_indicators()
 	Global.world_map[Global.room_location]["entered"] = true
-	get_node("/root/Game/HUD").display_minimap(true)
 	if current_world_num == 0:
 		AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_IDLE" % room_history[-2][0]])
 	else:

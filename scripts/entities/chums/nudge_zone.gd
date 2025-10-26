@@ -11,7 +11,7 @@ func _ready() -> void:
 		parent = owner.owner
 	
 	else:
-		print("error with assigning nudge zone parent")
+		push_error("error with assigning nudge zone parent")
 
 func _on_body_entered(body: Node3D) -> void:
 	if parent is Player and body is not Chum:

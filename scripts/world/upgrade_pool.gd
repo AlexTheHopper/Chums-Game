@@ -46,7 +46,6 @@ func _on_active_zone_body_entered(body: Node3D) -> void:
 			body.increase_stats() #Increase all stats by 10% base per level
 		
 		if item_num <= 0:
-			print(Global.room_location)
 			Global.world_map[Global.room_location]["activated"] = true
 			Global.world_map_guide["upgrade"] = Functions.astar2d(Global.world_grid, 6, true)
 

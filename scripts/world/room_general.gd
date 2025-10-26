@@ -38,7 +38,7 @@ func _ready() -> void:
 	fill_tunnels()
 	set_player_loc_on_entry()
 	set_chums_loc_on_entry()
-	if self is not boss_room and self is not being_room:
+	if self is not boss_room and self is not being_room and self is not tutorial_room:
 		SaverLoader.save_game(Global.game_save_id)
 	
 	#Maybe spawn being to circle level for a bit

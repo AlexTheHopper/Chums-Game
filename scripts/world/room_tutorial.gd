@@ -18,6 +18,10 @@ func _ready() -> void:
 		deco.rotation.y = [0.0, PI / 2, PI, 3 * PI / 2].pick_random()
 	for deco in $Decorations/Small.get_children():
 		deco.rotation.y = [0.0, PI / 2, PI, 3 * PI / 2].pick_random()
+
+func save_room() -> void:
+	pass
+
 #func load_room() -> void:
 	#pass
 #

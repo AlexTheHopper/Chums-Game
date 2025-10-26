@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cwtw3l04fav7g"]
+[gd_scene load_steps=28 format=3 uid="uid://cwtw3l04fav7g"]
 
 [ext_resource type="Script" uid="uid://uaj8v2pnjutj" path="res://scripts/general/hud.gd" id="1_n1psb"]
 [ext_resource type="Texture2D" uid="uid://cg7qoa8wicp8p" path="res://assets/entities/heart_128.png" id="2_dh6d1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nnce4xltggqo" path="res://assets/entities/bracelet_128.png" id="4_p21ms"]
 [ext_resource type="Texture2D" uid="uid://cap83e4hirsjt" path="res://materials/ui/ui_attack.tres" id="5_p21ms"]
 [ext_resource type="PackedScene" uid="uid://cj3njvuucqayr" path="res://scenes/general/minimap.tscn" id="5_pfecb"]
+[ext_resource type="Texture2D" uid="uid://deudicq0fdbdo" path="res://materials/ui/ui_pause.tres" id="6_5vyhu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p21ms"]
 bg_color = Color(0.158472, 0.158472, 0.158472, 1)
@@ -291,6 +292,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PauseMenu/UnpausePanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_pfecb"]
 resource_name = "pause"
@@ -350,6 +363,18 @@ tracks/4/path = NodePath("PauseMenu/ReturnPanel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0.15, 0.155),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PauseMenu/UnpausePanel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.15, 0.155),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -600,9 +625,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = -25.0
+offset_top = -100.0
 offset_right = 50.0
-offset_bottom = 25.0
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4l38w")
@@ -624,6 +649,43 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UnpausePanel" type="Panel" parent="PauseMenu"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -25.0
+offset_right = 130.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_adyy0")
+
+[node name="Value" type="Label" parent="PauseMenu/UnpausePanel"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.537011, 0.537011, 0.537011, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Return to Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/UnpausePanel"]
+position = Vector2(200, 25)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_5vyhu")
 
 [node name="ReturnPanel" type="Panel" parent="PauseMenu"]
 visible = false
