@@ -440,7 +440,7 @@ is_custom = true
 custom_title_front = "Carry!"
 custom_text_front = "Use [img]res://materials/ui/ui_interact.tres[/img] to bring your friends with you!"
 custom_title_back = "Carry!"
-custom_text_back = "When there are no threats, they will follow you automatically."
+custom_text_back = "Between rooms, they will automatically follow you."
 
 [node name="Battle" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -83)
