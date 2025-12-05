@@ -51,6 +51,7 @@ var attack_speed: float
 var start_health: int
 var max_move_speed: float
 var temp_sleep_time: float
+var is_temporary := false
 
 @onready var has_quality_popup := false
 @export var indicator_color := Color.from_rgba8(40, 40, 40, 255)
@@ -205,14 +206,14 @@ func _on_health_changed(difference):
 		return
 
 	if difference < 0.0:
-		damaged(-difference)
+		call_deferred("damaged", -difference)
 		if current_group == "Chums_Friend":
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HURT_FRIENDLY)
 		else:
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HURT_NOT_FRIENDLY)
 
 	elif difference > 0.0 and state_machine.current_state.state_name != "Sleep":
-		healed(difference)
+		call_deferred("healed", difference)
 		if current_group == "Chums_Friend":
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HEAL_FRIENDLY)
 		else:
@@ -243,7 +244,7 @@ func _on_health_health_depleted() -> void:
 
 	if current_group == "Chums_Friend":
 		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_DEATH_FRIENDLY)
-	else:
+	elif not is_temporary:
 		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_DEATH_NOT_FRIENDLY)
 		
 		#Spawn Bracelets
@@ -253,11 +254,10 @@ func _on_health_health_depleted() -> void:
 	if target:
 		target.targeted_by.erase(self)
 	
-			
-	set_state("Knock")
 	get_tree().get_first_node_in_group("Camera").trigger_shake(0.5)
 	health_depleted.emit()
-	
+	set_state("Knock")
+
 func has_damage() -> bool:
 	return health_node.get_health() < health_node.get_max_health()
 	
@@ -428,16 +428,6 @@ func set_target_to(new_target):
 		
 func _on_target_death():
 	if target:
-		#var old_target_name = target.chum_name
-		#var new_target_name = 'None'
 		set_new_target()
-		#if target:
-			#if not target is Player:
-				#new_target_name = target.chum_name
-			#elif target is Player:
-				#new_target_name = "Player"
-		#if Global.dev_mode:
-			#print("Self: " + str(self.chum_name) + ". Group: " + str(current_group) + '. Old Target: ' + str(old_target_name) + '. New target: ' + str(new_target_name))
 		if not self.target and state_machine.current_state.state_name != "Carry":
 			set_state("Idle")
-		

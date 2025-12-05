@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://jy8eeaesys4b"]
+
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_7gymx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1y0l2"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ngjpp"]
+material = SubResource("StandardMaterial3D_1y0l2")
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Curve" id="Curve_g31vr"]
+_data = [Vector2(0.00691244, 1), 0.0, 0.0, 0, 0, Vector2(0.603687, 0.988676), 0.0, 0.0, 0, 0, Vector2(1, 0.00914633), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_87nrx"]
+offsets = PackedFloat32Array(0.00985222, 0.763547, 1)
+colors = PackedColorArray(0.32077813, 0.24183604, 0.005260643, 1, 0.95, 0.70505834, 0.08549997, 1, 0.43561584, 0.28864026, 3.3691526e-07, 1)
+
+[sub_resource type="Gradient" id="Gradient_0ohf4"]
+offsets = PackedFloat32Array(0, 0.832512)
+colors = PackedColorArray(0.10748, 0.10748, 0.10748, 1, 0.273873, 0.273873, 0.273873, 1)
+
+[node name="SpawnParticles" type="Node3D"]
+script = ExtResource("1_7gymx")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("BoxMesh_ngjpp")
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_rotate_y = true
+direction = Vector3(0, 1, 0)
+spread = 125.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+radial_accel_max = 1.0
+angle_max = 90.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_g31vr")
+color_ramp = SubResource("Gradient_87nrx")
+color_initial_ramp = SubResource("Gradient_0ohf4")
+hue_variation_max = 1.0
+
+[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]

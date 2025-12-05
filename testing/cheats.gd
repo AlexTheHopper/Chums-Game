@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 				chum_instance.make_friendly(false)
 				chum_instance.health_node.immune = false
 			chum_instance.global_position = player.global_position + Vector3(0, 2, 0)
-			chum_to_spawn = 0
+			chum_to_spawn = 23
 			
 			PlayerStats.bracelets_added(10)
 		

@@ -100,7 +100,7 @@ func save_room():
 	Global.world_map[Global.room_location]["entered"] = true
 	Global.world_map[Global.room_location]["to_spawn"] = enemies_to_spawn
 	for group in ["Chums_Enemy", "Chums_Neutral"]:
-		for chum in get_tree().get_nodes_in_group(group):
+		for chum in get_tree().get_nodes_in_group(group).filter(func(c): return not c.is_temporary):
 			Global.world_map[Global.room_location]["chums"].append({
 				"type": chum.chum_str,
 				"group": group,
@@ -224,7 +224,7 @@ func close_doors():
 		AudioManager.controller_shake(0.75, 0.0, 2.0)
 
 func check_enemy_count():
-	if len(get_tree().get_nodes_in_group("Chums_Enemy")) == 0:
+	if len(get_tree().get_nodes_in_group("Chums_Enemy").filter(func(c): return not c.is_temporary)) == 0:
 		Global.in_battle = false
 		open_doors()
 

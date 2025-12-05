@@ -57,6 +57,8 @@ func _ready() -> void:
 			"destination_world": 4, "guard_world_n": 4}, #Globe
 		24: {"object": preload("res://scenes/entities/chums/chum24.tscn"),
 			"destination_world": 2, "guard_world_n": false}, #Bumble
+		25: {"object": preload("res://scenes/entities/chums/chum25.tscn"),
+			"destination_world": 2, "guard_world_n": false}, #Hive
 	}
 
 	chums_values = {

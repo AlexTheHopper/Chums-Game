@@ -30,3 +30,12 @@ var always_targets_player := false
 
 var bracelet_count := 1
 var bracelet_cost := 1
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Shrink":
+		for targeting in self.targeted_by:
+			if not targeting.is_queued_for_deletion():
+				targeting.set_new_target()
+		print('gone')
+		#queue_free()
