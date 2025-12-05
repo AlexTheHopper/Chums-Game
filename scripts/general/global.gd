@@ -298,7 +298,7 @@ func get_world_grid(world_n, set_seed := 0):
 				break
 			pos = Vector2i(pos.x + dir.x, pos.y + dir.y)
 			
-		#Add end of corridor to list of spots:
+		#Add end of corridor to list of ss:
 		if pos not in room_points:
 			room_points.append(pos)
 			

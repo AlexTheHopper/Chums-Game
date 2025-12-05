@@ -91,6 +91,8 @@ func fill_tunnels():
 			grid_map.set_cell_item(Vector3(w, 0, -(door_dist - 1)), 12, 0)
 
 func save_room():
+	if Global.in_battle:
+		return
 	#Remove previous data from room:
 	Global.world_map[Global.room_location]["chums"] = []
 	
