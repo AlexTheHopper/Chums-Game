@@ -255,8 +255,10 @@ func _on_health_health_depleted() -> void:
 		target.targeted_by.erase(self)
 	
 	get_tree().get_first_node_in_group("Camera").trigger_shake(0.5)
-	health_depleted.emit()
+	
 	set_state("Knock")
+	
+	health_depleted.emit()
 
 func has_damage() -> bool:
 	return health_node.get_health() < health_node.get_max_health()
@@ -373,6 +375,14 @@ func attempt_carry():
 
 func do_attack(_attack_name):
 	anim_player.play("Attack")
+	
+	#Check target, sometimes a chum will stay locked on even if it is knocked.
+	if not target:
+		return
+	if target is not Chum:
+		return
+	if target.state_machine.current_state.state_name == "Knock":
+		set_new_target()
 
 func set_new_target():
 	var body: Node

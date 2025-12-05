@@ -54,9 +54,11 @@ func create_chum() -> void:
 	chum.particle_zone.add_child(spawn_particles.instantiate())
 
 func free_spawn_room() -> void:
+	var new_spawned_chums := []
 	for spawned_chum in spawned_chums:
-		if spawned_chum.health_node.get_health() <= 0:
-			spawned_chums.erase(spawned_chum)
+		if spawned_chum.health_node.get_health() > 0:
+			new_spawned_chums.append(spawned_chum)
+	spawned_chums = new_spawned_chums
 
 func remove_spawned_chums() -> void:
 	for spawned_chum in spawned_chums:

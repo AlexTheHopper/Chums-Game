@@ -240,3 +240,8 @@ func check_enemy_count():
 		#Save game
 		if self is not tutorial_room and self is not being_room:
 			save_room()
+
+func remove_temporary_chums() -> void:
+	for chum in get_parent().get_parent().get_node("Chums").get_children():
+		if chum.is_temporary:
+			chum.health_node.health = 0

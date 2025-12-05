@@ -5,7 +5,7 @@ extends Area3D
 @onready var shape := $CollisionShape3D
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is Player:
+	if body is Player and not chum.is_temporary:
 		#Add chum to close chums if not already in:
 		if chum not in ChumsManager.close_chums:
 			ChumsManager.close_chums.append(chum)
@@ -18,7 +18,7 @@ func _on_body_entered(body: Node3D) -> void:
 			popup.global_position += Vector3(0, 2, 0)
 
 func _on_body_exited(body: Node3D) -> void:
-	if body is Player:		
+	if body is Player and not chum.is_temporary:
 		#Remove quality popup if it exists
 		for popup in chum.get_children():
 			if popup is Quality_Popup:

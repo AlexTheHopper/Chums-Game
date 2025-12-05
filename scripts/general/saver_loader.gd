@@ -37,7 +37,7 @@ func save_game(save_id) -> void:
 
 	#Friend Chums Data:
 	saved_game.friendly_chums = []
-	for chum in get_tree().get_nodes_in_group("Chums_Friend"):
+	for chum in get_tree().get_nodes_in_group("Chums_Friend").filter(func(c): return not c.is_temporary):
 		saved_game.friendly_chums.append({
 			"type": chum.chum_str,
 			"quality": chum.quality,
