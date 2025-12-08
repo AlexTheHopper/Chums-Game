@@ -15,9 +15,12 @@ func _ready() -> void:
 	source_world_n = Global.current_world_num
 	
 	if not override_world:
-		chum_id = Global.world_map[Global.room_location]["statue_id"]
-		destination_world_n = ChumsManager.chums_list[chum_id]["destination_world"]
-		to_being_n = ChumsManager.chums_list[chum_id]["guard_world_n"]
+		set_chum_id(Global.world_map[Global.room_location]["statue_id"])
+
+func set_chum_id(new_chum_id) -> void:
+	chum_id = new_chum_id
+	destination_world_n = ChumsManager.chums_list[new_chum_id]["destination_world"]
+	to_being_n = ChumsManager.chums_list[new_chum_id]["guard_world_n"]
 
 func _on_body_entered(body: Node3D) -> void:
 	if active and body is Player:

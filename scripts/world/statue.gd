@@ -1,11 +1,12 @@
 extends Node3D
 
 var chum_id: int
-var chum_ids := []
+var flower_chum_ids := [6, 7, 16, 26, 27]
 var active := true
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var mesh_node: Node3D = $MeshNode
 @onready var to_boss: room_changer_to_boss = $RoomChanger
+@onready var room_changer_zone: room_changer_to_boss = $RoomChanger
 
 
 func _ready() -> void:
@@ -18,11 +19,6 @@ func _ready() -> void:
 		animation_player.speed_scale = 10.0
 		animation_player.play("activate")
 		open_door()
-	
-	#To account for chums with the same shape mesh
-	chum_ids.append(chum_id)
-	if chum_id in [6, 7]:
-		chum_ids += [6, 7]
 
 func _on_fly_zone_body_entered(body: Node3D) -> void:
 	if body is Chum:
@@ -30,12 +26,18 @@ func _on_fly_zone_body_entered(body: Node3D) -> void:
 		var vel_2d: Vector2 = Vector2(sin(angle), cos(angle)) * 7.5
 		
 		body.velocity = Vector3(vel_2d.x, 25.0, vel_2d.y)
+		body.move_and_slide()
 		body.is_launched = true
 
 
 func _on_detection_zone_body_entered(body: Node3D) -> void:
 	if body is Chum and active:
-		if body.chum_id in chum_ids:
+		#Check for flower match:
+		if body.chum_id in flower_chum_ids and chum_id in flower_chum_ids:
+			chum_id = body.chum_id
+			room_changer_zone.set_chum_id(chum_id)
+
+		if body.chum_id == chum_id:
 			animation_player.play("activate")
 			open_door()
 

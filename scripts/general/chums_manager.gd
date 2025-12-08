@@ -59,6 +59,10 @@ func _ready() -> void:
 			"destination_world": 2, "guard_world_n": false}, #Bumble
 		25: {"object": preload("res://scenes/entities/chums/chum25.tscn"),
 			"destination_world": 2, "guard_world_n": false}, #Hive
+		26: {"object": preload("res://scenes/entities/chums/chum26.tscn"),
+			"destination_world": 2, "guard_world_n": false}, #Granite
+		27: {"object": preload("res://scenes/entities/chums/chum27.tscn"),
+			"destination_world": 4, "guard_world_n": false}, #Marble
 	}
 
 	chums_values = {
@@ -82,6 +86,7 @@ func _ready() -> void:
 			13: 2.0,
 			24: 0.5,
 			25: 2.0,
+			26: 1.0,
 		},
 		3: {
 			4: 3.5,
@@ -100,6 +105,7 @@ func _ready() -> void:
 			11: 2.5,
 			12: 1.0,
 			13: 1.0,
+			27: 1.0,
 		},
 	}
 	

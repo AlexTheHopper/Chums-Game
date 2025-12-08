@@ -54,7 +54,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		else:
 			emitting = false
 			chum.anim_player.play("Idle")
-		if chum.target != chum.next_target:
+		if chum.target != chum.next_target and is_instance_valid(chum.next_target):
 			if chum.next_target is Player:
 				chum.set_target_to(chum.next_target)
 			elif chum.next_target.state_machine.current_state.state_name == "Active":
