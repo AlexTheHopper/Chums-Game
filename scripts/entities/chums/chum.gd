@@ -48,7 +48,7 @@ var stats_set := false
 var quality: Dictionary[String, int] = {"health": 0, "move_speed": 0, "attack_damage": 0, "attack_speed": 0}
 var move_speed: float
 var attack_speed: float
-var start_health: int
+var start_health := -1
 var max_move_speed: float
 var temp_sleep_time: float
 var is_temporary := false
@@ -109,7 +109,9 @@ func _ready() -> void:
 			quality["health"] = 0
 		start_health = int(self.base_health * (1.0 + float(quality["health"]) / 10.0))
 	set_stats_from_quality()
-	health_node.set_health(start_health)
+	if start_health >= 0:
+		health_node.set_health(start_health)
+	stats_set = true
 
 	
 	
@@ -220,7 +222,7 @@ func _on_health_changed(difference):
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HEAL_NOT_FRIENDLY)
 
 func damaged(amount):
-	if state_machine.current_state.state_name != "Knock":
+	if stats_set and state_machine.current_state.state_name != "Knock":
 		$Hurtbox/AnimationPlayer.play("Hurt")
 		get_tree().get_first_node_in_group("Camera").trigger_shake(0.25)
 		particle_zone.add_child(hurt_particles.instantiate())
@@ -230,7 +232,7 @@ func damaged(amount):
 		particle_zone.add_child(hurt_num_inst)
 
 func healed(amount):
-	if state_machine.current_state.state_name != "Knock":
+	if stats_set and state_machine.current_state.state_name != "Knock":
 		particle_zone.add_child(heal_particles.instantiate())
 		
 		var heal_num_inst = hurt_particles_num.instantiate()
@@ -255,7 +257,6 @@ func _on_health_health_depleted() -> void:
 		target.targeted_by.erase(self)
 	
 	get_tree().get_first_node_in_group("Camera").trigger_shake(0.5)
-	
 	set_state("Knock")
 	
 	health_depleted.emit()

@@ -8,7 +8,7 @@ signal health_depleted
 @export var immune: bool = true : set = set_immune, get = get_immune
 var immune_timer: Timer = null
 var health_initialised := false
-var damage_grace_time := 0.15
+var damage_grace_time := 0.1
 
 var max_health: int = 1 : set = set_max_health, get = get_max_health
 var health : int = 1 : set = set_health, get = get_health

@@ -225,6 +225,7 @@ func close_doors():
 
 func check_enemy_count():
 	if len(get_tree().get_nodes_in_group("Chums_Enemy").filter(func(c): return not c.is_temporary)) == 0:
+		remove_temporary_chums()
 		Global.in_battle = false
 		open_doors()
 
@@ -241,7 +242,9 @@ func check_enemy_count():
 		if self is not tutorial_room and self is not being_room:
 			save_room()
 
+#Backup way of removing temp chums. This should be handled by the parent chum, but if that fails we have this.
 func remove_temporary_chums() -> void:
 	for chum in get_parent().get_parent().get_node("Chums").get_children():
+		chum._on_target_death() #Also failsafe in case a chum keeps a target after battle.
 		if chum.is_temporary:
-			chum.health_node.health = 0
+			chum.health_node.set_health_override(0)

@@ -11,7 +11,7 @@ var min_attack_speed := 1.3
 var base_attack_speed := 1.75
 var base_attack_damage := 10
 var base_move_speed := 2.5
-var base_health := 50
+var base_health := 25
 #Control of qualities
 var has_attack_speed := true
 var has_attack_damage := true
@@ -30,8 +30,3 @@ var always_targets_player := false
 
 var bracelet_count := 1
 var bracelet_cost := 1
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "Shrink":
-		queue_free()

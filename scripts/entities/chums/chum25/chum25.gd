@@ -15,7 +15,7 @@ var base_health := 150
 #Control of qualities
 var has_attack_speed := true
 var has_attack_damage := true
-var has_move_speed := false
+var has_move_speed := true
 var has_health := true
 
 var attack_distance := 1.0

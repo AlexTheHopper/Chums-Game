@@ -6,7 +6,7 @@ extends Node
 @onready var player_health: float
 @onready var player_max_health: float
 @onready var bracelets := 0
-@onready var player_max_chums := 5 if not Global.dev_mode else 25
+@onready var player_max_chums := 5 if not Global.dev_mode else 10
 @onready var collected_lanterns := {0: false, 1: false, 2: false, 3: false, 4: false}
 @onready var player_chums_befriended := 0
 @onready var player_unique_chums_befriended := []

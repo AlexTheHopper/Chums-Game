@@ -18,9 +18,9 @@ func Enter() -> void:
 	
 	chum.call_deferred("enable_interaction")
 	chum.anim_player.play("Knock")
-	
 	#For spawned chums:
 	if chum.is_temporary:
+		await get_tree().create_timer(0.5).timeout
 		chum.get_node("Hurtbox/AnimationPlayer").play("Shrink")
 
 func Physics_Update(delta: float) -> void:

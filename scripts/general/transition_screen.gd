@@ -21,5 +21,5 @@ func transition(time: float) -> void:
 	if time == 0:
 		time = 1
 	color_rect.visible = true
-	animation_player.set_speed_scale(1 / time)
+	animation_player.set_speed_scale(1.0 / time)
 	animation_player.play("fade_in")
