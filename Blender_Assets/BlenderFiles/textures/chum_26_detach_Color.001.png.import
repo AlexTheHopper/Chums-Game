@@ -2,23 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cta12a6vxj72t"
-path="res://.godot/imported/chum26_chum_26_detach_Color.png-f441d81cb4dabc2bc6be96a23f47092b.ctex"
+uid="uid://cb45fa68dv8jc"
+path.s3tc="res://.godot/imported/chum_26_detach_Color.001.png-7616a1e7c1ddad549f8230c6bb2382d8.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
-generator_parameters={
-"md5": "7b9bc22b94aa5767c242c040e460fe33"
-}
+generator_parameters={}
 
 [deps]
 
-source_file="res://Blender_Assets/Chum_Exports/chum26_chum_26_detach_Color.png"
-dest_files=["res://.godot/imported/chum26_chum_26_detach_Color.png-f441d81cb4dabc2bc6be96a23f47092b.ctex"]
+source_file="res://Blender_Assets/BlenderFiles/textures/chum_26_detach_Color.001.png"
+dest_files=["res://.godot/imported/chum_26_detach_Color.001.png-7616a1e7c1ddad549f8230c6bb2382d8.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -26,7 +25,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

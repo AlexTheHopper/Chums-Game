@@ -3,7 +3,7 @@ class_name Chum26_Active
 @onready var state_name := "Active"
 
 @onready var chum: CharacterBody3D
-@onready var object: PackedScene = load("res://scenes/entities/heal_ball.tscn")
+@onready var object: PackedScene = load("res://scenes/entities/upgrade_ball.tscn")
 var emitting := false
 var has_touched_floor := false
 
@@ -44,13 +44,13 @@ func on_something_death():
 func emit_object():
 	for n in to_emit:
 		for target_chum in get_tree().get_nodes_in_group(chum.current_group) + get_tree().get_nodes_in_group("Player"):
-			if target_chum != chum and target_chum.has_damage() and not(target_chum is Player and chum.current_group == "Chums_Enemy"):
+			if target_chum != chum and not target_chum.has_damage() and not(target_chum is Player and chum.current_group == "Chums_Enemy"):
 				var obj = object.instantiate()
 				Global.current_room_node.get_node("Decorations").add_child(obj)
 				obj.target = target_chum
 				obj.global_position = chum.sleep_zone.global_position
-				obj.heal_amount = chum.hitbox.damage
-				obj.velocity = Vector3(0, 5, 0)
+				obj.strength = max(1, chum.quality["attack_damage"])
+				obj.velocity = Vector3(0, 15.0, 0)
 				if target_chum is not Player:
 					target_chum.health_depleted.connect(obj.on_target_death)
 	to_emit = 0
