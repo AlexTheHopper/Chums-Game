@@ -148,7 +148,7 @@ func set_stats_from_quality() -> void:
 	attack_speed = max(self.min_attack_speed, self.base_attack_speed * (1.0 - (float(quality["attack_speed"]) / 10.0)))
 
 
-func increase_stats(attack_speed_count: int = 1, attack_damage_count: int = 1, move_speed_count: int = 1, health_count: int = 1) -> void:
+func increase_stats(attack_speed_count: int = 1, attack_damage_count: int = 1, move_speed_count: int = 1, health_count: int = 1, particles: bool = false) -> void:
 	if self.has_health:
 		quality["health"] += health_count
 
@@ -164,7 +164,7 @@ func increase_stats(attack_speed_count: int = 1, attack_damage_count: int = 1, m
 	#APPLY CHANGES
 	set_stats_from_quality()
 	
-	if attack_speed_count + attack_damage_count + move_speed_count + health_count > 0:
+	if particles and attack_speed_count + attack_damage_count + move_speed_count + health_count > 0:
 		particle_zone.add_child(quality_particles.instantiate())
 
 func create_sleep_particles():

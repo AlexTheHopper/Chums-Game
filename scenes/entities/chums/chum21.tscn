@@ -488,35 +488,35 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/rotation = Quaternion(-0.7079466, 0, 0, 0.706266)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Arm.L"
 bones/1/parent = 0
 bones/1/rest = Transform3D(0, 1, -3.5527137e-15, -1, 0, 7.549791e-08, 7.549791e-08, -3.5527137e-15, 1, 0.5, 0.70000005, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0.5, 0.70000005, 0)
-bones/1/rotation = Quaternion(-2.6692543e-08, -2.6692543e-08, -0.7071068, 0.7071068)
+bones/1/rotation = Quaternion(-0.21979375, 0.21979368, -0.6715568, 0.67260164)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Leg.L"
 bones/2/parent = 0
 bones/2/rest = Transform3D(-1, 0, -1.509958e-07, 0, -1, 0, -1.509958e-07, 0, 1, 0.3, -0.20000005, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0.3, -0.20000005, 0)
-bones/2/rotation = Quaternion(-7.54979e-08, 0, 1, 0)
+bones/2/rotation = Quaternion(-7.122025e-08, -0.33182555, 0.9433408, 2.5052133e-08)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Arm.R"
 bones/3/parent = 0
 bones/3/rest = Transform3D(0, -1, 3.5527137e-15, 1, 0, 7.549791e-08, -7.549791e-08, -3.5527137e-15, 1, -0.5, 0.70000005, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(-0.5, 0.70000005, 0)
-bones/3/rotation = Quaternion(-2.6692543e-08, 2.6692543e-08, 0.7071068, 0.7071068)
+bones/3/rotation = Quaternion(-0.19737723, -0.19737716, 0.67853165, 0.6794698)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Leg.R"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-1, 0, 1.509958e-07, 0, -1, 0, 1.509958e-07, 0, 1, -0.3, -0.20000005, 0)
 bones/4/enabled = true
 bones/4/position = Vector3(-0.3, -0.20000005, 0)
-bones/4/rotation = Quaternion(7.54979e-08, 0, 1, 0)
+bones/4/rotation = Quaternion(7.122025e-08, -0.33182555, 0.9433408, -2.5052133e-08)
 bones/4/scale = Vector3(1, 1, 1)
 
 [node name="chum_21_detach" type="MeshInstance3D" parent="Body/Armature/Skeleton3D"]
@@ -524,6 +524,7 @@ mesh = SubResource("ArrayMesh_qknen")
 skin = SubResource("Skin_vrb5r")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
+transform = Transform3D(1, 0, 0, 0, -0.0023767948, 0.9999972, 0, -0.9999972, -0.0023767948, 0, 0, 0)
 bone_name = "Body"
 bone_idx = 0
 
@@ -531,6 +532,7 @@ bone_idx = 0
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.5, -0.1)
 
 [node name="SleepZone" type="Node3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, -0.7071068, 0, 0.7071068, 0.7071068, 0, 1.1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
 libraries = {

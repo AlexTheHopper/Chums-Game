@@ -2,7 +2,7 @@ extends Chum
 class_name Chum24
 var chum_id := 24
 var chum_str := "chum24"
-var chum_name := "Bumble"
+var chum_name := "Buzz"
 
 var desc := "Buzz buzz, and such."
 

@@ -23,7 +23,7 @@ func _on_contact_zone_body_entered(body: Node3D) -> void:
 	if body == target and active:
 		if body is Chum:
 			var to_increase: Dictionary = get_stats_to_increase(body, strength)
-			body.increase_stats(to_increase["attack_speed"], to_increase["attack_damage"], to_increase["move_speed"], to_increase["health"])
+			body.increase_stats(to_increase["attack_speed"], to_increase["attack_damage"], to_increase["move_speed"], to_increase["health"], true)
 		elif body is Player:
 			body.increase_stats(2 + int(strength/5.0))
 			

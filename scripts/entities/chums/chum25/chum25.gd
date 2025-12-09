@@ -4,7 +4,7 @@ var chum_id := 25
 var chum_str := "chum25"
 var chum_name := "Hive"
 
-var desc := "Even more buzz buzz, and such."
+var desc := "Even more buzz buzz, and such. The such involves a family of Buzz that will stop at nothing to protect their home. They better hope all their siblings showed up, as the Buzz from a Hive wont handle being outside for long!"
 
 var min_attack_speed := 2.0
 

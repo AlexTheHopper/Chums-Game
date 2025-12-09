@@ -4,7 +4,7 @@ var chum_id := 26
 var chum_str := "chum26"
 var chum_name := "Granite"
 
-var desc := "#TODO."
+var desc := "Such a studious flower. If flowers can be studious? This one has learned the ins and outs of all other chums, and upon defeat of an enemy, will occasionally up the ante and increase a friend's quality with a mysterious floating purple orb."
 
 var min_attack_speed := 2.55
 
@@ -30,3 +30,6 @@ var always_targets_player := false
 
 var bracelet_count := 1
 var bracelet_cost := 3
+
+
+var base_chance_to_ability := 0.3

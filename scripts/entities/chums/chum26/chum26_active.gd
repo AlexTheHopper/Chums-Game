@@ -36,6 +36,10 @@ func Physics_Update(delta: float):
 	chum.move_and_slide()
 	
 func on_something_death():
+	#Only do this sometimes
+	if randf() > Functions.map_range(chum.quality["attack_damage"], Vector2(0, 100), Vector2(chum.base_chance_to_ability, 1.0)):
+		return
+
 	to_emit += 1
 	if not emitting:
 		emitting = true
@@ -43,7 +47,8 @@ func on_something_death():
 		
 func emit_object():
 	for n in to_emit:
-		var options := get_tree().get_nodes_in_group(chum.current_group).filter(func(c): return c != chum and not c.has_damage() and not c.is_temporary)
+		var options := get_tree().get_nodes_in_group(chum.current_group).filter(func(c): 
+			return c.chum_id != chum.chum_id and not c.has_damage() and not c.is_temporary)
 		if chum.current_group == "Chums_Friend" and not get_tree().get_nodes_in_group("Player")[0].has_damage():
 			options.append(get_tree().get_nodes_in_group("Player")[0])
 		
@@ -53,7 +58,7 @@ func emit_object():
 			var obj_target = options.pick_random()
 			obj.target = obj_target
 			obj.global_position = chum.particle_zone.global_position
-			obj.strength = max(1, chum.quality["attack_damage"])
+			obj.strength = clamp(1 + floor(chum.quality["attack_damage"] / 5.0), 1, 100)
 			obj.velocity = Vector3(0, 15.0, 0)
 			if obj_target is not Player:
 				obj_target.health_depleted.connect(obj.on_target_death)

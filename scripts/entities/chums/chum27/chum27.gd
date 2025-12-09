@@ -4,7 +4,7 @@ var chum_id := 27
 var chum_str := "chum27"
 var chum_name := "Marble"
 
-var desc := "#TODO."
+var desc := "Yeah idk what this chum will do yet, but i know its gonna b a flower." #TODO
 
 var min_attack_speed := 2.55
 
