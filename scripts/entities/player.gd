@@ -12,6 +12,7 @@ const MAX_JUMPING_TIME := 30.0
 const MAX_COYOTE := 10.0
 var in_jump := false
 var coyote_time := MAX_COYOTE
+const is_temporary := false
 
 var player_goal_horz := 0.0
 var camera_goal_horz := 0.0
@@ -46,6 +47,7 @@ var attacking_mult := 1.0
 @onready var hurt_particles := load("res://particles/damage_friendly.tscn")
 @onready var heal_particles := load("res://particles/heal_friendly.tscn")
 @onready var hurt_particles_num := load("res://particles/damage_num_friendly.tscn")
+@onready var quality_particles := load("res://particles/quality_increase.tscn")
 
 var changes_agro_on_damaged := true
 var draws_agro_on_attack := true
@@ -292,6 +294,9 @@ func increase_stats(amount: int) -> void:
 	max_extra_damage += int(amount / 2.0)
 	
 	health_node.max_health += int(amount / 2.0)
+	
+	if amount > 0:
+		particle_zone.add_child(quality_particles.instantiate())
 
 func kill_player():
 	Global.return_to_menu(true)

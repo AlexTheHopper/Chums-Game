@@ -43,16 +43,20 @@ func on_something_death():
 		
 func emit_object():
 	for n in to_emit:
-		for target_chum in get_tree().get_nodes_in_group(chum.current_group) + get_tree().get_nodes_in_group("Player"):
-			if target_chum != chum and not target_chum.has_damage() and not(target_chum is Player and chum.current_group == "Chums_Enemy"):
-				var obj = object.instantiate()
-				Global.current_room_node.get_node("Decorations").add_child(obj)
-				obj.target = target_chum
-				obj.global_position = chum.sleep_zone.global_position
-				obj.strength = max(1, chum.quality["attack_damage"])
-				obj.velocity = Vector3(0, 15.0, 0)
-				if target_chum is not Player:
-					target_chum.health_depleted.connect(obj.on_target_death)
+		var options := get_tree().get_nodes_in_group(chum.current_group).filter(func(c): return c != chum and not c.has_damage() and not c.is_temporary)
+		if chum.current_group == "Chums_Friend" and not get_tree().get_nodes_in_group("Player")[0].has_damage():
+			options.append(get_tree().get_nodes_in_group("Player")[0])
+		
+		if len(options) > 0:
+			var obj = object.instantiate()
+			Global.current_room_node.get_node("Decorations").add_child(obj)
+			var obj_target = options.pick_random()
+			obj.target = obj_target
+			obj.global_position = chum.particle_zone.global_position
+			obj.strength = max(1, chum.quality["attack_damage"])
+			obj.velocity = Vector3(0, 15.0, 0)
+			if obj_target is not Player:
+				obj_target.health_depleted.connect(obj.on_target_death)
 	to_emit = 0
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

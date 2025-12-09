@@ -24,7 +24,7 @@ colors = PackedColorArray(0.26477066, 0.0007082921, 0.62528837, 1, 0.38241717, 0
 [sub_resource type="SphereShape3D" id="SphereShape3D_1v0vs"]
 radius = 0.3
 
-[node name="HealBall" type="CharacterBody3D"]
+[node name="UpgradeBall" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 10
 script = ExtResource("1_n8p3e")

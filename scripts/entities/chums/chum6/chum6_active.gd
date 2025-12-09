@@ -44,7 +44,7 @@ func on_something_death():
 func emit_object():
 	for n in to_emit:
 		for target_chum in get_tree().get_nodes_in_group(chum.current_group) + get_tree().get_nodes_in_group("Player"):
-			if target_chum != chum and target_chum.has_damage() and not(target_chum is Player and chum.current_group == "Chums_Enemy"):
+			if target_chum != chum and target_chum.has_damage() and not target_chum.is_temporary and not(target_chum is Player and chum.current_group == "Chums_Enemy"):
 				var obj = object.instantiate()
 				Global.current_room_node.get_node("Decorations").add_child(obj)
 				obj.target = target_chum

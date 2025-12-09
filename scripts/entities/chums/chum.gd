@@ -43,6 +43,8 @@ var previous_group := "Chums_Neutral"
 @onready var hurt_particles_num_enemy := load("res://particles/damage_num_enemy.tscn")
 @onready var hurt_particles_num_friend := load("res://particles/damage_num_friendly.tscn")
 @onready var hurt_particles_num := hurt_particles_num_enemy
+@onready var quality_particles := load("res://particles/quality_increase.tscn")
+
 
 var stats_set := false
 var quality: Dictionary[String, int] = {"health": 0, "move_speed": 0, "attack_damage": 0, "attack_speed": 0}
@@ -161,6 +163,9 @@ func increase_stats(attack_speed_count: int = 1, attack_damage_count: int = 1, m
 	
 	#APPLY CHANGES
 	set_stats_from_quality()
+	
+	if attack_speed_count + attack_damage_count + move_speed_count + health_count > 0:
+		particle_zone.add_child(quality_particles.instantiate())
 
 func create_sleep_particles():
 	if Global.game_begun:

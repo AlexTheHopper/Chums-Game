@@ -7,6 +7,9 @@ func _ready() -> void:
 	cpu_particles_3d.mesh = cpu_particles_3d.mesh.duplicate()
 	if gradient:
 		cpu_particles_3d.color_ramp = gradient
+	call_deferred("start_emitting") #So it can be moved if necessary
+
+func start_emitting() -> void:
 	cpu_particles_3d.emitting = true
 
 func stop_emitting() -> void:
