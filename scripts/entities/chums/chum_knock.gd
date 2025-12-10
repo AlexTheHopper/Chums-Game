@@ -18,6 +18,12 @@ func Enter() -> void:
 	
 	chum.call_deferred("enable_interaction")
 	chum.anim_player.play("Knock")
+	
+	#For chums spawned in knock with 0 health:
+	if chum.initial_state_override == "Knock" and chum.start_health == 0:
+		chum.anim_player.seek(chum.anim_player.get_animation("Knock").length, true)
+		chum.get_node("GeneralChumBehaviour/HealthBar").override_ratio(0.0)
+		
 	#For spawned chums:
 	if chum.is_temporary:
 		await get_tree().create_timer(0.5).timeout

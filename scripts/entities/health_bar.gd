@@ -89,6 +89,11 @@ func _on_max_health_changed(_difference):
 	health_ratio = max(1.0 * health_node.health / health_node.max_health, 0.0)
 	damaged_health_ratio = health_ratio
 
+func override_ratio(value: float) -> void:
+	damaged_health_ratio = value
+	damaged_bar.scale.x = damaged_health_ratio
+	damaged_bar.position.x = (damaged_health_ratio - 1) * 0.5
+
 
 func _on_damaged_timer_timeout() -> void:
 	is_shrinking = true
