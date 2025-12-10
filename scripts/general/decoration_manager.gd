@@ -37,6 +37,8 @@ func _ready() -> void:
 					
 					"frame1": preload("res://scenes/world/decorations/frame_destructible_1.tscn"),
 					"frame2": preload("res://scenes/world/decorations/frame_destructible_2.tscn"),
+					
+					"fireplace": preload("res://scenes/world/decorations/fireplace.tscn"),
 					}
 	
 	decorations_world = {
@@ -54,7 +56,7 @@ func _ready() -> void:
 
 		3: {"multiplier": 0.5,
 			"common": ["rubble1"],
-			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5"],
+			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5", "fireplace", "fireplace", "fireplace"],
 			"rare": ["column1"],
 			},
 		

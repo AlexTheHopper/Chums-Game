@@ -16,6 +16,8 @@ func _ready() -> void:
 		set_as_enemy()
 	elif parent_group in ["Chums_Friend", "Player"]:
 		set_as_friendly()
+	elif parent_group in ["Hurt_All"]:
+		set_as_damage_all()
 		
 func set_as_enemy():
 	set_collision_layer_value(10, true)
@@ -30,6 +32,10 @@ func set_as_friendly():
 func set_as_neutral():
 	set_collision_layer_value(9, false)
 	set_collision_layer_value(10, false)
+
+func set_as_damage_all() -> void:
+	set_collision_layer_value(9, true)
+	set_collision_layer_value(10, true)
 
 func set_damage(value: int):
 	damage = value

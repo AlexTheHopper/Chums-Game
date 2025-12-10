@@ -48,6 +48,7 @@ Chums_Enemy="Chums not yet befriended"
 Chums_Friend="Chums that have been befriended"
 Chums_Neutral="Chums that are just chilling"
 Camera=""
+Hurt_All=""
 
 [gui]
 

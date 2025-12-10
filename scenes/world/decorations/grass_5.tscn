@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkx7amga74n6l"]
+[gd_scene load_steps=5 format=3 uid="uid://dkx7amga74n6l"]
 
 [ext_resource type="ArrayMesh" uid="uid://bp7k1lemlosry" path="res://assets/world/world_1_other/grass5.vox" id="1_cy5kl"]
 [ext_resource type="Script" uid="uid://ccsimpi3va2ld" path="res://scripts/entities/destructable_decoration.gd" id="1_kimgl"]
@@ -11,12 +11,10 @@ colors = PackedColorArray(0.058815062, 0.2734132, 0, 1, 2.1658839e-06, 0.6705109
 radius = 0.75
 height = 1.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_kimgl"]
-
 [node name="Grass5" type="Node3D" node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
 script = ExtResource("1_kimgl")
-to_remove = NodePath("MeshInstance3D")
-to_shrink = NodePath("MeshInstance3D")
+to_remove = NodePath(".")
+to_shrink = NodePath("Grass5")
 hit_zone = NodePath("Area3D")
 gradient = SubResource("Gradient_kimgl")
 sound_effect = 15
@@ -31,7 +29,3 @@ collision_mask = 768
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_ao0kb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66385186, 0)
-mesh = SubResource("BoxMesh_kimgl")

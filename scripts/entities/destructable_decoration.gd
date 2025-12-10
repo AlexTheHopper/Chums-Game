@@ -6,6 +6,7 @@ class_name DestructibleDeco
 @export var hit_zone: Area3D
 @export var gradient: Gradient
 @export var sound_effect: SoundEffect.SOUND_EFFECT_TYPE
+var knockback_strength := 0.0
 
 const DECORATION_DESTROYED = preload("res://particles/decoration_destroyed.tscn")
 var can_be_removed := true
@@ -18,7 +19,7 @@ func remove_on_entry() -> void:
 	to_remove.queue_free()
 
 func _on_area_entered(area) -> void:
-	if area is Hitbox and can_be_removed:
+	if area is Hitbox and can_be_removed and area.owner != self:
 		can_be_removed = false
 		var angle = Functions.angle_to_xz(area, self)
 		var particles = DECORATION_DESTROYED.instantiate()
@@ -26,7 +27,7 @@ func _on_area_entered(area) -> void:
 			particles.gradient = gradient
 		add_child(particles)
 		particles.rotation.y = angle
-		get_tree().create_tween().tween_property(to_shrink, "scale", Vector3(0.0, 0.0, 0.0), 0.1)
+		get_tree().create_tween().tween_property(to_shrink, "scale", Vector3(0.1, 0.1, 0.1), 0.1)
 		particles.completed.connect(_on_particles_completed)
 		
 		AudioManager.create_3d_audio_at_location(self.global_position, sound_effect)
