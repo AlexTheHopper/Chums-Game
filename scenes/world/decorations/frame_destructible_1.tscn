@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs0a04dy4rhs5"]
+
+[ext_resource type="Script" uid="uid://ccsimpi3va2ld" path="res://scripts/entities/destructable_decoration.gd" id="1_ybckq"]
+[ext_resource type="ArrayMesh" uid="uid://dgta4do7g0ale" path="res://assets/world/world_2_other/frame_destructible_1.vox" id="2_ybckq"]
+
+[sub_resource type="Gradient" id="Gradient_3xa88"]
+offsets = PackedFloat32Array(0, 0.652, 1)
+colors = PackedColorArray(0.06, 0.06, 0.06, 1, 0.32, 0.32, 0.32, 1, 1, 1, 1, 0.5803922)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oaedn"]
+radius = 0.75
+height = 1.5
+
+[node name="FrameDestructible1" type="Node3D" node_paths=PackedStringArray("hit_zone", "mesh")]
+script = ExtResource("1_ybckq")
+hit_zone = NodePath("Area3D")
+mesh = NodePath("FrameDestructible1")
+gradient = SubResource("Gradient_3xa88")
+sound_effect = 15
+
+[node name="FrameDestructible1" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_ybckq")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_oaedn")
