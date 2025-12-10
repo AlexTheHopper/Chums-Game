@@ -162,7 +162,10 @@ func remove_destroyed_decorations() -> void:
 	var to_remove: Array = Global.world_map[Global.room_location]["removed_decorations"]
 	for deco in decorations.get_children():
 		if deco.global_position in to_remove:
-			deco.queue_free()
+			if deco is DestructibleDeco:
+				deco.remove_on_entry()
+			else:
+				deco.queue_free()
 
 func set_player_loc_on_entry():
 	#sets player near entered door if there are two rooms entered and the last two are the same world.

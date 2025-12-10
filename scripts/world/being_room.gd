@@ -42,13 +42,14 @@ func decorate() -> void:
 		var angle = angles.pick_random()
 
 		decos_to_add.append([chosen_deco[0], pos, angle])
-
+		
 	for deco in decos_to_add:
-		if deco[1] not in Global.world_map[Global.room_location]["removed_decorations"]:
-			var to_add = deco[0].instantiate()
-			$Decorations.add_child(to_add)
-			to_add.global_position = deco[1]
-			to_add.rotation.y = deco[2]
+		var to_add = deco[0].instantiate()
+		$Decorations.add_child(to_add)
+		to_add.global_position = deco[1]
+		to_add.rotation.y = deco[2]
+		if deco[1] in Global.world_map[Global.room_location]["removed_decorations"] and to_add is DestructibleDeco:
+			to_add.remove_on_entry()
 	decos_to_add = []
 
 func set_player_loc_on_entry():

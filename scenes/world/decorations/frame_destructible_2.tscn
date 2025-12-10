@@ -11,10 +11,11 @@ colors = PackedColorArray(0.06, 0.06, 0.06, 1, 0.32, 0.32, 0.32, 1, 1, 1, 1, 0.5
 radius = 0.75
 height = 1.5
 
-[node name="FrameDestructible2" type="Node3D" node_paths=PackedStringArray("hit_zone", "mesh")]
+[node name="FrameDestructible2" type="Node3D" node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
 script = ExtResource("1_cg3ju")
+to_remove = NodePath(".")
+to_shrink = NodePath("FrameDestructible2")
 hit_zone = NodePath("Area3D")
-mesh = NodePath("FrameDestructible2")
 gradient = SubResource("Gradient_3xa88")
 sound_effect = 15
 

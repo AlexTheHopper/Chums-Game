@@ -10,10 +10,11 @@ colors = PackedColorArray(0.058815062, 0.2734132, 0, 1, 2.1658839e-06, 0.6705109
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8auck"]
 height = 1.0
 
-[node name="Grass4" type="Node3D" node_paths=PackedStringArray("hit_zone", "mesh")]
+[node name="Grass4" type="Node3D" node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
 script = ExtResource("1_hdyjr")
+to_remove = NodePath(".")
+to_shrink = NodePath("Grass4")
 hit_zone = NodePath("Area3D")
-mesh = NodePath("Grass4")
 gradient = SubResource("Gradient_hdyjr")
 sound_effect = 15
 
