@@ -4,7 +4,7 @@ var chum_id := 27
 var chum_str := "chum27"
 var chum_name := "Marble"
 
-var desc := "Yeah idk what this chum will do yet, but i know its gonna b a flower." #TODO
+var desc := "One of the first chums, bringing life to others. Upon enemy defeat, there is a chance a friend's maximum health will be increased."
 
 var min_attack_speed := 2.55
 
@@ -30,3 +30,6 @@ var always_targets_player := false
 
 var bracelet_count := 1
 var bracelet_cost := 3
+
+
+var base_chance_to_ability := 0.6

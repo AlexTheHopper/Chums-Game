@@ -22,30 +22,12 @@ func _process(delta: float) -> void:
 func _on_contact_zone_body_entered(body: Node3D) -> void:
 	if body == target and active:
 		if body is Chum:
-			var to_increase: Dictionary = get_stats_to_increase(body, strength)
-			body.increase_stats(to_increase["attack_speed"], to_increase["attack_damage"], to_increase["move_speed"], to_increase["health"], true)
+			var to_increase = max(1, strength)
+			body.increase_stats(0, 0, 0, to_increase, true)
 		elif body is Player:
-			body.increase_stats(2 + strength)
+			body.health_node.max_health += int(strength * body.base_health / 10.0)
 			
 		remove()
-
-func get_stats_to_increase(chum, count: int) -> Dictionary:
-	var to_return = {"health": 0, "move_speed": 0, "attack_damage": 0, "attack_speed": 0}
-	var to_increase := []
-
-	if chum.has_attack_speed:
-		to_increase.append("attack_speed")
-	if chum.has_attack_damage:
-		to_increase.append("attack_damage")
-	if chum.has_move_speed:
-		to_increase.append("move_speed")
-	if chum.has_health:
-		to_increase.append("health")
-
-	for i in range(count):
-		to_return[to_increase.pick_random()] += 1
-	
-	return to_return
 
 func remove() -> void:
 	active = false

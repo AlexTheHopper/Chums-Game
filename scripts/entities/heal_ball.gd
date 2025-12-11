@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var target: CharacterBody3D
-var grace := 1
+var grace := 1.0
 var active := true
 @export var heal_amount := 1
 

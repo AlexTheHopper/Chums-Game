@@ -3,7 +3,7 @@ class_name Chum27_Active
 @onready var state_name := "Active"
 
 @onready var chum: CharacterBody3D
-@onready var object: PackedScene = load("res://scenes/entities/heal_ball.tscn")
+@onready var object: PackedScene = load("res://scenes/entities/max_health_ball.tscn")
 var emitting := false
 var has_touched_floor := false
 
@@ -36,6 +36,10 @@ func Physics_Update(delta: float):
 	chum.move_and_slide()
 	
 func on_something_death():
+	#Only do this sometimes
+	if randf() > Functions.map_range(chum.quality["attack_damage"], Vector2(0, 100), Vector2(chum.base_chance_to_ability, 1.0)):
+		return
+
 	to_emit += 1
 	if not emitting:
 		emitting = true
@@ -43,16 +47,20 @@ func on_something_death():
 		
 func emit_object():
 	for n in to_emit:
-		for target_chum in get_tree().get_nodes_in_group(chum.current_group) + get_tree().get_nodes_in_group("Player"):
-			if target_chum != chum and target_chum.has_damage() and not(target_chum is Player and chum.current_group == "Chums_Enemy"):
-				var obj = object.instantiate()
-				Global.current_room_node.get_node("Decorations").add_child(obj)
-				obj.target = target_chum
-				obj.global_position = chum.sleep_zone.global_position
-				obj.heal_amount = chum.hitbox.damage
-				obj.velocity = Vector3(0, 5, 0)
-				if target_chum is not Player:
-					target_chum.health_depleted.connect(obj.on_target_death)
+		var options := get_tree().get_nodes_in_group(chum.current_group).filter(func(c): return not c.is_temporary and c != chum and c.has_health)
+		if chum.current_group == "Chums_Friend":
+			options.append(get_tree().get_nodes_in_group("Player")[0])
+		
+		if len(options) > 0:
+			var obj = object.instantiate()
+			Global.current_room_node.get_node("Decorations").add_child(obj)
+			var obj_target = options.pick_random()
+			obj.target = obj_target
+			obj.global_position = chum.particle_zone.global_position
+			obj.strength = clamp(1 + floor(chum.quality["attack_damage"] / 5.0), 1, 100)
+			obj.velocity = Vector3(0, 15.0, 0)
+			if obj_target is not Player:
+				obj_target.health_depleted.connect(obj.on_target_death)
 	to_emit = 0
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

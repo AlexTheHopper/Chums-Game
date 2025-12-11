@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs20nji7b1uoa"]
+
+[ext_resource type="Script" uid="uid://yde6nu7snxhi" path="res://scripts/entities/max_health_ball.gd" id="1_ayiv1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_om8ll"]
+radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_my8h2"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_maa32"]
+material = SubResource("StandardMaterial3D_my8h2")
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Curve" id="Curve_fqqtf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.743719, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_1v0vs"]
+offsets = PackedFloat32Array(0, 0.6145833, 1)
+colors = PackedColorArray(0.008874227, 0.24342516, 0.45086205, 1, 2.560556e-05, 0.5542448, 0.9380572, 1, 0.4321076, 0.71815, 0.9999979, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1v0vs"]
+radius = 0.3
+
+[node name="UpgradeBall" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 10
+script = ExtResource("1_ayiv1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_om8ll")
+disabled = true
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 50
+randomness = 0.5
+mesh = SubResource("BoxMesh_maa32")
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.5
+scale_amount_curve = SubResource("Curve_fqqtf")
+color_ramp = SubResource("Gradient_1v0vs")
+
+[node name="ContactZone" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ContactZone"]
+shape = SubResource("SphereShape3D_1v0vs")
+
+[connection signal="body_entered" from="ContactZone" to="." method="_on_contact_zone_body_entered"]

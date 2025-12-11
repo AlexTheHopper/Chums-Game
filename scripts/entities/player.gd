@@ -37,6 +37,7 @@ var attacking_mult := 1.0
 @export var hurtbox: Hurtbox
 @export var base_damage := 10
 @export var max_extra_damage := 30
+@export var base_health := 100
 @onready var particle_zone := $Particles
 @onready var health_node := $Health
 @onready var anim_player := $AnimationPlayer
@@ -64,8 +65,8 @@ func _ready() -> void:
 	camera_controller.rotation.y = 0.0
 	Global.game_begun = true
 	health_node.immune = false
-	health_node.set_max_health(100)
-	health_node.set_health(100)
+	health_node.set_max_health(base_health)
+	health_node.set_health(base_health)
 	anim_player.play("RESET")
 	$Camera_Controller/AudioListener3D.make_current()
 	if Global.dev_mode:
