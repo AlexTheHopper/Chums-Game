@@ -11,7 +11,7 @@ func _physics_process(_delta: float) -> void:
 		$CollisionShape3D.disabled = false
 		
 	if target and not grace:
-		velocity = lerp(velocity, 5 * Functions.vector_to_normalized(self, target), 0.05)
+		velocity = lerp(velocity, 5 * Functions.vector_to_normalized(self, target, Vector3(0.0, 0.5, 0.0)), 0.05)
 		
 	move_and_slide()
 	

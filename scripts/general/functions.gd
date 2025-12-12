@@ -7,8 +7,8 @@ func distance_between(body1, body2) -> float:
 func distance_squared(body1, body2) -> float:
 	return (body1.global_position.distance_squared_to(body2.global_position))
 	
-func vector_to_normalized(body1, body2) -> Vector3:
-	var to_return = body2.global_position - body1.global_position
+func vector_to_normalized(body1, body2, offset: Vector3 = Vector3(0.0, 0.0, 0.0)) -> Vector3:
+	var to_return = body2.global_position - body1.global_position + offset
 	to_return = to_return.normalized()
 	return (to_return)
 	

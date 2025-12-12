@@ -35,6 +35,7 @@ func _on_detection_zone_body_entered(body: Node3D) -> void:
 		#Check for flower match:
 		if body.chum_id in flower_chum_ids and chum_id in flower_chum_ids:
 			chum_id = body.chum_id
+			Global.world_map[Global.room_location]["statue_id"] = body.chum_id
 			room_changer_zone.set_chum_id(chum_id)
 
 		if body.chum_id == chum_id:

@@ -11,7 +11,7 @@ func _physics_process(_delta: float) -> void:
 		$CollisionShape3D.disabled = false
 		
 	if target and not grace:
-		velocity = lerp(velocity, 5 * Functions.vector_to_normalized(self, target), 0.05)
+		velocity = lerp(velocity, 5 * Functions.vector_to_normalized(self, target, Vector3(0.0, 0.5, 0.0)), 0.05)
 		
 	move_and_slide()
 	
@@ -25,7 +25,7 @@ func _on_contact_zone_body_entered(body: Node3D) -> void:
 			var to_increase: Dictionary = get_stats_to_increase(body, strength)
 			body.increase_stats(to_increase["attack_speed"], to_increase["attack_damage"], to_increase["move_speed"], to_increase["health"], true)
 		elif body is Player:
-			body.increase_stats(2 + strength)
+			body.increase_stats(2 + 2 * strength)
 			
 		remove()
 

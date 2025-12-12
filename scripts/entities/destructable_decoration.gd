@@ -21,13 +21,12 @@ func remove_on_entry() -> void:
 func _on_area_entered(area) -> void:
 	if area is Hitbox and can_be_removed and area.owner != self:
 		can_be_removed = false
-		var angle = Functions.angle_to_xz(area, self)
 		var particles = DECORATION_DESTROYED.instantiate()
 		if gradient:
 			particles.gradient = gradient
 		add_child(particles)
-		particles.rotation.y = angle
-		get_tree().create_tween().tween_property(to_shrink, "scale", Vector3(0.1, 0.1, 0.1), 0.1)
+		var current_tween = get_tree().create_tween().tween_property(to_shrink, "scale", Vector3(0.1, 0.1, 0.1), 0.1)
+		current_tween.finished.connect(hide_to_shrink)
 		particles.completed.connect(_on_particles_completed)
 		
 		AudioManager.create_3d_audio_at_location(self.global_position, sound_effect)
@@ -35,3 +34,6 @@ func _on_area_entered(area) -> void:
 func _on_particles_completed() -> void:
 	Global.world_map[Global.room_location]["removed_decorations"].append(global_position)
 	to_remove.queue_free()
+
+func hide_to_shrink() -> void:
+	to_shrink.visible = false

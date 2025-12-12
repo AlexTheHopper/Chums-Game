@@ -118,7 +118,8 @@ func _ready() -> void:
 			"back": "To complete the goal, and let us rest."},
 	}
 
-func get_random_decoration(world_n):
+func get_random_decoration(world_ns: Array):
+	var world_n: int = world_ns.pick_random()
 	var chance = randf()
 	if chance < 0.95:
 		var rand_name = decorations_world[world_n]["common"].pick_random()

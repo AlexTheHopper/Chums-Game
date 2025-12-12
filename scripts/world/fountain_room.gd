@@ -24,7 +24,7 @@ func decorate():
 	var decos_to_add := []
 
 	for n in int(deco_n * DecorationManager.decorations_world[Global.current_world_num]['multiplier']):
-		var chosen_deco = DecorationManager.get_random_decoration(Global.current_world_num)
+		var chosen_deco = DecorationManager.get_random_decoration([Global.current_world_num])
 		var x = randf_range(-13, 15)
 		var y = 0
 		if -9 < x and x < 11:

@@ -12,7 +12,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nv8b"]
 resource_name = "palette"
-cull_mode = 2
 shading_mode = 0
 albedo_texture = ExtResource("1_m64b0")
 

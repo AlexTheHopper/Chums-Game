@@ -36,7 +36,7 @@ func decorate() -> void:
 	var decos_to_add := []
 
 	for n in int(deco_n * DecorationManager.decorations_world[Global.room_location[1]]['multiplier']):
-		var chosen_deco = DecorationManager.get_random_decoration(Global.room_location[1])
+		var chosen_deco = DecorationManager.get_random_decoration([Global.room_location[1]])
 		var pos = Vector3(randf_range(-14, -1) if randf() < 0.5 else randf_range(3, 16),
 						0, randf_range(-14, -1) if randf() < 0.5 else randf_range(3, 16)).snapped(Vector3(0.1, 0.1, 0.1))
 		var angle = angles.pick_random()
