@@ -50,7 +50,7 @@ func emit_object():
 				obj.target = target_chum
 				obj.global_position = chum.sleep_zone.global_position
 				obj.heal_amount = chum.hitbox.damage
-				obj.velocity = Vector3(0, 15.0, 0)
+				obj.velocity = Vector3(0, 5.0, 0)
 				if target_chum is not Player:
 					target_chum.health_depleted.connect(obj.on_target_death)
 	to_emit = 0
