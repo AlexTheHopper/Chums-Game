@@ -58,7 +58,7 @@ func emit_object():
 			obj.target = obj_target
 			obj.global_position = chum.particle_zone.global_position
 			obj.strength = clamp(1 + floor(chum.quality["attack_damage"] / 5.0), 1, 100)
-			obj.velocity = Vector3(0, 15.0, 0)
+			obj.velocity = Vector3(0, 5.0, 0)
 			if obj_target is not Player:
 				obj_target.health_depleted.connect(obj.on_target_death)
 	to_emit = 0
