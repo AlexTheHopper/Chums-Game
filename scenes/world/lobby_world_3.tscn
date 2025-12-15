@@ -65,12 +65,6 @@ metadata/_editor_floor_ = Vector3(15, 0, -15)
 
 [node name="Decorations" type="Node3D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
-omni_range = 40.0
-omni_attenuation = 0.2
-omni_shadow_mode = 0
-
 [node name="Fireplace" parent="Decorations" instance=ExtResource("4_g8eoq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 10)
 

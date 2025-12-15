@@ -17,6 +17,8 @@ extends Resource
 
 @export var player_chums_befriended: int
 @export var player_unique_chums_befriended: Array
+@export var player_bracelets_collected: int
+@export var player_bracelets_spent: int
 
 #Friend Chums
 @export var friendly_chums:Array[Dictionary]

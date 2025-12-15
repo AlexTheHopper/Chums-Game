@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://kppdjcwrwudx"]
+
+[ext_resource type="ArrayMesh" uid="uid://bso36i8qxga4y" path="res://assets/world/world_4_other/column5.vox" id="1_w8lpu"]
+
+[node name="Column5" type="Node3D"]
+
+[node name="Column5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = ExtResource("1_w8lpu")

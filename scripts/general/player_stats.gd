@@ -10,6 +10,8 @@ extends Node
 @onready var collected_lanterns := {0: false, 1: false, 2: false, 3: false, 4: false}
 @onready var player_chums_befriended := 0
 @onready var player_unique_chums_befriended := []
+@onready var player_bracelets_collected := 0
+@onready var player_bracelets_spent := 0
 
 signal hud_health_change
 signal hud_max_health_change
@@ -52,6 +54,11 @@ func _on_player_max_health_changed(_differnce):
 func bracelets_added(value):
 	bracelets += value
 	hud_bracelets_change.emit()
+	
+	if value > 0:
+		player_bracelets_collected += value
+	else:
+		player_bracelets_spent -= value
 	
 func friend_chums_changed(change, chum):
 	player_chums_changed.emit()

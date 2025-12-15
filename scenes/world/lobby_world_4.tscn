@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpgqqi7matxnm"]
+[gd_scene load_steps=9 format=3 uid="uid://bpgqqi7matxnm"]
 
 [ext_resource type="Script" uid="uid://cptocnh6wklx4" path="res://scripts/world/lobby.gd" id="1_wwi5d"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="2_ilqau"]
 [ext_resource type="MeshLibrary" uid="uid://cwy8hn4kix4q7" path="res://assets/world/world_4_mesh_liv_v3.tres" id="3_tokki"]
+[ext_resource type="PackedScene" uid="uid://ctp8h3pthmku6" path="res://scenes/world/decorations/column4.tscn" id="4_0k7da"]
+[ext_resource type="PackedScene" uid="uid://kppdjcwrwudx" path="res://scenes/world/decorations/column5.tscn" id="5_rl24v"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="9_oalnl"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4mvd4"]
@@ -56,11 +58,89 @@ metadata/_editor_floor_ = Vector3(15, 0, -15)
 
 [node name="Decorations" type="Node3D" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
-omni_range = 40.0
-omni_attenuation = 0.2
-omni_shadow_mode = 0
+[node name="Column4" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="Column5" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
+
+[node name="Column6" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+
+[node name="Column7" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="Column8" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 9)
+
+[node name="Column9" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 15)
+
+[node name="Column10" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -7)
+
+[node name="Column11" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -13)
+
+[node name="Column12" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -13)
+
+[node name="Column13" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -7)
+
+[node name="Column14" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 9)
+
+[node name="Column15" parent="Decorations" instance=ExtResource("4_0k7da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 15)
+
+[node name="Column16" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 5)
+
+[node name="Column17" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -3)
+
+[node name="Column18" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 17)
+
+[node name="Column19" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 17)
+
+[node name="Column20" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -15)
+
+[node name="Column21" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -15)
+
+[node name="Column22" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -3)
+
+[node name="Column23" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 5)
+
+[node name="Column24" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 9)
+
+[node name="Column25" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 9)
+
+[node name="Column26" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -7)
+
+[node name="Column27" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
+
+[node name="Column28" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 1)
+
+[node name="Column29" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
+
+[node name="Column30" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 9)
+
+[node name="Column31" parent="Decorations" instance=ExtResource("5_rl24v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
 
 [node name="Entities" type="Node3D" parent="."]
 

@@ -34,6 +34,8 @@ func _ready() -> void:
 					"column1": preload("res://scenes/world/decorations/column1.tscn"),
 					"column2": preload("res://scenes/world/decorations/column2.tscn"),
 					"column3": preload("res://scenes/world/decorations/column3.tscn"),
+					"column4": preload("res://scenes/world/decorations/column4.tscn"),
+					"column5": preload("res://scenes/world/decorations/column5.tscn"),
 					
 					"frame1": preload("res://scenes/world/decorations/frame_destructible_1.tscn"),
 					"frame2": preload("res://scenes/world/decorations/frame_destructible_2.tscn"),
@@ -71,10 +73,10 @@ func _ready() -> void:
 			},
 		
 		4: {"multiplier": 0.5,
-			"rarities": {"common": 0.95, "uncommon": 0.98, "rare": 1.0},
-			"common": ["rubble1"],
+			"rarities": {"common": 0.95, "uncommon": 0.99, "rare": 1.0},
+			"common": ["rubble1", "column4", "column5"],
 			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5"],
-			"rare": ["column1"],
+			"rare": ["frame1", "frame2"],
 			},
 	}
 	
