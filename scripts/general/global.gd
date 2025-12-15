@@ -269,7 +269,7 @@ func get_world_grid(world_n, set_seed := 0):
 	var size = world_info[world_n]["map_size"]
 	#2D Array of where actual rooms are in the world
 	var corridor_count := int(max(25 + size * size / 2, 5))
-	var corridor_lengths := range(2, max(1.5 * size, 4))
+	var corridor_lengths := range(2, max(1.75 * size, 4))
 	var walks := [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
 	var room_count := int(max(size * size / 2, 1))
 	var bounds = [-1, (2 * size) + 1]

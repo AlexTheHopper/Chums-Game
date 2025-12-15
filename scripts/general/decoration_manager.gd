@@ -39,28 +39,39 @@ func _ready() -> void:
 					"frame2": preload("res://scenes/world/decorations/frame_destructible_2.tscn"),
 					
 					"fireplace": preload("res://scenes/world/decorations/fireplace.tscn"),
+					
+					"shrub1": preload("res://scenes/world/decorations/shrub_1.tscn"),
+					"shrub2": preload("res://scenes/world/decorations/shrub_2.tscn"),
+					"shrub3": preload("res://scenes/world/decorations/shrub_3.tscn"),
+					"shrub4": preload("res://scenes/world/decorations/shrub_4.tscn"),
+					"shrub5": preload("res://scenes/world/decorations/shrub_5.tscn"),
+					"shrub6": preload("res://scenes/world/decorations/shrub_6.tscn"),
 					}
 	
 	decorations_world = {
 		1: {"multiplier": 1.0,
+			"rarities": {"common": 0.95, "uncommon": 0.98, "rare": 1.0},
 			"common": ["grass1", "grass2", "grass3", "grass4", "grass5"],
 			"uncommon": ["tree2"],
 			"rare": ["bonesmoss1", "bonesmoss2", "bonesmoss3", "bonesmoss4", "bonesmoss5"],
 			},
 
 		2: {"multiplier": 0.1,
+			"rarities": {"common": 0.95, "uncommon": 0.98, "rare": 1.0},
 			"common": ["rubble1", "rubble1", "rubble1", "bones1", "bones2", "bones3", "column2", "column3"],
 			"uncommon": ["column1", "frame1", "frame2"],
 			"rare": ["column1", "frame1", "frame2"],
 			},
 
-		3: {"multiplier": 0.5,
-			"common": ["rubble1"],
-			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5", "fireplace", "fireplace", "fireplace"],
+		3: {"multiplier": 0.75,
+			"rarities": {"common": 0.85, "uncommon": 0.95, "rare": 1.0},
+			"common": ["rubble1", "shrub2", "shrub3", "shrub4",  "shrub5",  "shrub6"],
+			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5", "fireplace", "fireplace", "fireplace", "shrub1"],
 			"rare": ["column1"],
 			},
 		
 		4: {"multiplier": 0.5,
+			"rarities": {"common": 0.95, "uncommon": 0.98, "rare": 1.0},
 			"common": ["rubble1"],
 			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5"],
 			"rare": ["column1"],
@@ -121,10 +132,10 @@ func _ready() -> void:
 func get_random_decoration(world_ns: Array):
 	var world_n: int = world_ns.pick_random()
 	var chance = randf()
-	if chance < 0.95:
+	if chance < decorations_world[world_n]["rarities"]["common"]:
 		var rand_name = decorations_world[world_n]["common"].pick_random()
 		return [decorations[rand_name], rand_name]
-	elif chance < 0.98:
+	elif chance < decorations_world[world_n]["rarities"]["uncommon"]:
 		var rand_name = decorations_world[world_n]["uncommon"].pick_random()
 		return [decorations[rand_name], rand_name]
 	else:

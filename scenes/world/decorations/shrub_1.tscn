@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtey0l3pd20rn"]
+
+[ext_resource type="Script" uid="uid://ccsimpi3va2ld" path="res://scripts/entities/destructable_decoration.gd" id="1_5ub8w"]
+[ext_resource type="ArrayMesh" uid="uid://b54j18qpd6s5t" path="res://scenes/world/decorations/shrub.vox" id="2_sj02n"]
+
+[sub_resource type="Gradient" id="Gradient_kimgl"]
+offsets = PackedFloat32Array(0.2, 0.4, 0.7, 0.9)
+colors = PackedColorArray(0.84705883, 0.7529412, 0, 1, 0.7921569, 0.4117647, 0, 1, 1, 0.3254902, 0.23921569, 1, 0.32941177, 0.32941177, 0.32941177, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v06b1"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_38uap"]
+material = SubResource("StandardMaterial3D_v06b1")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_qianf"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_8bdc1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.21693118, 0.49053657), 0.0, 0.0, 0, 0, Vector2(0.33994707, 0.72934747), 0.0, 0.0, 0, 0, Vector2(0.49338618, 0.7336895), 0.0, 0.0, 0, 0, Vector2(0.80555546, 0.513694), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Gradient" id="Gradient_knxoy"]
+offsets = PackedFloat32Array(0.2, 0.4, 0.7, 0.9)
+colors = PackedColorArray(0.84705675, 0.75338876, 0, 1, 0.79046875, 0.41173908, 5.7756904e-07, 1, 0.9999977, 0.32613927, 0.23962602, 1, 0.33, 0.33, 0.33, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ao0kb"]
+radius = 0.75
+height = 1.5
+
+[node name="Shrub" type="Node3D" node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
+script = ExtResource("1_5ub8w")
+to_remove = NodePath(".")
+to_shrink = NodePath("Shrink")
+hit_zone = NodePath("Area3D")
+gradient = SubResource("Gradient_kimgl")
+sound_effect = 15
+
+[node name="Shrink" type="Node3D" parent="."]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Shrink"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59385526, 0)
+amount = 10
+mesh = SubResource("BoxMesh_38uap")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 30.0
+gravity = Vector3(0, 0.15, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.8
+damping_curve = SubResource("Curve_qianf")
+scale_amount_curve = SubResource("Curve_8bdc1")
+color_ramp = SubResource("Gradient_knxoy")
+
+[node name="Shrub" type="MeshInstance3D" parent="Shrink"]
+mesh = ExtResource("2_sj02n")
+skeleton = NodePath("../..")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_ao0kb")
