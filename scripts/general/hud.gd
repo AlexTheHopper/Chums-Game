@@ -49,7 +49,7 @@ func _process(_delta: float) -> void:
 		else:
 			is_returning = true
 			toggle_pause()
-			Global.return_to_menu(false)
+			Global.return_to_menu(false, false)
 	
 	#Minimap rotation
 	minimap.rotation = get_tree().get_first_node_in_group("Player").camera_controller.rotation.y

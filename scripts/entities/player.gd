@@ -300,4 +300,4 @@ func increase_stats(amount: int) -> void:
 		particle_zone.add_child(quality_particles.instantiate())
 
 func kill_player():
-	Global.return_to_menu(true)
+	Global.return_to_menu(true, true)

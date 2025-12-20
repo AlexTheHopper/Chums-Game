@@ -1,5 +1,5 @@
 extends Node
-var dev_mode := true
+var dev_mode := false
 
 var game_begun := false
 var world_transition_count := 0
@@ -578,17 +578,23 @@ func transition_to_world(destination_world_n: int, length = 1):
 func randomize_seed() -> void:
 	seed(randi() + hash(room_history))
 
-func return_to_menu(delete = false):
-	TransitionScreen.transition(3)
-	await TransitionScreen.on_transition_finished
-	is_alive = true
-	call_deferred("restart_game_and_delete", delete)
-
-func restart_game_and_delete(delete):
-	get_node("/root/Game").queue_free()
+func return_to_menu(delete = false, display_stats = false) -> void:	
+	if display_stats:
+		var stats_hud = load("res://scenes/general/hud_death_stats.tscn").instantiate()
+		get_node("/root/Game/HUD").add_child(stats_hud)
+		stats_hud.return_to_main_menu.connect(restart_game)
+	else:
+		call_deferred("restart_game")
+	
 	if delete:
 		SaverLoader.delete_save(game_save_id)
+
+func restart_game() -> void:
+	TransitionScreen.transition(3)
+	await TransitionScreen.on_transition_finished
+	get_node("/root/Game").queue_free()
 	game_begun = false
+	is_alive = true
 	game_save_id = 1
 	world_transition_count = 0
 	get_node("/root").add_child(load("res://scenes/general/main_menu.tscn").instantiate())

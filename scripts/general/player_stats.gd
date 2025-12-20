@@ -38,6 +38,8 @@ func initialize() -> void:
 	
 	player_chums_befriended = 0
 	player_unique_chums_befriended = []
+	player_bracelets_collected = 0
+	player_bracelets_spent = 0
 	
 	#To trigget sets:
 	bracelets = 0
