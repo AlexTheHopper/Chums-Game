@@ -31,7 +31,7 @@ func create_stat(stat_name: String, stat_value: String, pos: Vector2) -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
-		animation_player.play("fade_out")
+		animation_player.play("fade_out") #Dont put anything else here without accounting for skip spam
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":

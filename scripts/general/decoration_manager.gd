@@ -99,7 +99,7 @@ func _ready() -> void:
 			"back": "Yet I see no significant changes, in the end, all is to perish."},
 
 		4: {"info": "100 . 0",
-			"front": "Perhaps we are to be the ones moving on, with an impossibility of unwilling death we cannot cause a catastrophe...",
+			"front": "Perhaps we are to be the ones moving on, with the impossibility of unapproved death, there shall be many catastrophes to come...",
 			"back": "However where is the value in a life that never ends?"},
 
 		5: {"info": "125 . 0",

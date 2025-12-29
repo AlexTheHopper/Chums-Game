@@ -1,9 +1,22 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dpnhvfm2e2036"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dpnhvfm2e2036"]
 
 [ext_resource type="Material" uid="uid://dnbueftif4745" path="res://materials/outline_white.tres" id="1_pthfp"]
 
-[resource]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pthfp"]
+render_priority = 1
 next_pass = ExtResource("1_pthfp")
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.1
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_pthfp")
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 stencil_mode = 1

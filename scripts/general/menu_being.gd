@@ -6,6 +6,8 @@ var spawn_count := 25
 var spawned_player := false
 var lerp_speed := 2.5
 @onready var display_node := get_parent().get_node("DisplayNode")
+@onready var being_particles: Node3D = $BeingParticles
+
 
 func set_new_target():
 	var tar_pos = get_parent().get_node("Camera3D/Target").global_position
@@ -41,8 +43,9 @@ func spawn_chum():
 			spawn_count -= 1
 			
 	elif spawn_count <= 0:
-		$SmallParticles.emitting = false
-		$LargeParticles.emitting = false
+		print("done")
+		being_particles.get_node("SmallParticles").emitting = false
+		being_particles.get_node("LargeParticles").emitting = false
 
 func _physics_process(delta: float) -> void:
 	global_position = lerp(global_position, target_pos, 0.2 * delta * lerp_speed)
