@@ -1,7 +1,6 @@
 extends room
 class_name fight_room
 
-@onready var spawn_point: PathFollow3D = $SpawnPath/SpawnPoint
 @onready var room_value = Global.world_map[Global.room_location]["value"]
 const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
 const TYPE := "room"
@@ -17,7 +16,7 @@ func _ready() -> void:
 		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
 		
 	if Global.dev_mode:
-		$SpawnPath/SpawnTimer.wait_time = 0.1
+		$SpawnTimer.wait_time = 0.1
 	
 	super()
 

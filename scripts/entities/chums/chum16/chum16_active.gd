@@ -77,3 +77,4 @@ func Exit():
 		cur_conn.signal.disconnect(cur_conn.callable)
 	
 	chum.fire_particles.emitting = false
+	chum.hitbox.set_disabled(true)

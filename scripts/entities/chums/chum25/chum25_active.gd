@@ -68,4 +68,5 @@ func remove_spawned_chums() -> void:
 func Exit():
 	chum.anim_player.speed_scale = 1.0
 	chum.is_launched = false
+	chum.hitbox.set_disabled(true)
 	remove_spawned_chums()

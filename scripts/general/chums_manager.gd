@@ -40,7 +40,7 @@ func _ready() -> void:
 		15: {"object": preload("res://scenes/entities/chums/chum15.tscn"),
 			"destination_world": 2, "guard_world_n": 2}, #Medusa
 		16: {"object": preload("res://scenes/entities/chums/chum16.tscn"),
-			"destination_world": 3, "guard_world_n": false}, #Flowey
+			"destination_world": 3, "guard_world_n": false}, #Basalt
 		17: {"object": preload("res://scenes/entities/chums/chum17.tscn"),
 			"destination_world": 1, "guard_world_n": false}, #Being
 		18: {"object": preload("res://scenes/entities/chums/chum18.tscn"),
@@ -158,4 +158,8 @@ func get_specific_chum_str(chum_str):
 	return load("res://scenes/entities/chums/%s.tscn" % [chum_str])
 
 func get_specific_chum_id(chum_id):
+	if chum_id not in chums_list.keys():
+		push_error("error with finding chum_id %s" % chum_id)
+		return chums_list[1]["object"]
+
 	return chums_list[chum_id]["object"]

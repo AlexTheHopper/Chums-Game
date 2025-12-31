@@ -22,3 +22,4 @@ func Physics_Update(delta: float):
 
 func Exit():
 	chum.is_launched = false
+	chum.hitbox.set_disabled(true)

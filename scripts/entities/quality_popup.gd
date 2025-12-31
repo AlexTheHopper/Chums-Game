@@ -47,7 +47,7 @@ func _ready() -> void:
 	disp_attack_speed_value.text = get_quality_text(chum.quality["attack_speed"])
 	#Back
 	disp_name_back.text = disp_name.text
-	desc_back.text = chum.desc
+	desc_back.text = chum.desc if chum.chum_id in PlayerStats.player_unique_chums_befriended else "- Befriend To Learn -"
 	
 	scale = Vector3(0.1, 0.1, 0.1)
 	chum.has_quality_popup = true

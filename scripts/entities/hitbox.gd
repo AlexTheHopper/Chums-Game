@@ -42,3 +42,6 @@ func set_damage(value: int):
 	
 func get_damage() -> int:
 	return damage
+
+func set_disabled(value: bool) -> void:
+	collision.set_deferred("disabled", value)

@@ -90,6 +90,8 @@ func _ready() -> void:
 	#set_collision_mask_value(2, true) #Dont do this, so you cant push them in sleep.
 	set_collision_mask_value(4, true)
 	
+	hitbox.set_disabled(true)
+	
 	#Stats:
 	move_speed = self.base_move_speed
 	max_move_speed = move_speed * 5.0

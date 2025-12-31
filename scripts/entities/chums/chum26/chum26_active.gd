@@ -84,5 +84,6 @@ func Exit():
 	chum.anim_player.animation_finished.disconnect(_on_animation_player_animation_finished)
 	emit_object()
 	chum.is_launched = false
+	chum.hitbox.set_disabled(true)
 	for cur_conn in self.get_incoming_connections():
 		cur_conn.signal.disconnect(cur_conn.callable)

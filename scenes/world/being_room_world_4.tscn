@@ -18,6 +18,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 [sub_resource type="Environment" id="Environment_fcqan"]
 ambient_light_source = 3
 ambient_light_color = Color(6.7383053e-06, 0.76096785, 0.9443465, 1)
+ambient_light_sky_contribution = 0.9
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0, 0.23342928, 0.48441643, 1)

@@ -15,6 +15,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 [sub_resource type="Environment" id="Environment_h3hpc"]
 ambient_light_source = 3
 ambient_light_color = Color(1, 0.456736, 0.854935, 1)
+ambient_light_sky_contribution = 0.9
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0.382219, 0.00018333, 0.415945, 1)
