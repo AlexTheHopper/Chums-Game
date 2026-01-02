@@ -1,5 +1,5 @@
 extends Node
-var dev_mode := true
+var dev_mode := false
 
 var game_begun := false
 var world_transition_count := 0
@@ -433,7 +433,6 @@ func create_world_boss() -> void:
 										"max_value": y * 2,
 										"bell_angle": 0,
 										"item_count": 3,
-										"light_position": Vector3(1.0, 0.0, -10.0),
 										"statue_id": 1,
 										"has_x_pos": false,
 										"has_x_neg": false,

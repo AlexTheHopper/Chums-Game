@@ -64,7 +64,7 @@ func _ready() -> void:
 		27: {"object": preload("res://scenes/entities/chums/chum27.tscn"),
 			"destination_world": 4, "guard_world_n": false}, #Marble
 		28: {"object": preload("res://scenes/entities/chums/chum28.tscn"),
-			"destination_world": 4, "guard_world_n": false}, #TODO
+			"destination_world": 4, "guard_world_n": false}, #Echo
 	}
 
 	chums_values = {
@@ -108,6 +108,7 @@ func _ready() -> void:
 			12: 1.0,
 			13: 1.0,
 			27: 1.0,
+			28: 2.0,
 		},
 	}
 	

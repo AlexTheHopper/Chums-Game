@@ -19,6 +19,7 @@ var active := false
 var gravity_ := gravity
 var position_: Vector3
 var target_position: Vector3
+var parent_group: String
 
 var hit_time := 1.0
 var on_fire := false
@@ -41,7 +42,7 @@ func _ready() -> void:
 		$Hitbox.draws_agro_on_attack = draws_agro_on_attack
 		$Hitbox.damage = origin.hitbox.damage
 		knockback_strength = origin.knockback_strength
-		var parent_group = Functions.get_parent_group(origin)
+		parent_group = Functions.get_parent_group(origin)
 		if parent_group in ["Chums_Enemy"]:
 			$Hitbox.set_as_enemy()
 			rock_target.set_material_overlay(red_overlay)
@@ -54,16 +55,16 @@ func _ready() -> void:
 	if target:
 		hit_time *= randf_range(0.8, 1.2)
 		target_position = target.global_position + target.velocity * 0.5
-		set_vel_to_pos(global_position, target_position)
+		set_vel_to_pos(global_position, target_position, Vector3(0.0, 0.5, 0.0))
 		rock_target.global_position = target_position
 	
 
 
-func set_vel_to_pos(start_pos, target_pos):
+func set_vel_to_pos(start_pos: Vector3, target_pos: Vector3, offset: Vector3):
 	#Velocity:
-	var dx = target_pos.x - start_pos.x
-	var dy = target_pos.y - start_pos.y
-	var dz = target_pos.z - start_pos.z
+	var dx = target_pos.x - start_pos.x + offset.x
+	var dy = target_pos.y - start_pos.y + offset.y
+	var dz = target_pos.z - start_pos.z + offset.z
 	velocity = Vector3(dx, dy + 0.5 * gravity_ * hit_time * hit_time, dz) / hit_time
 
 func _process(delta: float) -> void:
@@ -74,8 +75,8 @@ func _physics_process(delta: float) -> void:
 	position += velocity * delta
 	rock_target.global_position = target_position
 
-func _on_body_entered(_body: Node3D) -> void:
-	if active:
+func _on_body_entered(body: Node3D) -> void:
+	if active and body not in get_tree().get_nodes_in_group(parent_group):
 		call_deferred("disable_interaction")
 		$AnimationPlayer.play("fade_out")
 		make_particles()

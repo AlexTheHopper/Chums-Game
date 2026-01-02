@@ -2,16 +2,16 @@ extends Chum
 class_name Chum28
 var chum_id := 28
 var chum_str := "chum28"
-var chum_name := "TODO"
+var chum_name := "Echo"
 
-var desc := "TODO"
+var desc := "A long lost relic of what was to come. All this chum knows is how to throw a spear, over and over. If only it knew what it could accomplish by putting a bit more effort into thinking."
 
 var min_attack_speed := 1.1
 
 var base_attack_speed := 1.6
 var base_attack_damage := 10
 var base_move_speed := 2.5
-var base_health := 100
+var base_health := 75
 #Control of qualities
 var has_attack_speed := true
 var has_attack_damage := true
@@ -19,7 +19,7 @@ var has_move_speed := true
 var has_health := true
 
 var attack_distance := 7.5
-var knockback_strength := 0.0
+var knockback_strength := 5.0
 var knockback_weight := 1.25
 
 #Chance that it maintains agro on chasing chum being hit

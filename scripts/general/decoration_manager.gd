@@ -107,26 +107,38 @@ func _ready() -> void:
 			"back": "Yet, the inevitability reigns and our one shortcoming is revealed."},
 
 		6: {"info": "750 . 0",
-			"front": "Some of us have been imprisoned, for we do not posess the skill...",
-			"back": "Or at this point, it seems, the luck."},
+			"front": "Some of us have been imprisoned, it seems we are to be locked in this cycle without complaining or suggesting improvements...",
+			"back": "We fear the cages."},
 
-		7: {"info": "1500 . 0",
+		7: {"info": "800 . 0",
+			"front": "The imprisoned ones brought a fresh light, new ideas, possible solutions...",
+			"back": "But we do not know where they are now. Above all else, I hope they return."},
+
+		8: {"info": "1500 . 0",
 			"front": "This one may show the greatest potential of all...",
 			"back": "We remain cautiously optimistic."},
 
-		8: {"info": "1501 . 0",
+		9: {"info": "1501 . 0",
 			"front": "Yet again, we are shown what was inevitable from the beginning...",
 			"back": "We are close to giving up."},
 
-		9: {"info": "2500 . 0",
+		10: {"info": "1250 . 0",
+			"front": "They have the pools, the statues, the means of working together, but nothing works...",
+			"back": "The pursuit of our new world's utopia seems more and more futile."},
+
+		11: {"info": "2500 . 0",
 			"front": "We are all that remains now. It has gone and left us in this infinite cycle of injustice...",
 			"back": "What are we working towards now?"},
 
-		10: {"info": "2525 . 0",
+		12: {"info": "2501 . 0",
+			"front": "Now on our own, we create the uncaging statues, in hope of their return...",
+			"back": "They may truly be the only ones to end the cycle now."},
+
+		13: {"info": "2525 . 0",
 			"front": "Without direction, we change tactics. To create something to finish this for us...",
 			"back": "Is it possible?"},
 
-		11: {"info": "2550 . 0",
+		14: {"info": "2550 . 0",
 			"front": "They must be sentient, with intelligence beyond the rest...",
 			"back": "To complete the goal, and let us rest."},
 	}

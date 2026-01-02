@@ -17,8 +17,8 @@ func _ready() -> void:
 	get_node("/root/Testscene/HUD").add_chum_indicators()
 	rng = RandomNumberGenerator.new()
 	
-	for i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20, 21, 22, 23, 24, 25,26,27]:
-		create_cage(Vector3(6.0 + (12.0 if i > 14 else 0.0), 0.0, -60.0 + i * 12.0 if i <= 14 else -60.0 + (i-10) * 12.0), i, 25)
+	for i in ChumsManager.chums_list.keys():
+		create_cage(Vector3(6.0 + (12.0 if i > 14 else 0.0), 0.0, -60.0 + i * 12.0 if i <= 14 else -60.0 + (i-10) * 12.0), i, 28)
 		
 	
 	#for i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]:

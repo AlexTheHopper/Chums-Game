@@ -87,5 +87,5 @@ func apply_knockback(target, source) -> void:
 	target.is_launched = true
 	target.move_and_slide() # Otherwise the chum checks if touching floor before moving, immediately changing is_launched to false
 
-	if target is Player:
-		target.anim_player.call_deferred("play", "Jump_Carry" if target.is_carrying else "Jump_noCarry")
+	#if target is Player:
+		#target.anim_player.call_deferred("play", "Jump_Carry" if target.is_carrying else "Jump_noCarry")
