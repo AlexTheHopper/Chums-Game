@@ -1,24 +1,24 @@
 extends Chum
-class_name Chum5
-var chum_id := 5
-var chum_str := "chum5"
-var chum_name := "Slate"
+class_name Chum28
+var chum_id := 28
+var chum_str := "chum28"
+var chum_name := "TODO"
 
-var desc := "An old log that has harnessed the modern technologies of the catapult, allowing it to conjure rocks from nowhere and hurl them some distance. It's a tough job though, since this chum has little health and those rocks can also conjure a bit of hatred when hitting one's head."
+var desc := "TODO"
 
-var min_attack_speed := 1.5
+var min_attack_speed := 1.1
 
 var base_attack_speed := 1.6
 var base_attack_damage := 10
 var base_move_speed := 2.5
-var base_health := 50
+var base_health := 100
 #Control of qualities
 var has_attack_speed := true
 var has_attack_damage := true
 var has_move_speed := true
 var has_health := true
 
-var attack_distance := 10.0
+var attack_distance := 7.5
 var knockback_strength := 0.0
 var knockback_weight := 1.25
 
@@ -31,10 +31,10 @@ var always_targets_player := false
 var bracelet_count := 1
 var bracelet_cost := 3
 
-@onready var rock_zone := $Body/Armature/Skeleton3D/BoneAttachment3D/RockZone
+@onready var rock_zone := $Body/Armature/Skeleton3D/BoneAttachmentSpear/SpearZone
 @export var projectile: PackedScene
 
-func throw_rock():
+func throw_spear():
 	var rock_inst = projectile.instantiate()
 	rock_inst.target = target
 	rock_inst.origin = self

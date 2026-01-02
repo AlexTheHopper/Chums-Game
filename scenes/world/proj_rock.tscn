@@ -63,7 +63,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1)]
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(0.1, 0.1, 0.1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -149,7 +149,7 @@ point_count = 4
 offsets = PackedFloat32Array(0.2905028, 0.6201117, 1)
 colors = PackedColorArray(0.13492149, 0.016394978, 0.06198415, 1, 0.12724859, 0.022104237, 0.018861918, 1, 0.094080456, 0.03545384, 0.0033713877, 1)
 
-[node name="ProjRock" type="Area3D"]
+[node name="ProjRock2" type="Area3D"]
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_uw0cy")

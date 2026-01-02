@@ -63,6 +63,8 @@ func _ready() -> void:
 			"destination_world": 2, "guard_world_n": false}, #Granite
 		27: {"object": preload("res://scenes/entities/chums/chum27.tscn"),
 			"destination_world": 4, "guard_world_n": false}, #Marble
+		28: {"object": preload("res://scenes/entities/chums/chum28.tscn"),
+			"destination_world": 4, "guard_world_n": false}, #TODO
 	}
 
 	chums_values = {

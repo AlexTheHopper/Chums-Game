@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds2y7dnd3reno"]
+
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_agl3d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s538d"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_w0pcg"]
+material = SubResource("StandardMaterial3D_s538d")
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Gradient" id="Gradient_w7wph"]
+colors = PackedColorArray(0.28690594, 0.3199604, 0.97200114, 1, 0.6630387, 0.740386, 1, 1)
+
+[node name="Particles" type="Node3D"]
+script = ExtResource("1_agl3d")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 0.9
+randomness = 0.5
+lifetime_randomness = 0.5
+mesh = SubResource("BoxMesh_w0pcg")
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+color = Color(0.26572302, 0.21309388, 0.8832956, 1)
+color_initial_ramp = SubResource("Gradient_w7wph")
+
+[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]
