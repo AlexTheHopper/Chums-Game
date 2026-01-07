@@ -1,5 +1,5 @@
 extends Node
-var dev_mode := false
+var dev_mode := true
 
 var game_begun := false
 var world_transition_count := 0
@@ -52,27 +52,27 @@ func _ready():
 			"required": [1],  #To 1, redundant
 			"optional": [1]}, #To 1, redundant
 			
-		1: {'map_size': 3,
+		1: {'map_size': 2,
 			"room_size": 40.0,
-			"max_chums": 5,
+			"max_chums": 4,
 			"statue_required": [4, 6, 13, 14], 	#To worlds 1, 2, 3 & flower.
 			"statue_optional": [1, 2, 3, 5, 6, 7, 8], #To world 1
-			"room_counts": {	1: 0, #Lobby - keep this as 0
+			"room_counts": {1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
 							3: 2, #Fountain
 							4: 1, #Void
-							5: 5, #Statue - AT LEAST length of statue_required
+							5: 4, #Statue - AT LEAST length of statue_required
 							6: 0, #Upgrade
 							7: 1, #Lore
 							}, 
 			},
 
-		2: {'map_size': 4,
+		2: {'map_size': 3,
 			"room_size": 40.0,
-			"max_chums": 8,
+			"max_chums": 5,
 			"statue_required": [4, 8, 15, 26],  #To worlds 1, 2 & flower.
 			"statue_optional": [5, 4, 8, 8], #To worlds 1, 2
-			"room_counts": {	1: 0, #Lobby - keep this as 0
+			"room_counts": {1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
 							3: 4, #Fountain
 							4: 2, #Void
@@ -82,12 +82,12 @@ func _ready():
 							},
 			},
 
-		3: {'map_size': 5,
+		3: {'map_size': 3,
 			"room_size": 40.0,
-			"max_chums": 10,
+			"max_chums": 6,
 			"statue_required": [8, 13, 10, 16, 22],  #To worlds 1, 3, 4 & flower.
 			"statue_optional": [16, 11, 13, 21], #To worlds 1, 2
-			"room_counts": {	1: 0, #Lobby - keep this as 0
+			"room_counts": {1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
 							3: 6, #Fountain
 							4: 4, #Void
@@ -97,12 +97,12 @@ func _ready():
 							},
 			},
 
-		4: {'map_size': 6,
+		4: {'map_size': 4,
 			"room_size": 40.0,
-			"max_chums": 12,
+			"max_chums": 7,
 			"statue_required": [8, 10, 13, 23, 27],  #To worlds 1, 4 & flower.
 			"statue_optional": [6, 11, 13], #To worlds 1, 2
-			"room_counts": {	1: 0, #Lobby - keep this as 0
+			"room_counts": {1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
 							3: 6, #Fountain
 							4: 4, #Void
@@ -268,8 +268,8 @@ func get_world_grid(world_n, set_seed := 0):
 
 	var size = world_info[world_n]["map_size"]
 	#2D Array of where actual rooms are in the world
-	var corridor_count := int(max(25 + size * size / 2, 5))
-	var corridor_lengths := range(2, max(1.75 * size, 4))
+	var corridor_count := int(max(30 + size * size / 2, 5))
+	var corridor_lengths := range(2, int(max(1.75 * size, 4)))
 	var walks := [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
 	var room_count := int(max(size * size / 2, 1))
 	var bounds = [-1, (2 * size) + 1]
@@ -314,7 +314,7 @@ func get_world_grid(world_n, set_seed := 0):
 				grid[x_remove][y_remove] = 2
 
 	#Define lobby starting room
-	grid[map_size][map_size] = 1
+	grid[size][size] = 1
 	#Define rooms to add:
 	var rooms_missing := []
 	for type in world_info[world_n]["room_counts"].keys():
@@ -326,7 +326,7 @@ func get_world_grid(world_n, set_seed := 0):
 	var rooms_replace := []
 	for y in grid.size():
 		for x in grid[0].size():
-			if abs(x - map_size) <= 1 and abs(y - map_size) <= 1:
+			if abs(x - size) <= 1 and abs(y - size) <= 1:
 				continue
 			if grid[x][y] == 2: # if normal room - safe to potentially replace
 				rooms_replace.append(Vector2i(x, y))
@@ -602,6 +602,7 @@ func restart_game() -> void:
 
 
 func test_grid_system(world_n, count):
+	var badn = 0
 	for n in count:
 		var test_world_grid = get_world_grid(world_n, n)
 		var is_okay: bool = true
@@ -625,6 +626,7 @@ func test_grid_system(world_n, count):
 					is_okay = false
 		
 		if not is_okay:
+			badn += 1
 			print("faulty grid:")
 			for x in range(test_world_grid.size() - 1, -1, -1):
 				print(test_world_grid[x])
@@ -634,3 +636,4 @@ func test_grid_system(world_n, count):
 			for x in range(test_world_grid.size() - 1, -1, -1):
 				print(test_world_grid[x])
 			pass
+	print("Total bad maps: %s" % badn)

@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ra3hscmuiw3c"]
+
+[ext_resource type="Shader" uid="uid://dhyglynx38ni5" path="res://materials/new_outlines/new_outline.gdshader" id="1_hkl5q"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_hkl5q")
+shader_parameter/step_count = 3
+shader_parameter/thickness = 3.0
+shader_parameter/edge_color = Color(0.31431612, 0.31431612, 0.3143161, 1)
+shader_parameter/fade_start = 100.0
+shader_parameter/fade_length = 200.0

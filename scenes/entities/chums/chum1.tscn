@@ -769,7 +769,7 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sr3ur"]
 
-[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
+[node name="Entity2" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
 platform_on_leave = 2
 script = ExtResource("1_oac54")
 anim_player = NodePath("Body/AnimationPlayer")
