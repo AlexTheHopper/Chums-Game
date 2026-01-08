@@ -98,3 +98,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_o5fug")
+
+[node name="SpawnRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -12, 0)

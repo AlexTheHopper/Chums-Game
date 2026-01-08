@@ -23,31 +23,20 @@ func decorate():
 		
 	var light_obj = STREETLAMP.instantiate()
 	$Decorations.add_child(light_obj)
-	light_obj.global_position = spawn_pos.snapped(Vector3(0.1, 0.1, 0.1))
+	light_obj.global_position = align_loc_to_ground(spawn_pos).snapped(Vector3(0.1, 0.1, 0.1))
 	
 	#Other objects:
 	var from_lobby = Global.world_map[Global.room_location]["max_value"]
 	var deco_n = Functions.map_range(from_lobby, Vector2(0, Global.map_size), Vector2(10, 100))
 	var angles := [0, PI/2, PI, 3*PI/2]
-	var dummy = 0
 	var decos_to_add := []
 
 	for n in int(deco_n * DecorationManager.decorations_world[Global.current_world_num]['multiplier']):
 		var chosen_deco = DecorationManager.get_random_decoration([Global.current_world_num])
-		var x = randf_range(-13, 15)
-		var y = 0
-		if -3 < x and x < 5:
-			y = randf_range(-13, -3) if randf() < 0.5 else randf_range(5, 15)
-		else:
-			y = randf_range(-13, 15)
-		if randf() < 0.5:
-			dummy = x
-			x = y
-			y = dummy
-		var pos = Vector3(x, 0, y).snapped(Vector3(0.1, 0.1, 0.1))
+		var pos = get_deco_loc()
 		var angle = angles.pick_random()
 
-		decos_to_add.append([chosen_deco[0], pos, angle])
+		decos_to_add.append([chosen_deco["scene"], align_loc_to_ground(pos), angle])
 
 	for deco in decos_to_add:
 		var to_add = deco[0].instantiate()
@@ -57,3 +46,17 @@ func decorate():
 		if deco[1] in Global.world_map[Global.room_location]["removed_decorations"] and to_add is DestructibleDeco:
 			to_add.remove_on_entry()
 	decos_to_add = []
+
+func get_deco_loc() -> Vector3:
+	var dummy := 0.0
+	var x = randf_range(-13, 15)
+	var y = 0
+	if -3 < x and x < 5:
+		y = randf_range(-13, -3) if randf() < 0.5 else randf_range(5, 15)
+	else:
+		y = randf_range(-13, 15)
+	if randf() < 0.5:
+		dummy = x
+		x = y
+		y = dummy
+	return(Vector3(x, 0, y).snapped(Vector3(0.1, 0.1, 0.1)))

@@ -41,7 +41,7 @@ func decorate() -> void:
 						0, randf_range(-14, -1) if randf() < 0.5 else randf_range(3, 16)).snapped(Vector3(0.1, 0.1, 0.1))
 		var angle = angles.pick_random()
 
-		decos_to_add.append([chosen_deco[0], pos, angle])
+		decos_to_add.append([chosen_deco["scene"], align_loc_to_ground(pos), angle])
 		
 	for deco in decos_to_add:
 		var to_add = deco[0].instantiate()

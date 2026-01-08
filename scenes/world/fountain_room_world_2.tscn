@@ -102,5 +102,8 @@ light_indirect_energy = 0.0
 omni_range = 40.0
 omni_shadow_mode = 0
 
+[node name="SpawnRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -12, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ew6io")

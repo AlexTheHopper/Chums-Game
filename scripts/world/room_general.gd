@@ -6,6 +6,7 @@ class_name room
 @onready var player_spawn: Node3D = $PlayerSpawn
 @onready var decorations: Node3D = $Decorations
 var spawn_particles: PackedScene
+@onready var spawn_ray: RayCast3D = $SpawnRayCast
 
 var is_doors_closed := false
 var bracelet_tscn: PackedScene = preload("res://scenes/entities/currency_bracelet.tscn")
@@ -20,11 +21,11 @@ func _ready() -> void:
 	#Remove all previous enemy chums:
 		for chum in get_tree().get_nodes_in_group(group):
 			chum.queue_free()
-		
+
 	#Fill new room:
 	if Global.world_map[Global.room_location]["entered"]:
 		load_room()
-	self.decorate() #RNG seed is autoset here
+	
 	
 	if Global.current_world_num == 0:
 		spawn_particles = load("res://particles/spawn_particles_world%s.tscn" % Global.room_location[0])
@@ -36,8 +37,10 @@ func _ready() -> void:
 			spawn_timer.start()
 	Global.randomize_seed() #Back to complete random.
 	fill_tunnels()
+	await get_tree().physics_frame #This is to allow the new gridmaps collision to take affect
 	set_player_loc_on_entry()
 	set_chums_loc_on_entry()
+	decorate() #RNG seed is autoset here
 	if self is not boss_room and self is not being_room and self is not tutorial_room:
 		SaverLoader.save_game(Global.game_save_id)
 	
@@ -141,10 +144,19 @@ func apply_spawn_particles(chum):
 	chum.particle_zone.add_child(spawn_particles.instantiate())
 
 func get_chum_spawn_loc():
-	var pos = Vector3(1, 0, 1)
+	var pos = Vector3(1.0, 0.0, 1.0)
 	var half_room_size = Global.world_info[Global.current_world_num]["room_size"] / 2
 	pos.x += randf_range(-(half_room_size - 7), -1) if randf() < 0.5 else randf_range(3, (half_room_size - 5))
 	pos.z += randf_range(-(half_room_size - 7), -1) if randf() < 0.5 else randf_range(3, (half_room_size - 5))
+	return align_loc_to_ground(pos)
+
+func align_loc_to_ground(pos) -> Vector3:
+	#return(pos)
+	if spawn_ray:
+		spawn_ray.global_position = Vector3(pos.x, 10.0, pos.z)
+		spawn_ray.force_raycast_update()
+		if spawn_ray.is_colliding() and spawn_ray.get_collider() is GridMap:
+			pos = spawn_ray.get_collision_point()
 	return pos
 
 func get_chum_cost(chum: Chum) -> int:
@@ -157,6 +169,9 @@ func decorate():
 	#Seeded randomness - Same based on global seed, world number, transition count and room loc.
 	#Each room then has its own way of decorating.
 	seed(Global.save_seed + hash(str(Global.current_world_num) + str(Global.world_transition_count) + str(Global.room_location)))
+
+func get_deco_loc() -> Vector3:
+	return Vector3(0.0, 0.0, 0.0)
 
 func remove_destroyed_decorations() -> void:
 	var to_remove: Array = Global.world_map[Global.room_location]["removed_decorations"]
@@ -180,7 +195,7 @@ func set_player_loc_on_entry():
 			var player_pos = Vector3(factor * (prev_room.x - current_room.x) + 1,
 									 player.global_position.y, 
 									factor * (prev_room.y - current_room.y) + 1)
-			move_player_and_camera(player_pos)
+			move_player_and_camera(align_loc_to_ground(player_pos))
 
 func set_chums_loc_on_entry():
 	#Place friendly chums in front of the player:
@@ -188,7 +203,7 @@ func set_chums_loc_on_entry():
 		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
 			if chum.state_machine.current_state.name != "Carry":
 				var rand_angle = randf_range(0, 2*PI)
-				chum.global_position = player.global_position + 3 * Vector3(sin(rand_angle), 0, cos(rand_angle))
+				chum.global_position = align_loc_to_ground(player.global_position + 3 * Vector3(sin(rand_angle), 0, cos(rand_angle)))
 				chum.rotation.y = randf_range(0, 2*PI)
 				chum.set_state("Idle")
 				if chum.being_particles:

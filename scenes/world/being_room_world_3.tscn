@@ -79,6 +79,9 @@ lantern_world = 3
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
 
+[node name="SpawnRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -12, 0)
+
 [node name="EntryIndicators" type="Node3D" parent="."]
 
 [node name="z_neg" parent="EntryIndicators" instance=ExtResource("8_whbml")]

@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	if Global.world_map[Global.room_location]["to_spawn"] < 0:
 		#Maximum to spawn:
-		enemies_to_spawn = int(Functions.map_range(room_value, Vector2(1, Global.map_size), Vector2(3, Global.world_info[Global.current_world_num]["max_chums"])))
+		enemies_to_spawn = int(Functions.map_range(room_value, Vector2(1, Global.map_size), Vector2(Global.world_info[Global.current_world_num]["min_chums"], Global.world_info[Global.current_world_num]["max_chums"])))
 	else:
 		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
 		
@@ -80,7 +80,10 @@ func _on_spawn_timer_timeout() -> void:
 		#Scale based on world transition count.
 		#For X transition counts, each quality stat can increase from X to 2X.
 		var count = Global.world_transition_count
-		chum_instance.increase_stats(randi_range(count, 2 * count), randi_range(count, 2 * count), randi_range(count, 2 * count), randi_range(count, 2 * count))
+		chum_instance.increase_stats(randi_range(int(count/2.0), int(1.5*count)),
+									randi_range(int(count/2.0), int(1.5*count)),
+									randi_range(int(count/2.0), int(1.5*count)),
+									randi_range(int(count/2.0), int(1.5*count)),)
 		#chum_instance.bracelet_cost += count
 		chum_instance.bracelet_cost = get_chum_cost(chum_instance)
 
@@ -109,7 +112,7 @@ func decorate():
 	
 	var light_obj = STREETLAMP.instantiate()
 	$Decorations.add_child(light_obj)
-	light_obj.global_position = spawn_pos.snapped(Vector3(0.1, 0.1, 0.1))
+	light_obj.global_position = align_loc_to_ground(spawn_pos).snapped(Vector3(0.1, 0.1, 0.1))
 	
 	#Other objects:
 	var from_lobby = Global.world_map[Global.room_location]["max_value"]
@@ -119,11 +122,10 @@ func decorate():
 
 	for n in int(deco_n * DecorationManager.decorations_world[Global.current_world_num]['multiplier']):
 		var chosen_deco = DecorationManager.get_random_decoration([Global.current_world_num])
-		var pos = Vector3(randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15),
-						0, randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15)).snapped(Vector3(0.1, 0.1, 0.1))
+		var pos = get_deco_loc()
 		var angle = angles.pick_random()
 
-		decos_to_add.append([chosen_deco[0], pos, angle])
+		decos_to_add.append([chosen_deco["scene"], align_loc_to_ground(pos), angle])
 
 	for deco in decos_to_add:
 		var to_add = deco[0].instantiate()
@@ -133,3 +135,7 @@ func decorate():
 		if deco[1] in Global.world_map[Global.room_location]["removed_decorations"] and to_add is DestructibleDeco:
 			to_add.remove_on_entry()
 	decos_to_add = []
+
+func get_deco_loc() -> Vector3:
+	return(Vector3(randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15),
+				0, randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15)).snapped(Vector3(0.1, 0.1, 0.1)))

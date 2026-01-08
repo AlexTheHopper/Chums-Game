@@ -185,3 +185,6 @@ environment = SubResource("Environment_5vans")
 
 [node name="PlayerSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
+
+[node name="SpawnRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -12, 0)

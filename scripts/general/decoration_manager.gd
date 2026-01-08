@@ -1,53 +1,54 @@
 extends Node
 
-var decorations : Dictionary[String, PackedScene]
+var decorations : Dictionary[String, Dictionary]
 var decorations_world : Dictionary[int, Dictionary]
 
 var lore_texts : Dictionary[int, Dictionary]
 
 func _ready() -> void:
-	decorations = {"streetlamp": preload("res://scenes/world/streetlamp.tscn"),
+	decorations = {"streetlamp": {"scene": preload("res://scenes/world/streetlamp.tscn"), "radius": 0.5},
 	
-					"grass1": preload("res://scenes/world/decorations/grass_1.tscn"),
-					"grass2": preload("res://scenes/world/decorations/grass_2.tscn"),
-					"grass3": preload("res://scenes/world/decorations/grass_3.tscn"),
-					"grass4": preload("res://scenes/world/decorations/grass_4.tscn"),
-					"grass5": preload("res://scenes/world/decorations/grass_5.tscn"),
+					"grass1": {"scene": preload("res://scenes/world/decorations/grass_1.tscn"), "radius": 0.5},
+					"grass2": {"scene": preload("res://scenes/world/decorations/grass_2.tscn"), "radius": 0.5},
+					"grass3": {"scene": preload("res://scenes/world/decorations/grass_3.tscn"), "radius": 0.5},
+					"grass4": {"scene": preload("res://scenes/world/decorations/grass_4.tscn"), "radius": 0.5},
+					"grass5": {"scene": preload("res://scenes/world/decorations/grass_5.tscn"), "radius": 0.5},
 					
-					"bones1": preload("res://scenes/world/decorations/bones_1.tscn"),
-					"bones2": preload("res://scenes/world/decorations/bones_2.tscn"),
-					"bones3": preload("res://scenes/world/decorations/bones_3.tscn"),
-					"bones4": preload("res://scenes/world/decorations/bones_4.tscn"),
-					"bones5": preload("res://scenes/world/decorations/bones_5.tscn"),
+					"bones1": {"scene": preload("res://scenes/world/decorations/bones_1.tscn"), "radius": 0.5},
+					"bones2": {"scene": preload("res://scenes/world/decorations/bones_2.tscn"), "radius": 0.5},
+					"bones3": {"scene": preload("res://scenes/world/decorations/bones_3.tscn"), "radius": 0.5},
+					"bones4": {"scene": preload("res://scenes/world/decorations/bones_4.tscn"), "radius": 0.5},
+					"bones5": {"scene": preload("res://scenes/world/decorations/bones_5.tscn"), "radius": 0.5},
+
 					
-					"bonesmoss1": preload("res://scenes/world/decorations/bonesmoss_1.tscn"),
-					"bonesmoss2": preload("res://scenes/world/decorations/bonesmoss_2.tscn"),
-					"bonesmoss3": preload("res://scenes/world/decorations/bonesmoss_3.tscn"),
-					"bonesmoss4": preload("res://scenes/world/decorations/bonesmoss_4.tscn"),
-					"bonesmoss5": preload("res://scenes/world/decorations/bonesmoss_5.tscn"),
+					"bonesmoss1": {"scene": preload("res://scenes/world/decorations/bonesmoss_1.tscn"), "radius": 0.5},
+					"bonesmoss2": {"scene": preload("res://scenes/world/decorations/bonesmoss_2.tscn"), "radius": 0.5},
+					"bonesmoss3": {"scene": preload("res://scenes/world/decorations/bonesmoss_3.tscn"), "radius": 0.5},
+					"bonesmoss4": {"scene": preload("res://scenes/world/decorations/bonesmoss_4.tscn"), "radius": 0.5},
+					"bonesmoss5": {"scene": preload("res://scenes/world/decorations/bonesmoss_5.tscn"), "radius": 0.5},
 	
-					"tree1": preload("res://scenes/world/decorations/tree_1.tscn"),
-					"tree2": preload("res://scenes/world/decorations/tree_2.tscn"),
+					"tree1": {"scene": preload("res://scenes/world/decorations/tree_1.tscn"), "radius": 0.5},
+					"tree2": {"scene": preload("res://scenes/world/decorations/tree_2.tscn"), "radius": 0.5},
 					
-					"rubble1": preload("res://scenes/world/decorations/rubble1.tscn"),
+					"rubble1": {"scene": preload("res://scenes/world/decorations/rubble1.tscn"), "radius": 0.5},
 					
-					"column1": preload("res://scenes/world/decorations/column1.tscn"),
-					"column2": preload("res://scenes/world/decorations/column2.tscn"),
-					"column3": preload("res://scenes/world/decorations/column3.tscn"),
-					"column4": preload("res://scenes/world/decorations/column4.tscn"),
-					"column5": preload("res://scenes/world/decorations/column5.tscn"),
+					"column1": {"scene": preload("res://scenes/world/decorations/column1.tscn"), "radius": 0.5},
+					"column2": {"scene": preload("res://scenes/world/decorations/column2.tscn"), "radius": 0.5},
+					"column3": {"scene": preload("res://scenes/world/decorations/column3.tscn"), "radius": 0.5},
+					"column4": {"scene": preload("res://scenes/world/decorations/column4.tscn"), "radius": 0.5},
+					"column5": {"scene": preload("res://scenes/world/decorations/column5.tscn"), "radius": 0.5},
 					
-					"frame1": preload("res://scenes/world/decorations/frame_destructible_1.tscn"),
-					"frame2": preload("res://scenes/world/decorations/frame_destructible_2.tscn"),
+					"frame1": {"scene": preload("res://scenes/world/decorations/frame_destructible_1.tscn"), "radius": 0.5},
+					"frame2": {"scene": preload("res://scenes/world/decorations/frame_destructible_2.tscn"), "radius": 0.5},
 					
-					"fireplace": preload("res://scenes/world/decorations/fireplace.tscn"),
+					"fireplace": {"scene": preload("res://scenes/world/decorations/fireplace.tscn"), "radius": 0.5},
 					
-					"shrub1": preload("res://scenes/world/decorations/shrub_1.tscn"),
-					"shrub2": preload("res://scenes/world/decorations/shrub_2.tscn"),
-					"shrub3": preload("res://scenes/world/decorations/shrub_3.tscn"),
-					"shrub4": preload("res://scenes/world/decorations/shrub_4.tscn"),
-					"shrub5": preload("res://scenes/world/decorations/shrub_5.tscn"),
-					"shrub6": preload("res://scenes/world/decorations/shrub_6.tscn"),
+					"shrub1": {"scene": preload("res://scenes/world/decorations/shrub_1.tscn"), "radius": 0.5},
+					"shrub2": {"scene": preload("res://scenes/world/decorations/shrub_2.tscn"), "radius": 0.5},
+					"shrub3": {"scene": preload("res://scenes/world/decorations/shrub_3.tscn"), "radius": 0.5},
+					"shrub4": {"scene": preload("res://scenes/world/decorations/shrub_4.tscn"), "radius": 0.5},
+					"shrub5": {"scene": preload("res://scenes/world/decorations/shrub_5.tscn"), "radius": 0.5},
+					"shrub6": {"scene": preload("res://scenes/world/decorations/shrub_6.tscn"), "radius": 0.5},
 					}
 	
 	decorations_world = {
@@ -148,14 +149,14 @@ func get_random_decoration(world_ns: Array):
 	var chance = randf()
 	if chance < decorations_world[world_n]["rarities"]["common"]:
 		var rand_name = decorations_world[world_n]["common"].pick_random()
-		return [decorations[rand_name], rand_name]
+		return decorations[rand_name]
 	elif chance < decorations_world[world_n]["rarities"]["uncommon"]:
 		var rand_name = decorations_world[world_n]["uncommon"].pick_random()
-		return [decorations[rand_name], rand_name]
+		return decorations[rand_name]
 	else:
 		var rand_name = decorations_world[world_n]["rare"].pick_random()
-		return [decorations[rand_name], rand_name]
+		return decorations[rand_name]
 		
 func get_common_decoration(world_n):
 	var rand_name = decorations_world[world_n]["common"].pick_random()
-	return [decorations[rand_name], rand_name]
+	return decorations[rand_name]

@@ -26,13 +26,9 @@ var follow_distance := 10.0
 @onready var nav_agent = $NavigationAgent3D
 @onready var health_node = $GeneralChumBehaviour.health_node
 
-#@onready var red_overlay := preload("res://materials/outline_red.tres")
-#@onready var blue_overlay := preload("res://materials/outline_blue.tres")
-#@onready var black_overlay := preload("res://materials/outline_black.tres")
-
-@onready var red_overlay := preload("res://materials/new_outlines/outline_red.tres")
-@onready var blue_overlay := preload("res://materials/new_outlines/outline_blue.tres")
-@onready var black_overlay := preload("res://materials/new_outlines/outline_black.tres")
+@onready var red_overlay := preload("res://materials/outline_red.tres")
+@onready var blue_overlay := preload("res://materials/outline_blue.tres")
+@onready var black_overlay := preload("res://materials/outline_black.tres")
 
 var current_group := "Chums_Neutral"
 var previous_group := "Chums_Neutral"
