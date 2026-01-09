@@ -50,6 +50,7 @@ func _ready():
 			"room_size": 40.0,
 			"min_chums": 1,
 			"max_chums": 100,
+			"terrain_ids": [0], #Default, redundant
 			"required": [1],  #To 1, redundant
 			"optional": [1]}, #To 1, redundant
 			
@@ -57,6 +58,7 @@ func _ready():
 			"room_size": 40.0,
 			"min_chums": 3,
 			"max_chums": 5,
+			"terrain_ids": [0],
 			"statue_required": [4, 6, 13, 14], 	#To worlds 1, 2, 3 & flower.
 			"statue_optional": [1, 2, 3, 5, 6, 7, 8], #To world 1
 			"room_counts": {1: 0, #Lobby - keep this as 0
@@ -73,6 +75,7 @@ func _ready():
 			"room_size": 40.0,
 			"min_chums": 3,
 			"max_chums": 6,
+			"terrain_ids": [0],
 			"statue_required": [4, 8, 15, 26],  #To worlds 1, 2 & flower.
 			"statue_optional": [5, 4, 8, 8], #To worlds 1, 2
 			"room_counts": {1: 0, #Lobby - keep this as 0
@@ -89,6 +92,7 @@ func _ready():
 			"room_size": 40.0,
 			"min_chums": 3,
 			"max_chums": 7,
+			"terrain_ids": [0],
 			"statue_required": [8, 13, 10, 16, 22],  #To worlds 1, 3, 4 & flower.
 			"statue_optional": [16, 11, 13, 21], #To worlds 1, 2
 			"room_counts": {1: 0, #Lobby - keep this as 0
@@ -105,6 +109,7 @@ func _ready():
 			"room_size": 40.0,
 			"min_chums": 3,
 			"max_chums": 8,
+			"terrain_ids": [0],
 			"statue_required": [8, 10, 13, 23, 27],  #To worlds 1, 4 & flower.
 			"statue_optional": [6, 11, 13], #To worlds 1, 2
 			"room_counts": {1: 0, #Lobby - keep this as 0
@@ -379,46 +384,45 @@ func create_world(world_n):
 	for id in world_info[world_n]["statue_required"]:
 		required_statues.append(id) 
 	var other_statues: Array = world_info[world_n]["statue_optional"]
-	var statue_id := 1
-	var item_count := 3
+	var room_specific_id := -1
 	world_map = {}
 	#Uses the world_grid to construct information about all rooms.
 	for y in range(0, (2 * size) + 1):
 		for x in range(0, (2 * size) + 1):
 			#This dict only has values for rooms you can enter.
 			#All rooms are assigned a statue id, but ensured that required statues are in the world.
-			statue_id = other_statues.pick_random()
-			if world_grid[x][y] == 5 and len(required_statues) > 0:
-				statue_id = required_statues.pop_back()
+			if world_grid[x][y] == 2:
+				room_specific_id = world_info[current_world_num]["terrain_ids"].pick_random()
+			
+			elif world_grid[x][y] == 5:
+				room_specific_id = other_statues.pick_random()
+				if len(required_statues) > 0:
+					room_specific_id = required_statues.pop_back()
+			
+			elif world_grid[x][y] in [3, 6]:
+				#otherwise choose actual item count
+				room_specific_id = int(Functions.map_range(Global.world_transition_count, Vector2(0, 7), Vector2(3, 6))) + [-1, 0, 1].pick_random()
 
-			if world_grid[x][y] == 7:
-				#item_count is used to determine the lore text on appropriate rooms
+			elif world_grid[x][y] == 7:
+				#room_specific_id is used to determine the lore text on appropriate rooms
 				#Filter all of them to remove ones that have been read.
 				#If all have been read, show 0.
 				var unseen_lores = DecorationManager.lore_texts.keys().filter(func(item): return not (Global.viewed_lore).has(item))
 				if len(unseen_lores) > 0:
-					item_count = unseen_lores.pick_random()
+					room_specific_id = unseen_lores.pick_random()
 				else:
-					item_count = 0
-			else:
-				#otherwise choose actual item count
-				item_count = int(Functions.map_range(Global.world_transition_count, Vector2(0, 7), Vector2(3, 6))) + [-1, 0, 1].pick_random()
-				
+					room_specific_id = 0
+
 			if world_grid[x][y] != 0:
 				world_map[Vector2i(x, y)] = {
 										"type": world_grid[x][y],
+										"room_specific_id": room_specific_id,
 										"entered": false,
 										"activated": false,
 										"to_spawn": -1,
 										"value": Vector2(x - size, y - size).length(),
 										"max_value": Vector2(x - size, y - size).length(),
 										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
-										"item_count": item_count,
-										"statue_id": statue_id,
-										"has_x_pos": has_door(Vector2(x, y), Vector2(1, 0)),
-										"has_x_neg": has_door(Vector2(x, y), Vector2(-1, 0)),
-										"has_z_pos": has_door(Vector2(x, y), Vector2(0, 1)),
-										"has_z_neg": has_door(Vector2(x, y), Vector2(0, -1)),
 										"chums": [],
 										"removed_decorations": [],
 										}
@@ -431,24 +435,19 @@ func create_world_boss() -> void:
 		for x in range(1, max_world_n + 1):
 			world_map[Vector2i(x, y)] = {
 										"type": 0,
+										"room_specific_id": -1,
 										"entered": false,
 										"activated": false,
 										"to_spawn": 0,
 										"value": y * 2,
 										"max_value": y * 2,
 										"bell_angle": 0,
-										"item_count": 3,
-										"statue_id": 1,
-										"has_x_pos": false,
-										"has_x_neg": false,
-										"has_z_pos": false,
-										"has_z_neg": true,
 										"chums": [],
 										"removed_decorations": [],
 										}
 
 
-func has_door(location: Vector2, direction: Vector2) -> bool:
+func has_door(location: Vector2i, direction: Vector2i) -> bool:
 	#Location in gridform
 	var bounds = [-1, (2 * map_size) + 1]
 	var next_room_loc = location + direction

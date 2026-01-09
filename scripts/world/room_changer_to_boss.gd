@@ -15,7 +15,7 @@ func _ready() -> void:
 	source_world_n = Global.current_world_num
 	
 	if not override_world:
-		set_chum_id(Global.world_map[Global.room_location]["statue_id"])
+		set_chum_id(Global.world_map[Global.room_location]["room_specific_id"])
 
 func set_chum_id(new_chum_id) -> void:
 	chum_id = new_chum_id

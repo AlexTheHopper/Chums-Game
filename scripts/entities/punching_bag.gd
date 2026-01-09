@@ -10,16 +10,20 @@ var stiffness := 10.0
 func _ready() -> void:
 	#Remove if have entered close room
 	if Global.game_begun and not is_permanent:
-		var _axis: String = "x"
-		var _sign: String = "pos"
-		if abs(global_position.x) < abs(global_position.z):
-			_axis = "z"
-		if global_position.x + global_position.z < 0.0:
-			_sign = "neg"
+		var dir := Vector2i(0, 0)
+		if abs(global_position.x) > abs(global_position.z):
+			if global_position.x > 0.0:
+				dir = Vector2i(1, 0)
+			else:
+				dir = Vector2i(-1, 0)
+		else:
+			if global_position.z > 0.0:
+				dir = Vector2i(0, 1)
+			else:
+				dir = Vector2i(0, -1)
 		
-		if Global.world_map[Global.room_location]["has_%s_%s" % [_axis, _sign]]:
-			var dir_vec = Vector2i((1 if _axis == "x" else 0) * (1 if _sign == "pos" else -1), (1 if _axis == "z" else 0) * (1 if _sign == "pos" else -1))
-			if Global.world_map[Global.room_location + dir_vec]["entered"]:
+		if Global.has_door(Global.room_location, dir):
+			if Global.world_map[Global.room_location + dir]["entered"]:
 				queue_free()
 		else:
 			queue_free()

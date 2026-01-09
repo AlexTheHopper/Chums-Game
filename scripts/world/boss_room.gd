@@ -24,7 +24,7 @@ func _ready() -> void:
 	get_node("/root/Game/HUD").display_minimap(false)
 
 func fill_tunnels() -> void:
-	pass
+	pass #Only one direction is pre-set in the room scene
 
 func decorate() -> void:
 	#Other objects:

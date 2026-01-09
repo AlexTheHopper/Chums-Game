@@ -31,6 +31,10 @@ func add_room(location: Vector2i) -> void:
 	var new_room = room_tscn.instantiate()
 	new_room.position = relative_to_player_pos(location, Global.room_location)
 	new_room.loc = location
+	new_room.x_pos = Global.has_door(location, Vector2i(1, 0))
+	new_room.x_neg = Global.has_door(location, Vector2i(-1, 0))
+	new_room.z_pos = Global.has_door(location, Vector2i(0, 1))
+	new_room.z_neg = Global.has_door(location, Vector2i(0, -1))
 	add_child(new_room)
 
 func relative_to_player_pos(this_position: Vector2i, player_pos: Vector2i) -> Vector2i:

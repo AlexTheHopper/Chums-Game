@@ -23,8 +23,9 @@ tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0.173954, 0.323436, 0.271598, 1)
 
-[node name="Room" type="Node3D"]
+[node name="Room" type="Node3D" node_paths=PackedStringArray("grid_map")]
 script = ExtResource("1_02tlp")
+grid_map = NodePath("NavigationRegion3D/GridMap")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ovef2")

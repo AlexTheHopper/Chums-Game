@@ -14,7 +14,7 @@ const HEART_HEAL_MIN := 25.0
 
 func _ready() -> void:
 	if not hearts_set:
-		heart_num = Global.world_map[Global.room_location]["item_count"]
+		heart_num = Global.world_map[Global.room_location]["room_specific_id"]
 		
 	if heart_num <= 0:
 		return
@@ -36,7 +36,7 @@ func _on_heal_zone_body_entered(body: Node3D) -> void:
 	#Remove a visual heart and heal body if body has damage:
 	if len(hearts.get_children()) > 0 and body.has_damage() and active:
 		hearts.get_children().pick_random().remove()
-		Global.world_map[Global.room_location]["item_count"] -= 1
+		Global.world_map[Global.room_location]["room_specific_id"] -= 1
 		heart_num -= 1
 		body.health_node.health += max(body.health_node.max_health * HEART_HEAL_FACTOR, HEART_HEAL_MIN)
 		active = false

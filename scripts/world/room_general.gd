@@ -12,7 +12,6 @@ var is_doors_closed := false
 var bracelet_tscn: PackedScene = preload("res://scenes/entities/currency_bracelet.tscn")
 const RANDOM_LEVEL_BEING = preload("res://scenes/general/random_level_being.tscn")
 
-
 @export var spawn_timer: Timer
 @export var grid_map: GridMap
 
@@ -35,9 +34,10 @@ func _ready() -> void:
 	if enemies_to_spawn > 0:
 		if spawn_timer:
 			spawn_timer.start()
+
+	await get_tree().physics_frame #This is to allow the new gridmaps collision to take affect
 	Global.randomize_seed() #Back to complete random.
 	fill_tunnels()
-	await get_tree().physics_frame #This is to allow the new gridmaps collision to take affect
 	set_player_loc_on_entry()
 	set_chums_loc_on_entry()
 	decorate() #RNG seed is autoset here
@@ -53,7 +53,7 @@ func _ready() -> void:
 func fill_tunnels():
 	#Fix walls etc.
 	var door_dist := 9
-	if not Global.world_map[Global.room_location]["has_x_pos"]:
+	if not Global.has_door(Global.room_location, Vector2i(1, 0)):
 		if get_node_or_null("Doors/x_pos"):
 			get_node("Doors/x_pos").queue_free()
 		for w in range(-3, 4):
@@ -63,7 +63,7 @@ func fill_tunnels():
 			#Ramps:
 			grid_map.set_cell_item(Vector3(door_dist - 1, 0, w), 12, 22)
 
-	if not Global.world_map[Global.room_location]["has_x_neg"]:
+	if not Global.has_door(Global.room_location, Vector2i(-1, 0)):
 		if get_node_or_null("Doors/x_neg"):
 			get_node("Doors/x_neg").queue_free()
 		for w in range(-3, 4):
@@ -73,7 +73,7 @@ func fill_tunnels():
 			#Ramps:
 			grid_map.set_cell_item(Vector3(-(door_dist - 1), 0, w), 12, 16)
 
-	if not Global.world_map[Global.room_location]["has_z_pos"]:
+	if not Global.has_door(Global.room_location, Vector2i(0, 1)):
 		if get_node_or_null("Doors/z_pos"):
 			get_node("Doors/z_pos").queue_free()
 		for w in range(-3, 4):
@@ -83,7 +83,7 @@ func fill_tunnels():
 			#Ramps:
 			grid_map.set_cell_item(Vector3(w, 0, door_dist - 1), 12, 0)
 
-	if not Global.world_map[Global.room_location]["has_z_neg"]:
+	if not Global.has_door(Global.room_location, Vector2i(0, -1)):
 		if get_node_or_null("Doors/z_neg"):
 			get_node("Doors/z_neg").queue_free()
 		for w in range(-3, 4):

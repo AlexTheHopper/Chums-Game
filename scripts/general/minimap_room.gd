@@ -22,13 +22,9 @@ func _ready() -> void:
 	if not world_num:
 		world_num = 1
 
-	x_pos = Global.world_map[loc]["has_x_pos"]
 	x_pos_img.texture = load("res://assets/minimap/minimap_door_%s.png" % world_num)
-	x_neg = Global.world_map[loc]["has_x_neg"]
 	x_neg_img.texture = load("res://assets/minimap/minimap_door_%s.png" % world_num)
-	z_pos = Global.world_map[loc]["has_z_pos"]
 	z_pos_img.texture = load("res://assets/minimap/minimap_door_%s.png" % world_num)
-	z_neg = Global.world_map[loc]["has_z_neg"]
 	z_neg_img.texture = load("res://assets/minimap/minimap_door_%s.png" % world_num)
 	main_img.texture = load("res://assets/minimap/minimap_room_%s.png" % world_num)
 

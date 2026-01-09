@@ -13,7 +13,7 @@ const ITEM_HEAL := 20
 
 func _ready() -> void:
 	if not items_set:
-		item_num = Global.world_map[Global.room_location]["item_count"]
+		item_num = Global.world_map[Global.room_location]["room_specific_id"]
 		
 	if item_num <= 0:
 		return
@@ -35,7 +35,7 @@ func _on_active_zone_body_entered(body: Node3D) -> void:
 	#Remove a visual heart and heal body if body has damage:
 	if len(items.get_children()) > 0 and active:
 		items.get_children().pick_random().remove()
-		Global.world_map[Global.room_location]["item_count"] -= 1
+		Global.world_map[Global.room_location]["room_specific_id"] -= 1
 		item_num -= 1
 		active = false
 		items_timer.start()

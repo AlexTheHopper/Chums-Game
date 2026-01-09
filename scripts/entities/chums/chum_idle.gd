@@ -13,7 +13,7 @@ func Enter():
 	
 	chum.anim_player.play("Idle")
 	
-func Update(_delta: float):	
+func Update(_delta: float):
 	#Follow player if far enough away, and room beaten:
 	if Global.world_map[Global.room_location]["activated"] and chum.has_move_speed:
 		if Functions.distance_squared(chum, player) > pow(chum.follow_distance, 2):

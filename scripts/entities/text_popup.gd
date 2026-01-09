@@ -49,7 +49,7 @@ func _ready() -> void:
 		$Container/Description/SubViewport/GlitchShader.visible = false
 
 	else:
-		var text_num = Global.world_map[Global.room_location]["item_count"]
+		var text_num = Global.world_map[Global.room_location]["room_specific_id"]
 		if text_num not in Global.viewed_lore:
 			Global.viewed_lore.append(text_num)
 		

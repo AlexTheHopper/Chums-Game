@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 			
 			#LOOK
 			for room_loc in Global.world_map.keys():
-				if Global.world_map[room_loc]["type"] == 5 and Global.world_map[room_loc]["statue_id"] == statue_id:
+				if Global.world_map[room_loc]["type"] == 5 and Global.world_map[room_loc]["room_specific_id"] == statue_id:
 					found = true
 					loc = room_loc
 			

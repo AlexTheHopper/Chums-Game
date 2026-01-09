@@ -24,7 +24,7 @@ func _ready() -> void:
 	chum_instance.global_position = Vector3(1.0, 1.1, 1.0)
 
 func fill_tunnels() -> void:
-	pass
+	pass #Only one direction is pre-set in the room scene
 
 func save_room() -> void:
 	pass

@@ -2,6 +2,7 @@ extends Node
 
 var decorations : Dictionary[String, Dictionary]
 var decorations_world : Dictionary[int, Dictionary]
+var terrains : Dictionary[Vector2i, PackedScene]
 
 var lore_texts : Dictionary[int, Dictionary]
 
@@ -79,6 +80,16 @@ func _ready() -> void:
 			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5"],
 			"rare": ["frame1", "frame2"],
 			},
+	}
+	
+	terrains = {
+		Vector2i(1, 0): preload("res://scenes/world/terrains/terrain_world_1_0.tscn"),
+		
+		Vector2i(2, 0): preload("res://scenes/world/terrains/terrain_world_2_0.tscn"),
+		
+		Vector2i(3, 0): preload("res://scenes/world/terrains/terrain_world_3_0.tscn"),
+		
+		Vector2i(4, 0): preload("res://scenes/world/terrains/terrain_world_4_0.tscn"),
 	}
 	
 	lore_texts = {
@@ -160,3 +171,6 @@ func get_random_decoration(world_ns: Array):
 func get_common_decoration(world_n):
 	var rand_name = decorations_world[world_n]["common"].pick_random()
 	return decorations[rand_name]
+
+func get_terrain(world_n: int, id: int) -> PackedScene:
+	return terrains[Vector2i(world_n, id)]

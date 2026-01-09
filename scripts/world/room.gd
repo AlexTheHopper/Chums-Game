@@ -6,6 +6,11 @@ const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
 const TYPE := "room"
 
 func _ready() -> void:
+	#Create custom terrain
+	var terrain = DecorationManager.get_terrain(Global.current_world_num, Global.world_map[Global.room_location]["room_specific_id"])
+	var nav_region: NavigationRegion3D = terrain.instantiate()
+	add_child(nav_region)
+	grid_map = nav_region.get_node("GridMap") #This is the new one we want to block tunnels that dont lead anywhere
 	
 	$RoomActivator.activate_bell.connect(close_doors)
 	
@@ -23,7 +28,7 @@ func _ready() -> void:
 func fill_tunnels():
 	#Fix walls etc.
 	var door_dist := 9
-	if not Global.world_map[Global.room_location]["has_x_pos"]:
+	if not Global.has_door(Global.room_location, Vector2i(1, 0)):
 		if get_node_or_null("Doors/x_pos"):
 			get_node("Doors/x_pos").queue_free()
 		for w in range(-3, 4):
@@ -32,7 +37,7 @@ func fill_tunnels():
 			#Ramps:
 			grid_map.set_cell_item(Vector3(door_dist, 0, w), 16, 22)
 
-	if not Global.world_map[Global.room_location]["has_x_neg"]:
+	if not Global.has_door(Global.room_location, Vector2i(-1, 0)):
 		if get_node_or_null("Doors/x_neg"):
 			get_node("Doors/x_neg").queue_free()
 		for w in range(-3, 4):
@@ -41,7 +46,7 @@ func fill_tunnels():
 			#Ramps:
 			grid_map.set_cell_item(Vector3(-door_dist, 0, w), 16, 16)
 
-	if not Global.world_map[Global.room_location]["has_z_pos"]:
+	if not Global.has_door(Global.room_location, Vector2i(0, 1)):
 		if get_node_or_null("Doors/z_pos"):
 			get_node("Doors/z_pos").queue_free()
 		for w in range(-3, 4):
@@ -50,7 +55,7 @@ func fill_tunnels():
 			#Ramps:
 			grid_map.set_cell_item(Vector3(w, 0, door_dist), 16, 10)
 
-	if not Global.world_map[Global.room_location]["has_z_neg"]:
+	if not Global.has_door(Global.room_location, Vector2i(0, -1)):
 		if get_node_or_null("Doors/z_neg"):
 			get_node("Doors/z_neg").queue_free()
 		for w in range(-3, 4):
