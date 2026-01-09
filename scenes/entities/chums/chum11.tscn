@@ -288,10 +288,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 2.0
-neighbor_distance = 2.0
-max_neighbors = 5
-max_speed = 1.0
 
 [node name="ChumSpecificStates" type="Node" parent="."]
 

@@ -2458,7 +2458,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 [node name="ChumInterractionArea" parent="." instance=ExtResource("9_hi80w")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 2.0
-neighbor_distance = 2.0
-max_neighbors = 5
-max_speed = 5.0

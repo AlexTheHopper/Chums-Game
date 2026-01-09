@@ -421,8 +421,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qexya"]
-radius = 0.3
-height = 1.25
+height = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_volkl"]
 radius = 0.4
@@ -571,7 +570,7 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.300207, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("CapsuleShape3D_qexya")
 
 [node name="Hurtbox" type="Area3D" parent="."]
@@ -608,3 +607,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03472, 0)
 [node name="ChumInterractionArea" parent="." instance=ExtResource("11_4i1fy")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true

@@ -910,3 +910,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 [node name="ChumInterractionArea" parent="." instance=ExtResource("6_bnd3d")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true

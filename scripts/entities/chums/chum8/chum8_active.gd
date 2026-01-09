@@ -40,7 +40,7 @@ func Physics_Update(delta: float):
 	if chum.is_on_floor():
 		chum.is_launched = false
 		if chum.velocity.length() > 1:
-			chum.rotation.y = lerp_angle(chum.rotation.y, Vector2(chum.velocity.x, -chum.velocity.z).angle() + PI/2, 0.5)
+			chum.rotation.y = lerp_angle(chum.rotation.y, Vector2(nav_vel.z, nav_vel.x).angle(), 0.3)
 		if not has_touched_floor:
 			has_touched_floor = true
 			chum.set_new_target()

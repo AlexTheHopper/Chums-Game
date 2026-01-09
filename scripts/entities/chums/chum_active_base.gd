@@ -25,16 +25,21 @@ func Enter():
 	nav_timer.start()
 	attacking = false
 	has_touched_floor = false
+	if chum.target:
+		nav_vel = Functions.vector_to(chum, chum.target) #Stops jitter on enter state
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():
 		if not attacking and Functions.distance_squared(chum, chum.target) > chum.attack_distance ** 2:
 			chum.anim_player.play("Walk")
 			chum.velocity = nav_vel
+			chum.rotation.y = lerp_angle(chum.rotation.y, Vector2(nav_vel.z, nav_vel.x).angle(), 0.3)
 		else:
+			chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.05)
 			chum.velocity = nav_vel * 0.1
 
-		chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
+		#chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
+		
 		chum.is_launched = false
 		
 		if not has_touched_floor:
@@ -70,7 +75,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 
 func _on_nav_timer_timeout() -> void:
 	if chum.target:
-		chum.nav_agent.target_position = chum.target.global_position
+		chum.nav_agent.set_target_position(chum.target.global_position)
 		var next_location = chum.nav_agent.get_next_path_position()
 		var new_vel = (next_location - chum.global_position).normalized() * chum.move_speed
 		chum.nav_agent.set_velocity(new_vel)

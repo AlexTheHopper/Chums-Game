@@ -417,8 +417,6 @@ script = ExtResource("10_25tx6")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
-neighbor_distance = 5.0
-max_neighbors = 2
 
 [node name="Particles" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.8, 0)
