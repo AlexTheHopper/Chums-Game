@@ -10,6 +10,14 @@ func _ready() -> void:
 	var terrain = DecorationManager.get_terrain(Global.current_world_num, Global.world_map[Global.room_location]["room_specific_id"])
 	var nav_region: NavigationRegion3D = terrain.instantiate()
 	add_child(nav_region)
+	#Since the nav regions are not centered in the middle of the "center" tile, when they are rotated they also need to be shifted to fit in the room.
+	#TODO fix this rotation, the wrong tunnels get filled since its tile coords are local.
+	#var rot_choice = [[0.0,  Vector3(0.0, 0.0, 0.0)],
+					#[PI/2,   Vector3(0.0, 0.0, 2.0)],
+					#[PI,     Vector3(2.0, 0.0, 2.0)],
+					#[3*PI/2, Vector3(2.0, 0.0, 0.0)]].pick_random()
+	#nav_region.rotation.y = rot_choice[0]
+	#nav_region.global_position += rot_choice[1]
 	grid_map = nav_region.get_node("GridMap") #This is the new one we want to block tunnels that dont lead anywhere
 	
 	$RoomActivator.activate_bell.connect(close_doors)

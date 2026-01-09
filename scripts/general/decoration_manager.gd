@@ -87,6 +87,7 @@ func _ready() -> void:
 		Vector2i(1, 1): preload("res://scenes/world/terrains/terrain_world_1_1.tscn"),
 		
 		Vector2i(2, 0): preload("res://scenes/world/terrains/terrain_world_2_0.tscn"),
+		Vector2i(2, 1): preload("res://scenes/world/terrains/terrain_world_2_1.tscn"),
 		
 		Vector2i(3, 0): preload("res://scenes/world/terrains/terrain_world_3_0.tscn"),
 		
