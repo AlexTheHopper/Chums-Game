@@ -7,49 +7,50 @@ var terrains : Dictionary[Vector2i, PackedScene]
 var lore_texts : Dictionary[int, Dictionary]
 
 func _ready() -> void:
+	#Radius here is how far it can be from a wall or edge
 	decorations = {"streetlamp": {"scene": preload("res://scenes/world/streetlamp.tscn"), "radius": 0.5},
 	
-					"grass1": {"scene": preload("res://scenes/world/decorations/grass_1.tscn"), "radius": 0.5},
-					"grass2": {"scene": preload("res://scenes/world/decorations/grass_2.tscn"), "radius": 0.5},
-					"grass3": {"scene": preload("res://scenes/world/decorations/grass_3.tscn"), "radius": 0.5},
-					"grass4": {"scene": preload("res://scenes/world/decorations/grass_4.tscn"), "radius": 0.5},
-					"grass5": {"scene": preload("res://scenes/world/decorations/grass_5.tscn"), "radius": 0.5},
+					"grass1": {"scene": preload("res://scenes/world/decorations/grass_1.tscn"), "radius": 0.4},
+					"grass2": {"scene": preload("res://scenes/world/decorations/grass_2.tscn"), "radius": 0.4},
+					"grass3": {"scene": preload("res://scenes/world/decorations/grass_3.tscn"), "radius": 0.6},
+					"grass4": {"scene": preload("res://scenes/world/decorations/grass_4.tscn"), "radius": 0.6},
+					"grass5": {"scene": preload("res://scenes/world/decorations/grass_5.tscn"), "radius": 0.8},
 					
-					"bones1": {"scene": preload("res://scenes/world/decorations/bones_1.tscn"), "radius": 0.5},
-					"bones2": {"scene": preload("res://scenes/world/decorations/bones_2.tscn"), "radius": 0.5},
-					"bones3": {"scene": preload("res://scenes/world/decorations/bones_3.tscn"), "radius": 0.5},
-					"bones4": {"scene": preload("res://scenes/world/decorations/bones_4.tscn"), "radius": 0.5},
-					"bones5": {"scene": preload("res://scenes/world/decorations/bones_5.tscn"), "radius": 0.5},
+					"bones1": {"scene": preload("res://scenes/world/decorations/bones_1.tscn"), "radius": 0.9},
+					"bones2": {"scene": preload("res://scenes/world/decorations/bones_2.tscn"), "radius": 0.8},
+					"bones3": {"scene": preload("res://scenes/world/decorations/bones_3.tscn"), "radius": 0.7},
+					"bones4": {"scene": preload("res://scenes/world/decorations/bones_4.tscn"), "radius": 0.9},
+					"bones5": {"scene": preload("res://scenes/world/decorations/bones_5.tscn"), "radius": 0.9},
 
 					
-					"bonesmoss1": {"scene": preload("res://scenes/world/decorations/bonesmoss_1.tscn"), "radius": 0.5},
-					"bonesmoss2": {"scene": preload("res://scenes/world/decorations/bonesmoss_2.tscn"), "radius": 0.5},
-					"bonesmoss3": {"scene": preload("res://scenes/world/decorations/bonesmoss_3.tscn"), "radius": 0.5},
-					"bonesmoss4": {"scene": preload("res://scenes/world/decorations/bonesmoss_4.tscn"), "radius": 0.5},
-					"bonesmoss5": {"scene": preload("res://scenes/world/decorations/bonesmoss_5.tscn"), "radius": 0.5},
+					"bonesmoss1": {"scene": preload("res://scenes/world/decorations/bonesmoss_1.tscn"), "radius": 0.9},
+					"bonesmoss2": {"scene": preload("res://scenes/world/decorations/bonesmoss_2.tscn"), "radius": 0.8},
+					"bonesmoss3": {"scene": preload("res://scenes/world/decorations/bonesmoss_3.tscn"), "radius": 0.8},
+					"bonesmoss4": {"scene": preload("res://scenes/world/decorations/bonesmoss_4.tscn"), "radius": 1.0},
+					"bonesmoss5": {"scene": preload("res://scenes/world/decorations/bonesmoss_5.tscn"), "radius": 0.9},
 	
-					"tree1": {"scene": preload("res://scenes/world/decorations/tree_1.tscn"), "radius": 0.5},
-					"tree2": {"scene": preload("res://scenes/world/decorations/tree_2.tscn"), "radius": 0.5},
+					"tree1": {"scene": preload("res://scenes/world/decorations/tree_1.tscn"), "radius": 1.5},
+					"tree2": {"scene": preload("res://scenes/world/decorations/tree_2.tscn"), "radius": 1.5},
 					
-					"rubble1": {"scene": preload("res://scenes/world/decorations/rubble1.tscn"), "radius": 0.5},
+					"rubble1": {"scene": preload("res://scenes/world/decorations/rubble1.tscn"), "radius": 0.9},
 					
-					"column1": {"scene": preload("res://scenes/world/decorations/column1.tscn"), "radius": 0.5},
-					"column2": {"scene": preload("res://scenes/world/decorations/column2.tscn"), "radius": 0.5},
-					"column3": {"scene": preload("res://scenes/world/decorations/column3.tscn"), "radius": 0.5},
+					"column1": {"scene": preload("res://scenes/world/decorations/column1.tscn"), "radius": 0.8},
+					"column2": {"scene": preload("res://scenes/world/decorations/column2.tscn"), "radius": 0.6},
+					"column3": {"scene": preload("res://scenes/world/decorations/column3.tscn"), "radius": 0.6},
 					"column4": {"scene": preload("res://scenes/world/decorations/column4.tscn"), "radius": 0.5},
-					"column5": {"scene": preload("res://scenes/world/decorations/column5.tscn"), "radius": 0.5},
+					"column5": {"scene": preload("res://scenes/world/decorations/column5.tscn"), "radius": 0.0},
 					
-					"frame1": {"scene": preload("res://scenes/world/decorations/frame_destructible_1.tscn"), "radius": 0.5},
-					"frame2": {"scene": preload("res://scenes/world/decorations/frame_destructible_2.tscn"), "radius": 0.5},
+					"frame1": {"scene": preload("res://scenes/world/decorations/frame_destructible_1.tscn"), "radius": 0.9},
+					"frame2": {"scene": preload("res://scenes/world/decorations/frame_destructible_2.tscn"), "radius": 0.9},
 					
-					"fireplace": {"scene": preload("res://scenes/world/decorations/fireplace.tscn"), "radius": 0.5},
+					"fireplace": {"scene": preload("res://scenes/world/decorations/fireplace.tscn"), "radius": 1.0},
 					
 					"shrub1": {"scene": preload("res://scenes/world/decorations/shrub_1.tscn"), "radius": 0.5},
-					"shrub2": {"scene": preload("res://scenes/world/decorations/shrub_2.tscn"), "radius": 0.5},
-					"shrub3": {"scene": preload("res://scenes/world/decorations/shrub_3.tscn"), "radius": 0.5},
-					"shrub4": {"scene": preload("res://scenes/world/decorations/shrub_4.tscn"), "radius": 0.5},
-					"shrub5": {"scene": preload("res://scenes/world/decorations/shrub_5.tscn"), "radius": 0.5},
-					"shrub6": {"scene": preload("res://scenes/world/decorations/shrub_6.tscn"), "radius": 0.5},
+					"shrub2": {"scene": preload("res://scenes/world/decorations/shrub_2.tscn"), "radius": 0.4},
+					"shrub3": {"scene": preload("res://scenes/world/decorations/shrub_3.tscn"), "radius": 0.4},
+					"shrub4": {"scene": preload("res://scenes/world/decorations/shrub_4.tscn"), "radius": 0.6},
+					"shrub5": {"scene": preload("res://scenes/world/decorations/shrub_5.tscn"), "radius": 0.6},
+					"shrub6": {"scene": preload("res://scenes/world/decorations/shrub_6.tscn"), "radius": 0.8},
 					}
 	
 	decorations_world = {

@@ -13,8 +13,6 @@ func ensure_save_folder() -> void:
 		dir.make_dir("saves")
 
 func save_game(save_id) -> void:
-	if Global.dev_mode:
-		print("saving game to id %s" % [save_id])
 	ensure_save_folder()
 	var saved_game:SavedGame = SavedGame.new()
 	

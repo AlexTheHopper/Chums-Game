@@ -16,6 +16,7 @@ ambient_light_sky_contribution = 0.9
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0.173954, 0.323436, 0.271598, 1)
+adjustment_enabled = true
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("spawn_timer", "grid_map")]
 script = ExtResource("1_c3888")

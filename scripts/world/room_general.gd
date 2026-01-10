@@ -54,8 +54,6 @@ func fill_tunnels():
 	#Fix walls etc.
 	var door_dist := 9
 	if not Global.has_door(Global.room_location, Vector2i(1, 0)):
-		if get_node_or_null("Doors/x_pos"):
-			get_node("Doors/x_pos").queue_free()
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(door_dist, 0, w), 5, 22)
@@ -64,8 +62,6 @@ func fill_tunnels():
 			grid_map.set_cell_item(Vector3(door_dist - 1, 0, w), 12, 22)
 
 	if not Global.has_door(Global.room_location, Vector2i(-1, 0)):
-		if get_node_or_null("Doors/x_neg"):
-			get_node("Doors/x_neg").queue_free()
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(-door_dist, 0, w), 5, 16)
@@ -74,8 +70,6 @@ func fill_tunnels():
 			grid_map.set_cell_item(Vector3(-(door_dist - 1), 0, w), 12, 16)
 
 	if not Global.has_door(Global.room_location, Vector2i(0, 1)):
-		if get_node_or_null("Doors/z_pos"):
-			get_node("Doors/z_pos").queue_free()
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(w, 0, door_dist), 5, 10)
@@ -84,8 +78,6 @@ func fill_tunnels():
 			grid_map.set_cell_item(Vector3(w, 0, door_dist - 1), 12, 0)
 
 	if not Global.has_door(Global.room_location, Vector2i(0, -1)):
-		if get_node_or_null("Doors/z_neg"):
-			get_node("Doors/z_neg").queue_free()
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(w, 0, -door_dist), 5, 0)
@@ -151,7 +143,6 @@ func get_chum_spawn_loc():
 	return align_loc_to_ground(pos)
 
 func align_loc_to_ground(pos) -> Vector3:
-	#return(pos)
 	if spawn_ray:
 		spawn_ray.global_position = Vector3(pos.x, 10.0, pos.z)
 		spawn_ray.force_raycast_update()
@@ -172,6 +163,26 @@ func decorate():
 
 func get_deco_loc() -> Vector3:
 	return Vector3(0.0, 0.0, 0.0)
+
+func is_valid_deco_loc(loc: Vector3, radius: float) -> bool:
+	#Four points around the decoration must be at the same height, and flat.
+	if not spawn_ray:
+		return false
+	
+	var heights := []
+	loc = Vector3(loc.x, 10.0, loc.z)
+	for offset in [Vector3(0.0, 0.0, radius), Vector3(0.0, 0.0, -radius), Vector3(radius, 0.0, 0.0), Vector3(-radius, 0.0, 0.0)]:
+		spawn_ray.global_position = loc + offset
+		spawn_ray.force_raycast_update()
+		if spawn_ray.is_colliding() and spawn_ray.get_collider() is GridMap:
+			heights.append(spawn_ray.get_collision_point().y)
+			if spawn_ray.get_collision_normal() != Vector3(0.0, 1.0, 0.0):
+				return false
+	if heights.size() == 0:
+		return false
+	if heights.count(heights[0]) != heights.size():
+		return false
+	return true
 
 func remove_destroyed_decorations() -> void:
 	var to_remove: Array = Global.world_map[Global.room_location]["removed_decorations"]
