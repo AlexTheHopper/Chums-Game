@@ -4,6 +4,7 @@ class_name fight_room
 @onready var room_value = Global.world_map[Global.room_location]["value"]
 const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
 const TYPE := "room"
+var rot_count : int
 
 func _ready() -> void:
 	#Create custom terrain
@@ -12,12 +13,13 @@ func _ready() -> void:
 	add_child(nav_region)
 	#Since the nav regions are not centered in the middle of the "center" tile, when they are rotated they also need to be shifted to fit in the room.
 	#TODO fix this rotation, the wrong tunnels get filled since its tile coords are local.
-	#var rot_choice = [[0.0,  Vector3(0.0, 0.0, 0.0)],
-					#[PI/2,   Vector3(0.0, 0.0, 2.0)],
-					#[PI,     Vector3(2.0, 0.0, 2.0)],
-					#[3*PI/2, Vector3(2.0, 0.0, 0.0)]].pick_random()
-	#nav_region.rotation.y = rot_choice[0]
-	#nav_region.global_position += rot_choice[1]
+	var rot_choice = [[0, Vector3(0.0, 0.0, 0.0)],
+					[1,   Vector3(0.0, 0.0, 2.0)],
+					[2,   Vector3(2.0, 0.0, 2.0)],
+					[3,   Vector3(2.0, 0.0, 0.0)]].pick_random()
+	rot_count = rot_choice[0]
+	nav_region.rotation.y = rot_count * PI / 2
+	nav_region.global_position += rot_choice[1]
 	grid_map = nav_region.get_node("GridMap") #This is the new one we want to block tunnels that dont lead anywhere
 	
 	$RoomActivator.activate_bell.connect(close_doors)
@@ -36,41 +38,41 @@ func _ready() -> void:
 func fill_tunnels():
 	#Fix walls etc.
 	var door_dist := 9
-	if not Global.has_door(Global.room_location, Vector2i(1, 0)):
-		if get_node_or_null("Doors/x_pos"):
-			get_node("Doors/x_pos").queue_free()
+	if not Global.has_door(Global.room_location, rotate_vec2i(Vector2i(1, 0), rot_count)):
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(door_dist + 1, 0, w), 1, 22)
 			#Ramps:
 			grid_map.set_cell_item(Vector3(door_dist, 0, w), 16, 22)
 
-	if not Global.has_door(Global.room_location, Vector2i(-1, 0)):
-		if get_node_or_null("Doors/x_neg"):
-			get_node("Doors/x_neg").queue_free()
+	if not Global.has_door(Global.room_location, rotate_vec2i(Vector2i(-1, 0), rot_count)):
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(-(door_dist + 1), 0, w), 1, 16)
 			#Ramps:
 			grid_map.set_cell_item(Vector3(-door_dist, 0, w), 16, 16)
 
-	if not Global.has_door(Global.room_location, Vector2i(0, 1)):
-		if get_node_or_null("Doors/z_pos"):
-			get_node("Doors/z_pos").queue_free()
+	if not Global.has_door(Global.room_location, rotate_vec2i(Vector2i(0, 1), rot_count)):
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(w, 0, door_dist + 1), 1, 10)
 			#Ramps:
 			grid_map.set_cell_item(Vector3(w, 0, door_dist), 16, 10)
 
-	if not Global.has_door(Global.room_location, Vector2i(0, -1)):
-		if get_node_or_null("Doors/z_neg"):
-			get_node("Doors/z_neg").queue_free()
+	if not Global.has_door(Global.room_location, rotate_vec2i(Vector2i(0, -1), rot_count)):
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(w, 0, -(door_dist + 1)), 1, 0)
 			#Ramps:
 			grid_map.set_cell_item(Vector3(w, 0, -door_dist), 16, 0)
+
+func rotate_vec2i(v: Vector2i, n: int) -> Vector2i:
+	match n % 4:
+		0: return v
+		1: return Vector2i(v.y, -v.x)
+		2: return Vector2i(-v.x, -v.y)
+		3: return Vector2i(-v.y, v.x)
+	return v
 
 #Enemy chum spawner:
 func _on_spawn_timer_timeout() -> void:
@@ -137,8 +139,11 @@ func decorate():
 		var chosen_deco = DecorationManager.get_random_decoration([Global.current_world_num])
 		var pos = get_deco_loc()
 		var angle = angles.pick_random()
-
-		decos_to_add.append([chosen_deco["scene"], align_loc_to_ground(pos), angle])
+		
+		#Here we want to check the terrain to make sure decos arent inside walls or hanging off edges
+		pos = align_loc_to_ground(pos)
+		if is_valid_deco_loc(pos, chosen_deco["radius"]):
+			decos_to_add.append([chosen_deco["scene"], pos, angle])
 
 	for deco in decos_to_add:
 		var to_add = deco[0].instantiate()
@@ -150,5 +155,5 @@ func decorate():
 	decos_to_add = []
 
 func get_deco_loc() -> Vector3:
-	return(Vector3(randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15),
-				0, randf_range(-13, -1) if randf() < 0.5 else randf_range(3, 15)).snapped(Vector3(0.1, 0.1, 0.1)))
+	return(Vector3(randf_range(-16, -1) if randf() < 0.5 else randf_range(3, 18),
+				0, randf_range(-16, -1) if randf() < 0.5 else randf_range(3, 18)).snapped(Vector3(0.1, 0.1, 0.1)))

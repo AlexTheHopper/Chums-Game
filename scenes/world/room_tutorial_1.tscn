@@ -466,6 +466,9 @@ custom_text_front = "Use [img]res://materials/ui/ui_pause.tres[/img] to take a b
 custom_title_back = "Be Careful!"
 custom_text_back = "If you quit during a fight, you will die."
 
+[node name="SpawnRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -12, 0)
+
 [connection signal="area_entered" from="Entities/PunchingBag/BraceletSpawner" to="Entities/PunchingBag/BraceletSpawner" method="_on_area_entered"]
 [connection signal="area_entered" from="Entities/PunchingBag2/BraceletSpawner" to="Entities/PunchingBag2/BraceletSpawner" method="_on_area_entered"]
 [connection signal="area_entered" from="Entities/PunchingBag3/BraceletSpawner" to="Entities/PunchingBag3/BraceletSpawner" method="_on_area_entered"]

@@ -452,6 +452,10 @@ func has_door(location: Vector2i, direction: Vector2i) -> bool:
 	var bounds = [-1, (2 * map_size) + 1]
 	var next_room_loc = location + direction
 	
+	#Keep the door in boss rooms no matter what
+	if current_world_num == 0:
+		return true
+	
 	#No door if on map edge
 	if int(next_room_loc.x) in bounds or int(next_room_loc.y) in bounds:
 		return false
