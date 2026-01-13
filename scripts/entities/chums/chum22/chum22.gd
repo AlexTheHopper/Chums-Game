@@ -28,8 +28,8 @@ var changes_agro_on_damaged := true
 var draws_agro_on_attack := true
 var always_targets_player := false
 
-var bracelet_count := 1
-var bracelet_cost := 3
+var bracelet_count := 5
+var bracelet_cost := 15
 
 func start_fire() -> void:
 	$Body/Armature/Skeleton3D/BoneAttachment3D/CPUParticles3D.emitting = true

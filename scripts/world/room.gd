@@ -118,6 +118,7 @@ func _on_spawn_timer_timeout() -> void:
 		save_room()
 
 func decorate():
+	$RoomActivator.global_position = align_loc_to_ground($RoomActivator.global_position)
 	super()
 	#Streetlamp generally points to fastest way to lobby.
 	var to_lobby = Global.world_map_guide["lobby"][Global.room_location] * 8

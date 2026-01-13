@@ -35,13 +35,14 @@ func _ready() -> void:
 	bell_mesh = bell_mesh_scene.get_node("Bell")
 	
 	#If room is already done, remove bell
-
 	rotation.y = Global.world_map[Global.room_location]["bell_angle"]
 	if Global.world_map[Global.room_location]["activated"]:
 		$Body/BellPivot.queue_free()
 		activated = true
 	elif Global.world_map[Global.room_location]["to_spawn"] == 0 and Global.current_room_node.TYPE != "boss":
 		finish_spawning()
+	
+	#Align with terrain done in room script so its after terrain collision update
 
 #Runs on activation, makes chums do their thing
 func activate_chums():
