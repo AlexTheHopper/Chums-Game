@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cptocnh6wklx4" path="res://scripts/world/lobby.gd" id="1_mj63l"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="2_ej3mg"]
-[ext_resource type="MeshLibrary" uid="uid://vpogt5rdoy7h" path="res://assets/world/world_1_mesh_lib_v6.tres" id="3_fkstc"]
+[ext_resource type="MeshLibrary" uid="uid://48q6qbe0wdjc" path="res://assets/world/meshlib_world_1.tres" id="3_fkstc"]
 [ext_resource type="PackedScene" uid="uid://dsr4pp61d2hjb" path="res://scenes/world/decorations/tree_1.tscn" id="4_621ml"]
 [ext_resource type="PackedScene" uid="uid://c8gvfnlca5kdw" path="res://scenes/world/decorations/grass_2.tscn" id="5_fkstc"]
 [ext_resource type="PackedScene" uid="uid://df2vpfo6a1ew6" path="res://scenes/world/prisoner_statues.tscn" id="5_h0uwc"]

@@ -123,8 +123,8 @@ func decorate():
 	#Streetlamp generally points to fastest way to lobby.
 	var to_lobby = Global.world_map_guide["lobby"][Global.room_location] * 8
 	var spawn_pos = Vector3(1, 0, 1)
-	spawn_pos.x += to_lobby.x + randf_range(-1.5, 1.5)
-	spawn_pos.z += to_lobby.y + randf_range(-1.5, 1.5)
+	spawn_pos.x += to_lobby.x #+ randf_range(-1.5, 1.5)
+	spawn_pos.z += to_lobby.y #+ randf_range(-1.5, 1.5)
 	
 	var light_obj = STREETLAMP.instantiate()
 	$Decorations.add_child(light_obj)
