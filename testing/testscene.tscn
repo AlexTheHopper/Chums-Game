@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://blp50rus6nn5a" path="res://testing/testscene.gd" id="1_57euc"]
 [ext_resource type="PackedScene" uid="uid://dmgabiox56kck" path="res://scenes/entities/player.tscn" id="2_57euc"]
 [ext_resource type="PackedScene" uid="uid://cwtw3l04fav7g" path="res://scenes/general/hud.tscn" id="4_3ldjf"]
-[ext_resource type="MeshLibrary" uid="uid://1vfgau4llvk2" path="res://assets/world/meshlib_world_3.tres" id="4_m3b6f"]
+[ext_resource type="MeshLibrary" uid="uid://bswq4nrk63ovy" path="res://assets/world/meshlib_world_3.tres" id="4_m3b6f"]
 [ext_resource type="PackedScene" uid="uid://ckhjmq08ksffk" path="res://assets/world/lore_drop_neutral.tscn" id="5_c5fec"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u2ba0"]

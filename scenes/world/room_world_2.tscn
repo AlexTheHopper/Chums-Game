@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cr3ihcke5osl0"]
 
 [ext_resource type="Script" uid="uid://ci7owev45b6ka" path="res://scripts/world/room.gd" id="1_mfbql"]
-[ext_resource type="MeshLibrary" uid="uid://bdj6efyold3cw" path="res://assets/world/meshlib_world_2.tres" id="2_y3gcu"]
+[ext_resource type="MeshLibrary" uid="uid://b52oqgk3y6mjn" path="res://assets/world/meshlib_world_2.tres" id="2_y3gcu"]
 [ext_resource type="PackedScene" uid="uid://cwdc4wu5e2q2y" path="res://scenes/world/room_changer.tscn" id="3_y3gcu"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_nctlv"]
 [ext_resource type="PackedScene" uid="uid://ce86dk61xylkx" path="res://scenes/entities/room_activator.tscn" id="5_3eraq"]

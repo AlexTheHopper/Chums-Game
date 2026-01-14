@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://dji0hlln1ahd8"]
 
 [ext_resource type="Script" uid="uid://ck467quugfq0j" path="res://scripts/world/room_tutorial.gd" id="1_va22v"]
-[ext_resource type="MeshLibrary" uid="uid://48q6qbe0wdjc" path="res://assets/world/meshlib_world_1.tres" id="2_vjdh7"]
+[ext_resource type="MeshLibrary" uid="uid://cigp6vhw1rudc" path="res://assets/world/meshlib_world_1.tres" id="2_vjdh7"]
 [ext_resource type="PackedScene" uid="uid://dsr4pp61d2hjb" path="res://scenes/world/decorations/tree_1.tscn" id="3_4jg75"]
 [ext_resource type="PackedScene" uid="uid://ce86dk61xylkx" path="res://scenes/entities/room_activator.tscn" id="3_14c56"]
 [ext_resource type="PackedScene" uid="uid://cq08vipfekj02" path="res://scenes/world/fall_stopper.tscn" id="4_t0wu2"]

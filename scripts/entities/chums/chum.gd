@@ -97,6 +97,7 @@ func _ready() -> void:
 	max_move_speed = move_speed * 5.0
 
 	nav_agent.target_desired_distance = self.attack_distance
+	nav_agent.path_desired_distance = 0.75
 	nav_agent.avoidance_enabled = true
 	health_node.immune = false
 	

@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=4 uid="uid://xi6g2eiqww0b"]
 
 [ext_resource type="Script" uid="uid://btywxp6yslwdc" path="res://scripts/general/main_menu.gd" id="1_qtr6c"]
-[ext_resource type="MeshLibrary" uid="uid://48q6qbe0wdjc" path="res://assets/world/meshlib_world_1.tres" id="2_gytos"]
+[ext_resource type="MeshLibrary" uid="uid://cigp6vhw1rudc" path="res://assets/world/meshlib_world_1.tres" id="2_gytos"]
 [ext_resource type="PackedScene" uid="uid://dsr4pp61d2hjb" path="res://scenes/world/decorations/tree_1.tscn" id="3_sm4kk"]
 [ext_resource type="PackedScene" uid="uid://0kfmqmrttl5k" path="res://assets/world/streetlamp_1.tscn" id="3_tdqsr"]
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="4_ftlmj"]

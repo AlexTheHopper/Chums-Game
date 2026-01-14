@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bbtwo3hodg3t8"]
 
 [ext_resource type="Script" uid="uid://bayhmdondua1g" path="res://scripts/world/being_room.gd" id="1_ken63"]
-[ext_resource type="MeshLibrary" uid="uid://1vfgau4llvk2" path="res://assets/world/meshlib_world_3.tres" id="2_811bh"]
+[ext_resource type="MeshLibrary" uid="uid://bswq4nrk63ovy" path="res://assets/world/meshlib_world_3.tres" id="2_811bh"]
 [ext_resource type="PackedScene" uid="uid://hhmbawbvav0e" path="res://scenes/world/room_changer_from_boss.tscn" id="3_68h10"]
 [ext_resource type="PackedScene" uid="uid://ckhjmq08ksffk" path="res://assets/world/lore_drop_neutral.tscn" id="4_ken63"]
 [ext_resource type="PackedScene" uid="uid://bcyjv52keuase" path="res://scenes/world/door_world_1.tscn" id="4_wcyvq"]
