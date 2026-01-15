@@ -694,7 +694,9 @@ _data = {
 &"Walk": SubResource("Animation_2xwao")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_qicr6"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mtxb2"]
+radius = 0.3
+height = 0.7
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mtxb2"]
 
@@ -874,7 +876,7 @@ libraries = {
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.1)
-shape = SubResource("SphereShape3D_qicr6")
+shape = SubResource("CapsuleShape3D_mtxb2")
 
 [node name="Hurtbox" type="Area3D" parent="."]
 script = ExtResource("4_tcaif")

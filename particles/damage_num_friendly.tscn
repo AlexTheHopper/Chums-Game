@@ -39,7 +39,7 @@ gravity = Vector3(0, -8, 0)
 initial_velocity_min = 6.0
 initial_velocity_max = 6.0
 scale_amount_curve = SubResource("Curve_ghk6n")
-color = Color(3.7542e-06, 0.554702, 0.801199, 1)
+color = Color(0.3137255, 0, 0.023529412, 1)
 color_ramp = SubResource("Gradient_ghk6n")
 
 [connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]

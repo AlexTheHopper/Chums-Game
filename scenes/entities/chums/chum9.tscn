@@ -415,7 +415,8 @@ _data = {
 &"Wake": SubResource("Animation_gmfye")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_obc6m"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4cr8o"]
+radius = 0.3
 height = 1.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4cr8o"]
@@ -588,7 +589,7 @@ libraries = {
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-shape = SubResource("CylinderShape3D_obc6m")
+shape = SubResource("CapsuleShape3D_4cr8o")
 
 [node name="Hurtbox" type="Area3D" parent="."]
 script = ExtResource("5_tbrl0")

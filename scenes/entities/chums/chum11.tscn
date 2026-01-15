@@ -129,9 +129,9 @@ _data = {
 &"Wake": SubResource("Animation_75mo8")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_obc6m"]
-height = 0.8
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2uerk"]
 radius = 0.2
+height = 0.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g0wji"]
 height = 1.0
@@ -256,7 +256,7 @@ libraries = {
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-shape = SubResource("CylinderShape3D_obc6m")
+shape = SubResource("CapsuleShape3D_2uerk")
 
 [node name="Hurtbox" type="Area3D" parent="."]
 script = ExtResource("6_xkwtw")

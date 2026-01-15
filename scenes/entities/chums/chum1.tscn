@@ -700,7 +700,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7oaib"]
-radius = 0.4
+radius = 0.3
 height = 1.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kbxqd"]
