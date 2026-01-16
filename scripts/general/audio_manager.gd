@@ -103,3 +103,11 @@ func remove_other_audios() -> void:
 
 func controller_shake(weak_mag := 0.0, strong_mag := 0.0, duration := 0.0) -> void:
 	Input.start_joy_vibration(0, weak_mag, strong_mag, duration)
+
+func freeze_frame(timescale: float, duration: float) -> void:
+	if Engine.time_scale != 1.0:
+		return
+
+	Engine.time_scale = timescale
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1.0

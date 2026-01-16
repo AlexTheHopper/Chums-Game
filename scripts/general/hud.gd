@@ -116,6 +116,7 @@ func max_chums_increased(extra_n):
 		var new_indicator = chum_indicator_tscn.instantiate()
 		new_indicator.global_position = get_indicator_position(n)
 		chum_indicators.add_child(new_indicator)
+		new_indicator.animation_player.play("create_extra")
 
 func get_indicator_position(n: int) -> Vector2:
 	var screen_size: Vector2 = $InGameHUD.size

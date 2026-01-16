@@ -253,7 +253,7 @@ func _on_health_changed(difference: int):
 
 func damaged(amount: int):
 	$Hurtbox/AnimationPlayer.play("Hurt")
-	get_tree().get_first_node_in_group("Camera").trigger_shake(1.0)
+	get_tree().get_first_node_in_group("Camera").trigger_shake(0.2)
 	particle_zone.add_child(hurt_particles.instantiate())
 	
 	var hurt_num_inst = hurt_particles_num.instantiate()
@@ -261,6 +261,7 @@ func damaged(amount: int):
 	particle_zone.add_child(hurt_num_inst)
 	
 	AudioManager.controller_shake(Functions.map_range(amount, Vector2(1, 50), Vector2(0.1, 1.0)), 0.0, Functions.map_range(amount, Vector2(1, 50), Vector2(0.15, 0.75)))
+	AudioManager.freeze_frame(0.05, 0.5)
 
 func healed(amount):
 	particle_zone.add_child(heal_particles.instantiate())
