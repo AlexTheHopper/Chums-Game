@@ -8,16 +8,9 @@ class_name Quality_Popup
 var base_scale := Vector3.ONE
 var fading_out := false
 
+@export var control: Control
 @export var disp_name: Label
 @export var disp_cost: Label
-@export var disp_health_title: Label
-@export var disp_health_value: Label
-@export var disp_move_speed_title: Label
-@export var disp_move_speed_value: Label
-@export var disp_damage_title: Label
-@export var disp_damage_value: Label
-@export var disp_attack_speed_title: Label
-@export var disp_attack_speed_value: Label
 
 @export var disp_name_back: Label
 @export var desc_back: Label
@@ -39,12 +32,23 @@ func _ready() -> void:
 	
 	#Set all values:
 	#Front
-	disp_name.text = chum.chum_name
-	disp_cost.text = "Bracelets Needed: %s" %chum.bracelet_cost
-	disp_health_value.text = get_quality_text(chum.quality["health"])
-	disp_move_speed_value.text = get_quality_text(chum.quality["move_speed"])
-	disp_damage_value.text = get_quality_text(chum.quality["attack_damage"])
-	disp_attack_speed_value.text = get_quality_text(chum.quality["attack_speed"])
+	var pos = Vector2(150, 150)
+	var middle_x = 306.0
+	var icon_len = 50.0
+	for type in ["health", "move_speed", "attack_damage", "attack_speed"]:
+		var icons = get_quality_images(chum.quality[type])
+		if len(icons.keys()) == 0:
+			pos.x = middle_x - (icon_len / 2.0)
+			create_icon(0, pos)
+		else:
+			var icon_num = abs(icons.values().reduce(func(a, b): return a + b))
+			pos.x = middle_x - (icon_len * icon_num / 2.0)
+			for lvl in icons.keys():
+				for num in range(abs(icons[lvl])):
+					create_icon(lvl if icons[lvl] > 0 else -lvl, pos)
+					pos.x += 50
+		pos.y += 75
+		
 	#Back
 	disp_name_back.text = disp_name.text
 	desc_back.text = chum.desc if chum.chum_id in PlayerStats.player_unique_chums_befriended else "- Befriend To Learn -"
@@ -85,14 +89,30 @@ func _process(_delta: float) -> void:
 		if scale.x < 0.1:
 			queue_free()
 
-func get_quality_text(quality):	
+func create_icon(value: int, pos: Vector2) -> void:
+	var tex_rect := TextureRect.new()
+	tex_rect.position = pos
+	tex_rect.texture = load("res://assets/world/quality_icons/quality_%s.png" % str(value))
+	tex_rect.size = Vector2(50.0, 50.0)
+	control.add_child(tex_rect)
+
+func get_quality_images(quality: int) -> Dictionary[int, int]:
 	if quality == 0:
-		return('-')
-		
-	if quality > 0:
-		return('+' + str(quality * 10) + '%')
-		
-	return(str(quality * 10) + '%')
+		return {}
+	var dir = 1 if quality > 0 else -1
+	quality = abs(quality)
+	var lvl_4 = floor(quality / 27.0)
+	quality -= lvl_4 * 27.0
+	var lvl_3 = floor(quality / 9.0)
+	quality -= lvl_3 * 9.0
+	var lvl_2 = floor(quality / 3.0)
+	quality -= lvl_2 * 3.0
+	var lvl_1 = floor(quality / 1.0)
+	return {4: int(lvl_4 * dir),
+			3: int(lvl_3 * dir),
+			2: int(lvl_2 * dir),
+			1: int(lvl_1 * dir),
+			}
 
 func remove():
 	ChumsManager.quality_popup_active = false

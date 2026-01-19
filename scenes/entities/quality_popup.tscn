@@ -1,9 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgd4xkckyqdcg"]
+[gd_scene load_steps=16 format=3 uid="uid://bgd4xkckyqdcg"]
 
 [ext_resource type="Script" uid="uid://b0rs5b6ow7au3" path="res://scripts/entities/quality_popup.gd" id="1_purmp"]
 [ext_resource type="Shader" uid="uid://db57gow0ouvok" path="res://materials/nodepthtest.gdshader" id="2_piaxk"]
+[ext_resource type="Texture2D" uid="uid://cxw5jx2458tq0" path="res://assets/world/quality_icons/staticon_health.png" id="3_55g01"]
 [ext_resource type="Texture2D" uid="uid://b3jp5c72uunir" path="res://materials/ui/ui_rotate.tres" id="3_kl30j"]
 [ext_resource type="Shader" uid="uid://pjxd0dallace" path="res://materials/glitch_quality.gdshader" id="3_v3w6n"]
+[ext_resource type="Texture2D" uid="uid://4x8dib7mncon" path="res://assets/world/quality_icons/staticon_move_speed.png" id="4_s03od"]
+[ext_resource type="Texture2D" uid="uid://caif5vbrorvcl" path="res://assets/world/quality_icons/staticon_attack_damage.png" id="5_a3b4p"]
+[ext_resource type="Texture2D" uid="uid://beklohhkrrytg" path="res://assets/world/quality_icons/staticon_attack_speed.png" id="6_wjk08"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1lra1"]
 viewport_path = NodePath("Container/Display/SubViewport")
@@ -37,18 +41,11 @@ shader_parameter/my_texture = SubResource("ViewportTexture_teyl6")
 [sub_resource type="ViewportTexture" id="ViewportTexture_v3w6n"]
 viewport_path = NodePath("Container/Description/SubViewport")
 
-[node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("disp_name", "disp_cost", "disp_health_title", "disp_health_value", "disp_move_speed_title", "disp_move_speed_value", "disp_damage_title", "disp_damage_value", "disp_attack_speed_title", "disp_attack_speed_value", "disp_name_back", "desc_back")]
+[node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("control", "disp_name", "disp_cost", "disp_name_back", "desc_back")]
 script = ExtResource("1_purmp")
+control = NodePath("Container/Display/SubViewport/Control")
 disp_name = NodePath("Container/Display/SubViewport/Control/Name")
 disp_cost = NodePath("Container/Display/SubViewport/Control/Cost")
-disp_health_title = NodePath("Container/Display/SubViewport/Control/HealthTitle")
-disp_health_value = NodePath("Container/Display/SubViewport/Control/HealthValue")
-disp_move_speed_title = NodePath("Container/Display/SubViewport/Control/MoveSpeedTitle")
-disp_move_speed_value = NodePath("Container/Display/SubViewport/Control/MoveSpeedValue")
-disp_damage_title = NodePath("Container/Display/SubViewport/Control/DamageTitle")
-disp_damage_value = NodePath("Container/Display/SubViewport/Control/DamageValue")
-disp_attack_speed_title = NodePath("Container/Display/SubViewport/Control/AttackSpeedTitle")
-disp_attack_speed_value = NodePath("Container/Display/SubViewport/Control/AttackSpeedValue")
 disp_name_back = NodePath("Container/Description/SubViewport/Control/Name")
 desc_back = NodePath("Container/Description/SubViewport/Control/Description")
 
@@ -94,89 +91,41 @@ text = "Bracelets Needed: X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthTitle" type="Label" parent="Container/Display/SubViewport/Control"]
+[node name="HealthIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
+texture_filter = 1
 layout_mode = 0
+offset_left = 100.0
 offset_top = 150.0
-offset_right = 256.0
-offset_bottom = 195.0
-theme_override_font_sizes/font_size = 32
-text = "Health:"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_right = 150.0
+offset_bottom = 200.0
+texture = ExtResource("3_55g01")
 
-[node name="HealthValue" type="Label" parent="Container/Display/SubViewport/Control"]
+[node name="MoveSpeedIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 256.0
-offset_top = 150.0
-offset_right = 512.0
-offset_bottom = 195.0
-theme_override_font_sizes/font_size = 32
-text = "HEALTH"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MoveSpeedTitle" type="Label" parent="Container/Display/SubViewport/Control"]
-layout_mode = 0
+offset_left = 100.0
 offset_top = 225.0
-offset_right = 256.0
-offset_bottom = 270.0
-theme_override_font_sizes/font_size = 32
-text = "Move Speed:"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_right = 150.0
+offset_bottom = 275.0
+texture = ExtResource("4_s03od")
 
-[node name="MoveSpeedValue" type="Label" parent="Container/Display/SubViewport/Control"]
+[node name="DamageIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 256.0
-offset_top = 225.0
-offset_right = 512.0
-offset_bottom = 270.0
-theme_override_font_sizes/font_size = 32
-text = "SPEED"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DamageTitle" type="Label" parent="Container/Display/SubViewport/Control"]
-layout_mode = 0
+offset_left = 100.0
 offset_top = 300.0
-offset_right = 256.0
-offset_bottom = 345.0
-theme_override_font_sizes/font_size = 32
-text = "Strength:"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_right = 150.0
+offset_bottom = 350.0
+texture = ExtResource("5_a3b4p")
 
-[node name="DamageValue" type="Label" parent="Container/Display/SubViewport/Control"]
+[node name="AttackSpeedIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 256.0
-offset_top = 300.0
-offset_right = 512.0
-offset_bottom = 345.0
-theme_override_font_sizes/font_size = 32
-text = "DAMAGE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AttackSpeedTitle" type="Label" parent="Container/Display/SubViewport/Control"]
-layout_mode = 0
+offset_left = 100.0
 offset_top = 375.0
-offset_right = 256.0
-offset_bottom = 420.0
-theme_override_font_sizes/font_size = 32
-text = "Attack Speed:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AttackSpeedValue" type="Label" parent="Container/Display/SubViewport/Control"]
-layout_mode = 0
-offset_left = 250.0
-offset_top = 375.0
-offset_right = 506.0
-offset_bottom = 420.0
-theme_override_font_sizes/font_size = 32
-text = "ATTK_SPEED"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_right = 150.0
+offset_bottom = 425.0
+texture = ExtResource("6_wjk08")
 
 [node name="UI_ROTATE" type="Sprite2D" parent="Container/Display/SubViewport/Control"]
 position = Vector2(475, 475)
