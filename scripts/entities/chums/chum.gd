@@ -40,9 +40,8 @@ var previous_group := "Chums_Neutral"
 @onready var heal_particles_enemy := load("res://particles/heal_enemy.tscn")
 @onready var heal_particles_friend := load("res://particles/heal_friendly.tscn")
 @onready var heal_particles := heal_particles_enemy
-@onready var hurt_particles_num_enemy := load("res://particles/damage_num_enemy.tscn")
-@onready var hurt_particles_num_friend := load("res://particles/damage_num_friendly.tscn")
-@onready var hurt_particles_num := hurt_particles_num_enemy
+@onready var hurt_particles_num_blue := load("res://particles/damage_num_blue.tscn")
+@onready var hurt_particles_num_red := load("res://particles/damage_num_red.tscn")
 @onready var quality_particles := load("res://particles/quality_increase.tscn")
 
 
@@ -220,34 +219,35 @@ func _on_health_changed(difference):
 	if difference < 0.0:
 		call_deferred("damaged", -difference)
 		if current_group == "Chums_Friend":
+			show_damage_num(hurt_particles_num_red, -difference, "-")
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HURT_FRIENDLY)
 		else:
+			show_damage_num(hurt_particles_num_blue, -difference, "-")
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HURT_NOT_FRIENDLY)
 
 	elif difference > 0.0 and state_machine.current_state.state_name != "Sleep":
 		call_deferred("healed", difference)
 		if current_group == "Chums_Friend":
+			show_damage_num(hurt_particles_num_blue, difference, "+")
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HEAL_FRIENDLY)
 		else:
+			show_damage_num(hurt_particles_num_red, difference, "+")
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HEAL_NOT_FRIENDLY)
 
-func damaged(amount):
+func show_damage_num(particles: PackedScene, abs_amount: int, prefix: String) -> void:
+	var num_inst = particles.instantiate()
+	num_inst.get_child(0).mesh.text = prefix + str(abs_amount)
+	particle_zone.add_child(num_inst)
+
+func damaged():
 	if stats_set and state_machine.current_state.state_name != "Knock":
 		$Hurtbox/AnimationPlayer.play("Hurt")
 		get_tree().get_first_node_in_group("Camera").trigger_shake(0.25)
 		particle_zone.add_child(hurt_particles.instantiate())
-	
-		var hurt_num_inst = hurt_particles_num.instantiate()
-		hurt_num_inst.get_child(0).mesh.text = "-" + str(amount)
-		particle_zone.add_child(hurt_num_inst)
 
-func healed(amount):
+func healed():
 	if stats_set and state_machine.current_state.state_name != "Knock":
 		particle_zone.add_child(heal_particles.instantiate())
-		
-		var heal_num_inst = hurt_particles_num.instantiate()
-		heal_num_inst.get_child(0).mesh.text = "+" + str(amount)
-		particle_zone.add_child(heal_num_inst)
 
 func _on_health_health_depleted() -> void:
 	#Stop already fainted chums from making noise on room entry
@@ -294,7 +294,6 @@ func make_enemy():
 		hitbox.set_as_enemy()
 		hurtbox.set_as_enemy()
 	hurt_particles = hurt_particles_enemy
-	hurt_particles_num = hurt_particles_num_enemy
 	heal_particles = heal_particles_enemy
 	
 	if bracelet:
@@ -317,7 +316,6 @@ func make_friendly(to_heal = true):
 		hitbox.set_as_friendly()
 		hurtbox.set_as_friendly()
 	hurt_particles = hurt_particles_friend
-	hurt_particles_num = hurt_particles_num_friend
 	heal_particles = heal_particles_friend
 	
 	if bracelet:
@@ -348,7 +346,6 @@ func make_neutral():
 		hitbox.set_as_neutral()
 		hurtbox.set_as_neutral()
 	hurt_particles = hurt_particles_enemy
-	hurt_particles_num = hurt_particles_num_enemy
 	heal_particles = heal_particles_enemy
 	
 	if bracelet:

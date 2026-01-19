@@ -25,8 +25,8 @@ func Enter():
 	nav_timer.start()
 	attacking = false
 	has_touched_floor = false
-	if chum.target:
-		nav_vel = Functions.vector_to(chum, chum.target) #Stops jitter on enter state
+	#if chum.target:
+		#nav_vel = Functions.vector_to(chum, chum.target) #Stops jitter on enter state
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():

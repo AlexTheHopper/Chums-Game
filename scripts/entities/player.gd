@@ -47,7 +47,8 @@ var attacking_mult := 1.0
 
 @onready var hurt_particles := load("res://particles/damage_friendly.tscn")
 @onready var heal_particles := load("res://particles/heal_friendly.tscn")
-@onready var hurt_particles_num := load("res://particles/damage_num_friendly.tscn")
+@onready var hurt_particles_num := load("res://particles/damage_num_red.tscn")
+@onready var heal_particles_num := load("res://particles/damage_num_blue.tscn")
 @onready var quality_particles := load("res://particles/quality_increase.tscn")
 
 var changes_agro_on_damaged := true
@@ -266,7 +267,7 @@ func damaged(amount: int):
 func healed(amount):
 	particle_zone.add_child(heal_particles.instantiate())
 	
-	var heal_num_inst = hurt_particles_num.instantiate()
+	var heal_num_inst = heal_particles_num.instantiate()
 	heal_num_inst.get_child(0).mesh.text = "+" + str(amount)
 	particle_zone.add_child(heal_num_inst)
 

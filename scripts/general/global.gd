@@ -58,7 +58,7 @@ func _ready():
 			"room_size": 40.0,
 			"min_chums": 3,
 			"max_chums": 5,
-			"terrain_ids": [0, 1, 2, 3, 4, 5, 6],
+			"terrain_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8],
 			"statue_required": [4, 6, 13, 14], 	#To worlds 1, 2, 3 & flower.
 			"statue_optional": [1, 2, 3, 5, 6, 7, 8], #To world 1
 			"room_counts": {1: 0, #Lobby - keep this as 0

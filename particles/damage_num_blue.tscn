@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d2wlu5fsmxwey"]
 
-[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_gqanp"]
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_nsumb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqanp"]
 transparency = 1
@@ -24,7 +24,7 @@ colors = PackedColorArray(0.270222, 0.270222, 0.270222, 1, 0.270588, 0.270588, 0
 metadata/_snap_enabled = true
 
 [node name="Particles" type="Node3D"]
-script = ExtResource("1_gqanp")
+script = ExtResource("1_nsumb")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 emitting = false
