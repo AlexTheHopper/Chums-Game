@@ -32,8 +32,10 @@ func _ready() -> void:
 	
 	#Set all values:
 	#Front
+	disp_name.text = chum.chum_name
+	disp_cost.text = "Bracelets Needed: %s" % chum.bracelet_cost
 	var pos = Vector2(150, 150)
-	var middle_x = 306.0
+	var middle_x = 362.0
 	var icon_len = 50.0
 	for type in ["health", "move_speed", "attack_damage", "attack_speed"]:
 		var icons = get_quality_images(chum.quality[type])
@@ -94,6 +96,7 @@ func create_icon(value: int, pos: Vector2) -> void:
 	tex_rect.position = pos
 	tex_rect.texture = load("res://assets/world/quality_icons/quality_%s.png" % str(value))
 	tex_rect.size = Vector2(50.0, 50.0)
+	tex_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	control.add_child(tex_rect)
 
 func get_quality_images(quality: int) -> Dictionary[int, int]:

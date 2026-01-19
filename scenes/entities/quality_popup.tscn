@@ -94,36 +94,36 @@ vertical_alignment = 1
 [node name="HealthIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 100.0
+offset_left = 125.0
 offset_top = 150.0
-offset_right = 150.0
+offset_right = 175.0
 offset_bottom = 200.0
 texture = ExtResource("3_55g01")
 
 [node name="MoveSpeedIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 100.0
+offset_left = 125.0
 offset_top = 225.0
-offset_right = 150.0
+offset_right = 175.0
 offset_bottom = 275.0
 texture = ExtResource("4_s03od")
 
 [node name="DamageIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 100.0
+offset_left = 125.0
 offset_top = 300.0
-offset_right = 150.0
+offset_right = 175.0
 offset_bottom = 350.0
 texture = ExtResource("5_a3b4p")
 
 [node name="AttackSpeedIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 100.0
+offset_left = 125.0
 offset_top = 375.0
-offset_right = 150.0
+offset_right = 175.0
 offset_bottom = 425.0
 texture = ExtResource("6_wjk08")
 
