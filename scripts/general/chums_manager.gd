@@ -115,26 +115,26 @@ func _ready() -> void:
 	#The vector2i defines which room, the keys of that dict are chum ids and the values are the count.
 	#They are spawned randomly somewhere in the room
 	#i.e. Vector2i(3, 2) is the boss room from world 3 to world 2
-	boss_chums = { #TODO
-		Vector2i(1, 1): {14: 1},
-		Vector2i(1, 2): {14: 1},
-		Vector2i(1, 3): {14: 1},
-		Vector2i(1, 4): {14: 1},
+	boss_chums = {
+		Vector2i(1, 1): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 6: 1},
+		Vector2i(1, 2): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 13: 1},
+		Vector2i(1, 3): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 21: 1},
+		Vector2i(1, 4): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 28: 1},
 
-		Vector2i(2, 1): {15: 1},
-		Vector2i(2, 2): {15: 1},
-		Vector2i(2, 3): {15: 1},
-		Vector2i(2, 4): {15: 1},
+		Vector2i(2, 1): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 6: 1},
+		Vector2i(2, 2): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 13: 1},
+		Vector2i(2, 3): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 21: 1},
+		Vector2i(2, 4): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 28: 1},
 
-		Vector2i(3, 1): {22: 1},
-		Vector2i(3, 2): {22: 1},
-		Vector2i(3, 3): {22: 1},
-		Vector2i(3, 4): {22: 1},
+		Vector2i(3, 1): {22: 1, 16: 1, 21: 1, 6: 1},
+		Vector2i(3, 2): {22: 1, 16: 1, 21: 1, 13: 1},
+		Vector2i(3, 3): {22: 1, 16: 1, 21: 2},
+		Vector2i(3, 4): {22: 1, 16: 1, 21: 1, 28: 1},
 		
-		Vector2i(4, 1): {23: 1},
-		Vector2i(4, 2): {23: 1},
-		Vector2i(4, 3): {23: 1},
-		Vector2i(4, 4): {23: 1},
+		Vector2i(4, 1): {23: 1, 27: 1, 28: 1, 6: 1},
+		Vector2i(4, 2): {23: 1, 27: 1, 28: 1, 13: 1},
+		Vector2i(4, 3): {23: 1, 27: 1, 28: 1, 21: 1},
+		Vector2i(4, 4): {23: 1, 27: 1, 28: 2},
 	}
 
 func get_world_random_chum(room_value: float, world_n: int):

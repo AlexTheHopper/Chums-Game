@@ -217,7 +217,7 @@ func _on_health_changed(difference):
 		return
 
 	if difference < 0.0:
-		call_deferred("damaged", -difference)
+		call_deferred("damaged")
 		if current_group == "Chums_Friend":
 			show_damage_num(hurt_particles_num_red, -difference, "-")
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HURT_FRIENDLY)
@@ -226,7 +226,7 @@ func _on_health_changed(difference):
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HURT_NOT_FRIENDLY)
 
 	elif difference > 0.0 and state_machine.current_state.state_name != "Sleep":
-		call_deferred("healed", difference)
+		call_deferred("healed")
 		if current_group == "Chums_Friend":
 			show_damage_num(hurt_particles_num_blue, difference, "+")
 			AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_CHUM_HEAL_FRIENDLY)

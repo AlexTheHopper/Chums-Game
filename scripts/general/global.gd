@@ -58,7 +58,7 @@ func _ready():
 			"room_size": 40.0,
 			"min_chums": 3,
 			"max_chums": 5,
-			"terrain_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+			"terrain_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
 			"statue_required": [4, 6, 13, 14], 	#To worlds 1, 2, 3 & flower.
 			"statue_optional": [1, 2, 3, 5, 6, 7, 8], #To world 1
 			"room_counts": {1: 0, #Lobby - keep this as 0
@@ -585,7 +585,8 @@ func transition_to_world(destination_world_n: int, length = 1):
 func randomize_seed() -> void:
 	seed(randi() + hash(room_history))
 
-func return_to_menu(delete = false, display_stats = false) -> void:	
+func return_to_menu(delete = false, display_stats = false) -> void:
+	Engine.time_scale = 1.0
 	if display_stats:
 		var stats_hud = load("res://scenes/general/hud_death_stats.tscn").instantiate()
 		get_node("/root/Game/HUD").add_child(stats_hud)

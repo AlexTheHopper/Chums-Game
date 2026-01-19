@@ -22,7 +22,8 @@ ambient_light_sky_contribution = 0.9
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0, 0.23342928, 0.48441643, 1)
-fog_height_density = 1.0
+fog_height = 2.5
+fog_height_density = 0.5
 
 [node name="Room" type="Node3D" node_paths=PackedStringArray("grid_map")]
 script = ExtResource("1_u37l3")

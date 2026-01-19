@@ -9,10 +9,11 @@ var rot_count : int
 func _ready() -> void:
 	#Create custom terrain
 	var terrain = DecorationManager.get_terrain(Global.current_world_num, Global.world_map[Global.room_location]["room_specific_id"])
+	if not terrain:
+		terrain = DecorationManager.get_terrain(Global.current_world_num, 0)
 	var nav_region: NavigationRegion3D = terrain.instantiate()
 	add_child(nav_region)
 	#Since the nav regions are not centered in the middle of the "center" tile, when they are rotated they also need to be shifted to fit in the room.
-	#TODO fix this rotation, the wrong tunnels get filled since its tile coords are local.
 	var rot_choice = [[0, Vector3(0.0, 0.0, 0.0)],
 					[1,   Vector3(0.0, 0.0, 2.0)],
 					[2,   Vector3(2.0, 0.0, 2.0)],
