@@ -45,7 +45,7 @@ viewport_path = NodePath("Container/Description/SubViewport")
 script = ExtResource("1_purmp")
 control = NodePath("Container/Display/SubViewport/Control")
 disp_name = NodePath("Container/Display/SubViewport/Control/Name")
-disp_cost = NodePath("Container/Display/SubViewport/Control/Cost")
+disp_cost = NodePath("")
 disp_name_back = NodePath("Container/Description/SubViewport/Control/Name")
 desc_back = NodePath("Container/Description/SubViewport/Control/Description")
 
@@ -78,16 +78,6 @@ offset_right = 512.0
 offset_bottom = 100.0
 theme_override_font_sizes/font_size = 64
 text = "CHUM_NAME"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Cost" type="Label" parent="Container/Display/SubViewport/Control"]
-layout_mode = 0
-offset_top = 100.0
-offset_right = 512.0
-offset_bottom = 134.0
-theme_override_font_sizes/font_size = 24
-text = "Bracelets Needed: X"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -33,9 +33,9 @@ func _ready() -> void:
 	#Set all values:
 	#Front
 	disp_name.text = chum.chum_name
-	disp_cost.text = "Bracelets Needed: %s" % chum.bracelet_cost
+	create_bracelet_icons(chum.bracelet_cost)
 	var pos = Vector2(150, 150)
-	var middle_x = 362.0
+	var middle_x = 350.0
 	var icon_len = 50.0
 	for type in ["health", "move_speed", "attack_damage", "attack_speed"]:
 		var icons = get_quality_images(chum.quality[type])
@@ -44,11 +44,13 @@ func _ready() -> void:
 			create_icon(0, pos)
 		else:
 			var icon_num = abs(icons.values().reduce(func(a, b): return a + b))
-			pos.x = middle_x - (icon_len * icon_num / 2.0)
+			var icon_i := 1
 			for lvl in icons.keys():
 				for num in range(abs(icons[lvl])):
+					pos.x = get_star_position(middle_x, icon_i, icon_num, 6)
 					create_icon(lvl if icons[lvl] > 0 else -lvl, pos)
-					pos.x += 50
+					icon_i += 1
+					#pos.x += 50
 		pos.y += 75
 		
 	#Back
@@ -99,11 +101,34 @@ func create_icon(value: int, pos: Vector2) -> void:
 	tex_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	control.add_child(tex_rect)
 
+func create_bracelet_icons(count: int) -> void:
+	var pos := Vector2(256.0 - (25.0 * count / 2.0), 100.0)
+	for b in count:
+		var tex_rect := TextureRect.new()
+		tex_rect.position = pos
+		tex_rect.texture = load("res://assets/world/quality_icons/staticon_bracelet.png")
+		tex_rect.size = Vector2(25.0, 25.0)
+		tex_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		control.add_child(tex_rect)
+		pos.x += 25.0
+
+func get_star_position(center: float, star_num: int, star_count: int, max_star_num: int, icon_len:=50.0, margin_l:=175.0, margin_r:=475.0) -> float:
+	if star_count <= max_star_num:
+		#print("%s out of %s and pos is %s" % [star_num, star_count, center - (icon_len * star_count / 2.0) + (icon_len * star_num) - icon_len])
+		return center - (icon_len * star_count / 2.0) + (icon_len * star_num) - icon_len
+	else:
+		return lerp(margin_l, margin_r, star_num / (1.0 + star_count))
+
 func get_quality_images(quality: int) -> Dictionary[int, int]:
 	if quality == 0:
 		return {}
-	var dir = 1 if quality > 0 else -1
+	#Quality should never really be below -2 anyway.
+	elif quality < 0:
+		return {1: quality}
+
 	quality = abs(quality)
+	var lvl_5 = floor(quality / 81.0)
+	quality -= lvl_5 * 81.0
 	var lvl_4 = floor(quality / 27.0)
 	quality -= lvl_4 * 27.0
 	var lvl_3 = floor(quality / 9.0)
@@ -111,10 +136,11 @@ func get_quality_images(quality: int) -> Dictionary[int, int]:
 	var lvl_2 = floor(quality / 3.0)
 	quality -= lvl_2 * 3.0
 	var lvl_1 = floor(quality / 1.0)
-	return {4: int(lvl_4 * dir),
-			3: int(lvl_3 * dir),
-			2: int(lvl_2 * dir),
-			1: int(lvl_1 * dir),
+	return {5: int(lvl_5),
+			4: int(lvl_4),
+			3: int(lvl_3),
+			2: int(lvl_2),
+			1: int(lvl_1),
 			}
 
 func remove():

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1rrivh0nkgwm"
-path="res://.godot/imported/quality_-2.png-bd84786d1686cef372de0268ccb96d13.ctex"
+uid="uid://daqt6sxu2lj0s"
+path="res://.godot/imported/staticon_bracelet.png-067695376e7b817b290c969f4c61dd20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world/quality_icons/quality_-2.png"
-dest_files=["res://.godot/imported/quality_-2.png-bd84786d1686cef372de0268ccb96d13.ctex"]
+source_file="res://assets/world/quality_icons/staticon_bracelet.png"
+dest_files=["res://.godot/imported/staticon_bracelet.png-067695376e7b817b290c969f4c61dd20.ctex"]
 
 [params]
 
