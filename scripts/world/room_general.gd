@@ -46,7 +46,7 @@ func _ready() -> void:
 	
 	#Maybe spawn being to circle level for a bit
 	if randf() < 0.05:
-		for n in range(range(Global.world_transition_count + 1).pick_random() + 1):
+		for n in range(max(range(Global.world_transition_count + 1).pick_random() + 1, 10)):
 			var being = RANDOM_LEVEL_BEING.instantiate()
 			decorations.add_child(being)
 
@@ -154,7 +154,7 @@ func get_chum_cost(chum: Chum) -> int:
 	var sum = 0.0
 	for value in chum.quality.values():
 		sum += float(value)
-	return max(ceil(sum/2), chum.bracelet_cost)
+	return min(max(ceil(sum/2), chum.bracelet_cost), 15)
 
 func decorate():
 	#Seeded randomness - Same based on global seed, world number, transition count and room loc.

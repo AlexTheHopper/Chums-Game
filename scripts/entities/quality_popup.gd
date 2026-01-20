@@ -52,7 +52,7 @@ func _ready() -> void:
 					pos.x = get_star_position(middle_x, icon_i, icon_num, 6)
 					create_icon(lvl if icons[lvl] > 0 else -lvl, pos)
 					icon_i += 1
-		pos.y += 75
+		pos.y += 80
 		
 	#Back
 	disp_name_back.text = disp_name.text

@@ -41,11 +41,10 @@ shader_parameter/my_texture = SubResource("ViewportTexture_teyl6")
 [sub_resource type="ViewportTexture" id="ViewportTexture_v3w6n"]
 viewport_path = NodePath("Container/Description/SubViewport")
 
-[node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("control", "disp_name", "disp_cost", "disp_name_back", "desc_back")]
+[node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("control", "disp_name", "disp_name_back", "desc_back")]
 script = ExtResource("1_purmp")
 control = NodePath("Container/Display/SubViewport/Control")
 disp_name = NodePath("Container/Display/SubViewport/Control/Name")
-disp_cost = NodePath("")
 disp_name_back = NodePath("Container/Description/SubViewport/Control/Name")
 desc_back = NodePath("Container/Description/SubViewport/Control/Description")
 
@@ -86,35 +85,35 @@ texture_filter = 1
 layout_mode = 0
 offset_left = 125.0
 offset_top = 150.0
-offset_right = 175.0
-offset_bottom = 200.0
+offset_right = 189.0
+offset_bottom = 214.0
 texture = ExtResource("3_55g01")
 
 [node name="MoveSpeedIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 125.0
-offset_top = 225.0
-offset_right = 175.0
-offset_bottom = 275.0
+offset_top = 230.0
+offset_right = 189.0
+offset_bottom = 294.0
 texture = ExtResource("4_s03od")
 
 [node name="DamageIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 125.0
-offset_top = 300.0
-offset_right = 175.0
-offset_bottom = 350.0
+offset_top = 310.0
+offset_right = 189.0
+offset_bottom = 374.0
 texture = ExtResource("5_a3b4p")
 
 [node name="AttackSpeedIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 125.0
-offset_top = 375.0
-offset_right = 175.0
-offset_bottom = 425.0
+offset_top = 390.0
+offset_right = 189.0
+offset_bottom = 454.0
 texture = ExtResource("6_wjk08")
 
 [node name="UI_ROTATE" type="Sprite2D" parent="Container/Display/SubViewport/Control"]
