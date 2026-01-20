@@ -81,7 +81,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func Exit():
-	chum.anim_player.animation_finished.disconnect(_on_animation_player_animation_finished)
 	emit_object()
 	chum.is_launched = false
 	chum.hitbox.set_disabled(true)

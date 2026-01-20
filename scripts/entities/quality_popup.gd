@@ -39,7 +39,9 @@ func _ready() -> void:
 	var icon_len = 50.0
 	for type in ["health", "move_speed", "attack_damage", "attack_speed"]:
 		var icons = get_quality_images(chum.quality[type])
-		if len(icons.keys()) == 0:
+		if not chum.get("has_%s" % type):
+			pass
+		elif len(icons.keys()) == 0:
 			pos.x = middle_x - (icon_len / 2.0)
 			create_icon(0, pos)
 		else:
@@ -50,7 +52,6 @@ func _ready() -> void:
 					pos.x = get_star_position(middle_x, icon_i, icon_num, 6)
 					create_icon(lvl if icons[lvl] > 0 else -lvl, pos)
 					icon_i += 1
-					#pos.x += 50
 		pos.y += 75
 		
 	#Back
