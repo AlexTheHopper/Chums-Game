@@ -37,6 +37,8 @@ func _ready() -> void:
 		26: {"destination_world": 2, "guard_world_n": false}, #Granite
 		27: {"destination_world": 4, "guard_world_n": false}, #Marble
 		28: {"destination_world": 4, "guard_world_n": false}, #Echo
+		29: {"destination_world": 3, "guard_world_n": false}, #Ember
+		30: {"destination_world": 3, "guard_world_n": false}, #Goblet
 	}
 
 	chums_values = {
@@ -69,7 +71,9 @@ func _ready() -> void:
 			11: 2.5,
 			13: 5.0,
 			16: 1.0,
-			21: 1.0
+			21: 1.0,
+			29: 1.0,
+			30: 2.0,
 		},
 		4: {
 			6: 2.5,
@@ -98,10 +102,10 @@ func _ready() -> void:
 		Vector2i(2, 3): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 21: 1},
 		Vector2i(2, 4): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 28: 1},
 
-		Vector2i(3, 1): {22: 1, 16: 1, 21: 1, 6: 1},
-		Vector2i(3, 2): {22: 1, 16: 1, 21: 1, 13: 1},
-		Vector2i(3, 3): {22: 1, 16: 1, 21: 2},
-		Vector2i(3, 4): {22: 1, 16: 1, 21: 1, 28: 1},
+		Vector2i(3, 1): {22: 1, 16: 1, 21: 1, 6: 1, 30: 1},
+		Vector2i(3, 2): {22: 1, 16: 1, 21: 1, 13: 1, 30: 1},
+		Vector2i(3, 3): {22: 1, 16: 1, 21: 2, 30: 1},
+		Vector2i(3, 4): {22: 1, 16: 1, 21: 1, 28: 1, 30: 1},
 		
 		Vector2i(4, 1): {23: 1, 27: 1, 28: 1, 6: 1},
 		Vector2i(4, 2): {23: 1, 27: 1, 28: 1, 13: 1},
@@ -109,7 +113,7 @@ func _ready() -> void:
 		Vector2i(4, 4): {23: 1, 27: 1, 28: 2},
 	}
 
-func get_world_random_chum(room_value: float, world_n: int):
+func get_world_random_chum(room_value: float, world_n: int) -> Dictionary:
 	#A rooms value is its distance from the lobby. Room (0, 1) has a value of 1.
 	#A room will randomly fill with chums but uses its value as currency.
 	#A room with a value of 5 could spawn two chums with value 2 and one with value 1.
@@ -129,10 +133,10 @@ func get_world_random_chum(room_value: float, world_n: int):
 	
 	return {"object": load("res://scenes/entities/chums/chum%s.tscn" % chosen_id), "value": chums_values[world_n][chosen_id]}
 	
-func get_specific_chum_str(chum_str):
+func get_specific_chum_str(chum_str: String) -> PackedScene:
 	return load("res://scenes/entities/chums/%s.tscn" % [chum_str])
 
-func get_specific_chum_id(chum_id):
+func get_specific_chum_id(chum_id: int) -> PackedScene:
 	if chum_id not in chums_list.keys():
 		push_error("error with finding chum_id %s" % chum_id)
 		return load("res://scenes/entities/chums/chum1.tscn")

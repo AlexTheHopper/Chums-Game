@@ -2,6 +2,7 @@ extends State
 class_name Chum25_Active
 @onready var state_name := "Active"
 
+@export var spawn_chum_id: int
 @onready var chum: CharacterBody3D
 var max_spawned_chums: int
 var has_touched_floor := false
@@ -30,7 +31,7 @@ func create_chum() -> void:
 	if len(spawned_chums) >= max_spawned_chums:
 		return
 
-	var chum_to_add = ChumsManager.get_specific_chum_str("chum24")
+	var chum_to_add = ChumsManager.get_specific_chum_id(spawn_chum_id)
 	var chum_instance = chum_to_add.instantiate()
 	
 	chum_instance.quality = chum.quality

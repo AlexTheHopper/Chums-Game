@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_fru5r"]
 [ext_resource type="PackedScene" uid="uid://diu3gcoi63283" path="res://scenes/entities/chums/general_chum_behaviour.tscn" id="6_klshl"]
 [ext_resource type="PackedScene" uid="uid://dwsswul3x20m3" path="res://scenes/entities/chums/chum_interaction_area.tscn" id="7_8jaol"]
-[ext_resource type="Script" uid="uid://db2ymcr38doei" path="res://scripts/entities/chums/chum25/chum25_active.gd" id="8_stnld"]
+[ext_resource type="Script" uid="uid://db2ymcr38doei" path="res://scripts/entities/chums/chum_active_spawner.gd" id="8_stnld"]
 [ext_resource type="Script" uid="uid://b6g8naitcew7f" path="res://scripts/entities/chums/chum_idle.gd" id="9_l0r3s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stnld"]
@@ -245,6 +245,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.848377, 0)
 
 [node name="Active" type="Node" parent="ChumSpecificStates"]
 script = ExtResource("8_stnld")
+spawn_chum_id = 24
 
 [node name="Idle" type="Node" parent="ChumSpecificStates"]
 script = ExtResource("9_l0r3s")

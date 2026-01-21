@@ -154,7 +154,7 @@ func get_chum_cost(chum: Chum) -> int:
 	var sum = 0.0
 	for value in chum.quality.values():
 		sum += float(value)
-	return min(max(ceil(sum/2), chum.bracelet_cost), 15)
+	return min(max(ceil(sum/2), chum.bracelet_cost), 20)
 
 func decorate():
 	#Seeded randomness - Same based on global seed, world number, transition count and room loc.
