@@ -4,7 +4,7 @@ var chum_id := 15
 var chum_str := "chum15"
 var chum_name := "Medusa"
 
-var desc := "Like an absolute record."
+var desc := "Like an record."
 
 var min_attack_speed := 3.7
 
