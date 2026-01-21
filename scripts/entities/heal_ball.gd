@@ -32,9 +32,10 @@ func get_stats_to_increase(count: int) -> Dictionary:
 	return to_return
 
 func remove() -> void:
-	active = false
-	$CPUParticles3D.one_shot = true
-	$CPUParticles3D.finished.connect(queue_free)
+	if active:
+		active = false
+		$CPUParticles3D.one_shot = true
+		$CPUParticles3D.finished.connect(queue_free)
 
 func on_target_death():
 	remove()

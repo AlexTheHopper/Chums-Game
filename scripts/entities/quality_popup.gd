@@ -40,7 +40,8 @@ func _ready() -> void:
 	for type in ["health", "move_speed", "attack_damage", "attack_speed"]:
 		var icons = get_quality_images(chum.quality[type])
 		if not chum.get("has_%s" % type):
-			pass
+			pos.x = middle_x - (icon_len / 2.0)
+			create_icon(-10, pos)
 		elif len(icons.keys()) == 0:
 			pos.x = middle_x - (icon_len / 2.0)
 			create_icon(0, pos)
@@ -115,7 +116,6 @@ func create_bracelet_icons(count: int) -> void:
 
 func get_star_position(center: float, star_num: int, star_count: int, max_star_num: int, icon_len:=50.0, margin_l:=175.0, margin_r:=475.0) -> float:
 	if star_count <= max_star_num:
-		#print("%s out of %s and pos is %s" % [star_num, star_count, center - (icon_len * star_count / 2.0) + (icon_len * star_num) - icon_len])
 		return center - (icon_len * star_count / 2.0) + (icon_len * star_num) - icon_len
 	else:
 		return lerp(margin_l, margin_r, star_num / (1.0 + star_count))

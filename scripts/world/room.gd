@@ -2,7 +2,7 @@ extends room
 class_name fight_room
 
 @onready var room_value = Global.world_map[Global.room_location]["value"]
-const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
+const STREETLAMP = preload("res://scenes/world/decorations/streetlamp.tscn")
 const TYPE := "room"
 var rot_count : int
 

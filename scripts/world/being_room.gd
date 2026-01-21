@@ -37,8 +37,7 @@ func decorate() -> void:
 
 	for n in int(deco_n * DecorationManager.decorations_world[Global.room_location[1]]['multiplier']):
 		var chosen_deco = DecorationManager.get_random_decoration([Global.room_location[1]])
-		var pos = Vector3(randf_range(-14, -1) if randf() < 0.5 else randf_range(3, 16),
-						0, randf_range(-14, -1) if randf() < 0.5 else randf_range(3, 16)).snapped(Vector3(0.1, 0.1, 0.1))
+		var pos = get_deco_loc()
 		var angle = angles.pick_random()
 
 		decos_to_add.append([chosen_deco["scene"], align_loc_to_ground(pos), angle])
@@ -54,3 +53,7 @@ func decorate() -> void:
 
 func set_player_loc_on_entry():
 	move_player_and_camera(player_spawn.global_position, 0.0)
+
+func get_deco_loc() -> Vector3:
+	return(Vector3(randf_range(-14, -1) if randf() < 0.5 else randf_range(3, 16),
+			0, randf_range(-14, -1) if randf() < 0.5 else randf_range(3, 16)).snapped(Vector3(0.1, 0.1, 0.1)))

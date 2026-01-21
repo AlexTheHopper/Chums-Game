@@ -9,62 +9,34 @@ var quality_popup_active = false
 func _ready() -> void:
 	#Fill chums:
 	chums_list = {
-		1: {"object": preload("res://scenes/entities/chums/chum1.tscn"),
-			"destination_world": 1, "guard_world_n": false}, #Flamenco
-		2: {"object": preload("res://scenes/entities/chums/chum2.tscn"),
-			"destination_world": 1, "guard_world_n": false}, #Stump
-		3: {"object": preload("res://scenes/entities/chums/chum3.tscn"),
-			"destination_world": 1, "guard_world_n": false}, #Pear
-		4: {"object": preload("res://scenes/entities/chums/chum4.tscn"),
-			"destination_world": 2, "guard_world_n": false}, #Jabby
-		5: {"object": preload("res://scenes/entities/chums/chum5.tscn"),
-			"destination_world": 1, "guard_world_n": false}, #Slate
-		6: {"object": preload("res://scenes/entities/chums/chum6.tscn"),
-			"destination_world": 1, "guard_world_n": false}, #Healio
-		7: {"object": preload("res://scenes/entities/chums/chum7.tscn"),
-			"destination_world": 1, "guard_world_n": false}, #Ring of Pearls
-		8: {"object": preload("res://scenes/entities/chums/chum8.tscn"),
-			"destination_world": 1, "guard_world_n": false}, #Bolt
-		9: {"object": preload("res://scenes/entities/chums/chum9.tscn"),
-			"destination_world": 2, "guard_world_n": false}, #Fan
-		10: {"object": preload("res://scenes/entities/chums/chum10.tscn"),
-			"destination_world": 4, "guard_world_n": false}, #Floaty
-		11: {"object": preload("res://scenes/entities/chums/chum11.tscn"),
-			"destination_world": 2, "guard_world_n": false}, #Melly
-		12: {"object": preload("res://scenes/entities/chums/chum12.tscn"),
-			"destination_world": 2, "guard_world_n": false}, #Ram
-		13: {"object": preload("res://scenes/entities/chums/chum13.tscn"),
-			"destination_world": 3, "guard_world_n": false}, #Leapy
-		14: {"object": preload("res://scenes/entities/chums/chum14.tscn"),
-			"destination_world": 1, "guard_world_n": 1}, #Clop
-		15: {"object": preload("res://scenes/entities/chums/chum15.tscn"),
-			"destination_world": 2, "guard_world_n": 2}, #Medusa
-		16: {"object": preload("res://scenes/entities/chums/chum16.tscn"),
-			"destination_world": 3, "guard_world_n": false}, #Basalt
-		17: {"object": preload("res://scenes/entities/chums/chum17.tscn"),
-			"destination_world": 1, "guard_world_n": false}, #Being
-		18: {"object": preload("res://scenes/entities/chums/chum18.tscn"),
-			"destination_world": 2, "guard_world_n": false}, #Being
-		19: {"object": preload("res://scenes/entities/chums/chum19.tscn"),
-			"destination_world": 3, "guard_world_n": false}, #Being
-		20: {"object": preload("res://scenes/entities/chums/chum20.tscn"),
-			"destination_world": 4, "guard_world_n": false}, #Being
-		21: {"object": preload("res://scenes/entities/chums/chum21.tscn"),
-			"destination_world": 3, "guard_world_n": false}, #Charles
-		22: {"object": preload("res://scenes/entities/chums/chum22.tscn"),
-			"destination_world": 3, "guard_world_n": 3}, #Ashi
-		23: {"object": preload("res://scenes/entities/chums/chum23.tscn"),
-			"destination_world": 4, "guard_world_n": 4}, #Globe
-		24: {"object": preload("res://scenes/entities/chums/chum24.tscn"),
-			"destination_world": 2, "guard_world_n": false}, #Bumble
-		25: {"object": preload("res://scenes/entities/chums/chum25.tscn"),
-			"destination_world": 2, "guard_world_n": false}, #Hive
-		26: {"object": preload("res://scenes/entities/chums/chum26.tscn"),
-			"destination_world": 2, "guard_world_n": false}, #Granite
-		27: {"object": preload("res://scenes/entities/chums/chum27.tscn"),
-			"destination_world": 4, "guard_world_n": false}, #Marble
-		28: {"object": preload("res://scenes/entities/chums/chum28.tscn"),
-			"destination_world": 4, "guard_world_n": false}, #Echo
+		1: {"destination_world": 1, "guard_world_n": false}, #Flamenco
+		2: {"destination_world": 1, "guard_world_n": false}, #Stump
+		3: {"destination_world": 1, "guard_world_n": false}, #Pear
+		4: {"destination_world": 2, "guard_world_n": false}, #Jabby
+		5: {"destination_world": 1, "guard_world_n": false}, #Slate
+		6: {"destination_world": 1, "guard_world_n": false}, #Healio
+		7: {"destination_world": 1, "guard_world_n": false}, #Ring of Pearls
+		8: {"destination_world": 1, "guard_world_n": false}, #Bolt
+		9: {"destination_world": 2, "guard_world_n": false}, #Fan
+		10: {"destination_world": 4, "guard_world_n": false}, #Floaty
+		11: {"destination_world": 2, "guard_world_n": false}, #Melly
+		12: {"destination_world": 2, "guard_world_n": false}, #Ram
+		13: {"destination_world": 3, "guard_world_n": false}, #Leapy
+		14: {"destination_world": 1, "guard_world_n": 1}, #Clop
+		15: {"destination_world": 2, "guard_world_n": 2}, #Medusa
+		16: {"destination_world": 3, "guard_world_n": false}, #Basalt
+		17: {"destination_world": 1, "guard_world_n": false}, #Being
+		18: {"destination_world": 2, "guard_world_n": false}, #Being
+		19: {"destination_world": 3, "guard_world_n": false}, #Being
+		20: {"destination_world": 4, "guard_world_n": false}, #Being
+		21: {"destination_world": 3, "guard_world_n": false}, #Charles
+		22: {"destination_world": 3, "guard_world_n": 3}, #Ashi
+		23: {"destination_world": 4, "guard_world_n": 4}, #Globe
+		24: {"destination_world": 2, "guard_world_n": false}, #Bumble
+		25: {"destination_world": 2, "guard_world_n": false}, #Hive
+		26: {"destination_world": 2, "guard_world_n": false}, #Granite
+		27: {"destination_world": 4, "guard_world_n": false}, #Marble
+		28: {"destination_world": 4, "guard_world_n": false}, #Echo
 	}
 
 	chums_values = {
@@ -72,11 +44,11 @@ func _ready() -> void:
 			1: 0.5,
 			2: 0.1,
 			3: 0.5,
-			4: 2.0,
+			4: 1.5,
 			5: 1.5,
 			6: 1.5,
 			7: 0.5,
-			8: 2.0,
+			8: 1.5,
 		},
 		2: {
 			4: 0.5,
@@ -155,7 +127,7 @@ func get_world_random_chum(room_value: float, world_n: int):
 	
 	var chosen_id = potential_ids.pick_random()
 	
-	return {"object": chums_list[chosen_id]["object"], "value": chums_values[world_n][chosen_id]}
+	return {"object": load("res://scenes/entities/chums/chum%s.tscn" % chosen_id), "value": chums_values[world_n][chosen_id]}
 	
 func get_specific_chum_str(chum_str):
 	return load("res://scenes/entities/chums/%s.tscn" % [chum_str])
@@ -163,6 +135,6 @@ func get_specific_chum_str(chum_str):
 func get_specific_chum_id(chum_id):
 	if chum_id not in chums_list.keys():
 		push_error("error with finding chum_id %s" % chum_id)
-		return chums_list[1]["object"]
+		return load("res://scenes/entities/chums/chum1.tscn")
 
-	return chums_list[chum_id]["object"]
+	return load("res://scenes/entities/chums/chum%s.tscn" % chum_id)

@@ -21,9 +21,13 @@ ambient_light_energy = 5.3
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_kvjwp"]
-vertices = PackedVector3Array(-3.5, 0.5, -5.75, 25.5, 0.5, -5.75, 25.5, 0.5, -129.5, -3.5, 0.5, -129.5, -7.5, 0.5, 20.5, -7.5, 0.5, 25.5, -3.75, 0.5, 25.5, -3.5, 0.5, 20.25, 25.75, 0.5, -3.5, -3.5, 0.5, 27.75, 45.5, 0.5, 27.75, 37.5, 0.5, 6.25, 37.5, 0.5, -3.5, 45.5, 0.5, 6.5, 18.25, 0.5, 153.5, 18.5, 0.5, 155.75, 45.5, 0.5, 155.75, -3.5, 0.5, 153.5, 18.5, 0.5, 175.5, 45.5, 0.5, 175.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(1, 8, 0), PackedInt32Array(0, 8, 7), PackedInt32Array(6, 7, 9), PackedInt32Array(9, 7, 8), PackedInt32Array(9, 8, 11), PackedInt32Array(9, 11, 10), PackedInt32Array(8, 12, 11), PackedInt32Array(11, 13, 10), PackedInt32Array(16, 15, 14), PackedInt32Array(14, 17, 9), PackedInt32Array(16, 14, 10), PackedInt32Array(10, 14, 9), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 15)]
+[sub_resource type="NavigationMesh" id="NavigationMesh_m3b6f"]
+vertices = PackedVector3Array(-3.5, 0.099999905, -4.3499985, 25.5, 0.099999905, -4.3499985, 25.5, 0.099999905, -129.5, -3.5, 0.099999905, -129.5, -4.3, 0.099999905, 20.5, -4.3, 0.099999905, 25.550003, -3.9499998, 0.099999905, 25.550003, -3.75, 0.099999905, 20.40001, -3.6, 0.099999905, 25.800003, 25.5, 0.099999905, -3.949997, -3.5, 0.099999905, 26, 25.600002, 0.099999905, -3.75, -3.5, 0.099999905, 20.050003, 37.5, 0.099999905, 6.050003, 37.5, 0.099999905, -3.5, 25.95, 0.099999905, -3.5, 37.600002, 0.099999905, 6.25, -3.5, 0.099999905, 26.40001, 45.5, 0.099999905, 26.40001, 45.5, 0.099999905, 6.5, 37.95, 0.099999905, 6.5, -7.5, 0.099999905, 20.5, -7.5, 0.099999905, 25.550003, 18.5, 0.099999905, 153.95001, 18.5, 0.099999905, 154.35, 45.5, 0.099999905, 154.35, 18.4, 0.099999905, 153.75, 18.050001, 0.099999905, 153.5, -3.5, 0.099999905, 153.5, 18.5, 0.099999905, 175.5, 45.5, 0.099999905, 175.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(6, 5, 4), PackedInt32Array(4, 7, 6), PackedInt32Array(6, 7, 8), PackedInt32Array(0, 1, 9), PackedInt32Array(8, 7, 10), PackedInt32Array(10, 7, 12), PackedInt32Array(10, 12, 11), PackedInt32Array(9, 11, 0), PackedInt32Array(0, 11, 12), PackedInt32Array(15, 14, 13), PackedInt32Array(15, 13, 16), PackedInt32Array(15, 16, 11), PackedInt32Array(11, 16, 18), PackedInt32Array(11, 18, 10), PackedInt32Array(10, 18, 17), PackedInt32Array(20, 19, 18), PackedInt32Array(16, 20, 18), PackedInt32Array(22, 21, 5), PackedInt32Array(5, 21, 4), PackedInt32Array(25, 24, 23), PackedInt32Array(25, 23, 26), PackedInt32Array(26, 27, 25), PackedInt32Array(25, 27, 18), PackedInt32Array(18, 27, 17), PackedInt32Array(27, 28, 17), PackedInt32Array(30, 29, 25), PackedInt32Array(25, 29, 24)]
+geometry_parsed_geometry_type = 1
+cell_size = 0.05
+cell_height = 0.05
+agent_max_climb = 0.05
 
 [sub_resource type="Animation" id="Animation_kvjwp"]
 length = 0.001
@@ -105,7 +109,7 @@ omni_shadow_mode = 0
 [node name="HUD" parent="." instance=ExtResource("4_3ldjf")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_kvjwp")
+navigation_mesh = SubResource("NavigationMesh_m3b6f")
 
 [node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
 mesh_library = ExtResource("4_m3b6f")

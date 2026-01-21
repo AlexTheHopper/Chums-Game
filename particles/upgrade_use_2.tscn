@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://tuvvv4pa3wcd"]
+
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_v03sj"]
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="2_aiefg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xb4nt"]
+next_pass = ExtResource("2_aiefg")
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_qgaqe"]
+material = SubResource("StandardMaterial3D_xb4nt")
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="Curve" id="Curve_cjut0"]
+_limits = [-30.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.37457627, -8.74678), 0.0, 0.0, 0, 0, Vector2(0.74915254, -21.690985), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_v03sj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.74406785, 1), 0.0, 0.0, 0, 0, Vector2(0.99998, 0), 0.0, 0.0, 0, 0, Vector2(0.99999, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.008726716), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Gradient" id="Gradient_xb4nt"]
+offsets = PackedFloat32Array(0, 0.5354478, 0.8134328)
+colors = PackedColorArray(0.75608736, 0.7560873, 0.7560873, 1, 0.57, 0.342, 0.5471999, 1, 0.07348838, 3.1721172e-06, 0.06575045, 1)
+
+[node name="Particle" type="Node3D"]
+script = ExtResource("1_v03sj")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 3
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("BoxMesh_qgaqe")
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3(0, 1, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+radial_accel_min = 1.0
+radial_accel_max = 1.0
+radial_accel_curve = SubResource("Curve_cjut0")
+scale_amount_curve = SubResource("Curve_v03sj")
+color_ramp = SubResource("Gradient_xb4nt")
+
+[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]

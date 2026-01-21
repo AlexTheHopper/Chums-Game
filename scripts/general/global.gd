@@ -224,13 +224,6 @@ func start_game(save_id = null, new_game = false) -> void:
 			current_room_node = new_room.instantiate()
 			rooms.add_child(current_room_node)
 
-		#Look at center of room when load
-		if len(room_history) > 1 and current_room_node.TYPE != "lobby":
-			var cam_rotation = Functions.angle_to_xz(current_room_node, player)
-			player.get_node("Camera_Controller").rotation.y = cam_rotation
-			#Set camera goal to nearest multiple of PI / 4
-			player.camera_goal_horz = round(cam_rotation / (PI / 4)) * (PI / 4) # cam_rotation
-
 	get_node("/root/Game/HUD").add_chum_indicators()
 	Global.world_map[Global.room_location]["entered"] = true
 	if current_world_num == 0:

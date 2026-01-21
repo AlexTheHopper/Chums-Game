@@ -46,7 +46,7 @@ func _ready() -> void:
 	
 	#Maybe spawn being to circle level for a bit
 	if randf() < 0.05:
-		for n in range(max(range(Global.world_transition_count + 1).pick_random() + 1, 10)):
+		for n in range(min(range(Global.world_transition_count + 1).pick_random() + 1, 10)):
 			var being = RANDOM_LEVEL_BEING.instantiate()
 			decorations.add_child(being)
 

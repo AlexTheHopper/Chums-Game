@@ -1,84 +1,82 @@
 extends Node
 
-var decorations : Dictionary[String, Dictionary]
 var decorations_world : Dictionary[int, Dictionary]
-
 var lore_texts : Dictionary[int, Dictionary]
 
-func _ready() -> void:
-	#Radius here is how far it can be from a wall or edge
-	decorations = {"streetlamp": {"scene": preload("res://scenes/world/streetlamp.tscn"), "radius": 0.5},
+#Radius here is how far it can be from a wall or edge
+var decorations_info: Dictionary[String, Dictionary] = {
+	"streetlamp": {"scene": preload("res://scenes/world/decorations/streetlamp.tscn"), "radius": 0.5},
 	
-					"grass1": {"scene": preload("res://scenes/world/decorations/grass_1.tscn"), "radius": 0.4},
-					"grass2": {"scene": preload("res://scenes/world/decorations/grass_2.tscn"), "radius": 0.4},
-					"grass3": {"scene": preload("res://scenes/world/decorations/grass_3.tscn"), "radius": 0.6},
-					"grass4": {"scene": preload("res://scenes/world/decorations/grass_4.tscn"), "radius": 0.6},
-					"grass5": {"scene": preload("res://scenes/world/decorations/grass_5.tscn"), "radius": 0.8},
-					
-					"bones1": {"scene": preload("res://scenes/world/decorations/bones_1.tscn"), "radius": 0.9},
-					"bones2": {"scene": preload("res://scenes/world/decorations/bones_2.tscn"), "radius": 0.8},
-					"bones3": {"scene": preload("res://scenes/world/decorations/bones_3.tscn"), "radius": 0.7},
-					"bones4": {"scene": preload("res://scenes/world/decorations/bones_4.tscn"), "radius": 0.9},
-					"bones5": {"scene": preload("res://scenes/world/decorations/bones_5.tscn"), "radius": 0.9},
+	"grass_1": {"scene": preload("res://scenes/world/decorations/grass_1.tscn"), "radius": 0.4},
+	"grass_2": {"scene": preload("res://scenes/world/decorations/grass_2.tscn"), "radius": 0.4},
+	"grass_3": {"scene": preload("res://scenes/world/decorations/grass_3.tscn"), "radius": 0.6},
+	"grass_4": {"scene": preload("res://scenes/world/decorations/grass_4.tscn"), "radius": 0.6},
+	"grass_5": {"scene": preload("res://scenes/world/decorations/grass_5.tscn"), "radius": 0.8},
+	
+	"bones_1": {"scene": preload("res://scenes/world/decorations/bones_1.tscn"), "radius": 0.9},
+	"bones_2": {"scene": preload("res://scenes/world/decorations/bones_2.tscn"), "radius": 0.8},
+	"bones_3": {"scene": preload("res://scenes/world/decorations/bones_3.tscn"), "radius": 0.7},
+	"bones_4": {"scene": preload("res://scenes/world/decorations/bones_4.tscn"), "radius": 0.9},
+	"bones_5": {"scene": preload("res://scenes/world/decorations/bones_5.tscn"), "radius": 0.9},
 
-					
-					"bonesmoss1": {"scene": preload("res://scenes/world/decorations/bonesmoss_1.tscn"), "radius": 0.9},
-					"bonesmoss2": {"scene": preload("res://scenes/world/decorations/bonesmoss_2.tscn"), "radius": 0.8},
-					"bonesmoss3": {"scene": preload("res://scenes/world/decorations/bonesmoss_3.tscn"), "radius": 0.8},
-					"bonesmoss4": {"scene": preload("res://scenes/world/decorations/bonesmoss_4.tscn"), "radius": 1.0},
-					"bonesmoss5": {"scene": preload("res://scenes/world/decorations/bonesmoss_5.tscn"), "radius": 0.9},
+	"bonesmoss_1": {"scene": preload("res://scenes/world/decorations/bonesmoss_1.tscn"), "radius": 0.9},
+	"bonesmoss_2": {"scene": preload("res://scenes/world/decorations/bonesmoss_2.tscn"), "radius": 0.8},
+	"bonesmoss_3": {"scene": preload("res://scenes/world/decorations/bonesmoss_3.tscn"), "radius": 0.8},
+	"bonesmoss_4": {"scene": preload("res://scenes/world/decorations/bonesmoss_4.tscn"), "radius": 1.0},
+	"bonesmoss_5": {"scene": preload("res://scenes/world/decorations/bonesmoss_5.tscn"), "radius": 0.9},
+
+	"tree_1": {"scene": preload("res://scenes/world/decorations/tree_1.tscn"), "radius": 1.5},
+	"tree_2": {"scene": preload("res://scenes/world/decorations/tree_2.tscn"), "radius": 1.5},
 	
-					"tree1": {"scene": preload("res://scenes/world/decorations/tree_1.tscn"), "radius": 1.5},
-					"tree2": {"scene": preload("res://scenes/world/decorations/tree_2.tscn"), "radius": 1.5},
-					
-					"rubble1": {"scene": preload("res://scenes/world/decorations/rubble1.tscn"), "radius": 0.9},
-					
-					"column1": {"scene": preload("res://scenes/world/decorations/column1.tscn"), "radius": 0.8},
-					"column2": {"scene": preload("res://scenes/world/decorations/column2.tscn"), "radius": 0.6},
-					"column3": {"scene": preload("res://scenes/world/decorations/column3.tscn"), "radius": 0.6},
-					"column4": {"scene": preload("res://scenes/world/decorations/column4.tscn"), "radius": 0.5},
-					"column5": {"scene": preload("res://scenes/world/decorations/column5.tscn"), "radius": 0.0},
-					
-					"frame1": {"scene": preload("res://scenes/world/decorations/frame_destructible_1.tscn"), "radius": 0.9},
-					"frame2": {"scene": preload("res://scenes/world/decorations/frame_destructible_2.tscn"), "radius": 0.9},
-					
-					"fireplace": {"scene": preload("res://scenes/world/decorations/fireplace.tscn"), "radius": 1.0},
-					
-					"shrub1": {"scene": preload("res://scenes/world/decorations/shrub_1.tscn"), "radius": 0.5},
-					"shrub2": {"scene": preload("res://scenes/world/decorations/shrub_2.tscn"), "radius": 0.4},
-					"shrub3": {"scene": preload("res://scenes/world/decorations/shrub_3.tscn"), "radius": 0.4},
-					"shrub4": {"scene": preload("res://scenes/world/decorations/shrub_4.tscn"), "radius": 0.6},
-					"shrub5": {"scene": preload("res://scenes/world/decorations/shrub_5.tscn"), "radius": 0.6},
-					"shrub6": {"scene": preload("res://scenes/world/decorations/shrub_6.tscn"), "radius": 0.8},
-					}
+	"rubble_1": {"scene": preload("res://scenes/world/decorations/rubble_1.tscn"), "radius": 0.9},
 	
+	"column_1": {"scene": preload("res://scenes/world/decorations/column_1.tscn"), "radius": 0.8},
+	"column_2": {"scene": preload("res://scenes/world/decorations/column_2.tscn"), "radius": 0.6},
+	"column_3": {"scene": preload("res://scenes/world/decorations/column_3.tscn"), "radius": 0.6},
+	"column_4": {"scene": preload("res://scenes/world/decorations/column_4.tscn"), "radius": 0.5},
+	"column_5": {"scene": preload("res://scenes/world/decorations/column_5.tscn"), "radius": 0.0},
+	
+	"frame_destructible_1": {"scene": preload("res://scenes/world/decorations/frame_destructible_1.tscn"), "radius": 0.9},
+	"frame_destructible_2": {"scene": preload("res://scenes/world/decorations/frame_destructible_2.tscn"), "radius": 0.9},
+	
+	"fireplace_1": {"scene": preload("res://scenes/world/decorations/fireplace_1.tscn"), "radius": 1.0},
+	
+	"shrub_1": {"scene": preload("res://scenes/world/decorations/shrub_1.tscn"), "radius": 0.5},
+	"shrub_2": {"scene": preload("res://scenes/world/decorations/shrub_2.tscn"), "radius": 0.4},
+	"shrub_3": {"scene": preload("res://scenes/world/decorations/shrub_3.tscn"), "radius": 0.4},
+	"shrub_4": {"scene": preload("res://scenes/world/decorations/shrub_4.tscn"), "radius": 0.6},
+	"shrub_5": {"scene": preload("res://scenes/world/decorations/shrub_5.tscn"), "radius": 0.6},
+	"shrub_6": {"scene": preload("res://scenes/world/decorations/shrub_6.tscn"), "radius": 0.8},
+	}
+
+func _ready() -> void:	
 	decorations_world = {
 		1: {"multiplier": 1.0,
 			"rarities": {"common": 0.95, "uncommon": 0.98, "rare": 1.0},
-			"common": ["grass1", "grass2", "grass3", "grass4", "grass5"],
-			"uncommon": ["tree2"],
-			"rare": ["bonesmoss1", "bonesmoss2", "bonesmoss3", "bonesmoss4", "bonesmoss5"],
+			"common": ["grass_1", "grass_2", "grass_3", "grass_4", "grass_5"],
+			"uncommon": ["tree_2"],
+			"rare": ["bonesmoss_1", "bonesmoss_2", "bonesmoss_3", "bonesmoss_4", "bonesmoss_5"],
 			},
 
 		2: {"multiplier": 0.1,
 			"rarities": {"common": 0.95, "uncommon": 0.98, "rare": 1.0},
-			"common": ["rubble1", "rubble1", "rubble1", "bones1", "bones2", "bones3", "column2", "column3"],
-			"uncommon": ["column1", "frame1", "frame2"],
-			"rare": ["column1", "frame1", "frame2"],
+			"common": ["rubble_1", "rubble_1", "rubble_1", "bones_1", "bones_2", "bones_3", "column_2", "column_3"],
+			"uncommon": ["column_1", "frame_destructible_1", "frame_destructible_2"],
+			"rare": ["column_1", "frame_destructible_1", "frame_destructible_2"],
 			},
 
 		3: {"multiplier": 0.75,
 			"rarities": {"common": 0.85, "uncommon": 0.95, "rare": 1.0},
-			"common": ["rubble1", "shrub2", "shrub3", "shrub4",  "shrub5",  "shrub6"],
-			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5", "fireplace", "fireplace", "fireplace", "shrub1"],
-			"rare": ["column1"],
+			"common": ["rubble_1", "shrub_2", "shrub_3", "shrub_4",  "shrub_5",  "shrub_6"],
+			"uncommon": ["bones_1", "bones_2", "bones_3", "bones_4", "bones_5", "fireplace_1", "fireplace_1", "fireplace_1", "shrub_1"],
+			"rare": ["column_1"],
 			},
 		
 		4: {"multiplier": 0.5,
 			"rarities": {"common": 0.95, "uncommon": 0.99, "rare": 1.0},
-			"common": ["rubble1", "column4", "column5"],
-			"uncommon": ["bones1", "bones2", "bones3", "bones4", "bones5"],
-			"rare": ["frame1", "frame2"],
+			"common": ["rubble_1", "column_4", "column_5"],
+			"uncommon": ["bones_1", "bones_2", "bones_3", "bones_4", "bones_5"],
+			"rare": ["frame_destructible_1", "frame_destructible_2"],
 			},
 	}
 	
@@ -150,17 +148,21 @@ func get_random_decoration(world_ns: Array):
 	var chance = randf()
 	if chance < decorations_world[world_n]["rarities"]["common"]:
 		var rand_name = decorations_world[world_n]["common"].pick_random()
-		return decorations[rand_name]
+		return decorations_info[rand_name]
 	elif chance < decorations_world[world_n]["rarities"]["uncommon"]:
 		var rand_name = decorations_world[world_n]["uncommon"].pick_random()
-		return decorations[rand_name]
+		return decorations_info[rand_name]
 	else:
 		var rand_name = decorations_world[world_n]["rare"].pick_random()
-		return decorations[rand_name]
+		return decorations_info[rand_name]
 		
 func get_common_decoration(world_n):
 	var rand_name = decorations_world[world_n]["common"].pick_random()
-	return decorations[rand_name]
+	return decorations_info[rand_name]
 
 func get_terrain(world_n: int, id: int) -> PackedScene:
-	return load("res://scenes/world/terrains/terrain_world_%s_%s.tscn" % [world_n, id])
+	var terrain := load("res://scenes/world/terrains/terrain_world_%s_%s.tscn" % [world_n, id])
+	if not terrain:
+		push_error("error with finding terrain world %s id %s" % [world_n, id])
+		return load("res://scenes/world/terrains/terrain_world_1_0.tscn")
+	return terrain

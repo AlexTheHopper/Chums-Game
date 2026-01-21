@@ -1,7 +1,7 @@
 extends room
 class_name void_room
 
-const STREETLAMP = preload("res://scenes/world/streetlamp.tscn")
+const STREETLAMP = preload("res://scenes/world/decorations/streetlamp.tscn")
 const TYPE := "void"
 
 func decorate():
