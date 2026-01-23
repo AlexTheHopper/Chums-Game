@@ -53,6 +53,7 @@ var start_health := -1
 var max_move_speed: float
 var temp_sleep_time: float
 var is_temporary := false
+var is_decoration := false
 
 @onready var has_quality_popup := false
 @export var indicator_color := Color.from_rgba8(40, 40, 40, 255)

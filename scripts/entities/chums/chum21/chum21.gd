@@ -1,7 +1,6 @@
 extends Chum
 class_name Chum21
 var chum_id := 21
-var chum_str := "chum21"
 var chum_name := "Charles"
 
 var desc := "This wooden chum once spent it's days attacking anything unfamiliar with its signature spin attack, but was then rudely moved to a new home where it promptly burned alive."

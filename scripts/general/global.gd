@@ -34,6 +34,7 @@ signal room_changed
 signal room_changed_to_boss
 signal room_changed_from_boss 
 signal room_changed_to_being
+signal room_changed_to_endgame
 
 @export var settings: Dictionary[String, float] = {
 	"camera_shake": 1.0,
@@ -535,7 +536,6 @@ func transition_to_being(source_world_n: int, destination_world_n: int, length =
 	
 	get_node("/root/Game/HUD").display_minimap(false)
 
-
 func transition_to_world(destination_world_n: int, length = 1):
 	room_changed_from_boss.emit()
 	TransitionScreen.transition(length)
@@ -574,6 +574,29 @@ func transition_to_world(destination_world_n: int, length = 1):
 	get_node("/root/Game/HUD").display_minimap(true)
 	
 	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_IDLE" % destination_world_n])
+
+func transition_to_endgame(prisoner_id, length = 1):
+	room_changed_to_endgame.emit()
+	TransitionScreen.transition(length)
+	await TransitionScreen.on_transition_finished
+	
+	create_world_boss()
+	current_world_num = 0
+	
+	var new_room_location = Vector2i(0, 0)
+	room_location = new_room_location
+	if Global.dev_mode:
+		print('Endgame w/ %s.' % prisoner_id)
+	
+	if current_room_node:
+		current_room_node.queue_free()
+
+	#Create new room:
+	var new_room = get_room_tscn(prisoner_id, 9) #TODO this will break
+	current_room_node = new_room.instantiate()
+	rooms.add_child(current_room_node)
+	
+	get_node("/root/Game/HUD").display_minimap(false)
 
 func randomize_seed() -> void:
 	seed(randi() + hash(room_history))

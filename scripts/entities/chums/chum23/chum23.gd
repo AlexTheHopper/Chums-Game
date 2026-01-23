@@ -1,7 +1,6 @@
 extends Chum
 class_name Chum23
 var chum_id := 23
-var chum_str := "chum23"
 var chum_name := "Globe"
 
 var desc := "Designed after the world itself. After several attempts, the satellites were deemed necessary for survival."

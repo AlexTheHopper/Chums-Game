@@ -1,7 +1,6 @@
 extends Chum
 class_name Chum6
 var chum_id := 6
-var chum_str := "chum6"
 var chum_name := "Healio"
 
 var desc := "Such a thoughtful and kind chum. Whenever an enemy chum is defeated, this little flower will send a helping hand by healing friends who need it."

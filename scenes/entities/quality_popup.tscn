@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgd4xkckyqdcg"]
+[gd_scene load_steps=18 format=3 uid="uid://bgd4xkckyqdcg"]
 
 [ext_resource type="Script" uid="uid://b0rs5b6ow7au3" path="res://scripts/entities/quality_popup.gd" id="1_purmp"]
 [ext_resource type="Shader" uid="uid://db57gow0ouvok" path="res://materials/nodepthtest.gdshader" id="2_piaxk"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://4x8dib7mncon" path="res://assets/world/quality_icons/staticon_move_speed.png" id="4_s03od"]
 [ext_resource type="Texture2D" uid="uid://caif5vbrorvcl" path="res://assets/world/quality_icons/staticon_attack_damage.png" id="5_a3b4p"]
 [ext_resource type="Texture2D" uid="uid://beklohhkrrytg" path="res://assets/world/quality_icons/staticon_attack_speed.png" id="6_wjk08"]
+[ext_resource type="Texture2D" uid="uid://daqt6sxu2lj0s" path="res://assets/world/quality_icons/staticon_bracelet.png" id="9_a3b4p"]
+[ext_resource type="Texture2D" uid="uid://btfqxpb5c5dbw" path="res://assets/world/quality_icons/staticon_book.png" id="10_wjk08"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1lra1"]
 viewport_path = NodePath("Container/Display/SubViewport")
@@ -41,12 +43,13 @@ shader_parameter/my_texture = SubResource("ViewportTexture_teyl6")
 [sub_resource type="ViewportTexture" id="ViewportTexture_v3w6n"]
 viewport_path = NodePath("Container/Description/SubViewport")
 
-[node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("control", "disp_name", "disp_name_back", "desc_back")]
+[node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("control", "disp_name", "disp_name_back", "desc_back", "book_display")]
 script = ExtResource("1_purmp")
 control = NodePath("Container/Display/SubViewport/Control")
 disp_name = NodePath("Container/Display/SubViewport/Control/Name")
 disp_name_back = NodePath("Container/Description/SubViewport/Control/Name")
 desc_back = NodePath("Container/Description/SubViewport/Control/Description")
+book_display = NodePath("Container/Description/SubViewport/Control/Book")
 
 [node name="Container" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
@@ -173,6 +176,29 @@ autowrap_mode = 3
 position = Vector2(475, 475)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_kl30j")
+
+[node name="Book" type="Control" parent="Container/Description/SubViewport/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bracelet" type="TextureRect" parent="Container/Description/SubViewport/Control/Book"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 236.0
+offset_top = 300.0
+offset_right = 276.0
+offset_bottom = 340.0
+texture = ExtResource("9_a3b4p")
+
+[node name="Book" type="TextureRect" parent="Container/Description/SubViewport/Control/Book"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 226.0
+offset_top = 225.0
+offset_right = 286.0
+offset_bottom = 285.0
+texture = ExtResource("10_wjk08")
 
 [node name="GlitchShader" type="ColorRect" parent="Container/Description/SubViewport"]
 material = SubResource("ShaderMaterial_kl30j")

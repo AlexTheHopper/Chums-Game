@@ -1,7 +1,6 @@
 extends Chum
 class_name Chum14
 var chum_id := 14
-var chum_str := "chum14"
 var chum_name := "Clop"
 
 var desc := "One eyed one horned flying purple people eater. But doesnt fly, isnt purple and doesnt often eat people."

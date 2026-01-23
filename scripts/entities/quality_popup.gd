@@ -10,10 +10,10 @@ var fading_out := false
 
 @export var control: Control
 @export var disp_name: Label
-@export var disp_cost: Label
 
 @export var disp_name_back: Label
 @export var desc_back: Label
+@export var book_display: Control
 
 var rotations := 1.0
 
@@ -57,7 +57,13 @@ func _ready() -> void:
 		
 	#Back
 	disp_name_back.text = disp_name.text
-	desc_back.text = chum.desc if chum.chum_id in PlayerStats.player_unique_chums_befriended else "- Befriend To Learn -"
+	if chum.chum_id in PlayerStats.player_unique_chums_befriended:
+		desc_back.text = chum.desc
+		desc_back.visible = true
+		book_display.visible = false
+	else:
+		desc_back.visible = false
+		book_display.visible = true
 	
 	scale = Vector3(0.1, 0.1, 0.1)
 	chum.has_quality_popup = true

@@ -56,7 +56,7 @@ func _on_player_max_health_changed(_differnce):
 	hud_max_health_change.emit()
 	
 func bracelets_added(value):
-	bracelets += value
+	bracelets = clamp(bracelets + value, 0, 999)
 	hud_bracelets_change.emit()
 	
 	if value > 0:

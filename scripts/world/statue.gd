@@ -2,23 +2,44 @@ extends Node3D
 
 var chum_id: int
 var flower_chum_ids := [6, 7, 16, 26, 27]
-var active := true
+var active := false
+var chum_statue_node: Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var mesh_node: Node3D = $MeshNode
 @onready var to_boss: room_changer_to_boss = $RoomChanger
 @onready var room_changer_zone: room_changer_to_boss = $RoomChanger
 
+@onready var mesh_colours := {
+	0:  Color.from_rgba8(51, 51, 51, 255),
+	1:  Color.from_rgba8(60, 79, 56, 255),
+	2:  Color.from_rgba8(135, 135, 135, 255),
+	3:  Color.from_rgba8(99, 77, 74, 255),
+	4:  Color.from_rgba8(44, 49, 77, 255),
+}
 
 func _ready() -> void:
-	
 	chum_id = Global.world_map[Global.room_location]["room_specific_id"]
-	mesh_node.add_child(load("res://assets/world/chum_statues/chum_%s_statue.tscn" % [chum_id]).instantiate())
+	var chum_statue = load("res://assets/world/chum_statues/chum_%s_statue.tscn" % [chum_id]).instantiate()
+	chum_statue_node = chum_statue
+	if chum_id not in flower_chum_ids:
+		set_statue_colour(ChumsManager.chums_list[chum_id]["destination_world"])
+	mesh_node.add_child(chum_statue)
 	
 	if Global.world_map[Global.room_location]["activated"]:
 		mesh_node.visible = false
 		animation_player.speed_scale = 10.0
 		animation_player.play("activate")
 		open_door()
+
+func _on_timer_timeout() -> void:
+	active = true
+
+func set_statue_colour(dest_n: int) -> void:
+	if not chum_statue_node:
+		return
+	for child in chum_statue_node.get_children():
+		if child is MeshInstance3D:
+			child.mesh.surface_get_material(0).albedo_color = mesh_colours[dest_n]
 
 func _on_fly_zone_body_entered(body: Node3D) -> void:
 	if body is Chum:
@@ -36,6 +57,7 @@ func _on_detection_zone_body_entered(body: Node3D) -> void:
 		if body.chum_id in flower_chum_ids and chum_id in flower_chum_ids:
 			chum_id = body.chum_id
 			Global.world_map[Global.room_location]["room_specific_id"] = body.chum_id
+			set_statue_colour(ChumsManager.chums_list[chum_id]["destination_world"])
 			room_changer_zone.set_chum_id(chum_id)
 
 		if body.chum_id == chum_id:

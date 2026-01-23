@@ -1,117 +1,114 @@
 extends Node
 
-var chums_list : Dictionary
-var chums_values : Dictionary
-var boss_chums : Dictionary
 var close_chums := []
 var quality_popup_active = false
 
-func _ready() -> void:
-	#Fill chums:
-	chums_list = {
-		1: {"destination_world": 1, "guard_world_n": false}, #Flamenco
-		2: {"destination_world": 1, "guard_world_n": false}, #Stump
-		3: {"destination_world": 1, "guard_world_n": false}, #Pear
-		4: {"destination_world": 2, "guard_world_n": false}, #Jabby
-		5: {"destination_world": 1, "guard_world_n": false}, #Slate
-		6: {"destination_world": 1, "guard_world_n": false}, #Healio
-		7: {"destination_world": 1, "guard_world_n": false}, #Ring of Pearls
-		8: {"destination_world": 1, "guard_world_n": false}, #Bolt
-		9: {"destination_world": 2, "guard_world_n": false}, #Fan
-		10: {"destination_world": 4, "guard_world_n": false}, #Floaty
-		11: {"destination_world": 2, "guard_world_n": false}, #Melly
-		12: {"destination_world": 2, "guard_world_n": false}, #Ram
-		13: {"destination_world": 3, "guard_world_n": false}, #Leapy
-		14: {"destination_world": 1, "guard_world_n": 1}, #Clop
-		15: {"destination_world": 2, "guard_world_n": 2}, #Medusa
-		16: {"destination_world": 3, "guard_world_n": false}, #Basalt
-		17: {"destination_world": 1, "guard_world_n": false}, #Being
-		18: {"destination_world": 2, "guard_world_n": false}, #Being
-		19: {"destination_world": 3, "guard_world_n": false}, #Being
-		20: {"destination_world": 4, "guard_world_n": false}, #Being
-		21: {"destination_world": 3, "guard_world_n": false}, #Charles
-		22: {"destination_world": 3, "guard_world_n": 3}, #Ashi
-		23: {"destination_world": 4, "guard_world_n": 4}, #Globe
-		24: {"destination_world": 2, "guard_world_n": false}, #Bumble
-		25: {"destination_world": 2, "guard_world_n": false}, #Hive
-		26: {"destination_world": 2, "guard_world_n": false}, #Granite
-		27: {"destination_world": 4, "guard_world_n": false}, #Marble
-		28: {"destination_world": 4, "guard_world_n": false}, #Echo
-		29: {"destination_world": 3, "guard_world_n": false}, #Ember
-		30: {"destination_world": 3, "guard_world_n": false}, #Goblet
-	}
+#Fill chums:
+var chums_list := {
+	1: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum1.tscn")}, #Flamenco
+	2: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum2.tscn")}, #Stump
+	3: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum3.tscn")}, #Pear
+	4: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum4.tscn")}, #Jabby
+	5: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum5.tscn")}, #Slate
+	6: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum6.tscn")}, #Healio
+	7: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum7.tscn")}, #Ring of Pearls
+	8: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum8.tscn")}, #Bolt
+	9: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum9.tscn")}, #Fan
+	10: {"destination_world": 4, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum10.tscn")}, #Floaty
+	11: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum11.tscn")}, #Melly
+	12: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum12.tscn")}, #Ram
+	13: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum13.tscn")}, #Leapy
+	14: {"destination_world": 1, "guard_world_n": 1, "scene": preload("res://scenes/entities/chums/chum14.tscn")}, #Clop
+	15: {"destination_world": 2, "guard_world_n": 2, "scene": preload("res://scenes/entities/chums/chum15.tscn")}, #Medusa
+	16: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum16.tscn")}, #Basalt
+	17: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum17.tscn")}, #Being
+	18: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum18.tscn")}, #Being
+	19: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum19.tscn")}, #Being
+	20: {"destination_world": 4, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum20.tscn")}, #Being
+	21: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum21.tscn")}, #Charles
+	22: {"destination_world": 3, "guard_world_n": 3, "scene": preload("res://scenes/entities/chums/chum22.tscn")}, #Ashi
+	23: {"destination_world": 4, "guard_world_n": 4, "scene": preload("res://scenes/entities/chums/chum23.tscn")}, #Globe
+	24: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum24.tscn")}, #Bumble
+	25: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum25.tscn")}, #Hive
+	26: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum26.tscn")}, #Granite
+	27: {"destination_world": 4, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum27.tscn")}, #Marble
+	28: {"destination_world": 4, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum28.tscn")}, #Echo
+	29: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum29.tscn")}, #Ember
+	30: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum30.tscn")}, #Goblet
+}
 
-	chums_values = {
-		1: {
-			1: 0.5,
-			2: 0.1,
-			3: 0.5,
-			4: 1.5,
-			5: 1.5,
-			6: 1.5,
-			7: 0.5,
-			8: 1.5,
-		},
-		2: {
-			4: 0.5,
-			8: 1.5,
-			9: 2.0,
-			10: 1.5,
-			11: 1.0,
-			12: 1.0,
-			13: 1.5,
-			24: 0.5,
-			25: 2.0,
-			26: 1.0,
-		},
-		3: {
-			4: 3.5,
-			6: 1.0,
-			8: 2.0,
-			11: 2.5,
-			13: 5.0,
-			16: 1.0,
-			21: 1.0,
-			29: 1.0,
-			30: 2.0,
-		},
-		4: {
-			6: 2.5,
-			7: 2.5,
-			8: 2.0,
-			10: 0.5,
-			11: 2.5,
-			12: 1.0,
-			13: 1.0,
-			27: 1.0,
-			28: 2.0,
-		},
-	}
+var chums_values := {
+	1: {
+		1: 0.5,
+		2: 0.1,
+		3: 0.5,
+		4: 1.5,
+		5: 1.5,
+		6: 1.5,
+		7: 0.5,
+		8: 1.5,
+	},
+	2: {
+		4: 0.5,
+		8: 1.5,
+		9: 2.0,
+		10: 1.5,
+		11: 1.0,
+		12: 1.0,
+		13: 1.5,
+		24: 0.5,
+		25: 2.0,
+		26: 1.0,
+	},
+	3: {
+		4: 3.5,
+		6: 1.0,
+		8: 2.0,
+		11: 2.5,
+		13: 5.0,
+		16: 1.0,
+		21: 1.0,
+		29: 1.0,
+		30: 2.0,
+	},
+	4: {
+		6: 2.5,
+		7: 2.5,
+		8: 2.0,
+		10: 0.5,
+		11: 2.5,
+		12: 1.0,
+		13: 1.0,
+		27: 1.0,
+		28: 2.0,
+	},
+}
+
+#The vector2i defines which room, the keys of that dict are chum ids and the values are the count.
+#They are spawned randomly somewhere in the room
+#i.e. Vector2i(3, 2) is the boss room from world 3 to world 2
+var boss_chums := {
+	Vector2i(1, 1): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 6: 1},
+	Vector2i(1, 2): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 13: 1},
+	Vector2i(1, 3): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 21: 1},
+	Vector2i(1, 4): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 28: 1},
+
+	Vector2i(2, 1): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 6: 1},
+	Vector2i(2, 2): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 13: 1},
+	Vector2i(2, 3): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 21: 1},
+	Vector2i(2, 4): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 28: 1},
+
+	Vector2i(3, 1): {22: 1, 16: 1, 21: 1, 6: 1, 30: 1},
+	Vector2i(3, 2): {22: 1, 16: 1, 21: 1, 13: 1, 30: 1},
+	Vector2i(3, 3): {22: 1, 16: 1, 21: 2, 30: 1},
+	Vector2i(3, 4): {22: 1, 16: 1, 21: 1, 28: 1, 30: 1},
 	
-	#The vector2i defines which room, the keys of that dict are chum ids and the values are the count.
-	#They are spawned randomly somewhere in the room
-	#i.e. Vector2i(3, 2) is the boss room from world 3 to world 2
-	boss_chums = {
-		Vector2i(1, 1): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 6: 1},
-		Vector2i(1, 2): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 13: 1},
-		Vector2i(1, 3): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 21: 1},
-		Vector2i(1, 4): {14: 1, 1: 1, 2: 1, 3: 1, 5: 1, 28: 1},
+	Vector2i(4, 1): {23: 1, 27: 1, 28: 1, 6: 1},
+	Vector2i(4, 2): {23: 1, 27: 1, 28: 1, 13: 1},
+	Vector2i(4, 3): {23: 1, 27: 1, 28: 1, 21: 1},
+	Vector2i(4, 4): {23: 1, 27: 1, 28: 2},
+}
 
-		Vector2i(2, 1): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 6: 1},
-		Vector2i(2, 2): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 13: 1},
-		Vector2i(2, 3): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 21: 1},
-		Vector2i(2, 4): {15: 1, 9: 1, 10: 1, 11: 1, 12: 1, 28: 1},
-
-		Vector2i(3, 1): {22: 1, 16: 1, 21: 1, 6: 1, 30: 1},
-		Vector2i(3, 2): {22: 1, 16: 1, 21: 1, 13: 1, 30: 1},
-		Vector2i(3, 3): {22: 1, 16: 1, 21: 2, 30: 1},
-		Vector2i(3, 4): {22: 1, 16: 1, 21: 1, 28: 1, 30: 1},
-		
-		Vector2i(4, 1): {23: 1, 27: 1, 28: 1, 6: 1},
-		Vector2i(4, 2): {23: 1, 27: 1, 28: 1, 13: 1},
-		Vector2i(4, 3): {23: 1, 27: 1, 28: 1, 21: 1},
-		Vector2i(4, 4): {23: 1, 27: 1, 28: 2},
-	}
 
 func get_world_random_chum(room_value: float, world_n: int) -> Dictionary:
 	#A rooms value is its distance from the lobby. Room (0, 1) has a value of 1.
@@ -131,14 +128,11 @@ func get_world_random_chum(room_value: float, world_n: int) -> Dictionary:
 	
 	var chosen_id = potential_ids.pick_random()
 	
-	return {"object": load("res://scenes/entities/chums/chum%s.tscn" % chosen_id), "value": chums_values[world_n][chosen_id]}
-	
-func get_specific_chum_str(chum_str: String) -> PackedScene:
-	return load("res://scenes/entities/chums/%s.tscn" % [chum_str])
+	return {"object": chums_list[chosen_id]["scene"], "value": chums_values[world_n][chosen_id]}
 
 func get_specific_chum_id(chum_id: int) -> PackedScene:
 	if chum_id not in chums_list.keys():
 		push_error("error with finding chum_id %s" % chum_id)
-		return load("res://scenes/entities/chums/chum1.tscn")
+		return chums_list[1]["scene"]
 
-	return load("res://scenes/entities/chums/chum%s.tscn" % chum_id)
+	return chums_list[chum_id]["scene"]

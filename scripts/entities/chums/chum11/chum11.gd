@@ -1,7 +1,6 @@
 extends Chum
 class_name Chum11
 var chum_id := 11
-var chum_str := "chum11"
 var chum_name := "Melly"
 
 var desc := "Portable Melatonin! This little antennae friend doesn't do much by itself, however when defeated it lets out a burst of sleepyness, causing enemy chums to fall back asleep for a short while."

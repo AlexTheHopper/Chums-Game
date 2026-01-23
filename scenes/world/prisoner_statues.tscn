@@ -1,19 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://df2vpfo6a1ew6"]
+[gd_scene load_steps=4 format=3 uid="uid://df2vpfo6a1ew6"]
 
 [ext_resource type="PackedScene" uid="uid://b2ss70sycqptk" path="res://scenes/world/prisoner_statue.tscn" id="1_7e0vi"]
 [ext_resource type="Script" uid="uid://bbdlbaldgeylx" path="res://scripts/world/prisoner_statues.gd" id="1_jfsno"]
+[ext_resource type="PackedScene" uid="uid://yq7e80ypvfp5" path="res://scenes/world/room_changer_to_endgame.tscn" id="3_qx7cw"]
 
 [node name="PrisonerStatues" type="Node3D"]
 script = ExtResource("1_jfsno")
 
 [node name="PrisonerStatue1" parent="." instance=ExtResource("1_7e0vi")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 0, 9)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, 8)
 
 [node name="PrisonerStatue2" parent="." instance=ExtResource("1_7e0vi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
 
 [node name="PrisonerStatue3" parent="." instance=ExtResource("1_7e0vi")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -9, 0, 9)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -8, 0, 8)
 
 [node name="PrisonerStatue4" parent="." instance=ExtResource("1_7e0vi")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9, 0, -9)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, -8)
+
+[node name="RoomChanger" parent="." instance=ExtResource("3_qx7cw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)

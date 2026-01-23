@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://b2ss70sycqptk"]
+[gd_scene load_steps=7 format=4 uid="uid://b2ss70sycqptk"]
 
 [ext_resource type="Script" uid="uid://cp3vg8h3r1wei" path="res://scripts/world/prisoner_statue.gd" id="1_m2rt5"]
 
@@ -24,6 +24,9 @@ points = PackedVector3Array(-1.4001958, 0, -2.2, -2.2, 0, -1.4001958, -2.0001566
 [sub_resource type="BoxShape3D" id="BoxShape3D_1oyes"]
 size = Vector3(3, 1, 3)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_egjj2"]
+size = Vector3(2, 2, 2)
+
 [node name="PrisonerStatue" type="Node3D"]
 script = ExtResource("1_m2rt5")
 
@@ -43,5 +46,14 @@ collision_mask = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_1oyes")
 
+[node name="FlyZone" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlyZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_egjj2")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="FlyZone" to="." method="_on_fly_zone_body_entered"]

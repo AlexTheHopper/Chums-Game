@@ -17,5 +17,5 @@ _surfaces = [{
 
 [node name="Chum16Statue" type="Node3D"]
 
-[node name="Chum16" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_500b2")

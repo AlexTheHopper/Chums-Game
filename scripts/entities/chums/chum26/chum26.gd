@@ -1,7 +1,6 @@
 extends Chum
 class_name Chum26
 var chum_id := 26
-var chum_str := "chum26"
 var chum_name := "Granite"
 
 var desc := "Such a studious flower. If flowers can be studious? This one has learned the ins and outs of all other chums, and upon defeat of an enemy, will occasionally up the ante and increase a friend's quality with a mysterious floating purple orb, for the cost of some of health. Provided that friend has no damage."

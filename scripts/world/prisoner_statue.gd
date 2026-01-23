@@ -31,3 +31,13 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 				current_chum = close_chums[-1]
 				prisoner_statue.set_material_overlay(overlays[current_chum])
 			prisoners_changed.emit()
+
+
+func _on_fly_zone_body_entered(body: Node3D) -> void:
+	if body is Player:
+		return
+	var angle: float = Functions.angle_to_xz(self, body)
+	var vel_2d: Vector2 = Vector2(sin(angle), cos(angle)) * 7.5
+	
+	body.velocity = Vector3(vel_2d.x, 25.0, vel_2d.y)
+	body.is_launched = true

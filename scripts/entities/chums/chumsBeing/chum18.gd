@@ -1,10 +1,9 @@
 extends Chum
 class_name Chum18
 var chum_id := 18
-var chum_str := "chum18"
 var chum_name := "Prisoner"
 
-var desc := "..."
+var desc := "** NO RECORDS FOUND **"
 
 var min_attack_speed := 1.0
 

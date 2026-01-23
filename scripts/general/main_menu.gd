@@ -28,7 +28,7 @@ func _ready() -> void:
 			saved_chums[this_save] = []
 			var saved_game:SavedGame = load("user://saves/%s.tres" % [this_save])
 			for chum in saved_game.friendly_chums:
-				saved_chums[this_save].append(chum["type"])
+				saved_chums[this_save].append(chum["id"])
 
 	save_ids.append(null)
 	save_ids.sort()
@@ -50,8 +50,8 @@ func change_display_chums(show_particles = false) -> void:
 		node.queue_free()
 	
 	var inc:int = 0
-	for chum_str in chum_list:
-		var chum_to_spawn = ChumsManager.get_specific_chum_str(chum_str)
+	for chum_id in chum_list:
+		var chum_to_spawn = ChumsManager.get_specific_chum_id(chum_id)
 		if chum_to_spawn:
 			#Spawns chum
 			var chum_instance = chum_to_spawn.instantiate()
@@ -59,7 +59,7 @@ func change_display_chums(show_particles = false) -> void:
 			var chum_position = team_node.global_position
 			chum_position += Vector3(5.0 * sin(2*PI*inc/chum_count), 0, 5.0 * cos(2*PI*inc/chum_count))
 			chum_instance.global_position = chum_position
-			chum_instance.get_node("GeneralChumBehaviour").visible = false
+			#chum_instance.get_node("GeneralChumBehaviour").visible = false
 			chum_instance.anim_player.play("Idle")
 			chum_instance.sleep_zone.queue_free()
 			chum_instance.scale = Vector3(2.0, 2.0, 2.0)

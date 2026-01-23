@@ -1,7 +1,6 @@
 extends Chum
 class_name Chum27
 var chum_id := 27
-var chum_str := "chum27"
 var chum_name := "Marble"
 
 var desc := "One of the first chums, bringing life to others. Upon enemy defeat, there is a chance a friend's maximum health will be increased."

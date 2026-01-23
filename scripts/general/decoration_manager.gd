@@ -126,19 +126,23 @@ func _ready() -> void:
 			"front": "They have the pools, the statues, the means of working together, but nothing works...",
 			"back": "The pursuit of our new world's utopia seems more and more futile."},
 
-		11: {"info": "2500 . 0",
+		11: {"info": "1300 . 0",
+			"front": "Many of the records are lost now. Some due to time, some seemingly on purpose. We are left repeating our own mistakes, blindly reaching for a miracle.",
+			"back": "What have we tried before? What worked? What didn't?"},
+
+		12: {"info": "2500 . 0",
 			"front": "We are all that remains now. It has gone and left us in this infinite cycle of injustice...",
 			"back": "What are we working towards now?"},
 
-		12: {"info": "2501 . 0",
+		13: {"info": "2501 . 0",
 			"front": "Now on our own, we create the uncaging statues, in hope of their return...",
 			"back": "They may truly be the only ones to end the cycle now."},
 
-		13: {"info": "2525 . 0",
+		14: {"info": "2525 . 0",
 			"front": "Without direction, we change tactics. To create something to finish this for us...",
 			"back": "Is it possible?"},
 
-		14: {"info": "2550 . 0",
+		15: {"info": "2550 . 0",
 			"front": "They must be sentient, with intelligence beyond the rest...",
 			"back": "To complete the goal, and let us rest."},
 	}

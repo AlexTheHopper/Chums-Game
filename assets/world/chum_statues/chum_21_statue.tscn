@@ -17,6 +17,6 @@ _surfaces = [{
 
 [node name="Chum21Statue" type="Node3D"]
 
-[node name="Chum21" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("ArrayMesh_4qjf5")

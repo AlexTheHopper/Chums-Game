@@ -97,7 +97,7 @@ func save_room():
 	for group in ["Chums_Enemy", "Chums_Neutral"]:
 		for chum in get_tree().get_nodes_in_group(group).filter(func(c): return not c.is_temporary):
 			Global.world_map[Global.room_location]["chums"].append({
-				"type": chum.chum_str,
+				"id": chum.chum_id,
 				"group": group,
 				"position": chum.global_position,
 				"state": chum.state_machine.current_state.state_name,
@@ -112,7 +112,7 @@ func load_room():
 	var room_info = Global.world_map[Global.room_location]
 	#Chums:
 	for chum in room_info["chums"]:
-		var chum_to_add = ChumsManager.get_specific_chum_str(chum["type"])
+		var chum_to_add = ChumsManager.get_specific_chum_id(chum["id"])
 		var chum_instance = chum_to_add.instantiate()
 		chum_instance.quality = chum["quality"]
 		chum_instance.bracelet_cost = chum["cost"]
