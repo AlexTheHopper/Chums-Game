@@ -1,9 +1,9 @@
 extends Node3D
 
-@onready var ps_1: Node3D = $PrisonerStatue1
-@onready var ps_2: Node3D = $PrisonerStatue2
-@onready var ps_3: Node3D = $PrisonerStatue3
-@onready var ps_4: Node3D = $PrisonerStatue4
+@export var ps_1: Node3D
+@export var ps_2: Node3D
+@export var ps_3: Node3D
+@export var ps_4: Node3D
 @onready var room_changer_zone: room_changer_to_endgame = $RoomChanger
 var chums: Array
 
@@ -27,3 +27,4 @@ func end_sequence() -> void:
 	print("You Win! :)")
 	room_changer_zone.active = true
 	room_changer_zone.prisoner_id = chums.pick_random()
+	$AnimationPlayer.play("activate")

@@ -6,6 +6,7 @@ extends Node3D
 @onready var mesh_node: Node3D = $MeshNode
 
 @export var is_custom := false
+@export var is_tutorial := false
 @export var custom_title_front: String
 @export var custom_text_front: String
 @export var custom_title_back: String
@@ -21,7 +22,7 @@ func _ready() -> void:
 	if not mesh_num:
 		mesh_num = 1
 
-	if is_custom:
+	if is_tutorial:
 		mesh_scene = load("res://assets/world/sign.tscn").instantiate()
 		mesh_node.add_child(mesh_scene)
 	else:

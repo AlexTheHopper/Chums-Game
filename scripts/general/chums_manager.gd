@@ -5,36 +5,36 @@ var quality_popup_active = false
 
 #Fill chums:
 var chums_list := {
-	1: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum1.tscn")}, #Flamenco
-	2: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum2.tscn")}, #Stump
-	3: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum3.tscn")}, #Pear
-	4: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum4.tscn")}, #Jabby
-	5: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum5.tscn")}, #Slate
-	6: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum6.tscn")}, #Healio
-	7: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum7.tscn")}, #Ring of Pearls
-	8: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum8.tscn")}, #Bolt
-	9: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum9.tscn")}, #Fan
-	10: {"destination_world": 4, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum10.tscn")}, #Floaty
-	11: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum11.tscn")}, #Melly
-	12: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum12.tscn")}, #Ram
-	13: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum13.tscn")}, #Leapy
-	14: {"destination_world": 1, "guard_world_n": 1, "scene": preload("res://scenes/entities/chums/chum14.tscn")}, #Clop
-	15: {"destination_world": 2, "guard_world_n": 2, "scene": preload("res://scenes/entities/chums/chum15.tscn")}, #Medusa
-	16: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum16.tscn")}, #Basalt
-	17: {"destination_world": 1, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum17.tscn")}, #Being
-	18: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum18.tscn")}, #Being
-	19: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum19.tscn")}, #Being
-	20: {"destination_world": 4, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum20.tscn")}, #Being
-	21: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum21.tscn")}, #Charles
-	22: {"destination_world": 3, "guard_world_n": 3, "scene": preload("res://scenes/entities/chums/chum22.tscn")}, #Ashi
-	23: {"destination_world": 4, "guard_world_n": 4, "scene": preload("res://scenes/entities/chums/chum23.tscn")}, #Globe
-	24: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum24.tscn")}, #Bumble
-	25: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum25.tscn")}, #Hive
-	26: {"destination_world": 2, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum26.tscn")}, #Granite
-	27: {"destination_world": 4, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum27.tscn")}, #Marble
-	28: {"destination_world": 4, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum28.tscn")}, #Echo
-	29: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum29.tscn")}, #Ember
-	30: {"destination_world": 3, "guard_world_n": false, "scene": preload("res://scenes/entities/chums/chum30.tscn")}, #Goblet
+	1: {"destination_world": 1, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum1.tscn")}, #Flamenco
+	2: {"destination_world": 1, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum2.tscn")}, #Stump
+	3: {"destination_world": 1, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum3.tscn")}, #Pear
+	4: {"destination_world": 2, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum4.tscn")}, #Jabby
+	5: {"destination_world": 1, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum5.tscn")}, #Slate
+	6: {"destination_world": 1, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum6.tscn")}, #Healio
+	7: {"destination_world": 1, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum7.tscn")}, #Ring of Pearls
+	8: {"destination_world": 1, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum8.tscn")}, #Bolt
+	9: {"destination_world": 2, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum9.tscn")}, #Fan
+	10: {"destination_world": 4, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum10.tscn")}, #Floaty
+	11: {"destination_world": 2, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum11.tscn")}, #Melly
+	12: {"destination_world": 2, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum12.tscn")}, #Ram
+	13: {"destination_world": 3, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum13.tscn")}, #Leapy
+	14: {"destination_world": 1, "guard_world_n": 1, "scene": load("res://scenes/entities/chums/chum14.tscn")}, #Clop
+	15: {"destination_world": 2, "guard_world_n": 2, "scene": load("res://scenes/entities/chums/chum15.tscn")}, #Medusa
+	16: {"destination_world": 3, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum16.tscn")}, #Basalt
+	17: {"destination_world": 1, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum17.tscn")}, #Being
+	18: {"destination_world": 2, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum18.tscn")}, #Being
+	19: {"destination_world": 3, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum19.tscn")}, #Being
+	20: {"destination_world": 4, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum20.tscn")}, #Being
+	21: {"destination_world": 3, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum21.tscn")}, #Charles
+	22: {"destination_world": 3, "guard_world_n": 3, "scene": load("res://scenes/entities/chums/chum22.tscn")}, #Ashi
+	23: {"destination_world": 4, "guard_world_n": 4, "scene": load("res://scenes/entities/chums/chum23.tscn")}, #Globe
+	24: {"destination_world": 2, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum24.tscn")}, #Bumble
+	25: {"destination_world": 2, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum25.tscn")}, #Hive
+	26: {"destination_world": 2, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum26.tscn")}, #Granite
+	27: {"destination_world": 4, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum27.tscn")}, #Marble
+	28: {"destination_world": 4, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum28.tscn")}, #Echo
+	29: {"destination_world": 3, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum29.tscn")}, #Ember
+	30: {"destination_world": 3, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum30.tscn")}, #Goblet
 }
 
 var chums_values := {

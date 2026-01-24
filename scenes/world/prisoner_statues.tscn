@@ -1,23 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://df2vpfo6a1ew6"]
+[gd_scene load_steps=7 format=3 uid="uid://df2vpfo6a1ew6"]
 
 [ext_resource type="PackedScene" uid="uid://b2ss70sycqptk" path="res://scenes/world/prisoner_statue.tscn" id="1_7e0vi"]
 [ext_resource type="Script" uid="uid://bbdlbaldgeylx" path="res://scripts/world/prisoner_statues.gd" id="1_jfsno"]
 [ext_resource type="PackedScene" uid="uid://yq7e80ypvfp5" path="res://scenes/world/room_changer_to_endgame.tscn" id="3_qx7cw"]
 
-[node name="PrisonerStatues" type="Node3D"]
-script = ExtResource("1_jfsno")
+[sub_resource type="Animation" id="Animation_ktd5v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Statues:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
-[node name="PrisonerStatue1" parent="." instance=ExtResource("1_7e0vi")]
+[sub_resource type="Animation" id="Animation_qx7cw"]
+resource_name = "activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Statues:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktd5v"]
+_data = {
+&"RESET": SubResource("Animation_ktd5v"),
+&"activate": SubResource("Animation_qx7cw")
+}
+
+[node name="PrisonerStatues" type="Node3D" node_paths=PackedStringArray("ps_1", "ps_2", "ps_3", "ps_4")]
+script = ExtResource("1_jfsno")
+ps_1 = NodePath("Statues/PrisonerStatue1")
+ps_2 = NodePath("Statues/PrisonerStatue2")
+ps_3 = NodePath("Statues/PrisonerStatue3")
+ps_4 = NodePath("Statues/PrisonerStatue4")
+
+[node name="Statues" type="Node3D" parent="."]
+
+[node name="PrisonerStatue1" parent="Statues" instance=ExtResource("1_7e0vi")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, 8)
 
-[node name="PrisonerStatue2" parent="." instance=ExtResource("1_7e0vi")]
+[node name="PrisonerStatue2" parent="Statues" instance=ExtResource("1_7e0vi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
 
-[node name="PrisonerStatue3" parent="." instance=ExtResource("1_7e0vi")]
+[node name="PrisonerStatue3" parent="Statues" instance=ExtResource("1_7e0vi")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -8, 0, 8)
 
-[node name="PrisonerStatue4" parent="." instance=ExtResource("1_7e0vi")]
+[node name="PrisonerStatue4" parent="Statues" instance=ExtResource("1_7e0vi")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, -8)
 
 [node name="RoomChanger" parent="." instance=ExtResource("3_qx7cw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ktd5v")
+}

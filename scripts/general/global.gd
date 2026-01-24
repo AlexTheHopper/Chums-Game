@@ -581,9 +581,13 @@ func transition_to_endgame(prisoner_id, length = 1):
 	await TransitionScreen.on_transition_finished
 	
 	create_world_boss()
-	current_world_num = 0
+	if prisoner_id in [17, 18, 19, 20]:
+		current_world_num = ChumsManager.chums_list[prisoner_id]["destination_world"]
+	else:
+		push_error("Ending game with incorrect prisoner_id: " % prisoner_id)
+		current_world_num = 0
 	
-	var new_room_location = Vector2i(0, 0)
+	var new_room_location = Vector2i(1, 1)
 	room_location = new_room_location
 	if Global.dev_mode:
 		print('Endgame w/ %s.' % prisoner_id)
@@ -592,7 +596,7 @@ func transition_to_endgame(prisoner_id, length = 1):
 		current_room_node.queue_free()
 
 	#Create new room:
-	var new_room = get_room_tscn(prisoner_id, 9) #TODO this will break
+	var new_room = load("res://scenes/world/room_endgame_1.tscn")
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
 	
