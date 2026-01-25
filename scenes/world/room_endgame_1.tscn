@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3dqsx42dg0w1"]
+[gd_scene load_steps=9 format=3 uid="uid://d3dqsx42dg0w1"]
 
 [ext_resource type="Script" uid="uid://cwgpc02mr0glr" path="res://scripts/world/room_endgame.gd" id="1_t1ml1"]
 [ext_resource type="MeshLibrary" uid="uid://cigp6vhw1rudc" path="res://assets/world/meshlib_world_1.tres" id="2_r5sa2"]
 [ext_resource type="PackedScene" uid="uid://cdsetgtd0thee" path="res://scenes/world/decorations/streetlamp.tscn" id="3_lk7ai"]
+[ext_resource type="PackedScene" uid="uid://ck80na83dsv0" path="res://scenes/general/endgame_being.tscn" id="4_lk7ai"]
 [ext_resource type="PackedScene" uid="uid://cq08vipfekj02" path="res://scenes/world/fall_stopper.tscn" id="16_ltcjo"]
 [ext_resource type="PackedScene" uid="uid://c115b3o53shsm" path="res://scenes/entities/lore_drop.tscn" id="25_e02ak"]
 
@@ -46,6 +47,9 @@ metadata/_editor_floor_ = Vector3(11, -4, -15)
 [node name="Streetlamp" parent="Decorations" instance=ExtResource("3_lk7ai")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -95)
 
+[node name="EndgameBeing" parent="Decorations" instance=ExtResource("4_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 15, -85)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1q6o2")
 
@@ -59,13 +63,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
 [node name="Texts" type="Node3D" parent="."]
 
-[node name="Jump" parent="Texts" instance=ExtResource("25_e02ak")]
+[node name="Text1" parent="Texts" instance=ExtResource("25_e02ak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -85)
 is_custom = true
-custom_title_front = "Jump!"
-custom_text_front = "Use [img]res://materials/ui/ui_jump.tres[/img] to scale looming cliffs."
-custom_title_back = "Camera!"
-custom_text_back = "You can also use [img]res://materials/ui/ui_cam_left.tres[/img] & [img]res://materials/ui/ui_cam_right.tres[/img] along with [img]res://materials/ui/ui_cam_up.tres[/img] & [img]res://materials/ui/ui_cam_down.tres[/img] to help navigate better!"
+custom_text_front = "ENDGAME_1_FRONT"
+custom_text_back = "ENDGAME_1_BACK"
+
+[node name="Text2" parent="Texts" instance=ExtResource("25_e02ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -68)
+is_custom = true
+custom_text_front = "ENDGAME_2_FRONT"
+custom_text_back = "ENDGAME_2_BACK"
+
+[node name="Text3" parent="Texts" instance=ExtResource("25_e02ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -56)
+is_custom = true
+custom_text_front = "ENDGAME_3_FRONT"
+custom_text_back = "ENDGAME_3_BACK"
+
+[node name="Text4" parent="Texts" instance=ExtResource("25_e02ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -43)
+is_custom = true
+custom_text_front = "ENDGAME_4_FRONT"
+custom_text_back = "ENDGAME_4_BACK"
+
+[node name="Text5" parent="Texts" instance=ExtResource("25_e02ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -31)
+is_custom = true
+custom_text_front = "ENDGAME_5_FRONT"
+custom_text_back = "ENDGAME_5_BACK"
+
+[node name="Text6" parent="Texts" instance=ExtResource("25_e02ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -14)
+is_custom = true
+custom_text_front = "ENDGAME_6_FRONT"
+custom_text_back = "ENDGAME_6_BACK"
 
 [node name="SpawnRayCast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -12, 0)

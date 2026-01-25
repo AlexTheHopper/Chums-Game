@@ -1,5 +1,5 @@
 extends Node
-var dev_mode := false
+var dev_mode := true
 
 var game_begun := false
 var world_transition_count := 0
@@ -601,6 +601,8 @@ func transition_to_endgame(prisoner_id, length = 1):
 	rooms.add_child(current_room_node)
 	
 	get_node("/root/Game/HUD").display_minimap(false)
+	
+	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_ENDGAME_ENTER"])
 
 func randomize_seed() -> void:
 	seed(randi() + hash(room_history))

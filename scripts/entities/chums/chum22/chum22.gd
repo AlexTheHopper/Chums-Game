@@ -1,9 +1,6 @@
 extends Chum
 class_name Chum22
 var chum_id := 22
-var chum_name := "Ashi"
-
-var desc := "Just a cute pup."
 
 var min_attack_speed := 3.2
 

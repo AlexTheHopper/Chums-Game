@@ -1,9 +1,6 @@
 extends Chum
 class_name Chum28
 var chum_id := 28
-var chum_name := "Echo"
-
-var desc := "A long lost relic of what was to come. All this chum knows is how to throw a spear, over and over. If only it knew what it could accomplish by putting a bit more effort into thinking."
 
 var min_attack_speed := 1.1
 

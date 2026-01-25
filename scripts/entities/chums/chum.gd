@@ -1,9 +1,14 @@
 extends CharacterBody3D
 class_name Chum
 
+var chum_name: String
+var chum_desc: String
+
 @export var jump_height: float = 2
 @export var jump_peak_time: float = 0.3
 @export var jump_fall_time: float = 0.25
+
+var testtt: String
 
 @export var initial_state_override := ""
 
@@ -70,6 +75,8 @@ signal health_depleted
 signal spawn_currency(type, location)
 
 func _ready() -> void:
+	chum_name = "CHUM_%s_NAME" % self.chum_id
+	chum_desc = "CHUM_%s_DESC" % self.chum_id
 	add_to_group("Chums_Neutral")
 	body_mesh.set_material_overlay(black_overlay)
 	

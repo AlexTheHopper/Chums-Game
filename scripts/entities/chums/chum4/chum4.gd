@@ -1,9 +1,6 @@
 extends Chum
 class_name Chum4
 var chum_id := 4
-var chum_name := "Jabby"
-
-var desc := "No one is really sure where this chum comes from. It seems a little out of place a lot of the time and its very unclear which direction its looking, without eyes and all. With its tail it goes jabby-jab in quick succession."
 
 var min_attack_speed := 1.88
 

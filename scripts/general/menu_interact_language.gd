@@ -4,23 +4,24 @@ extends MenuInteract
 
 signal select_language
 
-var languages = ["english", "spanish", "simlish"]
+var languages = ["en", "es", "de", "ca", "it", "fr"]
 var index = 0
 
 func left() -> void:
-	index -= index
+	index -= 1
 	if index < 0:
 		index = languages.size() - 1
-	text_label.text = languages[index]
+	change_language(languages[index])
 
 func right() -> void:
 	index += 1
 	if index > languages.size() - 1:
 		index = 0
-	text_label.text = languages[index]
+	change_language(languages[index])
 
 func interact() -> void:
 	pass #TODO This is where you would change the language
 
-func initialise() -> void:
-	text_label.text = languages[index]
+func change_language(lan_code: String) -> void:
+	TranslationServer.set_locale(lan_code)
+	select_language.emit(lan_code)

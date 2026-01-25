@@ -1,9 +1,6 @@
 extends Chum
 class_name Chum16
 var chum_id := 16
-var chum_name := "Basalt"
-
-var desc := "Sends its love when an enemy chum is defeated in the form of a flaming hot molten rock."
 
 var min_attack_speed := 2.55
 

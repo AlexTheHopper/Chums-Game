@@ -1,0 +1,15 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ddf8qhvb1bvt6"
+valid=false
+
+[deps]
+
+source_file="res://localisation/localisation.csv"
+
+[params]
+
+compress=true
+delimiter=1

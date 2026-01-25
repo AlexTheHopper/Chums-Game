@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cgxncfk1gen6c"]
+[gd_scene load_steps=47 format=3 uid="uid://cgxncfk1gen6c"]
 
 [ext_resource type="Script" uid="uid://begws5tgrylwi" path="res://scripts/general/audio_manager.gd" id="1_fwuy1"]
 [ext_resource type="Script" uid="uid://b8xh410owphar" path="res://resources/sound_effect.gd" id="2_xi5h2"]
@@ -222,11 +222,18 @@ type = 9
 sound_music = ExtResource("18_qbirx")
 metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 
+[sub_resource type="Resource" id="Resource_bbb60"]
+resource_name = "Endgame Enter"
+script = ExtResource("4_lpos2")
+type = 10
+sound_music = ExtResource("15_qbirx")
+metadata/_custom_type_script = "uid://bi73r60ulsu7q"
+
 [node name="AudioManager" type="Node3D"]
 process_mode = 3
 script = ExtResource("1_fwuy1")
 sound_effects = Array[ExtResource("2_xi5h2")]([SubResource("Resource_sf3pu"), SubResource("Resource_lpos2"), SubResource("Resource_slcbk"), SubResource("Resource_ovui0"), SubResource("Resource_bga3x"), SubResource("Resource_rxm80"), SubResource("Resource_8yobu"), SubResource("Resource_k1p65"), SubResource("Resource_w1isn"), SubResource("Resource_6yffi"), SubResource("Resource_hs34q"), SubResource("Resource_4niny"), SubResource("Resource_mglc6"), SubResource("Resource_1obp5"), SubResource("Resource_asn2t"), SubResource("Resource_45tpc")])
-sound_musics = Array[ExtResource("4_lpos2")]([SubResource("Resource_qs8em"), SubResource("Resource_ae5oe"), SubResource("Resource_tpt5d"), SubResource("Resource_68p7j"), SubResource("Resource_qbirx"), SubResource("Resource_xa7y2"), SubResource("Resource_ft4fm"), SubResource("Resource_5ngse"), SubResource("Resource_dlm3o"), SubResource("Resource_k1kdb")])
+sound_musics = Array[ExtResource("4_lpos2")]([SubResource("Resource_qs8em"), SubResource("Resource_ae5oe"), SubResource("Resource_tpt5d"), SubResource("Resource_68p7j"), SubResource("Resource_qbirx"), SubResource("Resource_xa7y2"), SubResource("Resource_ft4fm"), SubResource("Resource_5ngse"), SubResource("Resource_dlm3o"), SubResource("Resource_k1kdb"), SubResource("Resource_bbb60")])
 
 [node name="Music" type="Node3D" parent="."]
 

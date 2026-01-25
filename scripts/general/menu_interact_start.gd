@@ -31,6 +31,6 @@ func initialise() -> void:
 
 func change_text() -> void:
 	if save_nums[save_index] == null:
-		text_label.text = "New Reality"
+		text_label.text = "NEW_REALITY"
 	else:
-		text_label.text = "Reality %s" % save_nums[save_index]
+		text_label.text = tr("REALITY") + ": %s" % save_nums[save_index]

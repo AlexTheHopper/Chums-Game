@@ -3,24 +3,16 @@ class_name endgame_room
 
 const TYPE := "endgame"
 @onready var tiles: GridMap = $NavigationRegion3D/GridMap
+@onready var random_level_being: CharacterBody3D = $Decorations/EndgameBeing
+@onready var endgame_being: CharacterBody3D = $Decorations/EndgameBeing
 
 func _ready() -> void:
-	#$RoomActivator.activate_bell.connect(close_doors)
-	#Global.room_history = [[1, Vector2(1, 2)], [1, Vector2(1, 1)]]
 	move_player_and_camera($PlayerSpawn.global_position, PI)
 	set_chums_loc_on_entry()
-	
 	tiles.mesh_library = load("res://assets/world/meshlib_world_%s.tres" % Global.current_world_num)
-	
-	#for entity in $Entities.get_children():
-		#if entity is Chum:
-			#entity.spawn_currency.connect(spawn_currency)
-	
-	#Rotate all trees and grasses (I cant be bothered doing this manually they can be random)
-	#for deco in $Decorations/Large.get_children():
-		#deco.rotation.y = [0.0, PI / 2, PI, 3 * PI / 2].pick_random()
-	#for deco in $Decorations/Small.get_children():
-		#deco.rotation.y = [0.0, PI / 2, PI, 3 * PI / 2].pick_random()
+	for text in $Texts.get_children():
+		text.player_entered.connect(change_being_goal)
+
 
 func save_room() -> void:
 	pass
@@ -39,3 +31,6 @@ func save_room() -> void:
 #
 #func set_chums_loc_on_entry() -> void:
 	#pass
+
+func change_being_goal(text: Node3D) -> void:
+	endgame_being.change_goal(text.global_position)

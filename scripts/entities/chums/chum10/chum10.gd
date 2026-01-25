@@ -1,9 +1,6 @@
 extends Chum
 class_name Chum10
 var chum_id := 10
-var chum_name := "Floaty"
-
-var desc := "Some say Floaty evolved from a highly sophistocated security system that decided to start shooting everything on sight. Seems a bit far fetched though, right?"
 
 var min_attack_speed := 2.1
 

@@ -1,7 +1,8 @@
 extends Node
 
 var decorations_world : Dictionary[int, Dictionary]
-var lore_texts : Dictionary[int, Dictionary]
+var lore_text_count: int = 16
+var lore_texts : Dictionary[int, Dictionary] = {}
 
 #Radius here is how far it can be from a wall or edge
 var decorations_info: Dictionary[String, Dictionary] = {
@@ -79,73 +80,76 @@ func _ready() -> void:
 			"rare": ["frame_destructible_1", "frame_destructible_2"],
 			},
 	}
-	
-	lore_texts = {
-		0: {"info": "1000 . 0",
-			"front": "How many have there been now? Hundreds? Thousands? I can't quite remember...",
-			"back": "Yet I have found solace in this futility. A kind of meditation. This will be my life now."},
-
-
-		1: {"info": "25 . 0",
-			"front": "This surely cannot be possible. Twenty five times and twenty five catastrophes...",
-			"back": "I do not know how many they are willing to try, I have little hope."},
-
-		2: {"info": "50 . 0",
-			"front": "I have seen the one that runs, it shows interesting properties...",
-			"back": "With a keen sense of direction, it may not be able to help itself but perhaps others?"},
-
-		3: {"info": "75 . 0",
-			"front": "We have been instructed to vary the tests. Perhaps a change in scenery will offer a solution...",
-			"back": "Yet I see no significant changes, in the end, all is to perish."},
-
-		4: {"info": "100 . 0",
-			"front": "Perhaps we are to be the ones moving on, with the impossibility of unapproved death, there shall be many catastrophes to come...",
-			"back": "However where is the value in a life that never ends?"},
-
-		5: {"info": "125 . 0",
-			"front": "They sometimes show promise these days, but it has become more of an entertainment, betting on the limited time until catastrophe...",
-			"back": "Yet, the inevitability reigns and our one shortcoming is revealed."},
-
-		6: {"info": "750 . 0",
-			"front": "Some of us have been imprisoned, it seems we are to be locked in this cycle without complaining or suggesting improvements...",
-			"back": "We fear the cages."},
-
-		7: {"info": "800 . 0",
-			"front": "The imprisoned ones brought a fresh light, new ideas, possible solutions...",
-			"back": "But we do not know where they are now. Above all else, I hope they return."},
-
-		8: {"info": "1500 . 0",
-			"front": "This one may show the greatest potential of all...",
-			"back": "We remain cautiously optimistic."},
-
-		9: {"info": "1501 . 0",
-			"front": "Yet again, we are shown what was inevitable from the beginning...",
-			"back": "We are close to giving up."},
-
-		10: {"info": "1250 . 0",
-			"front": "They have the pools, the statues, the means of working together, but nothing works...",
-			"back": "The pursuit of our new world's utopia seems more and more futile."},
-
-		11: {"info": "1300 . 0",
-			"front": "Many of the records are lost now. Some due to time, some seemingly on purpose. We are left repeating our own mistakes, blindly reaching for a miracle.",
-			"back": "What have we tried before? What worked? What didn't?"},
-
-		12: {"info": "2500 . 0",
-			"front": "We are all that remains now. It has gone and left us in this infinite cycle of injustice...",
-			"back": "What are we working towards now?"},
-
-		13: {"info": "2501 . 0",
-			"front": "Now on our own, we create the uncaging statues, in hope of their return...",
-			"back": "They may truly be the only ones to end the cycle now."},
-
-		14: {"info": "2525 . 0",
-			"front": "Without direction, we change tactics. To create something to finish this for us...",
-			"back": "Is it possible?"},
-
-		15: {"info": "2550 . 0",
-			"front": "They must be sentient, with intelligence beyond the rest...",
-			"back": "To complete the goal, and let us rest."},
-	}
+	for n in range(lore_text_count):
+		lore_texts[n] = {"info": "LORE_%s_INFO" % n,
+						"front": "LORE_%s_FRONT" % n,
+						"back": "LORE_%s_BACK" % n}
+	#lore_texts = {
+		#0: {"info": "1000 . 0",
+			#"front": "How many have there been now? Hundreds? Thousands? I can't quite remember...",
+			#"back": "Yet I have found solace in this futility. A kind of meditation. This will be my life now."},
+#
+#
+		#1: {"info": "25 . 0",
+			#"front": "This surely cannot be possible. Twenty five times and twenty five catastrophes...",
+			#"back": "I do not know how many they are willing to try, I have little hope."},
+#
+		#2: {"info": "50 . 0",
+			#"front": "I have seen the one that runs, it shows interesting properties...",
+			#"back": "With a keen sense of direction, it may not be able to help itself but perhaps others?"},
+#
+		#3: {"info": "75 . 0",
+			#"front": "We have been instructed to vary the tests. Perhaps a change in scenery will offer a solution...",
+			#"back": "Yet I see no significant changes, in the end, all is to perish."},
+#
+		#4: {"info": "100 . 0",
+			#"front": "Perhaps we are to be the ones moving on, with the impossibility of unapproved death, there shall be many catastrophes to come...",
+			#"back": "However where is the value in a life that never ends?"},
+#
+		#5: {"info": "125 . 0",
+			#"front": "They sometimes show promise these days, but it has become more of an entertainment, betting on the limited time until catastrophe...",
+			#"back": "Yet, the inevitability reigns and our one shortcoming is revealed."},
+#
+		#6: {"info": "750 . 0",
+			#"front": "Some of us have been imprisoned, it seems we are to be locked in this cycle without complaining or suggesting improvements...",
+			#"back": "We fear the cages."},
+#
+		#7: {"info": "800 . 0",
+			#"front": "The imprisoned ones brought a fresh light, new ideas, possible solutions...",
+			#"back": "But we do not know where they are now. Above all else, I hope they return."},
+#
+		#8: {"info": "1500 . 0",
+			#"front": "This one may show the greatest potential of all...",
+			#"back": "We remain cautiously optimistic."},
+#
+		#9: {"info": "1501 . 0",
+			#"front": "Yet again, we are shown what was inevitable from the beginning...",
+			#"back": "We are close to giving up."},
+#
+		#10: {"info": "1250 . 0",
+			#"front": "They have the pools, the statues, the means of working together, but nothing works...",
+			#"back": "The pursuit of our new world's utopia seems more and more futile."},
+#
+		#11: {"info": "1300 . 0",
+			#"front": "Many of the records are lost now. Some due to time, some seemingly on purpose. We are left repeating our own mistakes, blindly reaching for a miracle.",
+			#"back": "What have we tried before? What worked? What didn't?"},
+#
+		#12: {"info": "2500 . 0",
+			#"front": "We are all that remains now. It has gone and left us in this infinite cycle of injustice...",
+			#"back": "What are we working towards now?"},
+#
+		#13: {"info": "2501 . 0",
+			#"front": "Now on our own, we create the uncaging statues, in hope of their return...",
+			#"back": "They may truly be the only ones to end the cycle now."},
+#
+		#14: {"info": "2525 . 0",
+			#"front": "Without direction, we change tactics. To create something to finish this for us...",
+			#"back": "Is it possible?"},
+#
+		#15: {"info": "2550 . 0",
+			#"front": "They must be sentient, with intelligence beyond the rest...",
+			#"back": "To complete the goal, and let us rest."},
+	#}
 
 func get_random_decoration(world_ns: Array):
 	var world_n: int = world_ns.pick_random()

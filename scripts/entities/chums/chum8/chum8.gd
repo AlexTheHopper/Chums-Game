@@ -1,9 +1,6 @@
 extends Chum
 class_name Chum8
 var chum_id := 8
-var chum_name := "Bolt"
-
-var desc := "Just a silly little guy! With no defense mechanisms, it seems Evolution should have forgotten it long ago. Although, Bolt will distract enemies attention 80% of the time! It may also give up some secrets if it is smacked."
 
 var min_attack_speed := 3.8
 

@@ -646,7 +646,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.537011, 0.537011, 0.537011, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Paused"
+text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -678,7 +678,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.537011, 0.537011, 0.537011, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Return to Game"
+text = "GAME_RETURN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -715,7 +715,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.537011, 0.537011, 0.537011, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Return to Menu"
+text = "MENU_RETURN"
 horizontal_alignment = 1
 vertical_alignment = 1
 

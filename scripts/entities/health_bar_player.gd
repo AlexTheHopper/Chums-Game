@@ -3,7 +3,7 @@ extends Control
 @onready var health_bar: ColorRect = $Health
 @onready var damaged_bar: ColorRect = $Damaged
 @onready var tick_zero := $TickZero
-@onready var length_zero := health_bar.size.x
+@onready var length_zero := health_bar.size.x + 2.0 #Width of tick
 @onready var health := 0.0
 @onready var max_health := 1.0
 @onready var damaged_timer: Timer = $DamagedTimer
@@ -45,12 +45,12 @@ func set_ticks():
 	for tick in $Ticks.get_children():
 		tick.queue_free()
 
-	var tick_count = floor(max_health / 50.0)
+	var tick_count = floor(max_health / 50.1)
 	for tick_n in range(tick_count):
 		var tick = tick_zero.duplicate()
 		tick.visible = true
 		$Ticks.add_child(tick)
-		tick.position.x = Functions.map_range((tick_n + 1) * 50, Vector2(0, max_health), Vector2(0.0, length_zero))
+		tick.position.x = Functions.map_range((tick_n + 1) * 50, Vector2(0, max_health), Vector2(3.0, 122.0))
 
 func _on_damaged_timer_timeout() -> void:
 	is_shrinking = true

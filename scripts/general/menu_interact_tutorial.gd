@@ -8,4 +8,4 @@ func interact() -> void:
 	start_tutorial.emit()
 
 func initialise() -> void:
-	text_label.text = "Tutorial"
+	text_label.text = "TUTORIAL"

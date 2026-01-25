@@ -165,6 +165,10 @@ test2={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://localisation/localisation_20260125.ca.translation", "res://localisation/localisation_20260125.de.translation", "res://localisation/localisation_20260125.en.translation", "res://localisation/localisation_20260125.es.translation", "res://localisation/localisation_20260125.fr.translation", "res://localisation/localisation_20260125.it.translation")
+
 [layer_names]
 
 3d_physics/layer_1="Ground"

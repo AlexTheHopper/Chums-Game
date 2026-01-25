@@ -1,9 +1,6 @@
 extends Chum
 class_name Chum2
 var chum_id := 2
-var chum_name := "Stump"
-
-var desc := "This wooden chum was once part of a local tree, until a quite rude lumberjack decided that ol' stumpy didn't need its family anymore. These days it spends its time attacking anything unfamiliar with its signature spin attack."
 
 var min_attack_speed := 1.7
 

@@ -12,6 +12,8 @@ extends Node3D
 @export var custom_title_back: String
 @export var custom_text_back: String
 
+signal player_entered
+
 func _ready() -> void:
 	#Set visuals:
 	var mesh_num = 1
@@ -31,6 +33,7 @@ func _ready() -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
+		player_entered.emit(self)
 		var to_add = text_popup_scene.instantiate()
 		if is_custom:
 			make_custom(to_add)

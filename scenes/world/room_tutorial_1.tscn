@@ -418,64 +418,64 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -113)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -15)
 is_custom = true
 is_tutorial = true
-custom_title_front = "Jump!"
-custom_text_front = "Use [img]res://materials/ui/ui_jump.tres[/img] to scale looming cliffs."
-custom_title_back = "Camera!"
-custom_text_back = "You can also use [img]res://materials/ui/ui_cam_left.tres[/img] & [img]res://materials/ui/ui_cam_right.tres[/img] along with [img]res://materials/ui/ui_cam_up.tres[/img] & [img]res://materials/ui/ui_cam_down.tres[/img] to help navigate better!"
+custom_title_front = "TUTORIAL_JUMP_TITLE_FRONT"
+custom_text_front = "TUTORIAL_JUMP_TEXT_FRONT"
+custom_title_back = "TUTORIAL_JUMP_TITLE_BACK"
+custom_text_back = "TUTORIAL_JUMP_TEXT_BACK"
 
 [node name="Bracelets" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -30)
 is_custom = true
 is_tutorial = true
-custom_title_front = "Bracelets!"
-custom_text_front = "Use [img]res://materials/ui/ui_attack.tres[/img] to retreive friendship bracelets. These can normally only be obtained from chums."
-custom_title_back = "Bracelets!"
-custom_text_back = "When an enemy chum is knocked down, they will drop a bracelet for you!"
+custom_title_front = "TUTORIAL_BRACELETS_TITLE_FRONT"
+custom_text_front = "TUTORIAL_BRACELETS_TEXT_FRONT"
+custom_title_back = "TUTORIAL_BRACELETS_TITLE_BACK"
+custom_text_back = "TUTORIAL_BRACELETS_TEXT_BACK"
 
 [node name="Recruit" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -51.735)
 is_custom = true
 is_tutorial = true
-custom_title_front = "Chums!"
-custom_text_front = "Use [img]res://materials/ui/ui_interact.tres[/img] to make best friends with knocked down chums! (For a cost of friendship bracelets...)"
-custom_title_back = "Bracelets!"
-custom_text_back = "Stronger chums will require more bracelets, but if a friend is knocked down, its cost of revival will never change!"
+custom_title_front = "TUTORIAL_RECRUIT_TITLE_FRONT"
+custom_text_front = "TUTORIAL_RECRUIT_TEXT_FRONT"
+custom_title_back = "TUTORIAL_RECRUIT_TITLE_BACK"
+custom_text_back = "TUTORIAL_RECRUIT_TEXT_BACK"
 
 [node name="Carry" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -72)
 is_custom = true
 is_tutorial = true
-custom_title_front = "Carry!"
-custom_text_front = "Use [img]res://materials/ui/ui_interact.tres[/img] to bring your friends with you!"
-custom_title_back = "Carry!"
-custom_text_back = "Between rooms, they will automatically follow you."
+custom_title_front = "TUTORIAL_CARRY_TITLE_FRONT"
+custom_text_front = "TUTORIAL_CARRY_TEXT_FRONT"
+custom_title_back = "TUTORIAL_CARRY_TITLE_BACK"
+custom_text_back = "TUTORIAL_CARRY_TEXT_BACK"
 
 [node name="Battle" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -83)
 is_custom = true
 is_tutorial = true
-custom_title_front = "Battle!"
-custom_text_front = "Use [img]res://materials/ui/ui_attack.tres[/img] to ring the bell and wake enemy chums then battle for glory! You can hold [img]res://materials/ui/ui_attack.tres[/img] to wind up for a bigger smack!"
-custom_title_back = "Placement!"
-custom_text_back = "Make sure to strategically place your chums before battle for a higher chance of survival!"
+custom_title_front = "TUTORIAL_BATTLE_TITLE_FRONT"
+custom_text_front = "TUTORIAL_BATTLE_TEXT_FRONT"
+custom_title_back = "TUTORIAL_BATTLE_TITLE_BACK"
+custom_text_back = "TUTORIAL_BATTLE_TEXT_BACK"
 
 [node name="Cycle" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 4, -111)
 is_custom = true
 is_tutorial = true
-custom_title_front = "Too Crowded?"
-custom_text_front = "Use [img]res://materials/ui/ui_cycle.tres[/img] to cycle between chum information if there are too many close by!"
-custom_title_back = "Information!"
-custom_text_back = "You can use [img]res://materials/ui/ui_rotate.tres[/img] to view information about each chum on the back of their popup!"
+custom_title_front = "TUTORIAL_CYCLE_TITLE_FRONT"
+custom_text_front = "TUTORIAL_CYCLE_TEXT_FRONT"
+custom_title_back = "TUTORIAL_CYCLE_TITLE_BACK"
+custom_text_back = "TUTORIAL_CYCLE_TEXT_BACK"
 
 [node name="Pause" parent="Texts" instance=ExtResource("10_pr45q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4, -111)
 is_custom = true
 is_tutorial = true
-custom_title_front = "Need A Break?"
-custom_text_front = "Use [img]res://materials/ui/ui_pause.tres[/img] to take a breather!"
-custom_title_back = "Be Careful!"
-custom_text_back = "If you quit during a fight, you will die."
+custom_title_front = "TUTORIAL_PAUSE_TITLE_FRONT"
+custom_text_front = "TUTORIAL_PAUSE_TEXT_FRONT"
+custom_title_back = "TUTORIAL_PAUSE_TITLE_BACK"
+custom_text_back = "TUTORIAL_PAUSE_TEXT_BACK"
 
 [node name="SpawnRayCast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -12, 0)

@@ -24,6 +24,7 @@ func _ready() -> void:
 	start_button.start_game.connect(on_start_game)
 	start_button.save_changed.connect(change_display_chums)
 	tutorial_button.start_tutorial.connect(on_start_tutorial)
+	language_button.select_language.connect(update_language)
 
 	var dir = DirAccess.open("user://saves")
 	#Go through all files in saves
@@ -85,9 +86,11 @@ func _physics_process(delta: float) -> void:
 	camera.global_position = Vector3(15 * sin(camera_a), 10, 15 * cos(camera_a))
 	camera.rotation.y = camera_a - (PI / 4)
 
+#This is needed as the save file string is a composit string and is not automatically translated.
+func update_language(_lan_code: String) -> void:
+	start_button.change_text()
 
-
-func on_start_game(savegame_id: int) -> void:
+func on_start_game(savegame_id) -> void:
 	if starting_game:
 		return
 	starting_game = true

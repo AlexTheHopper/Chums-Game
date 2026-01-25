@@ -58,7 +58,7 @@ func _ready() -> void:
 	#Back
 	disp_name_back.text = disp_name.text
 	if chum.chum_id in PlayerStats.player_unique_chums_befriended:
-		desc_back.text = chum.desc
+		desc_back.text = chum.chum_desc
 		desc_back.visible = true
 		book_display.visible = false
 	else:

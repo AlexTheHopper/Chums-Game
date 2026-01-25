@@ -1,9 +1,6 @@
 extends Chum
 class_name Chum7
 var chum_id := 7
-var chum_name := "Ring of Pearls"
-
-var desc := "Down on your luck with a low amount of friendship bracelets? Fear not, behold this flower which grants you an extra bracelet on every enemy defeat!"
 
 var min_attack_speed := 2.55
 
