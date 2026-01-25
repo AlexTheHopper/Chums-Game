@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=4 uid="uid://dmgabiox56kck"]
+[gd_scene load_steps=37 format=4 uid="uid://dmgabiox56kck"]
 
 [ext_resource type="Script" uid="uid://d1mbalfu0wlex" path="res://scripts/entities/player.gd" id="1_8mcap"]
 [ext_resource type="Script" uid="uid://cf5efj3v5c38n" path="res://scripts/entities/health.gd" id="2_foxub"]
 [ext_resource type="Texture2D" uid="uid://qoftnyn10nd" path="res://Blender_Assets/Other_Exports/player_player.png" id="3_8dc6w"]
 [ext_resource type="Script" uid="uid://c88nh6mj5g4fa" path="res://scripts/general/camera.gd" id="3_b6tgf"]
+[ext_resource type="Shader" uid="uid://b5sj60mwbe5st" path="res://testing/hud_outline.gdshader" id="4_b6tgf"]
 [ext_resource type="Script" uid="uid://cwcyxfm4jw16k" path="res://scripts/entities/chums/nudge_zone.gd" id="4_dnykm"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_f0wg7"]
 [ext_resource type="Script" uid="uid://boh0vifvx5x5c" path="res://scripts/entities/hurtbox.gd" id="5_6214k"]
@@ -21,6 +22,17 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6tgf"]
+render_priority = 0
+shader = ExtResource("4_b6tgf")
+shader_parameter/outline_thickness = 0.1499999966472
+shader_parameter/step_threshold = 0.2999999932944
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_73kkf"]
+material = SubResource("ShaderMaterial_b6tgf")
+size = Vector2(2, 2)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s100y"]
 radius = 0.3
@@ -882,6 +894,11 @@ transform = Transform3D(1, 0, 0, 0, 0.819169, -0.573587, 0, 0.573588, 0.819167, 
 current = true
 size = 15.0
 script = ExtResource("3_b6tgf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera_Controller/Camera_Path/PathFollow3D/Camera_Target/Camera3D"]
+visible = false
+extra_cull_margin = 10.0
+mesh = SubResource("QuadMesh_73kkf")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera_Controller"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 2)

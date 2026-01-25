@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://xi6g2eiqww0b"]
+[gd_scene load_steps=33 format=4 uid="uid://xi6g2eiqww0b"]
 
 [ext_resource type="Script" uid="uid://btywxp6yslwdc" path="res://scripts/general/main_menu.gd" id="1_qtr6c"]
 [ext_resource type="MeshLibrary" uid="uid://cigp6vhw1rudc" path="res://assets/world/meshlib_world_1.tres" id="2_gytos"]
@@ -6,14 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://0kfmqmrttl5k" path="res://assets/world/streetlamp_1.tscn" id="3_tdqsr"]
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="4_ftlmj"]
 [ext_resource type="PackedScene" uid="uid://1gx5nyg7wiu2" path="res://particles/fireflies_world1.tscn" id="5_ftlmj"]
-[ext_resource type="Texture2D" uid="uid://cqdbk8d1nvodj" path="res://materials/ui/ui_jump.tres" id="6_m5i1f"]
 [ext_resource type="PackedScene" uid="uid://dkqrocdr2y8am" path="res://scenes/general/menu_being.tscn" id="6_pikal"]
 [ext_resource type="PackedScene" uid="uid://d3wrbhoaeypkv" path="res://scenes/world/decorations/grass_1.tscn" id="6_srke8"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="7_nalmj"]
-[ext_resource type="Texture2D" uid="uid://nk3u737hqkhg" path="res://materials/ui/ui_cam_left.tres" id="7_t4jgv"]
-[ext_resource type="Texture2D" uid="uid://b34ts0ajdpuia" path="res://materials/ui/ui_cam_right.tres" id="8_m5i1f"]
 [ext_resource type="Texture2D" uid="uid://qoftnyn10nd" path="res://Blender_Assets/Other_Exports/player_player.png" id="9_88aja"]
-[ext_resource type="Texture2D" uid="uid://cby0mvvo2k3mc" path="res://materials/ui/ui_cycle.tres" id="9_m5i1f"]
+[ext_resource type="Script" uid="uid://bnw51ksejxjvx" path="res://scripts/general/menu_interact_start.gd" id="11_7qbw1"]
+[ext_resource type="Script" uid="uid://d4cafyqtoduai" path="res://scripts/general/menu_interact_language.gd" id="13_237jf"]
+[ext_resource type="Script" uid="uid://dfxr85am8seas" path="res://scripts/general/menu_interact_tutorial.gd" id="14_gytos"]
 [ext_resource type="PackedScene" uid="uid://c8gvfnlca5kdw" path="res://scenes/world/decorations/grass_2.tscn" id="15_c8qn0"]
 [ext_resource type="PackedScene" uid="uid://dkx7amga74n6l" path="res://scenes/world/decorations/grass_5.tscn" id="16_gytos"]
 [ext_resource type="PackedScene" uid="uid://bwd1nmtnhqpjf" path="res://scenes/world/decorations/grass_3.tscn" id="17_7qbw1"]
@@ -28,7 +27,31 @@ fog_enabled = true
 fog_light_color = Color(0.0838779, 0.176419, 0.144425, 1)
 fog_density = 0.03
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftlmj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gytos"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qbw1"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iedvi"]
 bg_color = Color(0.158472, 0.158472, 0.158472, 1)
 border_width_left = 2
 border_width_top = 2
@@ -523,8 +546,11 @@ _data = {
 &"Swing": SubResource("Animation_e4s2a")
 }
 
-[node name="MainMenu" type="Node3D"]
+[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("start_button", "language_button", "tutorial_button")]
 script = ExtResource("1_qtr6c")
+start_button = NodePath("Control/StartInfo")
+language_button = NodePath("Control/LanguageInfo")
+tutorial_button = NodePath("Control/TutorialInfo")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("2_gytos")
@@ -755,18 +781,19 @@ offset_bottom = 650.0
 
 [node name="StartInfo" type="Panel" parent="Control"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -222.0
-offset_top = -175.0
-offset_right = -22.0
-offset_bottom = -125.0
+anchors_preset = -1
+anchor_left = 0.80700004
+anchor_top = 0.615
+anchor_right = 0.98100007
+anchor_bottom = 0.69200003
+offset_left = 0.3359375
+offset_top = 0.25
+offset_right = -0.11206055
+offset_bottom = 0.19998169
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ftlmj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gytos")
+script = ExtResource("11_7qbw1")
 
 [node name="Value" type="Label" parent="Control/StartInfo"]
 layout_mode = 1
@@ -783,31 +810,27 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Start"
+text = "START_GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UI_JUMP" type="Sprite2D" parent="Control/StartInfo"]
-position = Vector2(160, 25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_m5i1f")
-
-[node name="SaveSelect" type="Panel" parent="Control"]
+[node name="LanguageInfo" type="Panel" parent="Control"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -222.0
-offset_top = -100.0
-offset_right = -22.0
-offset_bottom = -50.0
+anchors_preset = -1
+anchor_left = 0.80700004
+anchor_top = 0.731
+anchor_right = 0.98100007
+anchor_bottom = 0.808
+offset_left = 0.3359375
+offset_top = -0.1499939
+offset_right = -0.11206055
+offset_bottom = -0.2000122
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ftlmj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7qbw1")
+script = ExtResource("13_237jf")
 
-[node name="Value" type="Label" parent="Control/SaveSelect"]
+[node name="Value" type="Label" parent="Control/LanguageInfo"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -822,34 +845,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Reality X"
+text = "LANGUAGE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UI_CAMLEFT" type="Sprite2D" parent="Control/SaveSelect"]
-position = Vector2(30, 25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_t4jgv")
-
-[node name="UI_CAMRIGHT" type="Sprite2D" parent="Control/SaveSelect"]
-position = Vector2(170, 25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_m5i1f")
-
 [node name="TutorialInfo" type="Panel" parent="Control"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1122.0
-offset_top = -100.0
-offset_right = -922.0
-offset_bottom = -50.0
+anchors_preset = -1
+anchor_left = 0.80700004
+anchor_top = 0.846
+anchor_right = 0.98100007
+anchor_bottom = 0.92300004
+offset_left = 0.3359375
+offset_top = 0.099975586
+offset_right = -0.11206055
+offset_bottom = 0.049987793
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ftlmj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_iedvi")
+script = ExtResource("14_gytos")
 
 [node name="Value" type="Label" parent="Control/TutorialInfo"]
 layout_mode = 1
@@ -866,14 +880,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Tutorial"
+text = "START_TUTORIAL"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="UI_CAMLEFT" type="Sprite2D" parent="Control/TutorialInfo"]
-position = Vector2(40, 25)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_m5i1f")
 
 [node name="MenuBeing" parent="." instance=ExtResource("6_pikal")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)

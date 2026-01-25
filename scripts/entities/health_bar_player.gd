@@ -2,9 +2,8 @@ extends Control
 
 @onready var health_bar: ColorRect = $Health
 @onready var damaged_bar: ColorRect = $Damaged
-@onready var tick_zero := $Ticks/TickZero
-@onready var length_zero: float
-@onready var posx_zero = health_bar.position.x
+@onready var tick_zero := $TickZero
+@onready var length_zero := health_bar.size.x
 @onready var health := 0.0
 @onready var max_health := 1.0
 @onready var damaged_timer: Timer = $DamagedTimer
@@ -13,10 +12,6 @@ extends Control
 var is_shrinking := false
 var health_ratio := 1.0
 var damaged_health_ratio := 1.0
-
-
-func _ready() -> void:
-	length_zero = health_bar.size.x
 
 func _physics_process(_delta: float) -> void:
 	if not is_shrinking:
@@ -47,17 +42,15 @@ func set_health(value):
 		damaged_bar.visible = true
 
 func set_ticks():
-	for tick in $Ticks.get_children().slice(1, $Ticks.get_children().size()):
+	for tick in $Ticks.get_children():
 		tick.queue_free()
-	
-	var tick_spacing_ratio = (50.0 / max_health)
-	
-	for n in range(1, floor(max_health / 50.0) + 1):
-		var tick = tick_zero.duplicate()
-		var xpos = round((n * tick_spacing_ratio * self.size.x) + posx_zero)
-		tick.global_position = Vector2(xpos, 0)
-		$Ticks.add_child(tick)
 
+	var tick_count = floor(max_health / 50.0)
+	for tick_n in range(tick_count):
+		var tick = tick_zero.duplicate()
+		tick.visible = true
+		$Ticks.add_child(tick)
+		tick.position.x = Functions.map_range((tick_n + 1) * 50, Vector2(0, max_health), Vector2(0.0, length_zero))
 
 func _on_damaged_timer_timeout() -> void:
 	is_shrinking = true
