@@ -19,10 +19,11 @@ agent_max_climb = 0.05
 ambient_light_source = 3
 ambient_light_color = Color(0.45, 0.45, 0.45, 1)
 ambient_light_sky_contribution = 0.5
+ambient_light_energy = 2.0
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
-fog_density = 0.03
+fog_density = 0.1
 fog_height = 4.0
 fog_height_density = 0.5
 
@@ -48,7 +49,7 @@ metadata/_editor_floor_ = Vector3(11, -4, -15)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -95)
 
 [node name="EndgameBeing" parent="Decorations" instance=ExtResource("4_lk7ai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 15, -85)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 13, -85)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1q6o2")
@@ -69,11 +70,23 @@ is_custom = true
 custom_text_front = "ENDGAME_1_FRONT"
 custom_text_back = "ENDGAME_1_BACK"
 
+[node name="Streetlamp" parent="Texts/Text1" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Streetlamp2" parent="Texts/Text1" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
 [node name="Text2" parent="Texts" instance=ExtResource("25_e02ak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -68)
 is_custom = true
 custom_text_front = "ENDGAME_2_FRONT"
 custom_text_back = "ENDGAME_2_BACK"
+
+[node name="Streetlamp" parent="Texts/Text2" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Streetlamp2" parent="Texts/Text2" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 
 [node name="Text3" parent="Texts" instance=ExtResource("25_e02ak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -56)
@@ -81,11 +94,23 @@ is_custom = true
 custom_text_front = "ENDGAME_3_FRONT"
 custom_text_back = "ENDGAME_3_BACK"
 
+[node name="Streetlamp" parent="Texts/Text3" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Streetlamp2" parent="Texts/Text3" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
 [node name="Text4" parent="Texts" instance=ExtResource("25_e02ak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -43)
 is_custom = true
 custom_text_front = "ENDGAME_4_FRONT"
 custom_text_back = "ENDGAME_4_BACK"
+
+[node name="Streetlamp" parent="Texts/Text4" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Streetlamp2" parent="Texts/Text4" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 
 [node name="Text5" parent="Texts" instance=ExtResource("25_e02ak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, -31)
@@ -93,11 +118,23 @@ is_custom = true
 custom_text_front = "ENDGAME_5_FRONT"
 custom_text_back = "ENDGAME_5_BACK"
 
+[node name="Streetlamp" parent="Texts/Text5" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Streetlamp2" parent="Texts/Text5" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
 [node name="Text6" parent="Texts" instance=ExtResource("25_e02ak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -14)
 is_custom = true
 custom_text_front = "ENDGAME_6_FRONT"
 custom_text_back = "ENDGAME_6_BACK"
+
+[node name="Streetlamp" parent="Texts/Text6" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="Streetlamp2" parent="Texts/Text6" instance=ExtResource("3_lk7ai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 
 [node name="SpawnRayCast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -12, 0)

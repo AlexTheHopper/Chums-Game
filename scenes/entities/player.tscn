@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dmgabiox56kck"]
+[gd_scene load_steps=45 format=4 uid="uid://dmgabiox56kck"]
 
 [ext_resource type="Script" uid="uid://d1mbalfu0wlex" path="res://scripts/entities/player.gd" id="1_8mcap"]
 [ext_resource type="Script" uid="uid://cf5efj3v5c38n" path="res://scripts/entities/health.gd" id="2_foxub"]
@@ -188,6 +188,60 @@ bind/5/pose = Transform3D(1, 0, -8.74228e-08, 0, -1, 0, -8.74228e-08, 0, -1, 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mtmvl"]
 size = Vector3(0.6, 0.37, 0.37)
+
+[sub_resource type="Gradient" id="Gradient_b6tgf"]
+offsets = PackedFloat32Array(0.0067873304, 1)
+colors = PackedColorArray(0.027871631, 0.010472344, 0.0042838333, 1, 0.11337877, 0.05428999, 0.022408204, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_73kkf"]
+gradient = SubResource("Gradient_b6tgf")
+
+[sub_resource type="Curve" id="Curve_n5sgd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5ki56"]
+curve = SubResource("Curve_n5sgd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b6tgf"]
+emission_shape_scale = Vector3(0.5, 0.2, 0.5)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 4.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -6, 0)
+scale_curve = SubResource("CurveTexture_5ki56")
+color_initial_ramp = SubResource("GradientTexture1D_73kkf")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogpgs"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_spk56"]
+material = SubResource("StandardMaterial3D_ogpgs")
+size = Vector3(0.075, 0.075, 0.075)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_saib0"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.2
+emission_ring_radius = 1.5
+emission_ring_inner_radius = 1.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 30.0
+radial_velocity_min = 0.99997765
+radial_velocity_max = 1.9999776
+gravity = Vector3(0, -6, 0)
+scale_curve = SubResource("CurveTexture_5ki56")
+color_initial_ramp = SubResource("GradientTexture1D_73kkf")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
 
 [sub_resource type="Animation" id="Animation_c5rqy"]
 resource_name = "Death"
@@ -998,6 +1052,35 @@ disabled = true
 [node name="HealthBar" parent="Armature" node_paths=PackedStringArray("health_node") instance=ExtResource("9_c5rqy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, 0)
 health_node = NodePath("../../Health")
+
+[node name="RunParticles" type="GPUParticles3D" parent="Armature"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+emitting = false
+amount = 25
+lifetime = 2.0
+randomness = 0.3
+visibility_aabb = AABB(-10, -5, -10, 20, 10, 20)
+process_material = SubResource("ParticleProcessMaterial_b6tgf")
+draw_pass_1 = SubResource("BoxMesh_spk56")
+
+[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="Armature/RunParticles"]
+size = Vector3(20, 10, 20)
+resolution = 1
+
+[node name="JumpParticles" type="GPUParticles3D" parent="Armature"]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.3
+visibility_aabb = AABB(-10, -5, -10, 20, 10, 20)
+process_material = SubResource("ParticleProcessMaterial_saib0")
+draw_pass_1 = SubResource("BoxMesh_spk56")
+
+[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="Armature/JumpParticles"]
+size = Vector3(20, 10, 20)
+resolution = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

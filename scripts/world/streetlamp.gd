@@ -1,4 +1,5 @@
 extends Node3D
+class_name Streetlamp
 
 @onready var light = $OmniLight3D
 @onready var mesh_scene : Node

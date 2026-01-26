@@ -9,6 +9,11 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_b3vfg")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+omni_range = 15.0
+omni_attenuation = 0.7
+omni_shadow_mode = 0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_fp7ed")
 

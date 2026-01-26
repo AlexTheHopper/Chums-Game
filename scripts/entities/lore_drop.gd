@@ -30,6 +30,11 @@ func _ready() -> void:
 	else:
 		mesh_scene = load("res://assets/world/lore_drop_%s.tscn" % [mesh_num]).instantiate()
 		mesh_node.add_child(mesh_scene)
+	
+	for lamp in get_children():
+		if lamp is Streetlamp:
+			lamp.light.visible = false
+			lamp.light.omni_range = 0
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
@@ -41,6 +46,14 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			to_add.global_position += Vector3(0.0, 1.0, 0.0)
 		else:
 			popup.add_child(to_add)
+		
+		for lamp in get_children():
+			if lamp is Streetlamp:
+				lamp.light.visible = true
+				get_tree().create_tween().tween_property(lamp.light, 
+												"omni_range",
+												75.0,
+												5.0)
 		
 
 func _on_area_3d_body_exited(body: Node3D) -> void:

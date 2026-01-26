@@ -44,6 +44,9 @@ var attacking_mult := 1.0
 @onready var lantern := $Armature/Skeleton3D/BoneAttachment3D/Lantern
 @onready var armature: Node3D = $Armature
 @onready var camera_controller: Node3D = $Camera_Controller
+@onready var run_particles: GPUParticles3D = $Armature/RunParticles
+@onready var jump_particles: GPUParticles3D = $Armature/JumpParticles
+
 
 @onready var hurt_particles := load("res://particles/damage_friendly.tscn")
 @onready var heal_particles := load("res://particles/heal_friendly.tscn")
@@ -93,13 +96,17 @@ func _physics_process(delta: float) -> void:
 		anim_player.play("Swing")
 		anim_player.speed_scale = 0.12
 		anim_player.animation_finished.connect(_on_attack_finished, CONNECT_ONE_SHOT)
+		run_particles.emitting = false
 	elif not is_attacking and Global.is_alive:
 		if Input.is_action_pressed("jump") and is_on_floor():
 			anim_player.play("Jump_Carry" if is_carrying else "Jump_noCarry")
+			#run_particles.emitting = false
 		elif input_dir != Vector2.ZERO and is_on_floor():
 			anim_player.play("Run_Carry" if is_carrying else "Run_noCarry")
+			run_particles.emitting = true
 		elif input_dir == Vector2.ZERO and is_on_floor():
 			anim_player.play("Idle_Carry" if is_carrying else "Idle_noCarry")
+			run_particles.emitting = false
 		attacking_mult = lerp(attacking_mult, 1.0, 0.05)
 		
 	#Increment charging and manage lantern size:
@@ -138,6 +145,8 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		jumping_time = MAX_JUMPING_TIME
 		coyote_time = MAX_COYOTE
+		if (in_jump or is_launched) and velocity.y <= 0.0:
+			jump_particles.restart()
 		in_jump = false
 		is_launched = false
 		#align_with_floor($RayCast3D.get_collision_normal())
@@ -146,6 +155,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += get_gravity_dir() * delta
 		coyote_time = max(0, coyote_time - 1)
 		#align_with_floor(Vector3.UP)
+		run_particles.emitting = false
 		
 	if Input.is_anything_pressed():
 		can_align = true

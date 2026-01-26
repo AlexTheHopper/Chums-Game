@@ -32,6 +32,10 @@ func _on_contact_zone_body_entered(body: Node3D) -> void:
 func get_stats_to_increase(chum, count: int) -> Dictionary:
 	var to_return = {"health": 0, "move_speed": 0, "attack_damage": 0, "attack_speed": 0}
 	var to_increase := []
+	
+	#If chum has nothing, return nothing.
+	if not chum.has_attack_speed and not chum.has_attack_damage and not chum.has_move_speed and not chum.has_health:
+		return to_return
 
 	if chum.has_attack_speed:
 		to_increase.append("attack_speed")
