@@ -3,6 +3,9 @@ extends Node3D
 @onready var heart_tscn := load("res://scenes/entities/heart_item.tscn")
 @onready var hearts: Node3D = $Hearts
 @onready var hearts_timer: Timer = $Timer
+@onready var water: MeshInstance3D = $Water
+
+@export var water_dim: Vector3 = Vector3(10.0, 1.0, 10.0)
 
 var heart_num := -1
 var hearts_set := false
@@ -13,6 +16,8 @@ const HEART_HEAL_FACTOR := 0.1
 const HEART_HEAL_MIN := 25.0
 
 func _ready() -> void:
+	water.mesh = water.mesh.duplicate()
+	water.mesh.size = water_dim
 	if not hearts_set:
 		heart_num = Global.world_map[Global.room_location]["room_specific_id"]
 		

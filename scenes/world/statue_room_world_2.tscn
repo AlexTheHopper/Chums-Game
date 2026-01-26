@@ -20,11 +20,11 @@ agent_max_climb = 0.05
 [sub_resource type="Environment" id="Environment_rkvab"]
 ambient_light_source = 3
 ambient_light_color = Color(0.54901963, 0.54901963, 0.54901963, 1)
-ambient_light_sky_contribution = 0.5
+ambient_light_sky_contribution = 0.4
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
-fog_density = 0.05
+fog_density = 0.04
 fog_height = 2.5
 fog_height_density = 0.6
 

@@ -12,7 +12,7 @@
 [sub_resource type="Environment" id="Environment_y3gcu"]
 ambient_light_source = 3
 ambient_light_color = Color(0.54901963, 0.54901963, 0.54901963, 1)
-ambient_light_sky_contribution = 0.5
+ambient_light_sky_contribution = 0.2
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)

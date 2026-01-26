@@ -34,7 +34,8 @@ func _ready() -> void:
 	for lamp in get_children():
 		if lamp is Streetlamp:
 			lamp.light.visible = false
-			lamp.light.omni_range = 0
+			lamp.light.spot_attenuation = 1.0
+			lamp.light.spot_range = 0.0
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
@@ -51,8 +52,12 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			if lamp is Streetlamp:
 				lamp.light.visible = true
 				get_tree().create_tween().tween_property(lamp.light, 
-												"omni_range",
-												75.0,
+												"spot_attenuation",
+												0.5,
+												5.0)
+				get_tree().create_tween().tween_property(lamp.light, 
+												"spot_range",
+												20.0,
 												5.0)
 		
 

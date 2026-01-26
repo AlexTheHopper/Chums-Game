@@ -147,7 +147,6 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4ujy7"]
 material = SubResource("ShaderMaterial_8wbyg")
-size = Vector3(10, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mgyhe"]
 size = Vector3(9.5, 0.6, 9.5)

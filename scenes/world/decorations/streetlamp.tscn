@@ -10,11 +10,11 @@ radius = 0.3
 collision_mask = 10
 script = ExtResource("1_hgtxx")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 4.8, 0.05)
-omni_range = 75.0
-omni_attenuation = 0.0
-omni_shadow_mode = 0
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.05, 15, 0.05)
+light_energy = 3.0
+spot_range = 50.0
+spot_attenuation = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 2.5, 0.05)

@@ -24,7 +24,6 @@ func _on_prisoners_changed() -> void:
 		end_sequence()
 
 func end_sequence() -> void:
-	print("You Win! :)")
 	room_changer_zone.active = true
 	room_changer_zone.prisoner_id = chums.pick_random()
 	$AnimationPlayer.play("activate")

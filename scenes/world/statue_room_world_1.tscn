@@ -20,7 +20,7 @@ agent_max_climb = 0.05
 [sub_resource type="Environment" id="Environment_tepd7"]
 ambient_light_source = 3
 ambient_light_color = Color(0.73893, 0.821893, 0.656433, 1)
-ambient_light_sky_contribution = 0.9
+ambient_light_sky_contribution = 0.8
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0.11607789, 0.22975355, 0.19094875, 1)
