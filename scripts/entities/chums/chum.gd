@@ -48,13 +48,11 @@ var previous_group := "Chums_Neutral"
 @onready var hurt_particles_num_blue := load("res://particles/damage_num_blue.tscn")
 @onready var hurt_particles_num_red := load("res://particles/damage_num_red.tscn")
 @onready var quality_particles := load("res://particles/quality_increase.tscn")
+@export var quality: Dictionary[String, int] = {"health": 0, "move_speed": 0, "attack_damage": 0, "attack_speed": 0}
+@export var stats_set := false
 
-
-var stats_set := false
-var quality: Dictionary[String, int] = {"health": 0, "move_speed": 0, "attack_damage": 0, "attack_speed": 0}
 var move_speed: float
 var attack_speed: float
-var start_health := -1
 var max_move_speed: float
 var temp_sleep_time: float
 var is_temporary := false
@@ -63,6 +61,7 @@ var is_decoration := false
 @onready var has_quality_popup := false
 @export var indicator_color := Color.from_rgba8(40, 40, 40, 255)
 @export var being_particles: Node3D
+@export var start_health := -1
 
 
 @onready var target: Node
@@ -194,6 +193,8 @@ func disable_interaction():
 
 #Runs when enemy chums wake up from room activator if enemy
 func wake_up():
+	if state_machine.current_state.state_name == "Knock":
+		return
 	make_enemy()
 	set_new_target()
 	set_state("Wake")

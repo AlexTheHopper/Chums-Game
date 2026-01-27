@@ -4,6 +4,7 @@ extends Node3D
 @onready var popup: Node3D = $Popup
 @onready var mesh_scene : Node
 @onready var mesh_node: Node3D = $MeshNode
+@onready var navigation_obstacle_3d: NavigationObstacle3D = $NavigationObstacle3D
 
 @export var is_custom := false
 @export var is_tutorial := false
@@ -27,6 +28,7 @@ func _ready() -> void:
 	if is_tutorial:
 		mesh_scene = load("res://assets/world/sign.tscn").instantiate()
 		mesh_node.add_child(mesh_scene)
+		navigation_obstacle_3d.radius = 1.0
 	else:
 		mesh_scene = load("res://assets/world/lore_drop_%s.tscn" % [mesh_num]).instantiate()
 		mesh_node.add_child(mesh_scene)
@@ -54,11 +56,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 				get_tree().create_tween().tween_property(lamp.light, 
 												"spot_attenuation",
 												0.5,
-												5.0)
+												2.5)
 				get_tree().create_tween().tween_property(lamp.light, 
 												"spot_range",
 												20.0,
-												5.0)
+												2.5)
 		
 
 func _on_area_3d_body_exited(body: Node3D) -> void:

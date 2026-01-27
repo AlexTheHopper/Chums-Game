@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
 		if fmod(camera_a, 2 * PI) > 0.8:
 			camera_returning = true
 		
-	elif Input.is_action_just_pressed("cam_right") or Input.is_action_just_pressed("cam_right"):
+	elif Input.is_action_just_pressed("cam_right") or Input.is_action_just_pressed("move_right"):
 		buttons[button_index].right()
 		if fmod(camera_a, 2 * PI) > 0.8:
 			camera_returning = true

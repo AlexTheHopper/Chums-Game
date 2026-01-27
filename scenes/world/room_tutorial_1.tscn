@@ -332,23 +332,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
 [node name="Entities" type="Node3D" parent="." unique_id=27552230]
 
-[node name="Entity" parent="Entities" unique_id=399662848 instance=ExtResource("5_rmn0f")]
+[node name="ChumKnock1" parent="Entities" unique_id=399662848 instance=ExtResource("5_rmn0f")]
 transform = Transform3D(0.42157397, 0, -0.906794, 0, 1, 0, 0.906794, 0, 0.42157397, 2.6541443, 2, -59.775913)
 initial_state_override = "Knock"
+quality = Dictionary[String, int]({
+"attack_damage": 1,
+"attack_speed": 1,
+"health": 2,
+"move_speed": -1
+})
+stats_set = true
+start_health = 0
 
-[node name="Entity4" parent="Entities" unique_id=357003816 instance=ExtResource("5_rmn0f")]
+[node name="ChumKnock2" parent="Entities" unique_id=357003816 instance=ExtResource("5_rmn0f")]
 transform = Transform3D(-0.5616936, 0, -0.8273453, 0, 1, 0, 0.8273453, 0, -0.5616936, -4.1113205, 2, -63.121883)
 initial_state_override = "Knock"
+quality = Dictionary[String, int]({
+"attack_damage": 2,
+"attack_speed": -2,
+"health": -2,
+"move_speed": 2
+})
+stats_set = true
+start_health = 0
 
-[node name="Entity5" parent="Entities" unique_id=574457592 instance=ExtResource("6_rmn0f")]
+[node name="ChumKnock3" parent="Entities" unique_id=534758533 instance=ExtResource("13_7q0c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.911557, 2, -69.80324)
+initial_state_override = "Knock"
+quality = Dictionary[String, int]({
+"attack_damage": 2,
+"attack_speed": -2,
+"health": 1,
+"move_speed": -2
+})
+stats_set = true
+start_health = 0
+
+[node name="ChumKnock4" parent="Entities" unique_id=547981719 instance=ExtResource("13_7q0c4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5473213, 2, -72.50295)
+initial_state_override = "Knock"
+quality = Dictionary[String, int]({
+"attack_damage": 0,
+"attack_speed": 2,
+"health": -1,
+"move_speed": 2
+})
+stats_set = true
+start_health = 0
+
+[node name="Chum1" parent="Entities" unique_id=574457592 instance=ExtResource("6_rmn0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5633774, 4, -101.03)
 initial_state_override = "Sleep"
 
-[node name="Entity6" parent="Entities" unique_id=837166014 instance=ExtResource("6_rmn0f")]
+[node name="Chum2" parent="Entities" unique_id=837166014 instance=ExtResource("6_rmn0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5799217, 4, -96.640274)
 initial_state_override = "Sleep"
 
-[node name="Entity7" parent="Entities" unique_id=717282139 instance=ExtResource("6_rmn0f")]
+[node name="Chum3" parent="Entities" unique_id=717282139 instance=ExtResource("6_rmn0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.824814, 4, -91.90744)
 initial_state_override = "Sleep"
 
@@ -390,14 +430,6 @@ script = ExtResource("8_4jg75")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/PunchingBag3/BraceletSpawner" unique_id=1477569812]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_7q0c4")
-
-[node name="Entity2" parent="Entities" unique_id=547981719 instance=ExtResource("13_7q0c4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5473213, 2, -72.50295)
-initial_state_override = "Knock"
-
-[node name="Entity3" parent="Entities" unique_id=534758533 instance=ExtResource("13_7q0c4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.911557, 2, -69.80324)
-initial_state_override = "Knock"
 
 [node name="RoomChangers" type="Node3D" parent="." unique_id=1321549275]
 

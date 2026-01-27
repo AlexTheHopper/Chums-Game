@@ -48,6 +48,9 @@ func _ready() -> void:
 func activate_chums():
 	for chum in get_tree().get_nodes_in_group("Chums_Neutral"):
 		chum.wake_up()
+	
+	for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
+		chum.wake_up()
 		
 	for chum in get_tree().get_nodes_in_group("Chums_Friend"):
 		chum.find_enemy()
