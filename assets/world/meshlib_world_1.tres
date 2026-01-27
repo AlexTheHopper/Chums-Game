@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=150 format=4 uid="uid://cigp6vhw1rudc"]
+[gd_resource type="MeshLibrary" format=4 uid="uid://cigp6vhw1rudc"]
 
 [ext_resource type="Texture2D" uid="uid://bvwlunvl8tqu0" path="res://assets/world/world_1_tiles/dirt_full_no_edge_Color.png" id="1_u8q23"]
 [ext_resource type="Texture2D" uid="uid://ve1oo6wq1ir6" path="res://assets/world/world_1_tiles/dirt_edge_full_edge_Color.png" id="2_tsylk"]
