@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d3m7ukebysy4h"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d3m7ukebysy4h"]
 
 [sub_resource type="Shader" id="Shader_mgyhe"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.stable's StandardMaterial3D.
@@ -110,9 +110,9 @@ void fragment() {
 noise_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4ujy7"]
+noise = SubResource("FastNoiseLite_8wbyg")
 seamless = true
 as_normal_map = true
-noise = SubResource("FastNoiseLite_8wbyg")
 
 [resource]
 render_priority = 0

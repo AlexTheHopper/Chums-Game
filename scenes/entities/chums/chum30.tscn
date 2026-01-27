@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cu202fjw1juu0"]
+[gd_scene format=4 uid="uid://cu202fjw1juu0"]
 
 [ext_resource type="Script" uid="uid://c1q25f0lgcl5s" path="res://scripts/entities/chums/chum30/chum30.gd" id="1_lgwl4"]
 [ext_resource type="Texture2D" uid="uid://dma5latqr17s6" path="res://Blender_Assets/Chum_Exports/chum30_chum30_detach_Color.png" id="2_wyjim"]
@@ -207,7 +207,7 @@ _data = {
 &"RESET": SubResource("Animation_0cg04")
 }
 
-[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
+[node name="Entity" type="CharacterBody3D" unique_id=427410180 node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
 script = ExtResource("1_lgwl4")
 anim_player = NodePath("Body/AnimationPlayer")
 body_mesh = NodePath("Body/Armature/Skeleton3D/chum30_detach")
@@ -217,12 +217,12 @@ hurtbox = NodePath("Hurtbox")
 interaction_area = NodePath("ChumInterractionArea")
 bracelet = NodePath("Body/Armature/Skeleton3D/BoneAttachment3D/Bracelet")
 
-[node name="Body" type="Node3D" parent="."]
+[node name="Body" type="Node3D" parent="." unique_id=815684741]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="Armature" type="Node3D" parent="Body"]
+[node name="Armature" type="Node3D" parent="Body" unique_id=94508129]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Body/Armature"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Body/Armature" unique_id=1116153811]
 bones/0/name = "Base"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -238,67 +238,64 @@ bones/1/position = Vector3(0, 0.39999998, 0)
 bones/1/rotation = Quaternion(0, 0, 0, 1)
 bones/1/scale = Vector3(1, 1, 1)
 
-[node name="chum30_detach" type="MeshInstance3D" parent="Body/Armature/Skeleton3D"]
+[node name="chum30_detach" type="MeshInstance3D" parent="Body/Armature/Skeleton3D" unique_id=360092903]
 mesh = SubResource("ArrayMesh_lwbut")
 skin = SubResource("Skin_jedro")
+skeleton = NodePath("..")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" unique_id=2080069699]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39999998, 0)
 bone_name = "Head"
 bone_idx = 1
 
-[node name="SleepZone" type="Node3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D"]
+[node name="SleepZone" type="Node3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D" unique_id=334731364]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43209136, 0)
 
-[node name="Bracelet" parent="Body/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("3_wyjim")]
+[node name="Bracelet" parent="Body/Armature/Skeleton3D/BoneAttachment3D" unique_id=1917856243 instance=ExtResource("3_wyjim")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.7, 0.4)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
-libraries = {
-&"": SubResource("AnimationLibrary_oxo64")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body" unique_id=121973717]
+libraries/ = SubResource("AnimationLibrary_oxo64")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1355240545]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_slrsf")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=953785903]
 transform = Transform3D(0.5, 0, 0, 3.38813e-21, 0.5, 0, 0, 0, 0.5, 0, 0.85, 0)
 script = ExtResource("4_obpmm")
 metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1368002057]
 shape = SubResource("SphereShape3D_4cr8o")
 disabled = true
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1506403182]
 script = ExtResource("5_lwbut")
 metadata/_custom_type_script = "uid://boh0vifvx5x5c"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=514091089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_6ae7y")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox"]
-libraries = {
-&"": SubResource("AnimationLibrary_cpt0m")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox" unique_id=734472604]
+libraries/ = SubResource("AnimationLibrary_cpt0m")
 
-[node name="GeneralChumBehaviour" parent="." instance=ExtResource("6_582ww")]
+[node name="GeneralChumBehaviour" parent="." unique_id=1264310972 instance=ExtResource("6_582ww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 
-[node name="ChumInterractionArea" parent="." instance=ExtResource("7_1m2o1")]
+[node name="ChumInterractionArea" parent="." unique_id=398188048 instance=ExtResource("7_1m2o1")]
 
-[node name="Particles" type="Node3D" parent="."]
+[node name="Particles" type="Node3D" parent="." unique_id=305452972]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.848377, 0)
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=203401118]
 
-[node name="ChumSpecificStates" type="Node" parent="."]
+[node name="ChumSpecificStates" type="Node" parent="." unique_id=27824256]
 
-[node name="Active" type="Node" parent="ChumSpecificStates"]
+[node name="Active" type="Node" parent="ChumSpecificStates" unique_id=151443026]
 script = ExtResource("8_53te0")
 spawn_chum_id = 29
 
-[node name="Idle" type="Node" parent="ChumSpecificStates"]
+[node name="Idle" type="Node" parent="ChumSpecificStates" unique_id=1912868213]
 script = ExtResource("9_0byw8")

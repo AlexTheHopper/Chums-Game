@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://jy8eeaesys4b"]
+[gd_scene format=3 uid="uid://jy8eeaesys4b"]
 
 [ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_7gymx"]
 
@@ -22,10 +22,10 @@ colors = PackedColorArray(0.32077813, 0.24183604, 0.005260643, 1, 0.95, 0.705058
 offsets = PackedFloat32Array(0, 0.832512)
 colors = PackedColorArray(0.10748, 0.10748, 0.10748, 1, 0.273873, 0.273873, 0.273873, 1)
 
-[node name="SpawnParticles" type="Node3D"]
+[node name="SpawnParticles" type="Node3D" unique_id=1138200842]
 script = ExtResource("1_7gymx")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=357880573]
 emitting = false
 amount = 50
 one_shot = true

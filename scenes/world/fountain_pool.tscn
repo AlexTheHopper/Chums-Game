@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b74vi5vyt44bq"]
+[gd_scene format=3 uid="uid://b74vi5vyt44bq"]
 
 [ext_resource type="Script" uid="uid://dch1vebwqobo4" path="res://scripts/world/fountain_pool.gd" id="1_8wbyg"]
 
@@ -169,37 +169,37 @@ point_count = 4
 offsets = PackedFloat32Array(0.142857, 1)
 colors = PackedColorArray(0.205117, 0.205117, 0.205117, 1, 1, 1, 1, 1)
 
-[node name="Fountain" type="Node3D"]
+[node name="Fountain" type="Node3D" unique_id=1204836015]
 script = ExtResource("1_8wbyg")
 
-[node name="Water" type="MeshInstance3D" parent="."]
+[node name="Water" type="MeshInstance3D" parent="." unique_id=1017904057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 mesh = SubResource("BoxMesh_4ujy7")
 
-[node name="HealZone" type="Area3D" parent="."]
+[node name="HealZone" type="Area3D" parent="." unique_id=1865501589]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 collision_layer = 0
 collision_mask = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HealZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HealZone" unique_id=1854087667]
 shape = SubResource("BoxShape3D_mgyhe")
 
-[node name="FlyZone" type="Area3D" parent="."]
+[node name="FlyZone" type="Area3D" parent="." unique_id=475864143]
 collision_layer = 0
 collision_mask = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FlyZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlyZone" unique_id=1022093335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_8wbyg")
 
-[node name="Hearts" type="Node3D" parent="."]
+[node name="Hearts" type="Node3D" parent="." unique_id=835698880]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=413920180]
 wait_time = 2.1999999999999997
 one_shot = true
 autostart = true
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=877907554]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 amount = 20
 randomness = 0.5

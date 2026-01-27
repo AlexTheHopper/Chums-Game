@@ -1,25 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkqrocdr2y8am"]
+[gd_scene format=3 uid="uid://dkqrocdr2y8am"]
 
 [ext_resource type="Script" uid="uid://c26wrrsqq6axn" path="res://scripts/general/menu_being.gd" id="1_cu1gk"]
 [ext_resource type="PackedScene" uid="uid://qteb5yp5am2n" path="res://particles/being_particles.tscn" id="2_kigss"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gve3k"]
 
-[node name="MenuBeing" type="CharacterBody3D"]
+[node name="MenuBeing" type="CharacterBody3D" unique_id=1082942577]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_cu1gk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2042990395]
 shape = SubResource("SphereShape3D_gve3k")
 
-[node name="MoveTimer" type="Timer" parent="."]
+[node name="MoveTimer" type="Timer" parent="." unique_id=1762202683]
 wait_time = 10.0
 autostart = true
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=669113692]
 target_position = Vector3(0, -5, 0)
 
-[node name="BeingParticles" parent="." instance=ExtResource("2_kigss")]
+[node name="BeingParticles" parent="." unique_id=834141141 instance=ExtResource("2_kigss")]
 
 [connection signal="timeout" from="MoveTimer" to="." method="set_new_target"]

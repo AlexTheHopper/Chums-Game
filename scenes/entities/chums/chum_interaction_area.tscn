@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwsswul3x20m3"]
+[gd_scene format=3 uid="uid://dwsswul3x20m3"]
 
 [ext_resource type="Script" uid="uid://bdhxw8wg4bk1p" path="res://scripts/entities/chums/chum_interaction_area.gd" id="1_jae2n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xwwfy"]
 radius = 2.0
 
-[node name="ChumInterractionArea" type="Area3D"]
+[node name="ChumInterractionArea" type="Area3D" unique_id=397507550]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_jae2n")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1154283144]
 shape = SubResource("SphereShape3D_xwwfy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

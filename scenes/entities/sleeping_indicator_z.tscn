@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxlr42okabcim"]
+[gd_scene format=3 uid="uid://bxlr42okabcim"]
 
 [ext_resource type="Script" uid="uid://cs61ultl2b7vi" path="res://scripts/entities/sleeping_indicator_z.gd" id="1_5xe74"]
 
@@ -45,22 +45,20 @@ _data = {
 &"fade_out": SubResource("Animation_3y1gu")
 }
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=711396571]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_5xe74")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=678804370]
 cast_shadow = 0
 mesh = SubResource("TextMesh_v5wed")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2002926359]
 shape = SubResource("BoxShape3D_t88fn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_vob06")
-}
-autoplay = "fade_out"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=13511914]
+libraries/ = SubResource("AnimationLibrary_vob06")
+autoplay = &"fade_out"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

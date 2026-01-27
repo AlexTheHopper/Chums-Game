@@ -1,177 +1,135 @@
-[gd_scene load_steps=24 format=3 uid="uid://cmopiwmgjwjb8"]
+[gd_scene format=3 uid="uid://cmopiwmgjwjb8"]
 
-[ext_resource type="Script" path="res://demo/IconRemapper.gd" id="2"]
-[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_ww1q8"]
+[ext_resource type="Script" uid="uid://dlfr31mtw0t1l" path="res://demo/IconRemapper.gd" id="2"]
+[ext_resource type="Script" uid="uid://dcfudola7tys2" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_ww1q8"]
 
 [sub_resource type="Texture2D" id="Texture2D_oaqcv"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/a"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_julos"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/b"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_p7fj8"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/x"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_e65pp"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/y"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_drwxf"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/lb"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_lpg8q"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/rb"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_tqj64"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/lt"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_g8v8u"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/rt"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_uqh53"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/l_stick_click"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_jt7n0"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/r_stick_click"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_jmm2v"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/select"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_2w7la"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/start"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_rhnqu"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/dpad"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_vr4j2"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/dpad_up"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_hp6k2"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/dpad_down"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_4trym"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/dpad_left"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_61h51"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/dpad_right"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_adhf2"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/home"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_dl7nm"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/share"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_3ry3e"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/l_stick"
-show_mode = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_t68xw"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_ww1q8")
 path = "joypad/r_stick"
-show_mode = 0
-force_type = 0
 
-[node name="Control" type="MarginContainer"]
+[node name="Control" type="MarginContainer" unique_id=1913684071]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -185,388 +143,388 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 script = ExtResource("2")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2094521995]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Icons" type="HBoxContainer" parent="HBoxContainer"]
+[node name="Icons" type="HBoxContainer" parent="HBoxContainer" unique_id=8834740]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Icons"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Icons" unique_id=1383531277]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="A" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="A" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=1555340995]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/A"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/A" unique_id=233750054]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_oaqcv")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/A"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/A" unique_id=326470951]
 layout_mode = 2
 text = " A"
 
-[node name="B" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="B" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=1405096487]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/B"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/B" unique_id=808415278]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_julos")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/B"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/B" unique_id=1213866742]
 layout_mode = 2
 text = " B"
 
-[node name="X" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="X" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=414517958]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/X"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/X" unique_id=1511211608]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_p7fj8")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/X"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/X" unique_id=2139174569]
 layout_mode = 2
 text = " X"
 
-[node name="Y" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="Y" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=1565338709]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/Y"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/Y" unique_id=1439688416]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_e65pp")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/Y"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/Y" unique_id=1873204660]
 layout_mode = 2
 text = " Y"
 
-[node name="LB" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="LB" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=175921009]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/LB"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/LB" unique_id=320663195]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_drwxf")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/LB"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/LB" unique_id=2145124468]
 layout_mode = 2
 text = " Left Button"
 
-[node name="RB" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="RB" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=2135767953]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/RB"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/RB" unique_id=1511493485]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_lpg8q")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/RB"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/RB" unique_id=1559746935]
 layout_mode = 2
 text = " Right Button"
 
-[node name="LT" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="LT" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=82310798]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/LT"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/LT" unique_id=1649580435]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_tqj64")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/LT"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/LT" unique_id=561176401]
 layout_mode = 2
 text = " Left Trigger"
 
-[node name="RT" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="RT" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=1862823913]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/RT"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/RT" unique_id=1695096953]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_g8v8u")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/RT"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/RT" unique_id=2143146409]
 layout_mode = 2
 text = " Right Trigger"
 
-[node name="L_Stick_Click" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="L_Stick_Click" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=331705696]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/L_Stick_Click"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/L_Stick_Click" unique_id=1235173144]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_uqh53")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/L_Stick_Click"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/L_Stick_Click" unique_id=1482048399]
 layout_mode = 2
 text = " Left Stick Click"
 
-[node name="R_Stick_Click" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="R_Stick_Click" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=1975012278]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/R_Stick_Click"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/R_Stick_Click" unique_id=1200114495]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_jt7n0")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/R_Stick_Click"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/R_Stick_Click" unique_id=1923677383]
 layout_mode = 2
 text = " Right Stick Click"
 
-[node name="Select" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer"]
+[node name="Select" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer" unique_id=1761716271]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/Select"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer/Select" unique_id=913609389]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_jmm2v")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/Select"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer/Select" unique_id=298582997]
 layout_mode = 2
 text = " Select"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Icons"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Icons" unique_id=1241677512]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Start" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2"]
+[node name="Start" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2" unique_id=342853922]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/Start"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/Start" unique_id=2007820070]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_2w7la")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/Start"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/Start" unique_id=923904432]
 layout_mode = 2
 text = " Start"
 
-[node name="DPAD" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2"]
+[node name="DPAD" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2" unique_id=80701891]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/DPAD"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/DPAD" unique_id=1835944074]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_rhnqu")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/DPAD"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/DPAD" unique_id=908190264]
 layout_mode = 2
 text = " DPAD"
 
-[node name="DPAD_Up" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2"]
+[node name="DPAD_Up" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2" unique_id=1724790531]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Up"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Up" unique_id=1359749198]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_vr4j2")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Up"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Up" unique_id=2026825748]
 layout_mode = 2
 text = " DPAD Up"
 
-[node name="DPAD_Down" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2"]
+[node name="DPAD_Down" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2" unique_id=651078624]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Down"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Down" unique_id=1607159537]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_hp6k2")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Down"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Down" unique_id=42619116]
 layout_mode = 2
 text = " DPAD Down"
 
-[node name="DPAD_Left" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2"]
+[node name="DPAD_Left" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2" unique_id=66618622]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Left"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Left" unique_id=1909018517]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_4trym")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Left"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Left" unique_id=33237518]
 layout_mode = 2
 text = " DPAD Left"
 
-[node name="DPAD_Right" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2"]
+[node name="DPAD_Right" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2" unique_id=673180714]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Right"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Right" unique_id=189577404]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_61h51")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Right"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/DPAD_Right" unique_id=1489071906]
 layout_mode = 2
 text = " DPAD Right"
 
-[node name="Home" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2"]
+[node name="Home" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2" unique_id=1462706609]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/Home"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/Home" unique_id=364279802]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_adhf2")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/Home"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/Home" unique_id=2137613476]
 layout_mode = 2
 text = " Home"
 
-[node name="Share" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2"]
+[node name="Share" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2" unique_id=2082027258]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/Share"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/Share" unique_id=1008248962]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_dl7nm")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/Share"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/Share" unique_id=1350351253]
 layout_mode = 2
 text = " Share"
 
-[node name="LStick" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2"]
+[node name="LStick" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2" unique_id=1032038360]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/LStick"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/LStick" unique_id=1068736074]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_3ry3e")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/LStick"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/LStick" unique_id=531314019]
 layout_mode = 2
 text = " Left Stick"
 
-[node name="RStick" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2"]
+[node name="RStick" type="HBoxContainer" parent="HBoxContainer/Icons/VBoxContainer2" unique_id=1244462820]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/RStick"]
+[node name="ControllerTextureRect" type="TextureRect" parent="HBoxContainer/Icons/VBoxContainer2/RStick" unique_id=1296050863]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = SubResource("Texture2D_t68xw")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/RStick"]
+[node name="Label" type="Label" parent="HBoxContainer/Icons/VBoxContainer2/RStick" unique_id=1305229924]
 layout_mode = 2
 text = " Right Stick"
 
-[node name="Buttons" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Buttons" type="VBoxContainer" parent="HBoxContainer" unique_id=2021208969]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Auto" type="Button" parent="HBoxContainer/Buttons"]
+[node name="Auto" type="Button" parent="HBoxContainer/Buttons" unique_id=1673877639]
 layout_mode = 2
 size_flags_vertical = 3
 text = "[ Set to automatic ]"
 
-[node name="Luna" type="Button" parent="HBoxContainer/Buttons"]
+[node name="Luna" type="Button" parent="HBoxContainer/Buttons" unique_id=2032211703]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Amazon Luna"
 
-[node name="PS3" type="Button" parent="HBoxContainer/Buttons"]
+[node name="PS3" type="Button" parent="HBoxContainer/Buttons" unique_id=1289094913]
 layout_mode = 2
 size_flags_vertical = 3
 text = "PlayStation 3"
 
-[node name="PS4" type="Button" parent="HBoxContainer/Buttons"]
+[node name="PS4" type="Button" parent="HBoxContainer/Buttons" unique_id=1756286593]
 layout_mode = 2
 size_flags_vertical = 3
 text = "PlayStation 4"
 
-[node name="PS5" type="Button" parent="HBoxContainer/Buttons"]
+[node name="PS5" type="Button" parent="HBoxContainer/Buttons" unique_id=1054808550]
 layout_mode = 2
 size_flags_vertical = 3
 text = "PlayStation 5"
 
-[node name="Stadia" type="Button" parent="HBoxContainer/Buttons"]
+[node name="Stadia" type="Button" parent="HBoxContainer/Buttons" unique_id=202058778]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Google Stadia"
 
-[node name="Steam" type="Button" parent="HBoxContainer/Buttons"]
+[node name="Steam" type="Button" parent="HBoxContainer/Buttons" unique_id=396290959]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Steam Controller"
 
-[node name="SteamDeck" type="Button" parent="HBoxContainer/Buttons"]
+[node name="SteamDeck" type="Button" parent="HBoxContainer/Buttons" unique_id=1646036465]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Steam Deck"
 
-[node name="Switch" type="Button" parent="HBoxContainer/Buttons"]
+[node name="Switch" type="Button" parent="HBoxContainer/Buttons" unique_id=1731774288]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Nintendo Switch Controller"
 
-[node name="Joycon" type="Button" parent="HBoxContainer/Buttons"]
+[node name="Joycon" type="Button" parent="HBoxContainer/Buttons" unique_id=1110545830]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Nintendo Switch JoyCon"
 
-[node name="OUYA" type="Button" parent="HBoxContainer/Buttons"]
+[node name="OUYA" type="Button" parent="HBoxContainer/Buttons" unique_id=1327058540]
 layout_mode = 2
 size_flags_vertical = 3
 text = "OUYA"
 
-[node name="Xbox360" type="Button" parent="HBoxContainer/Buttons"]
+[node name="Xbox360" type="Button" parent="HBoxContainer/Buttons" unique_id=1256051096]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Xbox 360"
 
-[node name="XboxOne" type="Button" parent="HBoxContainer/Buttons"]
+[node name="XboxOne" type="Button" parent="HBoxContainer/Buttons" unique_id=1497443184]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Xbox One"
 
-[node name="XboxSeries" type="Button" parent="HBoxContainer/Buttons"]
+[node name="XboxSeries" type="Button" parent="HBoxContainer/Buttons" unique_id=1437488952]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Xbox Series"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpmqd1e8cye16"]
+[gd_scene format=3 uid="uid://bpmqd1e8cye16"]
 
 [ext_resource type="Script" uid="uid://ccsimpi3va2ld" path="res://scripts/entities/destructable_decoration.gd" id="1_c0yop"]
 [ext_resource type="ArrayMesh" uid="uid://db4kmjv3kpobi" path="res://scenes/world/decorations/shrub4.vox" id="2_c0yop"]
@@ -10,7 +10,7 @@ colors = PackedColorArray(0.32002103, 0.076800935, 7.219613e-08, 1, 0.60235, 0, 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oaedn"]
 height = 1.0
 
-[node name="Shrub4" type="Node3D" node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
+[node name="Shrub4" type="Node3D" unique_id=1608696148 node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
 script = ExtResource("1_c0yop")
 to_remove = NodePath(".")
 to_shrink = NodePath("Shrub4")
@@ -18,13 +18,13 @@ hit_zone = NodePath("Area3D")
 gradient = SubResource("Gradient_3xa88")
 sound_effect = 15
 
-[node name="Shrub4" type="MeshInstance3D" parent="."]
+[node name="Shrub4" type="MeshInstance3D" parent="." unique_id=162730428]
 mesh = ExtResource("2_c0yop")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1506040952]
 collision_layer = 0
 collision_mask = 768
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1416863103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_oaedn")

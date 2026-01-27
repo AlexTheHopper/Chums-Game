@@ -1,26 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://c115b3o53shsm"]
+[gd_scene format=3 uid="uid://c115b3o53shsm"]
 
 [ext_resource type="Script" uid="uid://c5l3lfbhqjsbm" path="res://scripts/entities/lore_drop.gd" id="1_2kqqw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ain8g"]
 radius = 2.0
 
-[node name="LoreDrop" type="Node3D"]
+[node name="LoreDrop" type="Node3D" unique_id=170160820]
 script = ExtResource("1_2kqqw")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1745996900]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1818501952]
 shape = SubResource("SphereShape3D_ain8g")
 
-[node name="Popup" type="Node3D" parent="."]
+[node name="Popup" type="Node3D" parent="." unique_id=1643765782]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="MeshNode" type="Node3D" parent="."]
+[node name="MeshNode" type="Node3D" parent="." unique_id=1477324172]
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=667930988]
 radius = 3.0
 avoidance_layers = 3
 

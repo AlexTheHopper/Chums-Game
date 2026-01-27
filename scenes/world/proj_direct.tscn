@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5qhnjhtuadmc"]
+[gd_scene format=3 uid="uid://5qhnjhtuadmc"]
 
 [ext_resource type="Script" uid="uid://bhp5nqg321a4j" path="res://scripts/world/proj_direct.gd" id="1_5kxci"]
 [ext_resource type="Script" uid="uid://qmw71aj2hoe3" path="res://scripts/entities/hitbox.gd" id="4_uo0u1"]
@@ -34,22 +34,22 @@ albedo_color = Color(0.0471014, 8.543208e-06, 0.24151981, 1)
 material = SubResource("StandardMaterial3D_uafm8")
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="ProjDirect" type="Area3D"]
+[node name="ProjDirect" type="Area3D" unique_id=1528874570]
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_5kxci")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=692600516]
 shape = SubResource("SphereShape3D_pppel")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=167842798]
 script = ExtResource("4_uo0u1")
 metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1166686820]
 shape = SubResource("SphereShape3D_0agd8")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=2111658002]
 amount = 50
 lifetime = 0.5
 mesh = SubResource("BoxMesh_uafm8")
@@ -62,12 +62,12 @@ scale_amount_curve = SubResource("Curve_i514e")
 color_ramp = SubResource("Gradient_lhp1a")
 color_initial_ramp = SubResource("Gradient_5kxci")
 
-[node name="Grace" type="Timer" parent="."]
+[node name="Grace" type="Timer" parent="." unique_id=1689948275]
 wait_time = 0.2
 one_shot = true
 autostart = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1240193688]
 mesh = SubResource("BoxMesh_i514e")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

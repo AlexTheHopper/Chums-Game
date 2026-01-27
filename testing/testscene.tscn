@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ev0qq4h760x1"]
+[gd_scene format=3 uid="uid://ev0qq4h760x1"]
 
 [ext_resource type="Script" uid="uid://blp50rus6nn5a" path="res://testing/testscene.gd" id="1_57euc"]
 [ext_resource type="PackedScene" uid="uid://dmgabiox56kck" path="res://scenes/entities/player.tscn" id="2_57euc"]
@@ -85,33 +85,33 @@ _data = {
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_vboui"]
 
-[node name="Testscene" type="Node3D"]
+[node name="Testscene" type="Node3D" unique_id=2032724407]
 script = ExtResource("1_57euc")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1132000956]
 environment = SubResource("Environment_3ldjf")
 
-[node name="Player" parent="." instance=ExtResource("2_57euc")]
+[node name="Player" parent="." unique_id=863760903 instance=ExtResource("2_57euc")]
 
-[node name="cages" type="Node3D" parent="."]
+[node name="cages" type="Node3D" parent="." unique_id=1666360855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.142105, 0, 1.743536)
 
-[node name="Decorations" type="Node3D" parent="."]
+[node name="Decorations" type="Node3D" parent="." unique_id=511747679]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Decorations" unique_id=752639720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
 omni_range = 40.0
 omni_attenuation = 0.2
 omni_shadow_mode = 0
 
-[node name="Currencies" type="Node3D" parent="."]
+[node name="Currencies" type="Node3D" parent="." unique_id=1212760039]
 
-[node name="HUD" parent="." instance=ExtResource("4_3ldjf")]
+[node name="HUD" parent="." unique_id=949006812 instance=ExtResource("4_3ldjf")]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=531447620]
 navigation_mesh = SubResource("NavigationMesh_m3b6f")
 
-[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D" unique_id=217835850]
 mesh_library = ExtResource("4_m3b6f")
 cell_center_y = false
 data = {
@@ -119,15 +119,13 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_c5fec")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=416938544]
+libraries/ = SubResource("AnimationLibrary_c5fec")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1823972434]
 tree_root = SubResource("AnimationNodeBlendSpace2D_vboui")
 anim_player = NodePath("../AnimationPlayer")
 parameters/blend_position = Vector2(-0.15644443, -0.5775194)
 
-[node name="Base" parent="." instance=ExtResource("5_c5fec")]
+[node name="Base" parent="." unique_id=1857744328 instance=ExtResource("5_c5fec")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 4)

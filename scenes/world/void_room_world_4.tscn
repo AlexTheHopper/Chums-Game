@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://30yfjlp75a50"]
+[gd_scene format=3 uid="uid://30yfjlp75a50"]
 
 [ext_resource type="Script" uid="uid://bhn1ilvmn88u7" path="res://scripts/world/void_room.gd" id="1_1crrd"]
 [ext_resource type="MeshLibrary" uid="uid://chgdb28ikj66s" path="res://assets/world/meshlib_world_4.tres" id="2_1crrd"]
@@ -27,14 +27,14 @@ fog_density = 0.07
 fog_height = 2.5
 fog_height_density = 0.75
 
-[node name="Room" type="Node3D" node_paths=PackedStringArray("grid_map")]
+[node name="Room" type="Node3D" unique_id=643068024 node_paths=PackedStringArray("grid_map")]
 script = ExtResource("1_1crrd")
 grid_map = NodePath("NavigationRegion3D/GridMap")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=756228650]
 navigation_mesh = SubResource("NavigationMesh_1crrd")
 
-[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D" unique_id=1803762953]
 mesh_library = ExtResource("2_1crrd")
 cell_center_y = false
 data = {
@@ -42,68 +42,68 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(15, 5, -15)
 
-[node name="RoomChangers" type="Node3D" parent="."]
+[node name="RoomChangers" type="Node3D" parent="." unique_id=2057384529]
 
-[node name="x_pos" parent="RoomChangers" instance=ExtResource("3_ioe4l")]
+[node name="x_pos" parent="RoomChangers" unique_id=1925734947 instance=ExtResource("3_ioe4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 1)
 
-[node name="x_neg" parent="RoomChangers" instance=ExtResource("3_ioe4l")]
+[node name="x_neg" parent="RoomChangers" unique_id=1000035667 instance=ExtResource("3_ioe4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1, 1)
 
-[node name="z_pos" parent="RoomChangers" instance=ExtResource("3_ioe4l")]
+[node name="z_pos" parent="RoomChangers" unique_id=144952854 instance=ExtResource("3_ioe4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 25)
 
-[node name="z_neg" parent="RoomChangers" instance=ExtResource("3_ioe4l")]
+[node name="z_neg" parent="RoomChangers" unique_id=681739859 instance=ExtResource("3_ioe4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -23)
 
-[node name="Doors" type="Node3D" parent="."]
+[node name="Doors" type="Node3D" parent="." unique_id=1166654069]
 
-[node name="z_pos" parent="Doors" instance=ExtResource("4_kdwi3")]
+[node name="z_pos" parent="Doors" unique_id=2132979165 instance=ExtResource("4_kdwi3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 19)
 
-[node name="z_neg" parent="Doors" instance=ExtResource("4_kdwi3")]
+[node name="z_neg" parent="Doors" unique_id=1359848691 instance=ExtResource("4_kdwi3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -17)
 
-[node name="x_neg" parent="Doors" instance=ExtResource("4_kdwi3")]
+[node name="x_neg" parent="Doors" unique_id=1887637028 instance=ExtResource("4_kdwi3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17, 0, 1)
 
-[node name="x_pos" parent="Doors" instance=ExtResource("4_kdwi3")]
+[node name="x_pos" parent="Doors" unique_id=1569154234 instance=ExtResource("4_kdwi3")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 19, 0, 1)
 
-[node name="Currencies" type="Node3D" parent="."]
+[node name="Currencies" type="Node3D" parent="." unique_id=1475328260]
 
-[node name="Decorations" type="Node3D" parent="."]
+[node name="Decorations" type="Node3D" parent="." unique_id=679405350]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Decorations" unique_id=1045766556]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
 omni_range = 40.0
 omni_attenuation = 0.75
 omni_shadow_mode = 0
 
-[node name="Particles" parent="Decorations" instance=ExtResource("5_1crrd")]
+[node name="Particles" parent="Decorations" unique_id=745367031 instance=ExtResource("5_1crrd")]
 
-[node name="Void" parent="." instance=ExtResource("6_05bkj")]
+[node name="Void" parent="." unique_id=174275516 instance=ExtResource("6_05bkj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
 
-[node name="EntryIndicators" type="Node3D" parent="."]
+[node name="EntryIndicators" type="Node3D" parent="." unique_id=759766025]
 
-[node name="x_neg" parent="EntryIndicators" instance=ExtResource("7_7u2wu")]
+[node name="x_neg" parent="EntryIndicators" unique_id=511381780 instance=ExtResource("7_7u2wu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19, 6, 1)
 
-[node name="x_pos" parent="EntryIndicators" instance=ExtResource("7_7u2wu")]
+[node name="x_pos" parent="EntryIndicators" unique_id=633131569 instance=ExtResource("7_7u2wu")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21, 6, 1)
 
-[node name="z_neg" parent="EntryIndicators" instance=ExtResource("7_7u2wu")]
+[node name="z_neg" parent="EntryIndicators" unique_id=45747619 instance=ExtResource("7_7u2wu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, -19)
 
-[node name="z_pos" parent="EntryIndicators" instance=ExtResource("7_7u2wu")]
+[node name="z_pos" parent="EntryIndicators" unique_id=706160294 instance=ExtResource("7_7u2wu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 6, 21)
 
-[node name="PlayerSpawn" type="Node3D" parent="."]
+[node name="PlayerSpawn" type="Node3D" parent="." unique_id=844045364]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=505050795]
 environment = SubResource("Environment_1crrd")
 
-[node name="SpawnRayCast" type="RayCast3D" parent="."]
+[node name="SpawnRayCast" type="RayCast3D" parent="." unique_id=338113235]
 target_position = Vector3(0, -12, 0)

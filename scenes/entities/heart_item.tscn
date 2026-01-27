@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://plnbfk6a6cuv"]
+[gd_scene format=4 uid="uid://plnbfk6a6cuv"]
 
 [ext_resource type="Script" uid="uid://cdsl78l58v7xi" path="res://scripts/entities/heart_item.gd" id="1_8v50q"]
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="2_8v50q"]
@@ -108,25 +108,23 @@ _data = {
 &"remove": SubResource("Animation_pymxx")
 }
 
-[node name="Heart" type="CharacterBody3D"]
+[node name="Heart" type="CharacterBody3D" unique_id=1488602961]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_8v50q")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1638777093]
 material_overlay = ExtResource("2_8v50q")
 mesh = SubResource("ArrayMesh_pymxx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1219202395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_w8uya")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_tiaia")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=186248873]
+libraries/ = SubResource("AnimationLibrary_tiaia")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1891219678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

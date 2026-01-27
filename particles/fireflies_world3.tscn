@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cywa3wbei5dlc"]
+[gd_scene format=3 uid="uid://cywa3wbei5dlc"]
 
 [ext_resource type="Script" uid="uid://4lw84mysr4w3" path="res://scripts/world/fireflies.gd" id="1_vtp5o"]
 
@@ -17,10 +17,10 @@ point_count = 5
 [sub_resource type="Gradient" id="Gradient_nbbbv"]
 colors = PackedColorArray(1, 0.57498, 0.897867, 1, 0.834388, 0.667595, 1, 1)
 
-[node name="Particles" type="Node3D"]
+[node name="Particles" type="Node3D" unique_id=362038867]
 script = ExtResource("1_vtp5o")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1005655477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 amount = 100
 lifetime = 5.0

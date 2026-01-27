@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmswb3oj6st7v"]
+[gd_scene format=3 uid="uid://bmswb3oj6st7v"]
 
 [ext_resource type="ArrayMesh" uid="uid://bpv4n2gft2xwm" path="res://assets/world/world_1_other/bones3.vox" id="1_6hxgw"]
 
-[node name="Bones3" type="Node3D"]
+[node name="Bones3" type="Node3D" unique_id=2132571237]
 
-[node name="Bones3" type="MeshInstance3D" parent="."]
+[node name="Bones3" type="MeshInstance3D" parent="." unique_id=1723489940]
 mesh = ExtResource("1_6hxgw")

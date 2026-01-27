@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://scv8rfvknin2"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://scv8rfvknin2"]
 
 [ext_resource type="Shader" uid="uid://cqe8i7y126r4f" path="res://materials/outline_shader.gdshader" id="1_11rad"]
 
@@ -6,4 +6,4 @@
 render_priority = 0
 shader = ExtResource("1_11rad")
 shader_parameter/color = Color(1, 0, 0, 1)
-shader_parameter/size = 1.05
+shader_parameter/thickness = 0.05

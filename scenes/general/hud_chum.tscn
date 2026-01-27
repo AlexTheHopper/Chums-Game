@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0smlqtllr6c8"]
+[gd_scene format=3 uid="uid://0smlqtllr6c8"]
 
 [ext_resource type="StyleBox" uid="uid://c88sa0i4f86uq" path="res://resources/hud_panel.tres" id="1_t813e"]
 [ext_resource type="Script" uid="uid://dqrlw44ag04n4" path="res://scripts/general/hud_chum.gd" id="2_lgdkm"]
@@ -420,7 +420,7 @@ _data = {
 &"remove_chum": SubResource("Animation_lgdkm")
 }
 
-[node name="Hud_Chum" type="Control"]
+[node name="Hud_Chum" type="Control" unique_id=374822976]
 layout_mode = 3
 anchor_right = 0.044
 anchor_bottom = 0.077
@@ -431,7 +431,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("2_lgdkm")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1671453331]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -440,7 +440,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_t813e")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1987898980]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.18
@@ -455,9 +455,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_abg36")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1123871629]
+libraries/ = SubResource("AnimationLibrary_abg36")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

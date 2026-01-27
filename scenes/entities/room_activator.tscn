@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ce86dk61xylkx"]
+[gd_scene format=3 uid="uid://ce86dk61xylkx"]
 
 [ext_resource type="Script" uid="uid://b60jm7a13m5s" path="res://scripts/entities/room_activator.gd" id="1_w805r"]
 
@@ -116,43 +116,41 @@ _data = {
 &"ring": SubResource("Animation_f3ld2")
 }
 
-[node name="RoomActivator" type="Node3D"]
+[node name="RoomActivator" type="Node3D" unique_id=906083795]
 script = ExtResource("1_w805r")
 
-[node name="Body" type="StaticBody3D" parent="."]
+[node name="Body" type="StaticBody3D" parent="." unique_id=251175257]
 
-[node name="BellPivot" type="Node3D" parent="Body"]
+[node name="BellPivot" type="Node3D" parent="Body" unique_id=210028592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, 0)
 
-[node name="BellMesh" type="Node3D" parent="Body/BellPivot"]
+[node name="BellMesh" type="Node3D" parent="Body/BellPivot" unique_id=1231984021]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.7, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body" unique_id=728849591]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 2, 0)
 shape = SubResource("CylinderShape3D_a8cbn")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Body"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Body" unique_id=815553159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2, 0)
 shape = SubResource("CylinderShape3D_a8cbn")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=845677233]
 collision_layer = 4
 collision_mask = 258
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1278969303]
 shape = SubResource("SphereShape3D_m26rw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_hdihc")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=711766005]
+libraries/ = SubResource("AnimationLibrary_hdihc")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=1990764045]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.2, 0)
 radius = 0.3
 avoidance_layers = 3
 
-[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="."]
+[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="." unique_id=1497882123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 0.2, 0)
 radius = 0.3
 avoidance_layers = 3

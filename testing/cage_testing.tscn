@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://doc0b1wjqgvyd"]
+[gd_scene format=3 uid="uid://doc0b1wjqgvyd"]
 
 [sub_resource type="GDScript" id="GDScript_h60rk"]
 script/source = "extends Node3D
@@ -74,61 +74,61 @@ size = Vector3(10, 1, 10)
 material = SubResource("StandardMaterial3D_h60rk")
 size = Vector3(10, 1, 10)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=749664483]
 script = SubResource("GDScript_h60rk")
 
-[node name="Area3D3" type="StaticBody3D" parent="."]
+[node name="Area3D3" type="StaticBody3D" parent="." unique_id=1570880988]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3" unique_id=1213571348]
 shape = SubResource("BoxShape3D_t2ewn")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D3" unique_id=1403963316]
 mesh = SubResource("BoxMesh_rbbme")
 
-[node name="Area3D2" type="StaticBody3D" parent="."]
+[node name="Area3D2" type="StaticBody3D" parent="." unique_id=796750353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=1422576143]
 shape = SubResource("BoxShape3D_c2lrv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2" unique_id=1092264352]
 mesh = SubResource("BoxMesh_t2ewn")
 
-[node name="Area3D" type="StaticBody3D" parent="."]
+[node name="Area3D" type="StaticBody3D" parent="." unique_id=1541042944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=734495240]
 shape = SubResource("BoxShape3D_c2lrv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=796675962]
 mesh = SubResource("BoxMesh_h60rk")
 
-[node name="Area3D4" type="StaticBody3D" parent="."]
+[node name="Area3D4" type="StaticBody3D" parent="." unique_id=84049974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D4" unique_id=182243076]
 shape = SubResource("BoxShape3D_t2ewn")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D4" unique_id=1428605787]
 mesh = SubResource("BoxMesh_c2lrv")
 
-[node name="Area3D5" type="StaticBody3D" parent="."]
+[node name="Area3D5" type="StaticBody3D" parent="." unique_id=376306379]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D5" unique_id=1535625934]
 shape = SubResource("BoxShape3D_h60rk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D5"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D5" unique_id=694049526]
 mesh = SubResource("BoxMesh_bay54")
 
-[node name="Spawn1" type="Node3D" parent="."]
+[node name="Spawn1" type="Node3D" parent="." unique_id=656369376]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 2)
 
-[node name="Spawn2" type="Node3D" parent="."]
+[node name="Spawn2" type="Node3D" parent="." unique_id=956164157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -2)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1634226429]
 wait_time = 12.5
 one_shot = true
 autostart = true

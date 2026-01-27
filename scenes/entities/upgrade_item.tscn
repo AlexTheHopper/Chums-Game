@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://76mk268mlnx4"]
+[gd_scene format=3 uid="uid://76mk268mlnx4"]
 
 [ext_resource type="Script" uid="uid://ch63eacastbdu" path="res://scripts/entities/upgrade_item.gd" id="1_fcc3g"]
 [ext_resource type="ArrayMesh" uid="uid://dtcar2s2q6eey" path="res://assets/entities/upgrade.vox" id="2_fcc3g"]
@@ -91,25 +91,23 @@ _data = {
 &"remove": SubResource("Animation_pymxx")
 }
 
-[node name="Upgrade" type="CharacterBody3D"]
+[node name="Upgrade" type="CharacterBody3D" unique_id=1164440621]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_fcc3g")
 
-[node name="Upgrade" type="MeshInstance3D" parent="."]
+[node name="Upgrade" type="MeshInstance3D" parent="." unique_id=1014775115]
 material_overlay = ExtResource("2_hwmsv")
 mesh = ExtResource("2_fcc3g")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1658363266]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_w8uya")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_tiaia")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=813295218]
+libraries/ = SubResource("AnimationLibrary_tiaia")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1590436178]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13664, 0)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

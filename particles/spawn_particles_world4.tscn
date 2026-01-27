@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://hahea32sdwt3"]
+[gd_scene format=3 uid="uid://hahea32sdwt3"]
 
 [ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_rmn4r"]
 
@@ -22,10 +22,10 @@ colors = PackedColorArray(0.1536127, 0.03253889, 0.6422543, 1, 0, 0.34397307, 0.
 offsets = PackedFloat32Array(0, 0.832512)
 colors = PackedColorArray(0.10748, 0.10748, 0.10748, 1, 0.273873, 0.273873, 0.273873, 1)
 
-[node name="SpawnParticles" type="Node3D"]
+[node name="SpawnParticles" type="Node3D" unique_id=1914038662]
 script = ExtResource("1_rmn4r")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1427129348]
 emitting = false
 amount = 250
 one_shot = true

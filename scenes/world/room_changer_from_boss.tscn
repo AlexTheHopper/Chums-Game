@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://hhmbawbvav0e"]
+[gd_scene format=3 uid="uid://hhmbawbvav0e"]
 
 [ext_resource type="Script" uid="uid://c8ewcal26w1fa" path="res://scripts/world/room_changer_from_boss.gd" id="1_e7jdb"]
 
@@ -13,18 +13,18 @@ albedo_color = Color(0, 0, 0.309804, 0.811765)
 material = SubResource("StandardMaterial3D_cydgf")
 size = Vector3(6, 2, 6)
 
-[node name="RoomChanger" type="Area3D"]
+[node name="RoomChanger" type="Area3D" unique_id=786672979]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_e7jdb")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=666858885]
 shape = SubResource("BoxShape3D_aukul")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1958667333]
 mesh = SubResource("BoxMesh_82fw2")
 
-[node name="Grace" type="Timer" parent="."]
+[node name="Grace" type="Timer" parent="." unique_id=1366224789]
 one_shot = true
 autostart = true
 

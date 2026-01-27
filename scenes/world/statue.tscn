@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm7edsnvhqcb8"]
+[gd_scene format=3 uid="uid://bm7edsnvhqcb8"]
 
 [ext_resource type="Script" uid="uid://h3h2dsbq4joa" path="res://scripts/world/statue.gd" id="1_0pl1r"]
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="2_8002e"]
@@ -125,67 +125,65 @@ _data = {
 &"activate": SubResource("Animation_8002e")
 }
 
-[node name="Statue" type="Node3D"]
+[node name="Statue" type="Node3D" unique_id=214082260]
 script = ExtResource("1_0pl1r")
 
-[node name="MeshNode" type="Node3D" parent="."]
+[node name="MeshNode" type="Node3D" parent="." unique_id=1586663196]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0)
 
-[node name="StatueBase" type="MeshInstance3D" parent="MeshNode"]
+[node name="StatueBase" type="MeshInstance3D" parent="MeshNode" unique_id=15797458]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7, 0)
 material_overlay = ExtResource("2_8002e")
 mesh = ExtResource("2_ulhrq")
 skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshNode"]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshNode" unique_id=1512220031]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshNode/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshNode/StaticBody3D" unique_id=972535289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 shape = SubResource("BoxShape3D_8002e")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshNode/StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshNode/StaticBody3D" unique_id=1768280154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0)
 shape = SubResource("ConvexPolygonShape3D_8002e")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshNode/StaticBody3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="MeshNode/StaticBody3D" unique_id=1773230548]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 4.2, 0)
 shape = SubResource("ConvexPolygonShape3D_8002e")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshNode/StaticBody3D"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="MeshNode/StaticBody3D" unique_id=617961336]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 4.2, 0)
 shape = SubResource("ConvexPolygonShape3D_8002e")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="MeshNode/StaticBody3D"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="MeshNode/StaticBody3D" unique_id=1452295306]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 4.2, 0)
 shape = SubResource("ConvexPolygonShape3D_8002e")
 
-[node name="FlyZone" type="Area3D" parent="."]
+[node name="FlyZone" type="Area3D" parent="." unique_id=569391444]
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FlyZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlyZone" unique_id=1391181973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_0pl1r")
 
-[node name="DetectionZone" type="Area3D" parent="."]
+[node name="DetectionZone" type="Area3D" parent="." unique_id=1191669276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone" unique_id=1284602479]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_0pl1r")
 
-[node name="RoomChanger" parent="." instance=ExtResource("2_jqxfr")]
+[node name="RoomChanger" parent="." unique_id=1880981709 instance=ExtResource("2_jqxfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_vqmng")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1096074939]
+libraries/ = SubResource("AnimationLibrary_vqmng")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1335410216]
 one_shot = true
 autostart = true
 

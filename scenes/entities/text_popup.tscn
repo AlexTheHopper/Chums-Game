@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://csgrf3dwl23t3"]
+[gd_scene format=3 uid="uid://csgrf3dwl23t3"]
 
 [ext_resource type="Script" uid="uid://1vvlo33tbowe" path="res://scripts/entities/text_popup.gd" id="1_6yad1"]
 [ext_resource type="Shader" uid="uid://db57gow0ouvok" path="res://materials/nodepthtest.gdshader" id="2_unajj"]
@@ -45,37 +45,37 @@ shader_parameter/shake_speed = 3.0
 shader_parameter/shake_block_size = 100.0
 shader_parameter/shake_color_rate = 0.05
 
-[node name="TextPopup" type="Node3D" node_paths=PackedStringArray("title_front", "text_front", "title_back", "text_back")]
+[node name="TextPopup" type="Node3D" unique_id=1914549941 node_paths=PackedStringArray("title_front", "text_front", "title_back", "text_back")]
 script = ExtResource("1_6yad1")
 title_front = NodePath("Container/Display/SubViewport/Control/Name")
 text_front = NodePath("Container/Display/SubViewport/Control/Description")
 title_back = NodePath("Container/Description/SubViewport/Control/Name")
 text_back = NodePath("Container/Description/SubViewport/Control/Description")
 
-[node name="Container" type="Node3D" parent="."]
+[node name="Container" type="Node3D" parent="." unique_id=797496242]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
 
-[node name="Display" type="Sprite3D" parent="Container"]
+[node name="Display" type="Sprite3D" parent="Container" unique_id=1853242226]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.6, -0.05)
 material_override = SubResource("ShaderMaterial_wx1s1")
 texture = SubResource("ViewportTexture_4m2w7")
 
-[node name="SubViewport" type="SubViewport" parent="Container/Display"]
+[node name="SubViewport" type="SubViewport" parent="Container/Display" unique_id=1370968232]
 
-[node name="Control" type="Control" parent="Container/Display/SubViewport"]
+[node name="Control" type="Control" parent="Container/Display/SubViewport" unique_id=1849397299]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Container/Display/SubViewport/Control"]
+[node name="ColorRect" type="ColorRect" parent="Container/Display/SubViewport/Control" unique_id=1291039815]
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 512.0
 color = Color(0, 0, 0, 1)
 
-[node name="Name" type="RichTextLabel" parent="Container/Display/SubViewport/Control"]
+[node name="Name" type="RichTextLabel" parent="Container/Display/SubViewport/Control" unique_id=1785148769]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 100.0
@@ -86,7 +86,7 @@ text = "front_title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="RichTextLabel" parent="Container/Display/SubViewport/Control"]
+[node name="Description" type="RichTextLabel" parent="Container/Display/SubViewport/Control" unique_id=1219964646]
 layout_mode = 0
 offset_top = 100.0
 offset_right = 512.0
@@ -98,39 +98,39 @@ text = "front_text"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UI_ROTATE" type="Sprite2D" parent="Container/Display/SubViewport/Control"]
+[node name="UI_ROTATE" type="Sprite2D" parent="Container/Display/SubViewport/Control" unique_id=807523034]
 position = Vector2(460, 460)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_t46wm")
 
-[node name="GlitchShader" type="ColorRect" parent="Container/Display/SubViewport"]
+[node name="GlitchShader" type="ColorRect" parent="Container/Display/SubViewport" unique_id=790102327]
 material = SubResource("ShaderMaterial_unajj")
 custom_minimum_size = Vector2(512, 512)
 offset_right = 512.0
 offset_bottom = 512.0
 color = Color(0, 0, 0, 0)
 
-[node name="Description" type="Sprite3D" parent="Container"]
+[node name="Description" type="Sprite3D" parent="Container" unique_id=1598150938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 0.05)
 material_override = SubResource("ShaderMaterial_ixmmc")
 texture = SubResource("ViewportTexture_v3w6n")
 
-[node name="SubViewport" type="SubViewport" parent="Container/Description"]
+[node name="SubViewport" type="SubViewport" parent="Container/Description" unique_id=912358489]
 
-[node name="Control" type="Control" parent="Container/Description/SubViewport"]
+[node name="Control" type="Control" parent="Container/Description/SubViewport" unique_id=1226349728]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Container/Description/SubViewport/Control"]
+[node name="ColorRect" type="ColorRect" parent="Container/Description/SubViewport/Control" unique_id=534456792]
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
 
-[node name="Name" type="RichTextLabel" parent="Container/Description/SubViewport/Control"]
+[node name="Name" type="RichTextLabel" parent="Container/Description/SubViewport/Control" unique_id=58133733]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 100.0
@@ -141,7 +141,7 @@ text = "back_title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="RichTextLabel" parent="Container/Description/SubViewport/Control"]
+[node name="Description" type="RichTextLabel" parent="Container/Description/SubViewport/Control" unique_id=1788131701]
 layout_mode = 0
 offset_top = 100.0
 offset_right = 512.0
@@ -153,17 +153,17 @@ text = "back_text"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UI_ROTATE" type="Sprite2D" parent="Container/Description/SubViewport/Control"]
+[node name="UI_ROTATE" type="Sprite2D" parent="Container/Description/SubViewport/Control" unique_id=1312120389]
 position = Vector2(460, 460)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_t46wm")
 
-[node name="GlitchShader" type="ColorRect" parent="Container/Description/SubViewport"]
+[node name="GlitchShader" type="ColorRect" parent="Container/Description/SubViewport" unique_id=1862496189]
 material = SubResource("ShaderMaterial_l2ikr")
 custom_minimum_size = Vector2(512, 512)
 offset_right = 512.0
 offset_bottom = 512.0
 color = Color(0, 0, 0, 0)
 
-[node name="MeshNode" type="Node3D" parent="Container"]
+[node name="MeshNode" type="Node3D" parent="Container" unique_id=857940770]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)

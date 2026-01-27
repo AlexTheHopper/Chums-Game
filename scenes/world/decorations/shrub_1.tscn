@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtey0l3pd20rn"]
+[gd_scene format=3 uid="uid://dtey0l3pd20rn"]
 
 [ext_resource type="Script" uid="uid://ccsimpi3va2ld" path="res://scripts/entities/destructable_decoration.gd" id="1_5ub8w"]
 [ext_resource type="ArrayMesh" uid="uid://b54j18qpd6s5t" path="res://scenes/world/decorations/shrub.vox" id="2_sj02n"]
@@ -33,7 +33,7 @@ colors = PackedColorArray(0.84705675, 0.75338876, 0, 1, 0.79046875, 0.41173908, 
 radius = 0.75
 height = 1.5
 
-[node name="Shrub" type="Node3D" node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
+[node name="Shrub" type="Node3D" unique_id=55157831 node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
 script = ExtResource("1_5ub8w")
 to_remove = NodePath(".")
 to_shrink = NodePath("Shrink")
@@ -41,9 +41,9 @@ hit_zone = NodePath("Area3D")
 gradient = SubResource("Gradient_kimgl")
 sound_effect = 15
 
-[node name="Shrink" type="Node3D" parent="."]
+[node name="Shrink" type="Node3D" parent="." unique_id=1472539040]
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="Shrink"]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Shrink" unique_id=1844325515]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59385526, 0)
 amount = 10
 mesh = SubResource("BoxMesh_38uap")
@@ -58,14 +58,14 @@ damping_curve = SubResource("Curve_qianf")
 scale_amount_curve = SubResource("Curve_8bdc1")
 color_ramp = SubResource("Gradient_knxoy")
 
-[node name="Shrub" type="MeshInstance3D" parent="Shrink"]
+[node name="Shrub" type="MeshInstance3D" parent="Shrink" unique_id=535173310]
 mesh = ExtResource("2_sj02n")
 skeleton = NodePath("../..")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=221478439]
 collision_layer = 0
 collision_mask = 768
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1919669122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_ao0kb")

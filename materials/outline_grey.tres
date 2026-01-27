@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dpnhvfm2e2036"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dpnhvfm2e2036"]
 
 [ext_resource type="Material" uid="uid://dnbueftif4745" path="res://materials/outline_white.tres" id="1_pthfp"]
 

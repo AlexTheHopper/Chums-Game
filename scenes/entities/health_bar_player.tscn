@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5a87dxp0vxm4"]
+[gd_scene format=3 uid="uid://c5a87dxp0vxm4"]
 
 [ext_resource type="Script" uid="uid://df2el5uc2toyo" path="res://scripts/entities/health_bar_player.gd" id="1_udgud"]
 
@@ -14,7 +14,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="PlayerHealthBar" type="Control"]
+[node name="PlayerHealthBar" type="Control" unique_id=201195435]
 layout_mode = 3
 anchor_right = 0.115
 anchor_bottom = 0.046000004
@@ -22,7 +22,7 @@ offset_right = 0.5200043
 offset_bottom = 0.19199753
 script = ExtResource("1_udgud")
 
-[node name="Damaged" type="ColorRect" parent="."]
+[node name="Damaged" type="ColorRect" parent="." unique_id=860261360]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.032
@@ -34,7 +34,7 @@ offset_right = -0.020004272
 offset_bottom = -0.010002136
 color = Color(0.718381, 0.718381, 0.718381, 1)
 
-[node name="Health" type="ColorRect" parent="."]
+[node name="Health" type="ColorRect" parent="." unique_id=1111837176]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.032
@@ -46,14 +46,14 @@ offset_right = -0.020004272
 offset_bottom = -0.010002136
 color = Color(0, 0.392157, 0, 1)
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=2044272890]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_thqyf")
 
-[node name="TickZero" type="ColorRect" parent="."]
+[node name="TickZero" type="ColorRect" parent="." unique_id=1784485297]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.023000002
@@ -64,7 +64,7 @@ offset_left = -0.059000254
 offset_right = -0.054000378
 color = Color(0, 0, 0, 1)
 
-[node name="Ticks" type="Control" parent="."]
+[node name="Ticks" type="Control" parent="." unique_id=419789442]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -73,7 +73,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DamagedTimer" type="Timer" parent="."]
+[node name="DamagedTimer" type="Timer" parent="." unique_id=766352359]
 one_shot = true
 
 [connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]

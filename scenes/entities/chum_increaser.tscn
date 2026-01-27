@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://b3pl257olydkx"]
+[gd_scene format=4 uid="uid://b3pl257olydkx"]
 
 [ext_resource type="Script" uid="uid://drfik5lwsaeqa" path="res://scripts/entities/chum_increaser.gd" id="1_0fxey"]
 [ext_resource type="Material" uid="uid://capb3mnwndcbl" path="res://materials/simple_outline.tres" id="2_0fxey"]
@@ -176,34 +176,32 @@ _data = {
 &"use": SubResource("Animation_5aala")
 }
 
-[node name="ChumIncreaser" type="StaticBody3D"]
+[node name="ChumIncreaser" type="StaticBody3D" unique_id=1165553076]
 transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, 0, 0)
 collision_layer = 8
 collision_mask = 777
 script = ExtResource("1_0fxey")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1542469976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_0fxey")
 
-[node name="Lantern" type="MeshInstance3D" parent="."]
+[node name="Lantern" type="MeshInstance3D" parent="." unique_id=1498610121]
 mesh = SubResource("ArrayMesh_ki0x7")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lantern"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Lantern" unique_id=680132009]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 1.5, 0)
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=2032119063]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 collision_layer = 8
 collision_mask = 776
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=350845679]
 shape = SubResource("SphereShape3D_dahe2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_s72hr")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=651411842]
+libraries/ = SubResource("AnimationLibrary_s72hr")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

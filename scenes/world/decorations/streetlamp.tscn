@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdsetgtd0thee"]
+[gd_scene format=3 uid="uid://cdsetgtd0thee"]
 
 [ext_resource type="Script" uid="uid://b5jp33qohpyyl" path="res://scripts/world/streetlamp.gd" id="1_hgtxx"]
 
@@ -6,21 +6,21 @@
 height = 5.0
 radius = 0.3
 
-[node name="Streetlamp" type="StaticBody3D"]
+[node name="Streetlamp" type="StaticBody3D" unique_id=1541810295]
 collision_mask = 10
 script = ExtResource("1_hgtxx")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1793991080]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.05, 15, 0.05)
 light_energy = 3.0
 spot_range = 50.0
 spot_attenuation = 0.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1566332797]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 2.5, 0.05)
 shape = SubResource("CylinderShape3D_2yc2x")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=1032005680]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237806, 0)
 radius = 0.3
 avoidance_layers = 3

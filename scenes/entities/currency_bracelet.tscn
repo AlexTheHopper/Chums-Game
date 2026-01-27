@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbnyl1uscuoe"]
+[gd_scene format=3 uid="uid://cbnyl1uscuoe"]
 
 [ext_resource type="Script" uid="uid://cyb5v2nmw7yor" path="res://scripts/entities/currency_bracelet.gd" id="1_h14wi"]
 [ext_resource type="ArrayMesh" uid="uid://lpe101wtdxp1" path="res://assets/entities/bracelet_4.vox" id="1_vwmlv"]
@@ -11,24 +11,24 @@ radius = 0.3
 [sub_resource type="SphereShape3D" id="SphereShape3D_ltiis"]
 radius = 0.75
 
-[node name="Bracelet" type="RigidBody3D"]
+[node name="Bracelet" type="RigidBody3D" unique_id=1114264413]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_h14wi")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1579378797]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 shape = SubResource("CylinderShape3D_s8aec")
 
-[node name="Bracelet4" type="MeshInstance3D" parent="."]
+[node name="Bracelet4" type="MeshInstance3D" parent="." unique_id=1512294031]
 material_overlay = ExtResource("2_nooca")
 mesh = ExtResource("1_vwmlv")
 
-[node name="CollectionZone" type="Area3D" parent="."]
+[node name="CollectionZone" type="Area3D" parent="." unique_id=1269309939]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectionZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectionZone" unique_id=233318585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 shape = SubResource("SphereShape3D_ltiis")
 disabled = true

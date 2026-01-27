@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://dtlmvo3lgubp0"]
+[gd_scene format=4 uid="uid://dtlmvo3lgubp0"]
 
 [ext_resource type="Script" uid="uid://xth413x1x8dt" path="res://scripts/entities/chums/chum29/chum29.gd" id="1_8y0cw"]
 [ext_resource type="PackedScene" uid="uid://cdfad011ncqxd" path="res://scenes/entities/chums/bracelet_4.tscn" id="2_0610r"]
@@ -241,6 +241,33 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = PackedFloat32Array(0, 1, -0.3511282, 0, 0, 0.9363274, 0.033333335, 1, -0.3511282, 0, 0, 0.9363274, 0.06666667, 1, -0.3673518, 0, 0, 0.930082, 0.1, 1, -0.40519693, 0, 8.3268253e-10, 0.9142295, 0.13333334, 1, -0.46248463, 4.3995066e-10, 1.6650452e-09, 0.8866274, 0.2, 1, -0.594201, 2.3210105e-09, 0, 0.8043167, 0.23333333, 1, -0.6441208, 1.6905701e-09, 5.998873e-09, 0.7649238, 0.26666668, 1, -0.67495775, 1.5192594e-09, 5.129237e-09, 0.7378564, 0.3, 1, -0.68768215, -1.282835e-10, -2.1664956e-09, 0.7260119, 0.8333333, 1, -0.68768215, 7.57242e-09, 2.8394007e-09, 0.7260119)
 
+[sub_resource type="Animation" id="Animation_0610r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_jnqnl"]
 resource_name = "Sleep"
 length = 1.875
@@ -401,33 +428,6 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = PackedFloat32Array(0, 1, -0.3511282, 0, 0, 0.9363274, 0.033333335, 1, -0.3511282, 0, 0, 0.9363274, 0.06666667, 1, -0.2923754, 0.00023913881, 0.0018384625, 0.95630187, 0.1, 1, -0.20999858, 0.00095947913, 0.0039917286, 0.9776931, 0.13333334, 1, -0.1246949, 0.0023378201, 0.0057008415, 0.99217606, 0.16666667, 1, -0.041347645, 0.0044854973, 0.006983733, 0.9991104, 0.2, 1, 0.029059477, 0.007870149, 0.007775151, 0.99951655, 0.23333333, 1, 0.08278019, 0.012327351, 0.008260468, 0.99645734, 0.26666668, 1, 0.115703166, 0.017990543, 0.008502446, 0.99308455, 0.3, 1, 0.1186899, 0.025086716, 0.008256799, 0.99258006, 0.33333334, 1, 0.07722006, 0.033887345, 0.006956249, 0.99641377, 0.36666667, 1, -0.0333107, 0.04469476, 0.003452836, 0.99843925, 0.4, 1, -0.1745969, 0.055379756, -0.0011065042, 0.98308074, 0.43333334, 1, -0.32246664, 0.064324655, -0.0059805643, 0.94437385, 0.46666667, 1, -0.45363596, 0.07055834, -0.010402242, 0.8883287, 0.5, 1, -0.549668, 0.07399309, -0.013708629, 0.83198684, 0.53333336, 1, -0.58418936, 0.0749275, -0.014914009, 0.8080139, 0.56666666, 1, -0.5670865, 0.07368285, -0.014315292, 0.820231, 0.6, 1, -0.5025183, 0.06983053, -0.01207619, 0.86165726, 0.6333333, 1, -0.3939771, 0.06287117, -0.008377106, 0.91692924, 0.7, 1, -0.09902497, 0.04150599, 0.0013454236, 0.9942181, 0.73333335, 1, 0.0219889, 0.03184194, 0.0052138097, 0.9992374, 0.76666665, 1, 0.09798536, 0.025518578, 0.0076089995, 0.99483156, 0.8, 1, 0.118692175, 0.02376137, 0.008257018, 0.9926124, 0.8333333, 1, 0.0772357, 0.027264636, 0.0069576576, 0.9966157, 0.8666667, 1, -0.033326022, 0.036321096, 0.003453881, 0.99877834, 0.9, 1, -0.17467159, 0.047291595, -0.0011070302, 0.9834899, 0.93333334, 1, -0.32258615, 0.05800635, -0.0059826984, 0.9447422, 0.96666664, 1, -0.45375055, 0.066773415, -0.010404827, 0.88856256, 1, 1, -0.54972166, 0.07267025, -0.013709974, 0.832068, 1.0333333, 1, -0.5842003, 0.074662834, -0.014914283, 0.80803025, 1.0666667, 1, -0.56708646, 0.07368285, -0.014315292, 0.820231, 1.1, 1, -0.5025185, 0.06983055, -0.012076198, 0.8616572, 1.1333333, 1, -0.39397714, 0.062871195, -0.0083771115, 0.91692924, 1.2, 1, -0.09902486, 0.041505978, 0.0013454265, 0.99421805, 1.2333333, 1, 0.021988824, 0.03184194, 0.0052138083, 0.9992374, 1.2666667, 1, 0.0979854, 0.025518574, 0.0076090014, 0.99483156, 1.3, 1, 0.1186922, 0.023761364, 0.0082570175, 0.99261236, 1.3333334, 1, 0.077235706, 0.027264636, 0.006957656, 0.9966157, 1.3666667, 1, -0.03332598, 0.036321096, 0.0034538836, 0.99877846, 1.4, 1, -0.17467174, 0.047291603, -0.0011070354, 0.98348975, 1.4333333, 1, -0.32258588, 0.058006328, -0.0059826886, 0.9447422, 1.4666667, 1, -0.4537505, 0.06677341, -0.010404823, 0.8885627, 1.5, 1, -0.54972154, 0.07267025, -0.01370997, 0.8320681, 1.5333333, 1, -0.5842003, 0.07466284, -0.014914282, 0.80803037, 1.5666667, 1, -0.56708646, 0.07368285, -0.014315292, 0.820231, 1.6, 1, -0.5025185, 0.06983055, -0.0120762, 0.86165726, 1.6333333, 1, -0.39397708, 0.06287118, -0.008377108, 0.91692924, 1.7, 1, -0.09902486, 0.04150598, 0.001345427, 0.99421805, 1.7333333, 1, 0.021988828, 0.03184195, 0.005213809, 0.9992374, 1.7666667, 1, 0.0979854, 0.025518578, 0.0076090023, 0.99483156, 1.8, 1, 0.1186922, 0.023761364, 0.008257018, 0.99261236, 1.8333334, 1, 0.0772357, 0.027264632, 0.0069576576, 0.9966157, 1.8666667, 1, -0.033325985, 0.036321096, 0.0034538824, 0.99877846, 1.9, 1, -0.17467174, 0.047291603, -0.0011070363, 0.98348975, 1.9333333, 1, -0.32258588, 0.058006328, -0.0059826886, 0.9447422, 1.9666667, 1, -0.45375052, 0.06677341, -0.010404823, 0.8885627, 2, 1, -0.54972166, 0.07267025, -0.013709974, 0.832068, 2.0333333, 1, -0.58420026, 0.074662834, -0.01491428, 0.80803037, 2.0666666, 1, -0.5670866, 0.07368286, -0.014315294, 0.82023096, 2.1, 1, -0.5025186, 0.06983057, -0.012076203, 0.86165714, 2.1333334, 1, -0.3939767, 0.062871166, -0.008377098, 0.91692936, 2.2, 1, -0.09902455, 0.041505955, 0.0013454369, 0.9942182, 2.2333333, 1, 0.021988986, 0.031841934, 0.005213813, 0.9992374, 2.2666667, 1, 0.09798534, 0.025518581, 0.0076089995, 0.99483156, 2.3, 1, 0.11869229, 0.023761358, 0.008257019, 0.99261236, 2.3333333, 1, 0.0772357, 0.027264632, 0.0069576567, 0.9966157, 2.3666666, 1, -0.033325657, 0.036321066, 0.0034538936, 0.9987784, 2.4, 1, -0.17467195, 0.04729162, -0.001107042, 0.9834897, 2.4333334, 1, -0.32258633, 0.05800636, -0.0059827035, 0.94474214, 2.4666667, 1, -0.4537508, 0.06677343, -0.0104048345, 0.88856256, 2.5, 1, -0.54972166, 0.07267024, -0.013709967, 0.832068, 2.5333333, 1, -0.5842002, 0.07466283, -0.014914282, 0.8080304, 2.5666666, 1, -0.556314, 0.073056795, -0.01393949, 0.8276372, 2.6, 1, -0.46565518, 0.067530625, -0.010811353, 0.88231975, 2.6333334, 1, -0.31745964, 0.057648953, -0.0058118403, 0.94650006, 2.6666667, 1, -0.13321875, 0.0441459, 0.00024018544, 0.99010295, 2.7, 1, 0.017839354, 0.032181546, 0.005082268, 0.9993099, 2.7333333, 1, 0.09974861, 0.025369532, 0.007664258, 0.9946598, 2.7666667, 1, 0.10834476, 0.02464132, 0.007933445, 0.9937763, 2.8, 1, 0.049631678, 0.029564664, 0.00608809, 0.99831134, 2.8333333, 1, -0.06095547, 0.038519524, 0.0025695874, 0.99739367, 2.9, 1, -0.3585464, 0.060483404, -0.0071852114, 0.9315227, 2.9333334, 1, -0.478321, 0.068328604, -0.011244899, 0.8754506, 2.9666667, 1, -0.55843514, 0.073180616, -0.014013414, 0.8261951, 3.0333333, 1, -0.558435, 0.07318059, -0.0140134115, 0.82619524, 3.0666666, 1, -0.47832084, 0.0683286, -0.011244895, 0.87545073, 3.1, 1, -0.35854632, 0.060483404, -0.0071852105, 0.93152285, 3.1333334, 1, -0.2121373, 0.050082214, -0.002331712, 0.975953, 3.1666667, 1, -0.0609554, 0.038519524, 0.0025695893, 0.99739367, 3.2, 1, 0.049631745, 0.02956466, 0.0060880934, 0.9983114, 3.2333333, 1, 0.108344786, 0.024641316, 0.007933447, 0.9937763, 3.2666667, 1, 0.108344756, 0.024641318, 0.007933445, 0.9937763, 3.3, 1, 0.049631678, 0.02956466, 0.006088089, 0.99831134, 3.3333333, 1, -0.06095547, 0.038519524, 0.002569587, 0.99739367, 3.4, 1, -0.3585464, 0.060483404, -0.007185211, 0.9315227, 3.4333334, 1, -0.47832102, 0.06832861, -0.011244898, 0.87545073, 3.4666667, 1, -0.5584351, 0.07318062, -0.014013413, 0.82619524, 3.5, 1, -0.5926606, 0.07514045, -0.0152113065, 0.8017955, 3.5333333, 1, -0.5439481, 0.072329625, -0.0135092335, 0.83588654, 3.5666666, 1, -0.43170992, 0.06535362, -0.009654568, 0.8995901, 3.6, 1, -0.2722188, 0.054450262, -0.004310037, 0.96068394, 3.6333334, 1, -0.0956063, 0.04123984, 0.0014556274, 0.9945636, 3.6666667, 1, 0.055675637, 0.02906328, 0.0062787775, 0.9980061, 3.7, 1, 0.1144003, 0.024126802, 0.008122867, 0.9931085, 3.7333333, 1, 0.097985305, 0.025518589, 0.0076089995, 0.9948316, 3.7666667, 1, 0.021988923, 0.031841937, 0.005213813, 0.9992374, 3.8, 1, -0.09902459, 0.041505955, 0.001345437, 0.9942181, 3.8666666, 1, -0.39397687, 0.062871166, -0.008377099, 0.91692936, 3.9, 1, -0.5025188, 0.06983058, -0.012076208, 0.861657, 3.9333334, 1, -0.56708664, 0.07368287, -0.014315298, 0.82023084, 3.9666667, 1, -0.5905002, 0.07355763, -0.01500168, 0.8035383, 4, 1, -0.5817982, 0.06721908, -0.014161648, 0.81042707, 4.0333333, 1, -0.5569977, 0.05222601, -0.012008933, 0.8287834, 4.0666666, 1, -0.52116394, 0.03516022, -0.0092686955, 0.8526817, 4.1, 1, -0.47468078, 0.01887085, -0.00619008, 0.879934, 4.133333, 1, -0.41789114, 0.0062074126, -0.0030194207, 0.9084709, 4.1666665, 1, -0.3511282, 0, 0, 0.9363274)
 
-[sub_resource type="Animation" id="Animation_0610r"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Hitbox:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Hitbox/CollisionShape3D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o5df5"]
 _data = {
 &"Attack": SubResource("Animation_l7t4r"),
@@ -553,7 +553,7 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_cuj8q"]
 radius = 0.3
 
-[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
+[node name="Entity" type="CharacterBody3D" unique_id=949444834 node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
 script = ExtResource("1_8y0cw")
 anim_player = NodePath("Body/AnimationPlayer")
 body_mesh = NodePath("Body/Armature/Skeleton3D/chum29_detach")
@@ -563,12 +563,12 @@ hurtbox = NodePath("Hurtbox")
 interaction_area = NodePath("ChumInterractionArea")
 bracelet = NodePath("Body/Armature/Skeleton3D/BoneAttachment3D/Bracelet")
 
-[node name="Body" type="Node3D" parent="."]
+[node name="Body" type="Node3D" parent="." unique_id=150145264]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.4, 0.16)
 
-[node name="Armature" type="Node3D" parent="Body"]
+[node name="Armature" type="Node3D" parent="Body" unique_id=597217228]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Body/Armature"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Body/Armature" unique_id=1376196011]
 bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(-1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 7.450581e-09, -0.4)
@@ -612,70 +612,67 @@ bones/5/position = Vector3(0, 0.099999994, 0)
 bones/5/rotation = Quaternion(-0.7155598, -9.27565e-09, -5.528718e-16, 0.69855154)
 bones/5/scale = Vector3(1, 1, 1)
 
-[node name="chum29_detach" type="MeshInstance3D" parent="Body/Armature/Skeleton3D"]
+[node name="chum29_detach" type="MeshInstance3D" parent="Body/Armature/Skeleton3D" unique_id=335256814]
 mesh = SubResource("ArrayMesh_dmt83")
 skin = SubResource("Skin_ifx38")
+skeleton = NodePath("..")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" unique_id=799471851]
 transform = Transform3D(1, 0, 0, 0, 0.27257347, 0.962135, 0, -0.962135, 0.2725734, 0, -0.11405364, 0.6786169)
 bone_name = "Tail"
 bone_idx = 1
 
-[node name="SleepZone" type="Node3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D"]
+[node name="SleepZone" type="Node3D" parent="Body/Armature/Skeleton3D/BoneAttachment3D" unique_id=45413307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20312983, 0.15476978)
 
-[node name="Bracelet" parent="Body/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_0610r")]
+[node name="Bracelet" parent="Body/Armature/Skeleton3D/BoneAttachment3D" unique_id=1572663302 instance=ExtResource("2_0610r")]
 transform = Transform3D(1, 0, 0, 0, 0.24220979, 0.9702239, 0, -0.9702239, 0.24220979, 0, 0.2866327, 0.17143136)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
-libraries = {
-&"": SubResource("AnimationLibrary_o5df5")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body" unique_id=561546500]
+libraries/ = SubResource("AnimationLibrary_o5df5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=650469185]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("CapsuleShape3D_qpq6s")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=61248584]
 script = ExtResource("3_mp0gd")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=889653185]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("CapsuleShape3D_5tnam")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox"]
-libraries = {
-&"": SubResource("AnimationLibrary_toejc")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox" unique_id=1158670066]
+libraries/ = SubResource("AnimationLibrary_toejc")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=1380882116]
 script = ExtResource("4_nqmr3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1090322338]
 transform = Transform3D(-3.6199901e-06, -1, 0, 1, -3.6199901e-06, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("SphereShape3D_cuj8q")
 disabled = true
 
-[node name="ChumSpecificStates" type="Node" parent="."]
+[node name="ChumSpecificStates" type="Node" parent="." unique_id=260589453]
 
-[node name="Active" type="Node" parent="ChumSpecificStates"]
+[node name="Active" type="Node" parent="ChumSpecificStates" unique_id=173303583]
 script = ExtResource("5_dmt83")
 
-[node name="AttackTimer" type="Timer" parent="ChumSpecificStates/Active"]
+[node name="AttackTimer" type="Timer" parent="ChumSpecificStates/Active" unique_id=1097143662]
 
-[node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active"]
+[node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active" unique_id=1661323050]
 autostart = true
 
-[node name="Idle" type="Node" parent="ChumSpecificStates"]
+[node name="Idle" type="Node" parent="ChumSpecificStates" unique_id=1608205253]
 script = ExtResource("6_ifx38")
 
-[node name="Particles" type="Node3D" parent="."]
+[node name="Particles" type="Node3D" parent="." unique_id=1927529708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.620481, 0)
 
-[node name="GeneralChumBehaviour" parent="." instance=ExtResource("7_l7t4r")]
+[node name="GeneralChumBehaviour" parent="." unique_id=4566628 instance=ExtResource("7_l7t4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 
-[node name="ChumInterractionArea" parent="." instance=ExtResource("8_vj3nx")]
+[node name="ChumInterractionArea" parent="." unique_id=1145346217 instance=ExtResource("8_vj3nx")]
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1958570255]
 avoidance_enabled = true

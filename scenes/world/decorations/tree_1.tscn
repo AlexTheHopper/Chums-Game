@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dsr4pp61d2hjb"]
+[gd_scene format=4 uid="uid://dsr4pp61d2hjb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wb2wi"]
 height = 4.0
@@ -35,21 +35,21 @@ point_count = 4
 [sub_resource type="Gradient" id="Gradient_wrkwt"]
 colors = PackedColorArray(0, 0.066655, 0.0106058, 1, 0.122685, 0.260519, 4.81308e-08, 1)
 
-[node name="Tree1" type="StaticBody3D"]
+[node name="Tree1" type="StaticBody3D" unique_id=537808948]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1083101979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CylinderShape3D_wb2wi")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=257437645]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 radius = 0.75
 avoidance_layers = 3
 
-[node name="Tree1" type="MeshInstance3D" parent="."]
+[node name="Tree1" type="MeshInstance3D" parent="." unique_id=1024405361]
 mesh = SubResource("ArrayMesh_4mek0")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1416334381]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.22862, 0)
 amount = 25
 lifetime = 10.0

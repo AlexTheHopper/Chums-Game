@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=4 uid="uid://d3sucvgyscb7c"]
+[gd_scene format=4 uid="uid://d3sucvgyscb7c"]
 
 [ext_resource type="Texture2D" uid="uid://dtvpfs6v2brsm" path="res://assets/world/world_1_tiles/dirt_corner_full_corner_Color.png" id="1_fso51"]
 [ext_resource type="Texture2D" uid="uid://ve1oo6wq1ir6" path="res://assets/world/world_1_tiles/dirt_edge_full_edge_Color.png" id="4_q6i6l"]
@@ -952,260 +952,236 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tui5w")
 
-[node name="world_1_tiles" type="Node3D"]
+[node name="world_1_tiles" type="Node3D" unique_id=888822878]
 
-[node name="full_no_edge" type="MeshInstance3D" parent="."]
+[node name="full_no_edge" type="MeshInstance3D" parent="." unique_id=30105999]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6)
 mesh = SubResource("ArrayMesh_526u4")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_no_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_no_edge" unique_id=132829170]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_no_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_no_edge/StaticBody3D" unique_id=2002145933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_vkudf")
 
-[node name="full_edge" type="MeshInstance3D" parent="."]
+[node name="full_edge" type="MeshInstance3D" parent="." unique_id=519611188]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
 mesh = SubResource("ArrayMesh_qa0wm")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_edge" unique_id=1174901708]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_edge/StaticBody3D" unique_id=557941130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_vkudf")
 
-[node name="full_corner" type="MeshInstance3D" parent="."]
+[node name="full_corner" type="MeshInstance3D" parent="." unique_id=1494073726]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
 mesh = SubResource("ArrayMesh_t8nku")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_corner"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_corner" unique_id=1348746139]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_corner/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_corner/StaticBody3D" unique_id=1126168321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_vkudf")
 
-[node name="full_turn" type="MeshInstance3D" parent="."]
+[node name="full_turn" type="MeshInstance3D" parent="." unique_id=1433289629]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
 mesh = SubResource("ArrayMesh_l6kto")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_turn"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_turn" unique_id=1755498262]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_turn/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_turn/StaticBody3D" unique_id=346014648]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_vkudf")
 
-[node name="full_grass_no_edge" type="MeshInstance3D" parent="."]
+[node name="full_grass_no_edge" type="MeshInstance3D" parent="." unique_id=150923876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 mesh = SubResource("ArrayMesh_lgfww")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_no_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_no_edge" unique_id=1996246146]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_no_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_no_edge/StaticBody3D" unique_id=107722591]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_vut7g")
 
-[node name="full_grass_edge" type="MeshInstance3D" parent="."]
+[node name="full_grass_edge" type="MeshInstance3D" parent="." unique_id=2066299612]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 mesh = SubResource("ArrayMesh_u0w7u")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_edge" unique_id=1078606153]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_edge/StaticBody3D" unique_id=1084024799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_vkudf")
 
-[node name="full_grass_corner" type="MeshInstance3D" parent="."]
+[node name="full_grass_corner" type="MeshInstance3D" parent="." unique_id=1586373399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 mesh = SubResource("ArrayMesh_nywx0")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_corner"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_corner" unique_id=1758557056]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_corner/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_corner/StaticBody3D" unique_id=198973933]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_vkudf")
 
-[node name="full_grass_turn" type="MeshInstance3D" parent="."]
+[node name="full_grass_turn" type="MeshInstance3D" parent="." unique_id=948910422]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 mesh = SubResource("ArrayMesh_svs4c")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_turn"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_turn" unique_id=845947202]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_turn/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_turn/StaticBody3D" unique_id=1068596107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_vkudf")
 
-[node name="half_grass_no_edge" type="MeshInstance3D" parent="."]
+[node name="half_grass_no_edge" type="MeshInstance3D" parent="." unique_id=2054567857]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
 mesh = SubResource("ArrayMesh_7sxmv")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_no_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_no_edge" unique_id=1112140107]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_no_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_no_edge/StaticBody3D" unique_id=499513998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_nywx0")
 
-[node name="half_grass_edge" type="MeshInstance3D" parent="."]
+[node name="half_grass_edge" type="MeshInstance3D" parent="." unique_id=2003072528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
 mesh = SubResource("ArrayMesh_ejrp5")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_edge" unique_id=388652655]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_edge/StaticBody3D" unique_id=183681359]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_nywx0")
 
-[node name="half_grass_corner" type="MeshInstance3D" parent="."]
+[node name="half_grass_corner" type="MeshInstance3D" parent="." unique_id=349200767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 mesh = SubResource("ArrayMesh_kc6r1")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_corner"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_corner" unique_id=1796345903]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_corner/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_corner/StaticBody3D" unique_id=1430721748]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_nywx0")
 
-[node name="half_grass_turn" type="MeshInstance3D" parent="."]
+[node name="half_grass_turn" type="MeshInstance3D" parent="." unique_id=514905561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
 mesh = SubResource("ArrayMesh_v1l86")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_turn"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_turn" unique_id=1234520671]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_turn/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_turn/StaticBody3D" unique_id=1659955494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_nywx0")
 
-[node name="half_grass_middle" type="MeshInstance3D" parent="."]
+[node name="half_grass_middle" type="MeshInstance3D" parent="." unique_id=401980961]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -10)
 mesh = SubResource("ArrayMesh_gmlta")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_middle"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_middle" unique_id=1260141121]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_middle/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_middle/StaticBody3D" unique_id=458319086]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_nywx0")
 
-[node name="half_grass_end" type="MeshInstance3D" parent="."]
+[node name="half_grass_end" type="MeshInstance3D" parent="." unique_id=706431823]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -14)
 mesh = SubResource("ArrayMesh_2pbwu")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_end"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_end" unique_id=155710732]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_end/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_end/StaticBody3D" unique_id=793619820]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_nywx0")
 
-[node name="half_grass_ramp_bot" type="MeshInstance3D" parent="."]
+[node name="half_grass_ramp_bot" type="MeshInstance3D" parent="." unique_id=60346687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6)
 mesh = SubResource("ArrayMesh_6q6ta")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_bot"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_bot" unique_id=718099290]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_bot/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_bot/StaticBody3D" unique_id=1604723190]
 shape = SubResource("ConvexPolygonShape3D_ejrp5")
 
-[node name="half_grass_ramp_bot_left" type="MeshInstance3D" parent="."]
+[node name="half_grass_ramp_bot_left" type="MeshInstance3D" parent="." unique_id=1506773332]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
 mesh = SubResource("ArrayMesh_spaoj")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_bot_left"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_bot_left" unique_id=311788048]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_bot_left/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_bot_left/StaticBody3D" unique_id=667406257]
 shape = SubResource("ConvexPolygonShape3D_ejrp5")
 
-[node name="half_grass_ramp_bot_mid" type="MeshInstance3D" parent="."]
+[node name="half_grass_ramp_bot_mid" type="MeshInstance3D" parent="." unique_id=1917256301]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
 mesh = SubResource("ArrayMesh_0hhi7")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_bot_mid"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_bot_mid" unique_id=1746122742]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_bot_mid/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_bot_mid/StaticBody3D" unique_id=1230669922]
 shape = SubResource("ConvexPolygonShape3D_ejrp5")
 
-[node name="half_grass_ramp_bot_right" type="MeshInstance3D" parent="."]
+[node name="half_grass_ramp_bot_right" type="MeshInstance3D" parent="." unique_id=820529595]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
 mesh = SubResource("ArrayMesh_da2ru")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_bot_right"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_bot_right" unique_id=1862533792]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_bot_right/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_bot_right/StaticBody3D" unique_id=1636291762]
 shape = SubResource("ConvexPolygonShape3D_ejrp5")
 
-[node name="half_grass_ramp_top" type="MeshInstance3D" parent="."]
+[node name="half_grass_ramp_top" type="MeshInstance3D" parent="." unique_id=516487512]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
 mesh = SubResource("ArrayMesh_pjyvx")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_top"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_top" unique_id=1357840764]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_top/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_top/StaticBody3D" unique_id=1388984478]
 shape = SubResource("ConvexPolygonShape3D_26txf")
 
-[node name="half_grass_ramp_top_left" type="MeshInstance3D" parent="."]
+[node name="half_grass_ramp_top_left" type="MeshInstance3D" parent="." unique_id=661528708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2)
 mesh = SubResource("ArrayMesh_ecb4q")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_top_left"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_top_left" unique_id=322383287]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_top_left/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_top_left/StaticBody3D" unique_id=714187940]
 shape = SubResource("ConvexPolygonShape3D_26txf")
 
-[node name="half_grass_ramp_top_mid" type="MeshInstance3D" parent="."]
+[node name="half_grass_ramp_top_mid" type="MeshInstance3D" parent="." unique_id=1697991352]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -2)
 mesh = SubResource("ArrayMesh_j4gd6")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_top_mid"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_top_mid" unique_id=79200520]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_top_mid/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_top_mid/StaticBody3D" unique_id=1479065264]
 shape = SubResource("ConvexPolygonShape3D_26txf")
 
-[node name="half_grass_ramp_top_right" type="MeshInstance3D" parent="."]
+[node name="half_grass_ramp_top_right" type="MeshInstance3D" parent="." unique_id=1641836333]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
 mesh = SubResource("ArrayMesh_8ndp4")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_top_right"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_grass_ramp_top_right" unique_id=1130760988]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_top_right/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_grass_ramp_top_right/StaticBody3D" unique_id=899405524]
 shape = SubResource("ConvexPolygonShape3D_26txf")
 
-[node name="full_grass_middle" type="MeshInstance3D" parent="."]
+[node name="full_grass_middle" type="MeshInstance3D" parent="." unique_id=398830701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 mesh = SubResource("ArrayMesh_1aqyg")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_middle"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_middle" unique_id=719433709]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_middle/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_middle/StaticBody3D" unique_id=801133112]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_vkudf")
 
-[node name="full_grass_end" type="MeshInstance3D" parent="."]
+[node name="full_grass_end" type="MeshInstance3D" parent="." unique_id=208713291]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
 mesh = SubResource("ArrayMesh_p27ha")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_end"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_grass_end" unique_id=1454395148]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_end/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_grass_end/StaticBody3D" unique_id=1080906688]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_vkudf")

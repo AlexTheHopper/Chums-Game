@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://pvygrl5milmg"]
+[gd_scene format=3 uid="uid://pvygrl5milmg"]
 
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_eos8m"]
 [ext_resource type="ArrayMesh" uid="uid://de703dqooe3tf" path="res://assets/world/world_4_other/door.vox" id="2_usm65"]
 
-[node name="Door_4" type="Node3D"]
+[node name="Door_4" type="Node3D" unique_id=2136917222]
 
-[node name="Door" type="MeshInstance3D" parent="."]
+[node name="Door" type="MeshInstance3D" parent="." unique_id=207044117]
 material_overlay = ExtResource("1_eos8m")
 mesh = ExtResource("2_usm65")

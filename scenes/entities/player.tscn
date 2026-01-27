@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://dmgabiox56kck"]
+[gd_scene format=4 uid="uid://dmgabiox56kck"]
 
 [ext_resource type="Script" uid="uid://d1mbalfu0wlex" path="res://scripts/entities/player.gd" id="1_8mcap"]
 [ext_resource type="Script" uid="uid://cf5efj3v5c38n" path="res://scripts/entities/health.gd" id="2_foxub"]
@@ -917,72 +917,70 @@ _data = {
 &"Swing": SubResource("Animation_8ualu")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("hitbox", "hurtbox") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1355864190 node_paths=PackedStringArray("hitbox", "hurtbox") groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_8mcap")
 hitbox = NodePath("Armature/Hitbox")
 hurtbox = NodePath("Hurtbox")
 
-[node name="Health" type="Node" parent="."]
+[node name="Health" type="Node" parent="." unique_id=809783640]
 script = ExtResource("2_foxub")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1221391176]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 shape = SubResource("CapsuleShape3D_as0st")
 
-[node name="Camera_Controller" type="Node3D" parent="."]
+[node name="Camera_Controller" type="Node3D" parent="." unique_id=987772215]
 top_level = true
 
-[node name="Camera_Path" type="Path3D" parent="Camera_Controller"]
+[node name="Camera_Path" type="Path3D" parent="Camera_Controller" unique_id=2054993977]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28403, 0)
 curve = SubResource("Curve3D_yc3t0")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Camera_Controller/Camera_Path"]
+[node name="PathFollow3D" type="PathFollow3D" parent="Camera_Controller/Camera_Path" unique_id=494136150]
 transform = Transform3D(0.999996, 0, 0, 0, 0.19610846, 0.9805431, 0, -0.9805431, 0.19610846, 0, 11, 6.5)
 
-[node name="Camera_Target" type="Node3D" parent="Camera_Controller/Camera_Path/PathFollow3D"]
+[node name="Camera_Target" type="Node3D" parent="Camera_Controller/Camera_Path/PathFollow3D" unique_id=243820781]
 transform = Transform3D(1, 0, 0, 0, 0.999632, 0.0273123, 0, -0.0273124, 0.999634, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Path/PathFollow3D/Camera_Target" groups=["Camera"]]
+[node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Path/PathFollow3D/Camera_Target" unique_id=378633431 groups=["Camera"]]
 transform = Transform3D(1, 0, 0, 0, 0.819169, -0.573587, 0, 0.573588, 0.819167, 0, 0, 0)
 current = true
 size = 15.0
 script = ExtResource("3_b6tgf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera_Controller/Camera_Path/PathFollow3D/Camera_Target/Camera3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera_Controller/Camera_Path/PathFollow3D/Camera_Target/Camera3D" unique_id=1622147624]
 visible = false
 extra_cull_margin = 10.0
 mesh = SubResource("QuadMesh_73kkf")
 
-[node name="AudioListener3D" type="AudioListener3D" parent="Camera_Controller"]
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera_Controller" unique_id=1337960225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 2)
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=272857692]
 target_position = Vector3(0, -2, 0)
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=437578053]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 script = ExtResource("5_6214k")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=4152727]
 shape = SubResource("CapsuleShape3D_s100y")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox"]
-libraries = {
-&"": SubResource("AnimationLibrary_c5rqy")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox" unique_id=1524795880]
+libraries/ = SubResource("AnimationLibrary_c5rqy")
 
-[node name="NudgeZone" type="Area3D" parent="."]
+[node name="NudgeZone" type="Area3D" parent="." unique_id=171650168]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 script = ExtResource("4_dnykm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NudgeZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NudgeZone" unique_id=2122075408]
 shape = SubResource("SphereShape3D_ss7kx")
 
-[node name="Armature" type="Node3D" parent="."]
+[node name="Armature" type="Node3D" parent="." unique_id=113963592]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Armature" unique_id=123572552]
 bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
@@ -1026,34 +1024,35 @@ bones/5/position = Vector3(-0.2, 0, 0)
 bones/5/rotation = Quaternion(1, 0, -4.37114e-08, 0)
 bones/5/scale = Vector3(1, 1, 1)
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="Armature/Skeleton3D"]
+[node name="PlayerMesh" type="MeshInstance3D" parent="Armature/Skeleton3D" unique_id=1484454900]
 material_override = SubResource("StandardMaterial3D_00hcs")
 material_overlay = SubResource("StandardMaterial3D_73kkf")
 mesh = SubResource("ArrayMesh_fbi0d")
 skin = SubResource("Skin_8wrh7")
+skeleton = NodePath("..")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" unique_id=2111276123]
 transform = Transform3D(5.9604645e-08, 0.4674614, 0.8840135, -7.4505806e-08, -0.8840134, 0.4674614, 0.99999994, -7.4505806e-08, 5.9604645e-08, 0.4, 1.2, 0)
 bone_name = "Arm.L"
 bone_idx = 2
 
-[node name="Lantern" parent="Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("7_rhmd7")]
+[node name="Lantern" parent="Armature/Skeleton3D/BoneAttachment3D" unique_id=333033969 instance=ExtResource("7_rhmd7")]
 transform = Transform3D(1, 3.98372e-07, 1.5073e-07, 3.88729e-07, -0.998239, 0.0593238, 1.74097e-07, -0.0593238, -0.998239, -1.15425e-07, 0.691071, 0.0360715)
 
-[node name="Hitbox" type="Area3D" parent="Armature"]
+[node name="Hitbox" type="Area3D" parent="Armature" unique_id=1614553345]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.2, 0)
 script = ExtResource("4_f0wg7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Hitbox" unique_id=1059955157]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.805624, 0.170112, 0.0391083)
 shape = SubResource("BoxShape3D_mtmvl")
 disabled = true
 
-[node name="HealthBar" parent="Armature" node_paths=PackedStringArray("health_node") instance=ExtResource("9_c5rqy")]
+[node name="HealthBar" parent="Armature" unique_id=1160877458 node_paths=PackedStringArray("health_node") instance=ExtResource("9_c5rqy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, 0)
 health_node = NodePath("../../Health")
 
-[node name="RunParticles" type="GPUParticles3D" parent="Armature"]
+[node name="RunParticles" type="GPUParticles3D" parent="Armature" unique_id=625919035]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 emitting = false
 amount = 25
@@ -1063,11 +1062,11 @@ visibility_aabb = AABB(-10, -5, -10, 20, 10, 20)
 process_material = SubResource("ParticleProcessMaterial_b6tgf")
 draw_pass_1 = SubResource("BoxMesh_spk56")
 
-[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="Armature/RunParticles"]
+[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="Armature/RunParticles" unique_id=1564556221]
 size = Vector3(20, 10, 20)
 resolution = 1
 
-[node name="JumpParticles" type="GPUParticles3D" parent="Armature"]
+[node name="JumpParticles" type="GPUParticles3D" parent="Armature" unique_id=1129330880]
 emitting = false
 amount = 20
 lifetime = 0.5
@@ -1078,16 +1077,14 @@ visibility_aabb = AABB(-10, -5, -10, 20, 10, 20)
 process_material = SubResource("ParticleProcessMaterial_saib0")
 draw_pass_1 = SubResource("BoxMesh_spk56")
 
-[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="Armature/JumpParticles"]
+[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="Armature/JumpParticles" unique_id=45833706]
 size = Vector3(20, 10, 20)
 resolution = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_1l68m")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=134130443]
+libraries/ = SubResource("AnimationLibrary_1l68m")
 
-[node name="Particles" type="Node3D" parent="."]
+[node name="Particles" type="Node3D" parent="." unique_id=1703121919]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_changed"]

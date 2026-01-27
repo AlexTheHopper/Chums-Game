@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://8wtsdvcs8ups"]
+[gd_scene format=3 uid="uid://8wtsdvcs8ups"]
 
 [ext_resource type="ArrayMesh" uid="uid://deyk6lkj2rm3f" path="res://assets/world/world_2_other/column1.vox" id="1_pnf6h"]
 
@@ -6,16 +6,16 @@
 height = 3.0
 radius = 0.4
 
-[node name="Column1" type="StaticBody3D"]
+[node name="Column1" type="StaticBody3D" unique_id=1295908871]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=78864228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_wb2wi")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=2090072392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 radius = 0.75
 avoidance_layers = 3
 
-[node name="Column1" type="MeshInstance3D" parent="."]
+[node name="Column1" type="MeshInstance3D" parent="." unique_id=350325717]
 mesh = ExtResource("1_pnf6h")

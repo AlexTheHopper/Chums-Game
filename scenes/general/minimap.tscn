@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj3njvuucqayr"]
+[gd_scene format=3 uid="uid://cj3njvuucqayr"]
 
 [ext_resource type="Script" uid="uid://bliiyg1vu6hhs" path="res://scripts/general/minimap.gd" id="1_uyxwr"]
 [ext_resource type="PackedScene" uid="uid://dxcp7bi7fxdea" path="res://scenes/general/minimap_room.tscn" id="2_sg6c6"]
 
-[node name="Minimap" type="Control"]
+[node name="Minimap" type="Control" unique_id=1771116240]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 15

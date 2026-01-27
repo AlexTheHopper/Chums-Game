@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://chuh3rtv06rka"]
+[gd_scene format=4 uid="uid://chuh3rtv06rka"]
 
 [ext_resource type="PackedScene" uid="uid://dmq4bdaggbfd" path="res://assets/world/door_1.tscn" id="1_cabwv"]
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="2_adwyi"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0p4ht"]
-load_path = "res://.godot/imported/door_shadeautosmooth_door_Color.png-718ae2249426a937c611a02acea5bbbb.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0k1mw"]
 resource_name = "door_Material"
@@ -48,7 +47,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j0yae")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tli85"]
-load_path = "res://.godot/imported/door_shadesmooth_door_Color.png-f07333ba844539f18395e2c6b89339cc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c807t"]
 resource_name = "door_Material.001"
@@ -90,7 +88,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0cxqd")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cabwv"]
-load_path = "res://.godot/imported/door_normal_thenbake_door_Color.png-11f838015cc27f9a22901264ae9236ec.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybx08"]
 resource_name = "door_Material.001"
@@ -132,7 +129,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_r8l3a")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_adwyi"]
-load_path = "res://.godot/imported/door_normal_thenbake_thennormal_door_Color.png-8db2833f460389aef80794993f9f7b68.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kn3cm"]
 resource_name = "door_Material.001"
@@ -173,39 +169,35 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l4sey")
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=526338796]
 
-[node name="Door_1" parent="." instance=ExtResource("1_cabwv")]
+[node name="Door_1" parent="." unique_id=1424440841 instance=ExtResource("1_cabwv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9834323, 0, 0.49858618)
 
-[node name="door_shadeautosmooth" type="Node3D" parent="."]
+[node name="door_shadeautosmooth" type="Node3D" parent="." unique_id=343350480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4093099, 0, 0.597692)
 
-[node name="door" type="MeshInstance3D" parent="door_shadeautosmooth"]
+[node name="door" type="MeshInstance3D" parent="door_shadeautosmooth" unique_id=892536555]
 material_overlay = ExtResource("2_adwyi")
 mesh = SubResource("ArrayMesh_ybx08")
-skeleton = NodePath("")
 
-[node name="door_shadesmooth" type="Node3D" parent="."]
+[node name="door_shadesmooth" type="Node3D" parent="." unique_id=862851122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.333897, 0, 0.64669895)
 
-[node name="door" type="MeshInstance3D" parent="door_shadesmooth"]
+[node name="door" type="MeshInstance3D" parent="door_shadesmooth" unique_id=74318565]
 material_overlay = ExtResource("2_adwyi")
 mesh = SubResource("ArrayMesh_kn3cm")
-skeleton = NodePath("")
 
-[node name="door_normal_thenbake" type="Node3D" parent="."]
+[node name="door_normal_thenbake" type="Node3D" parent="." unique_id=1586955871]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4827, 0, 0.66236496)
 
-[node name="door" type="MeshInstance3D" parent="door_normal_thenbake"]
+[node name="door" type="MeshInstance3D" parent="door_normal_thenbake" unique_id=1398208756]
 material_overlay = ExtResource("2_adwyi")
 mesh = SubResource("ArrayMesh_c807t")
-skeleton = NodePath("")
 
-[node name="door_normal_thenbake_thennormal" type="Node3D" parent="."]
+[node name="door_normal_thenbake_thennormal" type="Node3D" parent="." unique_id=1270141464]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.864025, 0, 0.8304477)
 
-[node name="door" type="MeshInstance3D" parent="door_normal_thenbake_thennormal"]
+[node name="door" type="MeshInstance3D" parent="door_normal_thenbake_thennormal" unique_id=1002446705]
 material_overlay = ExtResource("2_adwyi")
 mesh = SubResource("ArrayMesh_ffq5y")
-skeleton = NodePath("")

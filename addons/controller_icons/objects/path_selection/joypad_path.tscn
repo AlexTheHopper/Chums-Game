@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://b3lplrf2w6kh7"]
+[gd_scene format=3 uid="uid://b3lplrf2w6kh7"]
 
-[ext_resource type="Script" path="res://addons/controller_icons/objects/path_selection/JoypadPathSelector.gd" id="1_4ryog"]
-[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_yxfq6"]
+[ext_resource type="Script" uid="uid://b0e133uaogchl" path="res://addons/controller_icons/objects/path_selection/JoypadPathSelector.gd" id="1_4ryog"]
+[ext_resource type="Script" uid="uid://dcfudola7tys2" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_yxfq6"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_haylq"]
 
@@ -9,192 +9,129 @@
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/l_stick"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_6klsb"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/l_stick_click"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_bij8j"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/r_stick"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_2h0w3"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/r_stick_click"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_kvj2q"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/lb"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_wtcrq"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/lt"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_lfpf5"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/rb"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_b3bsp"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/rt"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_u40go"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/a"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_rnqww"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/b"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_1a2yv"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/x"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_hktfi"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/y"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_2ksy6"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/select"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_08sqi"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/start"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_tivgf"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/home"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_87fow"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/share"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_n4i6p"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/dpad"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_eoyuo"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/dpad_down"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_c660e"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/dpad_right"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_riwus"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/dpad_left"
-show_only = 0
-force_type = 0
 
 [sub_resource type="Texture2D" id="Texture2D_onmvf"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_yxfq6")
-_horizontal_repeat = 1
 path = "joypad/dpad_up"
-show_only = 0
-force_type = 0
 
-[node name="Joypad Path" type="Panel"]
+[node name="Joypad Path" type="Panel" unique_id=229599742]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -202,7 +139,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4ryog")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1262414484]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -210,16 +147,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1258348895]
 layout_mode = 2
 text = "The icon will only display a controller icon, changing dynamically according to the connected controller brand."
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1760108024]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ButtonLabel" type="Label" parent="VBoxContainer/Control"]
+[node name="ButtonLabel" type="Label" parent="VBoxContainer/Control" unique_id=456447035]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 1
@@ -235,7 +172,7 @@ text = "Press or click on the desired button..."
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="LStick" type="Button" parent="VBoxContainer/Control"]
+[node name="LStick" type="Button" parent="VBoxContainer/Control" unique_id=543550946]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -254,7 +191,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_nls54")
 expand_icon = true
 
-[node name="LStickClick" type="Button" parent="VBoxContainer/Control"]
+[node name="LStickClick" type="Button" parent="VBoxContainer/Control" unique_id=503346044]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -273,7 +210,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_6klsb")
 expand_icon = true
 
-[node name="RStick" type="Button" parent="VBoxContainer/Control"]
+[node name="RStick" type="Button" parent="VBoxContainer/Control" unique_id=1792534113]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -292,7 +229,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_bij8j")
 expand_icon = true
 
-[node name="RStickClick" type="Button" parent="VBoxContainer/Control"]
+[node name="RStickClick" type="Button" parent="VBoxContainer/Control" unique_id=1564562931]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -311,7 +248,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_2h0w3")
 expand_icon = true
 
-[node name="LB" type="Button" parent="VBoxContainer/Control"]
+[node name="LB" type="Button" parent="VBoxContainer/Control" unique_id=145512054]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -330,7 +267,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_kvj2q")
 expand_icon = true
 
-[node name="LT" type="Button" parent="VBoxContainer/Control"]
+[node name="LT" type="Button" parent="VBoxContainer/Control" unique_id=1878065266]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -349,7 +286,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_wtcrq")
 expand_icon = true
 
-[node name="RB" type="Button" parent="VBoxContainer/Control"]
+[node name="RB" type="Button" parent="VBoxContainer/Control" unique_id=1429474499]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -368,7 +305,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_lfpf5")
 expand_icon = true
 
-[node name="RT" type="Button" parent="VBoxContainer/Control"]
+[node name="RT" type="Button" parent="VBoxContainer/Control" unique_id=1914489632]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -387,7 +324,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_b3bsp")
 expand_icon = true
 
-[node name="A" type="Button" parent="VBoxContainer/Control"]
+[node name="A" type="Button" parent="VBoxContainer/Control" unique_id=136992483]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -406,7 +343,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_u40go")
 expand_icon = true
 
-[node name="B" type="Button" parent="VBoxContainer/Control"]
+[node name="B" type="Button" parent="VBoxContainer/Control" unique_id=274495900]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -425,7 +362,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_rnqww")
 expand_icon = true
 
-[node name="X" type="Button" parent="VBoxContainer/Control"]
+[node name="X" type="Button" parent="VBoxContainer/Control" unique_id=756361298]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -444,7 +381,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_1a2yv")
 expand_icon = true
 
-[node name="Y" type="Button" parent="VBoxContainer/Control"]
+[node name="Y" type="Button" parent="VBoxContainer/Control" unique_id=1237373288]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -463,7 +400,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_hktfi")
 expand_icon = true
 
-[node name="Select" type="Button" parent="VBoxContainer/Control"]
+[node name="Select" type="Button" parent="VBoxContainer/Control" unique_id=2095461755]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -482,7 +419,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_2ksy6")
 expand_icon = true
 
-[node name="Start" type="Button" parent="VBoxContainer/Control"]
+[node name="Start" type="Button" parent="VBoxContainer/Control" unique_id=1041494344]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -501,7 +438,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_08sqi")
 expand_icon = true
 
-[node name="Home" type="Button" parent="VBoxContainer/Control"]
+[node name="Home" type="Button" parent="VBoxContainer/Control" unique_id=561846379]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -520,7 +457,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_tivgf")
 expand_icon = true
 
-[node name="Share" type="Button" parent="VBoxContainer/Control"]
+[node name="Share" type="Button" parent="VBoxContainer/Control" unique_id=2121672759]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -539,7 +476,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_87fow")
 expand_icon = true
 
-[node name="DPAD" type="Button" parent="VBoxContainer/Control"]
+[node name="DPAD" type="Button" parent="VBoxContainer/Control" unique_id=2073271740]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -558,7 +495,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_n4i6p")
 expand_icon = true
 
-[node name="DPADDown" type="Button" parent="VBoxContainer/Control"]
+[node name="DPADDown" type="Button" parent="VBoxContainer/Control" unique_id=880395758]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -577,7 +514,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_eoyuo")
 expand_icon = true
 
-[node name="DPADRight" type="Button" parent="VBoxContainer/Control"]
+[node name="DPADRight" type="Button" parent="VBoxContainer/Control" unique_id=1602003661]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -596,7 +533,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_c660e")
 expand_icon = true
 
-[node name="DPADLeft" type="Button" parent="VBoxContainer/Control"]
+[node name="DPADLeft" type="Button" parent="VBoxContainer/Control" unique_id=67588811]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -615,7 +552,7 @@ button_group = SubResource("ButtonGroup_haylq")
 icon = SubResource("Texture2D_riwus")
 expand_icon = true
 
-[node name="DPADUp" type="Button" parent="VBoxContainer/Control"]
+[node name="DPADUp" type="Button" parent="VBoxContainer/Control" unique_id=197815666]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -638,41 +575,41 @@ expand_icon = true
 [connection signal="pressed" from="VBoxContainer/Control/LStick" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/LStickClick" to="." method="_on_l_stick_click_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/LStickClick" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/RStick" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/RStick" to="." method="_on_r_stick_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/RStickClick" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/RStick" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/RStickClick" to="." method="_on_r_stick_click_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/LB" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/RStickClick" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/LB" to="." method="_on_lb_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/LT" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/LB" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/LT" to="." method="_on_lt_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/RB" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/LT" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/RB" to="." method="_on_rb_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/RT" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/RB" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/RT" to="." method="_on_rt_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/A" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/RT" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/A" to="." method="_on_a_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/A" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/B" to="." method="_on_b_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/B" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/X" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/X" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/X" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/Y" to="." method="_on_y_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/Y" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/Select" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/Select" to="." method="_on_select_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/Start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/Select" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/Home" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/Start" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/Home" to="." method="_on_home_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/Share" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/Home" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/Share" to="." method="_on_share_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/Share" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/DPAD" to="." method="_on_dpad_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/DPAD" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/DPADDown" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/DPADDown" to="." method="_on_dpad_down_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/DPADRight" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/DPADDown" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/DPADRight" to="." method="_on_dpad_right_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/DPADLeft" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/DPADRight" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/DPADLeft" to="." method="_on_dpad_left_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/DPADUp" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/DPADLeft" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/DPADUp" to="." method="_on_dpad_up_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/DPADUp" to="." method="_on_button_pressed"]

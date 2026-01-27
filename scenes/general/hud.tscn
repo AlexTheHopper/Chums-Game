@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cwtw3l04fav7g"]
+[gd_scene format=3 uid="uid://cwtw3l04fav7g"]
 
 [ext_resource type="Script" uid="uid://uaj8v2pnjutj" path="res://scripts/general/hud.gd" id="1_n1psb"]
 [ext_resource type="Texture2D" uid="uid://cg7qoa8wicp8p" path="res://assets/entities/heart_128.png" id="2_dh6d1"]
@@ -459,11 +459,11 @@ _data = {
 &"display": SubResource("Animation_2r3oe")
 }
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=1753803128]
 process_mode = 3
 script = ExtResource("1_n1psb")
 
-[node name="InGameHUD" type="Control" parent="."]
+[node name="InGameHUD" type="Control" parent="." unique_id=1561125835]
 z_index = -2
 layout_mode = 3
 anchors_preset = 15
@@ -472,7 +472,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthPanel" type="Panel" parent="InGameHUD"]
+[node name="HealthPanel" type="Panel" parent="InGameHUD" unique_id=559887466]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.022
@@ -485,7 +485,7 @@ offset_right = 0.359985
 offset_bottom = -0.167999
 theme_override_styles/panel = SubResource("StyleBoxFlat_p21ms")
 
-[node name="TextureRect" type="TextureRect" parent="InGameHUD/HealthPanel"]
+[node name="TextureRect" type="TextureRect" parent="InGameHUD/HealthPanel" unique_id=1001596526]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.25
@@ -493,7 +493,7 @@ anchor_bottom = 1.0
 texture = ExtResource("2_dh6d1")
 expand_mode = 1
 
-[node name="PlayerHealthBar" parent="InGameHUD/HealthPanel" instance=ExtResource("3_d6pnr")]
+[node name="PlayerHealthBar" parent="InGameHUD/HealthPanel" unique_id=1205253914 instance=ExtResource("3_d6pnr")]
 layout_mode = 1
 anchor_left = 0.275
 anchor_top = 0.2
@@ -502,7 +502,7 @@ anchor_bottom = 0.8
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="BraceletsPanel" type="Panel" parent="InGameHUD"]
+[node name="BraceletsPanel" type="Panel" parent="InGameHUD" unique_id=1726781300]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.022
@@ -515,7 +515,7 @@ offset_right = 0.23999
 offset_bottom = 0.311996
 theme_override_styles/panel = SubResource("StyleBoxFlat_pfecb")
 
-[node name="TextureRect" type="TextureRect" parent="InGameHUD/BraceletsPanel"]
+[node name="TextureRect" type="TextureRect" parent="InGameHUD/BraceletsPanel" unique_id=1389812206]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.4
@@ -523,7 +523,7 @@ anchor_bottom = 1.0
 texture = ExtResource("4_p21ms")
 expand_mode = 1
 
-[node name="Value" type="Label" parent="InGameHUD/BraceletsPanel"]
+[node name="Value" type="Label" parent="InGameHUD/BraceletsPanel" unique_id=1866530487]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
@@ -535,7 +535,7 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MinimapBack" type="Panel" parent="InGameHUD"]
+[node name="MinimapBack" type="Panel" parent="InGameHUD" unique_id=2040864283]
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 1
 anchors_preset = -1
@@ -549,7 +549,7 @@ offset_right = 0.57592773
 offset_bottom = 0.31199646
 theme_override_styles/panel = SubResource("StyleBoxFlat_37424")
 
-[node name="MinimapPanel" type="Panel" parent="InGameHUD"]
+[node name="MinimapPanel" type="Panel" parent="InGameHUD" unique_id=788458098]
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 1
 anchors_preset = -1
@@ -563,7 +563,7 @@ offset_right = 0.57592773
 offset_bottom = 0.31199646
 theme_override_styles/panel = SubResource("StyleBoxFlat_5vyhu")
 
-[node name="Minimap" parent="InGameHUD/MinimapPanel" instance=ExtResource("5_pfecb")]
+[node name="Minimap" parent="InGameHUD/MinimapPanel" unique_id=1517258094 instance=ExtResource("5_pfecb")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = -1
@@ -572,7 +572,7 @@ anchor_top = 0.5
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="MinimapFade" type="Panel" parent="InGameHUD"]
+[node name="MinimapFade" type="Panel" parent="InGameHUD" unique_id=576577073]
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 1
 anchors_preset = -1
@@ -586,17 +586,15 @@ offset_right = 0.57592773
 offset_bottom = 0.31199646
 theme_override_styles/panel = SubResource("StyleBoxTexture_4l38w")
 
-[node name="ChumIndicators" type="Control" parent="InGameHUD"]
+[node name="ChumIndicators" type="Control" parent="InGameHUD" unique_id=409208830]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InGameHUD"]
-libraries = {
-&"": SubResource("AnimationLibrary_adyy0")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InGameHUD" unique_id=1119944692]
+libraries/ = SubResource("AnimationLibrary_adyy0")
 
-[node name="PauseMenu" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="." unique_id=294137652]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -605,7 +603,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=486609305]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -615,7 +613,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.203922, 0.203922, 0.203922, 0)
 
-[node name="PausePanel" type="Panel" parent="PauseMenu"]
+[node name="PausePanel" type="Panel" parent="PauseMenu" unique_id=1545044147]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -632,7 +630,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4l38w")
 
-[node name="Value" type="Label" parent="PauseMenu/PausePanel"]
+[node name="Value" type="Label" parent="PauseMenu/PausePanel" unique_id=1220047818]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
 anchors_preset = -1
@@ -650,7 +648,7 @@ text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UnpausePanel" type="Panel" parent="PauseMenu"]
+[node name="UnpausePanel" type="Panel" parent="PauseMenu" unique_id=1646587949]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -667,7 +665,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_adyy0")
 
-[node name="Value" type="Label" parent="PauseMenu/UnpausePanel"]
+[node name="Value" type="Label" parent="PauseMenu/UnpausePanel" unique_id=837320753]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
 anchors_preset = -1
@@ -682,12 +680,12 @@ text = "GAME_RETURN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/UnpausePanel"]
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/UnpausePanel" unique_id=941660090]
 position = Vector2(200, 25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_5vyhu")
 
-[node name="ReturnPanel" type="Panel" parent="PauseMenu"]
+[node name="ReturnPanel" type="Panel" parent="PauseMenu" unique_id=1902761873]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -704,7 +702,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_adyy0")
 
-[node name="Value" type="Label" parent="PauseMenu/ReturnPanel"]
+[node name="Value" type="Label" parent="PauseMenu/ReturnPanel" unique_id=2051689619]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
 anchors_preset = -1
@@ -719,18 +717,16 @@ text = "MENU_RETURN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/ReturnPanel"]
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenu/ReturnPanel" unique_id=1150296947]
 position = Vector2(200, 25)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_p21ms")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PauseMenu" unique_id=1078088008]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_2r3oe")
-}
+libraries/ = SubResource("AnimationLibrary_2r3oe")
 
-[node name="SavedIndicator" type="Control" parent="."]
+[node name="SavedIndicator" type="Control" parent="." unique_id=1592302878]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1.0
@@ -738,7 +734,7 @@ offset_top = -3.0
 offset_right = 1151.0
 offset_bottom = 645.0
 
-[node name="ReturnPanel" type="Panel" parent="SavedIndicator"]
+[node name="ReturnPanel" type="Panel" parent="SavedIndicator" unique_id=588232650]
 visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 1
@@ -756,7 +752,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2r3oe")
 
-[node name="Value" type="Label" parent="SavedIndicator/ReturnPanel"]
+[node name="Value" type="Label" parent="SavedIndicator/ReturnPanel" unique_id=430340302]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
 anchors_preset = -1
@@ -774,7 +770,5 @@ text = "Game Saved"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SavedIndicator"]
-libraries = {
-&"": SubResource("AnimationLibrary_nr7vf")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SavedIndicator" unique_id=499983147]
+libraries/ = SubResource("AnimationLibrary_nr7vf")

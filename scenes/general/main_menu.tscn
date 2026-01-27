@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://xi6g2eiqww0b"]
+[gd_scene format=4 uid="uid://xi6g2eiqww0b"]
 
 [ext_resource type="Script" uid="uid://btywxp6yslwdc" path="res://scripts/general/main_menu.gd" id="1_qtr6c"]
 [ext_resource type="MeshLibrary" uid="uid://cigp6vhw1rudc" path="res://assets/world/meshlib_world_1.tres" id="2_gytos"]
@@ -546,13 +546,13 @@ _data = {
 &"Swing": SubResource("Animation_e4s2a")
 }
 
-[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("start_button", "language_button", "tutorial_button")]
+[node name="MainMenu" type="Node3D" unique_id=2134678962 node_paths=PackedStringArray("start_button", "language_button", "tutorial_button")]
 script = ExtResource("1_qtr6c")
 start_button = NodePath("Control/StartInfo")
 language_button = NodePath("Control/LanguageInfo")
 tutorial_button = NodePath("Control/TutorialInfo")
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="GridMap" type="GridMap" parent="." unique_id=2095770416]
 mesh_library = ExtResource("2_gytos")
 cell_center_y = false
 data = {
@@ -560,226 +560,226 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(-13, 1, -14)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1847807304]
 transform = Transform3D(0.707107, 0.353554, -0.612373, 0, 0.866026, 0.5, 0.707107, -0.353554, 0.612373, 0, 10, 15)
 
-[node name="Target" type="Node3D" parent="Camera3D"]
+[node name="Target" type="Node3D" parent="Camera3D" unique_id=70941906]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -2.08616e-07, 1, -5, 13, -25)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=886271900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.68387, 0)
 omni_range = 50.0
 omni_attenuation = 0.4
 omni_shadow_mode = 0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=241555822]
 environment = SubResource("Environment_sm4kk")
 
-[node name="Decorations" type="Node3D" parent="."]
+[node name="Decorations" type="Node3D" parent="." unique_id=88029550]
 
-[node name="Streetlamp1" parent="Decorations" instance=ExtResource("3_tdqsr")]
+[node name="Streetlamp1" parent="Decorations" unique_id=1988409020 instance=ExtResource("3_tdqsr")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2, 0)
 
-[node name="Tree1" parent="Decorations" instance=ExtResource("3_sm4kk")]
+[node name="Tree1" parent="Decorations" unique_id=818368339 instance=ExtResource("3_sm4kk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 15.3405, 3, 15.4823)
 
-[node name="Tree2" parent="Decorations" instance=ExtResource("3_sm4kk")]
+[node name="Tree2" parent="Decorations" unique_id=296307084 instance=ExtResource("3_sm4kk")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 19, 3, -11)
 
-[node name="Tree3" parent="Decorations" instance=ExtResource("3_sm4kk")]
+[node name="Tree3" parent="Decorations" unique_id=120067964 instance=ExtResource("3_sm4kk")]
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -17.5, 3, -18.5)
 
-[node name="Tree4" parent="Decorations" instance=ExtResource("3_sm4kk")]
+[node name="Tree4" parent="Decorations" unique_id=1213788963 instance=ExtResource("3_sm4kk")]
 transform = Transform3D(2.38498e-08, 0, -2, 0, 2, 0, 2, 0, 2.38498e-08, -6.1, 2, 24)
 
-[node name="Tree5" parent="Decorations" instance=ExtResource("3_sm4kk")]
+[node name="Tree5" parent="Decorations" unique_id=1140244456 instance=ExtResource("3_sm4kk")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4.69336, 2, 2.85795)
 
-[node name="Tree6" parent="Decorations" instance=ExtResource("3_sm4kk")]
+[node name="Tree6" parent="Decorations" unique_id=2113973903 instance=ExtResource("3_sm4kk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 24.6752, 2, 1.8143)
 
-[node name="Tree7" parent="Decorations" instance=ExtResource("3_sm4kk")]
+[node name="Tree7" parent="Decorations" unique_id=2116078362 instance=ExtResource("3_sm4kk")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -24.89, 2, -0.695539)
 
-[node name="Tree8" parent="Decorations" instance=ExtResource("3_sm4kk")]
+[node name="Tree8" parent="Decorations" unique_id=66195284 instance=ExtResource("3_sm4kk")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 2.82634, 2, -22.7448)
 
-[node name="Particles" parent="Decorations" instance=ExtResource("5_ftlmj")]
+[node name="Particles" parent="Decorations" unique_id=1862288853 instance=ExtResource("5_ftlmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, -20)
 particle_count = 100
 
-[node name="Particles2" parent="Decorations" instance=ExtResource("5_ftlmj")]
+[node name="Particles2" parent="Decorations" unique_id=1320009549 instance=ExtResource("5_ftlmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, 20)
 particle_count = 100
 
-[node name="Particles3" parent="Decorations" instance=ExtResource("5_ftlmj")]
+[node name="Particles3" parent="Decorations" unique_id=1376590434 instance=ExtResource("5_ftlmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 3, -20)
 particle_count = 100
 
-[node name="Particles4" parent="Decorations" instance=ExtResource("5_ftlmj")]
+[node name="Particles4" parent="Decorations" unique_id=416945816 instance=ExtResource("5_ftlmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 3, 20)
 particle_count = 100
 
-[node name="Grass1" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass1" parent="Decorations" unique_id=961977190 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3999999, 2, -4.7000003)
 
-[node name="Grass2" parent="Decorations" instance=ExtResource("15_c8qn0")]
+[node name="Grass2" parent="Decorations" unique_id=353202149 instance=ExtResource("15_c8qn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 2, -7.8)
 
-[node name="Grass3" parent="Decorations" instance=ExtResource("15_c8qn0")]
+[node name="Grass3" parent="Decorations" unique_id=950649876 instance=ExtResource("15_c8qn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, 16.7)
 
-[node name="Grass4" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass4" parent="Decorations" unique_id=54613968 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4, 2, -2.3)
 
-[node name="Grass5" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass5" parent="Decorations" unique_id=225832185 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 5.9)
 
-[node name="Grass6" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass6" parent="Decorations" unique_id=684911818 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, 2, 8.6)
 
-[node name="Grass7" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass7" parent="Decorations" unique_id=47662530 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3, 2, 5.1000004)
 
-[node name="Grass8" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass8" parent="Decorations" unique_id=1963018941 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2000003, 2, 7.8)
 
-[node name="Grass9" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass9" parent="Decorations" unique_id=1621038896 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.900001, 2, -14.3)
 
-[node name="Grass10" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass10" parent="Decorations" unique_id=724313406 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7, 2, 7.6)
 
-[node name="Grass11" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass11" parent="Decorations" unique_id=1207905307 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.300001, 2, 13.6)
 
-[node name="Grass12" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass12" parent="Decorations" unique_id=358658242 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, 18.4)
 
-[node name="Grass13" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass13" parent="Decorations" unique_id=770221039 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9, 2, 25.1)
 
-[node name="Grass14" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass14" parent="Decorations" unique_id=1108660358 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1, 2, -23.6)
 
-[node name="Grass15" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass15" parent="Decorations" unique_id=1126060472 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.900001, 2, -16.9)
 
-[node name="Grass16" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass16" parent="Decorations" unique_id=1154124300 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3, 2, 2.5)
 
-[node name="Grass17" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass17" parent="Decorations" unique_id=633512641 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2000003, 2, 8)
 
-[node name="Grass18" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass18" parent="Decorations" unique_id=689531569 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3, 6.6)
 
-[node name="Grass19" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass19" parent="Decorations" unique_id=2050096596 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 3, -19.9)
 
-[node name="Grass20" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass20" parent="Decorations" unique_id=257923773 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4, 2, -4.5)
 
-[node name="Grass21" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass21" parent="Decorations" unique_id=840465868 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2, 3, -6.5)
 
-[node name="Grass22" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass22" parent="Decorations" unique_id=773968300 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 3, -10)
 
-[node name="Grass23" parent="Decorations" instance=ExtResource("15_c8qn0")]
+[node name="Grass23" parent="Decorations" unique_id=919132977 instance=ExtResource("15_c8qn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 3, 16.800001)
 
-[node name="Grass24" parent="Decorations" instance=ExtResource("15_c8qn0")]
+[node name="Grass24" parent="Decorations" unique_id=882064896 instance=ExtResource("15_c8qn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1, 3, 14.8)
 
-[node name="Grass25" parent="Decorations" instance=ExtResource("15_c8qn0")]
+[node name="Grass25" parent="Decorations" unique_id=1069709482 instance=ExtResource("15_c8qn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1, 3, -16.9)
 
-[node name="Grass26" parent="Decorations" instance=ExtResource("15_c8qn0")]
+[node name="Grass26" parent="Decorations" unique_id=907561702 instance=ExtResource("15_c8qn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2, 3, -6.8)
 
-[node name="Grass27" parent="Decorations" instance=ExtResource("17_7qbw1")]
+[node name="Grass27" parent="Decorations" unique_id=1889781310 instance=ExtResource("17_7qbw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6, 2, 11)
 
-[node name="Grass28" parent="Decorations" instance=ExtResource("17_7qbw1")]
+[node name="Grass28" parent="Decorations" unique_id=355598114 instance=ExtResource("17_7qbw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 2, 8.8)
 
-[node name="Grass29" parent="Decorations" instance=ExtResource("17_7qbw1")]
+[node name="Grass29" parent="Decorations" unique_id=169818288 instance=ExtResource("17_7qbw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4, 3, -8.3)
 
-[node name="Grass30" parent="Decorations" instance=ExtResource("17_7qbw1")]
+[node name="Grass30" parent="Decorations" unique_id=120120640 instance=ExtResource("17_7qbw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8, 3, -16.2)
 
-[node name="Grass31" parent="Decorations" instance=ExtResource("17_7qbw1")]
+[node name="Grass31" parent="Decorations" unique_id=206878421 instance=ExtResource("17_7qbw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 3, -5.6)
 
-[node name="Grass32" parent="Decorations" instance=ExtResource("17_7qbw1")]
+[node name="Grass32" parent="Decorations" unique_id=1319794699 instance=ExtResource("17_7qbw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.300001, 2, 4.9)
 
-[node name="Grass33" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass33" parent="Decorations" unique_id=1384089626 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.300001, 2, 5.7000003)
 
-[node name="Grass34" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass34" parent="Decorations" unique_id=2036558394 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9, 2, 8.2)
 
-[node name="Grass35" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass35" parent="Decorations" unique_id=927824274 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.7, 2, -7.8)
 
-[node name="Grass36" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass36" parent="Decorations" unique_id=31611403 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.900001, 2, -7.2000003)
 
-[node name="Grass37" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass37" parent="Decorations" unique_id=854780675 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6000001, 3, -12.2)
 
-[node name="Grass38" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass38" parent="Decorations" unique_id=286009399 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 3, -5.7000003)
 
-[node name="Grass39" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass39" parent="Decorations" unique_id=1014314827 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1, 3, 4.7000003)
 
-[node name="Grass40" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass40" parent="Decorations" unique_id=469140284 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 3, -11.2)
 
-[node name="Grass41" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass41" parent="Decorations" unique_id=13319604 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.900001, 3, 16.800001)
 
-[node name="Grass42" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass42" parent="Decorations" unique_id=1248821288 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1, 2, 28.4)
 
-[node name="Grass43" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass43" parent="Decorations" unique_id=857863204 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.900001, 2, 27.2)
 
-[node name="Grass44" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass44" parent="Decorations" unique_id=75905742 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2, 2, 10.6)
 
-[node name="Grass45" parent="Decorations" instance=ExtResource("15_c8qn0")]
+[node name="Grass45" parent="Decorations" unique_id=1317331299 instance=ExtResource("15_c8qn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 2, 13.1)
 
-[node name="Grass46" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass46" parent="Decorations" unique_id=1531193417 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1, 2, -12.900001)
 
-[node name="Grass47" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass47" parent="Decorations" unique_id=1164363341 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 2, -13.8)
 
-[node name="Grass48" parent="Decorations" instance=ExtResource("6_srke8")]
+[node name="Grass48" parent="Decorations" unique_id=1901681508 instance=ExtResource("6_srke8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 1.3000001)
 
-[node name="Grass49" parent="Decorations" instance=ExtResource("15_c8qn0")]
+[node name="Grass49" parent="Decorations" unique_id=876796199 instance=ExtResource("15_c8qn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 2, -0.8)
 
-[node name="Grass50" parent="Decorations" instance=ExtResource("18_iedvi")]
+[node name="Grass50" parent="Decorations" unique_id=2116592629 instance=ExtResource("18_iedvi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 2, 1.1)
 
-[node name="Grass51" parent="Decorations" instance=ExtResource("16_gytos")]
+[node name="Grass51" parent="Decorations" unique_id=741527453 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -1.3000001)
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=265468341]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 650.0
 
-[node name="StartInfo" type="Panel" parent="Control"]
+[node name="StartInfo" type="Panel" parent="Control" unique_id=187118411]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -795,7 +795,7 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gytos")
 script = ExtResource("11_7qbw1")
 
-[node name="Value" type="Label" parent="Control/StartInfo"]
+[node name="Value" type="Label" parent="Control/StartInfo" unique_id=199341721]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -814,7 +814,7 @@ text = "START_GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LanguageInfo" type="Panel" parent="Control"]
+[node name="LanguageInfo" type="Panel" parent="Control" unique_id=383048005]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -830,7 +830,7 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7qbw1")
 script = ExtResource("13_237jf")
 
-[node name="Value" type="Label" parent="Control/LanguageInfo"]
+[node name="Value" type="Label" parent="Control/LanguageInfo" unique_id=1018715242]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -849,7 +849,7 @@ text = "LANGUAGE_NATIVE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TutorialInfo" type="Panel" parent="Control"]
+[node name="TutorialInfo" type="Panel" parent="Control" unique_id=768216763]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -865,7 +865,7 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_iedvi")
 script = ExtResource("14_gytos")
 
-[node name="Value" type="Label" parent="Control/TutorialInfo"]
+[node name="Value" type="Label" parent="Control/TutorialInfo" unique_id=1012825945]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -884,33 +884,33 @@ text = "START_TUTORIAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MenuBeing" parent="." instance=ExtResource("6_pikal")]
+[node name="MenuBeing" parent="." unique_id=2139683659 instance=ExtResource("6_pikal")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)
 
-[node name="Chums" type="Node3D" parent="."]
+[node name="Chums" type="Node3D" parent="." unique_id=168271716]
 
-[node name="PunchingBag" parent="Chums" instance=ExtResource("7_nalmj")]
+[node name="PunchingBag" parent="Chums" unique_id=706427106 instance=ExtResource("7_nalmj")]
 transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, -25, 2, 2)
 
-[node name="PunchingBag2" parent="Chums" instance=ExtResource("7_nalmj")]
+[node name="PunchingBag2" parent="Chums" unique_id=1700397694 instance=ExtResource("7_nalmj")]
 transform = Transform3D(-0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, 26, 2, 0)
 
-[node name="PunchingBag3" parent="Chums" instance=ExtResource("7_nalmj")]
+[node name="PunchingBag3" parent="Chums" unique_id=104138949 instance=ExtResource("7_nalmj")]
 transform = Transform3D(-0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, -0.642788, -4, 2, 24)
 
-[node name="PunchingBag4" parent="Chums" instance=ExtResource("7_nalmj")]
+[node name="PunchingBag4" parent="Chums" unique_id=1868516906 instance=ExtResource("7_nalmj")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1, 2, -23)
 
-[node name="DisplayNode" type="Node3D" parent="."]
+[node name="DisplayNode" type="Node3D" parent="." unique_id=57245514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 2, 0)
 visible = false
 
-[node name="player" type="Node3D" parent="DisplayNode"]
+[node name="player" type="Node3D" parent="DisplayNode" unique_id=1243618891]
 
-[node name="Armature" type="Node3D" parent="DisplayNode/player"]
+[node name="Armature" type="Node3D" parent="DisplayNode/player" unique_id=1078242103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.293333)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="DisplayNode/player/Armature"]
+[node name="Skeleton3D" type="Skeleton3D" parent="DisplayNode/player/Armature" unique_id=837812440]
 bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
@@ -954,13 +954,12 @@ bones/5/position = Vector3(-0.2, 0, 0)
 bones/5/rotation = Quaternion(1, 0, -4.37114e-08, 0)
 bones/5/scale = Vector3(1, 1, 1)
 
-[node name="Untitled" type="MeshInstance3D" parent="DisplayNode/player/Armature/Skeleton3D"]
+[node name="Untitled" type="MeshInstance3D" parent="DisplayNode/player/Armature/Skeleton3D" unique_id=958307570]
 mesh = SubResource("ArrayMesh_88aja")
 skin = SubResource("Skin_udcve")
+skeleton = NodePath("..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DisplayNode/player"]
-libraries = {
-&"": SubResource("AnimationLibrary_e3ar8")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DisplayNode/player" unique_id=627025194]
+libraries/ = SubResource("AnimationLibrary_e3ar8")
 
-[node name="chums" type="Node3D" parent="DisplayNode"]
+[node name="chums" type="Node3D" parent="DisplayNode" unique_id=1847822062]

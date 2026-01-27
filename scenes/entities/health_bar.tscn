@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1saa1y5s8j4y"]
+[gd_scene format=3 uid="uid://c1saa1y5s8j4y"]
 
 [ext_resource type="Script" uid="uid://mfqmun4mwhwu" path="res://scripts/entities/health_bar.gd" id="1_22ocg"]
 [ext_resource type="PackedScene" uid="uid://cka0qlipgy7q8" path="res://scenes/entities/health_bar_notch.tscn" id="2_1opjk"]
@@ -122,28 +122,26 @@ _data = {
 &"fade_out": SubResource("Animation_lmvau")
 }
 
-[node name="HealthBar" type="Node3D" node_paths=PackedStringArray("current_health_bar", "max_health_bar", "damaged_bar")]
+[node name="HealthBar" type="Node3D" unique_id=1397601941 node_paths=PackedStringArray("current_health_bar", "max_health_bar", "damaged_bar")]
 script = ExtResource("1_22ocg")
 current_health_bar = NodePath("Health")
 max_health_bar = NodePath("Frame")
 damaged_bar = NodePath("Damaged")
 notch_scene = ExtResource("2_1opjk")
 
-[node name="Health" type="MeshInstance3D" parent="."]
+[node name="Health" type="MeshInstance3D" parent="." unique_id=1463541731]
 mesh = SubResource("BoxMesh_yhmx4")
 
-[node name="Frame" type="MeshInstance3D" parent="."]
+[node name="Frame" type="MeshInstance3D" parent="." unique_id=1008635961]
 mesh = SubResource("BoxMesh_h7ggc")
 
-[node name="Damaged" type="MeshInstance3D" parent="."]
+[node name="Damaged" type="MeshInstance3D" parent="." unique_id=950522451]
 mesh = SubResource("BoxMesh_s6tem")
 
-[node name="DamagedTimer" type="Timer" parent="."]
+[node name="DamagedTimer" type="Timer" parent="." unique_id=1189747723]
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_s6tem")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1102002534]
+libraries/ = SubResource("AnimationLibrary_s6tem")
 
 [connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]

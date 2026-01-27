@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkiw22k2mhny8"]
+[gd_scene format=3 uid="uid://bkiw22k2mhny8"]
 
 [ext_resource type="Script" uid="uid://ccsimpi3va2ld" path="res://scripts/entities/destructable_decoration.gd" id="1_kosj0"]
 [ext_resource type="ArrayMesh" uid="uid://b66rwjfejs2de" path="res://scenes/world/decorations/fireplace.vox" id="2_kosj0"]
@@ -37,7 +37,7 @@ radius = 0.6
 radius = 0.75
 height = 1.5
 
-[node name="Fireplace" type="Node3D" node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
+[node name="Fireplace" type="Node3D" unique_id=1525493430 node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
 script = ExtResource("1_kosj0")
 to_remove = NodePath("Fire")
 to_shrink = NodePath("Fire")
@@ -45,12 +45,12 @@ hit_zone = NodePath("Area3D")
 gradient = SubResource("Gradient_kimgl")
 sound_effect = 15
 
-[node name="Fireplace" type="MeshInstance3D" parent="."]
+[node name="Fireplace" type="MeshInstance3D" parent="." unique_id=960378249]
 mesh = ExtResource("2_kosj0")
 
-[node name="Fire" type="Node3D" parent="." groups=["Hurt_All"]]
+[node name="Fire" type="Node3D" parent="." unique_id=354436499 groups=["Hurt_All"]]
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="Fire"]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Fire" unique_id=1822232787]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 amount = 100
 mesh = SubResource("BoxMesh_38uap")
@@ -65,29 +65,29 @@ damping_curve = SubResource("Curve_qianf")
 scale_amount_curve = SubResource("Curve_8bdc1")
 color_ramp = SubResource("Gradient_knxoy")
 
-[node name="HurtAll" type="Area3D" parent="Fire"]
+[node name="HurtAll" type="Area3D" parent="Fire" unique_id=268818206]
 collision_layer = 0
 collision_mask = 3072
 script = ExtResource("3_v06b1")
 damage = 20
 metadata/_custom_type_script = "uid://dybch2u4lyw5c"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire/HurtAll"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire/HurtAll" unique_id=2072636358]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 shape = SubResource("SphereShape3D_38uap")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Fire"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Fire" unique_id=1217220611]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5, 0)
 light_color = Color(0.9604531, 0.7167603, 0.5694399, 1)
 light_energy = 2.0
 spot_range = 10.0
 spot_attenuation = 0.1
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1153934509]
 collision_layer = 0
 collision_mask = 768
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=967844246]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_ao0kb")
 

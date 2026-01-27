@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://hriaobw5obnw"]
+[gd_scene format=3 uid="uid://hriaobw5obnw"]
 
 [ext_resource type="MeshLibrary" uid="uid://cigp6vhw1rudc" path="res://assets/world/meshlib_world_1.tres" id="1_je4q4"]
 
@@ -10,10 +10,10 @@ cell_size = 0.05
 cell_height = 0.05
 agent_max_climb = 0.05
 
-[node name="NavigationRegion3D" type="NavigationRegion3D"]
+[node name="NavigationRegion3D" type="NavigationRegion3D" unique_id=1583146878]
 navigation_mesh = SubResource("NavigationMesh_212vt")
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="GridMap" type="GridMap" parent="." unique_id=1725970367]
 mesh_library = ExtResource("1_je4q4")
 cell_center_y = false
 data = {

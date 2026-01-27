@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://2yafynwddodb"]
+[gd_scene format=3 uid="uid://2yafynwddodb"]
 
 [ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_304qr"]
 
@@ -19,10 +19,10 @@ point_count = 3
 offsets = PackedFloat32Array(0.0516717, 0.765957, 1)
 colors = PackedColorArray(0.190762, 0.190762, 0.190762, 1, 0.336608, 0.336608, 0.336608, 1, 1, 1, 1, 0)
 
-[node name="sleep_particles" type="Node3D"]
+[node name="sleep_particles" type="Node3D" unique_id=1532366668]
 script = ExtResource("1_304qr")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=643920010]
 amount = 15
 lifetime = 5.0
 mesh = SubResource("TextMesh_cl7bj")

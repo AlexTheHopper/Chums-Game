@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://djxwipc6xxm7e"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://djxwipc6xxm7e"]
 
 [ext_resource type="Shader" uid="uid://cqe8i7y126r4f" path="res://materials/outline_shader.gdshader" id="1_58hyj"]
 
@@ -6,4 +6,4 @@
 render_priority = 0
 shader = ExtResource("1_58hyj")
 shader_parameter/color = Color(0.20392157, 0.40784314, 0.7490196, 1)
-shader_parameter/size = 1.05
+shader_parameter/thickness = 0.05

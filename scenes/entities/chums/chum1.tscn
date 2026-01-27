@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dr778q0wfb61e"]
+[gd_scene format=4 uid="uid://dr778q0wfb61e"]
 
 [ext_resource type="Script" uid="uid://ciwi2o48j3e63" path="res://scripts/entities/chums/chum1/chum1.gd" id="1_oac54"]
 [ext_resource type="Texture2D" uid="uid://cxkp71yodd30s" path="res://Blender_Assets/Chum_Exports/chum1_chum_1_diffuse2.png" id="2_r5iir"]
@@ -769,7 +769,7 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sr3ur"]
 
-[node name="Entity2" type="CharacterBody3D" node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
+[node name="Entity2" type="CharacterBody3D" unique_id=1378886438 node_paths=PackedStringArray("anim_player", "body_mesh", "sleep_zone", "hitbox", "hurtbox", "interaction_area", "bracelet")]
 platform_on_leave = 2
 script = ExtResource("1_oac54")
 anim_player = NodePath("Body/AnimationPlayer")
@@ -780,12 +780,12 @@ hurtbox = NodePath("Hurtbox")
 interaction_area = NodePath("ChumInterractionArea")
 bracelet = NodePath("Body/Armature/Skeleton3D/BoneAttachmentBracelet/Bracelet")
 
-[node name="Body" type="Node3D" parent="."]
+[node name="Body" type="Node3D" parent="." unique_id=48136239]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="Armature" type="Node3D" parent="Body"]
+[node name="Armature" type="Node3D" parent="Body" unique_id=1305389390]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Body/Armature"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Body/Armature" unique_id=2109380257]
 bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 0.773957, -0.633238, 0, 0.633238, 0.773957, 0, 1.1, 0.05)
@@ -850,70 +850,67 @@ bones/8/position = Vector3(-1.05471e-15, 0.45, -3.7253e-09)
 bones/8/rotation = Quaternion(-3.0908584e-08, 0.70710677, -0.70710677, 3.0908588e-08)
 bones/8/scale = Vector3(1, 1, 1)
 
-[node name="BodyMesh" type="MeshInstance3D" parent="Body/Armature/Skeleton3D"]
+[node name="BodyMesh" type="MeshInstance3D" parent="Body/Armature/Skeleton3D" unique_id=1040372837]
 mesh = SubResource("ArrayMesh_sr3ur")
 skin = SubResource("Skin_usabi")
+skeleton = NodePath("..")
 
-[node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D"]
+[node name="BoneAttachmentBracelet" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" unique_id=1373256463]
 transform = Transform3D(1, 2.3094112e-16, -2.7026706e-16, -2.7026667e-16, 0.9877629, -0.15596274, 2.309416e-16, 0.15596274, 0.9877629, 0, 1.6500006, 0.5)
 bone_name = "Head"
 bone_idx = 1
 
-[node name="Bracelet" parent="Body/Armature/Skeleton3D/BoneAttachmentBracelet" instance=ExtResource("3_jadnq")]
+[node name="Bracelet" parent="Body/Armature/Skeleton3D/BoneAttachmentBracelet" unique_id=1284016159 instance=ExtResource("3_jadnq")]
 transform = Transform3D(1, -8.19083e-09, -3.69465e-08, -3.69465e-08, -0.422618, -0.906308, -8.19083e-09, 0.906308, -0.422618, 0, 0.35, -0.2)
 
-[node name="SleepZone" type="Node3D" parent="Body/Armature/Skeleton3D/BoneAttachmentBracelet"]
+[node name="SleepZone" type="Node3D" parent="Body/Armature/Skeleton3D/BoneAttachmentBracelet" unique_id=1088413837]
 transform = Transform3D(1, 6.72838e-08, -1.57795e-07, 1.22159e-07, -0.925111, 0.379698, -1.2043e-07, -0.379698, -0.925111, -4.76274e-08, 0.876814, -0.0636268)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
-libraries = {
-&"": SubResource("AnimationLibrary_qxln5")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body" unique_id=2044895566]
+libraries/ = SubResource("AnimationLibrary_qxln5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1603753253]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.1)
 shape = SubResource("CapsuleShape3D_7oaib")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1949056009]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.1)
 script = ExtResource("6_p7nbp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1438383481]
 shape = SubResource("CapsuleShape3D_kbxqd")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox" unique_id=18629598]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_517v1")
-}
+libraries/ = SubResource("AnimationLibrary_517v1")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=443771452]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.8, 0)
 script = ExtResource("7_p1xu3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=457726254]
 shape = SubResource("SphereShape3D_sr3ur")
 disabled = true
 
-[node name="ChumSpecificStates" type="Node" parent="."]
+[node name="ChumSpecificStates" type="Node" parent="." unique_id=1619395433]
 
-[node name="Active" type="Node" parent="ChumSpecificStates"]
+[node name="Active" type="Node" parent="ChumSpecificStates" unique_id=379629635]
 script = ExtResource("6_sr3ur")
 
-[node name="AttackTimer" type="Timer" parent="ChumSpecificStates/Active"]
+[node name="AttackTimer" type="Timer" parent="ChumSpecificStates/Active" unique_id=2132590860]
 
-[node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active"]
+[node name="NavTimer" type="Timer" parent="ChumSpecificStates/Active" unique_id=1930720176]
 
-[node name="Idle" type="Node" parent="ChumSpecificStates"]
+[node name="Idle" type="Node" parent="ChumSpecificStates" unique_id=204947264]
 script = ExtResource("7_sr3ur")
 
-[node name="Particles" type="Node3D" parent="."]
+[node name="Particles" type="Node3D" parent="." unique_id=284681688]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
-[node name="GeneralChumBehaviour" parent="." instance=ExtResource("7_42xiv")]
+[node name="GeneralChumBehaviour" parent="." unique_id=1344653958 instance=ExtResource("7_42xiv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="ChumInterractionArea" parent="." instance=ExtResource("10_nmqh7")]
+[node name="ChumInterractionArea" parent="." unique_id=1772985333 instance=ExtResource("10_nmqh7")]
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1154392217]
 avoidance_enabled = true

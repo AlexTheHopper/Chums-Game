@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dogp5icuw6k86"]
+[gd_scene format=4 uid="uid://dogp5icuw6k86"]
 
 [ext_resource type="Script" uid="uid://crig3uivh0oar" path="res://scripts/world/proj_rock.gd" id="1_uw0cy"]
 [ext_resource type="PackedScene" uid="uid://dnpw2ecqqfcf8" path="res://particles/proj_rock_hit.tscn" id="2_pppel"]
@@ -149,37 +149,35 @@ point_count = 4
 offsets = PackedFloat32Array(0.2905028, 0.6201117, 1)
 colors = PackedColorArray(0.13492149, 0.016394978, 0.06198415, 1, 0.12724859, 0.022104237, 0.018861918, 1, 0.094080456, 0.03545384, 0.0033713877, 1)
 
-[node name="ProjRock2" type="Area3D"]
+[node name="ProjRock2" type="Area3D" unique_id=514741138]
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_uw0cy")
 hit_particle = ExtResource("2_pppel")
 show_target = true
 
-[node name="ProjRock" type="MeshInstance3D" parent="."]
+[node name="ProjRock" type="MeshInstance3D" parent="." unique_id=359960609]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_pppel")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2126990363]
 shape = SubResource("SphereShape3D_pppel")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_yktff")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=84833197]
+libraries/ = SubResource("AnimationLibrary_yktff")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=354909970]
 script = ExtResource("3_mxqy8")
 metadata/_custom_type_script = "uid://qmw71aj2hoe3"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1684921390]
 shape = SubResource("SphereShape3D_0agd8")
 
-[node name="RockTarget" type="MeshInstance3D" parent="."]
+[node name="RockTarget" type="MeshInstance3D" parent="." unique_id=1113616568]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_0agd8")
 
-[node name="FireParticles" type="CPUParticles3D" parent="."]
+[node name="FireParticles" type="CPUParticles3D" parent="." unique_id=1182226104]
 visible = false
 amount = 50
 mesh = SubResource("BoxMesh_vvbvq")

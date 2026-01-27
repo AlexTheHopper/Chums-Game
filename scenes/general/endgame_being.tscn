@@ -1,23 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck80na83dsv0"]
+[gd_scene format=3 uid="uid://ck80na83dsv0"]
 
 [ext_resource type="Script" uid="uid://cx8w7qqvkc2je" path="res://scripts/general/endgame_being.gd" id="1_b3vfg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fp7ed"]
 
-[node name="EndgameBeing" type="CharacterBody3D"]
+[node name="EndgameBeing" type="CharacterBody3D" unique_id=1601167708]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_b3vfg")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2073152436]
 omni_range = 15.0
 omni_attenuation = 0.7
 omni_shadow_mode = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1504522801]
 shape = SubResource("SphereShape3D_fp7ed")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1594601531]
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

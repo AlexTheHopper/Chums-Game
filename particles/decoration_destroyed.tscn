@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxlduh05ydmui"]
+[gd_scene format=3 uid="uid://bxlduh05ydmui"]
 
 [ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_2lw7u"]
 
@@ -16,10 +16,10 @@ point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_2lw7u"]
 
-[node name="Particles" type="Node3D"]
+[node name="Particles" type="Node3D" unique_id=1915900768]
 script = ExtResource("1_2lw7u")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=240479118]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
 emitting = false
 amount = 25

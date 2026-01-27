@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxc20hvgkeird"]
+[gd_scene format=3 uid="uid://bxc20hvgkeird"]
 
 [ext_resource type="Script" uid="uid://ccsimpi3va2ld" path="res://scripts/entities/destructable_decoration.gd" id="1_cg3ju"]
 [ext_resource type="ArrayMesh" uid="uid://8lqf8ji3j01s" path="res://assets/world/world_2_other/frame_destructible_2.vox" id="2_cg3ju"]
@@ -11,7 +11,7 @@ colors = PackedColorArray(0.06, 0.06, 0.06, 1, 0.32, 0.32, 0.32, 1, 1, 1, 1, 0.5
 radius = 0.75
 height = 1.5
 
-[node name="FrameDestructible2" type="Node3D" node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
+[node name="FrameDestructible2" type="Node3D" unique_id=207691912 node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
 script = ExtResource("1_cg3ju")
 to_remove = NodePath(".")
 to_shrink = NodePath("FrameDestructible2")
@@ -19,13 +19,13 @@ hit_zone = NodePath("Area3D")
 gradient = SubResource("Gradient_3xa88")
 sound_effect = 15
 
-[node name="FrameDestructible2" type="MeshInstance3D" parent="."]
+[node name="FrameDestructible2" type="MeshInstance3D" parent="." unique_id=373597356]
 mesh = ExtResource("2_cg3ju")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1240023285]
 collision_layer = 0
 collision_mask = 768
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=251260575]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_oaedn")

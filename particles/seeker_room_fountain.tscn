@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnvp1cdmsuejn"]
+[gd_scene format=3 uid="uid://dnvp1cdmsuejn"]
 
 [ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_3vror"]
 
@@ -14,10 +14,10 @@ size = Vector3(0.1, 0.1, 0.1)
 offsets = PackedFloat32Array(0, 0.769841)
 colors = PackedColorArray(0.0156863, 0.572549, 1, 0.788235, 0.00784314, 0.137255, 0.278431, 0.686275)
 
-[node name="Particles" type="Node3D"]
+[node name="Particles" type="Node3D" unique_id=178593730]
 script = ExtResource("1_3vror")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1459471183]
 emitting = false
 one_shot = true
 explosiveness = 0.8

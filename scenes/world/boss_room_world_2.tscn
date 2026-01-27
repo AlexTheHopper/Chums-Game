@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq1efbt748fp4"]
+[gd_scene format=3 uid="uid://cq1efbt748fp4"]
 
 [ext_resource type="Script" uid="uid://c6qlwabjvx62t" path="res://scripts/world/boss_room.gd" id="1_x8u4m"]
 [ext_resource type="MeshLibrary" uid="uid://b52oqgk3y6mjn" path="res://assets/world/meshlib_world_2.tres" id="2_8er0r"]
@@ -29,15 +29,15 @@ fog_density = 0.05
 fog_height = 1.5
 fog_height_density = 1.0
 
-[node name="Room" type="Node3D" node_paths=PackedStringArray("spawn_timer", "grid_map")]
+[node name="Room" type="Node3D" unique_id=1680784993 node_paths=PackedStringArray("spawn_timer", "grid_map")]
 script = ExtResource("1_x8u4m")
 spawn_timer = NodePath("Timer")
 grid_map = NodePath("NavigationRegion3D/GridMap")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=137965503]
 navigation_mesh = SubResource("NavigationMesh_8er0r")
 
-[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D" unique_id=562638556]
 mesh_library = ExtResource("2_8er0r")
 cell_center_y = false
 data = {
@@ -45,54 +45,54 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(15, 5, -15)
 
-[node name="RoomChangers" type="Node3D" parent="."]
+[node name="RoomChangers" type="Node3D" parent="." unique_id=2056021169]
 
-[node name="RoomChanger" parent="RoomChangers" instance=ExtResource("3_8w1jd")]
+[node name="RoomChanger" parent="RoomChangers" unique_id=361971379 instance=ExtResource("3_8w1jd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -23)
 destination_world_n = 2
 
-[node name="Doors" type="Node3D" parent="."]
+[node name="Doors" type="Node3D" parent="." unique_id=1781380342]
 
-[node name="z_neg" parent="Doors" instance=ExtResource("4_8er0r")]
+[node name="z_neg" parent="Doors" unique_id=482602510 instance=ExtResource("4_8er0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -17)
 
-[node name="RoomActivator" parent="." instance=ExtResource("5_8764m")]
+[node name="RoomActivator" parent="." unique_id=884293944 instance=ExtResource("5_8764m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
-[node name="Currencies" type="Node3D" parent="."]
+[node name="Currencies" type="Node3D" parent="." unique_id=220986982]
 
-[node name="Decorations" type="Node3D" parent="."]
+[node name="Decorations" type="Node3D" parent="." unique_id=1555219411]
 
-[node name="Streetlamp" parent="Decorations" instance=ExtResource("7_8w1jd")]
+[node name="Streetlamp" parent="Decorations" unique_id=948513474 instance=ExtResource("7_8w1jd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -10)
 
-[node name="Particles" parent="Decorations" instance=ExtResource("7_8er0r")]
+[node name="Particles" parent="Decorations" unique_id=939856552 instance=ExtResource("7_8er0r")]
 
-[node name="PlayerSpawn" type="Node3D" parent="."]
+[node name="PlayerSpawn" type="Node3D" parent="." unique_id=746104366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 5, 14)
 
-[node name="EntryIndicators" type="Node3D" parent="."]
+[node name="EntryIndicators" type="Node3D" parent="." unique_id=2012706979]
 
-[node name="z_neg" parent="EntryIndicators" instance=ExtResource("7_gnpmp")]
+[node name="z_neg" parent="EntryIndicators" unique_id=1765943893 instance=ExtResource("7_gnpmp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, -19)
 is_permanent = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=839571745]
 wait_time = 0.25
 
-[node name="SpawnRayCast" type="RayCast3D" parent="."]
+[node name="SpawnRayCast" type="RayCast3D" parent="." unique_id=1536818639]
 target_position = Vector3(0, -12, 0)
 
-[node name="FallStopper" parent="." instance=ExtResource("9_8er0r")]
+[node name="FallStopper" parent="." unique_id=1413532814 instance=ExtResource("9_8er0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1702825318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
 light_indirect_energy = 0.0
 omni_range = 40.0
 omni_shadow_mode = 0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=589423160]
 environment = SubResource("Environment_8er0r")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

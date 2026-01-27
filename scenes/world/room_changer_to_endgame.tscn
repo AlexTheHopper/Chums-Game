@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://yq7e80ypvfp5"]
+[gd_scene format=3 uid="uid://yq7e80ypvfp5"]
 
 [ext_resource type="Script" uid="uid://tdbke8k3ks61" path="res://scripts/world/room_changer_to_endgame.gd" id="1_tuxy5"]
 
@@ -13,15 +13,15 @@ albedo_color = Color(0.741176, 0, 0, 0.219608)
 material = SubResource("StandardMaterial3D_cydgf")
 size = Vector3(20, 2, 20)
 
-[node name="RoomChanger" type="Area3D"]
+[node name="RoomChanger" type="Area3D" unique_id=1829544266]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_tuxy5")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2086312129]
 shape = SubResource("BoxShape3D_aukul")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=851613691]
 mesh = SubResource("BoxMesh_82fw2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8d65qpghv2db"]
+[gd_scene format=3 uid="uid://b8d65qpghv2db"]
 
 [ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_ddosy"]
 
@@ -19,10 +19,10 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.459677, 0.83871, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
-[node name="Particles" type="Node3D"]
+[node name="Particles" type="Node3D" unique_id=287072189]
 script = ExtResource("1_ddosy")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1240175330]
 emitting = false
 amount = 100
 lifetime = 3.0

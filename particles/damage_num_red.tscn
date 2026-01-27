@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccdx6ggn5moj5"]
+[gd_scene format=3 uid="uid://ccdx6ggn5moj5"]
 
 [ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_ghk6n"]
 
@@ -23,10 +23,10 @@ offsets = PackedFloat32Array(0, 0.7, 1)
 colors = PackedColorArray(0.270222, 0.270222, 0.270222, 1, 0.270588, 0.270588, 0.270588, 1, 0.270588, 0.270588, 0.270588, 0)
 metadata/_snap_enabled = true
 
-[node name="Particles" type="Node3D"]
+[node name="Particles" type="Node3D" unique_id=37453595]
 script = ExtResource("1_ghk6n")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1382796722]
 emitting = false
 amount = 1
 one_shot = true

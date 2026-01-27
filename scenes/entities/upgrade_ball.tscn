@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj4vlwvxfe3nu"]
+[gd_scene format=3 uid="uid://dj4vlwvxfe3nu"]
 
 [ext_resource type="Script" uid="uid://da5mtv1kdqldx" path="res://scripts/entities/upgrade_ball.gd" id="1_n8p3e"]
 
@@ -24,16 +24,16 @@ colors = PackedColorArray(0.26477066, 0.0007082921, 0.62528837, 1, 0.38241717, 0
 [sub_resource type="SphereShape3D" id="SphereShape3D_1v0vs"]
 radius = 0.3
 
-[node name="UpgradeBall" type="CharacterBody3D"]
+[node name="UpgradeBall" type="CharacterBody3D" unique_id=642500458]
 collision_layer = 8
 collision_mask = 10
 script = ExtResource("1_n8p3e")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1762257361]
 shape = SubResource("SphereShape3D_om8ll")
 disabled = true
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=178364736]
 amount = 50
 randomness = 0.5
 mesh = SubResource("BoxMesh_maa32")
@@ -45,11 +45,11 @@ initial_velocity_max = 0.5
 scale_amount_curve = SubResource("Curve_fqqtf")
 color_ramp = SubResource("Gradient_1v0vs")
 
-[node name="ContactZone" type="Area3D" parent="."]
+[node name="ContactZone" type="Area3D" parent="." unique_id=1969470575]
 collision_layer = 8
 collision_mask = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ContactZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ContactZone" unique_id=432340784]
 shape = SubResource("SphereShape3D_1v0vs")
 
 [connection signal="body_entered" from="ContactZone" to="." method="_on_contact_zone_body_entered"]

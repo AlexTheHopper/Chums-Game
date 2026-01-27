@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcyjv52keuase"]
+[gd_scene format=3 uid="uid://bcyjv52keuase"]
 
 [ext_resource type="Script" uid="uid://p7lmstyqrdfm" path="res://scripts/world/door.gd" id="1_smsyp"]
 
@@ -80,19 +80,17 @@ _data = {
 &"raise": SubResource("Animation_ygmca")
 }
 
-[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("animation_player")]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=367928724 node_paths=PackedStringArray("animation_player")]
 collision_mask = 0
 script = ExtResource("1_smsyp")
 animation_player = NodePath("AnimationPlayer")
 
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="."]
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="." unique_id=1585344829]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 depth = 0.5
 polygon = PackedVector2Array(2, 0, 3, 0, 3, 10, 1, 10, -1, 10, -3, 10, -3, 0, -2, 0, -2, 2, 2, 2)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_a7q25")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1651208417]
+libraries/ = SubResource("AnimationLibrary_a7q25")
 
-[node name="MeshNode" type="Node3D" parent="."]
+[node name="MeshNode" type="Node3D" parent="." unique_id=324107825]

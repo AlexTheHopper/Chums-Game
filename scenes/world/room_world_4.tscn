@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjk4gsvhfe5dv"]
+[gd_scene format=3 uid="uid://bjk4gsvhfe5dv"]
 
 [ext_resource type="Script" uid="uid://ci7owev45b6ka" path="res://scripts/world/room.gd" id="1_onkki"]
 [ext_resource type="MeshLibrary" uid="uid://chgdb28ikj66s" path="res://assets/world/meshlib_world_4.tres" id="2_onkki"]
@@ -19,12 +19,12 @@ fog_light_color = Color(0, 0.23342928, 0.48441643, 1)
 fog_height = 1.0
 fog_height_density = 0.5
 
-[node name="Room" type="Node3D" node_paths=PackedStringArray("spawn_timer", "grid_map")]
+[node name="Room" type="Node3D" unique_id=1583586793 node_paths=PackedStringArray("spawn_timer", "grid_map")]
 script = ExtResource("1_onkki")
 spawn_timer = NodePath("SpawnTimer")
 grid_map = NodePath("GridMap")
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="GridMap" type="GridMap" parent="." unique_id=109104379]
 mesh_library = ExtResource("2_onkki")
 cell_center_y = false
 data = {
@@ -32,77 +32,77 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(15, 5, -15)
 
-[node name="RoomChangers" type="Node3D" parent="."]
+[node name="RoomChangers" type="Node3D" parent="." unique_id=2047351816]
 
-[node name="x_pos" parent="RoomChangers" instance=ExtResource("3_c4pdf")]
+[node name="x_pos" parent="RoomChangers" unique_id=129171827 instance=ExtResource("3_c4pdf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, 1)
 
-[node name="x_neg" parent="RoomChangers" instance=ExtResource("3_c4pdf")]
+[node name="x_neg" parent="RoomChangers" unique_id=154929238 instance=ExtResource("3_c4pdf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 1, 1)
 
-[node name="z_pos" parent="RoomChangers" instance=ExtResource("3_c4pdf")]
+[node name="z_pos" parent="RoomChangers" unique_id=1725454536 instance=ExtResource("3_c4pdf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 25)
 
-[node name="z_neg" parent="RoomChangers" instance=ExtResource("3_c4pdf")]
+[node name="z_neg" parent="RoomChangers" unique_id=1995375327 instance=ExtResource("3_c4pdf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -23)
 
-[node name="Doors" type="Node3D" parent="."]
+[node name="Doors" type="Node3D" parent="." unique_id=54870493]
 
-[node name="z_pos" parent="Doors" instance=ExtResource("4_5fp3g")]
+[node name="z_pos" parent="Doors" unique_id=1330591664 instance=ExtResource("4_5fp3g")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 0, 19)
 
-[node name="z_neg" parent="Doors" instance=ExtResource("4_5fp3g")]
+[node name="z_neg" parent="Doors" unique_id=450175603 instance=ExtResource("4_5fp3g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -17)
 
-[node name="x_neg" parent="Doors" instance=ExtResource("4_5fp3g")]
+[node name="x_neg" parent="Doors" unique_id=125446605 instance=ExtResource("4_5fp3g")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17, 0, 1)
 
-[node name="x_pos" parent="Doors" instance=ExtResource("4_5fp3g")]
+[node name="x_pos" parent="Doors" unique_id=763323702 instance=ExtResource("4_5fp3g")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 19, 0, 1)
 
-[node name="RoomActivator" parent="." instance=ExtResource("5_tux0a")]
+[node name="RoomActivator" parent="." unique_id=675648622 instance=ExtResource("5_tux0a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
-[node name="Currencies" type="Node3D" parent="."]
+[node name="Currencies" type="Node3D" parent="." unique_id=2089894243]
 
-[node name="Decorations" type="Node3D" parent="."]
+[node name="Decorations" type="Node3D" parent="." unique_id=1465153227]
 
-[node name="Particles" parent="Decorations" instance=ExtResource("6_onkki")]
+[node name="Particles" parent="Decorations" unique_id=2071815947 instance=ExtResource("6_onkki")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Decorations"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Decorations" unique_id=867868966]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 20, 1)
 omni_range = 50.0
 omni_attenuation = 0.1
 omni_shadow_mode = 0
 
-[node name="EntryIndicators" type="Node3D" parent="."]
+[node name="EntryIndicators" type="Node3D" parent="." unique_id=142641680]
 
-[node name="x_neg" parent="EntryIndicators" instance=ExtResource("7_nxla6")]
+[node name="x_neg" parent="EntryIndicators" unique_id=1757723288 instance=ExtResource("7_nxla6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19, 6, 1)
 
-[node name="x_pos" parent="EntryIndicators" instance=ExtResource("7_nxla6")]
+[node name="x_pos" parent="EntryIndicators" unique_id=2108746769 instance=ExtResource("7_nxla6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21, 6, 1)
 
-[node name="z_neg" parent="EntryIndicators" instance=ExtResource("7_nxla6")]
+[node name="z_neg" parent="EntryIndicators" unique_id=1770796241 instance=ExtResource("7_nxla6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, -19)
 
-[node name="z_pos" parent="EntryIndicators" instance=ExtResource("7_nxla6")]
+[node name="z_pos" parent="EntryIndicators" unique_id=439653182 instance=ExtResource("7_nxla6")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 6, 21)
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1033494421]
 wait_time = 0.5
 one_shot = true
 
-[node name="SpawnRayCast" type="RayCast3D" parent="."]
+[node name="SpawnRayCast" type="RayCast3D" parent="." unique_id=394742231]
 target_position = Vector3(0, -12, 0)
 
-[node name="PlayerSpawn" type="Node3D" parent="."]
+[node name="PlayerSpawn" type="Node3D" parent="." unique_id=1006628779]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10, 14)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1216120161]
 environment = SubResource("Environment_onkki")
 
-[node name="FallStopper" parent="." instance=ExtResource("8_an7on")]
+[node name="FallStopper" parent="." unique_id=1784653365 instance=ExtResource("8_an7on")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

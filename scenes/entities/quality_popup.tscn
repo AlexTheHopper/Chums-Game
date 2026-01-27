@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bgd4xkckyqdcg"]
+[gd_scene format=3 uid="uid://bgd4xkckyqdcg"]
 
 [ext_resource type="Script" uid="uid://b0rs5b6ow7au3" path="res://scripts/entities/quality_popup.gd" id="1_purmp"]
 [ext_resource type="Shader" uid="uid://db57gow0ouvok" path="res://materials/nodepthtest.gdshader" id="2_piaxk"]
@@ -43,7 +43,7 @@ shader_parameter/my_texture = SubResource("ViewportTexture_teyl6")
 [sub_resource type="ViewportTexture" id="ViewportTexture_v3w6n"]
 viewport_path = NodePath("Container/Description/SubViewport")
 
-[node name="QualityPopup" type="Node3D" node_paths=PackedStringArray("control", "disp_name", "disp_name_back", "desc_back", "book_display")]
+[node name="QualityPopup" type="Node3D" unique_id=1773770922 node_paths=PackedStringArray("control", "disp_name", "disp_name_back", "desc_back", "book_display")]
 script = ExtResource("1_purmp")
 control = NodePath("Container/Display/SubViewport/Control")
 disp_name = NodePath("Container/Display/SubViewport/Control/Name")
@@ -51,30 +51,30 @@ disp_name_back = NodePath("Container/Description/SubViewport/Control/Name")
 desc_back = NodePath("Container/Description/SubViewport/Control/Description")
 book_display = NodePath("Container/Description/SubViewport/Control/Book")
 
-[node name="Container" type="Node3D" parent="."]
+[node name="Container" type="Node3D" parent="." unique_id=97306822]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
 
-[node name="Display" type="Sprite3D" parent="Container"]
+[node name="Display" type="Sprite3D" parent="Container" unique_id=1980720300]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3.6, -0.05)
 material_override = SubResource("ShaderMaterial_wx1s1")
 texture = SubResource("ViewportTexture_4m2w7")
 
-[node name="SubViewport" type="SubViewport" parent="Container/Display"]
+[node name="SubViewport" type="SubViewport" parent="Container/Display" unique_id=1362094688]
 
-[node name="Control" type="Control" parent="Container/Display/SubViewport"]
+[node name="Control" type="Control" parent="Container/Display/SubViewport" unique_id=1876335857]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Container/Display/SubViewport/Control"]
+[node name="ColorRect" type="ColorRect" parent="Container/Display/SubViewport/Control" unique_id=1936322429]
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 512.0
 color = Color(0, 0, 0, 1)
 
-[node name="Name" type="Label" parent="Container/Display/SubViewport/Control"]
+[node name="Name" type="Label" parent="Container/Display/SubViewport/Control" unique_id=1032255875]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 100.0
@@ -83,7 +83,7 @@ text = "CHUM_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
+[node name="HealthIcon" type="TextureRect" parent="Container/Display/SubViewport/Control" unique_id=929499792]
 texture_filter = 1
 layout_mode = 0
 offset_left = 125.0
@@ -92,7 +92,7 @@ offset_right = 189.0
 offset_bottom = 214.0
 texture = ExtResource("3_55g01")
 
-[node name="MoveSpeedIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
+[node name="MoveSpeedIcon" type="TextureRect" parent="Container/Display/SubViewport/Control" unique_id=2105507345]
 texture_filter = 1
 layout_mode = 0
 offset_left = 125.0
@@ -101,7 +101,7 @@ offset_right = 189.0
 offset_bottom = 294.0
 texture = ExtResource("4_s03od")
 
-[node name="DamageIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
+[node name="DamageIcon" type="TextureRect" parent="Container/Display/SubViewport/Control" unique_id=1312112158]
 texture_filter = 1
 layout_mode = 0
 offset_left = 125.0
@@ -110,7 +110,7 @@ offset_right = 189.0
 offset_bottom = 374.0
 texture = ExtResource("5_a3b4p")
 
-[node name="AttackSpeedIcon" type="TextureRect" parent="Container/Display/SubViewport/Control"]
+[node name="AttackSpeedIcon" type="TextureRect" parent="Container/Display/SubViewport/Control" unique_id=404689267]
 texture_filter = 1
 layout_mode = 0
 offset_left = 125.0
@@ -119,39 +119,39 @@ offset_right = 189.0
 offset_bottom = 454.0
 texture = ExtResource("6_wjk08")
 
-[node name="UI_ROTATE" type="Sprite2D" parent="Container/Display/SubViewport/Control"]
+[node name="UI_ROTATE" type="Sprite2D" parent="Container/Display/SubViewport/Control" unique_id=1537974569]
 position = Vector2(475, 475)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_kl30j")
 
-[node name="GlitchShader" type="ColorRect" parent="Container/Display/SubViewport"]
+[node name="GlitchShader" type="ColorRect" parent="Container/Display/SubViewport" unique_id=1560558557]
 material = SubResource("ShaderMaterial_kl30j")
 custom_minimum_size = Vector2(512, 512)
 offset_right = 512.0
 offset_bottom = 512.0
 color = Color(0, 0, 0, 0)
 
-[node name="Description" type="Sprite3D" parent="Container"]
+[node name="Description" type="Sprite3D" parent="Container" unique_id=181646569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6, 0.05)
 material_override = SubResource("ShaderMaterial_ixmmc")
 texture = SubResource("ViewportTexture_v3w6n")
 
-[node name="SubViewport" type="SubViewport" parent="Container/Description"]
+[node name="SubViewport" type="SubViewport" parent="Container/Description" unique_id=2097632990]
 
-[node name="Control" type="Control" parent="Container/Description/SubViewport"]
+[node name="Control" type="Control" parent="Container/Description/SubViewport" unique_id=536278011]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Container/Description/SubViewport/Control"]
+[node name="ColorRect" type="ColorRect" parent="Container/Description/SubViewport/Control" unique_id=1850728337]
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
 
-[node name="Name" type="Label" parent="Container/Description/SubViewport/Control"]
+[node name="Name" type="Label" parent="Container/Description/SubViewport/Control" unique_id=1472552305]
 layout_mode = 0
 offset_right = 512.0
 offset_bottom = 100.0
@@ -160,7 +160,7 @@ text = "CHUM_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="Container/Description/SubViewport/Control"]
+[node name="Description" type="Label" parent="Container/Description/SubViewport/Control" unique_id=447295622]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 100.0
@@ -172,17 +172,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="UI_ROTATE" type="Sprite2D" parent="Container/Description/SubViewport/Control"]
+[node name="UI_ROTATE" type="Sprite2D" parent="Container/Description/SubViewport/Control" unique_id=199464438]
 position = Vector2(475, 475)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_kl30j")
 
-[node name="Book" type="Control" parent="Container/Description/SubViewport/Control"]
+[node name="Book" type="Control" parent="Container/Description/SubViewport/Control" unique_id=1340738471]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Bracelet" type="TextureRect" parent="Container/Description/SubViewport/Control/Book"]
+[node name="Bracelet" type="TextureRect" parent="Container/Description/SubViewport/Control/Book" unique_id=563165647]
 texture_filter = 1
 layout_mode = 0
 offset_left = 236.0
@@ -191,7 +191,7 @@ offset_right = 276.0
 offset_bottom = 340.0
 texture = ExtResource("9_a3b4p")
 
-[node name="Book" type="TextureRect" parent="Container/Description/SubViewport/Control/Book"]
+[node name="Book" type="TextureRect" parent="Container/Description/SubViewport/Control/Book" unique_id=142303386]
 texture_filter = 1
 layout_mode = 0
 offset_left = 226.0
@@ -200,12 +200,12 @@ offset_right = 286.0
 offset_bottom = 285.0
 texture = ExtResource("10_wjk08")
 
-[node name="GlitchShader" type="ColorRect" parent="Container/Description/SubViewport"]
+[node name="GlitchShader" type="ColorRect" parent="Container/Description/SubViewport" unique_id=845437412]
 material = SubResource("ShaderMaterial_kl30j")
 custom_minimum_size = Vector2(512, 512)
 offset_right = 512.0
 offset_bottom = 512.0
 color = Color(0, 0, 0, 0)
 
-[node name="MeshNode" type="Node3D" parent="Container"]
+[node name="MeshNode" type="Node3D" parent="Container" unique_id=289398012]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)

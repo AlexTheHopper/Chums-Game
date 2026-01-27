@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2qphphq5anyl"]
+[gd_scene format=3 uid="uid://b2qphphq5anyl"]
 
 [ext_resource type="Script" uid="uid://bl27yojax7t1j" path="res://scripts/world/void_pool.gd" id="1_7x7ok"]
 
@@ -156,32 +156,32 @@ size = Vector3(9.5, 0.6, 9.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bkab0"]
 size = Vector3(9.5, 0.2, 9.5)
 
-[node name="Void" type="Node3D"]
+[node name="Void" type="Node3D" unique_id=1238163395]
 script = ExtResource("1_7x7ok")
 
-[node name="Void" type="MeshInstance3D" parent="."]
+[node name="Void" type="MeshInstance3D" parent="." unique_id=1504296149]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
 mesh = SubResource("BoxMesh_w3553")
 
-[node name="KillZone" type="Area3D" parent="."]
+[node name="KillZone" type="Area3D" parent="." unique_id=378679700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 collision_layer = 0
 collision_mask = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone" unique_id=254104153]
 shape = SubResource("BoxShape3D_fpcbo")
 
-[node name="FlyZone" type="Area3D" parent="."]
+[node name="FlyZone" type="Area3D" parent="." unique_id=760269779]
 collision_layer = 0
 collision_mask = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FlyZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlyZone" unique_id=414443222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_bkab0")
 
-[node name="Hearts" type="Node3D" parent="."]
+[node name="Hearts" type="Node3D" parent="." unique_id=1392550331]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=568001080]
 wait_time = 2.0
 one_shot = true
 autostart = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3wrbhoaeypkv"]
+[gd_scene format=3 uid="uid://d3wrbhoaeypkv"]
 
 [ext_resource type="Script" uid="uid://ccsimpi3va2ld" path="res://scripts/entities/destructable_decoration.gd" id="1_3xa88"]
 [ext_resource type="ArrayMesh" uid="uid://ohqgi3c7vtts" path="res://assets/world/world_1_other/grass1.vox" id="1_w4wpn"]
@@ -10,7 +10,7 @@ colors = PackedColorArray(0.058815062, 0.2734132, 0, 1, 2.1658839e-06, 0.6705109
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oaedn"]
 height = 1.0
 
-[node name="Grass1" type="Node3D" node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
+[node name="Grass1" type="Node3D" unique_id=1486947740 node_paths=PackedStringArray("to_remove", "to_shrink", "hit_zone")]
 script = ExtResource("1_3xa88")
 to_remove = NodePath(".")
 to_shrink = NodePath("Grass1")
@@ -18,13 +18,13 @@ hit_zone = NodePath("Area3D")
 gradient = SubResource("Gradient_3xa88")
 sound_effect = 15
 
-[node name="Grass1" type="MeshInstance3D" parent="."]
+[node name="Grass1" type="MeshInstance3D" parent="." unique_id=328549526]
 mesh = ExtResource("1_w4wpn")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=2139438214]
 collision_layer = 0
 collision_mask = 768
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1783100782]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_oaedn")

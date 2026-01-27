@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cka0qlipgy7q8"]
+[gd_scene format=3 uid="uid://cka0qlipgy7q8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0mly"]
 transparency = 1
@@ -8,11 +8,11 @@ albedo_color = Color(0.0196078, 0.0196078, 0.0196078, 0.462745)
 transparency = 1
 albedo_color = Color(0.0196078, 0.0196078, 0.0196078, 0.462745)
 
-[node name="HealthBarNotch" type="CSGBox3D"]
+[node name="HealthBarNotch" type="CSGBox3D" unique_id=1495928162]
 size = Vector3(0.02, 0.11, 0.11)
 material = SubResource("StandardMaterial3D_t0mly")
 
-[node name="Hole" type="CSGBox3D" parent="."]
+[node name="Hole" type="CSGBox3D" parent="." unique_id=1715850825]
 operation = 2
 size = Vector3(0.02, 0.1, 0.1)
 material = SubResource("StandardMaterial3D_hltxn")

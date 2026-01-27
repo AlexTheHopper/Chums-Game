@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2ofmuo721q1o"]
+[gd_scene format=3 uid="uid://c2ofmuo721q1o"]
 
 [ext_resource type="Script" uid="uid://dkxskfkb4jmjl" path="res://particles/chum_being_particles.gd" id="1_3kxtc"]
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_wycxy"]
@@ -34,10 +34,10 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_yr0jc"]
 colors = PackedColorArray(0.07, 0.07, 0.07, 1, 0.22, 0.22, 0.22, 1)
 
-[node name="BeingParticles" type="Node3D"]
+[node name="BeingParticles" type="Node3D" unique_id=616389146]
 script = ExtResource("1_3kxtc")
 
-[node name="SmallParticles" type="CPUParticles3D" parent="."]
+[node name="SmallParticles" type="CPUParticles3D" parent="." unique_id=973632153]
 amount = 50
 lifetime = 5.0
 randomness = 0.5
@@ -52,7 +52,7 @@ initial_velocity_max = 0.2
 scale_amount_curve = SubResource("Curve_mqdr3")
 color_ramp = SubResource("Gradient_tkero")
 
-[node name="LargeParticles" type="CPUParticles3D" parent="."]
+[node name="LargeParticles" type="CPUParticles3D" parent="." unique_id=330386388]
 material_overlay = ExtResource("1_wycxy")
 amount = 50
 randomness = 0.5

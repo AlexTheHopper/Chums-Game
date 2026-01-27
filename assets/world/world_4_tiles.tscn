@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=4 uid="uid://rkleoam7kjyn"]
+[gd_scene format=4 uid="uid://rkleoam7kjyn"]
 
 [ext_resource type="Texture2D" uid="uid://b240xld5hfptw" path="res://assets/world/world_4_tiles/world_4_tiles_full_no_edge_Color.png" id="1_885bk"]
 [ext_resource type="Texture2D" uid="uid://i33wujiddmoq" path="res://assets/world/world_4_tiles/world_4_tiles_full_edge_Color.png" id="2_vypdt"]
@@ -952,244 +952,220 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3avj4")
 
-[node name="world_4_tiles" type="Node3D"]
+[node name="world_4_tiles" type="Node3D" unique_id=1796789914]
 
-[node name="full_no_edge" type="MeshInstance3D" parent="."]
+[node name="full_no_edge" type="MeshInstance3D" parent="." unique_id=1174720315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
 mesh = SubResource("ArrayMesh_vqfbg")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_no_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_no_edge" unique_id=111975950]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_no_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_no_edge/StaticBody3D" unique_id=1301459634]
 shape = SubResource("ConvexPolygonShape3D_885bk")
 
-[node name="full_edge" type="MeshInstance3D" parent="."]
+[node name="full_edge" type="MeshInstance3D" parent="." unique_id=1905691059]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
 mesh = SubResource("ArrayMesh_0whnv")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_edge" unique_id=1493559920]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_edge/StaticBody3D" unique_id=44648692]
 shape = SubResource("ConvexPolygonShape3D_885bk")
 
-[node name="full_corner" type="MeshInstance3D" parent="."]
+[node name="full_corner" type="MeshInstance3D" parent="." unique_id=51606855]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
 mesh = SubResource("ArrayMesh_iywc4")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_corner"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_corner" unique_id=860120568]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_corner/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_corner/StaticBody3D" unique_id=1678590911]
 shape = SubResource("ConvexPolygonShape3D_885bk")
 
-[node name="full_turn" type="MeshInstance3D" parent="."]
+[node name="full_turn" type="MeshInstance3D" parent="." unique_id=286660222]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
 mesh = SubResource("ArrayMesh_dxxp7")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_turn"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_turn" unique_id=1965562281]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_turn/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_turn/StaticBody3D" unique_id=1128180895]
 shape = SubResource("ConvexPolygonShape3D_885bk")
 
-[node name="full_top_no_edge" type="MeshInstance3D" parent="."]
+[node name="full_top_no_edge" type="MeshInstance3D" parent="." unique_id=1788895767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)
 mesh = SubResource("ArrayMesh_xeovu")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_top_no_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_top_no_edge" unique_id=1894821955]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_no_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_no_edge/StaticBody3D" unique_id=107360791]
 shape = SubResource("ConvexPolygonShape3D_l8ycy")
 
-[node name="full_top_edge" type="MeshInstance3D" parent="."]
+[node name="full_top_edge" type="MeshInstance3D" parent="." unique_id=947751093]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
 mesh = SubResource("ArrayMesh_n1537")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_top_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_top_edge" unique_id=1821778883]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_edge/StaticBody3D" unique_id=1897540302]
 shape = SubResource("ConvexPolygonShape3D_885bk")
 
-[node name="full_top_corner" type="MeshInstance3D" parent="."]
+[node name="full_top_corner" type="MeshInstance3D" parent="." unique_id=1489812900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -6)
 mesh = SubResource("ArrayMesh_k8qrd")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_top_corner"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_top_corner" unique_id=131982188]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_corner/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_corner/StaticBody3D" unique_id=325883575]
 shape = SubResource("ConvexPolygonShape3D_885bk")
 
-[node name="full_top_turn" type="MeshInstance3D" parent="."]
+[node name="full_top_turn" type="MeshInstance3D" parent="." unique_id=235513865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
 mesh = SubResource("ArrayMesh_njsp3")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_top_turn"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_top_turn" unique_id=799710569]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_turn/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_turn/StaticBody3D" unique_id=578303748]
 shape = SubResource("ConvexPolygonShape3D_885bk")
 
-[node name="half_top_no_edge" type="MeshInstance3D" parent="."]
+[node name="half_top_no_edge" type="MeshInstance3D" parent="." unique_id=1933768379]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 mesh = SubResource("ArrayMesh_137uf")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_top_no_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_no_edge" unique_id=1774590992]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_no_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_no_edge/StaticBody3D" unique_id=740507200]
 shape = SubResource("ConvexPolygonShape3D_p5bxn")
 
-[node name="half_top_edge" type="MeshInstance3D" parent="."]
+[node name="half_top_edge" type="MeshInstance3D" parent="." unique_id=40008350]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 mesh = SubResource("ArrayMesh_bx6ds")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_top_edge"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_edge" unique_id=887139464]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_edge/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_edge/StaticBody3D" unique_id=2006627832]
 shape = SubResource("ConvexPolygonShape3D_p5bxn")
 
-[node name="half_top_corner" type="MeshInstance3D" parent="."]
+[node name="half_top_corner" type="MeshInstance3D" parent="." unique_id=1515586228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 mesh = SubResource("ArrayMesh_67n18")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_top_corner"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_corner" unique_id=1703952407]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_corner/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_corner/StaticBody3D" unique_id=1964324624]
 shape = SubResource("ConvexPolygonShape3D_p5bxn")
 
-[node name="half_top_turn" type="MeshInstance3D" parent="."]
+[node name="half_top_turn" type="MeshInstance3D" parent="." unique_id=728272332]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 mesh = SubResource("ArrayMesh_tyjwl")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_top_turn"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_turn" unique_id=992376782]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_turn/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_turn/StaticBody3D" unique_id=927453864]
 shape = SubResource("ConvexPolygonShape3D_p5bxn")
 
-[node name="half_top_middle" type="MeshInstance3D" parent="."]
+[node name="half_top_middle" type="MeshInstance3D" parent="." unique_id=854936693]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 mesh = SubResource("ArrayMesh_f3dtt")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_top_middle"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_middle" unique_id=1745317380]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_middle/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_middle/StaticBody3D" unique_id=120775653]
 shape = SubResource("ConvexPolygonShape3D_p5bxn")
 
-[node name="half_top_end" type="MeshInstance3D" parent="."]
+[node name="half_top_end" type="MeshInstance3D" parent="." unique_id=1163684521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 mesh = SubResource("ArrayMesh_acahv")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_top_end"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_end" unique_id=2001762513]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_end/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_end/StaticBody3D" unique_id=1735326250]
 shape = SubResource("ConvexPolygonShape3D_p5bxn")
 
-[node name="half_top_ramp_bot" type="MeshInstance3D" parent="."]
+[node name="half_top_ramp_bot" type="MeshInstance3D" parent="." unique_id=247784638]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3)
 mesh = SubResource("ArrayMesh_e5dfw")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot" unique_id=772272783]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot/StaticBody3D" unique_id=1797277284]
 shape = SubResource("ConvexPolygonShape3D_u2n5j")
 
-[node name="half_top_ramp_bot_left" type="MeshInstance3D" parent="."]
+[node name="half_top_ramp_bot_left" type="MeshInstance3D" parent="." unique_id=758223269]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
 mesh = SubResource("ArrayMesh_bhxni")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot_left"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot_left" unique_id=415695013]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot_left/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot_left/StaticBody3D" unique_id=2094557742]
 shape = SubResource("ConvexPolygonShape3D_u2n5j")
 
-[node name="half_top_ramp_bot_mid" type="MeshInstance3D" parent="."]
+[node name="half_top_ramp_bot_mid" type="MeshInstance3D" parent="." unique_id=96504909]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
 mesh = SubResource("ArrayMesh_t88dt")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot_mid"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot_mid" unique_id=64536035]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot_mid/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot_mid/StaticBody3D" unique_id=1269805018]
 shape = SubResource("ConvexPolygonShape3D_u2n5j")
 
-[node name="half_top_ramp_bot_right" type="MeshInstance3D" parent="."]
+[node name="half_top_ramp_bot_right" type="MeshInstance3D" parent="." unique_id=944401918]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
 mesh = SubResource("ArrayMesh_s64lw")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot_right"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_top_ramp_bot_right" unique_id=1023802848]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot_right/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_top_ramp_bot_right/StaticBody3D" unique_id=1379738340]
 shape = SubResource("ConvexPolygonShape3D_u2n5j")
 
-[node name="half_ramp_full" type="MeshInstance3D" parent="."]
+[node name="half_ramp_full" type="MeshInstance3D" parent="." unique_id=1450783049]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6)
 mesh = SubResource("ArrayMesh_fvfab")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_ramp_full"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_ramp_full" unique_id=34595432]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_ramp_full/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_ramp_full/StaticBody3D" unique_id=1010445425]
 shape = SubResource("ConvexPolygonShape3D_s3528")
 
-[node name="half_ramp_full_left" type="MeshInstance3D" parent="."]
+[node name="half_ramp_full_left" type="MeshInstance3D" parent="." unique_id=1043296674]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6)
 mesh = SubResource("ArrayMesh_7nofs")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_ramp_full_left"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_ramp_full_left" unique_id=815716152]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_ramp_full_left/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_ramp_full_left/StaticBody3D" unique_id=96090214]
 shape = SubResource("ConvexPolygonShape3D_s3528")
 
-[node name="half_ramp_full_middle" type="MeshInstance3D" parent="."]
+[node name="half_ramp_full_middle" type="MeshInstance3D" parent="." unique_id=1468875181]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
 mesh = SubResource("ArrayMesh_2hqfl")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_ramp_full_middle"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_ramp_full_middle" unique_id=1569693109]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_ramp_full_middle/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_ramp_full_middle/StaticBody3D" unique_id=1620341085]
 shape = SubResource("ConvexPolygonShape3D_s3528")
 
-[node name="half_ramp_full_right" type="MeshInstance3D" parent="."]
+[node name="half_ramp_full_right" type="MeshInstance3D" parent="." unique_id=840877851]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 6)
 mesh = SubResource("ArrayMesh_j5l0k")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="half_ramp_full_right"]
+[node name="StaticBody3D" type="StaticBody3D" parent="half_ramp_full_right" unique_id=1604994352]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="half_ramp_full_right/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="half_ramp_full_right/StaticBody3D" unique_id=1031131826]
 shape = SubResource("ConvexPolygonShape3D_s3528")
 
-[node name="full_top_middle" type="MeshInstance3D" parent="."]
+[node name="full_top_middle" type="MeshInstance3D" parent="." unique_id=2059586560]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
 mesh = SubResource("ArrayMesh_s3528")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_top_middle"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_top_middle" unique_id=1079146865]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_middle/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_middle/StaticBody3D" unique_id=1701828979]
 shape = SubResource("ConvexPolygonShape3D_885bk")
 
-[node name="full_top_end" type="MeshInstance3D" parent="."]
+[node name="full_top_end" type="MeshInstance3D" parent="." unique_id=1547845013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -6)
 mesh = SubResource("ArrayMesh_m82m3")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="full_top_end"]
+[node name="StaticBody3D" type="StaticBody3D" parent="full_top_end" unique_id=832645093]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_end/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="full_top_end/StaticBody3D" unique_id=1300593116]
 shape = SubResource("ConvexPolygonShape3D_885bk")

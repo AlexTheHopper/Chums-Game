@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6g647m3xveag"]
+[gd_scene format=3 uid="uid://c6g647m3xveag"]
 
 [ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_cy1wr"]
 
@@ -17,10 +17,10 @@ colors = PackedColorArray(0.27201, 2.80723e-05, 0.25064, 1, 0.270588, 0, 0.25098
 [sub_resource type="Gradient" id="Gradient_qgaqe"]
 colors = PackedColorArray(0.0430392, 0.0430392, 0.0430392, 1, 0.408329, 0.408329, 0.408329, 1)
 
-[node name="Particle" type="Node3D"]
+[node name="Particle" type="Node3D" unique_id=1261960503]
 script = ExtResource("1_cy1wr")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1770732391]
 emitting = false
 amount = 100
 lifetime = 1.5
