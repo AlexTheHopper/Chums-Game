@@ -12,7 +12,7 @@ var buttons : Array[Panel]
 var button_index := 0
 
 var spawn_particles = preload("res://particles/spawn_particles_world1.tscn")
-var starting_game := false
+var transitioning := false
 var camera_returning := false
 var save_nums := []
 
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 	camera_a += delta / 25
 	if fmod(camera_a, 2 * PI) < 0.5:
 		camera_returning = false
-	if starting_game:
+	if transitioning:
 		return
 	
 	if Input.is_action_just_pressed("cam_left") or Input.is_action_just_pressed("move_left"):
@@ -91,9 +91,9 @@ func update_language(_lan_code: String) -> void:
 	start_button.change_text()
 
 func on_start_game(savegame_id) -> void:
-	if starting_game:
+	if transitioning:
 		return
-	starting_game = true
+	transitioning = true
 	TransitionScreen.transition(3)
 	await TransitionScreen.on_transition_finished
 	var is_new_game = true if savegame_id == null else false
@@ -103,9 +103,9 @@ func on_start_game(savegame_id) -> void:
 	queue_free()
 
 func on_start_tutorial() -> void:
-	if starting_game:
+	if transitioning:
 		return
-	starting_game = true
+	transitioning = true
 	TransitionScreen.transition(3)
 	await TransitionScreen.on_transition_finished
 	Global.start_tutorial()

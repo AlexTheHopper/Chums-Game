@@ -5,7 +5,7 @@ var chum_id := 12
 var min_attack_speed := 1.3
 
 var base_attack_speed := 1.75
-var base_attack_damage := 30
+var base_attack_damage := 25
 var base_move_speed := 1.5
 var base_health := 150
 #Control of qualities

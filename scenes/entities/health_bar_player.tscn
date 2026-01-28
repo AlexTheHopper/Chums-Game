@@ -44,7 +44,7 @@ anchor_bottom = 0.86700004
 offset_top = 0.00999999
 offset_right = -0.020004272
 offset_bottom = -0.010002136
-color = Color(0, 0.392157, 0, 1)
+color = Color(0, 0.39215687, 0, 1)
 
 [node name="Panel" type="Panel" parent="." unique_id=2044272890]
 layout_mode = 1

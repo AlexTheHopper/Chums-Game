@@ -55,11 +55,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 				lamp.light.visible = true
 				get_tree().create_tween().tween_property(lamp.light, 
 												"spot_attenuation",
-												0.5,
+												0.25,
 												2.5)
 				get_tree().create_tween().tween_property(lamp.light, 
 												"spot_range",
-												20.0,
+												25.0,
 												2.5)
 		
 

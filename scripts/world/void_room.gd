@@ -4,6 +4,10 @@ class_name void_room
 const STREETLAMP = preload("res://scenes/world/decorations/streetlamp.tscn")
 const TYPE := "void"
 
+func _ready() -> void:
+	super()
+	$Void.spawn_currency.connect(self.spawn_currency)
+
 func decorate():
 	super()
 	#Streetlamp generally points to fastest way to lobby.

@@ -6,6 +6,8 @@ var being_tscn = load("res://scenes/general/random_level_being.tscn")
 
 @export var void_dim: Vector3 = Vector3(10.0, 1.0, 10.0)
 
+signal spawn_currency
+
 signal prisoner_entered
 
 func _ready() -> void:
@@ -29,6 +31,9 @@ func kill_chum(body: Chum, delay: float = 0.0) -> void:
 	await get_tree().create_timer(delay).timeout
 	if is_instance_valid(body):
 		body.health_node.health = 0
+		#Spawn Bracelets
+		for n in body.bracelet_cost:
+			spawn_currency.emit("bracelet", global_position, Vector3(0.0, 5.0, 0.0))
 		body.call_deferred("queue_free")
 
 func create_being_particles(chum_id: int, delay: float = 0.0) -> void:

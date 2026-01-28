@@ -35,7 +35,7 @@ func set_health(value):
 	health_ratio = health / max_health
 	var new_x_health = health_ratio * length_zero
 	health_bar.set_deferred("size", Vector2(new_x_health, health_bar.size.y))
-	health_bar.color = Color((1.0 - health_ratio) * 0.8, health_ratio * 0.5, 0.0)
+	health_bar.color = Color((1.0 - health_ratio) * 0.5, health_ratio * 0.3, 0.0)
 	
 	damaged_timer.start() #This also resets the time, wait to start decreasing damaged part.
 	if not is_equal_approx(health_ratio, damaged_health_ratio):

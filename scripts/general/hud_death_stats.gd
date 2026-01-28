@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var to_display: Dictionary
+var transitioning := false
 const HUD_DEATH_STAT = preload("uid://ct186tsocgdcn")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var death_stats: Control = $DeathStats
@@ -30,10 +31,15 @@ func create_stat(stat_name: String, stat_value: String, pos: Vector2) -> void:
 	death_stats.add_child(stat_to_add)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("attack"):
-		animation_player.play("fade_out") #Dont put anything else here without accounting for skip spam
+	if transitioning:
+		return
+
+	if Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("jump"):
+		animation_player.play("fade_out")
+		transitioning = true
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":
 		return_to_main_menu.emit()
 		queue_free()
+	transitioning = false

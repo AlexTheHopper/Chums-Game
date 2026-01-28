@@ -27,12 +27,7 @@ func _ready() -> void:
 	
 	if Global.world_map[Global.room_location]["to_spawn"] < 0:
 		#Maximum to spawn:
-		print("min: %s" % Global.world_info[Global.current_world_num]["min_chums"])
-		print("max: %s" % Global.world_info[Global.current_world_num]["max_chums"])
-		print("value: %s" % room_value)
-		print("size: %s" % Global.map_size)
 		enemies_to_spawn = int(Functions.map_range(room_value, Vector2(1, Global.map_size), Vector2(Global.world_info[Global.current_world_num]["min_chums"], Global.world_info[Global.current_world_num]["max_chums"])))
-		print("spawning: %s" % enemies_to_spawn)
 	else:
 		enemies_to_spawn = Global.world_map[Global.room_location]["to_spawn"]
 		

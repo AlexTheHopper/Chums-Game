@@ -479,27 +479,32 @@ anchor_left = 0.022
 anchor_top = 0.039
 anchor_right = 0.195
 anchor_bottom = 0.116
-offset_left = -0.344002
-offset_top = -0.272001
-offset_right = 0.359985
-offset_bottom = -0.167999
+offset_left = -0.34400177
+offset_top = -0.27200127
+offset_right = 0.35998535
+offset_bottom = -0.16799927
 theme_override_styles/panel = SubResource("StyleBoxFlat_p21ms")
 
 [node name="TextureRect" type="TextureRect" parent="InGameHUD/HealthPanel" unique_id=1001596526]
+modulate = Color(0.7898787, 0.7898787, 0.78987855, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.25
-anchor_bottom = 1.0
+anchor_left = 0.038000003
+anchor_right = 0.287
+anchor_bottom = 1.029
+offset_left = -0.09999943
+offset_right = 0.10000229
+offset_bottom = -1.4500008
 texture = ExtResource("2_dh6d1")
 expand_mode = 1
 
 [node name="PlayerHealthBar" parent="InGameHUD/HealthPanel" unique_id=1205253914 instance=ExtResource("3_d6pnr")]
 layout_mode = 1
-anchor_left = 0.275
+anchor_left = 0.32500002
 anchor_top = 0.2
-anchor_right = 0.9
+anchor_right = 0.95000005
 anchor_bottom = 0.8
-offset_right = 0.0
+offset_right = -4.5776367e-05
 offset_bottom = 0.0
 
 [node name="BraceletsPanel" type="Panel" parent="InGameHUD" unique_id=1726781300]
@@ -516,9 +521,11 @@ offset_bottom = 0.311996
 theme_override_styles/panel = SubResource("StyleBoxFlat_pfecb")
 
 [node name="TextureRect" type="TextureRect" parent="InGameHUD/BraceletsPanel" unique_id=1389812206]
+modulate = Color(0.6521796, 0.65217966, 0.6521796, 1)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.4
+anchor_left = 0.060000002
+anchor_right = 0.46
 anchor_bottom = 1.0
 texture = ExtResource("4_p21ms")
 expand_mode = 1
@@ -526,8 +533,8 @@ expand_mode = 1
 [node name="Value" type="Label" parent="InGameHUD/BraceletsPanel" unique_id=1866530487]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.4
-anchor_right = 0.8
+anchor_left = 0.48000002
+anchor_right = 0.88000005
 anchor_bottom = 1.0
 theme_override_colors/font_color = Color(0.537011, 0.537011, 0.537011, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

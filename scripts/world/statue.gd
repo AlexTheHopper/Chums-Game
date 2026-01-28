@@ -4,6 +4,13 @@ var chum_id: int
 var flower_chum_ids := [6, 7, 16, 26, 27]
 var active := false
 var chum_statue_node: Node3D
+var change_particles := {
+	6: load("res://particles/spawn_particles_world1.tscn"),
+	7: load("res://particles/spawn_particles_world1.tscn"),
+	26: load("res://particles/spawn_particles_world2.tscn"),
+	16: load("res://particles/spawn_particles_world3.tscn"),
+	27: load("res://particles/spawn_particles_world4.tscn"),
+}
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var mesh_node: Node3D = $MeshNode
 @onready var to_boss: room_changer_to_boss = $RoomChanger
@@ -59,6 +66,9 @@ func _on_detection_zone_body_entered(body: Node3D) -> void:
 			Global.world_map[Global.room_location]["room_specific_id"] = body.chum_id
 			set_statue_colour(ChumsManager.chums_list[chum_id]["destination_world"])
 			room_changer_zone.set_chum_id(chum_id)
+			
+			if chum_id in change_particles.keys():
+				mesh_node.add_child(change_particles[chum_id].instantiate())
 
 		if body.chum_id == chum_id:
 			animation_player.play("activate")

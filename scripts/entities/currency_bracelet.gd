@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name CurrencyBracelet
 
 @onready var player := get_tree().get_first_node_in_group("Player")
 @export var extra_vel: Vector3

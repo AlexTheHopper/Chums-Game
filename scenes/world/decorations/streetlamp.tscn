@@ -13,7 +13,7 @@ script = ExtResource("1_hgtxx")
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1793991080]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.05, 15, 0.05)
 light_energy = 3.0
-spot_range = 50.0
+spot_range = 25.0
 spot_attenuation = 0.6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1566332797]
