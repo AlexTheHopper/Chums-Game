@@ -10,10 +10,10 @@ signal return_to_main_menu
 
 func _ready() -> void:
 	to_display = {
-		"Total Chums:": str(PlayerStats.player_chums_befriended),
-		"Unique Chums:": str(len(PlayerStats.player_unique_chums_befriended)),
-		"Total Bracelets:": str(PlayerStats.player_bracelets_collected),
-		"Spent Bracelets:": str(PlayerStats.player_bracelets_spent),
+		tr("DEATHSTAT_TOTALCHUMS") + ": ": str(PlayerStats.player_chums_befriended),
+		tr("DEATHSTAT_UNIQUECHUMS") + ": ": str(len(PlayerStats.player_unique_chums_befriended)),
+		tr("DEATHSTAT_TOTALBRACELETS") + ": ": str(PlayerStats.player_bracelets_collected),
+		tr("DEATHSTAT_SPENTBRACELETS") + ": ": str(PlayerStats.player_bracelets_spent),
 	}
 	animation_player.play("fade_in")
 	
@@ -34,7 +34,7 @@ func _process(_delta: float) -> void:
 	if transitioning:
 		return
 
-	if Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("attack") or Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("pause"):
 		animation_player.play("fade_out")
 		transitioning = true
 

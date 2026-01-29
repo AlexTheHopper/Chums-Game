@@ -10,13 +10,21 @@
 [ext_resource type="PackedScene" uid="uid://d3wrbhoaeypkv" path="res://scenes/world/decorations/grass_1.tscn" id="6_srke8"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="7_nalmj"]
 [ext_resource type="Texture2D" uid="uid://qoftnyn10nd" path="res://Blender_Assets/Other_Exports/player_player.png" id="9_88aja"]
-[ext_resource type="Script" uid="uid://bnw51ksejxjvx" path="res://scripts/general/menu_interact_start.gd" id="11_7qbw1"]
-[ext_resource type="Script" uid="uid://d4cafyqtoduai" path="res://scripts/general/menu_interact_language.gd" id="13_237jf"]
-[ext_resource type="Script" uid="uid://dfxr85am8seas" path="res://scripts/general/menu_interact_tutorial.gd" id="14_gytos"]
+[ext_resource type="Script" uid="uid://bnw51ksejxjvx" path="res://scripts/general/menu_buttons/menu_interact_start.gd" id="11_7qbw1"]
+[ext_resource type="Script" uid="uid://du6la13qdyaq3" path="res://scripts/general/menu_buttons/menu_group.gd" id="11_gytos"]
+[ext_resource type="Script" uid="uid://d4cafyqtoduai" path="res://scripts/general/menu_buttons/menu_interact_language.gd" id="13_237jf"]
+[ext_resource type="Texture2D" uid="uid://c233x2ho8e8mu" path="res://assets/menu_icons/icon_play.png" id="13_i5kip"]
+[ext_resource type="Script" uid="uid://cbe4wak1kyexw" path="res://scripts/general/menu_buttons/menu_interact_settings.gd" id="14_7qbw1"]
+[ext_resource type="Script" uid="uid://dfxr85am8seas" path="res://scripts/general/menu_buttons/menu_interact_tutorial.gd" id="14_gytos"]
 [ext_resource type="PackedScene" uid="uid://c8gvfnlca5kdw" path="res://scenes/world/decorations/grass_2.tscn" id="15_c8qn0"]
+[ext_resource type="Texture2D" uid="uid://b0v8see2l4ujr" path="res://assets/menu_icons/icon_tutorial.png" id="15_iyd5v"]
 [ext_resource type="PackedScene" uid="uid://dkx7amga74n6l" path="res://scenes/world/decorations/grass_5.tscn" id="16_gytos"]
+[ext_resource type="Script" uid="uid://hena0gil7ks0" path="res://scripts/general/menu_buttons/menu_interact_back.gd" id="16_iedvi"]
 [ext_resource type="PackedScene" uid="uid://bwd1nmtnhqpjf" path="res://scenes/world/decorations/grass_3.tscn" id="17_7qbw1"]
+[ext_resource type="Texture2D" uid="uid://cmtv0jaf5fkl4" path="res://assets/menu_icons/icon_settings.png" id="17_8eclb"]
 [ext_resource type="PackedScene" uid="uid://dc4mgqwg7lyna" path="res://scenes/world/decorations/grass_4.tscn" id="18_iedvi"]
+[ext_resource type="Texture2D" uid="uid://jnfbfvnltuit" path="res://assets/menu_icons/icon_language.png" id="19_8eclb"]
+[ext_resource type="Texture2D" uid="uid://dhx01160r1b0c" path="res://assets/menu_icons/icon_back.png" id="21_51at8"]
 
 [sub_resource type="Environment" id="Environment_sm4kk"]
 ambient_light_source = 3
@@ -39,7 +47,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qbw1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iedvi"]
 bg_color = Color(0.158472, 0.158472, 0.158472, 1)
 border_width_left = 2
 border_width_top = 2
@@ -51,7 +59,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iedvi"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qbw1"]
 bg_color = Color(0.158472, 0.158472, 0.158472, 1)
 border_width_left = 2
 border_width_top = 2
@@ -546,11 +554,18 @@ _data = {
 &"Swing": SubResource("Animation_e4s2a")
 }
 
-[node name="MainMenu" type="Node3D" unique_id=2134678962 node_paths=PackedStringArray("start_button", "language_button", "tutorial_button")]
+[node name="MainMenu" type="Node3D" unique_id=2134678962 node_paths=PackedStringArray("groups", "start_button", "settings_button", "tutorial_button", "language_button", "return_button", "current_group")]
 script = ExtResource("1_qtr6c")
-start_button = NodePath("Control/StartInfo")
-language_button = NodePath("Control/LanguageInfo")
-tutorial_button = NodePath("Control/TutorialInfo")
+groups = {
+0: NodePath("Group0"),
+1: NodePath("Group1")
+}
+start_button = NodePath("Group0/StartInfo")
+settings_button = NodePath("Group0/SettingsInfo")
+tutorial_button = NodePath("Group0/TutorialInfo")
+language_button = NodePath("Group1/LanguageInfo")
+return_button = NodePath("Group1/ReturnInfo")
+current_group = NodePath("Group0")
 
 [node name="GridMap" type="GridMap" parent="." unique_id=2095770416]
 mesh_library = ExtResource("2_gytos")
@@ -773,7 +788,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 2, 1.1)
 [node name="Grass51" parent="Decorations" unique_id=741527453 instance=ExtResource("16_gytos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -1.3000001)
 
-[node name="Control" type="Control" parent="." unique_id=265468341]
+[node name="Group0" type="Control" parent="." unique_id=265468341]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -781,8 +797,9 @@ anchor_bottom = 1.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_gytos")
 
-[node name="StartInfo" type="Panel" parent="Control" unique_id=187118411]
+[node name="StartInfo" type="Panel" parent="Group0" unique_id=187118411]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -798,17 +815,17 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gytos")
 script = ExtResource("11_7qbw1")
 
-[node name="Value" type="Label" parent="Control/StartInfo" unique_id=199341721]
+[node name="Value" type="Label" parent="Group0/StartInfo" unique_id=199341721]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -11.5
-offset_right = 64.0
-offset_bottom = 11.5
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.26000002
+anchor_right = 0.79800004
+anchor_bottom = 0.71900004
+offset_left = -0.022399902
+offset_top = -0.01301384
+offset_right = 0.042495728
+offset_bottom = 0.014011383
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -817,7 +834,126 @@ text = "START_GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LanguageInfo" type="Panel" parent="Control" unique_id=383048005]
+[node name="TextureRect" type="TextureRect" parent="Group0/StartInfo" unique_id=633262282]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.79800004
+anchor_top = 0.3
+anchor_right = 0.91200006
+anchor_bottom = 0.69900006
+offset_left = 0.042495728
+offset_top = -0.015015602
+offset_right = -2.8085938
+offset_bottom = 0.015014648
+texture = ExtResource("13_i5kip")
+
+[node name="TutorialInfo" type="Panel" parent="Group0" unique_id=768216763]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80700004
+anchor_top = 0.731
+anchor_right = 0.98100007
+anchor_bottom = 0.808
+offset_left = 0.3359375
+offset_top = -0.1499939
+offset_right = 0.3359375
+offset_bottom = -0.15008545
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iedvi")
+script = ExtResource("14_gytos")
+
+[node name="Value" type="Label" parent="Group0/TutorialInfo" unique_id=1012825945]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.26000002
+anchor_right = 0.79800004
+anchor_bottom = 0.71900004
+offset_left = -0.022399902
+offset_top = -0.0129823685
+offset_right = 0.042495728
+offset_bottom = 0.014099121
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "START_TUTORIAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Group0/TutorialInfo" unique_id=1041556453]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.79800004
+anchor_top = 0.3
+anchor_right = 0.89800006
+anchor_bottom = 0.69900006
+offset_left = 0.042495728
+offset_top = -0.014978409
+offset_right = -0.002319336
+offset_bottom = 0.015098572
+texture = ExtResource("15_iyd5v")
+
+[node name="SettingsInfo" type="Panel" parent="Group0" unique_id=383048005]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80700004
+anchor_top = 0.846
+anchor_right = 0.98100007
+anchor_bottom = 0.92300004
+offset_left = 0.3359375
+offset_top = 0.099975586
+offset_right = 0.3359375
+offset_bottom = 0.099975586
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7qbw1")
+script = ExtResource("14_7qbw1")
+
+[node name="Value" type="Label" parent="Group0/SettingsInfo" unique_id=1018715242]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.27
+anchor_right = 0.79800004
+anchor_bottom = 0.73
+offset_left = -0.022399902
+offset_top = -0.51349735
+offset_right = 0.042495728
+offset_bottom = -0.5364914
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "SETTINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Group0/SettingsInfo" unique_id=818834971]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.79800004
+anchor_top = 0.3
+anchor_right = 0.89800006
+anchor_bottom = 0.69900006
+offset_left = 0.042495728
+offset_top = -0.014996529
+offset_right = -0.002319336
+offset_bottom = 0.01505661
+texture = ExtResource("17_8eclb")
+
+[node name="Group1" type="Control" parent="." unique_id=208201117]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_gytos")
+
+[node name="LanguageInfo" type="Panel" parent="Group1" unique_id=940004554]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -833,17 +969,17 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7qbw1")
 script = ExtResource("13_237jf")
 
-[node name="Value" type="Label" parent="Control/LanguageInfo" unique_id=1018715242]
+[node name="Value" type="Label" parent="Group1/LanguageInfo" unique_id=1090347839]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -11.5
-offset_right = 64.0
-offset_bottom = 11.5
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.26000002
+anchor_right = 0.79800004
+anchor_bottom = 0.71900004
+offset_left = -0.022399902
+offset_top = -0.012997627
+offset_right = 0.042495728
+offset_bottom = 0.014057159
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -852,7 +988,20 @@ text = "LANGUAGE_NATIVE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TutorialInfo" type="Panel" parent="Control" unique_id=768216763]
+[node name="TextureRect" type="TextureRect" parent="Group1/LanguageInfo" unique_id=956914885]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.79800004
+anchor_top = 0.3
+anchor_right = 0.89800006
+anchor_bottom = 0.69900006
+offset_left = 0.042495728
+offset_top = -0.014996529
+offset_right = -0.002319336
+offset_bottom = 0.01505661
+texture = ExtResource("19_8eclb")
+
+[node name="ReturnInfo" type="Panel" parent="Group1" unique_id=1334863991]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -866,26 +1015,39 @@ offset_bottom = 0.09991455
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_iedvi")
-script = ExtResource("14_gytos")
+script = ExtResource("16_iedvi")
 
-[node name="Value" type="Label" parent="Control/TutorialInfo" unique_id=1012825945]
+[node name="Value" type="Label" parent="Group1/ReturnInfo" unique_id=568989426]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -11.5
-offset_right = 64.0
-offset_bottom = 11.5
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.26000002
+anchor_right = 0.79800004
+anchor_bottom = 0.71900004
+offset_left = -0.022399902
+offset_top = -0.0129823685
+offset_right = 0.042495728
+offset_bottom = 0.014099121
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "START_TUTORIAL"
+text = "BACK"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Group1/ReturnInfo" unique_id=508926143]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.79800004
+anchor_top = 0.3
+anchor_right = 0.89800006
+anchor_bottom = 0.69900006
+offset_left = 0.042495728
+offset_top = -0.014978409
+offset_right = -0.002319336
+offset_bottom = 0.015098572
+texture = ExtResource("21_51at8")
 
 [node name="MenuBeing" parent="." unique_id=2139683659 instance=ExtResource("6_pikal")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)

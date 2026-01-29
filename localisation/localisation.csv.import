@@ -2,18 +2,16 @@
 
 importer="csv_translation"
 type="Translation"
-uid="uid://ddf8qhvb1bvt6"
+uid="uid://xio63cn2wiwm"
+valid=false
 
 [deps]
 
-files=["res://localisation/localisation.en.translation", "res://localisation/localisation.es.translation", "res://localisation/localisation.de.translation", "res://localisation/localisation.ca.translation", "res://localisation/localisation.it.translation", "res://localisation/localisation.fr.translation", "res://localisation/localisation.jp.translation", "res://localisation/localisation.ch.translation"]
-
 source_file="res://localisation/localisation.csv"
-dest_files=["res://localisation/localisation.en.translation", "res://localisation/localisation.es.translation", "res://localisation/localisation.de.translation", "res://localisation/localisation.ca.translation", "res://localisation/localisation.it.translation", "res://localisation/localisation.fr.translation", "res://localisation/localisation.jp.translation", "res://localisation/localisation.ch.translation"]
 
 [params]
 
-compress=true
-delimiter=1
+compress=1
+delimiter=0
 unescape_keys=false
 unescape_translations=true

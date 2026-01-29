@@ -26,7 +26,6 @@ func right() -> void:
 	change_text()
 
 func initialise() -> void:
-	save_changed.emit(save_nums[save_index])
 	change_text()
 
 func change_text() -> void:

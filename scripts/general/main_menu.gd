@@ -5,11 +5,16 @@ extends Node3D
 @onready var camera_a_start: float = 0
 @onready var camera_a: float = camera_a_start
 
-@export var start_button: Panel
-@export var language_button: Panel
-@export var tutorial_button: Panel
-var buttons : Array[Panel]
-var button_index := 0
+@export var groups: Dictionary[int, ButtonsGroup]
+@export var start_button: MenuInteract
+@export var settings_button: MenuInteract
+@export var tutorial_button: MenuInteract
+
+@export var language_button: MenuInteract
+@export var return_button: MenuInteract
+
+@export var current_group : ButtonsGroup
+var current_group_index := 0
 
 var spawn_particles = preload("res://particles/spawn_particles_world1.tscn")
 var transitioning := false
@@ -19,12 +24,19 @@ var save_nums := []
 var saved_chums: Dictionary = {null: []}
 
 func _ready() -> void:
-	buttons = [start_button, language_button, tutorial_button]
-	buttons[button_index].on_selected()
+	for group in groups.values():
+		group.visible = false
+	groups[0].visible = true
+	current_group.buttons[current_group_index].on_selected()
+	#Group 0 - Main Menu
 	start_button.start_game.connect(on_start_game)
 	start_button.save_changed.connect(change_display_chums)
 	tutorial_button.start_tutorial.connect(on_start_tutorial)
+	settings_button.move_to_menu.connect(change_buttons_group)
+	#Group 1 - Settings Menu
 	language_button.select_language.connect(update_language)
+	return_button.move_to_menu.connect(change_buttons_group)
+	
 
 	var dir = DirAccess.open("user://saves")
 	#Go through all files in saves
@@ -44,8 +56,9 @@ func _ready() -> void:
 	save_nums.append(null)
 	save_nums.sort()
 	start_button.save_nums = save_nums
-	for button in buttons:
+	for button in current_group.buttons:
 		button.initialise()
+	change_display_chums(save_nums[0])
 
 	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE.MENU)
 
@@ -57,27 +70,23 @@ func _process(delta: float) -> void:
 		return
 	
 	if Input.is_action_just_pressed("cam_left") or Input.is_action_just_pressed("move_left"):
-		buttons[button_index].left()
-		if fmod(camera_a, 2 * PI) > 0.8:
-			camera_returning = true
+		current_group.buttons[current_group_index].left()
 		
 	elif Input.is_action_just_pressed("cam_right") or Input.is_action_just_pressed("move_right"):
-		buttons[button_index].right()
-		if fmod(camera_a, 2 * PI) > 0.8:
-			camera_returning = true
+		current_group.buttons[current_group_index].right()
 	
 	elif Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("attack"):
-		buttons[button_index].interact()
+		current_group.buttons[current_group_index].interact()
 	
 	elif Input.is_action_just_pressed("move_forward") or Input.is_action_just_pressed("cam_up"):
-		buttons[button_index].on_deselected()
-		button_index = max(button_index - 1, 0)
-		buttons[button_index].on_selected()
+		current_group.buttons[current_group_index].on_deselected()
+		current_group_index = max(current_group_index - 1, 0)
+		current_group.buttons[current_group_index].on_selected()
 		
 	elif Input.is_action_just_pressed("move_back") or Input.is_action_just_pressed("cam_down"):
-		buttons[button_index].on_deselected()
-		button_index = min(button_index + 1, buttons.size() - 1)
-		buttons[button_index].on_selected()
+		current_group.buttons[current_group_index].on_deselected()
+		current_group_index = min(current_group_index + 1, current_group.buttons.size() - 1)
+		current_group.buttons[current_group_index].on_selected()
 
 func _physics_process(delta: float) -> void:
 	if camera_returning:
@@ -85,6 +94,33 @@ func _physics_process(delta: float) -> void:
 
 	camera.global_position = Vector3(15 * sin(camera_a), 10, 15 * cos(camera_a))
 	camera.rotation.y = camera_a - (PI / 4)
+
+func change_buttons_group(new_group_int: int) -> void:
+	if new_group_int not in groups.keys():
+		return
+	current_group.buttons[current_group_index].on_deselected()
+	var time := 1.0
+	var incoming_pos := Vector2(250.0, 0.0)
+	var target_pos := Vector2(0.0, 0.0)
+	var outgoing_pos := Vector2(0.0, 500.0)
+	transitioning = true
+	groups[new_group_int].visible = true
+	
+	for button in groups[new_group_int].buttons:
+		button.initialise()
+	#Outgoing menu:
+	get_tree().create_tween().tween_property(current_group, "position", outgoing_pos, time)
+	#Incoming menu:
+	groups[new_group_int].position = incoming_pos
+	var incoming_tween := get_tree().create_tween().tween_property(groups[new_group_int], "position", target_pos, time)
+	
+	await incoming_tween.finished
+
+	current_group.visible = false
+	current_group_index = 0
+	current_group = groups[new_group_int]
+	current_group.buttons[current_group_index].on_selected()
+	transitioning = false
 
 #This is needed as the save file string is a composit string and is not automatically translated.
 func update_language(_lan_code: String) -> void:
@@ -112,6 +148,8 @@ func on_start_tutorial() -> void:
 	queue_free()
 
 func change_display_chums(save_num, show_particles = false) -> void:
+	if fmod(camera_a, 2 * PI) > 0.8:
+			camera_returning = true
 	for node in team_node.get_node("chums").get_children():
 		node.queue_free()
 	

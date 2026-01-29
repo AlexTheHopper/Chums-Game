@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://di4d4jibfxh7e"
+
+[deps]
+
+files=["res://localisation/localisation_20260129.en.translation", "res://localisation/localisation_20260129.es.translation", "res://localisation/localisation_20260129.de.translation", "res://localisation/localisation_20260129.ca.translation", "res://localisation/localisation_20260129.it.translation", "res://localisation/localisation_20260129.fr.translation", "res://localisation/localisation_20260129.ro.translation", "res://localisation/localisation_20260129.jp.translation", "res://localisation/localisation_20260129.ch.translation"]
+
+source_file="res://localisation/localisation_20260129.csv"
+dest_files=["res://localisation/localisation_20260129.en.translation", "res://localisation/localisation_20260129.es.translation", "res://localisation/localisation_20260129.de.translation", "res://localisation/localisation_20260129.ca.translation", "res://localisation/localisation_20260129.it.translation", "res://localisation/localisation_20260129.fr.translation", "res://localisation/localisation_20260129.ro.translation", "res://localisation/localisation_20260129.jp.translation", "res://localisation/localisation_20260129.ch.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
