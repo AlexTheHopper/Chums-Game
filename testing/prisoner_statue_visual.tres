@@ -1,0 +1,15 @@
+[gd_resource type="VisualShader" format=3 uid="uid://dhw158hxnckxm"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_3p7qa"]
+parameter_name = "Albedo"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ixcw8"]
+source = 5
+
+[resource]
+nodes/vertex/0/position = Vector2(500, 80)
+nodes/vertex/2/node = SubResource("VisualShaderNodeTexture2DParameter_3p7qa")
+nodes/vertex/2/position = Vector2(-400, 70)
+nodes/vertex/3/node = SubResource("VisualShaderNodeTexture_ixcw8")
+nodes/vertex/3/position = Vector2(90, 200)
+nodes/vertex/connections = PackedInt32Array(2, 0, 3, 2, 3, 0, 0, 9)

@@ -45,10 +45,10 @@ func create_being_particles(chum_id: int, delay: float = 0.0) -> void:
 	new_being.height = 3.0
 	new_being.possible_particles = [chum_id]
 	
-	if Global.current_room_node.TYPE == "void":
+	if Global.current_room_node.TYPE != "endgame":
 		new_being.rising = true
 	else:
-		new_being.base = get_tree().get_first_node_in_group("Player").global_position
+		new_being.base = get_tree().get_first_node_in_group("Player").global_position + Vector3(0.0, randf_range(0.0, 3.0), -2.5)
 	
 	Global.current_room_node.get_node("Decorations").add_child(new_being)
 	new_being.global_position = global_position - Vector3(0.0, void_dim.y, 0.0)

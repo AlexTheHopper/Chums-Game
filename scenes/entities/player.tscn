@@ -1073,7 +1073,7 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 randomness = 0.3
-visibility_aabb = AABB(-10, -5, -10, 20, 10, 20)
+visibility_aabb = AABB(-10, -7.5, -10, 20, 15, 20)
 process_material = SubResource("ParticleProcessMaterial_saib0")
 draw_pass_1 = SubResource("BoxMesh_spk56")
 

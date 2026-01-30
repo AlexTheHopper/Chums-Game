@@ -27,6 +27,28 @@ func _process(delta: float) -> void:
 				chum_instance.make_friendly(false)
 				chum_instance.health_node.immune = false
 			chum_instance.global_position = player.global_position + Vector3(0, 2, 0)
+			
+			#weeee cheats i can do what i want, bye good code
+			if chum_to_spawn == 17:
+				for n in [18, 19, 20]:
+					chum_instance = ChumsManager.get_specific_chum_id(n).instantiate()
+					if Global.world_map[Global.room_location]["activated"]:
+						chum_instance.initial_state_override = "Idle"
+					get_parent().get_node("Game/Chums").add_child(chum_instance)
+					if Global.world_map[Global.room_location]["activated"]:
+						chum_instance.make_friendly(false)
+						chum_instance.health_node.immune = false
+					chum_instance.global_position = player.global_position + Vector3(0, n - 15, 0)
+			if chum_to_spawn == 6:
+				for n in [16, 26, 27]:
+					chum_instance = ChumsManager.get_specific_chum_id(n).instantiate()
+					if Global.world_map[Global.room_location]["activated"]:
+						chum_instance.initial_state_override = "Idle"
+					get_parent().get_node("Game/Chums").add_child(chum_instance)
+					if Global.world_map[Global.room_location]["activated"]:
+						chum_instance.make_friendly(false)
+						chum_instance.health_node.immune = false
+					chum_instance.global_position = player.global_position + Vector3(0, n - 15, 0)
 			chum_to_spawn = 0
 			
 			PlayerStats.bracelets_added(10)

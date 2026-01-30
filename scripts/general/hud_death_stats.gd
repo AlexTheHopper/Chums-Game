@@ -11,7 +11,7 @@ signal return_to_main_menu
 
 func _ready() -> void:
 	if Global.current_room_node.TYPE == "endgame":
-		title_text.text = "DEATHSTAT_REALITYSUCCEED"
+		title_text.text = tr("DEATHSTAT_REALITYSUCCEED")
 	to_display = {
 		tr("DEATHSTAT_TOTALCHUMS") + ": ": str(PlayerStats.player_chums_befriended),
 		tr("DEATHSTAT_UNIQUECHUMS") + ": ": str(len(PlayerStats.player_unique_chums_befriended)),

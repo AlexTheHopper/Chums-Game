@@ -8,6 +8,7 @@ var thrown_prisoners := []
 @onready var random_level_being: CharacterBody3D = $Decorations/EndgameBeing
 @onready var endgame_being: CharacterBody3D = $Decorations/EndgameBeing
 @onready var void_pool: Node3D = $Decorations/Void
+@onready var prisoner_spawns: Node3D = $PrisonerSpawns
 
 
 func _ready() -> void:
@@ -18,10 +19,17 @@ func _ready() -> void:
 	for text in $Texts.get_children():
 		text.player_entered.connect(change_being_goal)
 
+	#Move prisoners to next to pool.
+	for chum in get_tree().get_nodes_in_group("Chums_Friend"):
+		if chum.chum_id in [17, 18, 19, 20] and chum.being_particles:
+			chum.global_position = prisoner_spawns.get_node("Chum%s" % chum.chum_id).global_position
+			chum.being_particles.restart_particles()
+
 func on_prisoner_thrown(chum_id: int) -> void:
 	thrown_prisoners.append(chum_id)
 	thrown_prisoners.sort()
-	if thrown_prisoners == [17, 18, 19, 20]:
+	#slightly messy but i cant set() them :/
+	if thrown_prisoners.has(17) and thrown_prisoners.has(18) and thrown_prisoners.has(19) and thrown_prisoners.has(20):
 		await get_tree().create_timer(10.0).timeout
 		for child in Global.current_room_node.get_node("Decorations").get_children():
 			if child is RandomLevelBeing:

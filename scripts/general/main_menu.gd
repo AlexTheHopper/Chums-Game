@@ -59,9 +59,10 @@ func _ready() -> void:
 			var saved_game: SavedGame = load("user://saves/%s.tres" % [this_save])
 			for chum in saved_game.friendly_chums:
 				saved_chums[this_save].append(chum["id"])
-
-	save_nums.append(null)
+	
 	save_nums.sort()
+	save_nums.append(null)
+	print(save_nums)
 	start_button.save_nums = save_nums
 	for button in current_group.buttons:
 		button.initialise()

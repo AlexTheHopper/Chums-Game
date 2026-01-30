@@ -1,37 +1,20 @@
 shader_type spatial;
-render_mode depth_prepass_alpha, cull_disabled;
 
-uniform vec4 albedo;
-uniform sampler2D texture_albedo;
-
-uniform vec4 emission_color = vec4(1.0);
-uniform float emission_amount = 1.0;
-
-uniform sampler2D dissolve_texture;
-uniform float burn_size : hint_range(0.0, 2.0) = 0.1;
+uniform sampler2D albedo_tex;    // your mesh's diffuse texture
+uniform sampler2D dissolve_noise;              // noise texture for dissolve
 uniform float dissolve_amount : hint_range(0.0, 1.0) = 0.0;
 
 void fragment() {
-	vec4 albedo_tex = texture(texture_albedo, UV);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
+    vec4 base = texture(albedo_tex, UV);
+    float noise_val = texture(dissolve_noise, UV).r;
 
-	float sample = texture(dissolve_texture, UV).r;
+    // create dissolve cutoff
+    float alpha = step(dissolve_amount, noise_val);
 
-	float emission_value = 1.0 - smoothstep(
-		dissolve_amount,
-		dissolve_amount + burn_size,
-		sample
-	);
+    ALBEDO = base.rgb;
+    ALPHA  = base.a * alpha;
 
-	EMISSION = emission_color.rgb * emission_value * emission_amount;
-
-	ALPHA = clamp(
-		smoothstep(
-			dissolve_amount - burn_size,
-			dissolve_amount,
-			sample
-		),
-		0.0,
-		1.0
-	);
+    if (ALPHA < 0.01) {
+        discard;
+    }
 }

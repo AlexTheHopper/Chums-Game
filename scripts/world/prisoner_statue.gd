@@ -3,6 +3,7 @@ extends Node3D
 signal prisoners_changed
 
 @onready var prisoner_statue: MeshInstance3D = $PrisonerStatue
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 var close_chums := []
 var current_chum: int = 0
 const default_overlay: Resource = preload("uid://2bkpq6hg3vot")
