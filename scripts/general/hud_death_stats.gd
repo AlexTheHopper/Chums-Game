@@ -5,10 +5,13 @@ var transitioning := false
 const HUD_DEATH_STAT = preload("uid://ct186tsocgdcn")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var death_stats: Control = $DeathStats
+@onready var title_text: RichTextLabel = $DeathStats/Title/TitleText
 
 signal return_to_main_menu
 
 func _ready() -> void:
+	if Global.current_room_node.TYPE == "endgame":
+		title_text.text = "DEATHSTAT_REALITYSUCCEED"
 	to_display = {
 		tr("DEATHSTAT_TOTALCHUMS") + ": ": str(PlayerStats.player_chums_befriended),
 		tr("DEATHSTAT_UNIQUECHUMS") + ": ": str(len(PlayerStats.player_unique_chums_befriended)),
@@ -40,6 +43,11 @@ func _process(_delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":
-		return_to_main_menu.emit()
-		queue_free()
+		if Global.current_room_node.TYPE == "endgame":
+			#CREDITS HERE INSTEAD TODO
+			return_to_main_menu.emit()
+			queue_free()
+		else:
+			return_to_main_menu.emit()
+			queue_free()
 	transitioning = false

@@ -128,7 +128,7 @@ offset_right = -0.5680542
 offset_bottom = 0.20799255
 theme_override_styles/panel = SubResource("StyleBoxFlat_p21ms")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DeathStats/Title" unique_id=938037311]
+[node name="TitleText" type="RichTextLabel" parent="DeathStats/Title" unique_id=938037311]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

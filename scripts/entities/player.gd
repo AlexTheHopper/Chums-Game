@@ -1,11 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-const SPEED := 7.5
-const ACCEL := 0.3
-const SLOW_ACCEL := ACCEL * 3.0
-const MAX_SPEED := 10.0
-
+var speed := 7.5
 var jumping_time := 30.0
 const JUMPING_VELOCITY := 0.2
 const MAX_JUMPING_TIME := 30.0
@@ -79,6 +75,8 @@ func _ready() -> void:
 
 		hitbox.damage = base_damage
 		health_node.max_health = 500
+		
+		speed = 20.0
 
 func _physics_process(delta: float) -> void:
 	if not Global.is_alive:
@@ -174,13 +172,13 @@ func _physics_process(delta: float) -> void:
 
 	#Move character:
 	if direction:
-		velocity.x = direction.x * SPEED * attacking_mult * (0.2 if is_launched else 1.0)
-		velocity.z = direction.z * SPEED * attacking_mult * (0.2 if is_launched else 1.0)
+		velocity.x = direction.x * speed * attacking_mult * (0.2 if is_launched else 1.0)
+		velocity.z = direction.z * speed * attacking_mult * (0.2 if is_launched else 1.0)
 
 	#Slow down after letting go of controls
 	elif is_on_floor() or not is_launched:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 	move_and_slide()
 	#Match camera controller position to self
 	camera_controller.position = lerp(camera_controller.position, position, 0.1)

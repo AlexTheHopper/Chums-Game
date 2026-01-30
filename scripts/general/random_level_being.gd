@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name RandomLevelBeing
 
 var speed := randf_range(0.2, 0.75)
 var height := randf_range(2.5, 10.0)
