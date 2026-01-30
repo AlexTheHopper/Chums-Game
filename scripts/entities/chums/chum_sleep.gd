@@ -9,6 +9,7 @@ var has_sleep_particles := false
 func Enter() -> void:
 	chum.call_deferred("enable_interaction")
 	chum.anim_player.play("Sleep")
+	chum.anim_player.seek(0.1)
 
 	#We dont want the player to be able to push around the chums while theyre sleeping
 	chum.set_collision_mask_value(2, false)

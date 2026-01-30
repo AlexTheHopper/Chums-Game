@@ -38,6 +38,7 @@ func create_3d_audio_at_location(location: Vector3, type: SoundEffect.SOUND_EFFE
 			new_3D_audio.pitch_scale += randf_range(-sound_effect.pitch_randomness, sound_effect.pitch_randomness )
 			new_3D_audio.finished.connect(sound_effect.on_audio_finished)
 			new_3D_audio.finished.connect(new_3D_audio.queue_free)
+			new_3D_audio.bus = "SFX"
 			new_3D_audio.play()
 	else:
 		push_error("Audio Manager failed to find setting for type ", type)
@@ -57,6 +58,7 @@ func create_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 			new_audio.pitch_scale += randf_range(-sound_effect.pitch_randomness, sound_effect.pitch_randomness )
 			new_audio.finished.connect(sound_effect.on_audio_finished)
 			new_audio.finished.connect(new_audio.queue_free)
+			new_audio.bus = "SFX"
 			new_audio.play()
 			
 	else:
@@ -89,6 +91,7 @@ func create_music(type: SoundMusic.SOUND_MUSIC_TYPE) -> void:
 												"volume_db",
 												sound_music.volume,
 												MUSIC_FADE_TIME)
+		new_audio.bus = "Music"
 		new_audio.play()
 
 		current_music_type = type

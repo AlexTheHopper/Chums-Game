@@ -22,9 +22,15 @@
 [ext_resource type="Script" uid="uid://hena0gil7ks0" path="res://scripts/general/menu_buttons/menu_interact_back.gd" id="16_iedvi"]
 [ext_resource type="PackedScene" uid="uid://bwd1nmtnhqpjf" path="res://scenes/world/decorations/grass_3.tscn" id="17_7qbw1"]
 [ext_resource type="Texture2D" uid="uid://cmtv0jaf5fkl4" path="res://assets/menu_icons/icon_settings.png" id="17_8eclb"]
+[ext_resource type="Script" uid="uid://bhmoxynlr1y08" path="res://scripts/general/menu_buttons/menu_interact_quit.gd" id="18_5aorl"]
+[ext_resource type="Script" uid="uid://d0ioscabwcmf0" path="res://scripts/general/menu_buttons/menu_interact_fullscreen.gd" id="18_g0p7y"]
 [ext_resource type="PackedScene" uid="uid://dc4mgqwg7lyna" path="res://scenes/world/decorations/grass_4.tscn" id="18_iedvi"]
+[ext_resource type="Texture2D" uid="uid://b81d82p3goi7t" path="res://assets/menu_icons/icon_fullscreen.png" id="19_5aorl"]
+[ext_resource type="Texture2D" uid="uid://c6wj1j6wrivcm" path="res://assets/menu_icons/icon_quit.png" id="19_5q8hx"]
 [ext_resource type="Texture2D" uid="uid://jnfbfvnltuit" path="res://assets/menu_icons/icon_language.png" id="19_8eclb"]
 [ext_resource type="Texture2D" uid="uid://dhx01160r1b0c" path="res://assets/menu_icons/icon_back.png" id="21_51at8"]
+[ext_resource type="Script" uid="uid://6442lk2l6r1q" path="res://scripts/general/menu_buttons/menu_interact_volume.gd" id="24_23c5s"]
+[ext_resource type="Texture2D" uid="uid://co5tj48jant4p" path="res://assets/menu_icons/icon_volume3.png" id="25_4rvae"]
 
 [sub_resource type="Environment" id="Environment_sm4kk"]
 ambient_light_source = 3
@@ -60,6 +66,54 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qbw1"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5aorl"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0p7y"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rvae"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jngx"]
 bg_color = Color(0.158472, 0.158472, 0.158472, 1)
 border_width_left = 2
 border_width_top = 2
@@ -554,16 +608,20 @@ _data = {
 &"Swing": SubResource("Animation_e4s2a")
 }
 
-[node name="MainMenu" type="Node3D" unique_id=2134678962 node_paths=PackedStringArray("groups", "start_button", "settings_button", "tutorial_button", "language_button", "return_button", "current_group")]
+[node name="MainMenu" type="Node3D" unique_id=2134678962 node_paths=PackedStringArray("groups", "start_button", "tutorial_button", "settings_button", "quit_button", "fullscreen_button", "language_button", "volumemusic_button", "volumesfx_button", "return_button", "current_group")]
 script = ExtResource("1_qtr6c")
 groups = {
 0: NodePath("Group0"),
 1: NodePath("Group1")
 }
 start_button = NodePath("Group0/StartInfo")
-settings_button = NodePath("Group0/SettingsInfo")
 tutorial_button = NodePath("Group0/TutorialInfo")
+settings_button = NodePath("Group0/SettingsInfo")
+quit_button = NodePath("Group0/QuitInfo")
+fullscreen_button = NodePath("Group1/FullscreenInfo")
 language_button = NodePath("Group1/LanguageInfo")
+volumemusic_button = NodePath("Group1/VolumeInfoMusic")
+volumesfx_button = NodePath("Group1/VolumeInfoSFX")
 return_button = NodePath("Group1/ReturnInfo")
 current_group = NodePath("Group0")
 
@@ -803,13 +861,12 @@ script = ExtResource("11_gytos")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
-anchor_top = 0.615
+anchor_top = 0.5
 anchor_right = 0.98100007
-anchor_bottom = 0.69200003
+anchor_bottom = 0.577
 offset_left = 0.3359375
-offset_top = 0.25
 offset_right = 0.3359375
-offset_bottom = 0.25003052
+offset_bottom = 3.0517578e-05
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gytos")
@@ -837,13 +894,13 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group0/StartInfo" unique_id=633262282]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.79800004
+anchor_left = 0.823
 anchor_top = 0.3
-anchor_right = 0.91200006
+anchor_right = 0.92300004
 anchor_bottom = 0.69900006
-offset_left = 0.042495728
+offset_left = 0.031295776
 offset_top = -0.015015602
-offset_right = -2.8085938
+offset_right = -0.013504028
 offset_bottom = 0.015014648
 texture = ExtResource("13_i5kip")
 
@@ -851,13 +908,13 @@ texture = ExtResource("13_i5kip")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
-anchor_top = 0.731
+anchor_top = 0.615
 anchor_right = 0.98100007
-anchor_bottom = 0.808
+anchor_bottom = 0.69200003
 offset_left = 0.3359375
-offset_top = -0.1499939
+offset_top = 0.25
 offset_right = 0.3359375
-offset_bottom = -0.15008545
+offset_bottom = 0.24990845
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_iedvi")
@@ -885,13 +942,13 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group0/TutorialInfo" unique_id=1041556453]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.79800004
+anchor_left = 0.823
 anchor_top = 0.3
-anchor_right = 0.89800006
+anchor_right = 0.92300004
 anchor_bottom = 0.69900006
-offset_left = 0.042495728
+offset_left = 0.031295776
 offset_top = -0.014978409
-offset_right = -0.002319336
+offset_right = -0.013504028
 offset_bottom = 0.015098572
 texture = ExtResource("15_iyd5v")
 
@@ -899,13 +956,13 @@ texture = ExtResource("15_iyd5v")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
-anchor_top = 0.846
+anchor_top = 0.731
 anchor_right = 0.98100007
-anchor_bottom = 0.92300004
+anchor_bottom = 0.808
 offset_left = 0.3359375
-offset_top = 0.099975586
+offset_top = -0.1499939
 offset_right = 0.3359375
-offset_bottom = 0.099975586
+offset_bottom = -0.15002441
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7qbw1")
@@ -933,15 +990,63 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group0/SettingsInfo" unique_id=818834971]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.79800004
+anchor_left = 0.823
 anchor_top = 0.3
-anchor_right = 0.89800006
+anchor_right = 0.92300004
 anchor_bottom = 0.69900006
-offset_left = 0.042495728
+offset_left = 0.031295776
 offset_top = -0.014996529
-offset_right = -0.002319336
+offset_right = -0.013504028
 offset_bottom = 0.01505661
 texture = ExtResource("17_8eclb")
+
+[node name="QuitInfo" type="Panel" parent="Group0" unique_id=1056892243]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80700004
+anchor_top = 0.846
+anchor_right = 0.98100007
+anchor_bottom = 0.92300004
+offset_left = 0.3359375
+offset_top = 0.099975586
+offset_right = 0.3359375
+offset_bottom = 0.099975586
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5aorl")
+script = ExtResource("18_5aorl")
+
+[node name="Value" type="Label" parent="Group0/QuitInfo" unique_id=52468684]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.27
+anchor_right = 0.79800004
+anchor_bottom = 0.73
+offset_left = -0.022399902
+offset_top = -0.51349735
+offset_right = 0.042495728
+offset_bottom = -0.5364914
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "EXIT_GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Group0/QuitInfo" unique_id=1486323089]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.823
+anchor_top = 0.3
+anchor_right = 0.92300004
+anchor_bottom = 0.69900006
+offset_left = 0.031295776
+offset_top = -0.014996529
+offset_right = -0.013504028
+offset_bottom = 0.01505661
+texture = ExtResource("19_5q8hx")
 
 [node name="Group1" type="Control" parent="." unique_id=208201117]
 layout_mode = 3
@@ -953,17 +1058,64 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_gytos")
 
+[node name="FullscreenInfo" type="Panel" parent="Group1" unique_id=1375098982]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80700004
+anchor_top = 0.38500002
+anchor_right = 0.98100007
+anchor_bottom = 0.462
+offset_left = 0.3359375
+offset_top = -0.25001526
+offset_right = 0.3359375
+offset_bottom = -0.25003052
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g0p7y")
+script = ExtResource("18_g0p7y")
+
+[node name="Value" type="Label" parent="Group1/FullscreenInfo" unique_id=1254257465]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.26000002
+anchor_right = 0.79800004
+anchor_bottom = 0.71900004
+offset_left = -0.022399902
+offset_top = -0.012997627
+offset_right = 0.042495728
+offset_bottom = 0.014057159
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "FULLSCREEN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Group1/FullscreenInfo" unique_id=1521576286]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.823
+anchor_top = 0.3
+anchor_right = 0.92300004
+anchor_bottom = 0.69900006
+offset_left = 0.031295776
+offset_top = -0.014996529
+offset_right = -0.013504028
+offset_bottom = 0.01505661
+texture = ExtResource("19_5aorl")
+
 [node name="LanguageInfo" type="Panel" parent="Group1" unique_id=940004554]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
-anchor_top = 0.731
+anchor_top = 0.5
 anchor_right = 0.98100007
-anchor_bottom = 0.808
+anchor_bottom = 0.577
 offset_left = 0.3359375
-offset_top = -0.1499939
 offset_right = 0.3359375
-offset_bottom = -0.15002441
+offset_bottom = -3.0517578e-05
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7qbw1")
@@ -991,15 +1143,113 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group1/LanguageInfo" unique_id=956914885]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.79800004
+anchor_left = 0.823
 anchor_top = 0.3
-anchor_right = 0.89800006
+anchor_right = 0.92300004
 anchor_bottom = 0.69900006
-offset_left = 0.042495728
+offset_left = 0.031295776
 offset_top = -0.014996529
-offset_right = -0.002319336
+offset_right = -0.013504028
 offset_bottom = 0.01505661
 texture = ExtResource("19_8eclb")
+
+[node name="VolumeInfoMusic" type="Panel" parent="Group1" unique_id=459230260]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80700004
+anchor_top = 0.615
+anchor_right = 0.98100007
+anchor_bottom = 0.69200003
+offset_left = 0.3359375
+offset_top = 0.25
+offset_right = 0.3359375
+offset_bottom = 0.24996948
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4rvae")
+script = ExtResource("24_23c5s")
+bus_name = "Music"
+
+[node name="Value" type="Label" parent="Group1/VolumeInfoMusic" unique_id=329987134]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.26000002
+anchor_right = 0.79800004
+anchor_bottom = 0.71900004
+offset_left = -0.022399902
+offset_top = -0.012997627
+offset_right = 0.042495728
+offset_bottom = 0.014057159
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "VOLUME_MUSIC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Group1/VolumeInfoMusic" unique_id=104929416]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.823
+anchor_top = 0.3
+anchor_right = 0.92300004
+anchor_bottom = 0.69900006
+offset_left = 0.031295776
+offset_top = -0.014996529
+offset_right = -0.013504028
+offset_bottom = 0.01505661
+texture = ExtResource("25_4rvae")
+
+[node name="VolumeInfoSFX" type="Panel" parent="Group1" unique_id=1140649698]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80700004
+anchor_top = 0.731
+anchor_right = 0.98100007
+anchor_bottom = 0.808
+offset_left = 0.3359375
+offset_top = -0.1499939
+offset_right = 0.3359375
+offset_bottom = -0.15002441
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3jngx")
+script = ExtResource("24_23c5s")
+bus_name = "SFX"
+
+[node name="Value" type="Label" parent="Group1/VolumeInfoSFX" unique_id=370366633]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.26000002
+anchor_right = 0.79800004
+anchor_bottom = 0.71900004
+offset_left = -0.022399902
+offset_top = -0.012997627
+offset_right = 0.042495728
+offset_bottom = 0.014057159
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "VOLUME_SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Group1/VolumeInfoSFX" unique_id=1279443289]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.823
+anchor_top = 0.3
+anchor_right = 0.92300004
+anchor_bottom = 0.69900006
+offset_left = 0.031295776
+offset_top = -0.014996529
+offset_right = -0.013504028
+offset_bottom = 0.01505661
+texture = ExtResource("25_4rvae")
 
 [node name="ReturnInfo" type="Panel" parent="Group1" unique_id=1334863991]
 layout_mode = 1
@@ -1039,13 +1289,13 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group1/ReturnInfo" unique_id=508926143]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.79800004
+anchor_left = 0.823
 anchor_top = 0.3
-anchor_right = 0.89800006
+anchor_right = 0.92300004
 anchor_bottom = 0.69900006
-offset_left = 0.042495728
+offset_left = 0.031295776
 offset_top = -0.014978409
-offset_right = -0.002319336
+offset_right = -0.013504028
 offset_bottom = 0.015098572
 texture = ExtResource("21_51at8")
 

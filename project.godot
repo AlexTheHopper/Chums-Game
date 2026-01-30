@@ -16,6 +16,10 @@ run/main_scene="uid://xi6g2eiqww0b"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icon.png"
 
+[audio]
+
+buses/default_bus_layout="uid://ym2qcxe8d8of"
+
 [autoload]
 
 Global="*res://scripts/general/global.gd"
@@ -167,7 +171,7 @@ test2={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://localisation/localisation_20260129.ca.translation", "res://localisation/localisation_20260129.ch.translation", "res://localisation/localisation_20260129.de.translation", "res://localisation/localisation_20260129.en.translation", "res://localisation/localisation_20260129.es.translation", "res://localisation/localisation_20260129.fr.translation", "res://localisation/localisation_20260129.it.translation", "res://localisation/localisation_20260129.jp.translation", "res://localisation/localisation_20260129.ro.translation")
+locale/translations=PackedStringArray("res://localisation/localisation_20260130.ca.translation", "res://localisation/localisation_20260130.ch.translation", "res://localisation/localisation_20260130.de.translation", "res://localisation/localisation_20260130.en.translation", "res://localisation/localisation_20260130.es.translation", "res://localisation/localisation_20260130.fr.translation", "res://localisation/localisation_20260130.it.translation", "res://localisation/localisation_20260130.jp.translation", "res://localisation/localisation_20260130.ro.translation")
 
 [layer_names]
 

@@ -7,10 +7,14 @@ extends Node3D
 
 @export var groups: Dictionary[int, ButtonsGroup]
 @export var start_button: MenuInteract
-@export var settings_button: MenuInteract
 @export var tutorial_button: MenuInteract
+@export var settings_button: MenuInteract
+@export var quit_button: MenuInteract
 
+@export var fullscreen_button: MenuInteract
 @export var language_button: MenuInteract
+@export var volumemusic_button: MenuInteract
+@export var volumesfx_button: MenuInteract
 @export var return_button: MenuInteract
 
 @export var current_group : ButtonsGroup
@@ -33,8 +37,11 @@ func _ready() -> void:
 	start_button.save_changed.connect(change_display_chums)
 	tutorial_button.start_tutorial.connect(on_start_tutorial)
 	settings_button.move_to_menu.connect(change_buttons_group)
+	quit_button.quit_game.connect(on_quit_game)
 	#Group 1 - Settings Menu
 	language_button.select_language.connect(update_language)
+	volumemusic_button.volume_changed.connect(change_volume)
+	volumesfx_button.volume_changed.connect(change_volume)
 	return_button.move_to_menu.connect(change_buttons_group)
 	
 
@@ -125,6 +132,13 @@ func change_buttons_group(new_group_int: int) -> void:
 #This is needed as the save file string is a composit string and is not automatically translated.
 func update_language(_lan_code: String) -> void:
 	start_button.change_text()
+	fullscreen_button.change_text()
+
+func change_volume(bus_name: String, value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name), linear_to_db(value))
+
+func on_quit_game() -> void:
+	get_tree().quit()
 
 func on_start_game(savegame_id) -> void:
 	if transitioning:
@@ -170,7 +184,6 @@ func change_display_chums(save_num, show_particles = false) -> void:
 			chum_position += Vector3(5.0 * sin(2*PI*inc/chum_count), 0, 5.0 * cos(2*PI*inc/chum_count))
 			chum_instance.global_position = chum_position
 			chum_instance.get_node("GeneralChumBehaviour").visible = false
-			#chum_instance.anim_player.play("Idle")
 			chum_instance.sleep_zone.queue_free()
 			chum_instance.scale = Vector3(2.0, 2.0, 2.0)
 			chum_instance.rotation.y = randf_range(0, 2*PI)
