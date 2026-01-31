@@ -286,6 +286,7 @@ func _on_health_health_depleted() -> void:
 	for group in ["Chums_Enemy", "Chums_Neutral", "Chums_Friend"]:
 		for chum in get_tree().get_nodes_in_group(group):
 			chum.set_state("Idle")
+	run_particles.emitting = false
 	anim_player.play("Death")
 	get_tree().get_first_node_in_group("Camera").trigger_shake(2.5)
 	AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_DEATH)

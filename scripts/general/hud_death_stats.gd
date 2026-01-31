@@ -10,6 +10,7 @@ const HUD_DEATH_STAT = preload("uid://ct186tsocgdcn")
 signal return_to_main_menu
 
 func _ready() -> void:
+	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE.NULL)
 	if Global.current_room_node.TYPE == "endgame":
 		title_text.text = tr("DEATHSTAT_REALITYSUCCEED")
 	to_display = {

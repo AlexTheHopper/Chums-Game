@@ -11,7 +11,7 @@ albedo_color = Color(0, 0, 0, 0.811765)
 
 [sub_resource type="BoxMesh" id="BoxMesh_82fw2"]
 material = SubResource("StandardMaterial3D_cydgf")
-size = Vector3(6, 2, 6)
+size = Vector3(6.4, 2, 6.4)
 
 [node name="RoomChanger" type="Area3D" unique_id=1048448800]
 collision_layer = 4

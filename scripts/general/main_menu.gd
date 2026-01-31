@@ -62,7 +62,6 @@ func _ready() -> void:
 	
 	save_nums.sort()
 	save_nums.append(null)
-	print(save_nums)
 	start_button.save_nums = save_nums
 	for button in current_group.buttons:
 		button.initialise()

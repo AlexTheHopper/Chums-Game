@@ -171,7 +171,7 @@ test2={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://localisation/localisation_20260130.ca.translation", "res://localisation/localisation_20260130.ch.translation", "res://localisation/localisation_20260130.de.translation", "res://localisation/localisation_20260130.en.translation", "res://localisation/localisation_20260130.es.translation", "res://localisation/localisation_20260130.fr.translation", "res://localisation/localisation_20260130.it.translation", "res://localisation/localisation_20260130.jp.translation", "res://localisation/localisation_20260130.ro.translation")
+locale/translations=PackedStringArray("res://localisation/localisation_20260131.ca.translation", "res://localisation/localisation_20260131.ch.translation", "res://localisation/localisation_20260131.de.translation", "res://localisation/localisation_20260131.en.translation", "res://localisation/localisation_20260131.es.translation", "res://localisation/localisation_20260131.fr.translation", "res://localisation/localisation_20260131.it.translation", "res://localisation/localisation_20260131.jp.translation", "res://localisation/localisation_20260131.ro.translation")
 
 [layer_names]
 
