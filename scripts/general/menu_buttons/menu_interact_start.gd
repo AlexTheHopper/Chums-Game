@@ -8,6 +8,10 @@ var save_index = 0
 signal start_game
 signal save_changed
 
+func _ready() -> void:
+	await owner.ready #Needs the list of saves passed to it after main menu has loaded them
+	change_text()
+
 func interact() -> void:
 	start_game.emit(save_nums[save_index])
 
@@ -23,9 +27,6 @@ func right() -> void:
 	if save_index > save_nums.size() - 1:
 		save_index = 0
 	save_changed.emit(save_nums[save_index])
-	change_text()
-
-func initialise() -> void:
 	change_text()
 
 func change_text() -> void:

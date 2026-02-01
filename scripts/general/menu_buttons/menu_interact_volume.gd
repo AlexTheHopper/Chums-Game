@@ -12,13 +12,11 @@ var index := 3
 }
 @export var bus_name: String
 
-signal volume_changed
-
-func initialise() -> void:
-	index = int(db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus_name))) * 3)
+func _ready() -> void:
+	index = SaverLoader.game_settings["volume_%s" % bus_name]
 	if index not in vol_images.keys():
 		index = 3
-	change_volume()
+	change_volume(false)
 
 func left() -> void:
 	index = max(0, index - 1)
@@ -28,6 +26,9 @@ func right() -> void:
 	index = min(vol_images.keys().size() - 1, index + 1)
 	change_volume()
 
-func change_volume() -> void:
+func change_volume(save:bool = true) -> void:
 	texture.texture = vol_images[index]
-	volume_changed.emit(bus_name, index / 3.0)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name), linear_to_db(index / 3.0))
+	if save:
+		SaverLoader.game_settings["volume_%s" % bus_name] = index
+		SaverLoader.save_gamestate()

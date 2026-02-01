@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d04cod14ulwg8"
+
+[deps]
+
+files=["res://localisation/localisation_20260102.en_US.translation", "res://localisation/localisation_20260102.es_ES.translation", "res://localisation/localisation_20260102.de_DE.translation", "res://localisation/localisation_20260102.ca_ES.translation", "res://localisation/localisation_20260102.it_IT.translation", "res://localisation/localisation_20260102.fr_FR.translation", "res://localisation/localisation_20260102.ro_RO.translation", "res://localisation/localisation_20260102.jp_JP.translation", "res://localisation/localisation_20260102.cn_CN.translation"]
+
+source_file="res://localisation/localisation_20260102.csv"
+dest_files=["res://localisation/localisation_20260102.en_US.translation", "res://localisation/localisation_20260102.es_ES.translation", "res://localisation/localisation_20260102.de_DE.translation", "res://localisation/localisation_20260102.ca_ES.translation", "res://localisation/localisation_20260102.it_IT.translation", "res://localisation/localisation_20260102.fr_FR.translation", "res://localisation/localisation_20260102.ro_RO.translation", "res://localisation/localisation_20260102.jp_JP.translation", "res://localisation/localisation_20260102.cn_CN.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

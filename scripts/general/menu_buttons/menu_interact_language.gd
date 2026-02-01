@@ -4,8 +4,13 @@ extends MenuInteract
 
 signal select_language
 
-var languages = ["en", "es", "de", "ca", "it", "fr", "ro", "jp", "ch"]
+var languages = ["en_US", "es_ES", "de_DE", "ca_ES", "it_IT", "fr_FR", "ro_RO", "jp_JP", "ch_CN"]
 var index = 0
+
+func _ready() -> void:
+	index = languages.find(SaverLoader.game_settings["selected_language"])
+	TranslationServer.set_locale(languages[index])
+	select_language.emit(languages[index])
 
 func left() -> void:
 	index -= 1
@@ -19,9 +24,8 @@ func right() -> void:
 		index = 0
 	change_language(languages[index])
 
-func interact() -> void:
-	pass #TODO This is where you would change the language
-
 func change_language(lan_code: String) -> void:
 	TranslationServer.set_locale(lan_code)
+	SaverLoader.game_settings["selected_language"] = lan_code
+	SaverLoader.save_gamestate()
 	select_language.emit(lan_code)

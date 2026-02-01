@@ -1,13 +1,13 @@
 extends Camera3D
 
-@export var shake_power := 0.1
+@export var shake_power := 0.05
 @export var shake_fade := 5.0
 @export var shake_attenuation := 1.0
 
 var current_shake := 0.0
 
 func trigger_shake(strength = 1.0, attenuation = 1.0) -> void:
-	current_shake = shake_power * strength * Global.settings["camera_shake"]
+	current_shake = shake_power * strength * SaverLoader.game_settings["camera_shake"]
 	shake_attenuation = attenuation
 
 func _process(delta: float) -> void:

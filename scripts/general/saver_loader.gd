@@ -4,13 +4,67 @@ signal Saved
 signal Loaded
 signal Deleted
 
+signal Gamestate_Saved
+signal Gamestate_Loaded
+
+var game_settings: Dictionary
+var default_game_settings: Dictionary = {
+		"is_fullscreen": false,
+		"camera_shake": 2,
+		"selected_language": "en_US",
+		"volume_Music": 3,
+		"volume_SFX": 3,
+	}
+
+var game_stats: Dictionary
+var default_game_stats = {
+}
+
 func _ready() -> void:
 	ensure_save_folder()
+	ensure_gamestate()
+	load_gamestate()
 
 func ensure_save_folder() -> void:
 	var dir = DirAccess.open("user://")
 	if not dir.dir_exists("saves"):
 		dir.make_dir("saves")
+
+func ensure_gamestate() -> void:
+	if FileAccess.file_exists("user://saves/gamestate.tres"):
+		return
+	var saved_gamestate : GameState = GameState.new()
+	game_settings = default_game_settings
+	game_stats = default_game_stats
+	save_gamestate()
+
+func save_gamestate() -> void:
+	var saved_gamestate: GameState = GameState.new()
+	
+	saved_gamestate.game_settings = game_settings
+	saved_gamestate.game_stats = game_stats
+	
+	ResourceSaver.save(saved_gamestate, "user://saves/gamestate.tres")
+	
+	Gamestate_Saved.emit()
+
+func load_gamestate() -> void:
+	ensure_gamestate()
+	
+	var saved_gamestate:GameState = load("user://saves/gamestate.tres")
+	
+	game_settings = saved_gamestate.game_settings
+	game_stats = saved_gamestate.game_stats
+	
+	#Make sure any new data are added:
+	for key in default_game_settings.keys():
+		if key not in game_settings.keys():
+			game_settings[key] = default_game_settings[key]
+	for key in default_game_stats.keys():
+		if key not in game_stats.keys():
+			game_stats[key] = default_game_stats[key]
+	
+	Gamestate_Loaded.emit()
 
 func save_game(save_id) -> void:
 	ensure_save_folder()
@@ -57,7 +111,6 @@ func save_game(save_id) -> void:
 	
 	ResourceSaver.save(saved_game, "user://saves/%s.tres" % [save_id])
 	Saved.emit()
-
 
 func load_game(save_id) -> void:
 	ensure_save_folder()

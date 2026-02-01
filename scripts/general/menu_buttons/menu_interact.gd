@@ -15,6 +15,3 @@ func on_selected() -> void:
 
 func on_deselected() -> void:
 	get_theme_stylebox("panel").border_color = Color.from_rgba8(0, 0, 0, 255)
-
-func initialise() -> void:
-	pass

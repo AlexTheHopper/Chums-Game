@@ -6,6 +6,3 @@ signal start_tutorial
 
 func interact() -> void:
 	start_tutorial.emit()
-
-func initialise() -> void:
-	text_label.text = "TUTORIAL"

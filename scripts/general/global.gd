@@ -36,11 +36,6 @@ signal room_changed_from_boss
 signal room_changed_to_being
 signal room_changed_to_endgame
 
-@export var settings: Dictionary[String, float] = {
-	"camera_shake": 1.0,
-	"audio_music": 1.0,
-	"audio_effects": 1.0}
-
 func _ready():
 	#required and optional are the statue chum ids. To be super safe only rely on the last entry in required.
 	#room_counts are how many of each normal room to replace with that id. They will not replace ones next to the lobby.

@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://c6wj1j6wrivcm" path="res://assets/menu_icons/icon_quit.png" id="19_5q8hx"]
 [ext_resource type="Texture2D" uid="uid://jnfbfvnltuit" path="res://assets/menu_icons/icon_language.png" id="19_8eclb"]
 [ext_resource type="Texture2D" uid="uid://dhx01160r1b0c" path="res://assets/menu_icons/icon_back.png" id="21_51at8"]
+[ext_resource type="Script" uid="uid://b7mqpk0pral5g" path="res://scripts/general/menu_buttons/menu_interact_camerashake.gd" id="22_eiu5h"]
+[ext_resource type="Texture2D" uid="uid://dgopve7tvnwte" path="res://assets/menu_icons/icon_camerashake2.png" id="23_eiu5h"]
 [ext_resource type="Script" uid="uid://6442lk2l6r1q" path="res://scripts/general/menu_buttons/menu_interact_volume.gd" id="24_23c5s"]
 [ext_resource type="Texture2D" uid="uid://co5tj48jant4p" path="res://assets/menu_icons/icon_volume3.png" id="25_4rvae"]
 
@@ -90,6 +92,18 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0p7y"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiu5h"]
 bg_color = Color(0.158472, 0.158472, 0.158472, 1)
 border_width_left = 2
 border_width_top = 2
@@ -608,7 +622,7 @@ _data = {
 &"Swing": SubResource("Animation_e4s2a")
 }
 
-[node name="MainMenu" type="Node3D" unique_id=2134678962 node_paths=PackedStringArray("groups", "start_button", "tutorial_button", "settings_button", "quit_button", "fullscreen_button", "language_button", "volumemusic_button", "volumesfx_button", "return_button", "current_group")]
+[node name="MainMenu" type="Node3D" unique_id=2134678962 node_paths=PackedStringArray("groups", "start_button", "tutorial_button", "settings_button", "quit_button", "fullscreen_button", "camerashake_button", "language_button", "volumemusic_button", "volumesfx_button", "return_button", "current_group")]
 script = ExtResource("1_qtr6c")
 groups = {
 0: NodePath("Group0"),
@@ -619,6 +633,7 @@ tutorial_button = NodePath("Group0/TutorialInfo")
 settings_button = NodePath("Group0/SettingsInfo")
 quit_button = NodePath("Group0/QuitInfo")
 fullscreen_button = NodePath("Group1/FullscreenInfo")
+camerashake_button = NodePath("Group1/CamerashakeInfo")
 language_button = NodePath("Group1/LanguageInfo")
 volumemusic_button = NodePath("Group1/VolumeInfoMusic")
 volumesfx_button = NodePath("Group1/VolumeInfoSFX")
@@ -847,7 +862,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 2, 1.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -1.3000001)
 
 [node name="Group0" type="Control" parent="." unique_id=265468341]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -894,14 +908,14 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group0/StartInfo" unique_id=633262282]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.823
-anchor_top = 0.3
+anchor_left = 0.80300003
+anchor_top = 0.24000001
 anchor_right = 0.92300004
-anchor_bottom = 0.69900006
-offset_left = 0.031295776
-offset_top = -0.015015602
+anchor_bottom = 0.71900004
+offset_left = 0.040252686
+offset_top = -0.012012482
 offset_right = -0.013504028
-offset_bottom = 0.015014648
+offset_bottom = 0.014011383
 texture = ExtResource("13_i5kip")
 
 [node name="TutorialInfo" type="Panel" parent="Group0" unique_id=768216763]
@@ -935,21 +949,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "START_TUTORIAL"
+text = "TUTORIAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Group0/TutorialInfo" unique_id=1041556453]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.823
-anchor_top = 0.3
+anchor_left = 0.80300003
+anchor_top = 0.24000001
 anchor_right = 0.92300004
-anchor_bottom = 0.69900006
-offset_left = 0.031295776
-offset_top = -0.014978409
+anchor_bottom = 0.71900004
+offset_left = 0.040252686
+offset_top = -0.011982918
 offset_right = -0.013504028
-offset_bottom = 0.015098572
+offset_bottom = 0.014099121
 texture = ExtResource("15_iyd5v")
 
 [node name="SettingsInfo" type="Panel" parent="Group0" unique_id=383048005]
@@ -990,14 +1004,14 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group0/SettingsInfo" unique_id=818834971]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.823
-anchor_top = 0.3
+anchor_left = 0.80300003
+anchor_top = 0.24000001
 anchor_right = 0.92300004
-anchor_bottom = 0.69900006
-offset_left = 0.031295776
-offset_top = -0.014996529
+anchor_bottom = 0.71900004
+offset_left = 0.040252686
+offset_top = -0.011997223
 offset_right = -0.013504028
-offset_bottom = 0.01505661
+offset_bottom = 0.014057159
 texture = ExtResource("17_8eclb")
 
 [node name="QuitInfo" type="Panel" parent="Group0" unique_id=1056892243]
@@ -1038,17 +1052,18 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group0/QuitInfo" unique_id=1486323089]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.823
-anchor_top = 0.3
+anchor_left = 0.80300003
+anchor_top = 0.24000001
 anchor_right = 0.92300004
-anchor_bottom = 0.69900006
-offset_left = 0.031295776
-offset_top = -0.014996529
+anchor_bottom = 0.71900004
+offset_left = 0.040252686
+offset_top = -0.011997223
 offset_right = -0.013504028
-offset_bottom = 0.01505661
+offset_bottom = 0.014057159
 texture = ExtResource("19_5q8hx")
 
 [node name="Group1" type="Control" parent="." unique_id=208201117]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1062,13 +1077,13 @@ script = ExtResource("11_gytos")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
-anchor_top = 0.38500002
+anchor_top = 0.26900002
 anchor_right = 0.98100007
-anchor_bottom = 0.462
+anchor_bottom = 0.34600002
 offset_left = 0.3359375
-offset_top = -0.25001526
+offset_top = 0.14997864
 offset_right = 0.3359375
-offset_bottom = -0.25003052
+offset_bottom = 0.14997864
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_g0p7y")
@@ -1096,15 +1111,63 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group1/FullscreenInfo" unique_id=1521576286]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.823
-anchor_top = 0.3
+anchor_left = 0.80300003
+anchor_top = 0.24000001
 anchor_right = 0.92300004
-anchor_bottom = 0.69900006
-offset_left = 0.031295776
-offset_top = -0.014996529
+anchor_bottom = 0.71900004
+offset_left = 0.040252686
+offset_top = -0.011997223
 offset_right = -0.013504028
-offset_bottom = 0.01505661
+offset_bottom = 0.014057159
 texture = ExtResource("19_5aorl")
+
+[node name="CamerashakeInfo" type="Panel" parent="Group1" unique_id=1618870921]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80700004
+anchor_top = 0.38500002
+anchor_right = 0.98100007
+anchor_bottom = 0.462
+offset_left = 0.3359375
+offset_top = -0.25001526
+offset_right = 0.3359375
+offset_bottom = -0.25003052
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eiu5h")
+script = ExtResource("22_eiu5h")
+
+[node name="Value" type="Label" parent="Group1/CamerashakeInfo" unique_id=1236295402]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.26000002
+anchor_right = 0.79800004
+anchor_bottom = 0.71900004
+offset_left = -0.022399902
+offset_top = -0.012997627
+offset_right = 0.042495728
+offset_bottom = 0.014057159
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "CAMERA_SHAKE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Group1/CamerashakeInfo" unique_id=1468459297]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80300003
+anchor_top = 0.24000001
+anchor_right = 0.92300004
+anchor_bottom = 0.71900004
+offset_left = 0.040252686
+offset_top = -0.011997223
+offset_right = -0.013504028
+offset_bottom = 0.014057159
+texture = ExtResource("23_eiu5h")
 
 [node name="LanguageInfo" type="Panel" parent="Group1" unique_id=940004554]
 layout_mode = 1
@@ -1143,14 +1206,14 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group1/LanguageInfo" unique_id=956914885]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.823
-anchor_top = 0.3
+anchor_left = 0.80300003
+anchor_top = 0.24000001
 anchor_right = 0.92300004
-anchor_bottom = 0.69900006
-offset_left = 0.031295776
-offset_top = -0.014996529
+anchor_bottom = 0.71900004
+offset_left = 0.040252686
+offset_top = -0.011997223
 offset_right = -0.013504028
-offset_bottom = 0.01505661
+offset_bottom = 0.014057159
 texture = ExtResource("19_8eclb")
 
 [node name="VolumeInfoMusic" type="Panel" parent="Group1" unique_id=459230260]
@@ -1192,14 +1255,14 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group1/VolumeInfoMusic" unique_id=104929416]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.823
-anchor_top = 0.3
+anchor_left = 0.80300003
+anchor_top = 0.24000001
 anchor_right = 0.92300004
-anchor_bottom = 0.69900006
-offset_left = 0.031295776
-offset_top = -0.014996529
+anchor_bottom = 0.71900004
+offset_left = 0.040252686
+offset_top = -0.011997223
 offset_right = -0.013504028
-offset_bottom = 0.01505661
+offset_bottom = 0.014057159
 texture = ExtResource("25_4rvae")
 
 [node name="VolumeInfoSFX" type="Panel" parent="Group1" unique_id=1140649698]
@@ -1241,14 +1304,14 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group1/VolumeInfoSFX" unique_id=1279443289]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.823
-anchor_top = 0.3
+anchor_left = 0.80300003
+anchor_top = 0.24000001
 anchor_right = 0.92300004
-anchor_bottom = 0.69900006
-offset_left = 0.031295776
-offset_top = -0.014996529
+anchor_bottom = 0.71900004
+offset_left = 0.040252686
+offset_top = -0.011997223
 offset_right = -0.013504028
-offset_bottom = 0.01505661
+offset_bottom = 0.014057159
 texture = ExtResource("25_4rvae")
 
 [node name="ReturnInfo" type="Panel" parent="Group1" unique_id=1334863991]
@@ -1289,14 +1352,14 @@ vertical_alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Group1/ReturnInfo" unique_id=508926143]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.823
-anchor_top = 0.3
+anchor_left = 0.80300003
+anchor_top = 0.24000001
 anchor_right = 0.92300004
-anchor_bottom = 0.69900006
-offset_left = 0.031295776
-offset_top = -0.014978409
+anchor_bottom = 0.71900004
+offset_left = 0.040252686
+offset_top = -0.011982918
 offset_right = -0.013504028
-offset_bottom = 0.015098572
+offset_bottom = 0.014099121
 texture = ExtResource("21_51at8")
 
 [node name="MenuBeing" parent="." unique_id=2139683659 instance=ExtResource("6_pikal")]

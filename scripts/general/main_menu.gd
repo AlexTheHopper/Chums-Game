@@ -12,6 +12,7 @@ extends Node3D
 @export var quit_button: MenuInteract
 
 @export var fullscreen_button: MenuInteract
+@export var camerashake_button: MenuInteract
 @export var language_button: MenuInteract
 @export var volumemusic_button: MenuInteract
 @export var volumesfx_button: MenuInteract
@@ -32,6 +33,7 @@ func _ready() -> void:
 		group.visible = false
 	groups[0].visible = true
 	current_group.buttons[current_group_index].on_selected()
+
 	#Group 0 - Main Menu
 	start_button.start_game.connect(on_start_game)
 	start_button.save_changed.connect(change_display_chums)
@@ -40,8 +42,6 @@ func _ready() -> void:
 	quit_button.quit_game.connect(on_quit_game)
 	#Group 1 - Settings Menu
 	language_button.select_language.connect(update_language)
-	volumemusic_button.volume_changed.connect(change_volume)
-	volumesfx_button.volume_changed.connect(change_volume)
 	return_button.move_to_menu.connect(change_buttons_group)
 	
 
@@ -63,8 +63,6 @@ func _ready() -> void:
 	save_nums.sort()
 	save_nums.append(null)
 	start_button.save_nums = save_nums
-	for button in current_group.buttons:
-		button.initialise()
 	change_display_chums(save_nums[0])
 
 	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE.MENU)
@@ -113,8 +111,6 @@ func change_buttons_group(new_group_int: int) -> void:
 	transitioning = true
 	groups[new_group_int].visible = true
 	
-	for button in groups[new_group_int].buttons:
-		button.initialise()
 	#Outgoing menu:
 	get_tree().create_tween().tween_property(current_group, "position", outgoing_pos, time)
 	#Incoming menu:
@@ -133,9 +129,6 @@ func change_buttons_group(new_group_int: int) -> void:
 func update_language(_lan_code: String) -> void:
 	start_button.change_text()
 	fullscreen_button.change_text()
-
-func change_volume(bus_name: String, value: float) -> void:
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name), linear_to_db(value))
 
 func on_quit_game() -> void:
 	get_tree().quit()
