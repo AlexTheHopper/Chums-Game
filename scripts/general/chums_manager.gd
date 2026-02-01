@@ -36,7 +36,9 @@ var chums_list := {
 	29: {"destination_world": 3, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum29.tscn")}, #Ember
 	30: {"destination_world": 3, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum30.tscn")}, #Goblet
 }
-var bonus_chums_restricted_ids := [14, 15, 22, 23, 17, 18, 19, 20]
+var bonus_chums_restricted_ids := [14, 15, 22, 23,
+								17, 18, 19, 20,
+								6, 7, 16, 26, 27]
 
 var chums_values := {
 	1: {
@@ -144,15 +146,16 @@ func add_bonus_chum(save_id: int) -> void:
 	for chum in get_tree().get_nodes_in_group("Chums_Friend"):
 		if chum.chum_id not in bonus_chums_restricted_ids:
 			potential_chums.append(chum)
+
 	if potential_chums.size() == 0:
-		return
-	
-	var chosen_chum = potential_chums.pick_random()
-	print("Saving bonus chum. ID: %s, COST: %s, QUALITY: %s" % [chosen_chum.chum_id, chosen_chum.bracelet_cost, chosen_chum.quality])
-	SaverLoader.game_stats["bonus_chums"][save_id] = {
-		"chum_id": chosen_chum.chum_id,
-		"bracelet_cost": chosen_chum.bracelet_cost,
-		"quality": chosen_chum.quality,
-	}
+		SaverLoader.game_stats["bonus_chums"].erase(save_id)
+	else:
+		var chosen_chum = potential_chums.pick_random()
+		print("Saving bonus chum. ID: %s, COST: %s, QUALITY: %s" % [chosen_chum.chum_id, chosen_chum.bracelet_cost, chosen_chum.quality])
+		SaverLoader.game_stats["bonus_chums"][save_id] = {
+			"chum_id": chosen_chum.chum_id,
+			"bracelet_cost": chosen_chum.bracelet_cost,
+			"quality": chosen_chum.quality,
+		}
 	
 	SaverLoader.save_gamestate()

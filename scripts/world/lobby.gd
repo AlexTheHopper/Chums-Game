@@ -1,7 +1,7 @@
 extends room
 
 const TYPE := "lobby"
-const BONUS_CHUM_LOC := Vector3(1.0, 0.0, 12.0)
+const BONUS_CHUM_LOC := Vector3(1.0, 0.0, -8.0)
 
 func _ready() -> void:
 	super()
@@ -25,7 +25,7 @@ func set_bonus_chum_on_load() -> void:
 		print("Creating bonus chum. ID: %s, COST: %s, QUALITY: %s" % [bonus_chum_stats.chum_id, bonus_chum_stats.bracelet_cost, bonus_chum_stats.quality])
 
 	var bonus_chum = ChumsManager.get_specific_chum_id(bonus_chum_stats["chum_id"]).instantiate()
-	bonus_chum.bracelet_cost = bonus_chum["bracelet_cost"]
+	bonus_chum.bracelet_cost = bonus_chum_stats["bracelet_cost"]
 	bonus_chum.quality = bonus_chum_stats["quality"]
 	bonus_chum.stats_set = true
 	bonus_chum.initial_state_override = "Knock"

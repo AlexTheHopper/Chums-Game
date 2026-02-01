@@ -1,6 +1,7 @@
 extends MenuInteract
 
 var save_nums := []
+var existing_save_nums := []
 var save_index = 0
 
 @onready var text_label: Label = $Value
@@ -31,6 +32,8 @@ func right() -> void:
 
 func change_text() -> void:
 	if save_nums[save_index] == null:
-		text_label.text = "NEW_REALITY"
+		text_label.text = tr("NEW_REALITY")
+	elif save_nums[save_index] not in existing_save_nums:
+		text_label.text = tr("RESURRECT_REALITY") + ": %s" % save_nums[save_index]
 	else:
 		text_label.text = tr("REALITY") + ": %s" % save_nums[save_index]

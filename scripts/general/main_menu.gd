@@ -26,6 +26,7 @@ var bonus_chum_particles = preload("res://particles/bonus_chum_particles.tscn")
 var transitioning := false
 var camera_returning := false
 var save_nums := []
+var existing_save_nums := []
 
 var saved_chums: Dictionary = {null: []}
 
@@ -54,15 +55,21 @@ func _ready() -> void:
 			#Append to list
 			var this_save:int = int(i_pot.get_slice(".", 0))
 			save_nums.append(this_save)
+			existing_save_nums.append(this_save)
 			
 			#Get saved chums for display purposed
 			saved_chums[this_save] = []
 			var saved_game: SavedGame = load("user://saves/%s.tres" % [this_save])
 			for chum in saved_game.friendly_chums:
 				saved_chums[this_save].append(chum["id"])
-	
+
+	for bonus_id in SaverLoader.game_stats["bonus_chums"].keys():
+		if bonus_id not in save_nums:
+			save_nums.append(bonus_id)
 	save_nums.sort()
-	save_nums.append(null)
+	save_nums.append(null) #Option for a new game
+	#Tell the start button which are just a bonus chum and which are existing saves.
+	start_button.existing_save_nums = existing_save_nums
 	start_button.save_nums = save_nums
 	change_display_chums(save_nums[0])
 
@@ -140,7 +147,7 @@ func on_start_game(savegame_id) -> void:
 	transitioning = true
 	TransitionScreen.transition(3)
 	await TransitionScreen.on_transition_finished
-	var is_new_game = true if savegame_id == null else false
+	var is_new_game = true if savegame_id not in existing_save_nums else false
 	if savegame_id == null:
 		savegame_id = get_smallest_missing_int(save_nums)
 	Global.start_game(savegame_id, is_new_game)
@@ -161,7 +168,7 @@ func change_display_chums(save_num, show_particles = false) -> void:
 	for node in team_node.get_node("chums").get_children():
 		node.queue_free()
 	
-	if save_num != null:
+	if save_num in start_button.existing_save_nums:
 		var chum_list = saved_chums[save_num]
 		var chum_count = len(chum_list)
 		
