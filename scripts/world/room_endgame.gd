@@ -20,8 +20,10 @@ func _ready() -> void:
 		text.player_entered.connect(change_being_goal)
 
 	#Move prisoners to next to pool.
+	var duplicate_ids := [] #This shouldnt matter but i may have overlooked something. Stopes prisoners from flying off in the samee positon.
 	for chum in get_tree().get_nodes_in_group("Chums_Friend"):
-		if chum.chum_id in [17, 18, 19, 20] and chum.being_particles:
+		if chum.chum_id in [17, 18, 19, 20] and chum.being_particles and chum.chum_id not in duplicate_ids:
+			duplicate_ids.append(chum.chum_id)
 			chum.global_position = prisoner_spawns.get_node("Chum%s" % chum.chum_id).global_position
 			chum.being_particles.restart_particles()
 

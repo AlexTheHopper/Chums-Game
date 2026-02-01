@@ -281,6 +281,7 @@ func healed(amount):
 
 func _on_health_health_depleted() -> void:
 	#Stop all chums from battling
+	health_node.health = 0
 	Global.is_alive = false
 	anim_player.speed_scale = 1.0
 	for group in ["Chums_Enemy", "Chums_Neutral", "Chums_Friend"]:

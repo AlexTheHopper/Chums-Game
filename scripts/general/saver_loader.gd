@@ -33,7 +33,7 @@ func ensure_save_folder() -> void:
 func ensure_gamestate() -> void:
 	if FileAccess.file_exists("user://saves/gamestate.tres"):
 		return
-	var saved_gamestate : GameState = GameState.new()
+
 	game_settings = default_game_settings
 	game_stats = default_game_stats
 	save_gamestate()
