@@ -72,6 +72,7 @@ var is_launched := false
 
 signal health_depleted
 signal spawn_currency(type, location)
+signal befriended
 
 func _ready() -> void:
 	chum_name = "CHUM_%s_NAME" % self.chum_id
@@ -387,6 +388,7 @@ func attempt_carry():
 		if not is_friend:
 			PlayerStats.bracelets_added(-self.bracelet_cost)
 			PlayerStats.call_deferred("friend_chums_changed", 1, self)
+			befriended.emit()
 		get_tree().get_first_node_in_group("Player").is_carrying = true
 		set_state("Carry")
 

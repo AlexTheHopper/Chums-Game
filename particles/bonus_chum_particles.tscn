@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://1hlyov5v7u3"]
+
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_cmg4a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1y0l2"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ngjpp"]
+material = SubResource("StandardMaterial3D_1y0l2")
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Curve" id="Curve_g31vr"]
+_data = [Vector2(0.00691244, 1), 0.0, 0.0, 0, 0, Vector2(0.603687, 0.988676), 0.0, 0.0, 0, 0, Vector2(1, 0.00914633), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_0ohf4"]
+offsets = PackedFloat32Array(0.43721974, 0.58632284)
+colors = PackedColorArray(0.3848559, 0.10867547, 0.37957737, 1, 0.55941933, 0.41282213, 9.62615e-08, 1)
+
+[node name="SpawnParticles" type="Node3D" unique_id=211650516]
+script = ExtResource("1_cmg4a")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1726187786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+amount = 25
+mesh = SubResource("BoxMesh_ngjpp")
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_rotate_y = true
+direction = Vector3(0, 1, 0)
+spread = 125.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+radial_accel_max = 1.0
+angle_max = 90.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_g31vr")
+color_initial_ramp = SubResource("Gradient_0ohf4")
+hue_variation_max = 1.0
+
+[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]

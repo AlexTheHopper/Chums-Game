@@ -612,6 +612,7 @@ func return_to_menu(delete = false, display_stats = false) -> void:
 		call_deferred("restart_game")
 	
 	if delete:
+		ChumsManager.add_bonus_chum(Global.game_save_id) #Gives you a random chum (not boss/prisoner) for your next run.
 		SaverLoader.delete_save(game_save_id)
 
 func restart_game() -> void:

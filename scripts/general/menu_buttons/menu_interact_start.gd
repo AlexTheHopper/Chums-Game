@@ -19,14 +19,14 @@ func left() -> void:
 	save_index -= 1
 	if save_index < 0:
 		save_index = save_nums.size() - 1
-	save_changed.emit(save_nums[save_index])
+	save_changed.emit(save_nums[save_index], true)
 	change_text()
 
 func right() -> void:
 	save_index += 1
 	if save_index > save_nums.size() - 1:
 		save_index = 0
-	save_changed.emit(save_nums[save_index])
+	save_changed.emit(save_nums[save_index], true)
 	change_text()
 
 func change_text() -> void:

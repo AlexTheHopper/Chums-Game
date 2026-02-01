@@ -18,6 +18,7 @@ var default_game_settings: Dictionary = {
 
 var game_stats: Dictionary
 var default_game_stats = {
+	"bonus_chums": {}
 }
 
 func _ready() -> void:

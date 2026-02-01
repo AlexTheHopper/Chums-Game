@@ -22,6 +22,7 @@ extends Node3D
 var current_group_index := 0
 
 var spawn_particles = preload("res://particles/spawn_particles_world1.tscn")
+var bonus_chum_particles = preload("res://particles/bonus_chum_particles.tscn")
 var transitioning := false
 var camera_returning := false
 var save_nums := []
@@ -160,31 +161,48 @@ func change_display_chums(save_num, show_particles = false) -> void:
 	for node in team_node.get_node("chums").get_children():
 		node.queue_free()
 	
-	if save_num == null:
+	if save_num != null:
+		var chum_list = saved_chums[save_num]
+		var chum_count = len(chum_list)
+		
+		var inc:int = 0
+		for chum_id in chum_list:
+			var chum_to_spawn = ChumsManager.get_specific_chum_id(chum_id)
+			if chum_to_spawn:
+				#Spawns chum
+				var chum_instance = chum_to_spawn.instantiate()
+				team_node.get_node("chums").add_child(chum_instance)
+				var chum_position = team_node.global_position
+				chum_position += Vector3(5.0 * sin(2*PI*inc/chum_count), 0, 5.0 * cos(2*PI*inc/chum_count))
+				chum_instance.global_position = chum_position
+				chum_instance.get_node("GeneralChumBehaviour").visible = false
+				chum_instance.sleep_zone.queue_free()
+				chum_instance.scale = Vector3(2.0, 2.0, 2.0)
+				chum_instance.rotation.y = randf_range(0, 2*PI)
+				chum_instance.anim_player.speed_scale = randf_range(0.8, 1.2)
+				#Spawn spawn particles:
+				if show_particles and team_node.visible:
+					chum_instance.particle_zone.add_child(spawn_particles.instantiate())
+			inc += 1
+	
+	#Check for bonus chum - if its a new game need to check what id it will start on!
+	var this_save_id = save_num if save_num != null else get_smallest_missing_int(save_nums)
+	if this_save_id not in SaverLoader.game_stats["bonus_chums"].keys():
 		return
-	
-	var chum_list = saved_chums[save_num]
-	var chum_count = len(chum_list)
-	
-	var inc:int = 0
-	for chum_id in chum_list:
-		var chum_to_spawn = ChumsManager.get_specific_chum_id(chum_id)
-		if chum_to_spawn:
-			#Spawns chum
-			var chum_instance = chum_to_spawn.instantiate()
-			team_node.get_node("chums").add_child(chum_instance)
-			var chum_position = team_node.global_position
-			chum_position += Vector3(5.0 * sin(2*PI*inc/chum_count), 0, 5.0 * cos(2*PI*inc/chum_count))
-			chum_instance.global_position = chum_position
-			chum_instance.get_node("GeneralChumBehaviour").visible = false
-			chum_instance.sleep_zone.queue_free()
-			chum_instance.scale = Vector3(2.0, 2.0, 2.0)
-			chum_instance.rotation.y = randf_range(0, 2*PI)
-			chum_instance.anim_player.speed_scale = randf_range(0.8, 1.2)
-			#Spawn spawn particles:
-			if show_particles and team_node.visible:
-				chum_instance.particle_zone.add_child(spawn_particles.instantiate())
-		inc += 1
+	var bonus_chum_id = SaverLoader.game_stats["bonus_chums"][this_save_id]["chum_id"]
+
+	var bonus_chum = ChumsManager.get_specific_chum_id(bonus_chum_id).instantiate()
+	team_node.get_node("chums").add_child(bonus_chum)
+	bonus_chum.global_position = Vector3(0.0, 2.0, 3.0)
+	bonus_chum.get_node("GeneralChumBehaviour").visible = false
+	bonus_chum.sleep_zone.queue_free()
+	bonus_chum.scale = Vector3(2.0, 2.0, 2.0)
+	bonus_chum.rotation.y = randf_range(0, 2*PI)
+	bonus_chum.anim_player.speed_scale = randf_range(0.8, 1.2)
+	bonus_chum.add_child(bonus_chum_particles.instantiate())
+	#Spawn spawn particles:
+	if show_particles and team_node.visible:
+		bonus_chum.particle_zone.add_child(spawn_particles.instantiate())
 
 func get_smallest_missing_int(list) -> int:
 	var lowest = 1

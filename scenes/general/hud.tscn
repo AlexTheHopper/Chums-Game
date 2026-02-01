@@ -618,8 +618,8 @@ anchor_right = 0.13
 anchor_bottom = 0.231
 offset_left = -0.34400177
 offset_top = -4.3280106
-offset_right = 0.23986816
-offset_bottom = 0.31199646
+offset_right = 0.23980713
+offset_bottom = 0.3119812
 theme_override_styles/panel = SubResource("StyleBoxFlat_pfecb")
 
 [node name="TextureRect" type="TextureRect" parent="InGameHUD/BraceletsPanel" unique_id=1389812206]
