@@ -23,7 +23,7 @@ ambient_light_sky_contribution = 0.9
 tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0.28335267, 0.00010167621, 0.3107721, 1)
-fog_density = 0.03
+fog_density = 0.02
 fog_height = 2.0
 fog_height_density = 0.5
 

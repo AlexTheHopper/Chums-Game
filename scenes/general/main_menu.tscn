@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btywxp6yslwdc" path="res://scripts/general/main_menu.gd" id="1_qtr6c"]
 [ext_resource type="MeshLibrary" uid="uid://cigp6vhw1rudc" path="res://assets/world/meshlib_world_1.tres" id="2_gytos"]
+[ext_resource type="Shader" uid="uid://b5sj60mwbe5st" path="res://testing/hud_outline.gdshader" id="3_b7cy0"]
 [ext_resource type="PackedScene" uid="uid://dsr4pp61d2hjb" path="res://scenes/world/decorations/tree_1.tscn" id="3_sm4kk"]
 [ext_resource type="PackedScene" uid="uid://0kfmqmrttl5k" path="res://assets/world/streetlamp_1.tscn" id="3_tdqsr"]
 [ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="4_ftlmj"]
@@ -34,6 +35,17 @@
 [ext_resource type="Script" uid="uid://6442lk2l6r1q" path="res://scripts/general/menu_buttons/menu_interact_volume.gd" id="24_23c5s"]
 [ext_resource type="Texture2D" uid="uid://co5tj48jant4p" path="res://assets/menu_icons/icon_volume3.png" id="25_4rvae"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6tgf"]
+render_priority = 0
+shader = ExtResource("3_b7cy0")
+shader_parameter/outline_thickness = 0.1499999966472
+shader_parameter/step_threshold = 0.2999999932944
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yy5kl"]
+material = SubResource("ShaderMaterial_b6tgf")
+size = Vector2(2, 2)
+
 [sub_resource type="Environment" id="Environment_sm4kk"]
 ambient_light_source = 3
 ambient_light_color = Color(0.73893, 0.821893, 0.656433, 1)
@@ -42,6 +54,8 @@ tonemap_mode = 3
 fog_enabled = true
 fog_light_color = Color(0.0838779, 0.176419, 0.144425, 1)
 fog_density = 0.03
+fog_height = 3.0
+fog_height_density = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gytos"]
 bg_color = Color(0.158472, 0.158472, 0.158472, 1)
@@ -654,6 +668,10 @@ transform = Transform3D(0.707107, 0.353554, -0.612373, 0, 0.866026, 0.5, 0.70710
 [node name="Target" type="Node3D" parent="Camera3D" unique_id=70941906]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -2.08616e-07, 1, -5, 13, -25)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1910399270]
+extra_cull_margin = 10.0
+mesh = SubResource("QuadMesh_yy5kl")
+
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=886271900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.68387, 0)
 omni_range = 50.0
@@ -690,7 +708,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 24.6752, 2, 1.8143)
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -24.89, 2, -0.695539)
 
 [node name="Tree8" parent="Decorations" unique_id=66195284 instance=ExtResource("3_sm4kk")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 2.82634, 2, -22.7448)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.82634, 2, -22.7448)
 
 [node name="Particles" parent="Decorations" unique_id=1862288853 instance=ExtResource("5_ftlmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, -20)

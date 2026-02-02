@@ -101,7 +101,7 @@ func _ready():
 							},
 			},
 
-		4: {'map_size': 4,
+		4: {'map_size': 3,
 			"room_size": 40.0,
 			"min_chums": 3,
 			"max_chums": 8,
@@ -110,10 +110,10 @@ func _ready():
 			"statue_optional": [6, 11, 13], #To worlds 1, 2
 			"room_counts": {1: 0, #Lobby - keep this as 0
 							2: 0, #Normal room - also 0
-							3: 6, #Fountain
+							3: 5, #Fountain
 							4: 4, #Void
 							5: 6, #Statue - AT LEAST length of statue_required
-							6: 5, #Upgrade
+							6: 4, #Upgrade
 							7: 3, #Lore
 							},
 			},
@@ -390,7 +390,7 @@ func create_world(world_n):
 			
 			elif world_grid[x][y] in [3, 6]:
 				#otherwise choose actual item count
-				room_specific_id = int(Functions.map_range(Global.world_transition_count, Vector2(0, 7), Vector2(3, 6))) + [-1, 0, 1].pick_random()
+				room_specific_id = int(Functions.map_range(Global.world_transition_count, Vector2(0, 7), Vector2(3, 5))) + [-1, 0, 1].pick_random()
 
 			elif world_grid[x][y] == 7:
 				#room_specific_id is used to determine the lore text on appropriate rooms
