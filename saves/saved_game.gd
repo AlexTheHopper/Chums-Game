@@ -5,6 +5,7 @@ extends Resource
 @export var unix_time:int
 @export var date_time:String
 @export var save_seed:int
+@export var game_version:String
 
 #Player Stats
 @export var player_health:float

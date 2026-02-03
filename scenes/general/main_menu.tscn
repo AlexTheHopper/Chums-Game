@@ -38,8 +38,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b6tgf"]
 render_priority = 0
 shader = ExtResource("3_b7cy0")
-shader_parameter/outline_thickness = 0.1499999966472
-shader_parameter/step_threshold = 0.2999999932944
+shader_parameter/outline_thickness = 0.02999999932944
+shader_parameter/step_threshold = 0.1499999966472
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_yy5kl"]
@@ -52,10 +52,11 @@ ambient_light_color = Color(0.73893, 0.821893, 0.656433, 1)
 ambient_light_sky_contribution = 0.9
 tonemap_mode = 3
 fog_enabled = true
-fog_light_color = Color(0.0838779, 0.176419, 0.144425, 1)
+fog_light_color = Color(0.056229576, 0.17074817, 0.107142694, 1)
 fog_density = 0.03
 fog_height = 3.0
 fog_height_density = 2.0
+volumetric_fog_density = 0.01
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gytos"]
 bg_color = Color(0.158472, 0.158472, 0.158472, 1)

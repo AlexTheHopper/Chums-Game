@@ -14,8 +14,8 @@ points = PackedVector3Array(1.5, 0, -3, 3, 0, -3, 3, 1.4, -3, 1.5, 0, 3, 3, 0, 3
 [sub_resource type="BoxShape3D" id="BoxShape3D_0pl1r"]
 size = Vector3(9.5, 0.5, 9.5)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_0pl1r"]
-radius = 2.5
+[sub_resource type="BoxShape3D" id="BoxShape3D_gk3p5"]
+size = Vector3(5, 1, 5)
 
 [sub_resource type="Animation" id="Animation_gk3p5"]
 length = 0.001
@@ -175,7 +175,7 @@ collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone" unique_id=1284602479]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("SphereShape3D_0pl1r")
+shape = SubResource("BoxShape3D_gk3p5")
 
 [node name="RoomChanger" parent="." unique_id=1880981709 instance=ExtResource("2_jqxfr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)

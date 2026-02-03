@@ -151,11 +151,14 @@ func add_bonus_chum(save_id: int) -> void:
 		SaverLoader.game_stats["bonus_chums"].erase(save_id)
 	else:
 		var chosen_chum = potential_chums.pick_random()
-		print("Saving bonus chum. ID: %s, COST: %s, QUALITY: %s" % [chosen_chum.chum_id, chosen_chum.bracelet_cost, chosen_chum.quality])
-		SaverLoader.game_stats["bonus_chums"][save_id] = {
+		var chosen_chum_stats := {
 			"chum_id": chosen_chum.chum_id,
-			"bracelet_cost": chosen_chum.bracelet_cost,
+			"bracelet_cost": int(chosen_chum.bracelet_cost / 2),
 			"quality": chosen_chum.quality,
 		}
+		for quality_type in chosen_chum_stats["quality"].keys():
+			chosen_chum_stats["quality"][quality_type] = int(chosen_chum_stats["quality"][quality_type] / 2)
+		
+		SaverLoader.game_stats["bonus_chums"][save_id] = chosen_chum_stats
 	
 	SaverLoader.save_gamestate()

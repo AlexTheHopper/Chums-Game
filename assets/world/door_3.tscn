@@ -1,7 +1,5 @@
 [gd_scene format=4 uid="uid://oibb4eya8bl2"]
 
-[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_ltni4"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxaah"]
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
@@ -21,5 +19,4 @@ _surfaces = [{
 [node name="Door_3" type="Node3D" unique_id=1093864167]
 
 [node name="Door" type="MeshInstance3D" parent="." unique_id=1992659004]
-material_overlay = ExtResource("1_ltni4")
 mesh = SubResource("ArrayMesh_fis5g")

@@ -76,6 +76,7 @@ func save_game(save_id) -> void:
 	saved_game.unix_time = int(Time.get_unix_time_from_system())
 	saved_game.date_time = Time.get_datetime_string_from_unix_time(saved_game.unix_time)
 	saved_game.save_seed = Global.save_seed
+	saved_game.game_version = ProjectSettings.get_setting("application/config/version")
 
 	#Player Data:
 	saved_game.player_health = PlayerStats.player_health
