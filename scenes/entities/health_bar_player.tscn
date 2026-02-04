@@ -30,8 +30,6 @@ corner_radius_bottom_left = 10
 layout_mode = 3
 anchor_right = 0.115
 anchor_bottom = 0.046000004
-offset_right = 0.5200043
-offset_bottom = 0.19199753
 script = ExtResource("1_udgud")
 
 [node name="TickZero" type="ColorRect" parent="." unique_id=1784485297]

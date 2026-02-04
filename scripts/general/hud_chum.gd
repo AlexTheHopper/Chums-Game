@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func remove_chum() -> void:
 	panel.texture = texture_deselected
+	panel.modulate_color = Color.from_rgba8(255, 255, 255, 255)
 	animation_player.play("remove_chum")
 	chum = null
 

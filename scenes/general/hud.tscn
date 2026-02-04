@@ -32,34 +32,39 @@ texture_margin_bottom = 6.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr7vf"]
-bg_color = Color(0.09239707, 0.09239706, 0.0923971, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_adyy0"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ov120"]
+texture = SubResource("CompressedTexture2D_adyy0")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vyhu"]
-bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+bg_color = Color(0.039215688, 0.039215688, 0.039215688, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.18359044, 0.18359044, 0.18359044, 1)
 corner_radius_top_left = 70
 corner_radius_top_right = 70
 corner_radius_bottom_right = 70
 corner_radius_bottom_left = 70
+corner_detail = 16
 
 [sub_resource type="Gradient" id="Gradient_pfecb"]
-offsets = PackedFloat32Array(0.41055718, 0.6610672, 0.7082067)
-colors = PackedColorArray(0.078431375, 0.078431375, 0.078431375, 0, 0.078431375, 0.078431375, 0.078431375, 1, 0.078431375, 0.078431375, 0.078431375, 0)
+offsets = PackedFloat32Array(0.41055718, 0.65810275, 0.66699606)
+colors = PackedColorArray(0.078431375, 0.078431375, 0.078431375, 0, 0.039215688, 0.039215688, 0.039215688, 0.9372549, 0.078431375, 0.078431375, 0.078431375, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5vyhu"]
 gradient = SubResource("Gradient_pfecb")
+width = 128
+height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -618,7 +623,6 @@ anchor_top = 0.2
 anchor_right = 0.95000005
 anchor_bottom = 0.8
 offset_right = -4.5776367e-05
-offset_bottom = 0.0
 
 [node name="BraceletsPanel" type="Panel" parent="InGameHUD" unique_id=1726781300]
 texture_filter = 1
@@ -661,19 +665,13 @@ anchors_preset = 0
 offset_right = 40.00003
 offset_bottom = 40.0
 
-[node name="MinimapBack" type="Panel" parent="InGameHUD/Minimap" unique_id=2040864283]
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.81600004
-anchor_top = 0.015000001
-anchor_right = 0.93700004
-anchor_bottom = 0.231
-offset_left = 977.36
-offset_top = 9.4
-offset_right = 1042.52
-offset_bottom = 140.76
-theme_override_styles/panel = SubResource("StyleBoxFlat_nr7vf")
+[node name="MinimapBack" type="Panel" parent="InGameHUD/Minimap" unique_id=1848909566]
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 10.0
+offset_right = 1080.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ov120")
 
 [node name="MinimapPanel" type="Panel" parent="InGameHUD/Minimap" unique_id=788458098]
 custom_minimum_size = Vector2(140, 140)

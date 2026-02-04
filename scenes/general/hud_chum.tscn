@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://0smlqtllr6c8"]
 
 [ext_resource type="Script" uid="uid://dqrlw44ag04n4" path="res://scripts/general/hud_chum.gd" id="2_lgdkm"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cw07n"]
-load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+[ext_resource type="Texture2D" uid="uid://bvgoaq8jknutp" path="res://assets/menu_icons/ui_tile_9slice_deselected.png" id="2_xxce1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxce1"]
-texture = SubResource("CompressedTexture2D_cw07n")
+texture = ExtResource("2_xxce1")
 texture_margin_left = 6.0
 texture_margin_top = 6.0
 texture_margin_right = 6.0
