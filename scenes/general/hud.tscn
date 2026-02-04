@@ -8,44 +8,42 @@
 [ext_resource type="PackedScene" uid="uid://cj3njvuucqayr" path="res://scenes/general/minimap.tscn" id="5_pfecb"]
 [ext_resource type="Texture2D" uid="uid://deudicq0fdbdo" path="res://materials/ui/ui_pause.tres" id="6_5vyhu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p21ms"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vyhu"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfecb"]
-bg_color = Color(0.156863, 0.156863, 0.156863, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_adyy0"]
+texture = SubResource("CompressedTexture2D_5vyhu")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37424"]
-bg_color = Color(0.10747979, 0.107479714, 0.107479684, 1)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2r3oe"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37424"]
+texture = SubResource("CompressedTexture2D_2r3oe")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr7vf"]
+bg_color = Color(0.09239707, 0.09239706, 0.0923971, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 70
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
-corner_radius_bottom_left = 70
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vyhu"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -57,8 +55,8 @@ corner_radius_bottom_right = 70
 corner_radius_bottom_left = 70
 
 [sub_resource type="Gradient" id="Gradient_pfecb"]
-offsets = PackedFloat32Array(0, 0.41055718, 0.662614, 0.7082067, 1)
-colors = PackedColorArray(0.15686275, 0.15686275, 0.15686275, 0, 0.15686275, 0.15686275, 0.15686275, 0, 0.15686275, 0.15686275, 0.15686275, 1, 0.15686275, 0.15686275, 0.15686275, 0, 0.15686275, 0.15686275, 0.15686275, 0)
+offsets = PackedFloat32Array(0.41055718, 0.6610672, 0.7082067)
+colors = PackedColorArray(0.078431375, 0.078431375, 0.078431375, 0, 0.078431375, 0.078431375, 0.078431375, 1, 0.078431375, 0.078431375, 0.078431375, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5vyhu"]
 gradient = SubResource("Gradient_pfecb")
@@ -73,19 +71,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BraceletsPanel:theme_override_styles/panel:bg_color")
+tracks/0/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.156863, 0.156863, 0.156863, 1)]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_left")
+tracks/1/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -97,7 +95,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_top")
+tracks/2/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_right")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -109,7 +107,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_right")
+tracks/3/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_bottom")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -121,62 +119,62 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_bottom")
+tracks/4/path = NodePath("HealthPanel:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(24.999998, 25)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HealthPanel:position")
+tracks/5/path = NodePath("BraceletsPanel:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(24.999998, 25)]
+"values": [Vector2(24.999998, 99.999985)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("BraceletsPanel:position")
+tracks/6/path = NodePath("Minimap:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(24.999998, 99.999985)]
+"values": [Vector2(0, 0)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Minimap:position")
+tracks/7/path = NodePath("ChumIndicators:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(100, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("ChumIndicators:position")
+tracks/8/path = NodePath("BraceletsPanel:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(100, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_nr7vf"]
@@ -237,19 +235,19 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BraceletsPanel:theme_override_styles/panel:bg_color")
+tracks/0/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.156863, 0.156863, 0.156863, 1), Color(0.519812, 0, 0.0183497, 1), Color(0.156863, 0.156863, 0.156863, 1)]
+"values": [0.0, 5.0, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_left")
+tracks/1/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -261,7 +259,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_top")
+tracks/2/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_right")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -273,7 +271,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_right")
+tracks/3/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_bottom")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -285,14 +283,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BraceletsPanel:theme_override_styles/panel:expand_margin_bottom")
+tracks/4/path = NodePath("BraceletsPanel:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 5.0, 0.0]
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_p21ms"]
@@ -307,29 +305,41 @@ _data = {
 &"too_many_chums": SubResource("Animation_p21ms")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4l38w"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4l38w"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adyy0"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2r3oe"]
+texture = SubResource("CompressedTexture2D_4l38w")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_37424"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nr7vf"]
+texture = SubResource("CompressedTexture2D_37424")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ov120"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktvve"]
+texture = SubResource("CompressedTexture2D_ov120")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="Animation" id="Animation_adyy0"]
 length = 0.001
@@ -574,6 +584,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HealthPanel" type="Panel" parent="InGameHUD" unique_id=559887466]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.022
@@ -584,7 +595,7 @@ offset_left = -0.34400177
 offset_top = -0.27200127
 offset_right = 0.35998535
 offset_bottom = -0.16799927
-theme_override_styles/panel = SubResource("StyleBoxFlat_p21ms")
+theme_override_styles/panel = SubResource("StyleBoxTexture_adyy0")
 
 [node name="TextureRect" type="TextureRect" parent="InGameHUD/HealthPanel" unique_id=1001596526]
 modulate = Color(0.7898787, 0.7898787, 0.78987855, 1)
@@ -610,6 +621,7 @@ offset_right = -4.5776367e-05
 offset_bottom = 0.0
 
 [node name="BraceletsPanel" type="Panel" parent="InGameHUD" unique_id=1726781300]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.022
@@ -620,7 +632,7 @@ offset_left = -0.34400177
 offset_top = -4.3280106
 offset_right = 0.23980713
 offset_bottom = 0.3119812
-theme_override_styles/panel = SubResource("StyleBoxFlat_pfecb")
+theme_override_styles/panel = SubResource("StyleBoxTexture_37424")
 
 [node name="TextureRect" type="TextureRect" parent="InGameHUD/BraceletsPanel" unique_id=1389812206]
 modulate = Color(0.6521796, 0.65217966, 0.6521796, 1)
@@ -650,18 +662,18 @@ offset_right = 40.00003
 offset_bottom = 40.0
 
 [node name="MinimapBack" type="Panel" parent="InGameHUD/Minimap" unique_id=2040864283]
-custom_minimum_size = Vector2(140, 140)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.81600004
 anchor_top = 0.015000001
 anchor_right = 0.93700004
 anchor_bottom = 0.231
-offset_left = 907.36
+offset_left = 977.36
 offset_top = 9.4
 offset_right = 1042.52
 offset_bottom = 140.76
-theme_override_styles/panel = SubResource("StyleBoxFlat_37424")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nr7vf")
 
 [node name="MinimapPanel" type="Panel" parent="InGameHUD/Minimap" unique_id=788458098]
 custom_minimum_size = Vector2(140, 140)
@@ -731,6 +743,7 @@ color = Color(0.203922, 0.203922, 0.203922, 0)
 [node name="PausePanel" type="Panel" parent="PauseMenu" unique_id=1545044147]
 visible = false
 z_index = 1
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.45700002
@@ -743,7 +756,7 @@ offset_right = 0.46392822
 offset_bottom = -0.104003906
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4l38w")
+theme_override_styles/panel = SubResource("StyleBoxTexture_2r3oe")
 
 [node name="Value" type="Label" parent="PauseMenu/PausePanel" unique_id=1220047818]
 custom_minimum_size = Vector2(200, 50)
@@ -766,6 +779,7 @@ vertical_alignment = 1
 [node name="UnpausePanel" type="Panel" parent="PauseMenu" unique_id=1646587949]
 visible = false
 z_index = 1
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.38700002
@@ -778,7 +792,7 @@ offset_right = -0.17602539
 offset_bottom = -0.2720337
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_adyy0")
+theme_override_styles/panel = SubResource("StyleBoxTexture_nr7vf")
 
 [node name="Value" type="Label" parent="PauseMenu/UnpausePanel" unique_id=837320753]
 custom_minimum_size = Vector2(200, 50)
@@ -803,6 +817,7 @@ texture = ExtResource("6_5vyhu")
 [node name="ReturnPanel" type="Panel" parent="PauseMenu" unique_id=1902761873]
 visible = false
 z_index = 1
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.38700002
@@ -815,7 +830,7 @@ offset_right = -0.17602539
 offset_bottom = 0.2079773
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_adyy0")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ktvve")
 
 [node name="Value" type="Label" parent="PauseMenu/ReturnPanel" unique_id=2051689619]
 custom_minimum_size = Vector2(200, 50)

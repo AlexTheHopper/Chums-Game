@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://clpdwmf65tysl" path="res://scripts/general/hud_death_stats.gd" id="1_gd8wh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p21ms"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q04jr"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd8wh"]
+texture = SubResource("CompressedTexture2D_q04jr")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="Animation" id="Animation_gd8wh"]
 length = 0.001
@@ -116,6 +116,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Title" type="Panel" parent="DeathStats" unique_id=8037587]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.39100003
@@ -126,7 +127,7 @@ offset_left = 0.56796265
 offset_top = -0.27200127
 offset_right = -0.5680542
 offset_bottom = 0.20799255
-theme_override_styles/panel = SubResource("StyleBoxFlat_p21ms")
+theme_override_styles/panel = SubResource("StyleBoxTexture_gd8wh")
 
 [node name="TitleText" type="RichTextLabel" parent="DeathStats/Title" unique_id=938037311]
 layout_mode = 1

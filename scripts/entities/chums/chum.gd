@@ -59,7 +59,7 @@ var is_temporary := false
 var is_decoration := false
 
 @onready var has_quality_popup := false
-@export var indicator_color := Color.from_rgba8(40, 40, 40, 255)
+@export var indicator_color := Color.from_rgba8(255, 255, 255, 255)
 @export var being_particles: Node3D
 @export var start_health := -1
 

@@ -93,12 +93,16 @@ func _process(delta: float) -> void:
 	
 	elif Input.is_action_just_pressed("move_forward") or Input.is_action_just_pressed("cam_up"):
 		current_group.buttons[current_group_index].on_deselected()
-		current_group_index = max(current_group_index - 1, 0)
+		current_group_index -= 1
+		if current_group_index < 0:
+			current_group_index = current_group.buttons.size() - 1
 		current_group.buttons[current_group_index].on_selected()
 		
 	elif Input.is_action_just_pressed("move_back") or Input.is_action_just_pressed("cam_down"):
 		current_group.buttons[current_group_index].on_deselected()
-		current_group_index = min(current_group_index + 1, current_group.buttons.size() - 1)
+		current_group_index += 1
+		if current_group_index > current_group.buttons.size() - 1:
+			current_group_index = 0
 		current_group.buttons[current_group_index].on_selected()
 
 func _physics_process(delta: float) -> void:

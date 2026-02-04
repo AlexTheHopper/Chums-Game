@@ -4,7 +4,7 @@ extends MenuInteract
 
 signal select_language
 
-var languages = ["en_US", "es_ES", "de_DE", "ca_ES", "it_IT", "fr_FR", "ro_RO", "jp_JP", "ch_CN"]
+var languages = ["en_US", "es_ES", "de_DE", "ca_ES", "it_IT", "fr_FR", "ro_RO", "jp_JP", "cn_CN"]
 var index = 0
 
 func _ready() -> void:

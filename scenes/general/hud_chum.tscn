@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://0smlqtllr6c8"]
 
-[ext_resource type="StyleBox" uid="uid://c88sa0i4f86uq" path="res://resources/hud_panel.tres" id="1_t813e"]
 [ext_resource type="Script" uid="uid://dqrlw44ag04n4" path="res://scripts/general/hud_chum.gd" id="2_lgdkm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cw07n"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxce1"]
+texture = SubResource("CompressedTexture2D_cw07n")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="Animation" id="Animation_t813e"]
 length = 0.001
@@ -32,19 +43,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/2/path = NodePath("Panel:theme_override_styles/panel:expand_margin_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.158472, 0.158472, 0.158472, 1)]
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Panel:theme_override_styles/panel:expand_margin_left")
+tracks/3/path = NodePath("Panel:theme_override_styles/panel:expand_margin_top")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -56,7 +67,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Panel:theme_override_styles/panel:expand_margin_top")
+tracks/4/path = NodePath("Panel:theme_override_styles/panel:expand_margin_right")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -68,7 +79,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Panel:theme_override_styles/panel:expand_margin_right")
+tracks/5/path = NodePath("Panel:theme_override_styles/panel:expand_margin_bottom")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -80,38 +91,38 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Panel:theme_override_styles/panel:expand_margin_bottom")
+tracks/6/path = NodePath("Panel:size")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(50, 50)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Panel:size")
+tracks/7/path = NodePath("Panel:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(50, 50)]
+"values": [Vector2(0, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Panel:position")
+tracks/8/path = NodePath("Panel:theme_override_styles/panel:modulate_color")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_xxce1"]
@@ -141,18 +152,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(25, 25), Vector2(5, 5)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(50, 50)]
-}
 
 [sub_resource type="Animation" id="Animation_6n6o1"]
 resource_name = "create"
@@ -167,7 +166,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(50, 50)]
+"values": [Vector2(8, 8), Vector2(50, 50)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -179,7 +178,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(25, 25), Vector2(0, 0)]
+"values": [Vector2(21, 21), Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -219,7 +218,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.8, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(50, 50), Vector2(70, 70), Vector2(50, 50)]
+"values": [Vector2(8, 8), Vector2(50, 50), Vector2(70, 70), Vector2(50, 50)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -231,7 +230,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.8, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(25, 25), Vector2(0, 0), Vector2(-10, -10), Vector2(0, 0)]
+"values": [Vector2(21, 21), Vector2(0, 0), Vector2(-10, -10), Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -260,14 +259,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/4/path = NodePath("Panel:theme_override_styles/panel:modulate_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.8, 1.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.158472, 0.158472, 0.158472, 1), Color(0.158472, 0.158472, 0.158472, 1), Color(0.8, 0.62666667, 0, 1), Color(0.158472, 0.158472, 0.158472, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_abg36"]
@@ -300,19 +299,19 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/2/path = NodePath("Panel:theme_override_styles/panel:expand_margin_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.158472, 0.158472, 0.158472, 1), Color(0.521569, 0, 0.0196078, 1), Color(0.158472, 0.158472, 0.158472, 1)]
+"values": [0.0, 5.0, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Panel:theme_override_styles/panel:expand_margin_left")
+tracks/3/path = NodePath("Panel:theme_override_styles/panel:expand_margin_top")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -324,7 +323,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Panel:theme_override_styles/panel:expand_margin_top")
+tracks/4/path = NodePath("Panel:theme_override_styles/panel:expand_margin_right")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -336,7 +335,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Panel:theme_override_styles/panel:expand_margin_right")
+tracks/5/path = NodePath("Panel:theme_override_styles/panel:expand_margin_bottom")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -348,26 +347,26 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Panel:theme_override_styles/panel:expand_margin_bottom")
+tracks/6/path = NodePath("Panel:size")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 5.0, 0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Panel:size")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(50, 50)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Panel:theme_override_styles/panel:modulate_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_lgdkm"]
@@ -396,18 +395,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(5, 5), Vector2(25, 25)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(50, 50)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_abg36"]
@@ -438,19 +425,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("1_t813e")
+theme_override_styles/panel = SubResource("StyleBoxTexture_xxce1")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1987898980]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.18
-anchor_top = 0.18
-anchor_right = 0.807
-anchor_bottom = 0.82
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.6500053
-offset_bottom = 4.000004
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.90000004
+anchor_bottom = 0.90000004
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1

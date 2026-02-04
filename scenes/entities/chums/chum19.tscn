@@ -2231,7 +2231,7 @@ hitbox = NodePath("Body/Base/Hitbox")
 hurtbox = NodePath("Hurtbox")
 interaction_area = NodePath("ChumInterractionArea")
 bracelet = NodePath("Body/Base/Skeleton3D/BoneAttachment3D/Bracelet")
-indicator_color = Color(0.24288705, 0.04368879, 0.10506331, 1)
+indicator_color = Color(0.9946987, 0.5577285, 0.6540752, 1)
 being_particles = NodePath("Body/Base/Skeleton3D/BoneAttachment3D2/BeingParticles")
 
 [node name="Body" type="Node3D" parent="." unique_id=1770788231]

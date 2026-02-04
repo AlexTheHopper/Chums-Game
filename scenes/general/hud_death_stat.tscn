@@ -2,17 +2,18 @@
 
 [ext_resource type="Script" uid="uid://mmcu5om70j42" path="res://scripts/general/hud_death_stat.gd" id="1_re7yr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p21ms"]
-bg_color = Color(0.15686275, 0.15686275, 0.15686275, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 0)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_re7yr"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ley7s"]
+texture = SubResource("CompressedTexture2D_re7yr")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+modulate_color = Color(1, 1, 1, 0)
 
 [sub_resource type="Animation" id="Animation_ley7s"]
 length = 0.001
@@ -55,26 +56,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/3/path = NodePath("Panel:theme_override_styles/panel:modulate_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.15686275, 0.15686275, 0.15686275, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Panel:theme_override_styles/panel:border_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_re7yr"]
@@ -118,26 +107,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/3/path = NodePath("Panel:theme_override_styles/panel:modulate_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.15686275, 0.15686275, 0.15686275, 0), Color(0.15686275, 0.15686275, 0.15686275, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Panel:theme_override_styles/panel:border_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_07uf7"]
@@ -161,7 +138,7 @@ anchor_bottom = 1.0
 offset_bottom = -0.16799927
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_p21ms")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ley7s")
 
 [node name="Name" type="RichTextLabel" parent="Panel" unique_id=71187868]
 layout_mode = 1

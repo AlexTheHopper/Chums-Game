@@ -1,6 +1,10 @@
 extends Panel
 class_name MenuInteract
 
+const texture_deselected = preload("uid://bvgoaq8jknutp")
+const texture_selected = preload("uid://l0as8sern610")
+
+
 func interact() -> void:
 	pass
 
@@ -11,7 +15,7 @@ func right() -> void:
 	pass
 
 func on_selected() -> void:
-	get_theme_stylebox("panel").border_color = Color.from_rgba8(255, 255, 255, 255)
+	get_theme_stylebox("panel").texture = texture_selected
 
 func on_deselected() -> void:
-	get_theme_stylebox("panel").border_color = Color.from_rgba8(0, 0, 0, 255)
+	get_theme_stylebox("panel").texture = texture_deselected

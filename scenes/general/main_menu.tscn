@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://du6la13qdyaq3" path="res://scripts/general/menu_buttons/menu_group.gd" id="11_gytos"]
 [ext_resource type="Script" uid="uid://d4cafyqtoduai" path="res://scripts/general/menu_buttons/menu_interact_language.gd" id="13_237jf"]
 [ext_resource type="Texture2D" uid="uid://c233x2ho8e8mu" path="res://assets/menu_icons/icon_play.png" id="13_i5kip"]
+[ext_resource type="Texture2D" uid="uid://bvgoaq8jknutp" path="res://assets/menu_icons/ui_tile_9slice_deselected.png" id="13_yy5kl"]
 [ext_resource type="Script" uid="uid://cbe4wak1kyexw" path="res://scripts/general/menu_buttons/menu_interact_settings.gd" id="14_7qbw1"]
 [ext_resource type="Script" uid="uid://dfxr85am8seas" path="res://scripts/general/menu_buttons/menu_interact_tutorial.gd" id="14_gytos"]
 [ext_resource type="PackedScene" uid="uid://c8gvfnlca5kdw" path="res://scenes/world/decorations/grass_2.tscn" id="15_c8qn0"]
@@ -58,101 +59,122 @@ fog_height = 3.0
 fog_height_density = 2.0
 volumetric_fog_density = 0.01
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gytos"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yy5kl"]
+texture = ExtResource("13_yy5kl")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iedvi"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yy5kl"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7qbw1"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v0sqh"]
+texture = SubResource("CompressedTexture2D_yy5kl")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5aorl"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ei5l"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0p7y"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3lcfh"]
+texture = SubResource("CompressedTexture2D_8ei5l")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eiu5h"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_63ugb"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rvae"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ohfbx"]
+texture = SubResource("CompressedTexture2D_63ugb")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jngx"]
-bg_color = Color(0.158472, 0.158472, 0.158472, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r1snq"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3eab"]
+texture = SubResource("CompressedTexture2D_r1snq")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vbphc"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7g15w"]
+texture = SubResource("CompressedTexture2D_vbphc")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yj38w"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r5gbe"]
+texture = SubResource("CompressedTexture2D_yj38w")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x0pvb"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dt8rg"]
+texture = SubResource("CompressedTexture2D_x0pvb")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1jikk"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7jp5k"]
+texture = SubResource("CompressedTexture2D_1jikk")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jfowm"]
+load_path = "res://.godot/imported/ui_tile_9slice_deselected.png-e607a12d1e59a863ccadfe3a7c80e257.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxirf"]
+texture = SubResource("CompressedTexture2D_jfowm")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pom67"]
 resource_name = "palette"
@@ -664,10 +686,10 @@ data = {
 metadata/_editor_floor_ = Vector3(-13, 1, -14)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1847807304]
-transform = Transform3D(0.707107, 0.353554, -0.612373, 0, 0.866026, 0.5, 0.707107, -0.353554, 0.612373, 0, 10, 15)
+transform = Transform3D(0.70710695, 0.353554, -0.61237264, 0, 0.866026, 0.5000008, 0.70710695, -0.353554, 0.61237264, 0, 10, 15)
 
-[node name="Target" type="Node3D" parent="Camera3D" unique_id=70941906]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -2.08616e-07, 1, -5, 13, -25)
+[node name="Target" type="Node3D" parent="Camera3D" unique_id=1129583410]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, -2.9802322e-08, 0, 2.3841858e-07, 0.9999999, -9.536743e-07, 10.656229, -25.093756)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D" unique_id=1910399270]
 extra_cull_margin = 10.0
@@ -891,6 +913,7 @@ grow_vertical = 2
 script = ExtResource("11_gytos")
 
 [node name="StartInfo" type="Panel" parent="Group0" unique_id=187118411]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -902,7 +925,7 @@ offset_right = 0.3359375
 offset_bottom = 3.0517578e-05
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_gytos")
+theme_override_styles/panel = SubResource("StyleBoxTexture_yy5kl")
 script = ExtResource("11_7qbw1")
 
 [node name="Value" type="Label" parent="Group0/StartInfo" unique_id=199341721]
@@ -938,6 +961,7 @@ offset_bottom = 0.014011383
 texture = ExtResource("13_i5kip")
 
 [node name="TutorialInfo" type="Panel" parent="Group0" unique_id=768216763]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -950,7 +974,7 @@ offset_right = 0.3359375
 offset_bottom = 0.24990845
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_iedvi")
+theme_override_styles/panel = SubResource("StyleBoxTexture_v0sqh")
 script = ExtResource("14_gytos")
 
 [node name="Value" type="Label" parent="Group0/TutorialInfo" unique_id=1012825945]
@@ -986,6 +1010,7 @@ offset_bottom = 0.014099121
 texture = ExtResource("15_iyd5v")
 
 [node name="SettingsInfo" type="Panel" parent="Group0" unique_id=383048005]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -998,7 +1023,7 @@ offset_right = 0.3359375
 offset_bottom = -0.15002441
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7qbw1")
+theme_override_styles/panel = SubResource("StyleBoxTexture_3lcfh")
 script = ExtResource("14_7qbw1")
 
 [node name="Value" type="Label" parent="Group0/SettingsInfo" unique_id=1018715242]
@@ -1034,6 +1059,7 @@ offset_bottom = 0.014057159
 texture = ExtResource("17_8eclb")
 
 [node name="QuitInfo" type="Panel" parent="Group0" unique_id=1056892243]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -1046,7 +1072,7 @@ offset_right = 0.3359375
 offset_bottom = 0.099975586
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_5aorl")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ohfbx")
 script = ExtResource("18_5aorl")
 
 [node name="Value" type="Label" parent="Group0/QuitInfo" unique_id=52468684]
@@ -1093,6 +1119,7 @@ grow_vertical = 2
 script = ExtResource("11_gytos")
 
 [node name="FullscreenInfo" type="Panel" parent="Group1" unique_id=1375098982]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -1105,7 +1132,7 @@ offset_right = 0.3359375
 offset_bottom = 0.14997864
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_g0p7y")
+theme_override_styles/panel = SubResource("StyleBoxTexture_l3eab")
 script = ExtResource("18_g0p7y")
 
 [node name="Value" type="Label" parent="Group1/FullscreenInfo" unique_id=1254257465]
@@ -1141,6 +1168,7 @@ offset_bottom = 0.014057159
 texture = ExtResource("19_5aorl")
 
 [node name="CamerashakeInfo" type="Panel" parent="Group1" unique_id=1618870921]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -1153,7 +1181,7 @@ offset_right = 0.3359375
 offset_bottom = -0.25003052
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_eiu5h")
+theme_override_styles/panel = SubResource("StyleBoxTexture_7g15w")
 script = ExtResource("22_eiu5h")
 
 [node name="Value" type="Label" parent="Group1/CamerashakeInfo" unique_id=1236295402]
@@ -1189,6 +1217,7 @@ offset_bottom = 0.014057159
 texture = ExtResource("23_eiu5h")
 
 [node name="LanguageInfo" type="Panel" parent="Group1" unique_id=940004554]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -1200,7 +1229,7 @@ offset_right = 0.3359375
 offset_bottom = -3.0517578e-05
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7qbw1")
+theme_override_styles/panel = SubResource("StyleBoxTexture_r5gbe")
 script = ExtResource("13_237jf")
 
 [node name="Value" type="Label" parent="Group1/LanguageInfo" unique_id=1090347839]
@@ -1236,6 +1265,7 @@ offset_bottom = 0.014057159
 texture = ExtResource("19_8eclb")
 
 [node name="VolumeInfoMusic" type="Panel" parent="Group1" unique_id=459230260]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -1248,7 +1278,7 @@ offset_right = 0.3359375
 offset_bottom = 0.24996948
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_4rvae")
+theme_override_styles/panel = SubResource("StyleBoxTexture_dt8rg")
 script = ExtResource("24_23c5s")
 bus_name = "Music"
 
@@ -1285,6 +1315,7 @@ offset_bottom = 0.014057159
 texture = ExtResource("25_4rvae")
 
 [node name="VolumeInfoSFX" type="Panel" parent="Group1" unique_id=1140649698]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -1297,7 +1328,7 @@ offset_right = 0.3359375
 offset_bottom = -0.15002441
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_3jngx")
+theme_override_styles/panel = SubResource("StyleBoxTexture_7jp5k")
 script = ExtResource("24_23c5s")
 bus_name = "SFX"
 
@@ -1334,6 +1365,7 @@ offset_bottom = 0.014057159
 texture = ExtResource("25_4rvae")
 
 [node name="ReturnInfo" type="Panel" parent="Group1" unique_id=1334863991]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.80700004
@@ -1346,7 +1378,7 @@ offset_right = 0.3359375
 offset_bottom = 0.09991455
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_iedvi")
+theme_override_styles/panel = SubResource("StyleBoxTexture_nxirf")
 script = ExtResource("16_iedvi")
 
 [node name="Value" type="Label" parent="Group1/ReturnInfo" unique_id=568989426]
@@ -1427,7 +1459,7 @@ bones/2/parent = 0
 bones/2/rest = Transform3D(0, 1, 2.38419e-07, 2.38419e-07, -2.38419e-07, 1, 1, 5.68434e-14, -2.38419e-07, 0.4, 0.8, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0.4, 0.8, 0)
-bones/2/rotation = Quaternion(0.686297, 0.170284, 0.686297, -0.170284)
+bones/2/rotation = Quaternion(0.24424598, 0.663584, 0.24424697, -0.66358393)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Leg.L"
 bones/3/parent = 0
@@ -1441,7 +1473,7 @@ bones/4/parent = 0
 bones/4/rest = Transform3D(0, -1, -2.38419e-07, -2.38419e-07, -2.38419e-07, 1, -1, 5.68434e-14, -2.38419e-07, -0.4, 0.8, 0)
 bones/4/enabled = true
 bones/4/position = Vector3(-0.4, 0.8, 0)
-bones/4/rotation = Quaternion(0.686297, -0.170284, -0.686297, -0.170284)
+bones/4/rotation = Quaternion(0.26252213, -0.6565683, -0.26252308, -0.6565682)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Leg.R"
 bones/5/parent = 0
