@@ -21,6 +21,9 @@ func _on_kill_zone_body_entered(body: Node3D) -> void:
 		particle.global_position = body.global_position
 		
 		if body.chum_id in [17, 18, 19, 20]:
+			#Stop it from bumping other prisoners around - this creates too many beings floating
+			body.generalchumbehaviour.nudge_collision.set_deferred("disabled", true)
+			body.set_collision_layer_value(4, false)
 			prisoner_entered.emit(body.chum_id)
 			create_being_particles(body.chum_id, 2.0)
 			kill_chum(body, 2.0)

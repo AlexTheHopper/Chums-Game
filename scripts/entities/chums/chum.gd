@@ -27,6 +27,7 @@ var follow_distance := 10.0
 @export var bracelet: Node3D
 @export var sleep_particles : PackedScene = preload("res://particles/sleep_particles.tscn")
 
+@onready var generalchumbehaviour = $GeneralChumBehaviour
 @onready var state_machine = $GeneralChumBehaviour.state_machine
 @onready var nav_agent = $NavigationAgent3D
 @onready var health_node = $GeneralChumBehaviour.health_node

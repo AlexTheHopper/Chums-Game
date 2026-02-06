@@ -36,7 +36,7 @@
 [ext_resource type="Script" uid="uid://6442lk2l6r1q" path="res://scripts/general/menu_buttons/menu_interact_volume.gd" id="24_23c5s"]
 [ext_resource type="Texture2D" uid="uid://co5tj48jant4p" path="res://assets/menu_icons/icon_volume3.png" id="25_4rvae"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6tgf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yy5kl"]
 render_priority = 0
 shader = ExtResource("3_b7cy0")
 shader_parameter/outline_thickness = 0.02999999932944
@@ -44,7 +44,7 @@ shader_parameter/step_threshold = 0.1499999966472
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_yy5kl"]
-material = SubResource("ShaderMaterial_b6tgf")
+material = SubResource("ShaderMaterial_yy5kl")
 size = Vector2(2, 2)
 
 [sub_resource type="Environment" id="Environment_sm4kk"]

@@ -12,10 +12,11 @@ var is_exit_warning: bool = false
 const chum_indicator_tscn = preload("res://scenes/general/hud_chum.tscn")
 
 func _ready() -> void:
+	Global.hud = self
 	IG_anim_player.play("enter")
 	get_tree().get_first_node_in_group("Player").health_node.health_depleted.connect(remove_hud)
 
-func initialize() -> void:
+func initialise() -> void:
 	PlayerStats.hud_health_change.connect(change_health)
 	change_health()
 	PlayerStats.hud_max_health_change.connect(change_max_health)
@@ -39,7 +40,7 @@ func _process(_delta: float) -> void:
 	if is_returning:
 		return
 
-	if Input.is_action_just_pressed("pause") and Global.is_alive:
+	if Input.is_action_just_pressed("pause") and Global.is_alive and Global.current_room_node.TYPE != "endgame":
 		toggle_pause()
 	
 	if is_paused and Input.is_action_just_pressed("attack"):

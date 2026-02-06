@@ -182,42 +182,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	#Match camera controller position to self
 	camera_controller.position = lerp(camera_controller.position, position, 0.1)
-	
-			
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("print_fps") and Global.dev_mode:
-		get_tree().call_group("Chums_Enemy", "put_to_sleep_temp", 5.0)
-		print("FPS: " + str(Engine.get_frames_per_second()))
-		print('player health: ' + str(health_node.health))
-		print('player max health: ' + str(health_node.max_health))
-		print('player damage: ' + str(base_damage))
-		print('player extra damage: ' + str(max_extra_damage))
-		print('player pos: ' + str(global_position))
-
-		print("friends:")
-		for chum in get_tree().get_nodes_in_group("Chums_Friend"):
-			print(chum.chum_name)
-			print(chum.hitbox.damage)
-			print(chum.quality)
-			print(chum.health_node.health)
-			if chum.target:
-				print("Target: " + str(chum.target))
-		print("enemies:")
-		for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
-			print(chum.chum_name)
-			print(chum.hitbox.damage)
-			print(chum.quality)
-			print(chum.health_node.health)
-			if chum.target:
-				print("Target: " + str(chum.target))
-		print("neutral:")
-		for chum in get_tree().get_nodes_in_group("Chums_Neutral"):
-			print(chum.chum_name)
-			print(chum.hitbox.damage)
-			print(chum.quality)
-			print(chum.health_node.health)
-			if chum.target:
-				print("Target: " + str(chum.target))
 
 func _on_swing_start() -> void:
 	AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_ATTACKS)

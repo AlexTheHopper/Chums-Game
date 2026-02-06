@@ -67,8 +67,7 @@ func create_audio(type: SoundEffect.SOUND_EFFECT_TYPE) -> void:
 
 func create_music(type: SoundMusic.SOUND_MUSIC_TYPE) -> void:
 	if sound_music_dict.has(type):
-		if Global.dev_mode:
-			print("Music: %s" % type)
+		Global.print_dev("Music: %s" % type)
 		var sound_music: SoundMusic = sound_music_dict[type]
 
 		#Do not start music again if its the same one

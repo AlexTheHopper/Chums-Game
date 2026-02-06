@@ -124,11 +124,12 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_jk122"]
 radius = 0.3
 
-[node name="GeneralChumBehaviour" type="Node3D" unique_id=67145548 node_paths=PackedStringArray("health_bar", "health_node", "state_machine")]
+[node name="GeneralChumBehaviour" type="Node3D" unique_id=67145548 node_paths=PackedStringArray("health_bar", "health_node", "state_machine", "nudge_collision")]
 script = ExtResource("1_oye00")
 health_bar = NodePath("HealthBar")
 health_node = NodePath("Health")
 state_machine = NodePath("State_Machine")
+nudge_collision = NodePath("NudgeZone/CollisionShape3D")
 
 [node name="HealthBar" parent="." unique_id=1492893933 node_paths=PackedStringArray("health_node") instance=ExtResource("1_lawoc")]
 health_node = NodePath("../Health")

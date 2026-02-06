@@ -26,6 +26,7 @@ var room_location := Vector2i(map_size, map_size)
 var room_history: Array
 var rooms: Node3D
 var world_info: Dictionary
+var hud: CanvasLayer
 #var game_scene: PackedScene = load("res://scenes/general/game.tscn")
 var game_save_id := 1
 var player: Player
@@ -165,8 +166,7 @@ func start_game(save_id = null, new_game = false) -> void:
 						
 
 	if new_game:
-		if Global.dev_mode:
-			print("Starting new game on file %s with seed %s." % [save_id, save_seed])
+		Global.print_dev("Starting new game on file %s with seed %s." % [save_id, save_seed])
 		#Creates scaffold for world
 		map_size = world_info[current_world_num]["map_size"]
 		room_size = world_info[current_world_num]["room_size"]
@@ -184,8 +184,8 @@ func start_game(save_id = null, new_game = false) -> void:
 		player = get_tree().get_first_node_in_group("Player")
 		
 		#Sets initial values for some singletons and connects important signals.
-		PlayerStats.initialize()
-		get_node("/root/Game/HUD").initialize()
+		PlayerStats.initialise()
+		hud.initialise()
 		
 		rooms = get_parent().get_node("Game/Rooms")
 		var lobby_room = get_room_tscn(1, 1) #Lobby of world 1
@@ -198,8 +198,8 @@ func start_game(save_id = null, new_game = false) -> void:
 		player = get_tree().get_first_node_in_group("Player")
 		
 		#Sets initial values for some singletons and connects important signals.
-		PlayerStats.initialize()
-		get_node("/root/Game/HUD").initialize()
+		PlayerStats.initialise()
+		hud.initialise()
 		
 		rooms = get_parent().get_node("Game/Rooms")
 		SaverLoader.load_game(save_id)
@@ -207,8 +207,7 @@ func start_game(save_id = null, new_game = false) -> void:
 		room_size = world_info[current_world_num]["room_size"]
 		set_world_map_guides()
 		
-		if Global.dev_mode:
-			print('In world %s, room %s.' % [Global.current_world_num, str(room_location)])
+		Global.print_dev('In world %s, room %s.' % [Global.current_world_num, str(room_location)])
 
 		#Create new room:
 		if current_world_num == 0:
@@ -220,7 +219,7 @@ func start_game(save_id = null, new_game = false) -> void:
 			current_room_node = new_room.instantiate()
 			rooms.add_child(current_room_node)
 
-	get_node("/root/Game/HUD").add_chum_indicators()
+	hud.add_chum_indicators()
 	Global.world_map[Global.room_location]["entered"] = true
 	if current_world_num == 0:
 		AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_IDLE" % room_history[-2][0]])
@@ -229,7 +228,7 @@ func start_game(save_id = null, new_game = false) -> void:
 
 	if Global.dev_mode:
 		for x in range(world_grid.size() - 1, -1, -1):
-			print(world_grid[x])
+			Global.print_dev(world_grid[x])
 
 func start_tutorial() -> void:
 	current_world_num = 0
@@ -242,8 +241,8 @@ func start_tutorial() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 
 	#Sets initial values for some singletons and connects important signals.
-	PlayerStats.initialize()
-	get_node("/root/Game/HUD").initialize()
+	PlayerStats.initialise()
+	hud.initialise()
 	
 	create_world_boss() # Also used for tutorial as it stops many map related things happening
 	Global.room_location = Vector2i(1, 1)
@@ -253,8 +252,8 @@ func start_tutorial() -> void:
 	current_room_node = room_tutorial.instantiate()
 	rooms.add_child(current_room_node)
 
-	get_node("/root/Game/HUD").add_chum_indicators()
-	get_node("/root/Game/HUD").display_minimap(false)
+	hud.add_chum_indicators()
+	hud.display_minimap(false)
 	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE.WORLD_1_IDLE)
 	
 
@@ -464,8 +463,7 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		
 		room_location = new_room_location
 		Global.world_map[Global.room_location]["entered"] = true
-		if Global.dev_mode:
-			print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
+		Global.print_dev('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
 		if room_history[-1][1] != new_room_location or room_history[-1][0] != current_world_num:
 			room_history.append([current_world_num, new_room_location])
 		
@@ -477,7 +475,7 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		current_room_node = new_room.instantiate()
 		rooms.add_child(current_room_node)
 		
-		get_node("/root/Game/HUD").display_minimap(true)
+		hud.display_minimap(true)
 
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
 	room_changed_to_boss.emit()
@@ -489,8 +487,7 @@ func transition_to_boss(source_world_n: int, destination_world_n: int, length = 
 	
 	var new_room_location = Vector2i(source_world_n, destination_world_n)
 	room_location = new_room_location
-	if Global.dev_mode:
-		print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
+	Global.print_dev('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
 
 	if room_history[-1][1] != new_room_location or room_history[-1][0] != current_world_num:
 			room_history.append([current_world_num, new_room_location])
@@ -503,7 +500,7 @@ func transition_to_boss(source_world_n: int, destination_world_n: int, length = 
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
 	
-	get_node("/root/Game/HUD").display_minimap(false)
+	hud.display_minimap(false)
 
 func transition_to_being(source_world_n: int, destination_world_n: int, length = 1):
 	room_changed_to_being.emit()
@@ -515,8 +512,7 @@ func transition_to_being(source_world_n: int, destination_world_n: int, length =
 	
 	var new_room_location = Vector2i(source_world_n, destination_world_n)
 	room_location = new_room_location
-	if Global.dev_mode:
-		print('Now in being world: %s.' % destination_world_n)
+	Global.print_dev('Now in being world: %s.' % destination_world_n)
 
 	if room_history[-1][1] != new_room_location or room_history[-1][0] != current_world_num:
 			room_history.append([current_world_num, new_room_location])
@@ -529,7 +525,7 @@ func transition_to_being(source_world_n: int, destination_world_n: int, length =
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
 	
-	get_node("/root/Game/HUD").display_minimap(false)
+	hud.display_minimap(false)
 
 func transition_to_world(destination_world_n: int, length = 1):
 	room_changed_from_boss.emit()
@@ -545,15 +541,14 @@ func transition_to_world(destination_world_n: int, length = 1):
 	
 	if Global.dev_mode:
 		for x in range(world_grid.size() - 1, -1, -1):
-			print(world_grid[x])
+			Global.print_dev(world_grid[x])
 	create_world(current_world_num)
 	set_world_map_guides()
 	
 	var new_room_location = Vector2i(map_size, map_size)
 	room_location = new_room_location
 	Global.world_map[Global.room_location]["entered"] = true
-	if Global.dev_mode:
-		print('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
+	Global.print_dev('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
 
 	if room_history[-1][1] != new_room_location or room_history[-1][0] != current_world_num:
 			room_history.append([current_world_num, new_room_location])
@@ -566,7 +561,7 @@ func transition_to_world(destination_world_n: int, length = 1):
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
 
-	get_node("/root/Game/HUD").display_minimap(true)
+	hud.display_minimap(true)
 	
 	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_%d_IDLE" % destination_world_n])
 
@@ -584,8 +579,7 @@ func transition_to_endgame(prisoner_id, length = 1):
 	
 	var new_room_location = Vector2i(1, 1)
 	room_location = new_room_location
-	if Global.dev_mode:
-		print('Endgame w/ %s.' % prisoner_id)
+	Global.print_dev('Endgame w/ %s.' % prisoner_id)
 	
 	if current_room_node:
 		current_room_node.queue_free()
@@ -595,7 +589,7 @@ func transition_to_endgame(prisoner_id, length = 1):
 	current_room_node = new_room.instantiate()
 	rooms.add_child(current_room_node)
 	
-	get_node("/root/Game/HUD").display_minimap(false)
+	hud.display_minimap(false)
 	
 	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_ENDGAME_ENTER"])
 
@@ -606,7 +600,7 @@ func return_to_menu(delete = false, display_stats = false) -> void:
 	Engine.time_scale = 1.0
 	if display_stats:
 		var stats_hud = load("res://scenes/general/hud_death_stats.tscn").instantiate()
-		get_node("/root/Game/HUD").add_child(stats_hud)
+		hud.add_child(stats_hud)
 		stats_hud.return_to_main_menu.connect(restart_game)
 	else:
 		call_deferred("restart_game")
@@ -615,18 +609,17 @@ func return_to_menu(delete = false, display_stats = false) -> void:
 		ChumsManager.add_bonus_chum(Global.game_save_id) #Gives you a random chum (not boss/prisoner) for your next run.
 		SaverLoader.delete_save(game_save_id)
 
-func restart_game() -> void:
-	TransitionScreen.transition(3)
-	await TransitionScreen.on_transition_finished
-	get_node("/root/Game").queue_free()
+func restart_game(transition := true, queue_free_game := true) -> void:
+	if transition:
+		TransitionScreen.transition(3)
+		await TransitionScreen.on_transition_finished
+	if queue_free_game:
+		get_node("/root/Game").queue_free()
 	game_begun = false
 	is_alive = true
 	game_save_id = 1
 	world_transition_count = 0
 	get_node("/root").add_child(load("res://scenes/general/main_menu.tscn").instantiate())
-
-
-
 
 func test_grid_system(world_n, count):
 	var badn = 0
@@ -654,13 +647,17 @@ func test_grid_system(world_n, count):
 		
 		if not is_okay:
 			badn += 1
-			print("faulty grid:")
+			Global.print_dev("faulty grid:")
 			for x in range(test_world_grid.size() - 1, -1, -1):
-				print(test_world_grid[x])
+				Global.print_dev(test_world_grid[x])
 		else:
 			var test = float(counts[2])/float(counts[2]+counts[3]+counts[4]+counts[5]+counts[6]+counts[7])
-			print("percentage of normal rooms: %s" % test)
+			Global.print_dev("percentage of normal rooms: %s" % test)
 			for x in range(test_world_grid.size() - 1, -1, -1):
-				print(test_world_grid[x])
+				Global.print_dev(test_world_grid[x])
 			pass
-	print("Total bad maps: %s" % badn)
+	Global.print_dev("Total bad maps: %s" % badn)
+
+func print_dev(text) -> void:
+	if dev_mode:
+		print(text)

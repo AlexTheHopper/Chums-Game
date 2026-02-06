@@ -186,7 +186,7 @@ func change_display_chums(save_num, show_particles = false) -> void:
 				var chum_position = team_node.global_position
 				chum_position += Vector3(5.0 * sin(2*PI*inc/chum_count), 0, 5.0 * cos(2*PI*inc/chum_count))
 				chum_instance.global_position = chum_position
-				chum_instance.get_node("GeneralChumBehaviour").visible = false
+				chum_instance.generalchumbehaviour.visible = false
 				chum_instance.sleep_zone.queue_free()
 				chum_instance.scale = Vector3(2.0, 2.0, 2.0)
 				chum_instance.rotation.y = randf_range(0, 2*PI)
@@ -205,7 +205,7 @@ func change_display_chums(save_num, show_particles = false) -> void:
 	var bonus_chum = ChumsManager.get_specific_chum_id(bonus_chum_id).instantiate()
 	team_node.get_node("chums").add_child(bonus_chum)
 	bonus_chum.global_position = Vector3(0.0, 2.0, 3.0)
-	bonus_chum.get_node("GeneralChumBehaviour").visible = false
+	bonus_chum.generalchumbehaviour.visible = false
 	bonus_chum.sleep_zone.queue_free()
 	bonus_chum.scale = Vector3(2.0, 2.0, 2.0)
 	bonus_chum.rotation.y = randf_range(0, 2*PI)

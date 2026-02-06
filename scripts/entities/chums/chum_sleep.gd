@@ -13,6 +13,8 @@ func Enter() -> void:
 
 	#We dont want the player to be able to push around the chums while theyre sleeping
 	chum.set_collision_mask_value(2, false)
+	
+	
 
 func Physics_Update(delta: float) -> void:
 	chum.velocity = lerp(chum.velocity, Vector3.ZERO, 0.05)

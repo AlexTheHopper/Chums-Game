@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("test1"):
 		chum_to_spawn += 1
 		chum_spawn_timer = 1.0
-		print('preparing to spawn chum %s' % chum_to_spawn)
+		Global.print_dev('preparing to spawn chum %s' % chum_to_spawn)
 
 	#Handling taking to statue room.
 	if to_statue_timer > 0.0:
@@ -74,9 +74,9 @@ func _process(delta: float) -> void:
 			
 			if found:
 				Global.transition_to_level(loc)
-				print("travelling to room %s with statue id %s" % [loc, statue_id])
+				Global.print_dev("travelling to room %s with statue id %s" % [loc, statue_id])
 			else:
-				print("unable to find statue id %s" % statue_id)
+				Global.print_dev("unable to find statue id %s" % statue_id)
 			statue_id = 0
 			to_statue_timer = 0
 			
@@ -86,7 +86,7 @@ func _process(delta: float) -> void:
 		if not Global.in_battle:
 			statue_id += 1
 			to_statue_timer = 1.0
-			print('preparing to go to statue %s' % statue_id)
+			Global.print_dev('preparing to go to statue %s' % statue_id)
 		else:
 			for chum in get_tree().get_nodes_in_group("Chums_Enemy"):
 				chum.health_node.health = 0

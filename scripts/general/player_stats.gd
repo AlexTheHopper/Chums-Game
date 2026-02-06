@@ -26,7 +26,7 @@ signal player_max_chums_increase
 signal insufficient_bracelets
 signal too_many_chums
 
-func initialize() -> void:
+func initialise() -> void:
 	player_max_chums = 5 if not Global.dev_mode else 10
 	collected_lanterns = {0: false, 1: false, 2: false, 3: false, 4: false}
 	player = get_tree().get_first_node_in_group("Player")

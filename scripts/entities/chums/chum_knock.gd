@@ -22,7 +22,7 @@ func Enter() -> void:
 	#For chums spawned in knock with 0 health:
 	if chum.initial_state_override == "Knock" and chum.start_health == 0:
 		chum.anim_player.seek(chum.anim_player.get_animation("Knock").length, true)
-		chum.get_node("GeneralChumBehaviour/HealthBar").override_ratio(0.0)
+		chum.generalchumbehaviour.health_bar.override_ratio(0.0)
 		
 	#For spawned chums:
 	if chum.is_temporary:

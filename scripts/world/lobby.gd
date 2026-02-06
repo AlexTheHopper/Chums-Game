@@ -21,8 +21,7 @@ func set_bonus_chum_on_load() -> void:
 	if Global.game_save_id not in SaverLoader.game_stats["bonus_chums"].keys():
 		return
 	var bonus_chum_stats = SaverLoader.game_stats["bonus_chums"][Global.game_save_id]
-	if Global.dev_mode:
-		print("Creating bonus chum. ID: %s, COST: %s, QUALITY: %s" % [bonus_chum_stats.chum_id, bonus_chum_stats.bracelet_cost, bonus_chum_stats.quality])
+	Global.print_dev("Creating bonus chum. ID: %s, COST: %s, QUALITY: %s" % [bonus_chum_stats.chum_id, bonus_chum_stats.bracelet_cost, bonus_chum_stats.quality])
 
 	var bonus_chum = ChumsManager.get_specific_chum_id(bonus_chum_stats["chum_id"]).instantiate()
 	bonus_chum.bracelet_cost = bonus_chum_stats["bracelet_cost"]
