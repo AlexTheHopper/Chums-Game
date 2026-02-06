@@ -61,7 +61,8 @@ func activate_chums():
 func finish_spawning():
 	spawning_finished = true
 	if player_proximity and not activated:
-		bell_mesh.set_material_overlay(white_overlay)
+		bell_mesh.mesh.surface_get_material(0).emission_energy_multiplier = 0.2
+		#bell_mesh.set_material_overlay(white_overlay)
 
 
 #Activate room when smacked if conditions met
@@ -69,7 +70,8 @@ func attempt_activate():
 	if player_proximity and not player.is_carrying and not activated and spawning_finished:
 		activated = true
 		activate_chums()
-		bell_mesh.set_material_overlay(black_overlay)
+		bell_mesh.mesh.surface_get_material(0).emission_energy_multiplier = 0.0
+		#bell_mesh.set_material_overlay(black_overlay)
 		$AnimationPlayer.play("ring")
 		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_BELL_HIT)
 			
@@ -86,12 +88,14 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is Player:
 		player_proximity = true
 		if not activated and spawning_finished:
-			bell_mesh.set_material_overlay(white_overlay)
+			bell_mesh.mesh.surface_get_material(0).emission_energy_multiplier = 0.2
+		#bell_mesh.set_material_overlay(white_overlay)
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body is Player:
 		player_proximity = false
 		if not activated and spawning_finished:
-			bell_mesh.set_material_overlay(black_overlay)
+			bell_mesh.mesh.surface_get_material(0).emission_energy_multiplier = 0.0
+		#bell_mesh.set_material_overlay(black_overlay)
 
 #Shrinks bell then removes it
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

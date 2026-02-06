@@ -1,7 +1,5 @@
 [gd_scene format=4 uid="uid://ce5jfcqd4hg60"]
 
-[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="1_co5n5"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_misgc"]
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
@@ -21,5 +19,4 @@ _surfaces = [{
 [node name="Bell2" type="Node3D" unique_id=446434226]
 
 [node name="Bell" type="MeshInstance3D" parent="." unique_id=1546452687]
-material_overlay = ExtResource("1_co5n5")
 mesh = SubResource("ArrayMesh_wrjdj")

@@ -17,6 +17,8 @@ func interact() -> void:
 	start_game.emit(save_nums[save_index])
 
 func left() -> void:
+	if save_nums.size() <= 1:
+		return
 	save_index -= 1
 	if save_index < 0:
 		save_index = save_nums.size() - 1
@@ -24,6 +26,8 @@ func left() -> void:
 	change_text()
 
 func right() -> void:
+	if save_nums.size() <= 1:
+		return
 	save_index += 1
 	if save_index > save_nums.size() - 1:
 		save_index = 0
