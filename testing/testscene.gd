@@ -6,6 +6,7 @@ var room_2_seed = 101
 var current_room = 1
 var rng
 const CAGE_TESTING = preload("uid://doc0b1wjqgvyd")
+var TYPE = "testscene"
 
 
 var distance_dict := {}
@@ -18,7 +19,9 @@ func _ready() -> void:
 	rng = RandomNumberGenerator.new()
 	
 	for i in ChumsManager.chums_list.keys():
-		create_cage(Vector3(6.0 + (12.0 if i > 14 else 0.0), 0.0, -60.0 + i * 12.0 if i <= 14 else -60.0 + (i-10) * 12.0), i, 28)
+		var x: float = floor((i-1)/10.0) * 12.0 + 12.0
+		var z: float = 12.0 * ((i-1) % 10) - 12.0 * 5.0
+		create_cage(Vector3(x, 0.0, z), i, 28)
 
 func create_cage(spawn_position, id1, id2):
 	var to_add = CAGE_TESTING.instantiate()

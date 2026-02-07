@@ -9,7 +9,7 @@
 [ext_resource type="MeshLibrary" uid="uid://b52oqgk3y6mjn" path="res://assets/world/meshlib_world_2.tres" id="5_i2omf"]
 [ext_resource type="MeshLibrary" uid="uid://bswq4nrk63ovy" path="res://assets/world/meshlib_world_3.tres" id="6_30p3f"]
 [ext_resource type="PackedScene" uid="uid://8ncv6jdtffr4" path="res://scenes/general/menu_player.tscn" id="6_i2omf"]
-[ext_resource type="MeshLibrary" uid="uid://chgdb28ikj66s" path="res://assets/world/meshlib_world_4.tres" id="7_30p3f"]
+[ext_resource type="MeshLibrary" uid="uid://6vw7eqv3tm0j" path="res://assets/world/meshlib_world_4.tres" id="7_30p3f"]
 [ext_resource type="PackedScene" uid="uid://dy4io11bx0ebd" path="res://scenes/world/decorations/column_2.tscn" id="8_85yw1"]
 [ext_resource type="PackedScene" uid="uid://8wtsdvcs8ups" path="res://scenes/world/decorations/column_1.tscn" id="9_gp0ni"]
 [ext_resource type="PackedScene" uid="uid://y8e5bkw4a8wi" path="res://assets/world/streetlamp_2.tscn" id="10_tkmqb"]

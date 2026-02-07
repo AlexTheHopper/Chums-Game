@@ -7,6 +7,13 @@ var chums: Array
 var active := true
 
 func _ready() -> void:
+	if Global.world_map[Global.room_location]["activated"]:
+		active = false
+		room_changer_zone.active = true
+		room_changer_zone.prisoner_id = [17, 18, 19, 20].pick_random()
+		for statue in statues:
+			statue.queue_free()
+	
 	for statue in statues:
 		statue.prisoners_changed.connect(_on_prisoners_changed)
 
@@ -21,6 +28,7 @@ func _on_prisoners_changed() -> void:
 		end_sequence()
 
 func end_sequence() -> void:
+	Global.world_map[Global.room_location]["activated"] = true
 	room_changer_zone.active = true
 	room_changer_zone.prisoner_id = chums.pick_random()
 	for statue in statues:

@@ -188,5 +188,8 @@ initial_velocity_max = 0.2
 scale_amount_curve = SubResource("Curve_yktff")
 color_ramp = SubResource("Gradient_7f872")
 
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=408671965]
+target_position = Vector3(0, -10, 0)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

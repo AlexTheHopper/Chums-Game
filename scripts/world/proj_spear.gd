@@ -7,6 +7,7 @@ extends Area3D
 @export var draws_agro_on_attack := false
 @export var show_target: bool
 
+@onready var raycast: RayCast3D = $RayCast3D
 @onready var red_overlay := preload("res://materials/outline_red.tres")
 @onready var blue_overlay := preload("res://materials/outline_blue.tres")
 @onready var black_overlay := preload("res://materials/outline_black.tres")
@@ -50,8 +51,13 @@ func _ready() -> void:
 	
 	if target:
 		hit_time *= randf_range(0.8, 1.2)
-		target_position = target.global_position + target.velocity * 0.5
-		set_vel_to_pos(global_position, target_position, Vector3(0.0, 0.5, 0.0))
+		raycast.global_position = target.global_position + Vector3(0.0, 0.5, 0.0) + target.velocity * 0.5
+		raycast.force_raycast_update()
+		if raycast.is_colliding():
+			target_position = raycast.get_collision_point()
+		else:
+			target_position = raycast.global_position
+		set_vel_to_pos(global_position, target_position, Vector3(0.0, 0.25, 0.0))
 		spear_target.global_position = target_position
 	
 

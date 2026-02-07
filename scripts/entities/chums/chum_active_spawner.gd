@@ -40,8 +40,8 @@ func create_chum() -> void:
 	chum_instance.is_temporary = true
 
 	chum_instance.initial_state_override = "Active"
-	Global.current_room_node.get_parent().get_parent().get_node("Chums").add_child(chum_instance)
-	#get_parent().add_child(chum_instance) #Used for the testing world.
+	#Global.current_room_node.get_parent().get_parent().get_node("Chums").add_child(chum_instance)
+	get_parent().add_child(chum_instance) #Used for the testing world.
 	chum_instance.health_node.set_health(chum_instance.health_node.get_max_health())
 	chum_instance.global_position = chum.global_position + Vector3(0.0, 1.2, 0.0)
 	

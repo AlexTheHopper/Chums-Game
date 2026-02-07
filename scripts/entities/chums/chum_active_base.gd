@@ -30,15 +30,15 @@ func Enter():
 
 func Physics_Update(delta: float):
 	if chum.is_on_floor():
+		#walk along path and look at velocity if far from target
 		if not attacking and Functions.distance_squared(chum, chum.target) > chum.attack_distance ** 2:
 			chum.anim_player.play("Walk")
 			chum.velocity = nav_vel
 			chum.rotation.y = lerp_angle(chum.rotation.y, Vector2(nav_vel.z, nav_vel.x).angle(), 0.3)
+		#Look at target if close to target
 		else:
 			chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.05)
 			chum.velocity = nav_vel * 0.1
-
-		#chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
 		
 		chum.is_launched = false
 		

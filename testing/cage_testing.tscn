@@ -14,6 +14,9 @@ var chum2
 
 func _ready() -> void:
 	chum1 = ChumsManager.get_specific_chum_id(id_1).instantiate()
+	for q in chum1.quality.keys():
+		chum1.quality[q] = 0
+	chum1.stats_set = true
 	add_child(chum1)
 	chum1.global_position = spawn_1.global_position
 	chum1.health_node.set_max_health_override(chum1.health_node.get_max_health() * 10)
@@ -22,6 +25,9 @@ func _ready() -> void:
 	chum1.hurtbox.recieved_damage.connect(damaged_1)
 	
 	chum2 = ChumsManager.get_specific_chum_id(id_2).instantiate()
+	for q in chum2.quality.keys():
+		chum2.quality[q] = 0
+	chum2.stats_set = true
 	add_child(chum2)
 	chum2.global_position = spawn_2.global_position
 	chum2.health_node.set_max_health_override(chum2.health_node.get_max_health() * 10)
@@ -36,9 +42,9 @@ func damaged_2(_a, _b, _c):
 
 func _on_timer_timeout() -> void:
 	if not hit_1:
-		print(\"%s did not hit %s!\" % [chum2.chum_name, chum1.chum_name])
+		print(\"%s did not hit %s!\" % [tr(chum2.chum_name), tr(chum1.chum_name)])
 	if not hit_2:
-		print(\"%s did not hit %s!\" % [chum1.chum_name, chum2.chum_name])
+		print(\"%s did not hit %s!\" % [tr(chum1.chum_name), tr(chum2.chum_name)])
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t2ewn"]
