@@ -89,7 +89,7 @@ func _ready():
 			"room_size": 40.0,
 			"min_chums": 3,
 			"max_chums": 7,
-			"terrain_ids": [8],
+			"terrain_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8],
 			"statue_required": [8, 13, 10, 16, 22],  #To worlds 1, 3, 4 & flower.
 			"statue_optional": [16, 11, 13, 21], #To worlds 1, 2
 			"room_counts": {1: 0, #Lobby - keep this as 0
@@ -106,7 +106,7 @@ func _ready():
 			"room_size": 40.0,
 			"min_chums": 3,
 			"max_chums": 8,
-			"terrain_ids": [0, 1, 2, 3, 4, 5],
+			"terrain_ids": [0, 1, 2, 3, 4, 5, 6],
 			"statue_required": [8, 10, 13, 23, 27],  #To worlds 1, 4 & flower.
 			"statue_optional": [6, 11, 13], #To worlds 1, 2
 			"room_counts": {1: 0, #Lobby - keep this as 0

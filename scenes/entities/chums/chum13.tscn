@@ -954,7 +954,7 @@ bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.05)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 0.683256, -0.05)
+bones/0/position = Vector3(0, 0.7, -0.05)
 bones/0/rotation = Quaternion(0.079311796, 0, 0, 0.9968499)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Arm1.L"
@@ -975,7 +975,7 @@ bones/3/name = "Leg1.L"
 bones/3/parent = 0
 bones/3/rest = Transform3D(0.936226, 0.351123, -0.0137915, 0.351084, -0.936329, -0.00517182, -0.0147293, 2.99955e-09, -0.999892, 0.1, 0.1, 0)
 bones/3/enabled = true
-bones/3/position = Vector3(0.1, 0.0999999, -5.81519e-09)
+bones/3/position = Vector3(0.1, 0.0999999, 1.63458e-09)
 bones/3/rotation = Quaternion(0.9615903, 0.17289406, -0.044653323, 0.20846604)
 bones/3/scale = Vector3(0.999998, 1, 1)
 bones/4/name = "Leg2.L"
@@ -1003,7 +1003,7 @@ bones/7/name = "Leg1.R"
 bones/7/parent = 0
 bones/7/rest = Transform3D(0.936226, -0.351123, 0.0137915, -0.351084, -0.936329, -0.00517182, 0.0147293, 2.99955e-09, -0.999892, -0.1, 0.1, 0)
 bones/7/enabled = true
-bones/7/position = Vector3(-0.1, 0.0999999, -5.81519e-09)
+bones/7/position = Vector3(-0.1, 0.0999999, 1.63458e-09)
 bones/7/rotation = Quaternion(0.9615903, -0.17289406, 0.044653323, 0.20846604)
 bones/7/scale = Vector3(0.999998, 1, 1)
 bones/8/name = "Leg2.R"
@@ -1020,7 +1020,7 @@ skin = SubResource("Skin_qfx86")
 skeleton = NodePath("..")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Body/Skeleton3D" unique_id=1840891286]
-transform = Transform3D(1, 0, 0, 0, 0.9874193, -0.15812391, 0, 0.15812391, 0.9874193, 0, 0.683256, -0.05)
+transform = Transform3D(1, 0, 0, 0, 0.9874193, -0.15812391, 0, 0.15812391, 0.9874193, 0, 0.7, -0.05)
 bone_name = "Bone"
 bone_idx = 0
 
@@ -1082,3 +1082,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03472, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1699297387]
 avoidance_enabled = true
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=844034174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, 0.25)

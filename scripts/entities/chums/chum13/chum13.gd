@@ -29,8 +29,12 @@ var bracelet_cost := 3
 
 var max_jump_dist := 5.0
 
+var rising := false
+@onready var raycast: RayCast3D = $RayCast3D
 func jump_to_target() -> void:
-	var hit_time: float = base_move_speed ** 2 / self.move_speed
+	if raycast.is_colliding() and raycast.get_collider() is GridMap:
+		rising = true
+	var hit_time: float = 2.0 * (base_move_speed ** 2 / self.move_speed)
 	#Go 95% of the way to target, unless it is further than max_jump_dist
 	var target_pos: Vector3 = global_position.lerp(self.target.global_position, 0.9)
 	var dir: Vector3 = target_pos - self.global_position

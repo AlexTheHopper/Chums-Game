@@ -27,6 +27,7 @@ func Physics_Update(delta: float):
 		
 	if chum.is_on_floor():
 		chum.is_launched = false
+		chum.rising = false
 		chum.velocity = Vector3(0.0, 0.0 ,0.0)
 		chum.rotation.y = lerp_angle(chum.rotation.y, Functions.angle_to_xz(chum, chum.target), 0.5)
 		if not has_touched_floor:
@@ -34,6 +35,12 @@ func Physics_Update(delta: float):
 			chum.set_new_target()
 	else:
 		chum.velocity.y += chum.get_gravity_dir() * delta
+		
+		#to stop it getting stuck against walls - chum.rising will only be true if there is a gridmap <0.25 units from chums facing direction on jump.
+		if chum.rising:
+			if chum.velocity.y < 0.0:
+				chum.rising = false
+				chum.velocity += Vector3(0.0, 0.0, 0.5).rotated(Vector3.UP, chum.rotation.y)
 	
 	chum.move_and_slide()
 
