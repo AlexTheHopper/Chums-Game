@@ -697,8 +697,10 @@ mesh = SubResource("QuadMesh_yy5kl")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=886271900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.68387, 0)
-omni_range = 50.0
-omni_attenuation = 0.4
+light_color = Color(0.2835653, 0.7221165, 0.18691579, 1)
+light_energy = 4.0
+omni_range = 25.0
+omni_attenuation = 0.5
 omni_shadow_mode = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=241555822]

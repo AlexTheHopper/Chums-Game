@@ -12,6 +12,7 @@ var credits_done := true
 signal return_to_main_menu
 
 func _ready() -> void:
+	Global.game_begun = false
 	return_to_main_menu.connect(Global.restart_game)
 	var counter := 0
 	var chum_count := chum_ids.size()
@@ -25,12 +26,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#Speed up camera
 	if camera.global_position.y >= max_camera_height:
-		if credits_done:
+		if credits_done and (Input.is_action_pressed("attack") or Input.is_action_pressed("interact") or Input.is_action_pressed("jump")):
 			credits_done = false
 			exit_credits()
 		return
 
-	camera.global_position.y += delta * (1.0 if not Input.is_action_pressed("attack") else 3.0)
+	camera.global_position.y += delta * (1.0 if not (Input.is_action_pressed("attack") or Input.is_action_pressed("interact") or Input.is_action_pressed("jump")) else 3.0)
 
 func spawn_chum(chum_id: int, location: Vector3, angle: float) -> void:
 	var chum_to_spawn = ChumsManager.get_specific_chum_id(chum_id)
