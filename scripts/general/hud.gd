@@ -44,6 +44,7 @@ func _process(_delta: float) -> void:
 		toggle_pause()
 	
 	if is_paused and Input.is_action_just_pressed("attack"):
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 		if Global.in_battle and is_exit_warning:
 			toggle_pause()
 			get_tree().get_first_node_in_group("Player")._on_health_health_depleted()
@@ -59,6 +60,7 @@ func _process(_delta: float) -> void:
 	minimap.rotation = get_tree().get_first_node_in_group("Player").camera_controller.rotation.y
 
 func toggle_pause():
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 	is_exit_warning = false
 	if is_paused and get_tree().paused:
 		get_tree().paused = false

@@ -20,9 +20,13 @@ var world_map_guide = {"lobby": {},
 
 var crates_broken: Dictionary[int, bool] = {
 	0: false,
+	1: false,
+	2: false,
 }
 var crate_info: Dictionary[int, Dictionary] = {
-	0: {"world_n": 1, "chum_id": 1, "pattern": [Vector2i(0, 1)]},
+	0: {"world_n": 1, "chum_id": 4, "pattern": [Vector2i(0, 1),Vector2i(1, 0)]},
+	1: {"world_n": 1, "chum_id": 10, "pattern": [Vector2i(0, 1),Vector2i(1, 0)]},
+	2: {"world_n": 1, "chum_id": 13, "pattern": [Vector2i(0, 1),Vector2i(1, 0)]},
 }
 
 var in_battle := false
@@ -498,6 +502,9 @@ func check_crate_pattern() -> void:
 			break
 		movement_history.append(room_history[room_n][1] - room_history[room_n - 1][1])
 	movement_history.reverse()
+	#Moving in X is mirrored, honestly i dont know why and this is much quicker than messing with everything else.
+	for i in movement_history.size():
+		movement_history[i].x *= -1
 
 	#Check against crate patterns & rotations
 	for crate_id in crate_info.keys():
@@ -505,6 +512,7 @@ func check_crate_pattern() -> void:
 			if Functions.rotate_vec_2i_list(crate_info[crate_id]["pattern"], rotation) == movement_history.slice(-crate_info[crate_id]["pattern"].size()):
 				if crate_id in crates_broken.keys() and last_world_n == crate_info[crate_id]["world_n"]:
 					crates_broken[crate_id] = true
+					AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_CRATE_BREAK)
 
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
 	room_changed_to_boss.emit()

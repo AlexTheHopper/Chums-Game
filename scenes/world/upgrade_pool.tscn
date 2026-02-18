@@ -39,6 +39,11 @@ uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
+// -----------------------------------------------------------------------
+// PIXEL / VOXEL MODE - Added parameter
+// -----------------------------------------------------------------------
+uniform float pixel_size : hint_range(0.01, 1.0, 0.01) = 0.15;
+
 void vertex() {
 	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
 
@@ -68,22 +73,31 @@ vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos
 }
 
 void fragment() {
-	vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
+
+	// -----------------------------------------------------------------------
+	// PIXEL / VOXEL SNAP UV BEFORE SAMPLING
+	// -----------------------------------------------------------------------
+	vec3 quant_pos = floor(uv1_triplanar_pos / pixel_size) * pixel_size;
+
+	// Albedo
+	vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, quant_pos);
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
 
-	float metallic_tex = dot(triplanar_texture(texture_metallic, uv1_power_normal, uv1_triplanar_pos), metallic_texture_channel);
+	// Metallic
+	float metallic_tex = dot(triplanar_texture(texture_metallic, uv1_power_normal, quant_pos), metallic_texture_channel);
 	METALLIC = metallic_tex * metallic;
 	SPECULAR = specular;
 
+	// Roughness
 	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
-	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, uv1_triplanar_pos), roughness_texture_channel);
+	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, quant_pos), roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
 
-	// Normal Map: Enabled
-	NORMAL_MAP = triplanar_texture(texture_normal, uv1_power_normal, uv1_triplanar_pos).rgb;
+	// Normal Map (pixelated)
+	NORMAL_MAP = triplanar_texture(texture_normal, uv1_power_normal, quant_pos).rgb;
 	NORMAL_MAP_DEPTH = normal_scale;
 
-	// Refraction: Enabled (with normal map texture)
+	// Refraction
 	vec3 unpacked_normal = NORMAL_MAP;
 	unpacked_normal.xy = unpacked_normal.xy * 2.0 - 1.0;
 	unpacked_normal.z = sqrt(max(0.0, 1.0 - dot(unpacked_normal.xy, unpacked_normal.xy)));
@@ -91,7 +105,10 @@ void fragment() {
 			NORMAL,
 			TANGENT * unpacked_normal.x + BINORMAL * unpacked_normal.y + NORMAL * unpacked_normal.z,
 			NORMAL_MAP_DEPTH));
-	vec2 ref_ofs = SCREEN_UV - ref_normal.xy * dot(triplanar_texture(texture_refraction, uv1_power_normal, uv1_triplanar_pos), refraction_texture_channel) * refraction;
+
+	vec2 ref_ofs = SCREEN_UV - ref_normal.xy *
+		dot(triplanar_texture(texture_refraction, uv1_power_normal, quant_pos),
+		refraction_texture_channel) * refraction;
 
 	float ref_amount = 1.0 - albedo.a * albedo_tex.a;
 
@@ -99,11 +116,14 @@ void fragment() {
 	vec4 refraction_view_pos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, refraction_depth_tex, 1.0);
 	refraction_view_pos.xyz /= refraction_view_pos.w;
 
-	// If the depth buffer is lower then the model's Z position, use the refracted UV, otherwise use the normal screen UV.
-	// At low depth differences, decrease refraction intensity to avoid sudden discontinuities.
-	EMISSION += textureLod(screen_texture, mix(SCREEN_UV, ref_ofs, smoothstep(0.0, 1.0, VERTEX.z - refraction_view_pos.z)), ROUGHNESS * 8.0).rgb * ref_amount * EXPOSURE;
+	EMISSION += textureLod(
+		screen_texture,
+		mix(SCREEN_UV, ref_ofs, smoothstep(0.0, 1.0, VERTEX.z - refraction_view_pos.z)),
+		ROUGHNESS * 8.0
+	).rgb * ref_amount * EXPOSURE;
+
 	ALBEDO *= 1.0 - ref_amount;
-	// Force transparency on the material (required for refraction).
+
 	ALPHA = 1.0;
 }
 "
@@ -144,6 +164,7 @@ shader_parameter/uv1_scale = Vector3(0.1, 0.1, 0.1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/pixel_size = 0.00999999977648
 
 [sub_resource type="BoxMesh" id="BoxMesh_3ecil"]
 material = SubResource("ShaderMaterial_wbmjb")

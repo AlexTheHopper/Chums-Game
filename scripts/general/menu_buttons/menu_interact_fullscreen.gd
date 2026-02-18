@@ -16,6 +16,7 @@ func interact() -> void:
 	SaverLoader.game_settings["is_fullscreen"] = is_window
 	SaverLoader.save_gamestate()
 	change_text()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func change_text() -> void:
 	if is_window:

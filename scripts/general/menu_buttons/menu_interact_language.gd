@@ -17,12 +17,14 @@ func left() -> void:
 	if index < 0:
 		index = languages.size() - 1
 	change_language(languages[index])
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func right() -> void:
 	index += 1
 	if index > languages.size() - 1:
 		index = 0
 	change_language(languages[index])
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func change_language(lan_code: String) -> void:
 	TranslationServer.set_locale(lan_code)

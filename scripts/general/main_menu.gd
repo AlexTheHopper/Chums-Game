@@ -98,12 +98,16 @@ func _process(delta: float) -> void:
 			current_group_index = current_group.buttons.size() - 1
 		current_group.buttons[current_group_index].on_selected()
 		
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
+		
 	elif Input.is_action_just_pressed("move_back") or Input.is_action_just_pressed("cam_down"):
 		current_group.buttons[current_group_index].on_deselected()
 		current_group_index += 1
 		if current_group_index > current_group.buttons.size() - 1:
 			current_group_index = 0
 		current_group.buttons[current_group_index].on_selected()
+		
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func _physics_process(delta: float) -> void:
 	if camera_returning:

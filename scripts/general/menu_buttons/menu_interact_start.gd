@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func interact() -> void:
 	start_game.emit(save_nums[save_index])
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func left() -> void:
 	if save_nums.size() <= 1:
@@ -24,6 +25,7 @@ func left() -> void:
 		save_index = save_nums.size() - 1
 	save_changed.emit(save_nums[save_index], true)
 	change_text()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func right() -> void:
 	if save_nums.size() <= 1:
@@ -33,6 +35,7 @@ func right() -> void:
 		save_index = 0
 	save_changed.emit(save_nums[save_index], true)
 	change_text()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func change_text() -> void:
 	if save_nums[save_index] == null:

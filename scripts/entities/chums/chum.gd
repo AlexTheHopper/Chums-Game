@@ -114,14 +114,7 @@ func _ready() -> void:
 	if not stats_set:
 		set_new_stats()
 		#And make sure stat displays only what the chum can do:
-		if not self.has_attack_speed:
-			quality["attack_speed"] = 0
-		if not self.has_attack_damage:
-			quality["attack_damage"] = 0
-		if not self.has_move_speed:
-			quality["move_speed"] = 0
-		if not self.has_health:
-			quality["health"] = 0
+		ensure_quality()
 		start_health = int(self.base_health * (1.0 + float(quality["health"]) / 10.0))
 	set_stats_from_quality()
 	if start_health >= 0:
@@ -134,6 +127,16 @@ func _ready() -> void:
 	if initial_state_override:
 		set_state(initial_state_override)
 		initial_state_override = ""
+
+func ensure_quality() -> void:
+	if not self.has_attack_speed:
+		quality["attack_speed"] = 0
+	if not self.has_attack_damage:
+		quality["attack_damage"] = 0
+	if not self.has_move_speed:
+		quality["move_speed"] = 0
+	if not self.has_health:
+		quality["health"] = 0
 
 func get_gravity_dir():
 	return fall_gravity if velocity.y < 0.0 else jump_gravity
@@ -152,6 +155,8 @@ func set_new_stats() -> void:
 	quality["attack_speed"] = new_quality
 
 func set_stats_from_quality() -> void:
+	ensure_quality()
+
 	health_node.set_max_health_override(int(self.base_health * (1.0 + (float(quality["health"]) / 10.0))))
 
 	move_speed = min(max_move_speed, self.base_move_speed * (1.0 + (float(quality["move_speed"]) / 10.0)))

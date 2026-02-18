@@ -12,8 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://cagk3r5g11ofm" path="res://assets/audio/on_chum_heal.ogg" id="7_ovui0"]
 [ext_resource type="AudioStream" uid="uid://b6w4osr8cjnmj" path="res://assets/audio/on_statue_shake.ogg" id="10_4niny"]
 [ext_resource type="AudioStream" uid="uid://1p0kutmfqgpq" path="res://assets/audio/on_grass_destroyed.ogg" id="11_ft4fm"]
+[ext_resource type="AudioStream" uid="uid://da127hpfc7t55" path="res://assets/audio/on_crate_break.ogg" id="12_1obp5"]
 [ext_resource type="AudioStream" uid="uid://dajj0fiw6nagl" path="res://assets/audio/music_lobby.wav" id="12_mglc6"]
 [ext_resource type="AudioStream" uid="uid://b013ynbvn8tyf" path="res://assets/audio/music_idle_world_1.wav" id="13_ae5oe"]
+[ext_resource type="AudioStream" uid="uid://dj5xc12rgkqi5" path="res://assets/audio/on_menu_button.ogg" id="13_asn2t"]
 [ext_resource type="AudioStream" uid="uid://c0hug6j7upgk6" path="res://assets/audio/music_battle_world_1.wav" id="14_qbirx"]
 [ext_resource type="AudioStream" uid="uid://bl0qlo0reni8y" path="res://assets/audio/music_idle_world_2.wav" id="14_tpt5d"]
 [ext_resource type="AudioStream" uid="uid://csupts5rg55dr" path="res://assets/audio/music_idle_world_3.wav" id="15_qbirx"]
@@ -148,6 +150,26 @@ volume = -12.0
 pitch_randomness = 0.2
 metadata/_custom_type_script = "uid://b8xh410owphar"
 
+[sub_resource type="Resource" id="Resource_klawk"]
+resource_name = "On Crate Break"
+script = ExtResource("2_xi5h2")
+limit = 1
+type = 16
+sound_effect = ExtResource("12_1obp5")
+volume = -25.0
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
+[sub_resource type="Resource" id="Resource_rwdt5"]
+resource_name = "On Menu Button"
+script = ExtResource("2_xi5h2")
+limit = 3
+type = 17
+sound_effect = ExtResource("13_asn2t")
+volume = -15.0
+pitch_randomness = 0.1
+metadata/_custom_type_script = "uid://b8xh410owphar"
+
 [sub_resource type="Resource" id="Resource_qs8em"]
 resource_name = "Null"
 script = ExtResource("4_lpos2")
@@ -232,7 +254,7 @@ metadata/_custom_type_script = "uid://bi73r60ulsu7q"
 [node name="AudioManager" type="Node3D" unique_id=1821405691]
 process_mode = 3
 script = ExtResource("1_fwuy1")
-sound_effects = Array[ExtResource("2_xi5h2")]([SubResource("Resource_sf3pu"), SubResource("Resource_lpos2"), SubResource("Resource_slcbk"), SubResource("Resource_ovui0"), SubResource("Resource_bga3x"), SubResource("Resource_rxm80"), SubResource("Resource_8yobu"), SubResource("Resource_k1p65"), SubResource("Resource_w1isn"), SubResource("Resource_6yffi"), SubResource("Resource_hs34q"), SubResource("Resource_4niny"), SubResource("Resource_mglc6"), SubResource("Resource_1obp5"), SubResource("Resource_asn2t"), SubResource("Resource_45tpc")])
+sound_effects = Array[ExtResource("2_xi5h2")]([SubResource("Resource_sf3pu"), SubResource("Resource_lpos2"), SubResource("Resource_slcbk"), SubResource("Resource_ovui0"), SubResource("Resource_bga3x"), SubResource("Resource_rxm80"), SubResource("Resource_8yobu"), SubResource("Resource_k1p65"), SubResource("Resource_w1isn"), SubResource("Resource_6yffi"), SubResource("Resource_hs34q"), SubResource("Resource_4niny"), SubResource("Resource_mglc6"), SubResource("Resource_1obp5"), SubResource("Resource_asn2t"), SubResource("Resource_45tpc"), SubResource("Resource_klawk"), SubResource("Resource_rwdt5")])
 sound_musics = Array[ExtResource("4_lpos2")]([SubResource("Resource_qs8em"), SubResource("Resource_ae5oe"), SubResource("Resource_tpt5d"), SubResource("Resource_68p7j"), SubResource("Resource_qbirx"), SubResource("Resource_xa7y2"), SubResource("Resource_ft4fm"), SubResource("Resource_5ngse"), SubResource("Resource_dlm3o"), SubResource("Resource_k1kdb"), SubResource("Resource_bbb60")])
 
 [node name="Music" type="Node3D" parent="." unique_id=1480537612]

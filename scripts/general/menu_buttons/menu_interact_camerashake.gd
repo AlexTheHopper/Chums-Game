@@ -18,10 +18,12 @@ func _ready() -> void:
 func left() -> void:
 	index = max(0, index - 1)
 	change_shake()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func right() -> void:
 	index = min(shake_images.keys().size() - 1, index + 1)
 	change_shake()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func change_shake(save:bool = true) -> void:
 	texture.texture = shake_images[index]

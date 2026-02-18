@@ -21,10 +21,12 @@ func _ready() -> void:
 func left() -> void:
 	index = max(0, index - 1)
 	change_volume()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func right() -> void:
 	index = min(vol_images.keys().size() - 1, index + 1)
 	change_volume()
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 
 func change_volume(save:bool = true) -> void:
 	texture.texture = vol_images[index]
