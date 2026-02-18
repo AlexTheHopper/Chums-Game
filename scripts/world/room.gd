@@ -39,41 +39,33 @@ func _ready() -> void:
 func fill_tunnels():
 	#Fix walls etc.
 	var door_dist := 9
-	if not Global.has_door(Global.room_location, rotate_vec2i(Vector2i(1, 0), rot_count)):
+	if not Global.has_door(Global.room_location, Functions.rotate_vec_2i(Vector2i(1, 0), rot_count)):
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(door_dist + 1, 0, w), 1, 22)
 			#Ramps:
 			grid_map.set_cell_item(Vector3(door_dist, 0, w), 16, 22)
 
-	if not Global.has_door(Global.room_location, rotate_vec2i(Vector2i(-1, 0), rot_count)):
+	if not Global.has_door(Global.room_location, Functions.rotate_vec_2i(Vector2i(-1, 0), rot_count)):
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(-(door_dist + 1), 0, w), 1, 16)
 			#Ramps:
 			grid_map.set_cell_item(Vector3(-door_dist, 0, w), 16, 16)
 
-	if not Global.has_door(Global.room_location, rotate_vec2i(Vector2i(0, 1), rot_count)):
+	if not Global.has_door(Global.room_location, Functions.rotate_vec_2i(Vector2i(0, 1), rot_count)):
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(w, 0, door_dist + 1), 1, 10)
 			#Ramps:
 			grid_map.set_cell_item(Vector3(w, 0, door_dist), 16, 10)
 
-	if not Global.has_door(Global.room_location, rotate_vec2i(Vector2i(0, -1), rot_count)):
+	if not Global.has_door(Global.room_location, Functions.rotate_vec_2i(Vector2i(0, -1), rot_count)):
 		for w in range(-3, 4):
 			#Solid Blocks
 			grid_map.set_cell_item(Vector3(w, 0, -(door_dist + 1)), 1, 0)
 			#Ramps:
 			grid_map.set_cell_item(Vector3(w, 0, -door_dist), 16, 0)
-
-func rotate_vec2i(v: Vector2i, n: int) -> Vector2i:
-	match n % 4:
-		0: return v
-		1: return Vector2i(v.y, -v.x)
-		2: return Vector2i(-v.x, -v.y)
-		3: return Vector2i(-v.y, v.x)
-	return v
 
 #Enemy chum spawner:
 func _on_spawn_timer_timeout() -> void:

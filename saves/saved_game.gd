@@ -32,3 +32,4 @@ extends Resource
 @export var room_location:Vector2i
 @export var room_history:Array
 @export var world_map:Dictionary
+@export var crates_broken:Dictionary[int, bool]

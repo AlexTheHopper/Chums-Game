@@ -19,6 +19,20 @@ func angle_to_xz(body1, body2) -> float:
 	var dir = vector_to_normalized(body1, body2)
 	var dir_plane = Vector2(dir[2], dir[0])
 	return dir_plane.angle()
+
+func rotate_vec_2i(vec: Vector2i, turns: int) -> Vector2i:
+	match turns % 4:
+		0: return vec
+		1: return Vector2i(vec.y, -vec.x)
+		2: return Vector2i(-vec.x, -vec.y)
+		3: return Vector2i(-vec.y, vec.x)
+	return vec
+
+func rotate_vec_2i_list(list: Array, turns: int) -> Array:
+	var result: Array = []
+	for vec in list:
+		result.append(rotate_vec_2i(vec, turns))
+	return result
 	
 func get_closest_chum_in_group(chum, group):
 	var members = get_tree().get_nodes_in_group(group)

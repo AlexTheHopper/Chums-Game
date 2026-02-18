@@ -1,5 +1,5 @@
 extends Node
-var dev_mode := false
+var dev_mode := true
 
 var game_begun := false
 var world_transition_count := 0
@@ -17,6 +17,13 @@ var world_map_guide = {"lobby": {},
 						"upgrade": {},
 						"lore": {},
 						}
+
+var crates_broken: Dictionary[int, bool] = {
+	0: false,
+}
+var crate_info: Dictionary[int, Dictionary] = {
+	0: {"world_n": 1, "chum_id": 1, "pattern": [Vector2i(0, 1)]},
+}
 
 var in_battle := false
 var is_alive := true
@@ -466,6 +473,7 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		Global.print_dev('Now in world %s, room %s.' % [Global.current_world_num, str(new_room_location)])
 		if room_history[-1][1] != new_room_location or room_history[-1][0] != current_world_num:
 			room_history.append([current_world_num, new_room_location])
+			check_crate_pattern()
 		
 		if current_room_node:
 			current_room_node.queue_free()
@@ -476,6 +484,27 @@ func transition_to_level(new_room_location: Vector2i, length = 1):
 		rooms.add_child(current_room_node)
 		
 		hud.display_minimap(true)
+
+func check_crate_pattern() -> void:
+	#If history is too short, do nothing
+	if room_history.size() <= 1:
+		return
+
+	#Get movement history
+	var last_world_n: int = room_history[-1][0]
+	var movement_history: Array = []
+	for room_n in range(room_history.size() - 1, -1, -1):
+		if room_history[room_n - 1][0] != last_world_n or room_n == 0:
+			break
+		movement_history.append(room_history[room_n][1] - room_history[room_n - 1][1])
+	movement_history.reverse()
+
+	#Check against crate patterns & rotations
+	for crate_id in crate_info.keys():
+		for rotation in [0, 1, 2, 3]:
+			if Functions.rotate_vec_2i_list(crate_info[crate_id]["pattern"], rotation) == movement_history.slice(-crate_info[crate_id]["pattern"].size()):
+				if crate_id in crates_broken.keys() and last_world_n == crate_info[crate_id]["world_n"]:
+					crates_broken[crate_id] = true
 
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
 	room_changed_to_boss.emit()
