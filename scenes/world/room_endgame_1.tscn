@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://8wtsdvcs8ups" path="res://scenes/world/decorations/column_1.tscn" id="8_05brq"]
 [ext_resource type="PackedScene" uid="uid://bs0a04dy4rhs5" path="res://scenes/world/decorations/frame_destructible_1.tscn" id="9_mylyd"]
 [ext_resource type="PackedScene" uid="uid://bxc20hvgkeird" path="res://scenes/world/decorations/frame_destructible_2.tscn" id="10_m2ubw"]
+[ext_resource type="PackedScene" uid="uid://d13hudifh0oji" path="res://scenes/world/decorations/rubble_1.tscn" id="11_m2ubw"]
 [ext_resource type="PackedScene" uid="uid://cq08vipfekj02" path="res://scenes/world/fall_stopper.tscn" id="16_ltcjo"]
 [ext_resource type="PackedScene" uid="uid://c115b3o53shsm" path="res://scenes/entities/lore_drop.tscn" id="25_e02ak"]
 
@@ -141,6 +142,75 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 
 
 [node name="FrameDestructible4" parent="Decorations" unique_id=789396379 instance=ExtResource("10_m2ubw")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 0, -3)
+
+[node name="Rubble1" parent="Decorations" unique_id=1364313357 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 4, -106)
+
+[node name="Rubble2" parent="Decorations" unique_id=1440061829 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 4, -101.6)
+
+[node name="Rubble3" parent="Decorations" unique_id=368473806 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.8, 4, -98.9)
+
+[node name="Rubble4" parent="Decorations" unique_id=1076447467 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 4, -94.6)
+
+[node name="Rubble5" parent="Decorations" unique_id=1145511407 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.3, 4, -88.9)
+
+[node name="Rubble6" parent="Decorations" unique_id=1530054126 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.8, 4, -90.6)
+
+[node name="Rubble7" parent="Decorations" unique_id=900773674 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9, 4, -82.5)
+
+[node name="Rubble8" parent="Decorations" unique_id=975596404 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.8, 4, -109.299995)
+
+[node name="Rubble9" parent="Decorations" unique_id=908252724 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.3, 4, -104.7)
+
+[node name="Rubble10" parent="Decorations" unique_id=853062346 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8, 4, -101.1)
+
+[node name="Rubble11" parent="Decorations" unique_id=1716242866 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.4, 4, -98.6)
+
+[node name="Rubble12" parent="Decorations" unique_id=892868911 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.099999, 4, -94.299995)
+
+[node name="Rubble13" parent="Decorations" unique_id=324054210 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 4, -89.2)
+
+[node name="Rubble14" parent="Decorations" unique_id=1135077433 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.6, 4, -87.299995)
+
+[node name="Rubble15" parent="Decorations" unique_id=1839400086 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4, 4, -82.2)
+
+[node name="Rubble16" parent="Decorations" unique_id=1883332132 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 2, -70.5)
+
+[node name="Rubble17" parent="Decorations" unique_id=641886903 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.0000005, 2, -69.7)
+
+[node name="Rubble18" parent="Decorations" unique_id=1030499150 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7999997, 2, -58.3)
+
+[node name="Rubble19" parent="Decorations" unique_id=1343846649 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.0000005, 2, -58.299995)
+
+[node name="Rubble20" parent="Decorations" unique_id=2084180224 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7999997, 2, -37.399998)
+
+[node name="Rubble21" parent="Decorations" unique_id=1020833259 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.0000005, 2, -37.399994)
+
+[node name="Rubble22" parent="Decorations" unique_id=1875356869 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7999997, 2, -25.599998)
+
+[node name="Rubble23" parent="Decorations" unique_id=860350314 instance=ExtResource("11_m2ubw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.0000005, 2, -25.599995)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2115430174]
 environment = SubResource("Environment_1q6o2")

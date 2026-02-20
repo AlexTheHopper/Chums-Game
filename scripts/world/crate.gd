@@ -39,7 +39,7 @@ func spawn_object() -> void:
 		var crate_bracelet = load("res://scenes/entities/currency_bracelet.tscn").instantiate()
 		crate_bracelet.targets_player = false
 		crate_bracelet.jump_on_spawn = false
-		crate_bracelet.value = 15
+		crate_bracelet.value = {0: 10, 1: 15, 2: 25, 3: 30, 4: 35}[Global.current_world_num]
 		add_child(crate_bracelet)
 		crate_bracelet.global_position = global_position
 		crate_bracelet.scale = Vector3(1.5, 1.5, 1.5)

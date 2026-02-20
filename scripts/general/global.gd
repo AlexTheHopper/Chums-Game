@@ -1,5 +1,5 @@
 extends Node
-var dev_mode := true
+var dev_mode := false
 
 var game_begun := false
 var world_transition_count := 0
@@ -23,12 +23,12 @@ var crate_info: Dictionary[int, Dictionary] = {
 	0: {"world_n": 1, "object_id": 4, "found_in": [2], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(0, -1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(-1, 0)]}, #Jabby
 	1: {"world_n": 1, "object_id": 10, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(-1, 0),Vector2i(0, -1),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, 1)]}, #Floaty
 	2: {"world_n": 1, "object_id": 13, "found_in": [3], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(0, -1)]}, #Leapy
-	3: {"world_n": 1, "object_id": 0, "found_in": [1], "pattern": [Vector2i(0, -1),Vector2i(0, -1),Vector2i(-1, 0),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(0, -1)]}, #Bracelets
+	3: {"world_n": 1, "object_id": 0, "found_in": [2], "pattern": [Vector2i(0, -1),Vector2i(0, -1),Vector2i(-1, 0),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(0, -1)]}, #Bracelets
 	
-	4: {"world_n": 2, "object_id": 8, "found_in": [1], "pattern": [Vector2i(1, 0),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(-1, 0)]}, #Bolt
+	4: {"world_n": 2, "object_id": 8, "found_in": [2], "pattern": [Vector2i(1, 0),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(-1, 0)]}, #Bolt
 	5: {"world_n": 2, "object_id": 0, "found_in": [2], "pattern": [Vector2i(-1, 0),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(-1, 0)]}, #Bracelets
 	
-	6: {"world_n": 3, "object_id": 8, "found_in": [1], "pattern": [Vector2i(1, 0),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(-1, 0)]}, #Bolt
+	6: {"world_n": 3, "object_id": 8, "found_in": [3], "pattern": [Vector2i(1, 0),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(-1, 0)]}, #Bolt
 	7: {"world_n": 3, "object_id": 10, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, 1)]}, #Floaty
 	8: {"world_n": 3, "object_id": 0, "found_in": [3], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(0, -1),Vector2i(-1, 0),Vector2i(0, 1)]}, #Bracelets
 	
