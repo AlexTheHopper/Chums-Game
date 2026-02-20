@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bvudmkr4rfci1"
-path="res://.godot/imported/statue_base.glb-d5505a46cb6f3fa46b1e6710f044c7fb.scn"
+uid="uid://d3vdx5ynhe7uf"
+path="res://.godot/imported/pattern_6.glb-4aaeccc466fa2808ff70a5de02f39b2a.scn"
 
 [deps]
 
-source_file="res://Blender_Assets/Other_Exports/statue_base.glb"
-dest_files=["res://.godot/imported/statue_base.glb-d5505a46cb6f3fa46b1e6710f044c7fb.scn"]
+source_file="res://assets/world/crate_patterns/pattern_6.glb"
+dest_files=["res://.godot/imported/pattern_6.glb-4aaeccc466fa2808ff70a5de02f39b2a.scn"]
 
 [params]
 

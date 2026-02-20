@@ -9,6 +9,7 @@ var world_map := {}
 var world_grid := []
 var viewed_lore := []
 var save_seed: int
+var crates_broken: Dictionary[int, bool]
 var world_map_guide = {"lobby": {},
 						"room": {},
 						"fountain": {},
@@ -18,15 +19,23 @@ var world_map_guide = {"lobby": {},
 						"lore": {},
 						}
 
-var crates_broken: Dictionary[int, bool] = {
-	0: false,
-	1: false,
-	2: false,
-}
 var crate_info: Dictionary[int, Dictionary] = {
-	0: {"world_n": 1, "chum_id": 4, "pattern": [Vector2i(0, 1),Vector2i(1, 0)]},
-	1: {"world_n": 1, "chum_id": 10, "pattern": [Vector2i(0, 1),Vector2i(1, 0)]},
-	2: {"world_n": 1, "chum_id": 13, "pattern": [Vector2i(0, 1),Vector2i(1, 0)]},
+	0: {"world_n": 1, "object_id": 4, "found_in": [2], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Jabby
+	1: {"world_n": 1, "object_id": 10, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Floaty
+	2: {"world_n": 1, "object_id": 13, "found_in": [3], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Leapy
+	3: {"world_n": 1, "object_id": 0, "found_in": [1], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Bracelets
+	
+	4: {"world_n": 2, "object_id": 8, "found_in": [1], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Bolt
+	5: {"world_n": 2, "object_id": 0, "found_in": [2], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Bracelets
+	
+	6: {"world_n": 3, "object_id": 8, "found_in": [1], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Bolt
+	7: {"world_n": 3, "object_id": 10, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Floaty
+	8: {"world_n": 3, "object_id": 0, "found_in": [3], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Bracelets
+	
+	9: {"world_n": 4, "object_id": 6, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Healio
+	10: {"world_n": 4, "object_id": 16, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Ring of Pearls
+	11: {"world_n": 4, "object_id": 26, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Granite
+	12: {"world_n": 4, "object_id": 27, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Marble
 }
 
 var in_battle := false
@@ -130,6 +139,8 @@ func _ready():
 							},
 			},
 	}
+	for n in crate_info.keys():
+		crates_broken[n] = false
 
 func get_room_tscn(world_n, room_id) -> PackedScene:
 	if world_n == 0:
@@ -384,6 +395,7 @@ func create_world(world_n):
 		required_statues.append(id) 
 	var other_statues: Array = world_info[world_n]["statue_optional"]
 	var room_specific_id := -1
+	var to_spawn := -1
 	world_map = {}
 	#Uses the world_grid to construct information about all rooms.
 	for y in range(0, (2 * size) + 1):
@@ -397,6 +409,7 @@ func create_world(world_n):
 				room_specific_id = other_statues.pick_random()
 				if len(required_statues) > 0:
 					room_specific_id = required_statues.pop_back()
+				to_spawn = 0
 			
 			elif world_grid[x][y] in [3, 6]:
 				#otherwise choose actual item count
@@ -418,7 +431,7 @@ func create_world(world_n):
 										"room_specific_id": room_specific_id,
 										"entered": false,
 										"activated": false,
-										"to_spawn": -1,
+										"to_spawn": to_spawn,
 										"value": Vector2(x - size, y - size).length(),
 										"max_value": Vector2(x - size, y - size).length(),
 										"bell_angle": [0, PI / 2, PI, -PI / 2].pick_random(),
@@ -510,7 +523,7 @@ func check_crate_pattern() -> void:
 	for crate_id in crate_info.keys():
 		for rotation in [0, 1, 2, 3]:
 			if Functions.rotate_vec_2i_list(crate_info[crate_id]["pattern"], rotation) == movement_history.slice(-crate_info[crate_id]["pattern"].size()):
-				if crate_id in crates_broken.keys() and last_world_n == crate_info[crate_id]["world_n"]:
+				if crate_id in crates_broken.keys() and crates_broken[crate_id] == false and last_world_n == crate_info[crate_id]["world_n"]:
 					crates_broken[crate_id] = true
 					AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_CRATE_BREAK)
 
@@ -628,7 +641,7 @@ func transition_to_endgame(prisoner_id, length = 1):
 	
 	hud.display_minimap(false)
 	
-	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE["WORLD_ENDGAME_ENTER"])
+	AudioManager.create_music(SoundMusic.SOUND_MUSIC_TYPE.WORLD_ENDGAME_ENTER)
 
 func randomize_seed() -> void:
 	seed(randi() + hash(room_history))

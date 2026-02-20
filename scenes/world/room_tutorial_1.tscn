@@ -337,7 +337,7 @@ targets_player = false
 jump_on_spawn = false
 
 [node name="Bracelet4" parent="Decorations" unique_id=1146226227 instance=ExtResource("16_k6tt5")]
-transform = Transform3D(0.99415094, 0.107999355, -4.7208015e-09, 0, -4.371139e-08, -1, -0.107999355, 0.99415094, -4.3455717e-08, -3.6, 2.3, -45.2)
+transform = Transform3D(0.9941509, 0.10799935, -4.7208015e-09, 0, -4.3711385e-08, -1, -0.10799935, 0.9941509, -4.3455717e-08, -3.6, 2.3, -45.2)
 value = 3
 targets_player = false
 jump_on_spawn = false

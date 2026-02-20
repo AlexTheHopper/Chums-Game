@@ -75,9 +75,6 @@ metadata/_editor_floor_ = Vector3(11, -7, -15)
 [node name="Tree1" parent="Decorations" unique_id=1720274203 instance=ExtResource("4_621ml")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2, 0, -4.5)
 
-[node name="Tree2" parent="Decorations" unique_id=297426008 instance=ExtResource("4_621ml")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.6, 0, -10)
-
 [node name="Tree3" parent="Decorations" unique_id=2000054278 instance=ExtResource("4_621ml")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.2000003, 0, -11.3)
 
@@ -118,7 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2, 0, -3.5000002)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6999998, 0, -8.7)
 
 [node name="Grass4" parent="Decorations" unique_id=139109241 instance=ExtResource("8_6npe4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2, 0, -12.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12.1)
 
 [node name="Grass2" parent="Decorations" unique_id=1195738 instance=ExtResource("6_lclcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.900001, 0, -7.7000003)
@@ -224,3 +221,7 @@ crate_id = 1
 [node name="Crate3" parent="Crates" unique_id=919915748 instance=ExtResource("12_lclcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 13.4)
 crate_id = 2
+
+[node name="Crate4" parent="Crates" unique_id=1095411933 instance=ExtResource("12_lclcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -10.100001)
+crate_id = 3

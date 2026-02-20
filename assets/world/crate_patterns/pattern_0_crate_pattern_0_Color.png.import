@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdvtb1g6sucab"
-path="res://.godot/imported/statue_base_statue_base_Color.png-e27dfe262f7344348375f4ec3432a6f6.ctex"
+uid="uid://b6wmud3pdq8bs"
+path="res://.godot/imported/pattern_0_crate_pattern_0_Color.png-9489f904cd5565125017161b7ab46f56.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "048b1e087ed0ab995aded2f3be5c8b35"
+"md5": "b43ab2afb84b268c6aa8aa54918d53e3"
 }
 
 [deps]
 
-source_file="res://Blender_Assets/Other_Exports/statue_base_statue_base_Color.png"
-dest_files=["res://.godot/imported/statue_base_statue_base_Color.png-e27dfe262f7344348375f4ec3432a6f6.ctex"]
+source_file="res://assets/world/crate_patterns/pattern_0_crate_pattern_0_Color.png"
+dest_files=["res://.godot/imported/pattern_0_crate_pattern_0_Color.png-9489f904cd5565125017161b7ab46f56.ctex"]
 
 [params]
 

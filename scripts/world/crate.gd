@@ -12,7 +12,7 @@ func _ready() -> void:
 		if Global.crates_broken[crate_id]:
 			#Crate has been opened - spawn chum
 			crate_whole.queue_free()
-			spawn_chum()
+			spawn_object()
 		else:
 			#Crate has not been opened - no chum
 			crate_broken.queue_free()
@@ -20,19 +20,31 @@ func _ready() -> void:
 		#Chum has been collected - no chum
 		crate_whole.queue_free()
 
-func spawn_chum() -> void:
-	var crate_chum = ChumsManager.get_specific_chum_id(Global.crate_info[crate_id]["chum_id"]).instantiate()
-	crate_chum.bracelet_cost = 1
-	for q in crate_chum.quality.keys():
-		crate_chum.quality[q] = -5
-	crate_chum.stats_set = true
-	crate_chum.initial_state_override = "Knock"
-	crate_chum.start_health = 0
+func spawn_object() -> void:
+	if Global.crate_info[crate_id]["object_id"] in ChumsManager.chums_list.keys():
+		var crate_chum = ChumsManager.get_specific_chum_id(Global.crate_info[crate_id]["object_id"]).instantiate()
+		crate_chum.bracelet_cost = 1
+		for q in crate_chum.quality.keys():
+			crate_chum.quality[q] = -5
+		crate_chum.stats_set = true
+		crate_chum.initial_state_override = "Knock"
+		crate_chum.start_health = 0
+		
+		Global.current_room_node.get_parent().get_parent().get_node("Chums").add_child(crate_chum)
+
+		crate_chum.global_position = global_position
+		crate_chum.befriended.connect(on_object_used)
 	
-	Global.current_room_node.get_parent().get_parent().get_node("Chums").add_child(crate_chum)
+	else:
+		var crate_bracelet = load("res://scenes/entities/currency_bracelet.tscn").instantiate()
+		crate_bracelet.targets_player = false
+		crate_bracelet.jump_on_spawn = false
+		crate_bracelet.value = 10
+		add_child(crate_bracelet)
+		crate_bracelet.global_position = global_position
+		crate_bracelet.scale = Vector3(1.5, 1.5, 1.5)
+		crate_bracelet.freeze = true
+		crate_bracelet.collected.connect(on_object_used)
 
-	crate_chum.global_position = global_position
-	crate_chum.befriended.connect(on_chum_befriended)
-
-func on_chum_befriended() -> void:
+func on_object_used() -> void:
 	Global.crates_broken.erase(crate_id)

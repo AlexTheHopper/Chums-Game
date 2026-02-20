@@ -37,6 +37,8 @@ func _ready() -> void:
 		animation_player.speed_scale = 10.0
 		animation_player.play("activate")
 		open_door()
+	
+	check_for_pattern()
 
 func _on_timer_timeout() -> void:
 	active = true
@@ -93,3 +95,8 @@ func do_shake() -> void:
 		get_tree().get_first_node_in_group("Camera").trigger_shake(2.5, 2.5)
 		AudioManager.controller_shake(randf_range(0.6, 0.9), 0.0, randf_range(0.5, 0.75))
 		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_STATUE_SHAKE)
+
+func check_for_pattern() -> void:
+	var pattern_num = Global.world_map[Global.room_location]["to_spawn"]
+	if pattern_num >= 0:
+		get_node("Patterns/crate_pattern_%s" % pattern_num).visible = true

@@ -41,6 +41,7 @@ func _process(_delta: float) -> void:
 		return
 
 	if Input.is_action_just_pressed("pause") and Global.is_alive and Global.current_room_node.TYPE != "endgame":
+		AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 		toggle_pause()
 	
 	if is_paused and Input.is_action_just_pressed("attack"):
@@ -60,7 +61,6 @@ func _process(_delta: float) -> void:
 	minimap.rotation = get_tree().get_first_node_in_group("Player").camera_controller.rotation.y
 
 func toggle_pause():
-	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_MENU_BUTTON)
 	is_exit_warning = false
 	if is_paused and get_tree().paused:
 		get_tree().paused = false
