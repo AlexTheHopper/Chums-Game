@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bs0a04dy4rhs5" path="res://scenes/world/decorations/frame_destructible_1.tscn" id="5_hcfsj"]
 [ext_resource type="PackedScene" uid="uid://bxc20hvgkeird" path="res://scenes/world/decorations/frame_destructible_2.tscn" id="6_car0k"]
 [ext_resource type="PackedScene" uid="uid://d13hudifh0oji" path="res://scenes/world/decorations/rubble_1.tscn" id="7_a022c"]
+[ext_resource type="PackedScene" uid="uid://drc8g4whcexje" path="res://scenes/world/crate.tscn" id="9_car0k"]
 [ext_resource type="PackedScene" uid="uid://b3gytoxpt1nws" path="res://scenes/entities/punching_bag.tscn" id="9_dlqpl"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_hcfsj"]
@@ -111,10 +112,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -13)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -13)
 
 [node name="FrameDestructible1" parent="Decorations" unique_id=1491468925 instance=ExtResource("5_hcfsj")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9, 0, -9)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6, 0, -10.5)
 
 [node name="FrameDestructible2" parent="Decorations" unique_id=1236832145 instance=ExtResource("5_hcfsj")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11, 0, 11)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 11.9, 0, 10)
 
 [node name="FrameDestructible3" parent="Decorations" unique_id=9303822 instance=ExtResource("6_car0k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 11)
@@ -132,7 +133,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10,
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 0, 8.6)
 
 [node name="Rubble4" parent="Decorations" unique_id=1944979241 instance=ExtResource("7_a022c")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -11.3, 0, -7.2000003)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -11.3, 0, -5.6000004)
 
 [node name="Rubble5" parent="Decorations" unique_id=399682225 instance=ExtResource("7_a022c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2000003, 0, -5.5)
@@ -156,7 +157,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 13.6
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.2, 0, 9.1)
 
 [node name="Rubble12" parent="Decorations" unique_id=50233725 instance=ExtResource("7_a022c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 0, 11.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 14)
 
 [node name="Entities" type="Node3D" parent="." unique_id=1864275319]
 
@@ -192,3 +193,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
 
 [node name="SpawnRayCast" type="RayCast3D" parent="." unique_id=479955477]
 target_position = Vector3(0, -12, 0)
+
+[node name="Crates" type="Node3D" parent="." unique_id=303648091]
+
+[node name="Crate4" parent="Crates" unique_id=1784370572 instance=ExtResource("9_car0k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4, 0, 12.799999)
+crate_id = 4
+
+[node name="Crate5" parent="Crates" unique_id=142799336 instance=ExtResource("9_car0k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2, 0, -8.700002)
+crate_id = 5

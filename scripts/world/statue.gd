@@ -99,4 +99,4 @@ func do_shake() -> void:
 func check_for_pattern() -> void:
 	var pattern_num = Global.world_map[Global.room_location]["to_spawn"]
 	if pattern_num >= 0:
-		get_node("Patterns/crate_pattern_%s" % pattern_num).visible = true
+		get_node("MeshNode/Patterns/crate_pattern_%s" % pattern_num).visible = true

@@ -93,7 +93,8 @@ func save_room():
 	
 	#Add current data:
 	Global.world_map[Global.room_location]["entered"] = true
-	Global.world_map[Global.room_location]["to_spawn"] = enemies_to_spawn
+	if Global.world_map[Global.room_location]["type"] != 5:
+		Global.world_map[Global.room_location]["to_spawn"] = enemies_to_spawn
 	for group in ["Chums_Enemy", "Chums_Neutral"]:
 		for chum in get_tree().get_nodes_in_group(group).filter(func(c): return not c.is_temporary):
 			Global.world_map[Global.room_location]["chums"].append({

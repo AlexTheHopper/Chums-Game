@@ -211,17 +211,17 @@ target_position = Vector3(0, -12, 0)
 
 [node name="Crates" type="Node3D" parent="." unique_id=299330271]
 
-[node name="Crate" parent="Crates" unique_id=1784370572 instance=ExtResource("12_lclcl")]
+[node name="Crate0" parent="Crates" unique_id=1784370572 instance=ExtResource("12_lclcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4, 0, -10.2)
 
-[node name="Crate2" parent="Crates" unique_id=1332739731 instance=ExtResource("12_lclcl")]
+[node name="Crate1" parent="Crates" unique_id=1332739731 instance=ExtResource("12_lclcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.000001, 0, 13.099999)
 crate_id = 1
 
-[node name="Crate3" parent="Crates" unique_id=919915748 instance=ExtResource("12_lclcl")]
+[node name="Crate2" parent="Crates" unique_id=919915748 instance=ExtResource("12_lclcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 13.4)
 crate_id = 2
 
-[node name="Crate4" parent="Crates" unique_id=1095411933 instance=ExtResource("12_lclcl")]
+[node name="Crate3" parent="Crates" unique_id=1095411933 instance=ExtResource("12_lclcl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -10.100001)
 crate_id = 3

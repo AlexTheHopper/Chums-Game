@@ -20,22 +20,22 @@ var world_map_guide = {"lobby": {},
 						}
 
 var crate_info: Dictionary[int, Dictionary] = {
-	0: {"world_n": 1, "object_id": 4, "found_in": [2], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Jabby
-	1: {"world_n": 1, "object_id": 10, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Floaty
-	2: {"world_n": 1, "object_id": 13, "found_in": [3], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Leapy
-	3: {"world_n": 1, "object_id": 0, "found_in": [1], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Bracelets
+	0: {"world_n": 1, "object_id": 4, "found_in": [2], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(0, -1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(-1, 0)]}, #Jabby
+	1: {"world_n": 1, "object_id": 10, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(-1, 0),Vector2i(0, -1),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, 1)]}, #Floaty
+	2: {"world_n": 1, "object_id": 13, "found_in": [3], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(0, -1)]}, #Leapy
+	3: {"world_n": 1, "object_id": 0, "found_in": [1], "pattern": [Vector2i(0, -1),Vector2i(0, -1),Vector2i(-1, 0),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(0, -1)]}, #Bracelets
 	
-	4: {"world_n": 2, "object_id": 8, "found_in": [1], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Bolt
-	5: {"world_n": 2, "object_id": 0, "found_in": [2], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Bracelets
+	4: {"world_n": 2, "object_id": 8, "found_in": [1], "pattern": [Vector2i(1, 0),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(-1, 0)]}, #Bolt
+	5: {"world_n": 2, "object_id": 0, "found_in": [2], "pattern": [Vector2i(-1, 0),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(-1, 0)]}, #Bracelets
 	
-	6: {"world_n": 3, "object_id": 8, "found_in": [1], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Bolt
-	7: {"world_n": 3, "object_id": 10, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Floaty
-	8: {"world_n": 3, "object_id": 0, "found_in": [3], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Bracelets
+	6: {"world_n": 3, "object_id": 8, "found_in": [1], "pattern": [Vector2i(1, 0),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(-1, 0)]}, #Bolt
+	7: {"world_n": 3, "object_id": 10, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, 1)]}, #Floaty
+	8: {"world_n": 3, "object_id": 0, "found_in": [3], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(0, -1),Vector2i(-1, 0),Vector2i(0, 1)]}, #Bracelets
 	
-	9: {"world_n": 4, "object_id": 6, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Healio
-	10: {"world_n": 4, "object_id": 16, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Ring of Pearls
-	11: {"world_n": 4, "object_id": 26, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Granite
-	12: {"world_n": 4, "object_id": 27, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0)]}, #Marble
+	9: {"world_n": 4, "object_id": 6, "found_in": [4], "pattern": [Vector2i(-1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, 1),Vector2i(0, 1)]}, #Healio
+	10: {"world_n": 4, "object_id": 16, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(1, 0),Vector2i(0, -1),Vector2i(1, 0),Vector2i(0, 1),Vector2i(1, 0),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(-1, 0),Vector2i(-1, 0)]}, #Ring of Pearls
+	11: {"world_n": 4, "object_id": 26, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(-1, 0),Vector2i(0, -1),Vector2i(-1, 0),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0)]}, #Granite
+	12: {"world_n": 4, "object_id": 27, "found_in": [4], "pattern": [Vector2i(0, 1),Vector2i(0, 1),Vector2i(0, 1),Vector2i(0, 1),Vector2i(1, 0),Vector2i(1, 0),Vector2i(0, -1),Vector2i(-1, 0),Vector2i(0, -1),Vector2i(1, 0)]}, #Marble
 }
 
 var in_battle := false
@@ -288,7 +288,8 @@ func get_world_grid(world_n, set_seed := 0):
 
 	var size = world_info[world_n]["map_size"]
 	#2D Array of where actual rooms are in the world
-	var corridor_count := int(max(30 + size * size / 2, 5))
+	var corridor_count := int(max(35 + (size ** 3), 5))
+	print(corridor_count)
 	var corridor_lengths := range(2, int(max(1.75 * size, 4)))
 	var walks := [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
 	var room_count := int(max(size * size / 2, 1))
@@ -409,7 +410,10 @@ func create_world(world_n):
 				room_specific_id = other_statues.pick_random()
 				if len(required_statues) > 0:
 					room_specific_id = required_statues.pop_back()
-				to_spawn = 0
+				if randf() < 0.2:
+					var values = crate_info.keys().filter(func(id): return world_n in crate_info[id]["found_in"])
+					if values.size() > 0:
+						to_spawn = values.pick_random()
 			
 			elif world_grid[x][y] in [3, 6]:
 				#otherwise choose actual item count
@@ -525,6 +529,7 @@ func check_crate_pattern() -> void:
 			if Functions.rotate_vec_2i_list(crate_info[crate_id]["pattern"], rotation) == movement_history.slice(-crate_info[crate_id]["pattern"].size()):
 				if crate_id in crates_broken.keys() and crates_broken[crate_id] == false and last_world_n == crate_info[crate_id]["world_n"]:
 					crates_broken[crate_id] = true
+					print_dev("Broken Crate number: %s" % crate_id)
 					AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_CRATE_BREAK)
 
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):

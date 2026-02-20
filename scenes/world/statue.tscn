@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://h3h2dsbq4joa" path="res://scripts/world/statue.gd" id="1_0pl1r"]
 [ext_resource type="PackedScene" uid="uid://ccexq20uvxibi" path="res://scenes/world/room_changer_to_boss.tscn" id="2_jqxfr"]
+[ext_resource type="Texture2D" uid="uid://cfovq2sla51x2" path="res://assets/world/crate_patterns/pattern_1_crate_pattern_1_Color.png" id="3_ulhrq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8002e"]
 size = Vector3(6, 4.2, 6)
@@ -55,120 +56,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gk3p5")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0pl1r"]
-size = Vector3(9.5, 0.5, 9.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gk3p5"]
-size = Vector3(5, 1, 5)
-
-[sub_resource type="Animation" id="Animation_gk3p5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshNode:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 4.2, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshNode/StaticBody3D:collision_layer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshNode/StaticBody3D:collision_mask")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_8002e"]
-resource_name = "activate"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshNode:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 4.2, 0), Vector3(0, 4.2, 0), Vector3(0, -5, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1.5, 2.5, 3.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"do_shake"
-}, {
-"args": [],
-"method": &"do_shake"
-}, {
-"args": [],
-"method": &"do_shake"
-}, {
-"args": [],
-"method": &"do_shake"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshNode/StaticBody3D:collision_layer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshNode/StaticBody3D:collision_mask")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vqmng"]
-_data = {
-&"RESET": SubResource("Animation_gk3p5"),
-&"activate": SubResource("Animation_8002e")
-}
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8002e"]
 load_path = "res://.godot/imported/pattern_0_crate_pattern_0_Color.png-9489f904cd5565125017161b7ab46f56.ctex"
 
@@ -219,7 +106,7 @@ shadow_mesh = SubResource("ArrayMesh_bknvf")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqxfr"]
 resource_name = "crate_pattern_1_13_Material"
-albedo_texture = SubResource("CompressedTexture2D_ufl2i")
+albedo_texture = ExtResource("3_ulhrq")
 emission = Color(1, 1, 1, 1)
 emission_operator = 1
 emission_texture = SubResource("CompressedTexture2D_ufl2i")
@@ -763,6 +650,120 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ifc1f")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0pl1r"]
+size = Vector3(9.5, 0.5, 9.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gk3p5"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="Animation" id="Animation_gk3p5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshNode:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 4.2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshNode/StaticBody3D:collision_layer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshNode/StaticBody3D:collision_mask")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_8002e"]
+resource_name = "activate"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshNode:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 4.2, 0), Vector3(0, 4.2, 0), Vector3(0, -5, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 2.5, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"do_shake"
+}, {
+"args": [],
+"method": &"do_shake"
+}, {
+"args": [],
+"method": &"do_shake"
+}, {
+"args": [],
+"method": &"do_shake"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshNode/StaticBody3D:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshNode/StaticBody3D:collision_mask")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vqmng"]
+_data = {
+&"RESET": SubResource("Animation_gk3p5"),
+&"activate": SubResource("Animation_8002e")
+}
+
 [node name="Statue" type="Node3D" unique_id=214082260]
 script = ExtResource("1_0pl1r")
 
@@ -796,6 +797,62 @@ shape = SubResource("ConvexPolygonShape3D_8002e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2, 0)
 mesh = SubResource("ArrayMesh_vqmng")
 
+[node name="Patterns" type="Node3D" parent="MeshNode" unique_id=516653476]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2, 0)
+
+[node name="crate_pattern_0" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=72828393]
+visible = false
+mesh = SubResource("ArrayMesh_k13jm")
+
+[node name="crate_pattern_1" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=1164094146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, 0)
+visible = false
+mesh = SubResource("ArrayMesh_8002e")
+
+[node name="crate_pattern_2" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=1791174714]
+visible = false
+mesh = SubResource("ArrayMesh_kc7ee")
+
+[node name="crate_pattern_3" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=708472858]
+visible = false
+mesh = SubResource("ArrayMesh_0ey8s")
+
+[node name="crate_pattern_4" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=403647222]
+visible = false
+mesh = SubResource("ArrayMesh_3tcpq")
+
+[node name="crate_pattern_5" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=379397892]
+visible = false
+mesh = SubResource("ArrayMesh_o0nh6")
+
+[node name="crate_pattern_6" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=558439630]
+visible = false
+mesh = SubResource("ArrayMesh_vj7m5")
+
+[node name="crate_pattern_7" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=1380533166]
+visible = false
+mesh = SubResource("ArrayMesh_tr881")
+
+[node name="crate_pattern_8" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=1252864077]
+visible = false
+mesh = SubResource("ArrayMesh_xelft")
+
+[node name="crate_pattern_9" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=1323571352]
+visible = false
+mesh = SubResource("ArrayMesh_l6lth")
+
+[node name="crate_pattern_10" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=592200773]
+visible = false
+mesh = SubResource("ArrayMesh_1me2s")
+
+[node name="crate_pattern_11" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=2121174441]
+visible = false
+mesh = SubResource("ArrayMesh_pxir1")
+
+[node name="crate_pattern_12" type="MeshInstance3D" parent="MeshNode/Patterns" unique_id=2139986221]
+visible = false
+mesh = SubResource("ArrayMesh_l2lfl")
+
 [node name="FlyZone" type="Area3D" parent="." unique_id=569391444]
 collision_layer = 0
 collision_mask = 8
@@ -822,61 +879,6 @@ libraries/ = SubResource("AnimationLibrary_vqmng")
 [node name="Timer" type="Timer" parent="." unique_id=1335410216]
 one_shot = true
 autostart = true
-
-[node name="Patterns" type="Node3D" parent="." unique_id=516653476]
-
-[node name="crate_pattern_0" type="MeshInstance3D" parent="Patterns" unique_id=72828393]
-visible = false
-mesh = SubResource("ArrayMesh_k13jm")
-
-[node name="crate_pattern_1" type="MeshInstance3D" parent="Patterns" unique_id=1164094146]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, 0)
-visible = false
-mesh = SubResource("ArrayMesh_8002e")
-
-[node name="crate_pattern_2" type="MeshInstance3D" parent="Patterns" unique_id=1791174714]
-visible = false
-mesh = SubResource("ArrayMesh_kc7ee")
-
-[node name="crate_pattern_3" type="MeshInstance3D" parent="Patterns" unique_id=708472858]
-visible = false
-mesh = SubResource("ArrayMesh_0ey8s")
-
-[node name="crate_pattern_4" type="MeshInstance3D" parent="Patterns" unique_id=403647222]
-visible = false
-mesh = SubResource("ArrayMesh_3tcpq")
-
-[node name="crate_pattern_5" type="MeshInstance3D" parent="Patterns" unique_id=379397892]
-visible = false
-mesh = SubResource("ArrayMesh_o0nh6")
-
-[node name="crate_pattern_6" type="MeshInstance3D" parent="Patterns" unique_id=558439630]
-visible = false
-mesh = SubResource("ArrayMesh_vj7m5")
-
-[node name="crate_pattern_7" type="MeshInstance3D" parent="Patterns" unique_id=1380533166]
-visible = false
-mesh = SubResource("ArrayMesh_tr881")
-
-[node name="crate_pattern_8" type="MeshInstance3D" parent="Patterns" unique_id=1252864077]
-visible = false
-mesh = SubResource("ArrayMesh_xelft")
-
-[node name="crate_pattern_9" type="MeshInstance3D" parent="Patterns" unique_id=1323571352]
-visible = false
-mesh = SubResource("ArrayMesh_l6lth")
-
-[node name="crate_pattern_10" type="MeshInstance3D" parent="Patterns" unique_id=592200773]
-visible = false
-mesh = SubResource("ArrayMesh_1me2s")
-
-[node name="crate_pattern_11" type="MeshInstance3D" parent="Patterns" unique_id=2121174441]
-visible = false
-mesh = SubResource("ArrayMesh_pxir1")
-
-[node name="crate_pattern_12" type="MeshInstance3D" parent="Patterns" unique_id=2139986221]
-visible = false
-mesh = SubResource("ArrayMesh_l2lfl")
 
 [connection signal="body_entered" from="FlyZone" to="." method="_on_fly_zone_body_entered"]
 [connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
