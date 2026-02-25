@@ -147,7 +147,7 @@ func _ready():
 							7: 3, #Lore
 							8: 0, #Being
 							9: 2, #Swap
-							10: 0, #Sacrifice
+							10: 2, #Sacrifice
 							},
 			},
 	}

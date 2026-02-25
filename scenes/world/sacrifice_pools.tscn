@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://coguumvyvbs5"]
+
+[ext_resource type="Script" uid="uid://brt87ha4ubsm8" path="res://scripts/world/sacrifice_pools.gd" id="1_713li"]
+[ext_resource type="PackedScene" uid="uid://b0wiiljh625qj" path="res://scenes/world/sacririce_pool_keep.tscn" id="1_sb0c0"]
+[ext_resource type="PackedScene" uid="uid://gcm4gqfggnoy" path="res://scenes/world/sacririce_pool_remove.tscn" id="2_bd6it"]
+[ext_resource type="Material" uid="uid://2bkpq6hg3vot" path="res://materials/outline_black.tres" id="4_v1wnj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xb4nt"]
+next_pass = ExtResource("4_v1wnj")
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_mvtc5"]
+material = SubResource("StandardMaterial3D_xb4nt")
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="Curve" id="Curve_rf7tv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.74406785, 1), 0.0, 0.0, 0, 0, Vector2(0.99998, 0), 0.0, 0.0, 0, 0, Vector2(0.99999, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.008726716), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Gradient" id="Gradient_a85ux"]
+offsets = PackedFloat32Array(0, 0.5354478, 0.8134328)
+colors = PackedColorArray(0.75608736, 0.7560873, 0.7560873, 1, 0.57, 0.342, 0.5471999, 1, 0.07348838, 3.1721172e-06, 0.06575045, 1)
+
+[node name="SacrificePools" type="Node3D" unique_id=1465323580]
+script = ExtResource("1_713li")
+
+[node name="SacrificeKeep" parent="." unique_id=1238163395 instance=ExtResource("1_sb0c0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+mesh_dim = Vector3(10, 1, 5)
+
+[node name="SacrificeRemove" parent="." unique_id=1165130580 instance=ExtResource("2_bd6it")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+mesh_dim = Vector3(10, 1, 5)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=914621928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+emitting = false
+amount = 3
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("BoxMesh_mvtc5")
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3(0, 4, 1.5)
+spread = 5.0
+gravity = Vector3(0, -12.5, 0)
+initial_velocity_min = 12.5
+initial_velocity_max = 12.5
+scale_amount_curve = SubResource("Curve_rf7tv")
+color_ramp = SubResource("Gradient_a85ux")
