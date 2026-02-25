@@ -1,5 +1,5 @@
 extends Node
-var dev_mode := false
+var dev_mode := true
 
 var game_begun := false
 var world_transition_count := 0
@@ -85,6 +85,9 @@ func _ready():
 							5: 4, #Statue - AT LEAST length of statue_required
 							6: 0, #Upgrade
 							7: 1, #Lore
+							8: 0, #Being
+							9: 0, #Swap
+							10: 0, #Sacrifice
 							}, 
 			},
 
@@ -102,6 +105,9 @@ func _ready():
 							5: 5, #Statue - AT LEAST length of statue_required
 							6: 4, #Upgrade
 							7: 2, #Lore
+							8: 0, #Being
+							9: 0, #Swap
+							10: 0, #Sacrifice
 							},
 			},
 
@@ -119,6 +125,9 @@ func _ready():
 							5: 6, #Statue - AT LEAST length of statue_required
 							6: 5, #Upgrade
 							7: 2, #Lore
+							8: 0, #Being
+							9: 2, #Swap
+							10: 0, #Sacrifice
 							},
 			},
 
@@ -136,6 +145,9 @@ func _ready():
 							5: 6, #Statue - AT LEAST length of statue_required
 							6: 4, #Upgrade
 							7: 3, #Lore
+							8: 0, #Being
+							9: 2, #Swap
+							10: 0, #Sacrifice
 							},
 			},
 	}
@@ -162,6 +174,10 @@ func get_room_tscn(world_n, room_id) -> PackedScene:
 			return load("res://scenes/world/lore_room_world_%s.tscn" % [world_n])
 		8:
 			return load("res://scenes/world/being_room_world_%s.tscn" % [world_n])
+		9:
+			return load("res://scenes/world/swap_room_world_%s.tscn" % [world_n])
+		10:
+			return load("res://scenes/world/sacrifice_room_world_%s.tscn" % [world_n])
 
 	push_error("Global failed to find room type for world_n, room_id: ", world_n, ", ", room_id)
 	return load("res://scenes/world/lobby_world_1.tscn") #Only as backup when room cannot be found.
@@ -289,7 +305,6 @@ func get_world_grid(world_n, set_seed := 0):
 	var size = world_info[world_n]["map_size"]
 	#2D Array of where actual rooms are in the world
 	var corridor_count := int(max(35 + (size ** 3), 5))
-	print(corridor_count)
 	var corridor_lengths := range(2, int(max(1.75 * size, 4)))
 	var walks := [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
 	var room_count := int(max(size * size / 2, 1))
@@ -428,6 +443,9 @@ func create_world(world_n):
 					room_specific_id = unseen_lores.pick_random()
 				else:
 					room_specific_id = 0
+			
+			elif world_grid[x][y] == 9:
+				room_specific_id = [0, 1, 2, 3].pick_random()
 
 			if world_grid[x][y] != 0:
 				world_map[Vector2i(x, y)] = {

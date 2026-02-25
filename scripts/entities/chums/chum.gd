@@ -185,6 +185,13 @@ func increase_stats(attack_speed_count: int = 1, attack_damage_count: int = 1, m
 	if particles and attack_speed_count + attack_damage_count + move_speed_count + health_count > 0:
 		particle_zone.add_child(quality_particles.instantiate())
 
+func set_stat(quality_name: String, value: int) -> void:
+	if self.get("has_%s" % quality_name):
+		quality[quality_name] = value
+
+	#APPLY CHANGES
+	set_stats_from_quality()
+	
 func create_sleep_particles():
 	if Global.game_begun:
 		sleep_zone.add_child(sleep_particles.instantiate())

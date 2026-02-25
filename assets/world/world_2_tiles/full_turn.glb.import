@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b82xj5vu16cfn"
+uid="uid://gk1mw878vcj3"
 path="res://.godot/imported/full_turn.glb-f288421ef6d2198225a963a4a1c0eeb7.scn"
 
 [deps]
@@ -38,5 +38,5 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}
-gltf/naming_version=1
+gltf/naming_version=2
 gltf/embedded_image_handling=1

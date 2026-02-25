@@ -3,6 +3,10 @@ extends Node3D
 @onready var item_tscn := load("res://scenes/entities/upgrade_item.tscn")
 @onready var items: Node3D = $Items
 @onready var items_timer: Timer = $Timer
+@onready var water: MeshInstance3D = $Water
+
+
+@export var upgrade_dim: Vector3 = Vector3(10.0, 1.0, 10.0)
 
 var item_num := -1
 var items_set := false
@@ -12,6 +16,8 @@ const ITEM_DIST := 4.0
 const ITEM_HEAL := 20
 
 func _ready() -> void:
+	water.mesh = water.mesh.duplicate()
+	water.mesh.size = upgrade_dim
 	if not items_set:
 		item_num = Global.world_map[Global.room_location]["room_specific_id"]
 		

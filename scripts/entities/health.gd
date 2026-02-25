@@ -22,7 +22,7 @@ func set_max_health(value: int):
 		if health > max_health:
 			health = max_health
 		else:
-			health += difference
+			health = max(health + difference, 1) #Prevents Chum from dying if max_health is lowered
 			
 		max_health_changed.emit(difference)
 		

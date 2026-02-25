@@ -168,7 +168,6 @@ shader_parameter/pixel_size = 0.00999999977648
 
 [sub_resource type="BoxMesh" id="BoxMesh_3ecil"]
 material = SubResource("ShaderMaterial_wbmjb")
-size = Vector3(10, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mgyhe"]
 size = Vector3(9.5, 0.6, 9.5)

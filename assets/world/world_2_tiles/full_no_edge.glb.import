@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bgv8o84vwwahg"
+uid="uid://btv0f5rj0tnh5"
 path="res://.godot/imported/full_no_edge.glb-4714f7792a8096c1a4382a9723d76e3f.scn"
 
 [deps]
@@ -38,5 +38,5 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}
-gltf/naming_version=1
+gltf/naming_version=2
 gltf/embedded_image_handling=1
