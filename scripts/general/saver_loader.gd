@@ -109,8 +109,9 @@ func save_game(save_id) -> void:
 	saved_game.world_grid = Global.world_grid
 	saved_game.room_location = Global.room_location
 	saved_game.room_history = Global.room_history
-	saved_game.world_map = Global.world_map
 	saved_game.crates_broken = Global.crates_broken
+	saved_game.world_map = Global.world_map
+	
 	
 	ResourceSaver.save(saved_game, "user://saves/%s.tres" % [save_id])
 	Saved.emit()
