@@ -18,6 +18,8 @@ var room_particles := {"lobby": preload("res://particles/seeker_room_lobby.tscn"
 						"statue": preload("res://particles/seeker_room_statue.tscn"),
 						"upgrade": preload("res://particles/seeker_room_upgrade.tscn"),
 						"lore": preload("res://particles/seeker_room_lore.tscn"),
+						"swap": preload("res://particles/seeker_room_swap.tscn"),
+						"sacrifice": preload("res://particles/seeker_room_sacrifice.tscn"),
 						}
 
 func Enter():
@@ -81,6 +83,8 @@ func _on_run_delay_timeout() -> void:
 		_on_nav_timer_idle_timeout() #Avoids delay before moving
 		nav_timer_idle.start()
 		running = true
+	else:
+		chum.anim_player.play("Idle")
 	
 func set_target_location() -> void:
 	if Global.current_room_node.TYPE != "boss":

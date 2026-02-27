@@ -1,5 +1,5 @@
 extends Node
-var dev_mode := false
+var dev_mode := true
 
 var game_begun := false
 var world_transition_count := 0
@@ -17,6 +17,8 @@ var world_map_guide = {"lobby": {},
 						"statue": {},
 						"upgrade": {},
 						"lore": {},
+						"swap": {},
+						"sacrifice": {},
 						}
 
 var crate_info: Dictionary[int, Dictionary] = {
@@ -200,6 +202,8 @@ func start_game(save_id = null, new_game = false) -> void:
 						"statue": {},
 						"upgrade": {},
 						"lore": {},
+						"swap": {},
+						"sacrifice": {},
 						}
 						
 
@@ -387,6 +391,8 @@ func set_world_map_guides() -> void:
 	world_map_guide["statue"] = Functions.astar2d(world_grid, 5, true)
 	world_map_guide["upgrade"] = Functions.astar2d(world_grid, 6, true)
 	world_map_guide["lore"] = Functions.astar2d(world_grid, 7, false)
+	world_map_guide["swap"] = Functions.astar2d(world_grid, 9, false)
+	world_map_guide["sacrifice"] = Functions.astar2d(world_grid, 10, false)
 
 func bring_to_front(list: Array, to_front: int, shuffle: bool) -> Array:
 	var to_front_list := []

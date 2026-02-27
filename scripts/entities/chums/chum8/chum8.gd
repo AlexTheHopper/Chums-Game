@@ -27,5 +27,5 @@ var always_targets_player := false
 var bracelet_count := 1
 var bracelet_cost := 3
 
-var target_room_types := ["lobby", "room", "fountain", "void", "upgrade", "statue", "lore"]
+var target_room_types := ["lobby", "room", "fountain", "void", "upgrade", "statue", "lore", "swap", "sacrifice"]
 var can_seek := true

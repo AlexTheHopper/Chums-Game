@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dp8diu10t02ut"]
+[gd_scene format=3 uid="uid://cmqp056hcsi56"]
 
-[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_ro3pi"]
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_ote86"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1dnw"]
 transparency = 1
@@ -11,13 +11,13 @@ material = SubResource("StandardMaterial3D_d1dnw")
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="Gradient" id="Gradient_5d744"]
-offsets = PackedFloat32Array(0, 0.722054)
-colors = PackedColorArray(0.14540201, 0.00018530339, 0.23667216, 0.78039217, 0.22469276, 0.0003434851, 0.33522236, 1)
+offsets = PackedFloat32Array(0.5, 0.501)
+colors = PackedColorArray(0, 0, 0, 1, 0.5865561, 0.5365143, 0, 1)
 
-[node name="Particles" type="Node3D" unique_id=1288819941]
-script = ExtResource("1_ro3pi")
+[node name="Particles" type="Node3D" unique_id=26453921]
+script = ExtResource("1_ote86")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=1854963068]
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=499955169]
 emitting = false
 one_shot = true
 explosiveness = 0.8
