@@ -25,6 +25,7 @@ enum SOUND_EFFECT_TYPE {
 	
 	ON_CRATE_BREAK,
 	ON_MENU_BUTTON,
+	ON_ATTEMPT_ERROR,
 }
 
 @export_range(0, 10) var limit: int = 5 ## Maximum number of this SoundEffect to play simultaneously before culled.

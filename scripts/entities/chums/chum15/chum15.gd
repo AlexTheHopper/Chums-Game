@@ -25,4 +25,4 @@ var draws_agro_on_attack := true
 var always_targets_player := false
 
 var bracelet_count := 5 
-var bracelet_cost := 15
+var bracelet_cost := 10

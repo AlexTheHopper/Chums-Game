@@ -156,6 +156,12 @@ pause={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":6,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+hud_toggle={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":72,"key_label":0,"unicode":104,"location":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":8,"pressure":0.0,"pressed":false,"script":null)
+]
+}
 test1={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":79,"key_label":0,"unicode":111,"location":0,"echo":false,"script":null)
@@ -171,7 +177,7 @@ test2={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://localisation/localisation_20260201.ca_ES.translation", "res://localisation/localisation_20260201.cn_CN.translation", "res://localisation/localisation_20260201.de_DE.translation", "res://localisation/localisation_20260201.en_US.translation", "res://localisation/localisation_20260201.es_ES.translation", "res://localisation/localisation_20260201.fr_FR.translation", "res://localisation/localisation_20260201.it_IT.translation", "res://localisation/localisation_20260201.jp_JP.translation", "res://localisation/localisation_20260201.ro_RO.translation")
+locale/translations=PackedStringArray("res://localisation/localisation_20260227.ca_ES.translation", "res://localisation/localisation_20260227.cn_CN.translation", "res://localisation/localisation_20260227.de_DE.translation", "res://localisation/localisation_20260227.en_US.translation", "res://localisation/localisation_20260227.es_ES.translation", "res://localisation/localisation_20260227.fr_FR.translation", "res://localisation/localisation_20260227.it_IT.translation", "res://localisation/localisation_20260227.jp_JP.translation", "res://localisation/localisation_20260227.ro_RO.translation")
 locale/locale_filter_mode=0
 
 [layer_names]

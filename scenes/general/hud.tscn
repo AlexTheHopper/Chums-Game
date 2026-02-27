@@ -234,6 +234,58 @@ tracks/3/keys = {
 "values": [Vector2(300, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ov120"]
+resource_name = "enter_no_delay"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-275, 25), Vector2(24.999998, 25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BraceletsPanel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-275, 100), Vector2(24.999998, 99.999985)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Minimap:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, 0), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ChumIndicators:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(300, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_5vyhu"]
 resource_name = "insufficient_bracelets"
 length = 0.5
@@ -297,17 +349,25 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_p21ms"]
-resource_name = "too_many_chums"
-length = 0.5
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BraceletsPanel:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(24.999998, 99.999985), Vector2(15, 100), Vector2(25, 100), Vector2(35, 100), Vector2(25, 100), Vector2(24.999998, 99.999985)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_adyy0"]
 _data = {
 &"RESET": SubResource("Animation_4l38w"),
 &"enter": SubResource("Animation_nr7vf"),
-&"insufficient_bracelets": SubResource("Animation_5vyhu"),
-&"too_many_chums": SubResource("Animation_p21ms")
+&"enter_no_delay": SubResource("Animation_ov120"),
+&"insufficient_bracelets": SubResource("Animation_5vyhu")
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4l38w"]
@@ -634,7 +694,7 @@ anchor_right = 0.13
 anchor_bottom = 0.231
 offset_left = -0.34400177
 offset_top = -4.3280106
-offset_right = 0.23980713
+offset_right = 0.23956299
 offset_bottom = 0.3119812
 theme_override_styles/panel = SubResource("StyleBoxTexture_37424")
 
@@ -662,7 +722,7 @@ vertical_alignment = 1
 
 [node name="Minimap" type="Control" parent="InGameHUD" unique_id=417851134]
 anchors_preset = 0
-offset_right = 40.00003
+offset_right = 40.00006
 offset_bottom = 40.0
 
 [node name="MinimapBack" type="Panel" parent="InGameHUD/Minimap" unique_id=1848909566]

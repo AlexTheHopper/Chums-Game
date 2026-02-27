@@ -383,12 +383,13 @@ func make_neutral():
 func attempt_carry():
 	var is_friend = current_group == "Chums_Friend"
 	
+	#Player must not already be carrying a chum
+	if get_tree().get_first_node_in_group("Player").is_carrying:
+		return
+	
 	#Player must not be full of friends:
 	if PlayerStats.is_chum_list_full() and not is_friend:
 		PlayerStats.emit_too_many_chums()
-		return
-	#Player must not already be carrying a chum
-	if get_tree().get_first_node_in_group("Player").is_carrying:
 		return
 	
 	#If chum is enemy and not enough bracelets:

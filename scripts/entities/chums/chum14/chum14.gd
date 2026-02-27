@@ -5,7 +5,7 @@ var chum_id := 14
 var min_attack_speed := 2.55
 
 var base_attack_speed := 3.0
-var base_attack_damage := 50
+var base_attack_damage := 40
 var base_move_speed := 0.75
 var base_health := 250
 #Control of qualities
@@ -25,4 +25,4 @@ var draws_agro_on_attack := true
 var always_targets_player := false
 
 var bracelet_count := 5
-var bracelet_cost := 15
+var bracelet_cost := 8

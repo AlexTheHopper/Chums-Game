@@ -9,11 +9,13 @@ extends CanvasLayer
 @export var is_paused: bool = false
 @export var is_returning: bool = false
 var is_exit_warning: bool = false
+var is_hud_visible := false
 const chum_indicator_tscn = preload("res://scenes/general/hud_chum.tscn")
 
 func _ready() -> void:
 	Global.hud = self
 	IG_anim_player.play("enter")
+	is_hud_visible = true
 	get_tree().get_first_node_in_group("Player").health_node.health_depleted.connect(remove_hud)
 
 func initialise() -> void:
@@ -56,6 +58,13 @@ func _process(_delta: float) -> void:
 			is_returning = true
 			toggle_pause()
 			Global.return_to_menu(false, false)
+	elif Input.is_action_just_pressed("hud_toggle") and not IG_anim_player.is_playing():
+		if is_hud_visible:
+			IG_anim_player.play_backwards("enter_no_delay")
+			is_hud_visible = false
+		else:
+			IG_anim_player.play("enter_no_delay")
+			is_hud_visible = true
 	
 	#Minimap rotation
 	minimap.rotation = get_tree().get_first_node_in_group("Player").camera_controller.rotation.y
@@ -94,16 +103,20 @@ func change_bracelets():
 	$InGameHUD/BraceletsPanel/Value.text = str(PlayerStats.bracelets)
 
 func remove_hud() -> void:
+	if not is_hud_visible:
+		return
 	IG_anim_player.play_backwards("enter")
+	is_hud_visible = false
 	
 func indicate_bracelets() -> void:
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_ATTEMPT_ERROR)
 	if IG_anim_player.current_animation == "enter":
 		return
 	IG_anim_player.play("insufficient_bracelets")
 func indicate_chum_count() -> void:
+	AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_ATTEMPT_ERROR)
 	if IG_anim_player.current_animation == "enter":
 		return
-	IG_anim_player.play("too_many_chums")
 	for child in chum_indicators.get_children():
 		child.animation_player.play("full")
 func indicate_saved() -> void:
