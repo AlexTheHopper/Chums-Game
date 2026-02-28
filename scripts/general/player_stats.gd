@@ -13,6 +13,21 @@ extends Node
 @onready var player_bracelets_collected := 0
 @onready var player_bracelets_spent := 0
 
+var AppID := "480"
+enum ACHIEVEMENTS {
+	ON_RECRUIT_CHUM,
+	ON_RECRUIT_PRISONER,
+	ON_STATUE_ENTER,
+	ON_CRATE_BREAK,
+	ON_PRISONERS_APPLIED,
+	
+	ON_FOUNTAINPOOL_USE,
+	ON_UPGRADEPOOL_USE,
+	ON_VOIDPOOL_USE,
+	ON_SWAPPOOL_USE,
+	ON_SACRIFICEPOOL_USE,
+}
+
 signal hud_health_change
 signal hud_max_health_change
 signal hud_bracelets_change
@@ -25,6 +40,19 @@ signal player_max_chums_increase
 
 signal insufficient_bracelets
 signal too_many_chums
+
+func _init() -> void:
+	OS.set_environment("SteamAppID", AppID)
+	OS.set_environment("SteamGameID", AppID)
+
+func _ready() -> void:
+	Steam.steamInit()
+	var isSteamRunning: bool = Steam.isSteamRunning()
+	if not isSteamRunning:
+		Global.print_dev("STEAM NOT RUNNING")
+		return
+	
+	Global.print_dev("Steam Running")
 
 func initialise() -> void:
 	player_max_chums = 5 if not Global.dev_mode else 10
@@ -83,3 +111,18 @@ func emit_too_many_chums():
 	
 func is_chum_list_full():
 	return len(get_tree().get_nodes_in_group("Chums_Friend")) >= player_max_chums
+
+#Achievement Manager Function, to unlock achievement ACH call:
+#PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH)
+func attempt_achievement_unlock(ACH: ACHIEVEMENTS) -> void:
+	var ach = ACHIEVEMENTS.keys()[ACH]
+	Global.print_dev("Attempting Unlock of Achievement: %s" % ach)
+	var status = Steam.getAchievement(ach)
+	if not status.has("achieved"):
+		Global.print_dev("Error Unlocking Achievement: %s" % ach)
+		return
+	if status["achieved"]:
+		Global.print_dev("Achievement Already Unlocked: %s" % ach)
+		return
+	Global.print_dev("New Achievement Unlocked: %s" % ach)
+	Steam.setAchievement(ach)

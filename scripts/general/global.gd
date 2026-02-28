@@ -555,6 +555,7 @@ func check_crate_pattern() -> void:
 					crates_broken[crate_id] = true
 					print_dev("Broken Crate number: %s" % crate_id)
 					AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_CRATE_BREAK)
+					PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_CRATE_BREAK)
 
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
 	room_changed_to_boss.emit()

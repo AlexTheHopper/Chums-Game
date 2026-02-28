@@ -38,6 +38,8 @@ func kill_chum(body: Chum, delay: float = 0.0) -> void:
 		for n in body.bracelet_cost:
 			spawn_currency.emit("bracelet", global_position, Vector3(0.0, 5.0, 0.0))
 		body.call_deferred("queue_free")
+		
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_VOIDPOOL_USE)
 
 func create_being_particles(chum_id: int, delay: float = 0.0) -> void:
 	await get_tree().create_timer(delay).timeout

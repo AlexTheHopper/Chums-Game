@@ -39,6 +39,8 @@ func _on_swap_zone_body_entered(body: Node3D) -> void:
 		active = false
 		await get_tree().create_timer(0.5).timeout
 		swap_quality()
+		
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_SWAPPOOL_USE)
 
 
 func _on_swap_zone_body_exited(body: Node3D) -> void:

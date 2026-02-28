@@ -44,7 +44,7 @@ func check_to_sacrifice(chum1, chum2) -> void:
 	if not chum1 or not chum2:
 		return
 	active = false
-	await get_tree().create_timer(0.25).timeout
+	#await get_tree().create_timer(0.25).timeout
 	var points = chum1.quality["attack_speed"] + chum1.quality["attack_damage"] + chum1.quality["move_speed"] + chum1.quality["health"]
 	if remove_chum:
 		remove.delete_chum(remove_chum)
@@ -55,6 +55,8 @@ func check_to_sacrifice(chum1, chum2) -> void:
 		add_quality(keep_chum, points)
 		throw_chum(keep_chum)
 		active = true
+		
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_SACRIFICEPOOL_USE)
 	
 
 func add_quality(chum: Chum, weight: int) -> void:

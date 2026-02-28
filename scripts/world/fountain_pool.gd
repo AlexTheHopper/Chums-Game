@@ -46,6 +46,7 @@ func _on_heal_zone_body_entered(body: Node3D) -> void:
 		body.health_node.health += max(body.health_node.max_health * HEART_HEAL_FACTOR, HEART_HEAL_MIN)
 		active = false
 		hearts_timer.start()
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_FOUNTAINPOOL_USE)
 		
 		if heart_num <= 0:
 			Global.world_map[Global.room_location]["activated"] = true

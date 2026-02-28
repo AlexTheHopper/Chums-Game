@@ -25,6 +25,7 @@ func set_chum_id(new_chum_id) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if active and body is Player:
 		active = false
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_STATUE_ENTER)
 		if to_being_n:
 			Global.transition_to_being(source_world_n, to_being_n)
 		else:

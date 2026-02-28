@@ -403,6 +403,10 @@ func attempt_carry():
 			PlayerStats.bracelets_added(-self.bracelet_cost)
 			PlayerStats.call_deferred("friend_chums_changed", 1, self)
 			befriended.emit()
+			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_RECRUIT_CHUM)
+			if self.chum_id in [17, 18, 19, 20]:
+				PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_RECRUIT_PRISONER)
+				
 		get_tree().get_first_node_in_group("Player").is_carrying = true
 		set_state("Carry")
 

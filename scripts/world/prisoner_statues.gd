@@ -26,6 +26,8 @@ func _on_prisoners_changed() -> void:
 	if chums == [17, 18, 19, 20] and active:
 		active = false
 		end_sequence()
+		
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_PRISONERS_APPLIED)
 
 func end_sequence() -> void:
 	Global.world_map[Global.room_location]["activated"] = true
