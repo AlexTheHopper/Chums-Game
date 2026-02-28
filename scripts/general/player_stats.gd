@@ -20,6 +20,7 @@ enum ACHIEVEMENTS {
 	ON_STATUE_ENTER,
 	ON_CRATE_BREAK,
 	ON_PRISONERS_APPLIED,
+	ON_ALL_LANTERNS,
 	
 	ON_FOUNTAINPOOL_USE,
 	ON_UPGRADEPOOL_USE,
@@ -102,6 +103,9 @@ func friend_chums_changed(change, chum):
 func add_max_chums(n):
 	player_max_chums_increase.emit(n)
 	player_max_chums += n
+	
+	if false not in collected_lanterns.values():
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_ALL_LANTERNS)
 	
 func emit_insufficient_bracelets():
 	insufficient_bracelets.emit()

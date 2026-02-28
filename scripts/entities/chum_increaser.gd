@@ -26,6 +26,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		particle_inst.completed.connect(delete)
 		
 func delete():
-	give_extra_max_chums(increase_count)
 	PlayerStats.collected_lanterns[lantern_world] = true
+	give_extra_max_chums(increase_count)
 	queue_free()
