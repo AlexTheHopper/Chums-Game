@@ -48,3 +48,5 @@ func spawn_object() -> void:
 
 func on_object_used() -> void:
 	Global.crates_broken.erase(crate_id)
+	if Global.crates_broken.keys().size() == 0:
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_ALL_CRATE_COLLECT)

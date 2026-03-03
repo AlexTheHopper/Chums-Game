@@ -10,7 +10,7 @@ func _ready() -> void:
 	if Global.world_map[Global.room_location]["activated"]:
 		active = false
 		room_changer_zone.active = true
-		room_changer_zone.prisoner_id = [17, 18, 19, 20].pick_random()
+		room_changer_zone.prisoner_id = ChumsManager.prisoner_chum_ids.pick_random()
 		for statue in statues:
 			statue.queue_free()
 	
@@ -23,11 +23,9 @@ func _on_prisoners_changed() -> void:
 		chums.append(statue.current_chum)
 	chums.sort()
 	
-	if chums == [17, 18, 19, 20] and active:
+	if chums == ChumsManager.prisoner_chum_ids and active:
 		active = false
 		end_sequence()
-		
-		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_PRISONERS_APPLIED)
 
 func end_sequence() -> void:
 	Global.world_map[Global.room_location]["activated"] = true

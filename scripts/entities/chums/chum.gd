@@ -357,6 +357,10 @@ func make_friendly(to_heal = true):
 	PlayerStats.player_chums_befriended += 1
 	if self.chum_id not in PlayerStats.player_unique_chums_befriended:
 		PlayerStats.player_unique_chums_befriended.append(self.chum_id)
+		PlayerStats.player_unique_chums_befriended.sort()
+		
+		if PlayerStats.player_unique_chums_befriended == ChumsManager.chums_list.keys():
+			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_RECRUIT_ALL_CHUMS)
 	
 func make_neutral():
 	remove_from_group("Chums_Enemy")
@@ -403,9 +407,9 @@ func attempt_carry():
 			PlayerStats.bracelets_added(-self.bracelet_cost)
 			PlayerStats.call_deferred("friend_chums_changed", 1, self)
 			befriended.emit()
-			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_RECRUIT_CHUM)
-			if self.chum_id in [17, 18, 19, 20]:
-				PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_RECRUIT_PRISONER)
+			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_RECRUIT_CHUM)
+			if self.chum_id in ChumsManager.prisoner_chum_ids:
+				PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_RECRUIT_PRISONER)
 				
 		get_tree().get_first_node_in_group("Player").is_carrying = true
 		set_state("Carry")

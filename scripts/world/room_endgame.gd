@@ -20,9 +20,9 @@ func _ready() -> void:
 		text.player_entered.connect(change_being_goal)
 
 	#Move prisoners to next to pool.
-	var duplicate_ids := [] #This shouldnt matter but i may have overlooked something. Stopes prisoners from flying off in the samee positon.
+	var duplicate_ids := [] #This shouldnt matter but i may have overlooked something. Stops prisoners from flying off in the same positon.
 	for chum in get_tree().get_nodes_in_group("Chums_Friend"):
-		if chum.chum_id in [17, 18, 19, 20] and chum.being_particles and chum.chum_id not in duplicate_ids:
+		if chum.chum_id in ChumsManager.prisoner_chum_ids and chum.being_particles and chum.chum_id not in duplicate_ids:
 			duplicate_ids.append(chum.chum_id)
 			chum.global_position = prisoner_spawns.get_node("Chum%s" % chum.chum_id).global_position
 			chum.being_particles.restart_particles()
@@ -38,6 +38,7 @@ func on_prisoner_thrown(chum_id: int) -> void:
 				child.rising = true
 		
 		await get_tree().create_timer(5.0).timeout
+		Global.ending = 1
 		get_tree().get_first_node_in_group("Player")._on_health_health_depleted()
 
 func save_room() -> void:

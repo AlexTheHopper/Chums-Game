@@ -13,6 +13,7 @@ config_version=5
 config/name="Chums"
 config/version="0.7.0"
 run/main_scene="uid://xi6g2eiqww0b"
+config/use_custom_user_dir=true
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icon.png"
 

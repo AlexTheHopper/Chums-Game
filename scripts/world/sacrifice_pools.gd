@@ -56,7 +56,7 @@ func check_to_sacrifice(chum1, chum2) -> void:
 		throw_chum(keep_chum)
 		active = true
 		
-		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_SACRIFICEPOOL_USE)
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_SACRIFICEPOOL_USE)
 	
 
 func add_quality(chum: Chum, weight: int) -> void:

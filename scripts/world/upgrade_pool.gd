@@ -52,7 +52,7 @@ func _on_active_zone_body_entered(body: Node3D) -> void:
 			body.increase_stats(10 + 5 * Global.world_transition_count) #Increase base damage by x and extra damage by int(x/2). Increase health by int(x/2)
 		elif body is Chum:
 			body.increase_stats(1, 1, 1, 1, true) #Increase all stats by 10% base per level
-		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_UPGRADEPOOL_USE)
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_UPGRADEPOOL_USE)
 		
 		if item_num <= 0:
 			Global.world_map[Global.room_location]["activated"] = true

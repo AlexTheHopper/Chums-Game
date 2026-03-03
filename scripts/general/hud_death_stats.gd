@@ -44,11 +44,11 @@ func _process(_delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":
-		if Global.current_room_node.TYPE == "endgame":
+		if Global.ending:
 			TransitionScreen.transition(3)
 			await TransitionScreen.on_transition_finished
 			get_node("/root/Game").queue_free()
-			var credits_scene = load("res://scenes/general/credits_1.tscn").instantiate()
+			var credits_scene = load("res://scenes/general/credits_%s.tscn" % Global.ending).instantiate()
 			var friend_chums : Array[int] = []
 			for chum in get_tree().get_nodes_in_group("Chums_Friend"):
 				friend_chums.append(chum.chum_id)

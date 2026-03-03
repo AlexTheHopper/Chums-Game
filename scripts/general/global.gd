@@ -49,8 +49,8 @@ var room_history: Array
 var rooms: Node3D
 var world_info: Dictionary
 var hud: CanvasLayer
-#var game_scene: PackedScene = load("res://scenes/general/game.tscn")
 var game_save_id := 1
+var ending := 0
 var player: Player
 
 signal room_changed
@@ -555,7 +555,7 @@ func check_crate_pattern() -> void:
 					crates_broken[crate_id] = true
 					print_dev("Broken Crate number: %s" % crate_id)
 					AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_CRATE_BREAK)
-					PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_CRATE_BREAK)
+					PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_CRATE_BREAK)
 
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
 	room_changed_to_boss.emit()
@@ -651,7 +651,7 @@ func transition_to_endgame(prisoner_id, length = 1):
 	await TransitionScreen.on_transition_finished
 	
 	create_world_boss()
-	if prisoner_id in [17, 18, 19, 20]:
+	if prisoner_id in ChumsManager.prisoner_chum_ids:
 		current_world_num = ChumsManager.chums_list[prisoner_id]["destination_world"]
 	else:
 		push_error("Ending game with incorrect prisoner_id: " % prisoner_id)
@@ -699,6 +699,7 @@ func restart_game(transition := true, queue_free_game := true) -> void:
 	is_alive = true
 	game_save_id = 1
 	world_transition_count = 0
+	ending = 0
 	get_node("/root").add_child(load("res://scenes/general/main_menu.tscn").instantiate())
 
 func test_grid_system(world_n, count):

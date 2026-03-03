@@ -1,6 +1,7 @@
 extends Node3D
 var active := false
 var being_tscn = load("res://scenes/general/random_level_being.tscn")
+var void_chums := []
 @onready var particles: PackedScene = load("res://particles/void_deletion.tscn")
 @onready var void_mesh: MeshInstance3D = $Void
 
@@ -16,11 +17,8 @@ func _ready() -> void:
 
 func _on_kill_zone_body_entered(body: Node3D) -> void:
 	if body is Chum and active:
-		var particle = particles.instantiate()
-		add_child(particle)
-		particle.global_position = body.global_position
 		
-		if body.chum_id in [17, 18, 19, 20]:
+		if body.chum_id in ChumsManager.prisoner_chum_ids:
 			#Stop it from bumping other prisoners around - this creates too many beings floating
 			body.generalchumbehaviour.nudge_collision.set_deferred("disabled", true)
 			body.set_collision_layer_value(4, false)
@@ -32,14 +30,27 @@ func _on_kill_zone_body_entered(body: Node3D) -> void:
 
 func kill_chum(body: Chum, delay: float = 0.0) -> void:
 	await get_tree().create_timer(delay).timeout
+	var particle = particles.instantiate()
+	add_child(particle)
+	particle.global_position = body.global_position
 	if is_instance_valid(body):
 		body.health_node.health = 0
 		#Spawn Bracelets
 		for n in body.bracelet_cost:
 			spawn_currency.emit("bracelet", global_position, Vector3(0.0, 5.0, 0.0))
+			void_chums.append(body.chum_id)
 		body.call_deferred("queue_free")
 		
-		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_VOIDPOOL_USE)
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_VOIDPOOL_USE)
+		if body.chum_id in ChumsManager.prisoner_chum_ids and Global.current_room_node.TYPE != "endgame":
+			Global.crates_broken.keys()
+		
+		var get_ach := true
+		for prisoner_id in ChumsManager.prisoner_chum_ids:
+			if prisoner_id not in void_chums:
+				get_ach = false
+		if get_ach:
+			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_ALL_PRISONER_VOID)
 
 func create_being_particles(chum_id: int, delay: float = 0.0) -> void:
 	await get_tree().create_timer(delay).timeout

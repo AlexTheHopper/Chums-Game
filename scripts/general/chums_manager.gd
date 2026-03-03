@@ -36,6 +36,7 @@ var chums_list := {
 	29: {"destination_world": 3, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum29.tscn")}, #Ember
 	30: {"destination_world": 3, "guard_world_n": false, "scene": load("res://scenes/entities/chums/chum30.tscn")}, #Goblet
 }
+var prisoner_chum_ids := [17, 18, 19, 20]
 var bonus_chums_restricted_ids := [14, 15, 22, 23,
 								17, 18, 19, 20,
 								6, 7, 16, 26, 27]

@@ -19,6 +19,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			current_chum = body.chum_id
 			prisoner_statue.set_material_overlay(overlays[body.chum_id])
 			prisoners_changed.emit()
+			
+			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_PRISONER_APPLIED)
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:

@@ -12,6 +12,7 @@ var credits_done := true
 signal return_to_main_menu
 
 func _ready() -> void:
+	PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_CREDITS_1)
 	Global.game_begun = false
 	return_to_main_menu.connect(Global.restart_game)
 	var counter := 0

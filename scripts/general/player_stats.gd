@@ -13,20 +13,35 @@ extends Node
 @onready var player_bracelets_collected := 0
 @onready var player_bracelets_spent := 0
 
-var AppID := "480"
+var AppID := "4483870"
 enum ACHIEVEMENTS {
-	ON_RECRUIT_CHUM,
-	ON_RECRUIT_PRISONER,
-	ON_STATUE_ENTER,
-	ON_CRATE_BREAK,
-	ON_PRISONERS_APPLIED,
-	ON_ALL_LANTERNS,
+	ACH_ON_RECRUIT_CHUM,
+	ACH_ON_RECRUIT_ALL_CHUMS,
+	ACH_ON_RECRUIT_PRISONER,
+	ACH_ON_STATUE_ENTER,
+	ACH_ON_CRATE_BREAK,
+	ACH_ON_ALL_CRATE_COLLECT,
+	ACH_ON_PRISONER_APPLIED,
+	ACH_ON_ALL_LANTERNS,
+	ACH_ON_PRISONER_VOID,
+	ACH_ON_ALL_PRISONER_VOID, #without leaving room
 	
-	ON_FOUNTAINPOOL_USE,
-	ON_UPGRADEPOOL_USE,
-	ON_VOIDPOOL_USE,
-	ON_SWAPPOOL_USE,
-	ON_SACRIFICEPOOL_USE,
+	ACH_ON_FOUNTAINPOOL_USE,
+	ACH_ON_UPGRADEPOOL_USE,
+	ACH_ON_VOIDPOOL_USE,
+	ACH_ON_SWAPPOOL_USE,
+	ACH_ON_SACRIFICEPOOL_USE,
+	
+	ACH_ON_CREDITS_1,
+}
+enum STATISTICS {
+	#STAT_CHUMS_BEFRIENDED,
+	#STAT_CHUMS_SACRIFICED,
+	#STAT_ROOMS_VISITED,
+	#STAT_WORLD_TRANSITIONS,
+	#STAT_BRACELETS_EARNED,
+	#STAT_BRACELETS_SPENT,
+	#STAT_BRACELETS_ON_DEATH,
 }
 
 signal hud_health_change
@@ -105,7 +120,7 @@ func add_max_chums(n):
 	player_max_chums += n
 	
 	if false not in collected_lanterns.values():
-		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ON_ALL_LANTERNS)
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_ALL_LANTERNS)
 	
 func emit_insufficient_bracelets():
 	insufficient_bracelets.emit()
@@ -117,7 +132,7 @@ func is_chum_list_full():
 	return len(get_tree().get_nodes_in_group("Chums_Friend")) >= player_max_chums
 
 #Achievement Manager Function, to unlock achievement ACH call:
-#PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH)
+#PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_)
 func attempt_achievement_unlock(ACH: ACHIEVEMENTS) -> void:
 	var ach = ACHIEVEMENTS.keys()[ACH]
 	Global.print_dev("Attempting Unlock of Achievement: %s" % ach)
@@ -130,3 +145,4 @@ func attempt_achievement_unlock(ACH: ACHIEVEMENTS) -> void:
 		return
 	Global.print_dev("New Achievement Unlocked: %s" % ach)
 	Steam.setAchievement(ach)
+	Steam.storeStats()

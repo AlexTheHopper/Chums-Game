@@ -35,7 +35,7 @@ func delete_chum(chum: Chum) -> void:
 	chum.health_node.health = 0
 	chum.call_deferred("queue_free")
 	
-	if chum.chum_id in [17, 18, 19, 20]:
+	if chum.chum_id in ChumsManager.prisoner_chum_ids:
 		create_being_particles(chum.chum_id, 2.0)
 
 func create_being_particles(chum_id: int, delay: float = 0.0) -> void:
