@@ -414,9 +414,11 @@ func attempt_carry():
 			PlayerStats.bracelets_added(-self.bracelet_cost)
 			PlayerStats.call_deferred("friend_chums_changed", 1, self)
 			befriended.emit()
-			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_RECRUIT_CHUM)
-			if self.chum_id in ChumsManager.prisoner_chum_ids:
-				PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_RECRUIT_PRISONER)
+			
+			if Global.current_room_node.TYPE != "tutorial":
+				PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_RECRUIT_CHUM)
+				if self.chum_id in ChumsManager.prisoner_chum_ids:
+					PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_RECRUIT_PRISONER)
 				
 		get_tree().get_first_node_in_group("Player").is_carrying = true
 		set_state("Carry")

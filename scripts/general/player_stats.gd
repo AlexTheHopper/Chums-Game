@@ -16,6 +16,7 @@ extends Node
 
 var AppID := "4483870"
 enum ACHIEVEMENTS {
+	ACH_ON_TUTORIAL_COMPLETE, #return to menu from tutorial
 	ACH_ON_RECRUIT_CHUM, #recruit any chum
 	ACH_ON_RECRUIT_ALL_CHUMS, #one of each chum has been recruited
 	ACH_ON_RECRUIT_PRISONER, #prisoner chum is recruited

@@ -256,7 +256,7 @@ func _on_health_health_depleted() -> void:
 	get_tree().get_first_node_in_group("Camera").trigger_shake(2.5)
 	AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_DEATH)
 	
-	if Global.current_room_node.TYPE not in ["endgame", "room", "boss"]:
+	if Global.current_room_node.TYPE not in ["endgame", "room", "boss", "tutorial"]:
 		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_DEATH_SAFE_ROOM)
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

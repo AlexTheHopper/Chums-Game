@@ -15,6 +15,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if active and body is Player:
 		active = false
 		Global.return_to_menu(false)
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_TUTORIAL_COMPLETE)
 
 func _on_grace_timeout() -> void:
 	active = true
