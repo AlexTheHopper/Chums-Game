@@ -184,6 +184,10 @@ func increase_stats(attack_speed_count: int = 1, attack_damage_count: int = 1, m
 	
 	if particles and attack_speed_count + attack_damage_count + move_speed_count + health_count > 0:
 		particle_zone.add_child(quality_particles.instantiate())
+	
+	for q in quality.values():
+		if q >= 81:
+			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_CHUM_HIGH_QUALITY)
 
 func set_stat(quality_name: String, value: int) -> void:
 	if self.get("has_%s" % quality_name):
@@ -223,7 +227,7 @@ func find_enemy():
 	if state_machine.current_state.state_name != "Carry":
 		set_state("Active")
 
-func _on_recieved_damage(_damage, change_agro, attacker):
+func _on_recieved_damage(damage, change_agro, attacker):
 	if change_agro:
 		if anim_player.get_current_animation() == "Attack":
 			next_target = attacker
@@ -233,6 +237,9 @@ func _on_recieved_damage(_damage, change_agro, attacker):
 			elif attacker.state_machine.current_state.state_name == "Active":
 				set_target_to(attacker)
 			next_target = target
+	
+	if current_group == "Chums_Enemy" and damage >= 300:
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_LARGE_DAMAGE)
 
 func _on_health_changed(difference):
 	#Stop already fainted chums from making noise on room entry

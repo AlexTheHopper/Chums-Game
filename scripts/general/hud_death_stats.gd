@@ -26,6 +26,9 @@ func _ready() -> void:
 		create_stat(stat, to_display[stat], Vector2(326.0, 150.0 + index * 100.0))
 		index += 1
 		await get_tree().create_timer(0.5).timeout
+	
+	if PlayerStats.bracelets >= 500:
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_DEATH_MANY_BRACELETS)
 
 func create_stat(stat_name: String, stat_value: String, pos: Vector2) -> void:
 	var stat_to_add = HUD_DEATH_STAT.instantiate()

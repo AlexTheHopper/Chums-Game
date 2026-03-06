@@ -432,7 +432,7 @@ func create_world(world_n):
 				if len(required_statues) > 0:
 					room_specific_id = required_statues.pop_back()
 				if randf() < 0.2:
-					var values = crate_info.keys().filter(func(id): return world_n in crate_info[id]["found_in"])
+					var values = crate_info.keys().filter(func(id): return world_n in crate_info[id]["found_in"] and id in crates_broken.keys())
 					if values.size() > 0:
 						to_spawn = values.pick_random()
 			
@@ -555,7 +555,6 @@ func check_crate_pattern() -> void:
 					crates_broken[crate_id] = true
 					print_dev("Broken Crate number: %s" % crate_id)
 					AudioManager.create_audio(SoundEffect.SOUND_EFFECT_TYPE.ON_CRATE_BREAK)
-					PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_CRATE_BREAK)
 
 func transition_to_boss(source_world_n: int, destination_world_n: int, length = 1):
 	room_changed_to_boss.emit()

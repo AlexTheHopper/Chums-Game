@@ -10,38 +10,35 @@ extends Node
 @onready var collected_lanterns := {0: false, 1: false, 2: false, 3: false, 4: false}
 @onready var player_chums_befriended := 0
 @onready var player_unique_chums_befriended := []
+@onready var player_unique_chums_voided := []
 @onready var player_bracelets_collected := 0
 @onready var player_bracelets_spent := 0
 
 var AppID := "4483870"
 enum ACHIEVEMENTS {
-	ACH_ON_RECRUIT_CHUM,
-	ACH_ON_RECRUIT_ALL_CHUMS,
-	ACH_ON_RECRUIT_PRISONER,
-	ACH_ON_STATUE_ENTER,
-	ACH_ON_CRATE_BREAK,
-	ACH_ON_ALL_CRATE_COLLECT,
-	ACH_ON_PRISONER_APPLIED,
-	ACH_ON_ALL_LANTERNS,
-	ACH_ON_PRISONER_VOID,
-	ACH_ON_ALL_PRISONER_VOID, #without leaving room
+	ACH_ON_RECRUIT_CHUM, #recruit any chum
+	ACH_ON_RECRUIT_ALL_CHUMS, #one of each chum has been recruited
+	ACH_ON_RECRUIT_PRISONER, #prisoner chum is recruited
+	ACH_ON_CRATE_COLLECT, #collect one crate object
+	ACH_ON_ALL_CRATE_COLLECT, #all objects from all crates are collected
+	ACH_ON_PRISONER_VOID, #not in endgame - prisoner dies from void pool
+	ACH_ON_ALL_PRISONER_VOID, #not in endgame - one of each prisoner dies from void pool
+	ACH_ON_ALL_LANTERNS, #collect all lanterns - 10 chum slots
+	ACH_ON_ALL_CHUMS_VOID, #not in endgame - on of each chum dies from void pool
+	ACH_ON_PRISONER_APPLIED, #prisoner on prisoner statue in W1 lobby
+	ACH_ON_CHUM_HIGH_QUALITY, #when a chum is upgraded to have one quality >= 81 (yellow star)
+	ACH_ON_STATUE_ENTER, #enter region below statue
+	ACH_ON_LARGE_DAMAGE, #enemy takes 300 damage in one go
+	ACH_ON_DEATH_SAFE_ROOM, #death in not engame or fight room
+	ACH_ON_DEATH_MANY_BRACELETS, #reach death stats screen with >= 500 bracelets.
 	
-	ACH_ON_FOUNTAINPOOL_USE,
-	ACH_ON_UPGRADEPOOL_USE,
-	ACH_ON_VOIDPOOL_USE,
-	ACH_ON_SWAPPOOL_USE,
-	ACH_ON_SACRIFICEPOOL_USE,
-	
-	ACH_ON_CREDITS_1,
-}
-enum STATISTICS {
-	#STAT_CHUMS_BEFRIENDED,
-	#STAT_CHUMS_SACRIFICED,
-	#STAT_ROOMS_VISITED,
-	#STAT_WORLD_TRANSITIONS,
-	#STAT_BRACELETS_EARNED,
-	#STAT_BRACELETS_SPENT,
-	#STAT_BRACELETS_ON_DEATH,
+	ACH_ON_FOUNTAINPOOL_USE, #something goes in pool
+	ACH_ON_UPGRADEPOOL_USE, #something goes in pool
+	ACH_ON_VOIDPOOL_USE, #chum goes in pool
+	ACH_ON_SWAPPOOL_USE, #two chums go in pool
+	ACH_ON_SACRIFICEPOOL_USE,  #two chums go in pools
+
+	ACH_ON_CREDITS_1, #load credits 1
 }
 
 signal hud_health_change

@@ -1,7 +1,6 @@
 extends Node3D
 var active := false
 var being_tscn = load("res://scenes/general/random_level_being.tscn")
-var void_chums := []
 @onready var particles: PackedScene = load("res://particles/void_deletion.tscn")
 @onready var void_mesh: MeshInstance3D = $Void
 
@@ -38,19 +37,27 @@ func kill_chum(body: Chum, delay: float = 0.0) -> void:
 		#Spawn Bracelets
 		for n in body.bracelet_cost:
 			spawn_currency.emit("bracelet", global_position, Vector3(0.0, 5.0, 0.0))
-			void_chums.append(body.chum_id)
 		body.call_deferred("queue_free")
 		
-		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_VOIDPOOL_USE)
-		if body.chum_id in ChumsManager.prisoner_chum_ids and Global.current_room_node.TYPE != "endgame":
-			Global.crates_broken.keys()
+		if body.chum_id not in PlayerStats.player_unique_chums_voided:
+			PlayerStats.player_unique_chums_voided.append(body.chum_id)
+			PlayerStats.player_unique_chums_voided.sort()
 		
-		var get_ach := true
-		for prisoner_id in ChumsManager.prisoner_chum_ids:
-			if prisoner_id not in void_chums:
-				get_ach = false
-		if get_ach:
-			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_ALL_PRISONER_VOID)
+		PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_VOIDPOOL_USE)
+		
+		if body.chum_id in ChumsManager.prisoner_chum_ids and Global.current_room_node.TYPE != "endgame":
+			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_PRISONER_VOID)
+			
+			var get_ach := true
+			for prisoner_id in ChumsManager.prisoner_chum_ids:
+				if prisoner_id not in PlayerStats.player_unique_chums_voided:
+					get_ach = false
+			if get_ach:
+				PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_ALL_PRISONER_VOID)
+		
+		if PlayerStats.player_unique_chums_voided == ChumsManager.chums_list.keys():
+			PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_ON_ALL_CHUMS_VOID)
+		
 
 func create_being_particles(chum_id: int, delay: float = 0.0) -> void:
 	await get_tree().create_timer(delay).timeout
