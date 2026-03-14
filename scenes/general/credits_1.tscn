@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://btokd7oilu2p2"]
 
-[ext_resource type="Script" uid="uid://bjncd2k0ixa5d" path="res://scripts/general/credits.gd" id="1_j7ah2"]
+[ext_resource type="Script" uid="uid://bjncd2k0ixa5d" path="res://scripts/general/credits_1.gd" id="1_j7ah2"]
 [ext_resource type="MeshLibrary" uid="uid://cigp6vhw1rudc" path="res://assets/world/meshlib_world_1.tres" id="1_twc2j"]
 [ext_resource type="Shader" uid="uid://b5sj60mwbe5st" path="res://testing/hud_outline.gdshader" id="2_s3wqf"]
 [ext_resource type="PackedScene" uid="uid://dsr4pp61d2hjb" path="res://scenes/world/decorations/tree_1.tscn" id="3_3rawr"]

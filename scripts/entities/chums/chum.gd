@@ -199,8 +199,9 @@ func set_stat(quality_name: String, value: int) -> void:
 func create_sleep_particles():
 	if Global.game_begun:
 		sleep_zone.add_child(sleep_particles.instantiate())
+
 		
-func remove_sleep_particles():
+func remove_particles():
 	for child in sleep_zone.get_children():
 		child.stop_emitting()
 		

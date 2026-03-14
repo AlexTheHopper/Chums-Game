@@ -4,11 +4,15 @@ class_name Chum_Knock
 
 @onready var chum: CharacterBody3D
 @onready var player := get_tree().get_first_node_in_group("Player")
+@onready var knock_particles_tscn : PackedScene = preload("res://particles/knock_particles.tscn")
+var knock_particles: Node
 
 func Enter() -> void:
 	if chum.current_group == "Chums_Friend":
 		PlayerStats.call_deferred("friend_chums_changed", -1, chum)
 	chum.make_neutral()
+	
+	add_knock_particles()
 	
 	#Allow player,chums to walk through
 	chum.set_collision_layer_value(4, false)
@@ -40,8 +44,15 @@ func Physics_Update(delta: float) -> void:
 		chum.velocity.y += chum.get_gravity_dir() * delta
 	
 	chum.move_and_slide()
-	
+
+func add_knock_particles() -> void:
+	knock_particles = knock_particles_tscn.instantiate()
+	chum.add_child(knock_particles)
+	#await get_tree().create_timer(0.5).timeout
+	knock_particles.global_position = chum.sleep_zone.global_position
+
 func Exit() -> void:
+	knock_particles.queue_free()
 	#Reallow collisions with player, chums
 	chum.set_collision_layer_value(4, true)
 	

@@ -37,5 +37,5 @@ func _on_wake_finished(anim_name) -> void:
 
 func Exit() -> void:
 	chum.temp_sleep_time = 0.0
-	chum.remove_sleep_particles()
+	chum.remove_particles()
 	chum.anim_player.animation_finished.disconnect(_on_wake_finished)

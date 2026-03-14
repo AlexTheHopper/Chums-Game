@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b1dvhiolgrbhs"]
+
+[ext_resource type="Script" uid="uid://c8452t0w4pwgt" path="res://particles/single_particle.gd" id="1_6ymff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ymff"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_np26h"]
+material = SubResource("StandardMaterial3D_6ymff")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_d0yde"]
+_data = [Vector2(0.0085034, 0), 0.0, 0.0, 0, 0, Vector2(0.35241735, 0.9973136), 0.0, 0.0, 0, 0, Vector2(0.75318074, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_iwkoc"]
+offsets = PackedFloat32Array(0.602459, 0.6953552)
+colors = PackedColorArray(0.14071447, 0.40506274, 0.6017987, 1, 0.7634254, 0.7096951, 7.70092e-07, 1)
+
+[node name="sleep_particles" type="Node3D" unique_id=1532366668]
+script = ExtResource("1_6ymff")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=643920010]
+amount = 5
+lifetime = 1.5
+mesh = SubResource("BoxMesh_np26h")
+emission_shape = 1
+emission_sphere_radius = 0.3
+particle_flag_rotate_y = true
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+angular_velocity_min = 2.5
+angular_velocity_max = 5.0
+angle_max = 180.0
+scale_amount_curve = SubResource("Curve_d0yde")
+color_ramp = SubResource("Gradient_iwkoc")
+
+[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]

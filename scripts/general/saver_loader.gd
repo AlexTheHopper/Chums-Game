@@ -81,6 +81,7 @@ func save_game(save_id) -> void:
 	#Player Data:
 	saved_game.player_health = PlayerStats.player_health
 	saved_game.player_max_health = PlayerStats.player_max_health
+	saved_game.player_speed = PlayerStats.player_speed
 	saved_game.player_max_chums = PlayerStats.player_max_chums
 	saved_game.player_bracelets = PlayerStats.bracelets
 	saved_game.player_collected_lanterns = PlayerStats.collected_lanterns
@@ -91,6 +92,7 @@ func save_game(save_id) -> void:
 	saved_game.player_unique_chums_voided = PlayerStats.player_unique_chums_voided
 	saved_game.player_bracelets_collected = PlayerStats.player_bracelets_collected
 	saved_game.player_bracelets_spent = PlayerStats.player_bracelets_spent
+	saved_game.player_total_damage_taken = PlayerStats.player_total_damage_taken
 
 	#Friend Chums Data:
 	saved_game.friendly_chums = []
@@ -122,14 +124,17 @@ func load_game(save_id) -> void:
 	var saved_game:SavedGame = load("user://saves/%s.tres" % [save_id])
 
 	Global.print_dev("loading game from id %s with seed %s" % [save_id, saved_game.save_seed])
+	var player = get_tree().get_first_node_in_group("Player")
 
 	#Load all save data:
 	Global.save_seed = saved_game.save_seed
 	#Player Data
-	get_tree().get_first_node_in_group("Player").health_node.health = saved_game.player_health
-	get_tree().get_first_node_in_group("Player").health_node.max_health = saved_game.player_max_health
-	get_tree().get_first_node_in_group("Player").base_damage = saved_game.player_damage
-	get_tree().get_first_node_in_group("Player").max_extra_damage = saved_game.player_extra_damage
+	player.health_node.health = saved_game.player_health
+	player.health_node.max_health = saved_game.player_max_health
+	player.speed = max(saved_game.player_speed, player.speed)
+	player.base_damage = saved_game.player_damage
+	player.max_extra_damage = saved_game.player_extra_damage
+	
 	PlayerStats.player_max_chums = saved_game.player_max_chums
 	PlayerStats.bracelets = saved_game.player_bracelets
 	PlayerStats.hud_bracelets_change.emit()
@@ -139,6 +144,7 @@ func load_game(save_id) -> void:
 	PlayerStats.player_unique_chums_voided = saved_game.player_unique_chums_voided
 	PlayerStats.player_bracelets_collected = saved_game.player_bracelets_collected
 	PlayerStats.player_bracelets_spent = saved_game.player_bracelets_spent
+	PlayerStats.player_total_damage_taken = saved_game.player_total_damage_taken
 
 	#Friend Chums Data:
 	for chum in saved_game.friendly_chums:

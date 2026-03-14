@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 var speed := 7.5
+const MAX_SPEED := 12.5
 var jumping_time := 30.0
 const JUMPING_VELOCITY := 0.2
 const MAX_JUMPING_TIME := 30.0
@@ -43,7 +44,7 @@ var attacking_mult := 1.0
 @onready var run_particles: GPUParticles3D = $Armature/RunParticles
 @onready var jump_particles: GPUParticles3D = $Armature/JumpParticles
 
-
+@onready var spawn_particles := load("res://particles/spawn_particles_world1.tscn")
 @onready var hurt_particles := load("res://particles/damage_friendly.tscn")
 @onready var heal_particles := load("res://particles/heal_friendly.tscn")
 @onready var hurt_particles_num := load("res://particles/damage_num_red.tscn")
@@ -56,6 +57,7 @@ var knockback_strength := 0.0
 var knockback_weight := 1.0
 var maintains_agro := 0.0
 var targeted_by := []
+var spawned_in := false
 
 
 var xform: Transform3D
@@ -68,6 +70,7 @@ func _ready() -> void:
 	health_node.set_max_health(base_health)
 	health_node.set_health(base_health)
 	anim_player.play("RESET")
+	add_spawn_particles(0.05)
 	$Camera_Controller/AudioListener3D.make_current()
 	if Global.dev_mode:
 		base_damage = 50
@@ -77,6 +80,11 @@ func _ready() -> void:
 		health_node.max_health = 500
 		
 		speed = 20.0
+
+func add_spawn_particles(delay: float) -> void:
+	await get_tree().create_timer(delay).timeout
+	particle_zone.add_child(spawn_particles.instantiate())
+	spawned_in = true
 
 func _physics_process(delta: float) -> void:
 	if not Global.is_alive:
@@ -165,7 +173,7 @@ func _physics_process(delta: float) -> void:
 	if input_dir:
 		player_goal_horz = camera_controller.rotation.y - input_dir.angle() - (PI / 2)
 		player_goal_horz = fmod(player_goal_horz + PI, 2 * PI)
-		armature.rotation.y = lerp_angle(armature.rotation.y, player_goal_horz, 0.35 * attacking_mult)
+		armature.rotation.y = lerp_angle(armature.rotation.y, player_goal_horz, 0.35 * attacking_mult * (0.5 if is_carrying else 1.0))
 		armature.rotation.x = lerp_angle(armature.rotation.x, 0.15, 0.05)
 	else:
 		armature.rotation.x = lerp_angle(armature.rotation.x, 0.0, 0.1)
@@ -217,6 +225,8 @@ func align_with_floor(normal):
 		rotation.y = 0
 		
 func _on_health_changed(difference: int):
+	if not spawned_in:
+		return
 	if difference < 0.0:
 		damaged(-difference)
 		AudioManager.create_3d_audio_at_location(self.global_position, SoundEffect.SOUND_EFFECT_TYPE.ON_PLAYER_HURT)
@@ -235,6 +245,10 @@ func damaged(amount: int):
 	
 	AudioManager.controller_shake(Functions.map_range(amount, Vector2(1, 50), Vector2(0.1, 1.0)), 0.0, Functions.map_range(amount, Vector2(1, 50), Vector2(0.15, 0.75)))
 	AudioManager.freeze_frame(0.05, 0.5)
+	
+	if Global.current_room_node.TYPE != "endgame":
+		PlayerStats.player_total_damage_taken += amount
+		print(PlayerStats.player_total_damage_taken)
 
 func healed(amount):
 	particle_zone.add_child(heal_particles.instantiate())
@@ -274,6 +288,10 @@ func increase_stats(amount: int) -> void:
 	max_extra_damage += int(amount / 2.0)
 	
 	health_node.max_health += int(amount / 2.0)
+	
+	speed = min(speed + (float(amount) / 24), MAX_SPEED)
+	
+	PlayerStats.player_speed = speed
 	
 	if amount > 0:
 		particle_zone.add_child(quality_particles.instantiate())

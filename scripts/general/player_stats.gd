@@ -5,6 +5,7 @@ extends Node
 
 @onready var player_health: float
 @onready var player_max_health: float
+@onready var player_speed: float
 @onready var bracelets := 0
 @onready var player_max_chums := 5 if not Global.dev_mode else 10
 @onready var collected_lanterns := {0: false, 1: false, 2: false, 3: false, 4: false}
@@ -13,8 +14,10 @@ extends Node
 @onready var player_unique_chums_voided := []
 @onready var player_bracelets_collected := 0
 @onready var player_bracelets_spent := 0
+@onready var player_total_damage_taken := 0
 
 var AppID := "4483870"
+var is_steam_running: bool = false
 enum ACHIEVEMENTS {
 	ACH_ON_TUTORIAL_COMPLETE, #return to menu from tutorial
 	ACH_ON_RECRUIT_CHUM, #recruit any chum
@@ -32,6 +35,7 @@ enum ACHIEVEMENTS {
 	ACH_ON_LARGE_DAMAGE, #enemy takes 300 damage in one go
 	ACH_ON_DEATH_SAFE_ROOM, #death in not engame or fight room
 	ACH_ON_DEATH_MANY_BRACELETS, #reach death stats screen with >= 500 bracelets.
+	ACH_ON_WIN_NO_DAMAGE,
 	
 	ACH_ON_FOUNTAINPOOL_USE, #something goes in pool
 	ACH_ON_UPGRADEPOOL_USE, #something goes in pool
@@ -60,13 +64,19 @@ func _init() -> void:
 	OS.set_environment("SteamGameID", AppID)
 
 func _ready() -> void:
+	attempt_steam_connect()
+
+func attempt_steam_connect() -> bool:
+	if not Global.run_steam:
+		return false
 	Steam.steamInit()
 	var isSteamRunning: bool = Steam.isSteamRunning()
 	if not isSteamRunning:
 		Global.print_dev("STEAM NOT RUNNING")
-		return
+		return false
 	
-	Global.print_dev("Steam Running")
+	#Global.print_dev("Steam Running")
+	return true
 
 func initialise() -> void:
 	player_max_chums = 5 if not Global.dev_mode else 10
@@ -76,6 +86,7 @@ func initialise() -> void:
 
 	health_node.health_changed.connect(_on_player_health_changed)
 	player_health = health_node.health
+	player_speed = player.speed
 
 	health_node.max_health_changed.connect(_on_player_max_health_changed)
 	player_max_health = health_node.max_health
@@ -84,6 +95,7 @@ func initialise() -> void:
 	player_unique_chums_befriended = []
 	player_bracelets_collected = 0
 	player_bracelets_spent = 0
+	player_total_damage_taken = 0
 	
 	#To trigget sets:
 	bracelets = 0
@@ -133,6 +145,11 @@ func is_chum_list_full():
 #PlayerStats.attempt_achievement_unlock(PlayerStats.ACHIEVEMENTS.ACH_)
 func attempt_achievement_unlock(ACH: ACHIEVEMENTS) -> void:
 	var ach = ACHIEVEMENTS.keys()[ACH]
+	if not is_steam_running:
+		if not attempt_steam_connect():
+			Global.print_dev("Could not get Achievement: %s. Steam not running." % ach)
+			return
+		
 	Global.print_dev("Attempting Unlock of Achievement: %s" % ach)
 	var status = Steam.getAchievement(ach)
 	if not status.has("achieved"):

@@ -1,6 +1,7 @@
 extends Node3D
 @onready var cpu_particles_3d: CPUParticles3D = $CPUParticles3D
 @export var gradient: Gradient
+var stopped := false
 signal completed
 
 func _ready() -> void:
@@ -10,10 +11,13 @@ func _ready() -> void:
 	call_deferred("start_emitting") #So it can be moved if necessary
 
 func start_emitting() -> void:
+	if stopped:
+		return
 	cpu_particles_3d.emitting = true
 
 func stop_emitting() -> void:
 	cpu_particles_3d.emitting = false
+	stopped = true
 
 func _on_cpu_particles_3d_finished() -> void:
 	completed.emit()
